@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-09-23 15:34+0530\n"
+"PO-Revision-Date: 2026-09-28 19:51+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -813,8 +813,8 @@ msgstr "डोला पूर्णिमा"
 msgid "Utkal Divas"
 msgstr "उत्कल दिवस"
 
-#. Maha Visua Sankranti.
-msgid "Maha Visua Sankranti"
+#. Maha Visuva Sankranti.
+msgid "Maha Visuva Sankranti"
 msgstr "महा विषुव संक्रांति"
 
 #. Mahalaya.
@@ -1016,6 +1016,10 @@ msgstr "चौधरी चरण सिंह जयंती"
 #. Swami Vivekananda's Birthday.
 msgid "Swami Vivekananda's Jayanti"
 msgstr "स्वामी विवेकानंद जयंती"
+
+#. Rabindranath Tagore's Birthday.
+msgid "Rabindranath Tagore's Jayanti"
+msgstr "रवींद्रनाथ टैगोर जयंती"
 
 #. Birsa Munda's Birthday.
 msgid "Birsa Munda's Jayanti"

@@ -67,7 +67,9 @@ ONAM = "ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PARIVARTINI_EKADASHI = "PARIVARTINI_EKADASHI"
 PITRA_MOKSH_AMAVASYA = "PITRA_MOKSH_AMAVASYA"
+POHELA_BOISHAKH = "POHELA_BOISHAKH"
 PONGAL = "PONGAL"
+PUTHANDU = "PUTHANDU"
 RAKSHA_BANDHAN = "RAKSHA_BANDHAN"
 RAM_NAVAMI = "RAM_NAVAMI"
 RATH_YATRA = "RATH_YATRA"
@@ -2183,6 +2185,45 @@ class _HinduLunisolar:
         2035: (OCT, 1),
     }
 
+    # https://web.archive.org/web/20260924233328/https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html
+    POHELA_BOISHAKH_DATES = {
+        2001: (APR, 14),
+        2002: (APR, 15),
+        2003: (APR, 15),
+        2004: (APR, 14),
+        2005: (APR, 14),
+        2006: (APR, 15),
+        2007: (APR, 15),
+        2008: (APR, 14),
+        2009: (APR, 15),
+        2010: (APR, 15),
+        2011: (APR, 15),
+        2012: (APR, 14),
+        2013: (APR, 15),
+        2014: (APR, 15),
+        2015: (APR, 15),
+        2016: (APR, 14),
+        2017: (APR, 15),
+        2018: (APR, 15),
+        2019: (APR, 15),
+        2020: (APR, 14),
+        2021: (APR, 15),
+        2022: (APR, 15),
+        2023: (APR, 15),
+        2024: (APR, 14),
+        2025: (APR, 15),
+        2026: (APR, 15),
+        2027: (APR, 15),
+        2028: (APR, 14),
+        2029: (APR, 15),
+        2030: (APR, 15),
+        2031: (APR, 15),
+        2032: (APR, 14),
+        2033: (APR, 15),
+        2034: (APR, 15),
+        2035: (APR, 15),
+    }
+
     PONGAL_DATES = {
         2001: (JAN, 14),
         2002: (JAN, 14),
@@ -2219,6 +2260,45 @@ class _HinduLunisolar:
         2033: (JAN, 14),
         2034: (JAN, 14),
         2035: (JAN, 15),
+    }
+
+    # https://web.archive.org/web/20250630095732/https://www.drikpanchang.com/festivals/puthandu/tamil-newyear-date-time.html
+    PUTHANDU_DATES = {
+        2001: (APR, 14),
+        2002: (APR, 14),
+        2003: (APR, 14),
+        2004: (APR, 13),
+        2005: (APR, 14),
+        2006: (APR, 14),
+        2007: (APR, 14),
+        2008: (APR, 13),
+        2009: (APR, 14),
+        2010: (APR, 14),
+        2011: (APR, 14),
+        2012: (APR, 14),
+        2013: (APR, 14),
+        2014: (APR, 14),
+        2015: (APR, 14),
+        2016: (APR, 14),
+        2017: (APR, 14),
+        2018: (APR, 14),
+        2019: (APR, 14),
+        2020: (APR, 14),
+        2021: (APR, 14),
+        2022: (APR, 14),
+        2023: (APR, 14),
+        2024: (APR, 14),
+        2025: (APR, 14),
+        2026: (APR, 14),
+        2027: (APR, 14),
+        2028: (APR, 14),
+        2029: (APR, 14),
+        2030: (APR, 14),
+        2031: (APR, 14),
+        2032: (APR, 14),
+        2033: (APR, 14),
+        2034: (APR, 14),
+        2035: (APR, 14),
     }
 
     # https://web.archive.org/web/20240720191148/https://www.timeanddate.com/holidays/india/raksha-bandhan
@@ -3026,46 +3106,6 @@ class _HinduLunisolar:
         2035: (SEP, 17),
     }
 
-    # https://web.archive.org/web/20251222111433/https://cag.gov.in/ag/meghalaya/en/page-ag-meghalaya-holidays-list
-    # https://web.archive.org/web/20260521103408/https://meghalaya.gov.in/holiday
-    WANGALA_FESTIVAL_DATES = {
-        2001: (NOV, 9),
-        2002: (NOV, 8),
-        2003: (NOV, 14),
-        2004: (NOV, 12),
-        2005: (NOV, 11),
-        2006: (NOV, 10),
-        2007: (NOV, 9),
-        2008: (NOV, 14),
-        2009: (NOV, 13),
-        2010: (NOV, 12),
-        2011: (NOV, 11),
-        2012: (NOV, 9),
-        2013: (NOV, 8),
-        2014: (NOV, 14),
-        2015: (NOV, 13),
-        2016: (NOV, 11),
-        2017: (NOV, 10),
-        2018: (NOV, 9),
-        2019: (NOV, 8),
-        2020: (NOV, 13),
-        2021: (NOV, 12),
-        2022: (NOV, 11),
-        2023: (NOV, 10),
-        2024: (NOV, 8),
-        2025: (NOV, 7),
-        2026: (NOV, 13),
-        2027: (NOV, 12),
-        2028: (NOV, 10),
-        2029: (NOV, 9),
-        2030: (NOV, 8),
-        2031: (NOV, 14),
-        2032: (NOV, 12),
-        2033: (NOV, 11),
-        2034: (NOV, 10),
-        2035: (NOV, 9),
-    }
-
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
@@ -3229,8 +3269,14 @@ class _HinduLunisolar:
     def pitra_moksh_amavasya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PITRA_MOKSH_AMAVASYA, year)
 
+    def pohela_boishakh_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(POHELA_BOISHAKH, year)
+
     def pongal_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PONGAL, year)
+
+    def puthandu_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(PUTHANDU, year)
 
     def raksha_bandhan_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(RAKSHA_BANDHAN, year)
@@ -3282,9 +3328,6 @@ class _HinduLunisolar:
 
     def vishwakarma_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VISHWAKARMA_PUJA, year)
-
-    def wangala_festival_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(WANGALA_FESTIVAL, year)
 
 
 class _CustomHinduHolidays(_CustomCalendar, _HinduLunisolar):

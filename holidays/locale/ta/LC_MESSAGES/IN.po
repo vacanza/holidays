@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-09-23 15:34+0530\n"
+"PO-Revision-Date: 2026-09-28 19:51+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
@@ -802,7 +802,7 @@ msgstr "கிறிஸ்துமஸுக்குப் பிந்தை�
 
 #. Post Christmas (Day 4).
 msgid "Post Christmas (Day 4)"
-msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (4ஆம் நாள்)"
+msgstr "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (நான்காம் நாள்)"
 
 #. Dola Purnima.
 msgid "Dola Purnima"
@@ -812,8 +812,8 @@ msgstr "டோலா பௌர்ணமி"
 msgid "Utkal Divas"
 msgstr "உத்கல் தினம்"
 
-#. Maha Visua Sankranti.
-msgid "Maha Visua Sankranti"
+#. Maha Visuva Sankranti.
+msgid "Maha Visuva Sankranti"
 msgstr "மகா விஷுவ சங்கராந்தி"
 
 #. Mahalaya.
@@ -1015,6 +1015,10 @@ msgstr "சௌதரி சரண் சிங் ஜெயந்தி"
 #. Swami Vivekananda's Birthday.
 msgid "Swami Vivekananda's Jayanti"
 msgstr "சுவாமி விவேகானந்தர் ஜெயந்தி"
+
+#. Rabindranath Tagore's Birthday.
+msgid "Rabindranath Tagore's Jayanti"
+msgstr "ரவீந்திரநாத் தாகூர் ஜெயந்தி"
 
 #. Birsa Munda's Birthday.
 msgid "Birsa Munda's Jayanti"

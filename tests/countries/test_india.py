@@ -661,7 +661,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_vaisakhi(self):
         name = "Vaisakhi"
-        name_maha_visua_sankranti = "Maha Visua Sankranti"
+        name_maha_visua_sankranti = "Maha Visuva Sankranti"
         dts = (
             "2020-04-13",
             "2021-04-14",
@@ -674,7 +674,6 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name, dts, subdivs={"HR", "PB"})
         self._assertHinduHolidayHelper("Baisakhi", dts, subdivs={"JK"})
-        self._assertHinduHolidayHelper("Puthandu (Tamil New Year)", dts, subdivs={"PY", "TN"})
         self.assertSubdivOdGovernmentHolidayName(name_maha_visua_sankranti, dts)
         self.assertSubdivLaOptionalHolidayName(name, dts)
         self.assertNoHolidayName(name_maha_visua_sankranti)
@@ -704,6 +703,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_rabindranath_jayanti(self):
         name = "Guru Rabindranath's Jayanti"
+        name_wb = "Rabindranath Tagore's Jayanti"
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
@@ -711,6 +711,16 @@ class TestIndia(CommonCountryTests, TestCase):
             (f"{year}-05-09" for year in range(2008, self.end_year) if not isleap(year)),
         )
         self.assertNoOptionalHolidayName(name, range(self.start_year, 2008))
+        # SUBDIVS.
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "WB":
+                self.assertHolidayName(
+                    name_wb,
+                    (f"{year}-05-08" for year in self.full_range if isleap(year)),
+                    (f"{year}-05-09" for year in self.full_range if not isleap(year)),
+                )
+            else:
+                self.assertNoHolidayName(name_wb, holidays)
 
     def test_rath_yatra(self):
         name = "Rath Yatra"
@@ -1578,27 +1588,26 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_pohela_boishakh(self):
-        # name = "Pohela Boishakh"
-        # self.assertNoHolidayName(name)
         dts = (
             "2020-04-14",
             "2021-04-15",
             "2022-04-15",
             "2023-04-15",
             "2024-04-14",
+            "2025-04-15",
+        )
+        self._assertHinduHolidayHelper("Pohela Boishakh", dts, subdivs={"TR", "WB"})
+
+    def test_puthandu(self):
+        dts = (
+            "2020-04-14",
+            "2021-04-14",
+            "2022-04-14",
+            "2023-04-14",
+            "2024-04-14",
             "2025-04-14",
         )
-        # for subdiv, holidays in self.subdiv_holidays.items():
-        #     if subdiv == "TR":
-        #         self.assertHolidayName(name, holidays, dts)
-        #         self.assertHolidayName(name, holidays, self.hindu_full_range)
-        #     elif subdiv == "WB":
-        #         self.assertHolidayName(
-        #             name, holidays, (f"{year}-04-15" for year in self.full_range)
-        #         )
-        #     else:
-        #         self.assertNoHolidayName(name, holidays)
-        self._assertHinduHolidayHelper("Pohela Boishakh", dts, subdivs={"TR", "WB"})
+        self._assertHinduHolidayHelper("Puthandu (Tamil New Year)", dts, subdivs={"PY", "TN"})
 
     def test_gurudev_kalicharan_brahma_jayanti(self):
         name = "Gurudev Kalicharan Brahma's Jayanti"
@@ -2659,7 +2668,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "Shri Vallabhacharya's Jayanti"),
             (
                 "2018-04-14",
-                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Jayanti; Maha Visua Sankranti; "
+                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Jayanti; Maha Visuva Sankranti; "
                 "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
@@ -2677,7 +2686,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Maharashtra Day; Majdoor Diwas; May Day"),
             ("2018-05-03", "Veer Kesari Chand's Shaheedi Diwas"),
-            ("2018-05-09", "Guru Rabindranath's Jayanti"),
+            ("2018-05-09", "Guru Rabindranath's Jayanti; Rabindranath Tagore's Jayanti"),
             ("2018-05-16", "Sikkim State Day"),
             ("2018-05-29", "Late Tenzing Norgay Sherpa's Jayanti"),
             ("2018-06-08", "Feast of Sacred Heart of Jesus"),
@@ -2876,7 +2885,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "বুদ্ধ পূর্ণিমা"),
             ("2018-05-01", "মহারাষ্ট্র দিবস; মে দিবস; শ্রমিক দিবস"),
             ("2018-05-03", "বীর কেশরী চাঁদের শহীদ দিবস"),
-            ("2018-05-09", "গুরু রবীন্দ্রনাথের জয়ন্তী"),
+            ("2018-05-09", "গুরু রবীন্দ্রনাথের জয়ন্তী; রবীন্দ্রনাথ ঠাকুরের জন্মজয়ন্তী"),
             ("2018-05-16", "সিকিম প্রতিষ্ঠা দিবস"),
             ("2018-05-29", "প্রয়াত তেনজিং নোরগে শেরপার জন্মজয়ন্তী"),
             ("2018-06-08", "যিশুর পবিত্র হৃদয়ের পর্ব"),
@@ -3056,7 +3065,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "Shri Vallabhacharya's Birthday"),
             (
                 "2018-04-14",
-                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; Maha Visua Sankranti; "
+                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; Maha Visuva Sankranti; "
                 "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
@@ -3077,7 +3086,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "Buddha Purnima"),
             ("2018-05-01", "Maharashtra Day; Majdoor Diwas; May Day"),
             ("2018-05-03", "Veer Kesari Chand's Martyrdom Day"),
-            ("2018-05-09", "Guru Rabindranath's Birthday"),
+            ("2018-05-09", "Guru Rabindranath's Birthday; Rabindranath Tagore's Birthday"),
             ("2018-05-16", "Sikkim State Day"),
             ("2018-05-29", "Late Tenzing Norgay Sherpa's Jayanti"),
             ("2018-06-08", "Sacred Heart"),
@@ -3110,7 +3119,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-20", "Nepali Bhasa Manyata Diwas"),
             ("2018-08-22", "Eid al-Adha"),
             ("2018-08-24", "Onam; Varalakshmi Vratam"),
-            ("2018-08-25", "Onam (Day 2)."),
+            ("2018-08-25", "Onam (Day 2)"),
             ("2018-08-26", "Onam (Day 3).; Raksha Bandhan"),
             ("2018-08-27", "Onam (Day 4)."),
             ("2018-08-30", "Eid-e-Ghadeer (estimated)"),
@@ -3266,7 +3275,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "બુદ્ધ પૂર્ણિમા"),
             ("2018-05-01", "મજૂર દિવસ; મહારાષ્ટ્ર દિવસ; મે દિવસ"),
             ("2018-05-03", "વીર કેસરી ચંદનો શહીદી દિવસ"),
-            ("2018-05-09", "ગુરુ રવીન્દ્રનાથ જયંતિ"),
+            ("2018-05-09", "ગુરુ રવીન્દ્રનાથ જયંતિ; રવીન્દ્રનાથ ટાગોર જયંતી"),
             ("2018-05-16", "સિક્કિમ રાજ્ય દિવસ"),
             ("2018-05-29", "સ્વ. તેન્ઝિંગ નોર્ગે શેરપા જયંતી"),
             ("2018-06-08", "ઈસુના પવિત્ર હૃદયની પર્વ"),
@@ -3449,7 +3458,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "बुद्ध पूर्णिमा"),
             ("2018-05-01", "मई दिवस; मजदूर दिवस; महाराष्ट्र दिवस"),
             ("2018-05-03", "वीर केसरी चंद शहीदी दिवस"),
-            ("2018-05-09", "गुरु रवींद्रनाथ जयंती"),
+            ("2018-05-09", "गुरु रवींद्रनाथ जयंती; रवींद्रनाथ टैगोर जयंती"),
             ("2018-05-16", "सिक्किम राज्य दिवस"),
             ("2018-05-29", "दिवंगत तेनजिंग नोर्गे शेरपा जयंती"),
             ("2018-06-08", "यीशु के पवित्र हृदय का पर्व"),
@@ -3641,7 +3650,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "ಬುದ್ಧ ಪೂರ್ಣಿಮ"),
             ("2018-05-01", "ಕಾರ್ಮಿಕರ ದಿನ; ಮಹಾರಾಷ್ಟ್ರ ದಿನೋತ್ಸವ; ಮೇ ದಿನ"),
             ("2018-05-03", "ವೀರ ಕೇಸರಿ ಚಂದ್ ಶಹೀದಿ ದಿನ"),
-            ("2018-05-09", "ಗುರು ರವೀಂದ್ರನಾಥ್ ಜಯಂತಿ"),
+            ("2018-05-09", "ಗುರು ರವೀಂದ್ರನಾಥ್ ಜಯಂತಿ; ರವೀಂದ್ರನಾಥ ಟ್ಯಾಗೋರ್ ಜಯಂತಿ"),
             ("2018-05-16", "ಸಿಕ್ಕಿಂ ರಾಜ್ಯ ದಿನೋತ್ಸವ"),
             ("2018-05-29", "ದಿವಂಗತ ತೆನ್ಜಿಂಗ್ ನಾರ್ಗೇ ಶೆರ್ಪಾ ಜಯಂತಿ"),
             ("2018-06-08", "ಯೇಸುವಿನ ಪವಿತ್ರ ಹೃದಯದ ಹಬ್ಬ"),
@@ -3833,7 +3842,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "ബുദ്ധ പൂർണ്ണിമ"),
             ("2018-05-01", "തൊഴിലാളി ദിനം; മഹാരാഷ്ട്ര ദിനം; മേയ് ദിനം"),
             ("2018-05-03", "വീർ കേസരി ചന്ദിന്റെ ശഹീദ് ദിനം"),
-            ("2018-05-09", "ഗുരു രവീന്ദ്രനാഥ് ജയന്തി"),
+            ("2018-05-09", "ഗുരു രവീന്ദ്രനാഥ് ജയന്തി; രവീന്ദ്രനാഥ ടാഗോറിന്റെ ജയന്തി"),
             ("2018-05-16", "സിക്കിം സംസ്ഥാനദിനം"),
             ("2018-05-29", "പരേതനായ ടെൻസിങ് നോർഗേ ഷെർപ്പയുടെ ജയന്തി"),
             ("2018-06-08", "ഈശോയുടെ തിരുഹൃദയ തിരുനാൾ"),
@@ -4013,7 +4022,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "बुध्द पौर्णिमा"),
             ("2018-05-01", "कामगार दिन; महाराष्ट्र दिन; मे दिन"),
             ("2018-05-03", "वीर केसरी चंद शहीद दिन"),
-            ("2018-05-09", "गुरु रवींद्रनाथ जयंती"),
+            ("2018-05-09", "गुरु रवींद्रनाथ जयंती; रवींद्रनाथ टागोर जयंती"),
             ("2018-05-16", "सिक्कीम राज्य दिन"),
             ("2018-05-29", "दिवंगत तेनसिंग नोर्गे शेर्पा जयंती"),
             ("2018-06-08", "येशूच्या पवित्र हृदयाचा सण"),
@@ -4046,7 +4055,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-20", "नेपाळी भाषा मान्यता दिवस"),
             ("2018-08-22", "ईद-उल-जुहा (बकरीद)"),
             ("2018-08-24", "ओणम; वरलक्ष्मी व्रत"),
-            ("2018-08-25", "ओणम (दूसरा दिवस)"),
+            ("2018-08-25", "ओणम (दुसरा दिवस)"),
             ("2018-08-26", "ओणम (तिसरा दिवस); रक्षाबंधन"),
             ("2018-08-27", "ओणम (चौथा दिवस)"),
             ("2018-08-30", "ईद-ए-गदीर (अंदाजे)"),
@@ -4197,7 +4206,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "ਬੁੱਧ ਪੂਰਨਿਮਾ"),
             ("2018-05-01", "ਮਈ ਦਿਵਸ; ਮਜ਼ਦੂਰ ਦਿਵਸ; ਮਹਾਰਾਸ਼ਟਰ ਦਿਵਸ"),
             ("2018-05-03", "ਵੀਰ ਕੇਸਰੀ ਚੰਦ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"),
-            ("2018-05-09", "ਗੁਰੂ ਰਬਿੰਦਰਨਾਥ ਜਯੰਤੀ"),
+            ("2018-05-09", "ਗੁਰੂ ਰਬਿੰਦਰਨਾਥ ਜਯੰਤੀ; ਰਬਿੰਦਰਨਾਥ ਟੈਗੋਰ ਜਯੰਤੀ"),
             ("2018-05-16", "ਸਿੱਕਮ ਰਾਜ ਦਿਵਸ"),
             ("2018-05-29", "ਸਵਰਗਵਾਸੀ ਤੇਨਜ਼ਿੰਗ ਨੋਰਗੇ ਸ਼ੇਰਪਾ ਜਯੰਤੀ"),
             ("2018-06-08", "ਯਿਸੂ ਦੇ ਪਵਿੱਤਰ ਦਿਲ ਦਾ ਤਿਉਹਾਰ"),
@@ -4395,7 +4404,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "புத்தர் பௌர்ணமி"),
             ("2018-05-01", "தொழிலாளர் தினம்; மகாராஷ்டிரா நாள்; மே தினம்"),
             ("2018-05-03", "வீர கேசரி சந்தின் ஷஹீதி தினம்"),
-            ("2018-05-09", "குரு ரவீந்திரநாத் ஜெயந்தி"),
+            ("2018-05-09", "குரு ரவீந்திரநாத் ஜெயந்தி; ரவீந்திரநாத் தாகூர் ஜெயந்தி"),
             ("2018-05-16", "சிக்கிம் மாநில நாள்"),
             ("2018-05-29", "மறைந்த டென்சிங் நோர்கே ஷெர்பா ஜெயந்தி"),
             ("2018-06-08", "இயேசுவின் திருஇருதய திருவிழா"),
@@ -4510,7 +4519,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             (
                 "2018-12-28",
-                "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (4ஆம் நாள்); ஜோர் மேளா ஃபதேகர்க் சாஹிப்",
+                "கிறிஸ்துமஸுக்குப் பிந்தைய நாள் (நான்காம் நாள்); ஜோர் மேளா ஃபதேகர்க் சாஹிப்",
             ),
             (
                 "2018-12-30",
@@ -4597,7 +4606,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-30", "బుద్ధ పూర్ణిమ"),
             ("2018-05-01", "కార్మికుల దినోత్సవం; మహారాష్ట్ర దినోత్సవం; మే దినోత్సవం"),
             ("2018-05-03", "వీర్ కేసరి చంద్ షహీది దినం"),
-            ("2018-05-09", "గురు రవీంద్రనాథ్ జయంతి"),
+            ("2018-05-09", "గురు రవీంద్రనాథ్ జయంతి; రవీంద్రనాథ్ ఠాగూర్ జయంతి"),
             ("2018-05-16", "సిక్కిం రాష్ట్ర దినోత్సవం"),
             ("2018-05-29", "దివంగత టెన్జింగ్ నోర్గే షెర్పా జయంతి"),
             ("2018-06-08", "యేసు పవిత్ర హృదయ పండుగ"),

@@ -936,7 +936,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pohela_Boishakh
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.vaisakhi_date(self._year), days_delta=+1
+            name, self._hindu_calendar.pohela_boishakh_date(self._year)
         )
 
     def _add_pongal(self, name) -> date | None:
@@ -950,6 +950,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
+
+    def _add_puthandu(self, name) -> date | None:
+        """
+        Add Puthandu.
+
+        Puthandu is the Tamil New Year, celebrated in Tamil Nadu, India. It is usually observed
+        on April 14th or 15th every year, coinciding with the Tamil month of Chithirai.
+        The festival is dedicated to the Sun God and marks a season of prosperity and abundance.
+        https://en.wikipedia.org/wiki/Puthandu
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.puthandu_date(self._year)
+        )
 
     def _add_rabindranath_birthday(self, name: str) -> None:
         """
@@ -1274,20 +1287,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.vishwakarma_puja_date(self._year)
-        )
-
-    def _add_wangala_festival(self, name) -> date | None:
-        """
-        Add Wangala Festival.
-
-        Wangala is a harvest festival celebrated by the Garo people
-        of Meghalaya. It is also known as the Hundred Drums Festival
-        and marks the end of the agricultural year.
-
-        The holiday is observed on the second Friday of November.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.wangala_festival_date(self._year)
         )
 
     def _add_parsi_new_year(self, name: str) -> None:

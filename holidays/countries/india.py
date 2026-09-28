@@ -78,7 +78,7 @@ class India(
         * Himachal Pradesh:
             * <https://web.archive.org/web/20260627103337/https://www.comply360.in/labor-law-library/wp-content/uploads/2025/12/Notification-regarding-list-of-Holidays-for-the-Year-2026-in-Himachal-Pradesh-1.pdf>
         * Jammu and Kashmir:
-            * https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
+            * <https://web.archive.org/web/20260616165510/https://jkeducation.co.in/wp-content/uploads/2025/12/showOrder-4.pdf>
         * Jharkhand:
             * <https://web.archive.org/web/20260826145700/https://jharkhandcalendar.co.in/wp-content/uploads/2025/12/jaharkand-calendar-2026.pdf>
         * Karnataka:
@@ -89,7 +89,7 @@ class India(
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Lakshadweep:
-            * <https://web.archive.org/save/https://only30sec.com/wp-content/uploads/2025/12/Lakshadweep-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://web.archive.org/web/20260827200839/https://only30sec.com/wp-content/uploads/2025/12/Lakshadweep-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Madhya Pradesh:
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
@@ -1557,8 +1557,8 @@ class India(
         # Utkal Divas.
         self._add_holiday_apr_1(tr("Utkal Divas"))
 
-        # Maha Visua Sankranti.
-        self._add_vaisakhi(tr("Maha Visua Sankranti"))
+        # Maha Visuva Sankranti.
+        self._add_vaisakhi(tr("Maha Visuva Sankranti"))
 
         # Rath Yatra.
         self._add_rath_yatra(tr("Rath Yatra"))
@@ -1594,11 +1594,25 @@ class India(
         # Pongal.
         self._add_pongal(tr("Pongal"))
 
+        vishu_dates = {
+            2025: (APR, 14),
+        }
         # Vishu.
-        self._add_vishu(tr("Vishu"))
+        name = tr("Vishu")
+        if dt := vishu_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_vishu(name)
 
+        vishu_day_two_dates = {
+            2025: (APR, 15),
+        }
         # Vishu (Day 2).
-        self._add_vishu_day_two(tr("Vishu (Day 2)"))
+        name = tr("Vishu (Day 2)")
+        if dt := vishu_day_two_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_vishu_day_two(name)
 
         # Onam.
         self._add_onam(tr("Onam"))
@@ -1607,7 +1621,7 @@ class India(
         self._add_onam_day_two(tr("Onam (Day 2)"))
 
         # Puthandu (Tamil New Year).
-        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
+        self._add_puthandu(tr("Puthandu (Tamil New Year)"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -1841,7 +1855,7 @@ class India(
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
 
         # Puthandu (Tamil New Year).
-        self._add_vaisakhi(tr("Puthandu (Tamil New Year)"))
+        self._add_puthandu(tr("Puthandu (Tamil New Year)"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -1951,9 +1965,6 @@ class India(
         # Veer Kesari Chand's Martyrdom Day.
         self._add_holiday_may_3(tr("Veer Kesari Chand's Shaheedi Diwas"))
 
-        # Easter Monday.
-        self._add_easter_monday(tr("Easter Monday"))
-
         # Hindu holidays.
 
         # Anant Chaturdashi.
@@ -2040,6 +2051,9 @@ class India(
 
         # May Day.
         self._add_labor_day(tr("May Day"))
+
+        # Rabindranath Tagore's Birthday.
+        self._add_rabindranath_birthday(tr("Rabindranath Tagore's Jayanti"))
 
         # Birsa Munda's Birthday.
         self._add_holiday_nov_15(tr("Birsa Munda's Jayanti"))
