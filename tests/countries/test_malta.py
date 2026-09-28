@@ -107,6 +107,7 @@ class TestMalta(CommonCountryTests, TestCase):
         )
 
     def test_l10n_ar(self):
+        """Verify the Arabic names of Malta's public holidays."""
         self.assertLocalizedHolidays(
             "ar",
             ("2023-01-01", "رأس السنة الميلادية"),
