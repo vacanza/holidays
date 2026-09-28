@@ -35,7 +35,7 @@ class WarsawStockExchange(Poland):
     country = None  # type: ignore[assignment]
     market = "XWAR"
     parent_entity = Poland
-    supported_languages = ("en_US", "pl")  # type: ignore[assignment]
+    supported_languages = ("en_US", "pl", "uk")  # type: ignore[assignment]
     start_year = 2011
 
     def __init__(self, *args, **kwargs):
