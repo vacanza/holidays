@@ -711,22 +711,52 @@ Financial market holiday calendar:
 holidays-ics XNYS
 ```
 
-Spanning the next 10 years, unofficial holidays, saved to a custom file:
+Spanning the next 10 years:
 
 ```shell
-holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
+holidays-ics US --years +10
 ```
 
-Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
+Specifying an explicit year range:
 
 ```shell
-holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
+holidays-ics US --years 2021-2030
 ```
 
-Use the default file name as part of a custom file name:
+Calendar for Switzerland, specific to the Canton of Zurich:
 
 ```shell
-holidays-ics US --years 2021-2030 --subdiv TX --output-template "HOLIDAYS_{all}.ics"
+holidays-ics CH --subdiv ZH
+```
+
+Calendar for Switzerland, localized in German:
+
+```shell
+holidays-ics CH --language de
+```
+
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German:
+
+```shell
+holidays-ics CH --subdiv ZH --language de
+```
+
+Create a German-localized calendar for Switzerland with a POSIX-style locale filename:
+
+```shell
+holidays-ics CH --language de --output-template "{language}-{code}.ics"
+```
+
+Naming the output calendar file using the country code:
+
+```shell
+holidays-ics US --output-template "{code}.ics"
+```
+
+Create a custom calendar file name by prepending `HOLIDAYS_` to the default file name:
+
+```shell
+holidays-ics US --years 2021-2030 --categories unofficial --subdiv IA --language th --output-template "HOLIDAYS_{all}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected
