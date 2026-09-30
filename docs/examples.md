@@ -729,7 +729,7 @@ Calendar for Switzerland, specific to the Canton of Zurich, localized in German:
 holidays-ics CH --subdiv ZH --language de
 ```
 
-Create a German-localized calendar for Switzerland with a POSIX-style locale filename:
+Create a German-localized calendar for Switzerland, naming the file from the language and country codes:
 
 ```shell
 holidays-ics CH --language de --output-template "{language}_{code}.ics"
