@@ -661,7 +661,6 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_vaisakhi(self):
         name = "Vaisakhi"
-        name_maha_visua_sankranti = "Maha Visuva Sankranti"
         dts = (
             "2020-04-13",
             "2021-04-14",
@@ -674,9 +673,16 @@ class TestIndia(CommonCountryTests, TestCase):
         # SUBDIVS.
         self._assertHinduHolidayHelper(name, dts, subdivs={"HR", "PB"})
         self._assertHinduHolidayHelper("Baisakhi", dts, subdivs={"JK"})
-        self.assertSubdivOdGovernmentHolidayName(name_maha_visua_sankranti, dts)
         self.assertSubdivLaOptionalHolidayName(name, dts)
-        self.assertNoHolidayName(name_maha_visua_sankranti)
+
+    def test_maha_visuva_sankranti(self):
+        name = "Maha Visuva Sankranti"
+        self.assertNoHolidayName(name)
+        self.assertOdGovernmentHolidayName(
+            name,
+            (f"{year}-04-13" for year in self.full_range if isleap(year)),
+            (f"{year}-04-14" for year in self.full_range if not isleap(year)),
+        )
 
     def test_vishu(self):
         name = "Vishu"
@@ -1607,7 +1613,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-04-14",
             "2025-04-14",
         )
-        self._assertHinduHolidayHelper("Puthandu (Tamil New Year)", dts, subdivs={"PY", "TN"})
+        self._assertHinduHolidayHelper("Puthandu", dts, subdivs={"PY", "TN"})
 
     def test_gurudev_kalicharan_brahma_jayanti(self):
         name = "Gurudev Kalicharan Brahma's Jayanti"
@@ -2669,7 +2675,7 @@ class TestIndia(CommonCountryTests, TestCase):
             (
                 "2018-04-14",
                 "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Jayanti; Maha Visuva Sankranti; "
-                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
+                "Meshadi (Tamil New Year's Day); Puthandu; "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
             ("2018-04-15", "Bahag Bihu; Himachal Day; Pohela Boishakh; Vaisakhadi; Vishu (Day 2)"),
@@ -3066,7 +3072,7 @@ class TestIndia(CommonCountryTests, TestCase):
             (
                 "2018-04-14",
                 "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; Maha Visuva Sankranti; "
-                "Meshadi (Tamil New Year's Day); Puthandu (Tamil New Year); "
+                "Meshadi (Tamil New Year's Day); Puthandu; "
                 "Shab-I-Miraj (estimated); Vaisakhi; Vishu",
             ),
             (

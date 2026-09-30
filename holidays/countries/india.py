@@ -13,7 +13,21 @@
 import warnings
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    _timedelta,
+)
 from holidays.constants import GOVERNMENT, OPTIONAL, OPTIONAL_WOMEN, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -1193,20 +1207,46 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
+        onam_dates = {
+            2026: (AUG, 25),
+        }
         # Onam.
-        self._add_onam(tr("Onam"))
+        name = tr("Onam")
+        if dt := onam_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_onam(name)
 
         # Onam (Day 2).
-        self._add_onam_day_two(tr("Onam (Day 2)"))
+        name = tr("Onam (Day 2)")
+        if self._year == 2026:
+            self._add_holiday(name, _timedelta(dt, +1))
+        else:
+            self._add_onam_day_two(name)
 
         # Onam (Day 3).
-        self._add_onam_day_three(tr("Onam (Day 3)"))
+        name = tr("Onam (Day 3)")
+        if self._year == 2026:
+            self._add_holiday(name, _timedelta(dt, +2))
+        else:
+            self._add_onam_day_three(name)
 
         # Onam (Day 4).
-        self._add_onam_day_four(tr("Onam (Day 4)"))
+        name = tr("Onam (Day 4)")
+        if self._year == 2026:
+            self._add_holiday(name, _timedelta(dt, +3))
+        else:
+            self._add_onam_day_four(name)
 
+        mahanavami_dates = {
+            2026: (OCT, 20),
+        }
         # Mahanavami.
-        self._add_maha_navami(tr("Mahanavami"))
+        name = tr("Mahanavami")
+        if dt := mahanavami_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_maha_navami(name)
 
     def _populate_subdiv_kl_optional_holidays(self):
         # Hindu holidays.
@@ -1558,7 +1598,7 @@ class India(
         self._add_holiday_apr_1(tr("Utkal Divas"))
 
         # Maha Visuva Sankranti.
-        self._add_vaisakhi(tr("Maha Visuva Sankranti"))
+        self._add_maha_visuva_sankranti(tr("Maha Visuva Sankranti"))
 
         # Rath Yatra.
         self._add_rath_yatra(tr("Rath Yatra"))
@@ -1620,8 +1660,8 @@ class India(
         # Onam (Day 2).
         self._add_onam_day_two(tr("Onam (Day 2)"))
 
-        # Puthandu (Tamil New Year).
-        self._add_puthandu(tr("Puthandu (Tamil New Year)"))
+        # Puthandu.
+        self._add_puthandu(tr("Puthandu"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -1854,8 +1894,8 @@ class India(
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
 
-        # Puthandu (Tamil New Year).
-        self._add_puthandu(tr("Puthandu (Tamil New Year)"))
+        # Puthandu.
+        self._add_puthandu(tr("Puthandu"))
 
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
@@ -2072,8 +2112,15 @@ class India(
         # Mahashtami.
         self._add_maha_ashtami(tr("Mahashtami"))
 
+        mahanavami_dates = {
+            2026: (OCT, 20),
+        }
         # Mahanavami.
-        self._add_maha_navami(tr("Mahanavami"))
+        name = tr("Mahanavami")
+        if dt := mahanavami_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_maha_navami(name)
 
         # Kali Puja.
         self._add_kali_puja(tr("Kali Puja"))

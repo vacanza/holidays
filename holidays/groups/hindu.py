@@ -706,6 +706,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.maha_shivaratri_date(self._year)
         )
 
+    def _add_maha_visuva_sankranti(self, name) -> date | None:
+        """
+        Add Maha Visuva Sankranti.
+
+        Maha Visuva Sankranti is a Hindu festival celebrated on the first day of the
+        Hindu month of Chaitra (March/April).
+        https://en.wikipedia.org/wiki/Maha_Visuva_Sankranti
+        """
+        return self._add_holiday(name, date(self._year, APR, 13 if isleap(self._year) else 14))
+
     def _add_maharana_pratap_jayanti(self, name) -> date | None:
         """
         Add Maharana Pratap Jayanti.

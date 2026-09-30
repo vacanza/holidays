@@ -833,9 +833,9 @@ msgstr "પુડુચેરી મુક્તિ દિવસ"
 msgid "Vishu (Day 2)"
 msgstr "વિષુ (દિવસ 2)"
 
-#. Puthandu (Tamil New Year).
-msgid "Puthandu (Tamil New Year)"
-msgstr "પુથંડુ (તમિલ નવું વર્ષ)"
+#. Puthandu.
+msgid "Puthandu"
+msgstr "પુથંડુ"
 
 #. Ayudha Puja.
 msgid "Ayudha Puja"

@@ -833,8 +833,8 @@ msgstr ""
 msgid "Vishu (Day 2)"
 msgstr ""
 
-#. Puthandu (Tamil New Year).
-msgid "Puthandu (Tamil New Year)"
+#. Puthandu.
+msgid "Puthandu"
 msgstr ""
 
 #. Ayudha Puja.
