@@ -663,12 +663,6 @@ Save calendar to a custom file:
 holidays-ics US --output test.ics
 ```
 
-Calendar for specific year:
-
-```shell
-holidays-ics US --years 2035
-```
-
 Calendar for the current and next 10 years:
 
 ```shell
@@ -679,6 +673,18 @@ Calendar for the current year and the previous 5 years:
 
 ```shell
 holidays-ics US --years -5
+```
+
+Calendar for specific year:
+
+```shell
+holidays-ics US --years 2035
+```
+
+Specifying an explicit year range:
+
+```shell
+holidays-ics US --years 2021-2030
 ```
 
 Calendar containing unofficial holidays only:
@@ -697,18 +703,6 @@ Financial market holiday calendar:
 
 ```shell
 holidays-ics XNYS
-```
-
-Spanning the next 10 years:
-
-```shell
-holidays-ics US --years +10
-```
-
-Specifying an explicit year range:
-
-```shell
-holidays-ics US --years 2021-2030
 ```
 
 Calendar for Switzerland, specific to the Canton of Zurich:
