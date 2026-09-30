@@ -693,18 +693,6 @@ Calendar containing public and optional holidays:
 holidays-ics CA --categories public,optional
 ```
 
-Switzerland calendar in German:
-
-```shell
-holidays-ics CH --language de
-```
-
-Canton of Zurich calendar:
-
-```shell
-holidays-ics CH --subdiv ZH
-```
-
 Financial market holiday calendar:
 
 ```shell
