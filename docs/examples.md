@@ -744,7 +744,7 @@ holidays-ics CH --subdiv ZH --language de
 Create a German-localized calendar for Switzerland with a POSIX-style locale filename:
 
 ```shell
-holidays-ics CH --language de --output-template "{language}-{code}.ics"
+holidays-ics CH --language de --output-template "{language}_{code}.ics"
 ```
 
 Naming the output calendar file using the country code:
