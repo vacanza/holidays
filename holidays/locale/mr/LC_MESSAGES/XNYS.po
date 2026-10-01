@@ -58,7 +58,7 @@ msgstr "स्मृती दिन"
 
 #. Flag Day.
 msgid "Flag Day"
-msgstr "झंडा दिवस"
+msgstr "झंडा दिन"
 
 #. Juneteenth National Independence Day.
 msgid "Juneteenth National Independence Day"
@@ -82,7 +82,7 @@ msgstr "निवडणूक दिन"
 
 #. Veteran's Day.
 msgid "Veteran's Day"
-msgstr "वेटरन्स डे"
+msgstr "माजी सैनिक दिन"
 
 #. Thanksgiving Day.
 msgid "Thanksgiving Day"
@@ -182,7 +182,7 @@ msgstr "प्रलंबित काम पूर्ण होण्याच
 
 #. National Banking Holiday.
 msgid "National Banking Holiday"
-msgstr "राष्ट्रीय बँकिंग सुट्ट्या"
+msgstr "राष्ट्रीय बँकिंग सुट्टी"
 
 #. V-J Day. End of World War II.
 msgid "V-J Day. End of World War II"
@@ -194,7 +194,7 @@ msgstr "वर्ल्ड ट्रेड सेंटरवरील हल्
 
 #. Hurricane Sandy.
 msgid "Hurricane Sandy"
-msgstr "हरिकेन सैंडी"
+msgstr "सँडी चक्रीवादळ"
 
 #. Liberty Day.
 msgid "Liberty Day"
@@ -334,11 +334,11 @@ msgstr "स्वातंत्र्य दिनानंतरचा शु�
 
 #. Death of President William McKinley.
 msgid "Death of President William McKinley"
-msgstr "अध्यक्ष विल्यम मॅकिन्ले यांचे निधन झाले"
+msgstr "अध्यक्ष विल्यम मॅकिन्ले यांचे निधन"
 
 #. Funeral of President William McKinley.
 msgid "Funeral of President William McKinley"
-msgstr "अध्यक्ष विल्यम मॅकिन्ले यांची अंत्ययात्रा"
+msgstr "अध्यक्ष विल्यम मॅकिन्ले यांचा अंत्यविधी"
 
 #. Coronation of King Edward VII of England.
 msgid "Coronation of King Edward VII of England"
@@ -414,7 +414,7 @@ msgstr "माजी राष्ट्रपती कॅल्विन कू
 
 #. State Banking Holiday.
 msgid "State Banking Holiday"
-msgstr "राज्य बँकिंग सुट्ट्या"
+msgstr "राज्य बँकिंग सुट्टी"
 
 #. National Day of Mourning for President Franklin D. Roosevelt.
 msgid "National Day of Mourning for President Franklin D. Roosevelt"
@@ -458,7 +458,7 @@ msgstr "मोठी बर्फवृष्टी"
 
 #. Funeral of former President Dwight D. Eisenhower.
 msgid "Funeral of former President Dwight D. Eisenhower"
-msgstr "माजी राष्ट्राध्यक्ष ड्वाइट डी. आयझेनहॉवर यांची अंत्ययात्रा"
+msgstr "माजी राष्ट्राध्यक्ष ड्वाइट डी. आयझेनहॉवर यांचा अंत्यविधी"
 
 #. National Day of Participation for the Lunar Exploration.
 msgid "National Day of Participation for the Lunar Exploration"
@@ -530,7 +530,7 @@ msgstr "माजी राष्ट्राध्यक्ष वुड्र�
 
 #. Funeral of former NYSE president Seymour L. Cromwell.
 msgid "Funeral of former NYSE president Seymour L. Cromwell"
-msgstr "माजी एनवाईएसई चेअरमन सेमूर एल. क्रॉमवेल यांचा अंत्यविधी"
+msgstr "माजी एनवायएसई अध्यक्ष सेमूर एल. क्रॉमवेल यांचा अंत्यविधी"
 
 #. Funeral of former President William Howard Taft.
 msgid "Funeral of former President William Howard Taft"
@@ -542,7 +542,7 @@ msgstr "एनआरए निदर्शने"
 
 #. Assassination of President John F. Kennedy (markets close at 2:07pm).
 msgid "Assassination of President John F. Kennedy (markets close at 2:07pm)"
-msgstr "अध्यक्ष जॉन एफ. केनेडी यांची हत्या (बाजार दुपारी 2:07 वाजता बंद)"
+msgstr "अध्यक्ष जॉन एफ. केनेडी यांची हत्या (बाजार दुपारी 2:07 वाजता बंद होतात)"
 
 #. Funeral of former President Herbert C. Hoover.
 msgid "Funeral of former President Herbert C. Hoover"
@@ -554,11 +554,11 @@ msgstr "वादळाचा इशारा"
 
 #. Assassination attempt on President Reagan (markets close at 3:17pm).
 msgid "Assassination attempt on President Reagan (markets close at 3:17pm)"
-msgstr "राष्ट्राध्यक्ष रेगन यांच्यावर प्राणघातक हल्ला (बाजार दुपारी 3:17 वाजता बंद)"
+msgstr "राष्ट्राध्यक्ष रेगन यांच्यावर प्राणघातक हल्ला (बाजार दुपारी 3:17 वाजता बंद होतात)"
 
 #. Con Edison power failure in lower Manhattan (markets close at 3:28pm).
 msgid "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"
-msgstr "लोअर मॅनहॅटनमध्ये कॉन एडिसनचा वीजपुरवठा खंडित (बाजार दुपारी ३:२८ वाजता बंद होतील)"
+msgstr "लोअर मॅनहॅटनमध्ये कॉन एडिसनचा वीजपुरवठा खंडित (बाजार दुपारी 3:28 वाजता बंद होतात)"
 
 #. New Year's Eve.
 msgid "New Year's Eve"
