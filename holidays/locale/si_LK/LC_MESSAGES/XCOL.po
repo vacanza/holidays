@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-09-16 15:16+0530\n"
-"PO-Revision-Date: 2026-09-19 13:50+0530\n"
+"PO-Revision-Date: 2026-10-01 19:46+0530\n"
 "Last-Translator: LimbusBot <krishivshukla@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: si_LK\n"
@@ -92,6 +92,10 @@ msgstr ""
 msgid "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"
 msgstr ""
 
+#. Additional half holiday in lieu of Sinhala & Tamil New Year Day falling on Saturday.
+msgid "සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
+msgstr ""
+
 #. Special Bank Half-holiday on account of Day prior to Sinhala & Tamil New Year Day falling on a
 #. Saturday.
 msgid ""
@@ -112,8 +116,4 @@ msgstr ""
 
 #. Additional half holiday in lieu of Day Following Vesak Full Moon Poya Day falling on Saturday.
 msgid "සෙනසුරාදා දිනක යෙදෙන වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
-msgstr ""
-
-#. Additional half holiday in lieu of Sinhala & Tamil New Year Day falling on Saturday.
-msgid "සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"
 msgstr ""

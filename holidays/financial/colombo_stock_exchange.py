@@ -136,12 +136,14 @@ class ColomboStockExchangeStaticHolidays:
     }
 
     special_half_day_holidays = {
-        # Day prior to Sinhala & Tamil New Year day.
         2018: (
+            # Day prior to Sinhala & Tamil New Year day.
             (APR, 13, tr("සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය")),
             (
                 APR,
                 20,
+                # Additional half holiday in lieu of Sinhala & Tamil New Year Day
+                # falling on Saturday.
                 tr("සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"),
             ),
         ),
