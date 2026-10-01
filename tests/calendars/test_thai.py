@@ -10,15 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
+from unittest import TestCase
 
 from holidays import calendars
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.calendars.thai import KHMER_CALENDAR
 
 
-class TestThaiLunisolarCalendar(unittest.TestCase):
+class TestThaiLunisolarCalendar(TestCase):
     def setUp(self) -> None:
         super().setUp()
         self.calendar = calendars._ThaiLunisolar()
