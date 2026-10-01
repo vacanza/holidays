@@ -31,7 +31,13 @@ class ColomboStockExchangeStaticHolidays:
             (APR, 30, tr("වෙසක් නිවාඩුව")),
         ),
         2019: (
-            *_normalize_tuple(SriLankaStaticHolidays.special_public_holidays.get(2019, ())),
+            *(
+                hol
+                for hol in _normalize_tuple(
+                    SriLankaStaticHolidays.special_public_holidays.get(2019, ())
+                )
+                if hol[:2] != (MAY, 20)
+            ),
             # CSE Customary Holiday.
             (JAN, 1, tr("CSE සාමාන්‍ය නිවාඩු දිනය")),
             (
@@ -80,7 +86,13 @@ class ColomboStockExchangeStaticHolidays:
             (DEC, 26, tr("ඉරිදා දිනක යෙදෙන නත්තල් උත්සව දිනය වෙනුවට අතිරේක නිවාඩුව")),
         ),
         2022: (
-            *_normalize_tuple(SriLankaStaticHolidays.special_public_holidays.get(2022, ())),
+            *(
+                hol
+                for hol in _normalize_tuple(
+                    SriLankaStaticHolidays.special_public_holidays.get(2022, ())
+                )
+                if hol[:2] != (MAY, 2)
+            ),
             # Additional holiday in lieu of May Day falling on Sunday.
             (MAY, 2, tr("ඉරිදා දිනක යෙදෙන මැයි දිනය වෙනුවට අතිරේක නිවාඩුව")),
             (
@@ -125,7 +137,14 @@ class ColomboStockExchangeStaticHolidays:
 
     special_half_day_holidays = {
         # Day prior to Sinhala & Tamil New Year day.
-        2018: (APR, 13, tr("සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය")),
+        2018: (
+            (APR, 13, tr("සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය")),
+            (
+                APR,
+                20,
+                tr("සෙනසුරාදා දිනක යෙදෙන සිංහල හා දෙමළ අලුත් අවුරුදු දිනය වෙනුවට අතිරේක අර්ධ නිවාඩුව"),
+            ),
+        ),
         2019: (
             APR,
             12,
