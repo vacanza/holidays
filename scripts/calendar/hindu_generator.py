@@ -35,6 +35,7 @@ import math
 from collections import defaultdict
 from datetime import date, timedelta
 from functools import cache
+from time import perf_counter
 
 import ephem
 
@@ -1999,6 +2000,7 @@ HINDU_SOLAR_HOLIDAYS = (
 
 def generate_data() -> None:
     years = range(2001, 2101)
+    total_start = perf_counter()
 
     calendars = (
         ("hindu_lunisolar", "_HinduLunisolar", HINDU_LUNISOLAR_HOLIDAYS),
@@ -2009,13 +2011,19 @@ def generate_data() -> None:
         dates: dict[str, dict[int, date | list[date]]] = defaultdict(dict)
 
         for hol_name, hol_func in holidays:
+            method_start = perf_counter()
             for year in years:
                 dt = hol_func(year)
 
                 if dt:
                     dates[hol_name][year] = list(dt) if isinstance(dt, tuple) else dt
+            print(f"{cal_name}.{hol_func.__name__}: {perf_counter() - method_start:.3f}s")  # noqa: T201
 
+        generation_start = perf_counter()
         CalendarGenerator(cal_name, class_name).generate(dates)
+        print(f"{cal_name} data generation: {perf_counter() - generation_start:.3f}s")  # noqa: T201
+
+    print(f"Total: {perf_counter() - total_start:.3f}s")  # noqa: T201
 
 
 if __name__ == "__main__":
