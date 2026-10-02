@@ -73,7 +73,7 @@ class _Astronomy:
         """Return the tropical (apparent) ecliptic longitude of body in degrees."""
         body.compute(ephem_date)
         ecl = ephem.Ecliptic(body, epoch=ephem_date)
-        return ephem.degrees(ecl.lon) % 360
+        return (ecl.lon / ephem.degree) % 360
 
     @cache
     def _sunrise(self, dt: date) -> ephem.Date:
@@ -104,9 +104,7 @@ class _Astronomy:
     def _sidereal_solar_zodiac_sign(self, ed: ephem.Date) -> int:
         """Return the sidereal zodiac sign index (0 = Aries … 11 = Pisces) of the
         Sun at the given date."""
-        trop_lon = self._tropical_lon(self._sun, ed)
-        ayanamsa = self._lahiri_ayanamsa(ed)
-        sid_lon = (trop_lon - ayanamsa) % 360
+        sid_lon = (self._tropical_lon(self._sun, ed) - self._lahiri_ayanamsa(ed)) % 360
         return int(sid_lon // 30)
 
 
