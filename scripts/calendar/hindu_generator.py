@@ -147,6 +147,13 @@ class _Lunisolar(_Astronomy):
         return ephem.Date(float(sr) + (3 / 5) * (float(ss) - float(sr)))
 
     @cache
+    def _madhyahna_start(self, dt: date) -> ephem.Date:
+        """Return Madhyahna start (3rd of 5 equal day-parts) on dt."""
+        sr = self._sunrise(dt)
+        ss = self._sunset(dt)
+        return ephem.Date(float(sr) + (2 / 5) * (float(ss) - float(sr)))
+
+    @cache
     def _madhyahna(self, dt: date) -> ephem.Date:
         """Return Madhyahna (midpoint of sunrise -> sunset) on dt."""
         sr = self._sunrise(dt)
@@ -1332,6 +1339,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_onam(self, year: int) -> date | None:
+        """
+        Onam (Thiruvonam) = Shravan (Thiruvonam) nakshatra in Malayalam month Chingam.
+        Nakshatra = 22 (Shravan) - sun in sidereal Leo (sign 4).
+        Evaluated at Madhyahna (3rd of 5 equal day-parts, midday rule).
+
+        When Shravan falls on the first days of Chingam it can recur about 27 days
+        later within the same month. The last occurrence is Onam.
+
+        Shravan detection (Madhyahna nakshatra):
+        - Present at the start or the end of Madhyahna -> that day
+        - If it overlaps Madhyahna on two consecutive days -> the later day
+        """
+        onam = None
+
+        for delta in range(45):
+            dt = date(year, 8, 15) + timedelta(days=delta)
+
+            if self._sidereal_solar_zodiac_sign(self._sunrise(dt)) != 4:
+                continue
+
+            if 22 in (
+                self._nakshatra(self._madhyahna_start(dt)),
+                self._nakshatra(self._aparahna(dt)),
+            ):
+                onam = dt
+
+        return onam
+
     def get_naraka_chaturdashi(self, year: int) -> date | None:
         """
         Naraka Chaturdashi = Kartik Krishna Chaturdashi.
@@ -1995,11 +2031,12 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
     # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
     # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    ("ONAM", _lunisolar.get_onam),
     # ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
     # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("RAKSHA_BANDHAN", _lunisolar.get_raksha_bandhan),
+    # ("RAKSHA_BANDHAN", _lunisolar.get_raksha_bandhan),
     # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
     # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
