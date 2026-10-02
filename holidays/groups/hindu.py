@@ -710,8 +710,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         Add Maha Visuva Sankranti.
 
-        Maha Visuva Sankranti is a Hindu festival celebrated on the first day of the
-        Hindu month of Chaitra (March/April).
+        Maha Visuva Sankranti is the solar (Mesha) new year.
         https://en.wikipedia.org/wiki/Maha_Visuva_Sankranti
         """
         return self._add_holiday(name, date(self._year, APR, 13 if isleap(self._year) else 14))

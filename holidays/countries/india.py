@@ -1207,36 +1207,25 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
+        # Onam.
+        name = tr("Onam")
         onam_dates = {
             2026: (AUG, 25),
         }
-        # Onam.
-        name = tr("Onam")
-        if dt := onam_dates.get(self._year):
+        onam_dt = (
             self._add_holiday(name, dt)
-        else:
-            self._add_onam(name)
+            if (dt := onam_dates.get(self._year))
+            else self._add_onam(name)
+        )
 
         # Onam (Day 2).
-        name = tr("Onam (Day 2)")
-        if self._year == 2026:
-            self._add_holiday(name, _timedelta(dt, +1))
-        else:
-            self._add_onam_day_two(name)
+        self._add_holiday(tr("Onam (Day 2)"), _timedelta(onam_dt, +1))
 
         # Onam (Day 3).
-        name = tr("Onam (Day 3)")
-        if self._year == 2026:
-            self._add_holiday(name, _timedelta(dt, +2))
-        else:
-            self._add_onam_day_three(name)
+        self._add_holiday(tr("Onam (Day 3)"), _timedelta(onam_dt, +2))
 
         # Onam (Day 4).
-        name = tr("Onam (Day 4)")
-        if self._year == 2026:
-            self._add_holiday(name, _timedelta(dt, +3))
-        else:
-            self._add_onam_day_four(name)
+        self._add_holiday(tr("Onam (Day 4)"), _timedelta(onam_dt, +3))
 
         mahanavami_dates = {
             2026: (OCT, 20),
@@ -1610,10 +1599,21 @@ class India(
         self._add_pitra_moksh_amavasya(tr("Mahalaya"))
 
         # Mahasaptami.
-        self._add_maha_saptami(tr("Mahasaptami"))
+        name = tr("Mahasaptami")
+        mahasaptami_dates = {
+            2026: (OCT, 17),
+        }
+        mahasaptami_dt = (
+            self._add_holiday(name, dt)
+            if (dt := mahasaptami_dates.get(self._year))
+            else self._add_maha_saptami(name)
+        )
 
         # Mahashtami.
-        self._add_maha_ashtami(tr("Mahashtami"))
+        name = tr("Mahashtami")
+        self._add_holiday(name, _timedelta(mahasaptami_dt, +1)) if (
+            dt := mahasaptami_dates.get(self._year)
+        ) else self._add_maha_ashtami(name)
 
         # Mahanavami.
         self._add_maha_navami(tr("Mahanavami"))
@@ -1633,6 +1633,9 @@ class India(
 
         # Pongal.
         self._add_pongal(tr("Pongal"))
+
+        # Thiruvalluvar Day.
+        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
 
         vishu_dates = {
             2025: (APR, 14),
@@ -1888,8 +1891,8 @@ class India(
         # Pongal.
         self._add_pongal(tr("Pongal"))
 
-        # Thiruvalluvar Day / Mattu Pongal.
-        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day / Mattu Pongal"))
+        # Thiruvalluvar Day.
+        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
 
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-09-28 19:51+0530\n"
+"PO-Revision-Date: 2026-10-02 11:43+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -829,6 +829,10 @@ msgstr "पुडुचेरी डी ज्यूर स्थानांत
 msgid "Puducherry Liberation Day"
 msgstr "पुडुचेरी मुक्ति दिवस"
 
+#. Thiruvalluvar Day.
+msgid "Thiruvalluvar Day"
+msgstr "तिरुवल्लुवर दिवस"
+
 #. Vishu (Day 2).
 msgid "Vishu (Day 2)"
 msgstr "विषु (दूसरा दिन)"
@@ -940,10 +944,6 @@ msgstr "सारथी दिवस"
 #. Satya Sai Baba of Puttaparthi's Birthday.
 msgid "Satya Sai Baba of Puttaparthi's Jayanti"
 msgstr "पुट्टपर्थी के सत्य साई बाबा जयंती"
-
-#. Thiruvalluvar Day / Mattu Pongal.
-msgid "Thiruvalluvar Day / Mattu Pongal"
-msgstr "तिरुवल्लुवर दिवस / मट्टू पोंगल"
 
 #. Uzhavar Thirunal.
 msgid "Uzhavar Thirunal"

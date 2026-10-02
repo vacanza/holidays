@@ -1314,8 +1314,8 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_thiruvalluvar_day_mattu_pongal(self):
-        name = "Thiruvalluvar Day / Mattu Pongal"
+    def test_thiruvalluvar_day(self):
+        name = "Thiruvalluvar Day"
         dts = (
             "2020-01-16",
             "2021-01-15",
