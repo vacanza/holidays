@@ -12,6 +12,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+# ruff: noqa: T201
+
 """Generate Gregorian dates for holidays based on the Hindu lunisolar calendar.
 
 Run with:
@@ -31,7 +33,6 @@ whose data can then be copied to:
     * `holidays/calendars/hindu.py`
 """
 
-import math
 from collections import defaultdict
 from datetime import date, timedelta
 from functools import cache
@@ -72,7 +73,7 @@ class _Astronomy:
         """Return the tropical (apparent) ecliptic longitude of body in degrees."""
         body.compute(ephem_date)
         ecl = ephem.Ecliptic(body, epoch=ephem_date)
-        return math.degrees(ecl.lon) % 360
+        return ephem.degrees(ecl.lon) % 360
 
     @cache
     def _sunrise(self, dt: date) -> ephem.Date:
@@ -157,6 +158,10 @@ class _Lunisolar(_Astronomy):
         moon_lon = self._tropical_lon(self._moon, ed)
         return int((moon_lon - sun_lon) % 360 // 12) + 1
 
+    # Amavasya -> use SUN's sidereal sign -> determines lunar month
+    # Purnima -> use MOON's sidereal sign -> determines lunar month
+    #            (moon is in the nakshatra the month is named after)
+
     @cache
     def _get_amavasya(
         self,
@@ -211,10 +216,6 @@ class _Lunisolar(_Astronomy):
             last_found = found
 
         return last_found
-
-    # Amavasya -> use SUN's sidereal sign -> determines lunar month
-    # Purnima -> use MOON's sidereal sign -> determines lunar month
-    #            (moon is in the nakshatra the month is named after)
 
     def get_anant_chaturdashi(self, year: int) -> date | None:
         """
@@ -596,7 +597,6 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 5):
             dt = diwali + timedelta(days=delta)
             t_sr = self._tithi(self._sunrise(dt))
-            t_ss = self._tithi(self._sunset(dt))
 
             # Pratipada active at sunrise -> candidate
             if t_sr == 1:
@@ -604,7 +604,7 @@ class _Lunisolar(_Astronomy):
 
             # Amavasya at sunrise but Pratipada at sunset -> this night is Govardhan Puja
             # or Pratipada skipped between sunrises (30->2)
-            elif (t_sr == 30 and t_ss == 1) or (
+            elif (t_sr == 30 and self._tithi(self._sunset(dt)) == 1) or (
                 t_sr == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30
             ):
                 return dt
@@ -1012,18 +1012,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(8, 15):
             dt = diwali - timedelta(days=delta)
 
-            self._observer.date = ephem.Date(dt)
-            moonrise = self._observer.next_rising(self._moon)
-
-            t = self._tithi(moonrise)
-
-            self._observer.date = ephem.Date(dt - timedelta(days=1))
-            moonrise_prev = self._observer.next_rising(self._moon)
-
+            t = self._tithi(self._observer.next_rising(self._moon, start=dt))
             if t == 19:
                 return dt
 
-            if t == 20 and self._tithi(moonrise_prev) == 18:
+            if t == 20 and self._tithi(self._observer.previous_rising(self._moon, start=dt)) == 18:
                 return dt
 
         return None
@@ -2017,13 +2010,11 @@ def generate_data() -> None:
 
                 if dt:
                     dates[hol_name][year] = list(dt) if isinstance(dt, tuple) else dt
-            print(f"{cal_name}.{hol_func.__name__}: {perf_counter() - method_start:.3f}s")  # noqa: T201
+            print(f"{cal_name}.{hol_func.__name__}: {perf_counter() - method_start:.3f}s")
 
-        generation_start = perf_counter()
         CalendarGenerator(cal_name, class_name).generate(dates)
-        print(f"{cal_name} data generation: {perf_counter() - generation_start:.3f}s")  # noqa: T201
 
-    print(f"Total: {perf_counter() - total_start:.3f}s")  # noqa: T201
+    print(f"Total: {perf_counter() - total_start:.3f}s")
 
 
 if __name__ == "__main__":
