@@ -2130,7 +2130,7 @@ code when available. The following financial markets are available:
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
-<td>en_US, <strong>pl</strong></td>
+<td>en_US, <strong>pl</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>
