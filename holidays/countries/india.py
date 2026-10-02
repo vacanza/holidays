@@ -1218,14 +1218,15 @@ class India(
             else self._add_onam(name)
         )
 
-        # Onam (Day 2).
-        self._add_holiday(tr("Onam (Day 2)"), _timedelta(onam_dt, +1))
+        if onam_dt:
+            # Onam (Day 2).
+            self._add_holiday(tr("Onam (Day 2)"), _timedelta(onam_dt, +1))
 
-        # Onam (Day 3).
-        self._add_holiday(tr("Onam (Day 3)"), _timedelta(onam_dt, +2))
+            # Onam (Day 3).
+            self._add_holiday(tr("Onam (Day 3)"), _timedelta(onam_dt, +2))
 
-        # Onam (Day 4).
-        self._add_holiday(tr("Onam (Day 4)"), _timedelta(onam_dt, +3))
+            # Onam (Day 4).
+            self._add_holiday(tr("Onam (Day 4)"), _timedelta(onam_dt, +3))
 
         mahanavami_dates = {
             2026: (OCT, 20),
