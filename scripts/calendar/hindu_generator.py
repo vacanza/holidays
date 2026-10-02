@@ -237,11 +237,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 17):
             dt = bhadrapada_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 14:
                 last_chaturdashi = dt
-            elif t == 15 and t_prev == 13:
+            elif t == 15 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 13:
                 return dt
             elif last_chaturdashi:
                 break
@@ -273,11 +272,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 10):
             dt = magh_ama + timedelta(days=delta)
             t = self._tithi(self._madhyahna(dt))
-            t_prev = self._tithi(self._madhyahna(dt - timedelta(days=1)))
 
             if t == 5:
                 return dt
-            if t == 6 and t_prev == 4:
+            if t == 6 and self._tithi(self._madhyahna(dt - timedelta(days=1))) == 4:
                 return dt
 
         return None
@@ -311,14 +309,8 @@ class _Lunisolar(_Astronomy):
         if not ashad_ama:
             return None
 
-        # Find the final Sunday before Ashadh Amavasya.
-        dt = ashad_ama - timedelta(days=1)
-
-        while dt.weekday() != 6:
-            dt -= timedelta(days=1)
-
-        # Bonalu ending date is the following Monday.
-        return dt + timedelta(days=1)
+        # Bonalu ending date is the Monday following last Sunday before Ashadh Amavasya.
+        return ashad_ama - timedelta(days=ashad_ama.weekday())
 
     def get_buddha_purnima(self, year: int) -> date | None:
         """
@@ -340,12 +332,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = vaishakha_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
 
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt - timedelta(days=1)
 
         return None
@@ -387,11 +378,12 @@ class _Lunisolar(_Astronomy):
             dt = mesha_sankranti - timedelta(days=44 - delta)
 
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             # First sunrise with Pratipada active (t == 1)
             # or Pratipada skipped (t == 2 and t_prev == 30) -> candidate
-            if (t == 1 and t_prev != 1) or (t == 2 and t_prev == 30):
+            if (t == 1 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 1) or (
+                t == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30
+            ):
                 candidate = dt
 
         return candidate
@@ -422,11 +414,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(4, 8):
             dt = kartik_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 6:
                 return dt
-            if t == 7 and t_prev == 5:
+            if t == 7 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 5:
                 return dt
 
         return None
@@ -459,14 +450,13 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = margashirsha_ama + timedelta(days=delta)
             t = self._tithi(self._sunset(dt))
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             # Purnima active during Pradosh.
-            if t == 15 and t_prev != 15:
+            if t == 15 and self._tithi(self._sunset(dt - timedelta(days=1))) != 15:
                 return dt
 
             # Purnima skipped entirely between two sunsets.
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 14:
                 return dt
 
         return None
@@ -493,12 +483,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(13, 18):
             dt = kartik_ama + timedelta(days=delta)
             t = self._tithi(self._sunset(dt))
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             if t == 15:
                 purnima_dates.append(dt)
 
-            elif t == 16 and t_prev == 14:
+            elif t == 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 14:
                 purnima_dates.append(dt - timedelta(days=1))
 
         # If Purnima spans two sunsets, Dev Diwali follows the later occurrence
@@ -606,7 +595,6 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 5):
             dt = diwali + timedelta(days=delta)
             t_sr = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
             t_ss = self._tithi(self._sunset(dt))
 
             # Pratipada active at sunrise -> candidate
@@ -615,7 +603,9 @@ class _Lunisolar(_Astronomy):
 
             # Amavasya at sunrise but Pratipada at sunset -> this night is Govardhan Puja
             # or Pratipada skipped between sunrises (30->2)
-            elif (t_sr == 30 and t_ss == 1) or (t_sr == 2 and t_prev == 30):
+            elif (t_sr == 30 and t_ss == 1) or (
+                t_sr == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30
+            ):
                 return dt
 
             # Pratipada ended
@@ -650,11 +640,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 5):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 1:
                 return dt
-            if t == 2 and t_prev == 30:
+            if t == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30:
                 return dt - timedelta(days=1)
 
         return None
@@ -678,11 +667,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(20):
             dt = kartik_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
-            if t == 15 and t_prev != 15:
+            if t == 15 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 15:
                 return dt
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt - timedelta(days=1)
 
         return None
@@ -710,11 +698,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = ashada_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt
 
         return None
@@ -739,12 +726,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = magha_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
 
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt - timedelta(days=1)
 
         return None
@@ -769,11 +755,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt
 
         return None
@@ -798,11 +783,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(-1, 3):
             dt = shravan_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 30:
                 return dt
-            if t == 1 and t_prev == 29:
+            if t == 1 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 29:
                 return dt
 
         return None
@@ -835,14 +819,13 @@ class _Lunisolar(_Astronomy):
             dt = bhadrapada_ama + timedelta(days=delta)
 
             t_sr = self._tithi(self._sunrise(dt))
-            t_sr_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             # Tritiya active at sunrise
             if t_sr == 3:
                 return dt
 
             # Tritiya skipped completely between two sunrises (2 -> 4)
-            if t_sr == 4 and t_sr_prev == 2:
+            if t_sr == 4 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 2:
                 return dt - timedelta(days=1)
 
         return None
@@ -865,14 +848,17 @@ class _Lunisolar(_Astronomy):
         for delta in range(0, 3):
             dt = holi + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
             t_apar = self._tithi(self._aparahna(dt))
 
-            if t == 15 and t_prev == 14 and t_apar == 16:
+            if (
+                t == 15
+                and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14
+                and t_apar == 16
+            ):
                 return dt
             if t == 16:
                 return dt
-            if t == 17 and t_prev == 15:
+            if t == 17 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 15:
                 return dt
 
         return None
@@ -916,16 +902,15 @@ class _Lunisolar(_Astronomy):
         for delta in range(20):
             dt = ref + timedelta(days=delta)
             t = self._tithi(self._sunset(dt))
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
 
             # skipped or spanned 2 sunsets
-            if t == 16 and t_prev in (14, 16):
+            if t == 16 and self._tithi(self._sunset(dt - timedelta(days=1))) in (14, 16):
                 return dt
             # tithi 16 skipped entirely
-            if t > 16 and t_prev == 15:
+            if t > 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 15:
                 return dt
             # moved past 16
-            if t > 16 and t_prev == 16:
+            if t > 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 16:
                 return dt - timedelta(days=1)
 
         return None
@@ -952,13 +937,12 @@ class _Lunisolar(_Astronomy):
         for delta in range(15, 2, -1):
             dt = bhadrapad_ama - timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             # ended overnight
-            if t > 23 and t_prev == 23:
+            if t > 23 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 23:
                 return dt - timedelta(days=1)
             # skipped entirely
-            if t > 23 and t_prev < 23:
+            if t > 23 and self._tithi(self._sunrise(dt - timedelta(days=1))) < 23:
                 return dt
 
         return None
@@ -992,11 +976,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = jyeshtha_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt
 
         return None
@@ -1036,12 +1019,10 @@ class _Lunisolar(_Astronomy):
             self._observer.date = ephem.Date(dt - timedelta(days=1))
             moonrise_prev = self._observer.next_rising(self._moon)
 
-            t_prev = self._tithi(moonrise_prev)
-
             if t == 19:
                 return dt
 
-            if t == 20 and t_prev == 18:
+            if t == 20 and self._tithi(moonrise_prev) == 18:
                 return dt
 
         return None
@@ -1098,11 +1079,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(8, 12):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._aparahna(dt))
-            t_prev = self._tithi(self._aparahna(dt - timedelta(days=1)))
 
             if t == 9:
                 return dt
-            if t == 10 and t_prev == 8:
+            if t == 10 and self._tithi(self._aparahna(dt - timedelta(days=1))) == 8:
                 return dt - timedelta(days=1)
 
         return None
@@ -1200,12 +1180,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 5):
             dt = jyeshtha_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 3:
                 return dt
 
-            if t == 4 and t_prev == 2:
+            if t == 4 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 2:
                 return dt
 
         return None
@@ -1231,11 +1210,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 17):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 return dt
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt
 
         return None
@@ -1266,12 +1244,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(11, 16):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 13:
                 return dt
 
-            if t == 14 and t_prev == 12:
+            if t == 14 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 12:
                 return dt - timedelta(days=1)
 
         return None
@@ -1296,11 +1273,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(8, 12):
             dt = jyeshtha_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 9:
                 return dt
-            if t == 10 and t_prev == 8:
+            if t == 10 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 8:
                 return dt
 
         return None
@@ -1332,11 +1308,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 6):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._aparahna(dt))
-            t_prev = self._tithi(self._aparahna(dt - timedelta(days=1)))
 
             if t == 3:
                 return dt
-            if t == 4 and t_prev == 2:
+            if t == 4 and self._tithi(self._aparahna(dt - timedelta(days=1))) == 2:
                 return dt - timedelta(days=1)
 
         return None
@@ -1361,11 +1336,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(4, 8):
             dt = shravan_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 5:
                 return dt
-            if t == 6 and t_prev == 4:
+            if t == 6 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 4:
                 return dt
 
         return None
@@ -1399,11 +1373,10 @@ class _Lunisolar(_Astronomy):
             t = self._tithi(arunodaya)
 
             arunodaya_prev = ephem.Date(float(self._sunrise(dt - timedelta(days=1))) - 96 / 1440)
-            t_prev = self._tithi(arunodaya_prev)
 
             if t == 29:
                 return dt
-            if t == 30 and t_prev == 28:
+            if t == 30 and self._tithi(arunodaya_prev) == 28:
                 return dt
 
         return None
@@ -1436,12 +1409,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(9, 14):
             dt = bhadrapada_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 11:
                 return dt
 
-            if t == 12 and t_prev == 10:
+            if t == 12 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 10:
                 return dt
 
         return None
@@ -1475,23 +1447,21 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 6):
             dt = vaishakha_ama + timedelta(days=delta)
             t = self._tithi(self._sunset(dt))
-            t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
-            t_next = self._tithi(self._sunset(dt + timedelta(days=1)))
 
             # Tritiya active at sunset
             if t == 3:
                 return dt
 
             # Tritiya begins after sunset and is active at the following sunset
-            if t == 2 and t_next == 3:
+            if t == 2 and self._tithi(self._sunset(dt + timedelta(days=1))) == 3:
                 return dt + timedelta(days=1)
 
             # Tritiya ends before sunset after spanning the previous sunset
-            if t == 4 and t_prev == 3:
+            if t == 4 and self._tithi(self._sunset(dt - timedelta(days=1))) == 3:
                 return dt - timedelta(days=1)
 
             # Tritiya skipped entirely between sunsets
-            if t == 4 and t_prev == 2:
+            if t == 4 and self._tithi(self._sunset(dt - timedelta(days=1))) == 2:
                 return dt
 
         return None
@@ -1560,11 +1530,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(8, 12):
             dt = chaitra_ama + timedelta(days=delta)
             t = self._tithi(self._madhyahna(dt))
-            t_prev = self._tithi(self._madhyahna(dt - timedelta(days=1)))
 
             if t == 9:
                 last_navami = dt
-            elif t == 10 and t_prev == 8:
+            elif t == 10 and self._tithi(self._madhyahna(dt - timedelta(days=1))) == 8:
                 return dt
             elif last_navami:
                 break
@@ -1591,11 +1560,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(1, 5):
             dt = ashadh_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 2:
                 return dt
-            if t == 3 and t_prev == 1:
+            if t == 3 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 1:
                 return dt
 
         return None
@@ -1634,13 +1602,12 @@ class _Lunisolar(_Astronomy):
             for delta in range(12, 18):
                 dt = pausha_ama + timedelta(days=delta)
                 t = self._tithi(self._sunrise(dt))
-                t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
                 festival_date = None
 
-                if t == 15 and t_prev != 15:
+                if t == 15 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 15:
                     festival_date = dt
 
-                elif t == 16 and t_prev == 14:
+                elif t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                     festival_date = dt - timedelta(days=1)
 
                 if festival_date and festival_date.year == year and festival_date not in dates:
@@ -1684,11 +1651,12 @@ class _Lunisolar(_Astronomy):
             dt = ashwin_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
 
-            if t == 30:
-                t_next = self._tithi(self._sunrise(dt + timedelta(days=1)))
-                t_next2 = self._tithi(self._sunrise(dt + timedelta(days=2)))
-                if t_next == 1 and t_next2 >= 3:
-                    return dt
+            if (
+                t == 30
+                and self._tithi(self._sunrise(dt + timedelta(days=1))) == 1
+                and self._tithi(self._sunrise(dt + timedelta(days=2))) >= 3
+            ):
+                return dt
 
             if t == 1:
                 return dt
@@ -1771,12 +1739,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(5, 10):
             dt = shravan_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 7:
                 return dt
 
-            if t == 8 and t_prev == 6:
+            if t == 8 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 6:
                 return dt - timedelta(days=1)
 
         return None
@@ -1813,13 +1780,12 @@ class _Lunisolar(_Astronomy):
         for delta in range(12, 18):
             dt = shravan_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 15:
                 purnima_date = dt
                 break
 
-            if t == 16 and t_prev == 14:
+            if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 purnima_date = dt - timedelta(days=1)
                 break
 
@@ -1851,12 +1817,11 @@ class _Lunisolar(_Astronomy):
         for delta in range(0, 4):
             dt = kartik_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_prev = self._tithi(self._sunrise(dt - timedelta(days=1)))
 
             if t == 1:
                 return dt
 
-            if t == 2 and t_prev == 30:
+            if t == 2 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 30:
                 return dt - timedelta(days=1)
 
         return None
