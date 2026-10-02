@@ -44,10 +44,9 @@ from .generator import CalendarGenerator
 LAT = "23.1765"
 LON = "75.7885"
 
-_DUBLIN_TO_JD = 2415020.0
-
-_LAHIRI_J2000 = 23.85045  # degrees at J2000.0 (JD 2451545.0)
-_PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year
+LAHIRI_EPOCH = ephem.Date(36525.0)  # 2000-01-01 12:00UTC.
+LAHIRI_J2000 = 23.857106275  # J2000.
+PRECESSION_RATE = 50.2388475 / 3600  # degrees per Julian year.
 
 
 class _Astronomy:
@@ -64,19 +63,9 @@ class _Astronomy:
         self._observer.pressure = 0
 
     @staticmethod
-    def _lahiri_ayanamsa(ephem_date: ephem.Date) -> float:
+    def _lahiri_ayanamsa(ed: ephem.Date) -> float:
         """Return Lahiri ayanamsa in degrees for the given pyephem Date."""
-        jd = float(ephem_date) + _DUBLIN_TO_JD
-        years_from_j2000 = (jd - 2451545.0) / 365.25
-        return _LAHIRI_J2000 + _PRECESSION_RATE * years_from_j2000
-
-    @staticmethod
-    def _norm360(x: float) -> float:
-        return x % 360
-
-    def _set_observer_date(self, dt: date) -> None:
-        """Point the shared observer to the start of dt (UTC)."""
-        self._observer.date = ephem.Date(dt)
+        return LAHIRI_J2000 + (ed - LAHIRI_EPOCH) / 365.25 * PRECESSION_RATE
 
     def _tropical_lon(self, body: ephem.Body, ephem_date: ephem.Date) -> float:
         """Return the tropical (apparent) ecliptic longitude of body in degrees."""
@@ -87,14 +76,12 @@ class _Astronomy:
     @cache
     def _sunrise(self, dt: date) -> ephem.Date:
         """Returns sunrise on dt at Ujjain."""
-        self._set_observer_date(dt)
-        return self._observer.next_rising(self._sun)
+        return self._observer.next_rising(self._sun, start=dt)
 
     @cache
     def _sunset(self, dt: date) -> ephem.Date:
         """Returns sunset on dt at Ujjain."""
-        self._set_observer_date(dt)
-        return self._observer.next_setting(self._sun)
+        return self._observer.next_setting(self._sun, start=dt)
 
     @cache
     def _midnight(self, dt: date) -> ephem.Date:
@@ -117,7 +104,7 @@ class _Astronomy:
         Sun at the given date."""
         trop_lon = self._tropical_lon(self._sun, ed)
         ayanamsa = self._lahiri_ayanamsa(ed)
-        sid_lon = self._norm360(trop_lon - ayanamsa)
+        sid_lon = (trop_lon - ayanamsa) % 360
         return int(sid_lon // 30)
 
 
@@ -167,7 +154,7 @@ class _Lunisolar(_Astronomy):
         """
         sun_lon = self._tropical_lon(self._sun, ed)
         moon_lon = self._tropical_lon(self._moon, ed)
-        return int(self._norm360(moon_lon - sun_lon) // 12) + 1
+        return int((moon_lon - sun_lon) % 360 // 12) + 1
 
     @cache
     def _get_amavasya(
@@ -1041,12 +1028,12 @@ class _Lunisolar(_Astronomy):
         for delta in range(8, 15):
             dt = diwali - timedelta(days=delta)
 
-            self._set_observer_date(dt)
+            self._observer.date = ephem.Date(dt)
             moonrise = self._observer.next_rising(self._moon)
 
             t = self._tithi(moonrise)
 
-            self._set_observer_date(dt - timedelta(days=1))
+            self._observer.date = ephem.Date(dt - timedelta(days=1))
             moonrise_prev = self._observer.next_rising(self._moon)
 
             t_prev = self._tithi(moonrise_prev)
