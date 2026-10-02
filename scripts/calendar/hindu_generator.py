@@ -1928,6 +1928,30 @@ class _Solar(_Astronomy):
 
         return None
 
+    def get_pongal(self, year: int) -> date | None:
+        """
+        Pongal (Thai Pongal) = first day of the Tamil month Thai.
+        Sun enters sidereal Capricorn (Makara rashi).
+        Evaluated at sunset (Tamil solar month rule).
+
+        Sankranti detection:
+        - First sunset with Sun in Makara -> return that day
+        """
+        exceptions = {
+            2003: date(2003, 1, 15),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        for delta in range(6):
+            dt = date(year, 1, 12) + timedelta(days=delta)
+            sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
+
+            if sign == 9:
+                return dt
+
+        return None
+
     def get_vaisakhi(self, year: int) -> date | None:
         """
         Vaisakhi = Mesha Sankranti.
@@ -2031,7 +2055,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
     # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
     # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
-    ("ONAM", _lunisolar.get_onam),
+    # ("ONAM", _lunisolar.get_onam),
     # ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
     # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
     # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
@@ -2049,6 +2073,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
 
 HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+    ("PONGAL", _solar.get_pongal),
     # ("VAISAKHI", _solar.get_vaisakhi),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
     # ("VISHU", _solar.get_vishu),
