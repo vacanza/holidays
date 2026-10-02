@@ -992,6 +992,35 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_kali_puja(self, year: int) -> date | None:
+        """
+        Kali Puja = Kartik Amavasya (Bengal, Odisha, Assam, Tripura).
+        Tithi = 30 (Amavasya) of Kartik month - sun in sidereal Libra (sign 6).
+        Evaluated at Nishita Kaal (midpoint of sunset -> next sunrise).
+
+        Amavasya detection (midnight tithi):
+        - Present at midnight -> return that day (first occurrence)
+        - Skipped between midnights (29 -> 1) -> return current day
+        """
+        # Find Kartik Amavasya
+        kartik_ama = self._get_amavasya(date(year, 10, 15), zodiac_sign=6)
+
+        if not kartik_ama:
+            return None
+
+        # Find Amavasya (tithi 30) at Nishita Kaal, or skipped case (29 -> 1)
+        for delta in range(-1, 2):
+            dt = kartik_ama + timedelta(days=delta)
+            t = self._tithi(self._midnight(dt))
+
+            if t == 30:
+                return dt
+
+            if t == 1 and self._tithi(self._midnight(dt - timedelta(days=1))) == 29:
+                return dt
+
+        return None
+
     def get_karwa_chauth(self, year: int) -> date | None:
         """
         Karwa Chauth = Kartik Krishna Chaturthi.
@@ -2088,6 +2117,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
+    ("KALI_PUJA", _lunisolar.get_kali_puja),
     # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
