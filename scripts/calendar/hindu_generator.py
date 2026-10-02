@@ -257,12 +257,6 @@ class _Lunisolar(_Astronomy):
         - First occurrence of tithi 5 (normal or skip-over-4) → return that day
         - Tithi 5 entirely skipped (4→6) → return that day
         """
-        exceptions = {
-            2023: date(2023, 1, 26),
-        }
-        if year in exceptions:
-            return exceptions[year]
-
         # Find Magh Amavasya
         magh_ama = self._get_amavasya(date(year, 1, 1), zodiac_sign=9)
 
@@ -398,12 +392,6 @@ class _Lunisolar(_Astronomy):
         - Present at sunrise -> return that day (first occurrence)
         - Skipped between days (5 -> 7) -> return current day
         """
-        exceptions = {
-            2025: date(2025, 10, 28),
-        }
-        if year in exceptions:
-            return exceptions[year]
-
         # Find Kartik Amavasya
         kartik_ama = self._get_amavasya(date(year, 10, 15), zodiac_sign=6)
 
@@ -581,7 +569,6 @@ class _Lunisolar(_Astronomy):
         """
         exceptions = {
             2007: date(2007, 11, 10),
-            2026: date(2026, 11, 10),
         }
         if year in exceptions:
             return exceptions[year]
@@ -802,7 +789,6 @@ class _Lunisolar(_Astronomy):
         """
         exceptions = {
             2006: date(2006, 9, 27),
-            2029: date(2029, 9, 11),
         }
         if year in exceptions:
             return exceptions[year]
@@ -877,8 +863,7 @@ class _Lunisolar(_Astronomy):
         - Past tithi 16 (16 -> 17+) -> return previous day
         """
         exceptions = {
-            2026: date(2026, 3, 4),
-            2029: date(2029, 3, 1),
+            2029: date(2029, 2, 28),
         }
         if year in exceptions:
             return exceptions[year]
@@ -1220,12 +1205,6 @@ class _Lunisolar(_Astronomy):
         - Present at sunrise -> return that day
         - Skipped between days (12 -> 14) -> return previous day
         """
-        exceptions = {
-            2027: date(2027, 4, 18),
-        }
-        if year in exceptions:
-            return exceptions[year]
-
         # Find Chaitra Amavasya
         chaitra_ama = self._get_amavasya(date(year, 3, 1), zodiac_sign=11)
 
@@ -1845,14 +1824,6 @@ class _Solar(_Astronomy):
         Makar Sankranti = Sun enters sidereal Capricorn (Makara rashi).
         Evaluated at sunset (Pradosh rule).
         """
-        exceptions = {
-            2007: date(2007, 1, 15),
-            2023: date(2023, 1, 14),
-            2024: date(2024, 1, 14),
-        }
-        if year in exceptions:
-            return exceptions[year]
-
         for delta in range(6):
             dt = date(year, 1, 12) + timedelta(days=delta)
             sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
@@ -1872,9 +1843,7 @@ class _Solar(_Astronomy):
         - First midnight with Sun in Mesha -> return that day
         """
         exceptions = {
-            2001: date(2001, 4, 14),
-            2005: date(2005, 4, 14),
-            2025: date(2025, 4, 13),
+            2025: date(2025, 4, 14),
         }
         if year in exceptions:
             return exceptions[year]
