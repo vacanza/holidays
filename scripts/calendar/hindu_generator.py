@@ -745,6 +745,37 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_hal_shashthi(self, year: int) -> date | None:
+        """
+        Hal Shashthi = Bhadrapad Krishna Shashthi (Purnimanta), two days before
+        Janmashtami.
+        Tithi = 21 (Krishna Shashthi) preceding Bhadrapad Amavasya - sun in
+        sidereal Leo (sign 4).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Shashthi detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (20 -> 22) -> return previous day
+        """
+        # Find Bhadrapad Amavasya
+        bhadrapad_ama = self._get_amavasya(date(year, 8, 1), zodiac_sign=4)
+
+        if not bhadrapad_ama:
+            return None
+
+        # Search 7-12 days before Amavasya for Shashthi (tithi 21), or skipped case (20 -> 22)
+        for delta in range(12, 6, -1):
+            dt = bhadrapad_ama - timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 21:
+                return dt
+
+            if t == 22 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 20:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_hanuman_jayanti(self, year: int) -> date | None:
         """
         Hanuman Jayanti = Chaitra Purnima.
@@ -2110,6 +2141,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
+    ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
@@ -2148,7 +2180,7 @@ HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
     # ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
     # ("PONGAL", _solar.get_pongal),
-    ("PUTHANDU", _solar.get_puthandu),
+    # ("PUTHANDU", _solar.get_puthandu),
     # ("VAISAKHI", _solar.get_vaisakhi),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
     # ("VISHU", _solar.get_vishu),
