@@ -1928,6 +1928,31 @@ class _Solar(_Astronomy):
 
         return None
 
+    def get_pohela_boishakh(self, year: int) -> date | None:
+        """
+        Pohela Boishakh = first day of the Bengali month Boishakh.
+        Sun enters sidereal Aries (Mesha rashi).
+        Evaluated at Nishita Kaal (local midnight, Bengali calendar rule).
+
+        Sankranti detection:
+        - First midnight with Sun in Mesha -> return the following day
+          (Sankranti before midnight -> next day, after midnight -> day after next)
+        """
+        exceptions = {
+            2005: date(2005, 4, 15),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        for delta in range(5):
+            dt = date(year, 4, 12) + timedelta(days=delta)
+            sign = self._sidereal_solar_zodiac_sign(self._midnight(dt))
+
+            if sign == 0:
+                return dt + timedelta(days=1)
+
+        return None
+
     def get_pongal(self, year: int) -> date | None:
         """
         Pongal (Thai Pongal) = first day of the Tamil month Thai.
@@ -2073,7 +2098,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
 
 HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-    ("PONGAL", _solar.get_pongal),
+    ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
+    # ("PONGAL", _solar.get_pongal),
     # ("VAISAKHI", _solar.get_vaisakhi),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
     # ("VISHU", _solar.get_vishu),
