@@ -1977,6 +1977,24 @@ class _Solar(_Astronomy):
 
         return None
 
+    def get_puthandu(self, year: int) -> date | None:
+        """
+        Puthandu (Tamil New Year) = first day of the Tamil month Chithirai.
+        Sun enters sidereal Aries (Mesha rashi).
+        Evaluated at sunset (Tamil solar month rule).
+
+        Sankranti detection:
+        - First sunset with Sun in Mesha -> return that day
+        """
+        for delta in range(5):
+            dt = date(year, 4, 12) + timedelta(days=delta)
+            sign = self._sidereal_solar_zodiac_sign(self._sunset(dt))
+
+            if sign == 0:
+                return dt
+
+        return None
+
     def get_vaisakhi(self, year: int) -> date | None:
         """
         Vaisakhi = Mesha Sankranti.
@@ -2098,8 +2116,9 @@ HINDU_LUNISOLAR_HOLIDAYS = (
 
 HINDU_SOLAR_HOLIDAYS = (
     # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-    ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
+    # ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
     # ("PONGAL", _solar.get_pongal),
+    ("PUTHANDU", _solar.get_puthandu),
     # ("VAISAKHI", _solar.get_vaisakhi),
     # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
     # ("VISHU", _solar.get_vishu),
