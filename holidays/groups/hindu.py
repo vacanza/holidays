@@ -585,6 +585,21 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.kabir_jayanti_date(self._year)
         )
 
+    def _add_kali_puja(self, name) -> date | None:
+        """
+        Add Kali Puja.
+
+        Kali Puja is a Hindu festival dedicated to Goddess Kali.
+        It is observed on the new moon day (Amavasya) of the Hindu
+        month of Kartika (October/November).
+
+        https://en.wikipedia.org/wiki/Kali_Puja
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.kali_puja_date(self._year),
+        )
+
     def _add_karwa_chauth(self, name) -> date | None:
         """
         Add Karwa Chauth.
@@ -690,6 +705,15 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.maha_shivaratri_date(self._year)
         )
+
+    def _add_maha_visuva_sankranti(self, name) -> date | None:
+        """
+        Add Maha Visuva Sankranti.
+
+        Maha Visuva Sankranti is the solar (Mesha) new year.
+        https://en.wikipedia.org/wiki/Maha_Visuva_Sankranti
+        """
+        return self._add_holiday(name, date(self._year, APR, 13 if isleap(self._year) else 14))
 
     def _add_maharana_pratap_jayanti(self, name) -> date | None:
         """
@@ -814,6 +838,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
+    def _add_onam_day_two(self, name) -> date | None:
+        """
+        Add Onam Day Two which is celebrated the day after Onam.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.onam_date(self._year), days_delta=+1
+        )
+
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.
@@ -886,7 +918,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.pitra_moksh_amavasya_date(self._year),
         )
 
-    def add_pohela_boishakh(self, name) -> date | None:
+    def _add_pohela_boishakh(self, name) -> date | None:
         """
         Add Pohela Boishakh.
 
@@ -897,7 +929,7 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pohela_Boishakh
         """
         return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.vaisakhi_date(self._year), days_delta=+1
+            name, self._hindu_calendar.pohela_boishakh_date(self._year)
         )
 
     def _add_pongal(self, name) -> date | None:
@@ -911,6 +943,19 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Pongal_(festival)
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.pongal_date(self._year))
+
+    def _add_puthandu(self, name) -> date | None:
+        """
+        Add Puthandu.
+
+        Puthandu is the Tamil New Year, celebrated in Tamil Nadu, India. It is usually observed
+        on April 14th or 15th every year, coinciding with the Tamil month of Chithirai.
+        The festival is dedicated to the Sun God and marks a season of prosperity and abundance.
+        https://en.wikipedia.org/wiki/Puthandu
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.puthandu_date(self._year)
+        )
 
     def _add_rabindranath_birthday(self, name: str) -> None:
         """
@@ -1212,6 +1257,14 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Vishu
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.vishu_date(self._year))
+
+    def _add_vishu_day_two(self, name) -> date | None:
+        """
+        Add Vishu (Day 2) which comes after the main Vishu day.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.vishu_date(self._year), days_delta=+1
+        )
 
     def _add_vishwakarma_puja(self, name) -> date | None:
         """
