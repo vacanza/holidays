@@ -11,11 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB
-from holidays.countries.turkey import (
-    Turkey,
-    TurkeyIslamicHolidays,
-    TurkeyStaticHolidays,
-)
+from holidays.countries.turkey import Turkey, TurkeyIslamicHolidays, TurkeyStaticHolidays
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
 
