@@ -351,7 +351,7 @@ function holidayDownloads() {
         const subdivName = data.subdivisions?.[this.selectedSubdiv];
         const subdivLabel =
           this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
-            ? ` — ${subdivName}`
+            ? ` - ${subdivName}`
             : '';
         const entityLabel = (data.name || entity) + subdivLabel;
 
@@ -376,7 +376,7 @@ function holidayDownloads() {
         }
       }
 
-      // Dedupe — events often appear in multiple category files.
+      // Dedupe - events often appear in multiple category files.
       const seen = new Set();
       const deduped = [];
       for (const event of allEvents) {
@@ -414,7 +414,7 @@ function holidayDownloads() {
         const subdivName = data.subdivisions?.[this.selectedSubdiv];
         const subdivLabel =
           this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
-            ? ` — ${subdivName}`
+            ? ` - ${subdivName}`
             : '';
 
         return {

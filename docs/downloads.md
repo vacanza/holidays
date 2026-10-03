@@ -79,7 +79,7 @@ hide:
       </div>
     </div>
 
-    <!-- Subdivision / State — only shown for a single selected country -->
+    <!-- Subdivision / State - only shown for a single selected country -->
     <div class="control-group" x-show="showSubdivisionPicker" x-cloak>
       <label for="subdivision">Subdivision / State</label>
       <select
@@ -247,7 +247,7 @@ hide:
             <span x-text="selectedEntities.length"></span> countries/regions ·
             <span x-text="selectedCategories.length"></span> categories ·
             ICS/JSON downloads cover
-            <span x-text="startYear === endYear ? startYear : `${startYear}–${endYear}`"></span>
+            <span x-text="startYear === endYear ? startYear : `${startYear}-${endYear}`"></span>
           </p>
         </div>
       </div>
@@ -286,7 +286,7 @@ hide:
                       </div>
                     </template>
                     <template x-if="!calendar.available">
-                      <span class="calendar-unavailable">—</span>
+                      <span class="calendar-unavailable">-</span>
                     </template>
                   </td>
                 </template>
