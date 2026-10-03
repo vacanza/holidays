@@ -56,9 +56,6 @@ class BorsaIstanbul(Turkey):
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
-        # Borsa Istanbul is closed on weekends, so remove any holidays
-        # (public or half-day) falling on Saturday/Sunday for clarity,
-        # as is done in most other financial markets.
         for dt in tuple(self.keys()):
             if self._is_weekend(dt):
                 self.pop(dt)
