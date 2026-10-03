@@ -75,7 +75,6 @@ class BorsaIstanbulStaticHolidays(TurkeyStaticHolidays):
     name_market_closed_earthquake = tr("Piyasa Kapalı (Deprem)")
 
     special_public_holidays = {
-        **TurkeyStaticHolidays.special_public_holidays,
         2023: (  # type: ignore[dict-item]
             (FEB, 8, name_market_closed_earthquake),
             (FEB, 9, name_market_closed_earthquake),
