@@ -69,6 +69,27 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         hb = BorsaIstanbul(years=2023, categories=("half_day",))
         self.assertNotIn(date(2023, 10, 28), hb)
 
+    def test_half_day_on_sunday_removed(self):
+        # Oct 28, 2029 is a Sunday — same removal logic.
+        hb = BorsaIstanbul(years=2029, categories=("half_day",))
+        self.assertNotIn(date(2029, 10, 28), hb)
+
+    def test_half_day_on_weekday_kept(self):
+        # Oct 28, 2024 was a Monday — the half-day should be present.
+        hb = BorsaIstanbul(years=2024, categories=("half_day",))
+        self.assertIn(date(2024, 10, 28), hb)
+
+    def test_half_day_weekend_removal_english(self):
+        # Removal works regardless of language (not string-matched).
+        hb = BorsaIstanbul(years=2023, categories=("half_day",), language="en_US")
+        self.assertNotIn(date(2023, 10, 28), hb)
+
+    def test_half_day_weekend_does_not_affect_public(self):
+        # Public holidays on weekends are unaffected — only half-days filtered.
+        hb = BorsaIstanbul(years=2023)
+        # Oct 29, 2023 (Sunday) is still a public holiday.
+        self.assertIn(date(2023, 10, 29), hb)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Yılbaşı"),
