@@ -86,6 +86,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-11-21",
             "2026-03-23",
             "2026-07-10",
+            "2026-11-09",
             "2026-12-07",
         )
 
@@ -105,7 +106,13 @@ class TestArgentina(CommonCountryTests, TestCase):
 
     def test_special_subdiv_holidays(self):
         # Buenos Aires.
-        self.assertSubdivBHoliday("2018-11-30")
+        self.assertSubdivBHoliday("2026-11-11")
+
+        # Ciudad Autónoma de Buenos Aires.
+        self.assertSubdivCHoliday("2018-11-30", "2026-11-10")
+
+        # Córdoba.
+        self.assertSubdivXHoliday("2026-11-10")
 
     def test_new_years_day(self):
         self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
