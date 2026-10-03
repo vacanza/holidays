@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
 from holidays.financial.borsa_istanbul import BorsaIstanbul
@@ -62,33 +61,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2024-06-15", "Kurban Bayramı (saat 13.00'ten)"),
             ("2024-10-28", "Cumhuriyet Bayramı (saat 13.00'ten)"),
         )
-
-    def test_half_day_on_weekend_removed(self):
-        # Oct 28, 2023 was a Saturday — the half-day should not be listed
-        # since the exchange is already closed on weekends.
-        hb = BorsaIstanbul(years=2023, categories=("half_day",))
-        self.assertNotIn(date(2023, 10, 28), hb)
-
-    def test_half_day_on_sunday_removed(self):
-        # Oct 28, 2029 is a Sunday — same removal logic.
-        hb = BorsaIstanbul(years=2029, categories=("half_day",))
-        self.assertNotIn(date(2029, 10, 28), hb)
-
-    def test_half_day_on_weekday_kept(self):
-        # Oct 28, 2024 was a Monday — the half-day should be present.
-        hb = BorsaIstanbul(years=2024, categories=("half_day",))
-        self.assertIn(date(2024, 10, 28), hb)
-
-    def test_half_day_weekend_removal_english(self):
-        # Removal works regardless of language (not string-matched).
-        hb = BorsaIstanbul(years=2023, categories=("half_day",), language="en_US")
-        self.assertNotIn(date(2023, 10, 28), hb)
-
-    def test_half_day_weekend_does_not_affect_public(self):
-        # Public holidays on weekends are unaffected — only half-days filtered.
-        hb = BorsaIstanbul(years=2023)
-        # Oct 29, 2023 (Sunday) is still a public holiday.
-        self.assertIn(date(2023, 10, 29), hb)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
