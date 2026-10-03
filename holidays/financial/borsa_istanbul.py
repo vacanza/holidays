@@ -40,6 +40,15 @@ class BorsaIstanbul(Turkey):
     # Istanbul Stock Exchange (1986-2012), succeeded by Borsa İstanbul A.Ş. in 2013.
     start_year = 1986
 
+    def _populate_half_day_holidays(self):
+        before = set(self.keys())
+        super()._populate_half_day_holidays()
+        # Remove half-day holidays falling on weekends for clarity:
+        # the exchange is already closed, so the half-day is moot.
+        for dt in set(self.keys()) - before:
+            if dt.weekday() >= 5:
+                del self[dt]
+
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
