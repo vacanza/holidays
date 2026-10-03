@@ -43,8 +43,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     References:
         * ACT:
-            * [ACT Bank Holidays Ordinance 1930](https://www.legislation.act.gov.au/DownloadFile/ord/1930-17/19300911-49003/PDF/1930-17.PDF)
-            * [ACT Bank Holidays Ordinance 1936](https://www.legislation.act.gov.au/DownloadFile/ord/1936-18/19360514-47650/PDF/1936-18.PDF)
+            * [ACT Bank Holidays Ordinance 1930](https://web.archive.org/web/20260922180159/https://www.legislation.act.gov.au/DownloadFile/ord/1930-17/19300911-49003/PDF/1930-17.PDF)
+            * [ACT Bank Holidays Ordinance 1936](https://web.archive.org/web/20260927204814/https://www.legislation.act.gov.au/DownloadFile/ord/1936-18/19360514-47650/PDF/1936-18.PDF)
             * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
             * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
             * [ACT 2026-2029](https://web.archive.org/web/20260323230558/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
@@ -55,8 +55,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
-            * [QLD Bank Holidays Act 1904](https://www.legislation.qld.gov.au/view/pdf/asmade/act-1904-008)
-            * [QLD Holidays Act 1912](https://www.legislation.qld.gov.au/view/pdf/asmade/act-1912-017)
+            * [QLD Bank Holidays Act 1904](https://web.archive.org/web/20260922180205/https://www.legislation.qld.gov.au/view/pdf/asmade/act-1904-008)
+            * [QLD Holidays Act 1912](https://web.archive.org/web/20260922180231/https://www.legislation.qld.gov.au/view/pdf/asmade/act-1912-017)
             * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
             * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
         * SA:
@@ -65,7 +65,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
             * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
         * TAS:
-            * [TAS Bank Holidays Act 1944](https://classic.austlii.edu.au/au/legis/tas/num_act/bha194478gvn81210.pdf)
+            * [TAS Bank Holidays Act 1944](https://archive.org/details/httpsclassic.austlii.edu.auaulegistasnum_actbha194478gvn81210.pdf)
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
         * VIC:
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
