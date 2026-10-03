@@ -1791,6 +1791,34 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_swami_dayanand_saraswati_jayanti(self, year: int) -> date | None:
+        """
+        Swami Dayanand Saraswati Jayanti = Phalgun Krishna Dashami (Purnimanta).
+        Tithi = 25 (Krishna Dashami), in the same Krishna Paksha as Maha Shivaratri
+        (Krishna Chaturdashi), so it falls 3-4 days before it.
+        Evaluated at sunrise (Udaya rule).
+
+        Dashami detection (sunrise tithi):
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between sunrises (24 -> 26) -> return previous day
+        """
+        shivaratri = self.get_maha_shivaratri(year)
+
+        if not shivaratri:
+            return None
+
+        # Scan the week before Maha Shivaratri, earliest day first
+        for delta in range(7, 0, -1):
+            dt = shivaratri - timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 25:
+                return dt
+            if t == 26 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 24:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_thaipusam(self, year: int) -> date | None:
         """
         Thaipusam = Thai Poosam.
@@ -2141,7 +2169,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
-    ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
+    # ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
     # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
     # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
     # ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
@@ -2149,7 +2177,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("HOLI", _lunisolar.get_holi),
     # ("JANMASHTAMI", _lunisolar.get_janmashtami),
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
-    ("KALI_PUJA", _lunisolar.get_kali_puja),
+    # ("KALI_PUJA", _lunisolar.get_kali_puja),
     # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
@@ -2170,6 +2198,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
     # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
     # ("THAIPUSAM", _lunisolar.get_thaipusam),
     # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
     # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
