@@ -686,6 +686,64 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_guru_gobind_singh_jayanti(self, year: int) -> date | tuple[date, ...] | None:
+        """
+        Guru Gobind Singh Jayanti = Pausha Shukla Saptami.
+        Tithi = 7 (Saptami) of Shukla Paksha in Pausha month - sun in sidereal
+        Sagittarius (sign 8). Evaluated at sunrise (Udaya tithi rule).
+
+        Saptami detection (sunrise tithi):
+        - Present at sunrise -> include first day
+        - Skipped between days (6 -> 8) -> include previous day
+
+        Pausha Amavasya can coincide with the transition from sidereal
+        Scorpio (sign 7) to Sagittarius (sign 8). In such boundary cases,
+        the Amavasya may be detected under sign 7 at sunset.
+
+        Pausha Shukla Saptami can fall in both January and December of the same
+        Gregorian year, and in some years in neither.
+        """
+        dates = []
+
+        # Check the Pausha lunar cycles on both sides of the Gregorian year.
+        for anchor_year in (year - 1, year):
+            start = date(anchor_year, 12, 1)
+
+            # Find Pausha Amavasya.
+            pausha_ama = self._get_amavasya(start, zodiac_sign=8)
+
+            # Handle Amavasya occurring at the Scorpio -> Sagittarius boundary.
+            if not pausha_ama:
+                pausha_ama = self._get_amavasya(start, zodiac_sign=7)
+
+            if not pausha_ama:
+                continue
+
+            # Find Saptami (tithi 7) at sunrise, or skipped case (6 -> 8).
+            for delta in range(5, 10):
+                dt = pausha_ama + timedelta(days=delta)
+                t = self._tithi(self._sunrise(dt))
+                festival_date = None
+
+                if t == 7 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 7:
+                    festival_date = dt
+
+                elif t == 8 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 6:
+                    festival_date = dt - timedelta(days=1)
+
+                if festival_date and festival_date.year == year and festival_date not in dates:
+                    dates.append(festival_date)
+
+                if festival_date:
+                    break
+
+        if not dates:
+            return None
+
+        dates.sort()
+
+        return dates[0] if len(dates) == 1 else tuple(dates)
+
     def get_guru_nanak_jayanti(self, year: int) -> date | None:
         """
         Guru Nanak Jayanti = Kartik Purnima.
@@ -2194,7 +2252,8 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
-    ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
+    # ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
+    ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
