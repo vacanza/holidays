@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.101\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-06-06 17:56+0000\n"
 "PO-Revision-Date: 2026-09-15 10:00+0530\n"
@@ -55,7 +55,7 @@ msgstr "%s (बाजार सकाळी 10:30 वाजता CT वेळ�
 #. %s (markets pause at 12:00pm CT)
 #, c-format
 msgid "%s (markets pause at 12:00pm CT)"
-msgstr "%s (बाजार दुपारी 12:00 वाजता CT  वेळेनुसार थांबतात)"
+msgstr "%s (बाजार दुपारी 12:00 वाजता CT वेळेनुसार थांबतात)"
 
 #. Dr. Martin Luther King, Jr. Day.
 msgid "Dr. Martin Luther King, Jr. Day"
@@ -95,7 +95,7 @@ msgstr "वर्ल्ड ट्रेड सेंटरवरील हल्
 
 #. Hurricane Sandy.
 msgid "Hurricane Sandy"
-msgstr "चक्रीवादळ सँडी"
+msgstr "सँडी चक्रीवादळ"
 
 #. National Day of Mourning for former President Ronald Reagan.
 msgid "National Day of Mourning for former President Ronald Reagan"
