@@ -658,6 +658,34 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_guru_arjun_dev_martyrdom(self, year: int) -> date | None:
+        """
+        Guru Arjun Dev Martyrdom = Jyeshtha Shukla Chaturthi.
+        Tithi = 4 (Chaturthi) of Shukla Paksha in Jyeshtha month - sun in sidereal Taurus (sign 1).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Chaturthi detection:
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (3 -> 5) -> return current day
+        """
+        # Find Jyeshtha Amavasya
+        jyeshtha_ama = self._get_amavasya(date(year, 5, 1), zodiac_sign=1, last=True)
+
+        if not jyeshtha_ama:
+            return None
+
+        # Find Chaturthi (tithi 4) at sunrise, or skipped case (3 -> 5)
+        for delta in range(3, 7):
+            dt = jyeshtha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 4:
+                return dt
+            if t == 5 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 3:
+                return dt
+
+        return None
+
     def get_guru_nanak_jayanti(self, year: int) -> date | None:
         """
         Guru Nanak Jayanti = Kartik Purnima.
@@ -2166,6 +2194,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
+    ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
@@ -2198,7 +2227,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
     # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
-    ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
+    # ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
     # ("THAIPUSAM", _lunisolar.get_thaipusam),
     # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
     # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
