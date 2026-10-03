@@ -19,13 +19,16 @@ from tests.common import CommonFinancialTests
 class TestBorsaIstanbul(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        """Set up the BorsaIstanbul test fixture."""
         super().setUpClass(BorsaIstanbul)
 
     def test_code(self):
+        """Verify market and country attributes."""
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
     def test_special_holidays(self):
+        """Verify the 2023 earthquake market suspension."""
         # Inherited one-off public holiday.
         self.assertHolidayName("Genel tati̇l", "1999-12-31")
         # Five-day market suspension after the earthquakes.
@@ -38,15 +41,18 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         )
 
     def test_start_year(self):
+        """Verify holidays are observed from 1986 onwards."""
         self.assertNoHolidays(BorsaIstanbul(years=1985))
         self.assertHolidayName("Yılbaşı", "1986-01-01")
 
     def test_labor_day_gap(self):
+        """Verify Labour Day was not a holiday in 2000 but was in 2010."""
         # May 1st wasn't a public holiday in Turkey in 1981-2008.
         self.assertNoHoliday("2000-05-01")
         self.assertHolidayName("Emek ve Dayanışma Günü", "2010-05-01")
 
     def test_2025(self):
+        """Verify the full 2025 holiday list."""
         self.assertHolidaysInYear(
             2025,
             ("2025-01-01", "Yılbaşı"),
@@ -66,6 +72,7 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         )
 
     def test_2025_half_day(self):
+        """Verify 2025 half-day holidays."""
         self.assertHalfDayHolidaysInYear(
             2025,
             ("2025-03-29", "Ramazan Bayramı (saat 13.00'ten)"),
@@ -74,6 +81,7 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         )
 
     def test_l10n_default(self):
+        """Verify default (Turkish) holiday names."""
         self.assertLocalizedHolidays(
             ("2025-01-01", "Yılbaşı"),
             ("2025-03-29", "Ramazan Bayramı (saat 13.00'ten)"),
@@ -95,6 +103,7 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         )
 
     def test_l10n_en_us(self):
+        """Verify English holiday names."""
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
