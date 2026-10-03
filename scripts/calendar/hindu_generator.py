@@ -133,8 +133,8 @@ class _Lunisolar(_Astronomy):
     # ]
 
     @cache
-    def _sangava(self, dt: date) -> ephem.Date:
-        """Return Sangava (2nd of 5 equal day-parts, end of Pratahkala) on dt."""
+    def _sangava_start(self, dt: date) -> ephem.Date:
+        """Return Sangava start (2nd of 5 equal day-parts, end of Pratahkala) on dt."""
         sr = self._sunrise(dt)
         ss = self._sunset(dt)
         return ephem.Date(float(sr) + (1 / 5) * (float(ss) - float(sr)))
@@ -1619,11 +1619,11 @@ class _Lunisolar(_Astronomy):
                     return dt
 
                 # Bhadra ends in the evening unless Purnima carries into next morning
-                if self._tithi(self._sangava(dt + timedelta(days=1))) != 15:
+                if self._tithi(self._sangava_start(dt + timedelta(days=1))) != 15:
                     return dt
 
             # Purnima ended before Aparahna but was present in the morning (Sangava)
-            elif t == 16 and self._tithi(self._sangava(dt)) == 15:
+            elif t == 16 and self._tithi(self._sangava_start(dt)) == 15:
                 return dt
 
         return None
