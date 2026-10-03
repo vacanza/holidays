@@ -38,31 +38,31 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             "2023-02-14",
         )
 
-    def test_2025(self):
+    def test_2024(self):
         self.assertHolidaysInYear(
-            2025,
-            ("2025-01-01", "Yılbaşı"),
-            ("2025-03-30", "Ramazan Bayramı"),
-            ("2025-03-31", "Ramazan Bayramı"),
-            ("2025-04-01", "Ramazan Bayramı"),
-            ("2025-04-23", "Ulusal Egemenlik ve Çocuk Bayramı"),
-            ("2025-05-01", "Emek ve Dayanışma Günü"),
-            ("2025-05-19", "Atatürk'ü Anma, Gençlik ve Spor Bayramı"),
-            ("2025-06-06", "Kurban Bayramı"),
-            ("2025-06-07", "Kurban Bayramı"),
-            ("2025-06-08", "Kurban Bayramı"),
-            ("2025-06-09", "Kurban Bayramı"),
-            ("2025-07-15", "Demokrasi ve Millî Birlik Günü"),
-            ("2025-08-30", "Zafer Bayramı"),
-            ("2025-10-29", "Cumhuriyet Bayramı"),
+            2024,
+            ("2024-01-01", "Yılbaşı"),
+            ("2024-04-10", "Ramazan Bayramı"),
+            ("2024-04-11", "Ramazan Bayramı"),
+            ("2024-04-12", "Ramazan Bayramı"),
+            ("2024-04-23", "Ulusal Egemenlik ve Çocuk Bayramı"),
+            ("2024-05-01", "Emek ve Dayanışma Günü"),
+            ("2024-05-19", "Atatürk'ü Anma, Gençlik ve Spor Bayramı"),
+            ("2024-06-16", "Kurban Bayramı"),
+            ("2024-06-17", "Kurban Bayramı"),
+            ("2024-06-18", "Kurban Bayramı"),
+            ("2024-06-19", "Kurban Bayramı"),
+            ("2024-07-15", "Demokrasi ve Millî Birlik Günü"),
+            ("2024-08-30", "Zafer Bayramı"),
+            ("2024-10-29", "Cumhuriyet Bayramı"),
         )
 
-    def test_2025_half_day(self):
+    def test_2024_half_day(self):
         self.assertHalfDayHolidaysInYear(
-            2025,
-            ("2025-03-29", "Ramazan Bayramı (saat 13.00'ten)"),
-            ("2025-06-05", "Kurban Bayramı (saat 13.00'ten)"),
-            ("2025-10-28", "Cumhuriyet Bayramı (saat 13.00'ten)"),
+            2024,
+            ("2024-04-09", "Ramazan Bayramı (saat 13.00'ten)"),
+            ("2024-06-15", "Kurban Bayramı (saat 13.00'ten)"),
+            ("2024-10-28", "Cumhuriyet Bayramı (saat 13.00'ten)"),
         )
 
     def test_l10n_default(self):
