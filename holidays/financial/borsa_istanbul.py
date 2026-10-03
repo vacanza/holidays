@@ -23,9 +23,15 @@ class BorsaIstanbul(Turkey):
     holidays.
 
     References:
-        * [2018 holiday schedule](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2018-holiday-schedule.pdf)
-        * [2025 holiday schedule](https://web.archive.org/web/20241225192936/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2025-holiday-schedule.pdf)
-        * [Trading principles for public holidays of 2025](https://web.archive.org/web/20261003052000/https://www.kap.org.tr/en/api/BildirimPdf/1368625)
+        * [2018](https://web.archive.org/web/20261003064535/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2018-holiday-schedule.pdf)
+        * [2019](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2019-holiday-schedule.pdf)
+        * [2020](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2020-holiday-schedule.pdf)
+        * [2021](https://web.archive.org/web/20221210003318/https://www.borsaistanbul.com/files/PreciousMetalsandDiamondMarket2021HolidaySchedule.pdf)
+        * [2022](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2022-holiday-schedule.pdf)
+        * [2023](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2023-holiday-schedule.pdf)
+        * [2024](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2024-holiday-schedule.pdf)
+        * [2025](https://web.archive.org/web/20241225192936/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2025-holiday-schedule.pdf)
+        * [2026](https://web.archive.org/web/20251220001949/https://www.borsaistanbul.com/files/precious-metals-markets-2026-holiday-schedule.pdf)
     """
 
     country = None  # type: ignore[assignment]
