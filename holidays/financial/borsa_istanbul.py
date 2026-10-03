@@ -48,12 +48,12 @@ class BorsaIstanbul(Turkey):
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(
-            self, cls=TurkeyIslamicHolidays, show_estimated=islamic_show_estimated
+        super().__init__(
+            *args,
+            islamic_show_estimated=islamic_show_estimated,
+            static_holidays_classes=(BorsaIstanbulStaticHolidays,),
+            **kwargs,
         )
-        StaticHolidays.__init__(self, BorsaIstanbulStaticHolidays)
-        super(Turkey, self).__init__(*args, **kwargs)
 
 
 class XIST(BorsaIstanbul):
