@@ -29,7 +29,8 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         # Inherited one-off public holiday.
         self.assertHolidayName("Genel tati̇l", "1999-12-31")
         # Five-day market suspension after the earthquakes.
-        self.assertHoliday(
+        self.assertHolidayName(
+            "Piyasa Kapalı (Deprem)",
             "2023-02-08",
             "2023-02-09",
             "2023-02-10",
