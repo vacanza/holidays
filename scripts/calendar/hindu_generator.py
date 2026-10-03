@@ -1205,6 +1205,44 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_ker_puja(self, year: int) -> date | None:
+        """
+        Ker Puja = Ashadh Krishna Ashtami (Tripura), two weeks after Kharchi Puja.
+        Tithi = 23 (Krishna Ashtami) of Ashadh month - sun in sidereal Gemini (sign 2).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        The puja is held on a Tuesday or Saturday: if either falls on Ashtami or
+        one day after/before it, that day is used; otherwise the Ashtami day.
+
+        In Adhika Masa (leap month) years, two Amavasyas can occur while the sun
+        is in sidereal Gemini. The last one starts Nija Ashadh.
+
+        Ashtami detection (sunrise tithi):
+        - Present at sunrise -> that day
+        - Skipped between days (22 -> 24) -> current day
+        """
+        # Find last Ashadh Amavasya
+        ashadh_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
+
+        if not ashadh_ama:
+            return None
+
+        # Find Krishna Ashtami (tithi 23) at sunrise, or skipped case (22 -> 24)
+        for delta in range(20, 26):
+            dt = ashadh_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 23 or (t == 24 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 22):
+                # Prefer Tuesday (1) or Saturday (5) within one day of Ashtami
+                for shift in (0, 1, -1):
+                    ker_puja = dt + timedelta(days=shift)
+                    if ker_puja.weekday() in (1, 5):
+                        return ker_puja
+
+                return dt
+
+        return None
+
     def get_kharchi_puja(self, year: int) -> date | None:
         """
         Kharchi Puja = Ashadh Shukla Ashtami (first day of the seven-day festival).
@@ -2337,72 +2375,73 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    # ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
-    # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
-    # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
-    # ("BATHUKAMMA", _lunisolar.get_bathukamma),
-    # ("BONALU", _lunisolar.get_bonalu),
-    # ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
-    # ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
-    # ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
-    # ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
-    # ("DEV_DIWALI", _lunisolar.get_dev_diwali),
-    # ("DIWALI_INDIA", _lunisolar.get_diwali),
-    # ("DUSSEHRA", _lunisolar.get_dussehra),
-    # ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
-    # ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
-    # ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
-    # ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
-    # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
-    # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
-    # ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
-    # ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
-    # ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
-    # ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
-    # ("HOLA_MOHOLLA", _lunisolar.get_hola_moholla),
-    # ("HOLI", _lunisolar.get_holi),
-    # ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
-    # ("KALI_PUJA", _lunisolar.get_kali_puja),
-    # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
-    # ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
-    # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
-    # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
-    # ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
-    # ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
-    # ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    # ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
-    # ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
-    # ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
-    # ("ONAM", _lunisolar.get_onam),
-    # ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
-    # ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
-    # ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
-    # ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    # ("RAKSHA_BANDHAN", _lunisolar.get_raksha_bandhan),
-    # ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    # ("RATH_YATRA", _lunisolar.get_rath_yatra),
-    # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
-    # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
+    ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
+    ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
+    ("BATHUKAMMA", _lunisolar.get_bathukamma),
+    ("BONALU", _lunisolar.get_bonalu),
+    ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
+    ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
+    ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
+    ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
+    ("DEV_DIWALI", _lunisolar.get_dev_diwali),
+    ("DIWALI_INDIA", _lunisolar.get_diwali),
+    ("DUSSEHRA", _lunisolar.get_dussehra),
+    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
+    ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
+    ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
+    ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
+    ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
+    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
+    ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
+    ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
+    ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
+    ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
+    ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
+    ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
+    ("HOLA_MOHOLLA", _lunisolar.get_hola_moholla),
+    ("HOLI", _lunisolar.get_holi),
+    ("JANMASHTAMI", _lunisolar.get_janmashtami),
+    ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
+    ("KALI_PUJA", _lunisolar.get_kali_puja),
+    ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
+    ("KER_PUJA", _lunisolar.get_ker_puja),
+    ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
+    ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
+    ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
+    ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
+    ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
+    ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
+    ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
+    ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
+    ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
+    ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
+    ("ONAM", _lunisolar.get_onam),
+    ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
+    ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
+    ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
+    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
+    ("RAKSHA_BANDHAN", _lunisolar.get_raksha_bandhan),
+    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
+    ("RATH_YATRA", _lunisolar.get_rath_yatra),
+    ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
+    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
     ("SHRI_VALLABHACHARYA_JAYANTI", _lunisolar.get_shri_vallabhacharya_jayanti),
-    # ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
-    # ("THAIPUSAM", _lunisolar.get_thaipusam),
-    # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
-    # ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
-    # ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
+    ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
+    ("THAIPUSAM", _lunisolar.get_thaipusam),
+    ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
+    ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
+    ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
 )
 
 HINDU_SOLAR_HOLIDAYS = (
-    # ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-    # ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
-    # ("PONGAL", _solar.get_pongal),
-    # ("PUTHANDU", _solar.get_puthandu),
-    # ("VAISAKHI", _solar.get_vaisakhi),
-    # ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
-    # ("VISHU", _solar.get_vishu),
+    ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
+    ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
+    ("PONGAL", _solar.get_pongal),
+    ("PUTHANDU", _solar.get_puthandu),
+    ("VAISAKHI", _solar.get_vaisakhi),
+    ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
+    ("VISHU", _solar.get_vishu),
 )
 
 
