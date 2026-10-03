@@ -738,7 +738,7 @@ holidays-ics US --output-template "{code}.ics"
 Create a custom calendar file name by prepending "HOLIDAYS_" to the default file name:
 
 ```shell
-holidays-ics US --years 2021-2030 --categories unofficial --subdiv IA --language th --output-template "HOLIDAYS_{all}.ics"
+holidays-ics US --years 2021-2030 --categories unofficial --subdiv TX --language th --output-template "HOLIDAYS_{all}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected
