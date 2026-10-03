@@ -68,14 +68,17 @@ class BorsaIstanbulStaticHolidays(TurkeyStaticHolidays):
         * [Turkey - Market Closure 08 February 2023](https://research.ftserussell.com/products/index-notices/home/getnotice/?id=2606994)
     """
 
+    # Market Closed (Earthquake).
+    name_market_closed_earthquake = tr("Piyasa Kapalı (Deprem)")
+
     special_public_holidays = {
         **TurkeyStaticHolidays.special_public_holidays,
         2023: (
             # Market Closed (Earthquake).
-            (FEB, 8, tr("Piyasa Kapalı (Deprem)")),
-            (FEB, 9, tr("Piyasa Kapalı (Deprem)")),
-            (FEB, 10, tr("Piyasa Kapalı (Deprem)")),
-            (FEB, 13, tr("Piyasa Kapalı (Deprem)")),
-            (FEB, 14, tr("Piyasa Kapalı (Deprem)")),
+            (FEB, 8, name_market_closed_earthquake),
+            (FEB, 9, name_market_closed_earthquake),
+            (FEB, 10, name_market_closed_earthquake),
+            (FEB, 13, name_market_closed_earthquake),
+            (FEB, 14, name_market_closed_earthquake),
         ),
     }
