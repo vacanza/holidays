@@ -846,22 +846,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.onam_date(self._year), days_delta=+1
         )
 
-    def _add_onam_day_three(self, name) -> date | None:
-        """
-        Add Onam Day Three which is celebrated 02 days after Onam.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.onam_date(self._year), days_delta=+2
-        )
-
-    def _add_onam_day_four(self, name) -> date | None:
-        """
-        Add Onam Day Four which is celebrated 03 days after Onam.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.onam_date(self._year), days_delta=+3
-        )
-
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.
