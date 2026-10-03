@@ -50,12 +50,12 @@ msgstr "नाताळ"
 #. %s (markets pause at 10:30am CT)
 #, c-format
 msgid "%s (markets pause at 10:30am CT)"
-msgstr "%s (बाजार सकाळी 10:30 वाजता CT वर थांबतात)"
+msgstr "%s (बाजार सकाळी 10:30 वाजता CT वेळेनुसार थांबतात)"
 
 #. %s (markets pause at 12:00pm CT)
 #, c-format
 msgid "%s (markets pause at 12:00pm CT)"
-msgstr "%s (बाजार दुपारी 12:00 वाजता CT वर थांबतात)"
+msgstr "%s (बाजार दुपारी 12:00 वाजता CT  वेळेनुसार थांबतात)"
 
 #. Dr. Martin Luther King, Jr. Day.
 msgid "Dr. Martin Luther King, Jr. Day"
