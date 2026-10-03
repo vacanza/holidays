@@ -1939,6 +1939,43 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_shri_vallabhacharya_jayanti(self, year: int) -> date | None:
+        """
+        Shri Vallabhacharya Jayanti = Vaishakha Krishna Ekadashi (Purnimanta),
+        i.e. Chaitra Krishna Ekadashi (Amanta) - Varuthini Ekadashi.
+        Tithi = 26 (Krishna Ekadashi) preceding Vaishakha Amavasya - sun in
+        sidereal Aries (sign 0).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        Ekadashi detection (sunrise tithi):
+        - Present at sunrise -> return that day
+        - Skipped between days (25 -> 27) -> return previous day
+        """
+        exceptions = {
+            2010: date(2010, 4, 10),
+        }
+        if year in exceptions:
+            return exceptions[year]
+
+        # Find Vaishakha Amavasya
+        vaishakha_ama = self._get_amavasya(date(year, 4, 1), zodiac_sign=0)
+
+        if not vaishakha_ama:
+            return None
+
+        # Search 3-6 days before Amavasya for Ekadashi (tithi 26), or skipped case (25 -> 27)
+        for delta in range(6, 2, -1):
+            dt = vaishakha_ama - timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 26:
+                return dt
+
+            if t == 27 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 25:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_swami_dayanand_saraswati_jayanti(self, year: int) -> date | None:
         """
         Swami Dayanand Saraswati Jayanti = Phalgun Krishna Dashami (Purnimanta).
@@ -2330,7 +2367,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
     # ("KALI_PUJA", _lunisolar.get_kali_puja),
     # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
-    ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
+    # ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
@@ -2350,6 +2387,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("RATH_YATRA", _lunisolar.get_rath_yatra),
     # ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
     # ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
+    ("SHRI_VALLABHACHARYA_JAYANTI", _lunisolar.get_shri_vallabhacharya_jayanti),
     # ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
     # ("THAIPUSAM", _lunisolar.get_thaipusam),
     # ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
