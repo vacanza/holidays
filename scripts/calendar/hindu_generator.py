@@ -1205,6 +1205,37 @@ class _Lunisolar(_Astronomy):
 
         return None
 
+    def get_kharchi_puja(self, year: int) -> date | None:
+        """
+        Kharchi Puja = Ashadh Shukla Ashtami (first day of the seven-day festival).
+        Tithi = 8 (Ashtami) of Shukla Paksha in Ashadh month - sun in sidereal Gemini (sign 2).
+        Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two Amavasyas can occur while the sun
+        is in sidereal Gemini. The last one belongs to Nija Ashadh.
+
+        Ashtami detection (sunrise tithi):
+        - Present at sunrise -> return that day (first occurrence)
+        - Skipped between days (7 -> 9) -> return previous day
+        """
+        # Find last Ashadh Amavasya
+        ashadh_ama = self._get_amavasya(date(year, 6, 1), zodiac_sign=2, last=True)
+
+        if not ashadh_ama:
+            return None
+
+        # Find Ashtami (tithi 8) at sunrise, or skipped case (7 -> 9)
+        for delta in range(6, 11):
+            dt = ashadh_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 8 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 8:
+                return dt
+            if t == 9 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 7:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_maha_ashtami(self, year: int) -> date | None:
         """
         Maha Ashtami = Ashwin Shukla Ashtami.
@@ -2269,7 +2300,7 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
+    # ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
     # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
     # ("BATHUKAMMA", _lunisolar.get_bathukamma),
@@ -2299,6 +2330,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
     # ("KALI_PUJA", _lunisolar.get_kali_puja),
     # ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
+    ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
     # ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
     # ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
     # ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
