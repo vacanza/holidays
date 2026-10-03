@@ -27,14 +27,15 @@ class BorsaIstanbul(Turkey):
     holidays.
 
     References:
-        * [2025 holiday schedule](https://borsaIstanbul.com/files/precious-metals-and-diamond-market-2025-holiday-schedule.pdf)
-        * [Trading principles for public holidays of 2025](https://www.kap.org.tr/en/api/BildirimPdf/1368625)
+        * [2018 holiday schedule](https://web.archive.org/web/20241227185144/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2018-holiday-schedule.pdf)
+        * [2025 holiday schedule](https://web.archive.org/web/20241225192936/https://www.borsaistanbul.com/files/precious-metals-and-diamond-market-2025-holiday-schedule.pdf)
+        * [Trading principles for public holidays of 2025](https://web.archive.org/web/20261003052000/https://www.kap.org.tr/en/api/BildirimPdf/1368625)
     """
 
     country = None  # type: ignore[assignment]
     market = "XIST"
     parent_entity = Turkey  # TR catalogs as gettext fallback (HolidayBase._init_translation).
-    supported_languages = ("en_US", "tr")
+    supported_languages = ("en_US", "tr")  # type: ignore[assignment]
     # Istanbul Stock Exchange (1986-2012), succeeded by Borsa İstanbul A.Ş. in 2013.
     start_year = 1986
 
@@ -65,7 +66,7 @@ class BorsaIstanbulStaticHolidays(TurkeyStaticHolidays):
     """Borsa Istanbul (BIST) special holidays.
 
     References:
-        * [Turkey - Market Closure 08 February 2023](https://research.ftserussell.com/products/index-notices/home/getnotice/?id=2606994)
+        * [Turkey - Market Closure 08 February 2023](https://web.archive.org/web/20230607065301/https://research.ftserussell.com/products/index-notices/home/getnotice?id=2606994)
     """
 
     # Market Closed (Earthquake).
@@ -73,8 +74,7 @@ class BorsaIstanbulStaticHolidays(TurkeyStaticHolidays):
 
     special_public_holidays = {
         **TurkeyStaticHolidays.special_public_holidays,
-        2023: (
-            # Market Closed (Earthquake).
+        2023: (  # type: ignore[dict-item]
             (FEB, 8, name_market_closed_earthquake),
             (FEB, 9, name_market_closed_earthquake),
             (FEB, 10, name_market_closed_earthquake),

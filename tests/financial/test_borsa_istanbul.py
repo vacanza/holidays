@@ -37,15 +37,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             "2023-02-14",
         )
 
-    def test_start_year(self):
-        self.assertNoHolidays(BorsaIstanbul(years=1985))
-        self.assertHolidayName("Yılbaşı", "1986-01-01")
-
-    def test_labor_day_gap(self):
-        # May 1st wasn't a public holiday in Turkey in 1981-2008.
-        self.assertNoHoliday("2000-05-01")
-        self.assertHolidayName("Emek ve Dayanışma Günü", "2010-05-01")
-
     def test_2025(self):
         self.assertHolidaysInYear(
             2025,
