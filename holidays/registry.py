@@ -287,6 +287,7 @@ COUNTRIES: RegistryDict = {
 
 FINANCIAL: RegistryDict = {
     "australian_securities_exchange": ("AustralianSecuritiesExchange", "XASX", "ASX"),
+    "bolsa_de_valores_de_colombia": ("BolsaDeValoresDeColombia", "XBOG", "BVC"),
     "bolsa_mexicana_de_valores": ("BolsaMexicanaDeValores", "XMEX", "BMV"),
     "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
@@ -311,6 +312,7 @@ FINANCIAL: RegistryDict = {
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
+    "warsaw_stock_exchange": ("WarsawStockExchange", "XWAR", "GPW"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,

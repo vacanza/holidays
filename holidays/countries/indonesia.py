@@ -241,11 +241,12 @@ class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
         2024: (MAY, 23),
         2025: (MAY, 12),
         2026: (MAY, 31),
+        2027: (MAY, 20),
     }
 
 
 class IndonesiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2026)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2027)
     LUNAR_NEW_YEAR_DATES = {
         2006: (JAN, 30),
         2007: (FEB, 19),
@@ -281,7 +282,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
         2011: (AUG, 30),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2026)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2027)
     HIJRI_NEW_YEAR_DATES = {
         1969: (MAR, 19),
         1970: (MAR, 10),
@@ -292,7 +293,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
         2021: (AUG, 11),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2026)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2027)
     ISRA_AND_MIRAJ_DATES = {
         1970: (SEP, 29),
         1975: (AUG, 5),
@@ -304,9 +305,10 @@ class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
         2016: (MAY, 6),
         2022: (FEB, 28),
         2026: (JAN, 16),
+        2027: ((JAN, 5), (DEC, 26)),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2026)
+    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2027)
     MAWLID_DATES = {
         1968: (JUN, 8),
         1969: (MAY, 28),
@@ -383,6 +385,7 @@ class IndonesiaStaticHolidays:
         * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
         * <https://web.archive.org/web/20250802143125/https://news.detik.com/berita/d-8039857/pemerintah-tetapkan-senin-18-agustus-hari-libur>
         * <https://web.archive.org/web/20260605113344/https://www.detik.com/hikmah/khazanah/d-8346579/libur-nasional-dan-cuti-bersama-2026-cek-jadwalnya-di-sini>
+        * <https://web.archive.org/web/20260917182154/https://setneg.go.id/baca/index/inilah_skb_3_menteri_libur_nasional_dan_cuti_bersama_2027>
     """
 
     # General Election Day.
@@ -416,6 +419,8 @@ class IndonesiaStaticHolidays:
     new_years_joint_holiday = tr("Cuti Bersama Tahun Baru Masehi")
     # Independence Day Joint Holiday.
     independence_day_joint_holiday = tr("Cuti Bersama Hari Kemerdekaan Republik Indonesia")
+    # Good Friday Joint Holiday.
+    good_friday_joint_holiday = tr("Cuti Bersama Wafat Yesus Kristus")
 
     special_public_holidays = {
         1999: (JUN, 7, legislative_election_day),
@@ -442,10 +447,12 @@ class IndonesiaStaticHolidays:
             (NOV, 27, local_election_day),
         ),
     }
+
     special_public_holidays_observed = {
         # Eid al-Fitr.
         2004: (NOV, 16, tr("Hari Raya Idul Fitri")),
     }
+
     special_government_holidays = {
         # Cuti Bersama (Joint Holidays/Collective Leaves).
         # This was first implemented in 2002.
@@ -636,7 +643,18 @@ class IndonesiaStaticHolidays:
             (MAY, 28, eid_al_adha_joint_holiday),
             (DEC, 24, christmas_joint_holiday),
         ),
+        2027: (
+            (FEB, 5, lunar_new_year_joint_holiday),
+            (MAR, 9, eid_al_fitr_joint_holiday),
+            (MAR, 12, eid_al_fitr_joint_holiday),
+            (MAR, 15, eid_al_fitr_joint_holiday),
+            (MAR, 25, good_friday_joint_holiday),
+            (MAY, 18, eid_al_adha_joint_holiday),
+            (MAY, 19, vesak_joint_holiday),
+            (DEC, 24, christmas_joint_holiday),
+        ),
     }
+
     special_government_holidays_observed = {
         2020: (DEC, 31, eid_al_fitr_joint_holiday),
     }
