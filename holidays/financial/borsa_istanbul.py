@@ -41,13 +41,22 @@ class BorsaIstanbul(Turkey):
     start_year = 1986
 
     def _populate_half_day_holidays(self):
-        before = set(self.keys())
+        # Snapshot values before: super() may merge a half-day into an
+        # existing holiday's name (e.g. Ramadan eve on Labour Day).
+        before = dict(self.items())
         super()._populate_half_day_holidays()
-        # Remove half-day holidays falling on weekends for clarity:
-        # the exchange is already closed, so the half-day is moot.
-        for dt in set(self.keys()) - before:
-            if dt.weekday() >= 5:
+        # Remove weekend half-days. For dates newly added, delete entirely.
+        # For dates where a half-day was merged into an existing holiday,
+        # restore the original value.
+        for dt in list(self.keys()):
+            if dt.weekday() < 5:
+                continue
+            if dt not in before:
+                # Newly added weekend half-day: remove entirely.
                 del self[dt]
+            elif self[dt] != before[dt]:
+                # Half-day merged into existing holiday: restore original.
+                self[dt] = before[dt]
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
