@@ -34,7 +34,7 @@ class BorsaIstanbul(Turkey):
 
     country = None  # type: ignore[assignment]
     market = "XIST"
-    parent_entity = Turkey  # TR catalogs as gettext fallback (HolidayBase._init_translation).
+    parent_entity = Turkey
     supported_languages = ("en_US", "tr")  # type: ignore[assignment]
     # Istanbul Stock Exchange (1986-2012), succeeded by Borsa İstanbul A.Ş. in 2013.
     start_year = 1986
