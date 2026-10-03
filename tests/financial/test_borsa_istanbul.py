@@ -44,8 +44,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2024-04-12", "Ramazan Bayramı"),
             ("2024-04-23", "Ulusal Egemenlik ve Çocuk Bayramı"),
             ("2024-05-01", "Emek ve Dayanışma Günü"),
-            ("2024-05-19", "Atatürk'ü Anma, Gençlik ve Spor Bayramı"),
-            ("2024-06-16", "Kurban Bayramı"),
             ("2024-06-17", "Kurban Bayramı"),
             ("2024-06-18", "Kurban Bayramı"),
             ("2024-06-19", "Kurban Bayramı"),
@@ -63,7 +61,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-01", "Yılbaşı"),
             ("2023-02-08", "Piyasa Kapalı (Deprem)"),
             ("2023-02-09", "Piyasa Kapalı (Deprem)"),
             ("2023-02-10", "Piyasa Kapalı (Deprem)"),
@@ -71,8 +68,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2023-02-14", "Piyasa Kapalı (Deprem)"),
             ("2023-04-20", "Ramazan Bayramı (saat 13.00'ten)"),
             ("2023-04-21", "Ramazan Bayramı"),
-            ("2023-04-22", "Ramazan Bayramı"),
-            ("2023-04-23", "Ramazan Bayramı; Ulusal Egemenlik ve Çocuk Bayramı"),
             ("2023-05-01", "Emek ve Dayanışma Günü"),
             ("2023-05-19", "Atatürk'ü Anma, Gençlik ve Spor Bayramı"),
             ("2023-06-27", "Kurban Bayramı (saat 13.00'ten)"),
@@ -85,7 +80,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2023-01-01", "New Year's Day"),
             ("2023-02-08", "Market Closed (Earthquake)"),
             ("2023-02-09", "Market Closed (Earthquake)"),
             ("2023-02-10", "Market Closed (Earthquake)"),
@@ -93,8 +87,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2023-02-14", "Market Closed (Earthquake)"),
             ("2023-04-20", "Eid al-Fitr (from 1pm)"),
             ("2023-04-21", "Eid al-Fitr"),
-            ("2023-04-22", "Eid al-Fitr"),
-            ("2023-04-23", "Eid al-Fitr; National Sovereignty and Children's Day"),
             ("2023-05-01", "Labour and Solidarity Day"),
             ("2023-05-19", "Commemoration of Atatürk, Youth and Sports Day"),
             ("2023-06-27", "Eid al-Adha (from 1pm)"),
