@@ -1,4 +1,3 @@
-/* Theme Variables with hardcoded fallbacks */
 :root {
   --portal-bg: var(--md-default-bg-color, #ffffff);
   --portal-fg: var(--md-default-fg-color, #24292e);
@@ -11,7 +10,6 @@
   --md-default-fg-color--lighter: #8b949e;
 }
 
-/* Global Resets and Layout Overrides */
 .md-grid {
   max-width: 95% !important;
 }
@@ -24,7 +22,7 @@
   box-sizing: border-box;
 }
 
-/* Main Layout Containers */
+/* Layout */
 .portal-wrapper {
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
@@ -52,12 +50,13 @@
   max-width: 100%;
 }
 
-/* Form Controls and Grid Layouts */
+/* Form controls */
 .control-group {
   margin-bottom: 12px;
 }
 
-.control-group label {
+.control-group label,
+.selector-label {
   display: block;
   font-weight: 600;
   margin-bottom: 8px;
@@ -65,7 +64,6 @@
   color: var(--md-default-fg-color--light);
 }
 
-/* Base control styling - used by native <select> and text inputs */
 .control-input {
   width: 100%;
   padding: 10px;
@@ -81,19 +79,10 @@
   transition: border-color 0.2s;
 }
 
-.control-input:hover {
-  border-color: var(--portal-primary);
-}
-
+.control-input:hover,
 .control-input:focus {
   outline: none;
   border-color: var(--portal-primary);
-}
-
-.lang-cat-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 12px;
 }
 
 .year-range-grid {
@@ -108,7 +97,7 @@
   font-weight: bold;
 }
 
-/* Buttons and Quick Actions */
+/* Quick actions */
 .quick-actions {
   display: flex;
   gap: 8px;
@@ -132,7 +121,12 @@
   color: var(--portal-fg);
 }
 
-.btn-download {
+/* Action button */
+.calendar-actions {
+  margin-top: 16px;
+}
+
+.list-calendars-button {
   width: 100%;
   padding: 12px;
   background-color: var(--portal-primary);
@@ -142,149 +136,22 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  margin-top: 16px;
   transition: background 0.2s;
 }
 
-.btn-download:hover {
+.list-calendars-button:hover {
   background-color: var(--portal-primary-hover);
 }
 
-.btn-download:disabled {
+.list-calendars-button:disabled {
   background-color: #94d3a2;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
-/* Preview Table Styles */
-.table-scroll-area {
-  overflow-y: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  max-height: 70vh;
-  scrollbar-width: thin;
-  width: 100%;
-  position: relative;
-}
-
-.preview-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 0.9rem;
-  table-layout: fixed;
-}
-
-.preview-table th {
-  text-align: left;
-  padding: 12px 16px;
-  background: var(--portal-header-bg);
-  box-shadow: inset 0 -2px 0 var(--portal-border);
-  position: sticky;
-  top: 0;
-  z-index: 4;
-  white-space: nowrap;
-  height: 48px;
-  box-sizing: border-box;
-}
-
-.preview-table th:first-child,
-.preview-table td:first-child {
-  width: 140px;
-}
-
-.preview-table th:last-child,
-.preview-table td:last-child {
-  width: auto;
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-.preview-table td {
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--portal-border);
-  color: var(--portal-fg);
-  white-space: normal;
-  word-wrap: break-word;
-  background-color: var(--portal-bg);
-}
-
-.preview-table td a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.preview-table tr:nth-child(even) td {
-  background-color: var(--portal-zebra);
-}
-
-/* Region Divider - sticky under the table header */
-.region-divider td {
-  background-color: var(--portal-primary) !important;
-  color: white !important;
-  font-weight: 800;
-  padding: 12px 16px !important;
-  border: none !important;
-  text-align: center;
-  position: sticky;
-  top: 48px;
-  z-index: 3;
-}
-
-/* Year Divider - sticky under the region divider */
-.year-divider td {
-  background-color: #e8f0fe !important;
-  color: var(--portal-fg) !important;
-  font-weight: 700;
-  padding: 8px 16px !important;
-  border: none !important;
-  font-size: 0.85rem;
-  text-align: center;
-  position: sticky;
-  top: 84px;
-  z-index: 2;
-}
-
-.empty-state {
-  padding: 40px;
-  text-align: center;
-  color: var(--md-default-fg-color--lighter);
-  font-style: italic;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .portal-wrapper {
-    grid-template-columns: 300px minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .portal-sidebar {
-    position: sticky;
-    top: 20px;
-  }
-}
-
-@media (max-width: 767px) {
-  .portal-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Multi-select country/region picker */
+/* Multi-select */
 .calendar-selector {
   margin-bottom: 12px;
-}
-
-.selector-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: var(--md-default-fg-color--light);
 }
 
 .multi-select {
@@ -292,11 +159,9 @@
   display: block;
 }
 
-/* The trigger matches .control-input exactly */
 .multi-select-trigger {
   width: 100%;
-  padding: 10px;
-  padding-right: 30px;
+  padding: 10px 30px 10px 10px;
   border: 1px solid var(--portal-border);
   border-radius: 6px;
   background: var(--portal-bg);
@@ -307,11 +172,9 @@
   text-align: left;
   appearance: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
   margin: 0;
   line-height: 1.5;
   transition: border-color 0.2s;
-  display: block;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -319,10 +182,7 @@
   box-sizing: border-box;
 }
 
-.multi-select-trigger:hover {
-  border-color: var(--portal-primary);
-}
-
+.multi-select-trigger:hover,
 .multi-select-trigger:focus {
   outline: none;
   border-color: var(--portal-primary);
@@ -340,7 +200,6 @@
   width: 16px;
   height: 16px;
   pointer-events: none;
-  z-index: 1;
 }
 
 .multi-select-arrow svg {
@@ -351,20 +210,10 @@
 
 .multi-select-placeholder {
   color: var(--md-default-fg-color--light);
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  display: inline-block;
 }
 
 .selected-count {
   color: var(--portal-fg);
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  display: inline-block;
 }
 
 .multi-select-dropdown {
@@ -494,7 +343,7 @@
   color: var(--portal-fg);
 }
 
-/* Category checkboxes */
+/* Categories */
 .category-options {
   display: flex;
   flex-wrap: wrap;
@@ -513,222 +362,83 @@
   margin: 0;
 }
 
-/* List calendars action */
-.calendar-actions {
-  margin-top: 16px;
-}
-
-.list-calendars-button {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--portal-primary);
-  color: white;
-  font-weight: 700;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-}
-
-.list-calendars-button:hover {
-  background-color: var(--portal-primary-hover);
-}
-
-.list-calendars-button:disabled {
-  background-color: #94d3a2;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-/* Calendar results table */
-.calendar-results {
-  padding: 20px;
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.calendar-results-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.calendar-results-header h3 {
-  margin: 0 0 4px 0;
-}
-
-.calendar-results-header p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--md-default-fg-color--light);
-}
-
-.calendar-table-wrapper {
-  overflow-x: auto;
-  width: 100%;
-  max-width: 100%;
-  overscroll-behavior-x: contain;
-}
-
-.calendar-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  min-width: 320px;
-}
-
-.calendar-table th {
-  text-align: left;
-  padding: 10px 14px;
-  background: var(--portal-header-bg);
-  border-bottom: 2px solid var(--portal-border);
-  white-space: nowrap;
-}
-
-.calendar-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--portal-border);
-  color: var(--portal-fg);
-  vertical-align: top;
-  white-space: nowrap;
-}
-
-/* Allow the first column (region name + language) to wrap
-   if the name is very long, but keep link columns on one line. */
-.calendar-table td:first-child {
-  white-space: normal;
-  min-width: 140px;
-}
-
-.calendar-table tr:nth-child(even) {
-  background-color: var(--portal-zebra);
-}
-
-.calendar-table small {
-  display: block;
-  margin-top: 2px;
-  font-weight: normal;
-  color: var(--md-default-fg-color--light);
-}
-
-/* Keep ICS · JSON · Webcal on a single line */
-.calendar-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-}
-
-.calendar-links a,
-.calendar-links button {
-  color: var(--portal-primary);
-  text-decoration: none;
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.calendar-links a:hover,
-.calendar-links button:hover:not(:disabled) {
-  text-decoration: underline;
-}
-
-.calendar-links button:disabled {
-  color: var(--md-default-fg-color--lighter);
-  cursor: wait;
-  text-decoration: none;
-}
-
-.calendar-links span {
-  color: var(--md-default-fg-color--lighter);
-  margin: 0 2px;
-  flex-shrink: 0;
-}
-
-.calendar-error {
-  margin-top: 4px;
-  font-size: 0.75rem;
-  color: #cf222e;
-  white-space: normal;
-}
-
-.calendar-unavailable {
-  color: var(--md-default-fg-color--lighter);
-}
-
-.selection-summary {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-  font-size: 0.8rem;
-  color: var(--md-default-fg-color--light);
-}
-
-.entity-list,
-.checkbox-list {
-  max-height: 240px;
-  overflow-y: auto;
-  border: 1px solid var(--portal-border);
-  border-radius: 6px;
-  background: var(--portal-bg);
-  padding: 6px;
-}
-
-.entity-option,
-.checkbox-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.entity-option:hover,
-.checkbox-option:hover {
-  background: var(--portal-header-bg);
-}
-
-.entity-option input,
-.checkbox-option input {
-  margin: 0;
-}
-
 .selection-hint {
   margin-top: 6px;
   font-size: 0.75rem;
   color: var(--md-default-fg-color--light);
 }
 
-.calendar-list-table {
-  min-width: 650px;
+/* Preview table */
+.table-scroll-area {
+  overflow: auto;
+  max-height: 70vh;
+  scrollbar-width: thin;
+  width: 100%;
 }
 
-.calendar-list-table th {
+.preview-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+}
+
+.preview-table th {
   text-align: left;
+  padding: 12px 16px;
+  background: var(--portal-header-bg);
+  box-shadow: inset 0 -2px 0 var(--portal-border);
+  white-space: nowrap;
+  height: 48px;
+  box-sizing: border-box;
 }
 
-.calendar-language {
-  margin-top: 3px;
-  font-size: 0.75rem;
-  color: var(--md-default-fg-color--light);
-  font-weight: normal;
+.preview-table th:first-child,
+.preview-table td:first-child {
+  width: 140px;
+  min-width: 140px;
 }
 
-/* Preview Section Styles */
+/* Force the Holiday column to fill all remaining table width,
+   even when both columns contain short text. */
+.preview-table th:last-child,
+.preview-table td:last-child {
+  width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.preview-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--portal-border);
+  color: var(--portal-fg);
+  background-color: var(--portal-bg);
+}
+
+.preview-table tr:nth-child(even) td {
+  background-color: var(--portal-zebra);
+}
+
+.region-divider td {
+  background-color: var(--portal-primary) !important;
+  color: white !important;
+  font-weight: 800;
+  padding: 12px 16px !important;
+  border: none !important;
+  text-align: center;
+}
+
+.year-divider td {
+  background-color: #e8f0fe !important;
+  color: var(--portal-fg) !important;
+  font-weight: 700;
+  padding: 8px 16px !important;
+  border: none !important;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Preview container */
 .calendar-preview-section {
   padding: 20px;
   border-bottom: 1px solid var(--portal-border);
@@ -769,6 +479,162 @@
   white-space: nowrap;
 }
 
+/* Pagination */
+.preview-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.pagination-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--portal-border);
+  border-radius: 6px;
+  background: var(--portal-bg);
+  color: var(--portal-fg);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--portal-header-bg);
+  border-color: var(--portal-primary);
+}
+
+.pagination-btn:disabled {
+  color: var(--md-default-fg-color--lighter);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pagination-info {
+  padding: 0 8px;
+}
+
+/* Calendar results table */
+.calendar-results {
+  padding: 20px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.calendar-results-header {
+  margin-bottom: 16px;
+}
+
+.calendar-results-header h3 {
+  margin: 0 0 4px 0;
+}
+
+.calendar-results-header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.calendar-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 320px;
+}
+
+.calendar-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--portal-header-bg);
+  border-bottom: 2px solid var(--portal-border);
+  white-space: nowrap;
+}
+
+.calendar-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--portal-border);
+  color: var(--portal-fg);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.calendar-table td:first-child {
+  white-space: normal;
+  min-width: 140px;
+}
+
+.calendar-table tr:nth-child(even) {
+  background-color: var(--portal-zebra);
+}
+
+.calendar-table small {
+  display: block;
+  margin-top: 2px;
+  font-weight: normal;
+  color: var(--md-default-fg-color--light);
+}
+
+.calendar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.calendar-links a,
+.calendar-links button {
+  color: var(--portal-primary);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.calendar-links a:hover,
+.calendar-links button:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.calendar-links button:disabled {
+  color: var(--md-default-fg-color--lighter);
+  cursor: wait;
+  text-decoration: none;
+}
+
+.calendar-links span {
+  color: var(--md-default-fg-color--lighter);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+.calendar-error {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #cf222e;
+  white-space: normal;
+}
+
+.calendar-unavailable {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* States */
+.empty-state,
 .loading-state {
   padding: 40px;
   text-align: center;
@@ -782,6 +648,19 @@
 
 [x-cloak] {
   display: none !important;
+}
+
+@media (min-width: 768px) {
+  .portal-sidebar {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .portal-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
@@ -809,5 +688,16 @@
   .calendar-preview-section .table-scroll-area {
     max-height: 400px;
     min-height: 150px;
+  }
+
+  .preview-pagination {
+    font-size: 0.75rem;
+  }
+
+  .pagination-btn {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 0.9rem;
   }
 }

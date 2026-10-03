@@ -8,7 +8,7 @@ function holidayDownloads() {
     fetchMode: null,
     remoteBaseUrl: 'https://vacanza.github.io/holidays/downloads/',
 
-    // User Selection
+    // Selection
     type: 'countries',
     selectedEntities: [],
     selectedSubdiv: 'ALL',
@@ -16,70 +16,62 @@ function holidayDownloads() {
     selectedCategories: ['public'],
     entitySearch: '',
 
-    // Calendar list state
+    // Results
     showCalendarList: false,
     calendarRows: [],
-
-    // Preview state
     showPreview: false,
     previewData: [],
     previewRows: [],
 
-    // Year Range
+    // Pagination
+    previewPage: 1,
+    previewPageSize: 100,
+    previewTotal: 0,
+
+    // Year range
     startYear: currentYear,
     endYear: currentYear,
     allYears: Array.from({ length: 21 }, (_, i) => 2015 + i),
 
-    // Initialize
     async init() {
       try {
+        const localResponse = await fetch('ics/index.json');
+        if (!localResponse.ok) throw new Error('Local manifest missing');
+        this.manifest = await localResponse.json();
+        this.fetchMode = 'local';
+      } catch (e) {
         try {
-          const localResponse = await fetch('ics/index.json');
-          if (!localResponse.ok) throw new Error('Local missing');
-          this.manifest = await localResponse.json();
-          this.fetchMode = 'local';
-        } catch (e) {
           const remoteResponse = await fetch(this.remoteBaseUrl + 'ics/index.json');
-          if (!remoteResponse.ok) throw new Error('Remote failed');
+          if (!remoteResponse.ok) throw new Error('Remote manifest failed');
           this.manifest = await remoteResponse.json();
           this.fetchMode = 'remote';
+        } catch (remoteError) {
+          console.error('Failed to load manifest', remoteError);
+          this.manifest = { countries: {}, financial: {} };
         }
-      } catch (e) {
-        console.error('Failed to load data', e);
-        this.manifest = { countries: {}, financial: {} };
       } finally {
         this.isLoading = false;
       }
     },
 
-    // Helpers
-    formatLabel(str) {
-      if (!str) return '';
-      return str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' ');
+    // --- Paths and fetching ---
+
+    _getRelativePath(entity, category, ext) {
+      const language = this._getLanguage(entity);
+      const subdiv =
+        this.selectedEntities.length === 1 && this.selectedEntities[0] === entity
+          ? this.selectedSubdiv
+          : 'ALL';
+      return `ics/${this.type}/${entity}/${subdiv}_${language}_${category}.${ext}`;
     },
 
-    _getPath(entity, subdiv, lang, cat, ext) {
-      return `ics/${this.type}/${entity}/${subdiv}_${lang}_${cat}.${ext}`;
+    _fetchFile(path) {
+      const url = this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
+      return fetch(url);
     },
 
-    async _fetchFile(path, options = {}) {
-      if (this.fetchMode === 'remote') {
-        return fetch(this.remoteBaseUrl + path, options);
-      }
-      if (this.fetchMode === 'local') {
-        return fetch(path, options);
-      }
-      try {
-        const response = await fetch(path, options);
-        if (response.ok) return response;
-        throw new Error('Local file not found');
-      } catch (e) {
-        if (e.name === 'AbortError') throw e;
-        return fetch(this.remoteBaseUrl + path, options);
-      }
-    },
+    // --- Computed ---
 
-    // Computed
     get currentManifest() {
       return this.manifest[this.type] || {};
     },
@@ -87,6 +79,7 @@ function holidayDownloads() {
     get filteredManifest() {
       const query = this.entitySearch.trim().toLowerCase();
       if (!query) return this.currentManifest;
+
       return Object.fromEntries(
         Object.entries(this.currentManifest).filter(([code, data]) =>
           code.toLowerCase().includes(query) ||
@@ -95,20 +88,11 @@ function holidayDownloads() {
       );
     },
 
-    get selectedEntityData() {
-      return this.selectedEntities.map(entity => ({
-        code: entity,
-        data: this.currentManifest[entity] || {}
-      }));
-    },
-
     get availableMultiCategories() {
       const categories = new Set();
       this.selectedEntities.forEach(entity => {
         const data = this.currentManifest[entity] || {};
-        (data.categories || ['public']).forEach(category => {
-          categories.add(category);
-        });
+        (data.categories || ['public']).forEach(category => categories.add(category));
       });
       return [...categories].sort();
     },
@@ -126,54 +110,23 @@ function holidayDownloads() {
         .sort((a, b) => a.name.localeCompare(b.name));
     },
 
-    // Subdivisions - only relevant when exactly one country is selected.
-    // The manifest can expose these in several shapes; we handle all known
-    // variants and always ensure an "Entire Country" (ALL) option is present.
     get availableSubdivisions() {
       if (this.selectedEntities.length !== 1) return [];
-      const entity = this.selectedEntities[0];
-      const data = this.currentManifest[entity] || {};
-      const manifest = this.currentManifest;
 
-      let subs = [];
+      const data = this.currentManifest[this.selectedEntities[0]] || {};
+      const subs = data.subdivisions || {};
 
-      // Variant 1: nested map { "ALL": "...", "AU-NSW": "New South Wales" }
-      if (data.subdivisions && !Array.isArray(data.subdivisions)) {
-        subs = Object.entries(data.subdivisions).map(([code, name]) => ({
-          code,
-          name: typeof name === 'string' ? name : (name?.name || code)
-        }));
-      }
-      // Variant 2: nested array [ { code, name }, ... ]
-      else if (Array.isArray(data.subdivisions)) {
-        subs = data.subdivisions.map(sub => ({
-          code: sub.code || sub.id || sub.value,
-          name: sub.name || sub.label || sub.code
-        }));
-      }
-      // Variant 3: sibling top-level entries with a `parent` field
-      else {
-        const siblings = Object.entries(manifest).filter(([code, entry]) => {
-          if (code === entity) return false;
-          const parent = entry?.parent || entry?.country || entry?.parent_code;
-          return parent === entity;
-        });
-        subs = siblings
-          .sort(([a], [b]) => a.localeCompare(b))
-          .map(([code, entry]) => ({
-            code,
-            name: entry?.name || entry?.subdivision_name || code
-          }));
+      const list = Object.entries(subs).map(([code, name]) => ({
+        code,
+        name: typeof name === 'string' ? name : (name?.name || code)
+      }));
+
+      if (!list.some(sub => sub.code === 'ALL')) {
+        list.unshift({ code: 'ALL', name: 'Entire Country' });
       }
 
-      // Always ensure "Entire Country" (ALL) is present.
-      if (!subs.some(sub => sub.code === 'ALL')) {
-        subs.unshift({ code: 'ALL', name: 'Entire Country' });
-      }
-
-      // Keep ALL first, sort the rest alphabetically by name.
-      const allOption = subs.find(sub => sub.code === 'ALL');
-      const rest = subs
+      const allOption = list.find(sub => sub.code === 'ALL');
+      const rest = list
         .filter(sub => sub.code !== 'ALL')
         .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -189,12 +142,29 @@ function holidayDownloads() {
       return this.previewRows.filter(row => row.type === 'region').length;
     },
 
+    get previewTotalPages() {
+      return Math.max(1, Math.ceil(this.previewTotal / this.previewPageSize));
+    },
+
+    get showPagination() {
+      return this.previewTotal > this.previewPageSize;
+    },
+
+    // --- Helpers ---
+
+    formatLabel(str) {
+      if (!str) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' ');
+    },
+
     _getLanguage(entity) {
       const data = this.currentManifest[entity] || {};
       const languages = data.languages || {};
+
       if (this.selectedLang !== 'default' && languages[this.selectedLang]) {
         return this.selectedLang;
       }
+
       return data.default_language || Object.keys(languages)[0] || 'en_US';
     },
 
@@ -203,27 +173,14 @@ function holidayDownloads() {
       return data.languages?.[languageCode] || languageCode;
     },
 
-    _getCalendarUrl(entity, category, ext) {
-      const path = this._getRelativePath(entity, category, ext);
-      return this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
-    },
-
-    // Relative path - uses the selected subdivision when this entity is
-    // the currently-selected single country, otherwise falls back to ALL.
-    _getRelativePath(entity, category, ext) {
-      const language = this._getLanguage(entity);
-      const subdiv =
-        this.selectedEntities.length === 1 && this.selectedEntities[0] === entity
-          ? this.selectedSubdiv
-          : 'ALL';
-      return this._getPath(entity, subdiv, language, category, ext);
-    },
-
     _getWebcalUrl(entity, category) {
-      return this._getCalendarUrl(entity, category, 'ics').replace(/^https?:\/\//, 'webcal://');
+      const path = this._getRelativePath(entity, category, 'ics');
+      const url = this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
+      return url.replace(/^https?:\/\//, 'webcal://');
     },
 
-    // Entity Selection
+    // --- Selection ---
+
     toggleEntity(code) {
       if (this.selectedEntities.includes(code)) {
         this.selectedEntities = this.selectedEntities.filter(entity => entity !== code);
@@ -250,36 +207,6 @@ function holidayDownloads() {
       this._resetResults();
     },
 
-    _syncCategories() {
-      const available = this.availableMultiCategories;
-      this.selectedCategories = this.selectedCategories.filter(
-        category => available.includes(category)
-      );
-      if (this.selectedCategories.length === 0 && available.length > 0) {
-        this.selectedCategories = [available[0]];
-      }
-    },
-
-    _resetResults() {
-      this.calendarRows = [];
-      this.previewData = [];
-      this.previewRows = [];
-      this.showCalendarList = false;
-      this.showPreview = false;
-    },
-
-    // If the preview is already showing, refresh it; otherwise just clear.
-    _refreshOrReset() {
-      if ((this.showCalendarList || this.showPreview) &&
-          this.selectedEntities.length > 0 &&
-          this.selectedCategories.length > 0) {
-        this.listCalendars();
-      } else {
-        this._resetResults();
-      }
-    },
-
-    // Category Selection
     toggleCategory(category) {
       if (this.selectedCategories.includes(category)) {
         this.selectedCategories = this.selectedCategories.filter(cat => cat !== category);
@@ -289,264 +216,37 @@ function holidayDownloads() {
       this._refreshOrReset();
     },
 
-    selectAllCategories() {
-      this.selectedCategories = [...this.availableMultiCategories];
-      this._refreshOrReset();
-    },
+    _syncCategories() {
+      const available = this.availableMultiCategories;
+      this.selectedCategories = this.selectedCategories.filter(c => available.includes(c));
 
-    // Year-scoped downloads
-    async downloadCalendar(entity, category, format) {
-      const row = this.calendarRows.find(r => r.entity === entity);
-      const cell = row?.calendars.find(c => c.category === category);
-      if (!cell || !cell.available) return;
-
-      const flagKey = format === 'json' ? 'jsonDownloading' : 'icsDownloading';
-      cell[flagKey] = true;
-      cell.error = false;
-
-      try {
-        const path = this._getRelativePath(entity, category, format);
-        const response = await this._fetchFile(path);
-        if (!response.ok) throw new Error(`Failed to fetch ${format} file`);
-
-        const filename = this._getDownloadFilename(entity, category, format);
-
-        if (format === 'json') {
-          const events = await response.json();
-          const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
-          this._triggerDownload(JSON.stringify(filtered, null, 2), filename, 'application/json');
-        } else {
-          const icsText = await response.text();
-          const filtered = this._filterIcsByYearRange(icsText, this.startYear, this.endYear);
-          this._triggerDownload(filtered, filename, 'text/calendar');
-        }
-      } catch (e) {
-        console.error('Failed to generate calendar download', e);
-        cell.error = true;
-      } finally {
-        cell[flagKey] = false;
+      if (this.selectedCategories.length === 0 && available.length > 0) {
+        this.selectedCategories = [available[0]];
       }
     },
 
-    _getDownloadFilename(entity, category, format) {
-      const data = this.currentManifest[entity] || {};
-      const name = (data.name || entity).replace(/\s+/g, '-');
-      const subdiv =
-        this.selectedEntities.length === 1 &&
-        this.selectedEntities[0] === entity &&
-        this.selectedSubdiv !== 'ALL'
-          ? `-${this.selectedSubdiv}`
-          : '';
-      const yearLabel = this.startYear === this.endYear
-        ? `${this.startYear}`
-        : `${this.startYear}-${this.endYear}`;
-      return `${name}${subdiv}-${category}-${yearLabel}.${format}`;
+    _resetResults() {
+      this.calendarRows = [];
+      this.previewData = [];
+      this.previewRows = [];
+      this.previewTotal = 0;
+      this.previewPage = 1;
+      this.showCalendarList = false;
+      this.showPreview = false;
     },
 
-    _filterEventsByYearRange(events, startYear, endYear) {
-      return (events || []).filter(event => {
-        const year = parseInt(String(event.date).slice(0, 4), 10);
-        return year >= startYear && year <= endYear;
-      });
-    },
+    _refreshOrReset() {
+      const hasResults = this.showCalendarList || this.showPreview;
+      const hasSelection =
+        this.selectedEntities.length > 0 && this.selectedCategories.length > 0;
 
-    _filterIcsByYearRange(icsText, startYear, endYear) {
-      const [header, ...eventChunks] = icsText.split('BEGIN:VEVENT');
-      if (eventChunks.length === 0) return icsText;
-
-      let footer = '';
-      const keptBlocks = [];
-
-      eventChunks.forEach((chunk, index) => {
-        const endIndex = chunk.indexOf('END:VEVENT');
-        if (endIndex === -1) return;
-
-        const eventBody = chunk.slice(0, endIndex);
-        const isLast = index === eventChunks.length - 1;
-        let tail = chunk.slice(endIndex);
-
-        if (isLast) {
-          const footerIndex = tail.indexOf('END:VCALENDAR');
-          if (footerIndex !== -1) {
-            footer = tail.slice(footerIndex);
-            tail = tail.slice(0, footerIndex);
-          }
-        }
-
-        const dtstartMatch = eventBody.match(/DTSTART[^:\r\n]*:(\d{4})/);
-        const year = dtstartMatch ? parseInt(dtstartMatch[1], 10) : null;
-
-        if (year !== null && year >= startYear && year <= endYear) {
-          keptBlocks.push('BEGIN:VEVENT' + eventBody + tail);
-        }
-      });
-
-      return header + keptBlocks.join('') + footer;
-    },
-
-    _triggerDownload(content, filename, mimeType) {
-      const blob = new Blob([content], { type: mimeType });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    },
-
-    // Build flat rows for the preview table. Each row is one of:
-    // { type: 'region' }, { type: 'year' }, or { type: 'holiday' }.
-    _buildPreviewRows(events) {
-      const grouped = {};
-
-      events.forEach(event => {
-        const region = event._entity || 'Unknown';
-        const year = String(event.date).slice(0, 4);
-
-        if (!grouped[region]) grouped[region] = {};
-        if (!grouped[region][year]) grouped[region][year] = [];
-        grouped[region][year].push(event);
-      });
-
-      const rows = [];
-
-      Object.keys(grouped).sort().forEach(region => {
-        rows.push({ type: 'region', label: region });
-
-        Object.keys(grouped[region])
-          .sort((a, b) => a.localeCompare(b))
-          .forEach(year => {
-            rows.push({ type: 'year', label: year });
-
-            grouped[region][year]
-              .slice()
-              .sort((a, b) => a.date.localeCompare(b.date))
-              .forEach(event => {
-                rows.push({
-                  type: 'holiday',
-                  date: event.date,
-                  name: event.name
-                });
-              });
-          });
-      });
-
-      return rows;
-    },
-
-    // Load Preview Data - fetches ALL selected categories for ALL selected entities.
-    async loadPreview() {
-      if (this.selectedEntities.length === 0 || this.selectedCategories.length === 0) {
-        this.previewData = [];
-        this.previewRows = [];
-        this.showPreview = false;
-        return;
-      }
-
-      const allEvents = [];
-
-      for (const entity of this.selectedEntities) {
-        const data = this.currentManifest[entity] || {};
-        const baseName = data.name || entity;
-
-        // Include subdivision name in the region label when one is selected.
-        const subdivLabel =
-          this.selectedEntities.length === 1 &&
-          this.selectedSubdiv !== 'ALL' &&
-          data.subdivisions &&
-          data.subdivisions[this.selectedSubdiv]
-            ? ` - ${data.subdivisions[this.selectedSubdiv]}`
-            : '';
-        const entityName = baseName + subdivLabel;
-
-        for (const category of this.selectedCategories) {
-          try {
-            const path = this._getRelativePath(entity, category, 'json');
-            const response = await this._fetchFile(path);
-
-            if (!response.ok) continue;
-
-            const events = await response.json();
-            const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
-
-            filtered.forEach(event => {
-              event._entity = entityName;
-              event._category = category;
-            });
-
-            allEvents.push(...filtered);
-          } catch (e) {
-            console.warn(`Could not load preview for ${entity}/${category}`, e);
-          }
-        }
-      }
-
-      // Deduplicate events that appear in multiple categories.
-      const seen = new Set();
-      const deduped = [];
-      for (const event of allEvents) {
-        const key = `${event._entity}|${event.date}|${event.name}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          deduped.push(event);
-        }
-      }
-
-      deduped.sort((a, b) => a.date.localeCompare(b.date));
-
-      this.previewData = deduped.slice(0, 200);
-      this.previewRows = this._buildPreviewRows(this.previewData);
-      this.showPreview = this.previewRows.length > 0;
-    },
-
-    // Calendar Table
-    async listCalendars() {
-      if (!this.selectedEntities.length || !this.selectedCategories.length) {
+      if (hasResults && hasSelection) {
+        this.listCalendars();
+      } else {
         this._resetResults();
-        return;
       }
-
-      await this.loadPreview();
-
-      this.calendarRows = this.selectedEntities.map(entity => {
-        const data = this.currentManifest[entity] || {};
-        const language = this._getLanguage(entity);
-        const supportedCategories = data.categories || ['public'];
-
-        // Append subdivision to the display name when applicable.
-        const subdivLabel =
-          this.selectedEntities.length === 1 &&
-          this.selectedSubdiv !== 'ALL' &&
-          data.subdivisions &&
-          data.subdivisions[this.selectedSubdiv]
-            ? ` - ${data.subdivisions[this.selectedSubdiv]}`
-            : '';
-
-        return {
-          entity,
-          name: (data.name || entity) + subdivLabel,
-          language,
-          languageName: this._getLanguageName(entity, language),
-          calendars: this.selectedCategories.map(category => {
-            const available = supportedCategories.includes(category);
-            return {
-              category,
-              available,
-              icsDownloading: false,
-              jsonDownloading: false,
-              error: false,
-              webcal: available ? this._getWebcalUrl(entity, category) : ''
-            };
-          })
-        };
-      });
-
-      this.showCalendarList = true;
     },
 
-    // Controls
     updateType() {
       this.selectedEntities = [];
       this.selectedCategories = ['public'];
@@ -569,6 +269,267 @@ function holidayDownloads() {
     validateYears() {
       if (this.startYear > this.endYear) this.endYear = this.startYear;
       this._resetResults();
+    },
+
+    // --- Pagination ---
+
+    goToPage(n) {
+      const clamped = Math.min(Math.max(1, n), this.previewTotalPages);
+      if (clamped === this.previewPage) return;
+      this.previewPage = clamped;
+      this._renderPage();
+    },
+
+    nextPage() { this.goToPage(this.previewPage + 1); },
+    prevPage() { this.goToPage(this.previewPage - 1); },
+    firstPage() { this.goToPage(1); },
+    lastPage() { this.goToPage(this.previewTotalPages); },
+
+    _renderPage() {
+      const start = (this.previewPage - 1) * this.previewPageSize;
+      const slice = this.previewData.slice(start, start + this.previewPageSize);
+      this.previewRows = this._buildPreviewRows(slice);
+    },
+
+    // --- Preview ---
+
+    _filterEventsByYearRange(events, startYear, endYear) {
+      return (events || []).filter(event => {
+        const year = parseInt(String(event.date).slice(0, 4), 10);
+        return year >= startYear && year <= endYear;
+      });
+    },
+
+    // Flatten { region: { year: [events] } } into single-root rows
+    // because Alpine's x-for requires one root element per iteration.
+    _buildPreviewRows(events) {
+      const grouped = {};
+
+      events.forEach(event => {
+        const region = event._entity || 'Unknown';
+        const year = String(event.date).slice(0, 4);
+
+        if (!grouped[region]) grouped[region] = {};
+        if (!grouped[region][year]) grouped[region][year] = [];
+        grouped[region][year].push(event);
+      });
+
+      const rows = [];
+
+      Object.keys(grouped).sort().forEach(region => {
+        rows.push({ type: 'region', label: region });
+
+        Object.keys(grouped[region]).sort().forEach(year => {
+          rows.push({ type: 'year', label: year });
+
+          grouped[region][year]
+            .slice()
+            .sort((a, b) => a.date.localeCompare(b.date))
+            .forEach(event => {
+              rows.push({ type: 'holiday', date: event.date, name: event.name });
+            });
+        });
+      });
+
+      return rows;
+    },
+
+    async loadPreview() {
+      if (!this.selectedEntities.length || !this.selectedCategories.length) {
+        this.previewData = [];
+        this.previewRows = [];
+        this.previewTotal = 0;
+        this.previewPage = 1;
+        this.showPreview = false;
+        return;
+      }
+
+      const allEvents = [];
+
+      for (const entity of this.selectedEntities) {
+        const data = this.currentManifest[entity] || {};
+        const subdivName = data.subdivisions?.[this.selectedSubdiv];
+        const subdivLabel =
+          this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
+            ? ` — ${subdivName}`
+            : '';
+        const entityLabel = (data.name || entity) + subdivLabel;
+
+        for (const category of this.selectedCategories) {
+          try {
+            const path = this._getRelativePath(entity, category, 'json');
+            const response = await this._fetchFile(path);
+            if (!response.ok) continue;
+
+            const events = await response.json();
+            const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
+
+            filtered.forEach(event => {
+              event._entity = entityLabel;
+              event._category = category;
+            });
+
+            allEvents.push(...filtered);
+          } catch (e) {
+            console.warn(`Could not load preview for ${entity}/${category}`, e);
+          }
+        }
+      }
+
+      // Dedupe — events often appear in multiple category files.
+      const seen = new Set();
+      const deduped = [];
+      for (const event of allEvents) {
+        const key = `${event._entity}|${event.date}|${event.name}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          deduped.push(event);
+        }
+      }
+
+      deduped.sort((a, b) => a.date.localeCompare(b.date));
+
+      this.previewData = deduped;
+      this.previewTotal = deduped.length;
+      this.previewPage = 1;
+      this._renderPage();
+      this.showPreview = this.previewRows.length > 0;
+    },
+
+    // --- Downloads ---
+
+    async listCalendars() {
+      if (!this.selectedEntities.length || !this.selectedCategories.length) {
+        this._resetResults();
+        return;
+      }
+
+      await this.loadPreview();
+
+      this.calendarRows = this.selectedEntities.map(entity => {
+        const data = this.currentManifest[entity] || {};
+        const language = this._getLanguage(entity);
+        const supported = data.categories || ['public'];
+
+        const subdivName = data.subdivisions?.[this.selectedSubdiv];
+        const subdivLabel =
+          this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
+            ? ` — ${subdivName}`
+            : '';
+
+        return {
+          entity,
+          name: (data.name || entity) + subdivLabel,
+          languageName: this._getLanguageName(entity, language),
+          calendars: this.selectedCategories.map(category => ({
+            category,
+            available: supported.includes(category),
+            icsDownloading: false,
+            jsonDownloading: false,
+            error: false,
+            webcal: supported.includes(category) ? this._getWebcalUrl(entity, category) : ''
+          }))
+        };
+      });
+
+      this.showCalendarList = true;
+    },
+
+    async downloadCalendar(entity, category, format) {
+      const row = this.calendarRows.find(r => r.entity === entity);
+      const cell = row?.calendars.find(c => c.category === category);
+      if (!cell?.available) return;
+
+      const flagKey = format === 'json' ? 'jsonDownloading' : 'icsDownloading';
+      cell[flagKey] = true;
+      cell.error = false;
+
+      try {
+        const path = this._getRelativePath(entity, category, format);
+        const response = await this._fetchFile(path);
+        if (!response.ok) throw new Error(`Failed to fetch ${format} file`);
+
+        const filename = this._getDownloadFilename(entity, category, format);
+
+        if (format === 'json') {
+          const events = await response.json();
+          const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
+          this._triggerDownload(JSON.stringify(filtered, null, 2), filename, 'application/json');
+        } else {
+          const text = await response.text();
+          const filtered = this._filterIcsByYearRange(text, this.startYear, this.endYear);
+          this._triggerDownload(filtered, filename, 'text/calendar');
+        }
+      } catch (e) {
+        console.error('Failed to generate calendar download', e);
+        cell.error = true;
+      } finally {
+        cell[flagKey] = false;
+      }
+    },
+
+    _getDownloadFilename(entity, category, format) {
+      const data = this.currentManifest[entity] || {};
+      const name = (data.name || entity).replace(/\s+/g, '-');
+      const subdiv =
+        this.selectedEntities.length === 1 &&
+        this.selectedEntities[0] === entity &&
+        this.selectedSubdiv !== 'ALL'
+          ? `-${this.selectedSubdiv}`
+          : '';
+      const yearLabel =
+        this.startYear === this.endYear
+          ? `${this.startYear}`
+          : `${this.startYear}-${this.endYear}`;
+      return `${name}${subdiv}-${category}-${yearLabel}.${format}`;
+    },
+
+    // Trim an ICS string to events whose DTSTART year is in range,
+    // preserving the VCALENDAR header and footer.
+    _filterIcsByYearRange(icsText, startYear, endYear) {
+      const [header, ...chunks] = icsText.split('BEGIN:VEVENT');
+      if (chunks.length === 0) return icsText;
+
+      let footer = '';
+      const kept = [];
+
+      chunks.forEach((chunk, index) => {
+        const endIndex = chunk.indexOf('END:VEVENT');
+        if (endIndex === -1) return;
+
+        const body = chunk.slice(0, endIndex);
+        const isLast = index === chunks.length - 1;
+        let tail = chunk.slice(endIndex);
+
+        if (isLast) {
+          const footerIndex = tail.indexOf('END:VCALENDAR');
+          if (footerIndex !== -1) {
+            footer = tail.slice(footerIndex);
+            tail = tail.slice(0, footerIndex);
+          }
+        }
+
+        const match = body.match(/DTSTART[^:\r\n]*:(\d{4})/);
+        const year = match ? parseInt(match[1], 10) : null;
+
+        if (year !== null && year >= startYear && year <= endYear) {
+          kept.push('BEGIN:VEVENT' + body + tail);
+        }
+      });
+
+      return header + kept.join('') + footer;
+    },
+
+    _triggerDownload(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     }
   };
 }

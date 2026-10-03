@@ -79,7 +79,7 @@ hide:
       </div>
     </div>
 
-    <!-- Subdivision / State - only shown for a single selected country -->
+    <!-- Subdivision / State — only shown for a single selected country -->
     <div class="control-group" x-show="showSubdivisionPicker" x-cloak>
       <label for="subdivision">Subdivision / State</label>
       <select
@@ -171,7 +171,7 @@ hide:
     <div x-show="showPreview && previewRows.length > 0" class="calendar-preview-section" x-cloak>
       <div class="preview-header">
         <h3>Holiday Preview</h3>
-        <span class="preview-count" x-text="`${previewData.length} holidays across ${regionCount} region${regionCount === 1 ? '' : 's'}`"></span>
+        <span class="preview-count" x-text="`${previewTotal} holidays across ${regionCount} region${regionCount === 1 ? '' : 's'}`"></span>
       </div>
       <div class="table-scroll-area">
         <table class="preview-table">
@@ -199,6 +199,43 @@ hide:
           </tbody>
         </table>
       </div>
+
+      <!-- Pagination -->
+      <div class="preview-pagination" x-show="showPagination" x-cloak>
+        <button
+          type="button"
+          class="pagination-btn"
+          @click="firstPage()"
+          :disabled="previewPage === 1"
+          aria-label="First page"
+        >«</button>
+        <button
+          type="button"
+          class="pagination-btn"
+          @click="prevPage()"
+          :disabled="previewPage === 1"
+          aria-label="Previous page"
+        >‹</button>
+
+        <span class="pagination-info">
+          Page <span x-text="previewPage"></span> of <span x-text="previewTotalPages"></span>
+        </span>
+
+        <button
+          type="button"
+          class="pagination-btn"
+          @click="nextPage()"
+          :disabled="previewPage === previewTotalPages"
+          aria-label="Next page"
+        >›</button>
+        <button
+          type="button"
+          class="pagination-btn"
+          @click="lastPage()"
+          :disabled="previewPage === previewTotalPages"
+          aria-label="Last page"
+        >»</button>
+      </div>
     </div>
 
     <!-- Calendar Download Links -->
@@ -210,7 +247,7 @@ hide:
             <span x-text="selectedEntities.length"></span> countries/regions ·
             <span x-text="selectedCategories.length"></span> categories ·
             ICS/JSON downloads cover
-            <span x-text="startYear === endYear ? startYear : `${startYear}-${endYear}`"></span>
+            <span x-text="startYear === endYear ? startYear : `${startYear}–${endYear}`"></span>
           </p>
         </div>
       </div>
@@ -249,7 +286,7 @@ hide:
                       </div>
                     </template>
                     <template x-if="!calendar.available">
-                      <span class="calendar-unavailable">-</span>
+                      <span class="calendar-unavailable">—</span>
                     </template>
                   </td>
                 </template>
