@@ -735,7 +735,7 @@ Naming the output calendar file using the country code:
 holidays-ics US --output-template "{code}.ics"
 ```
 
-Create a custom calendar file name by prepending `HOLIDAYS_` to the default file name:
+Create a custom calendar file name by prepending "HOLIDAYS_" to the default file name:
 
 ```shell
 holidays-ics US --years 2021-2030 --categories unofficial --subdiv IA --language th --output-template "HOLIDAYS_{all}.ics"
