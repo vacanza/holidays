@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-02 22:32-0400\n"
-"PO-Revision-Date: 2026-10-02 22:32-0400\n"
+"PO-Revision-Date: 2026-10-02 23:09-0400\n"
 "Last-Translator: FULL NAME <EMAIL@EXAMPLE.COM>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,52 +27,44 @@ msgstr ""
 "Generated-By: Lingva 5.0.7\n"
 "X-Source-Language: tr\n"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (tahmini)"
-msgstr "%s (estimated)"
-
-#. New Year's Day.
-msgid "Yılbaşı"
-msgstr "New Year's Day"
-
-#. National Sovereignty and Children's Day.
-msgid "Ulusal Egemenlik ve Çocuk Bayramı"
-msgstr "National Sovereignty and Children's Day"
-
-#. Labour and Solidarity Day.
-msgid "Emek ve Dayanışma Günü"
-msgstr "Labour and Solidarity Day"
-
-#. Commemoration of Atatürk, Youth and Sports Day.
-msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
-msgstr "Commemoration of Atatürk, Youth and Sports Day"
-
-#. Democracy and National Unity Day.
-msgid "Demokrasi ve Millî Birlik Günü"
-msgstr "Democracy and National Unity Day"
-
-#. Victory Day.
-msgid "Zafer Bayramı"
-msgstr "Victory Day"
-
-#. Republic Day.
-msgid "Cumhuriyet Bayramı"
-msgstr "Republic Day"
-
-#. Ramadan Feast.
-msgid "Ramazan Bayramı"
-msgstr "Eid al-Fitr"
-
-#. Feast of the Sacrifice.
-msgid "Kurban Bayramı"
-msgstr "Eid al-Adha"
-
-#. %s (from 1pm).
-#, c-format
-msgid "%s (saat 13.00'ten)"
-msgstr "%s (from 1pm)"
-
 #. Market Closed (Earthquake).
-msgid "Market Closed (Earthquake)"
+msgid "Piyasa Kapalı (Deprem)"
 msgstr "Market Closed (Earthquake)"
+
+#, c-format
+#~ msgid "%s (tahmini)"
+#~ msgstr "%s (estimated)"
+
+#~ msgid "Yılbaşı"
+#~ msgstr "New Year's Day"
+
+#~ msgid "Ulusal Egemenlik ve Çocuk Bayramı"
+#~ msgstr "National Sovereignty and Children's Day"
+
+#~ msgid "Emek ve Dayanışma Günü"
+#~ msgstr "Labour and Solidarity Day"
+
+#~ msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
+#~ msgstr "Commemoration of Atatürk, Youth and Sports Day"
+
+#~ msgid "Demokrasi ve Millî Birlik Günü"
+#~ msgstr "Democracy and National Unity Day"
+
+#~ msgid "Zafer Bayramı"
+#~ msgstr "Victory Day"
+
+#~ msgid "Cumhuriyet Bayramı"
+#~ msgstr "Republic Day"
+
+#~ msgid "Ramazan Bayramı"
+#~ msgstr "Eid al-Fitr"
+
+#~ msgid "Kurban Bayramı"
+#~ msgstr "Eid al-Adha"
+
+#, c-format
+#~ msgid "%s (saat 13.00'ten)"
+#~ msgstr "%s (from 1pm)"
+
+#~ msgid "Market Closed (Earthquake)"
+#~ msgstr "Market Closed (Earthquake)"

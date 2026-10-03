@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-02 22:32-0400\n"
-"PO-Revision-Date: 2026-10-02 22:32-0400\n"
+"PO-Revision-Date: 2026-10-02 23:09-0400\n"
 "Last-Translator: FULL NAME <EMAIL@EXAMPLE.COM>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: tr\n"
@@ -27,52 +27,44 @@ msgstr ""
 "Generated-By: Lingva 5.0.7\n"
 "X-Source-Language: tr\n"
 
-#. %s (estimated).
-#, c-format
-msgid "%s (tahmini)"
-msgstr ""
-
-#. New Year's Day.
-msgid "Yılbaşı"
-msgstr ""
-
-#. National Sovereignty and Children's Day.
-msgid "Ulusal Egemenlik ve Çocuk Bayramı"
-msgstr ""
-
-#. Labour and Solidarity Day.
-msgid "Emek ve Dayanışma Günü"
-msgstr ""
-
-#. Commemoration of Atatürk, Youth and Sports Day.
-msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
-msgstr ""
-
-#. Democracy and National Unity Day.
-msgid "Demokrasi ve Millî Birlik Günü"
-msgstr ""
-
-#. Victory Day.
-msgid "Zafer Bayramı"
-msgstr ""
-
-#. Republic Day.
-msgid "Cumhuriyet Bayramı"
-msgstr ""
-
-#. Ramadan Feast.
-msgid "Ramazan Bayramı"
-msgstr ""
-
-#. Feast of the Sacrifice.
-msgid "Kurban Bayramı"
-msgstr ""
-
-#. %s (from 1pm).
-#, c-format
-msgid "%s (saat 13.00'ten)"
-msgstr ""
-
 #. Market Closed (Earthquake).
-msgid "Market Closed (Earthquake)"
+msgid "Piyasa Kapalı (Deprem)"
 msgstr ""
+
+#, c-format
+#~ msgid "%s (tahmini)"
+#~ msgstr ""
+
+#~ msgid "Yılbaşı"
+#~ msgstr ""
+
+#~ msgid "Ulusal Egemenlik ve Çocuk Bayramı"
+#~ msgstr ""
+
+#~ msgid "Emek ve Dayanışma Günü"
+#~ msgstr ""
+
+#~ msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
+#~ msgstr ""
+
+#~ msgid "Demokrasi ve Millî Birlik Günü"
+#~ msgstr ""
+
+#~ msgid "Zafer Bayramı"
+#~ msgstr ""
+
+#~ msgid "Cumhuriyet Bayramı"
+#~ msgstr ""
+
+#~ msgid "Ramazan Bayramı"
+#~ msgstr ""
+
+#~ msgid "Kurban Bayramı"
+#~ msgstr ""
+
+#, c-format
+#~ msgid "%s (saat 13.00'ten)"
+#~ msgstr ""
+
+#~ msgid "Market Closed (Earthquake)"
+#~ msgstr ""

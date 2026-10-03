@@ -72,10 +72,10 @@ class BorsaIstanbulStaticHolidays(TurkeyStaticHolidays):
         **TurkeyStaticHolidays.special_public_holidays,
         2023: (
             # Market Closed (Earthquake).
-            (FEB, 8, tr("Market Closed (Earthquake)")),
-            (FEB, 9, tr("Market Closed (Earthquake)")),
-            (FEB, 10, tr("Market Closed (Earthquake)")),
-            (FEB, 13, tr("Market Closed (Earthquake)")),
-            (FEB, 14, tr("Market Closed (Earthquake)")),
+            (FEB, 8, tr("Piyasa Kapalı (Deprem)")),
+            (FEB, 9, tr("Piyasa Kapalı (Deprem)")),
+            (FEB, 10, tr("Piyasa Kapalı (Deprem)")),
+            (FEB, 13, tr("Piyasa Kapalı (Deprem)")),
+            (FEB, 14, tr("Piyasa Kapalı (Deprem)")),
         ),
     }
