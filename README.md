@@ -1987,6 +1987,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Borsa Istanbul</td>
+<td>XIST</td>
+<td>Borsa Istanbul (BIST) market holidays</td>
+<td>en_US, <strong>tr</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
