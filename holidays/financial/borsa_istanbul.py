@@ -40,23 +40,14 @@ class BorsaIstanbul(Turkey):
     # Istanbul Stock Exchange (1986-2012), succeeded by Borsa İstanbul A.Ş. in 2013.
     start_year = 1986
 
-    def _populate_half_day_holidays(self):
-        # Snapshot values before: super() may merge a half-day into an
-        # existing holiday's name (e.g. Ramadan eve on Labour Day).
-        before = dict(self.items())
-        super()._populate_half_day_holidays()
-        # Remove weekend half-days. For dates newly added, delete entirely.
-        # For dates where a half-day was merged into an existing holiday,
-        # restore the original value.
-        for dt in list(self.keys()):
-            if dt.weekday() < 5:
-                continue
-            if dt not in before:
-                # Newly added weekend half-day: remove entirely.
-                del self[dt]
-            elif self[dt] != before[dt]:
-                # Half-day merged into existing holiday: restore original.
-                self[dt] = before[dt]
+    def _populate(self, year):
+        super()._populate(year)
+        # Borsa Istanbul is closed on weekends, so remove any holidays
+        # (public or half-day) falling on Saturday/Sunday for clarity,
+        # as is done in most other financial markets.
+        for dt in tuple(self.keys()):
+            if dt.year == year and self._is_weekend(dt):
+                self.pop(dt)
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
