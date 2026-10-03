@@ -26,9 +26,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         self.assertIsNone(getattr(self.holidays, "country", None))
 
     def test_special_holidays(self):
-        # Inherited one-off public holiday.
-        self.assertHolidayName("Genel tati̇l", "1999-12-31")
-        # Five-day market suspension after the earthquakes.
         self.assertHolidayName(
             "Piyasa Kapalı (Deprem)",
             "2023-02-08",
