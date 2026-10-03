@@ -239,6 +239,37 @@ class _Lunisolar(_Astronomy):
 
         return last_found
 
+    def get_adi_shankaracharya_jayanti(self, year: int) -> date | None:
+        """
+        Adi Shankaracharya Jayanti = Vaishakha Shukla Panchami.
+        Tithi = 5 (Panchami) of Shukla Paksha in Vaishakha month - sun in sidereal
+        Aries (sign 0). Evaluated at sunrise (Udaya tithi rule).
+
+        In Adhika Masa (leap month) years, two Amavasyas can occur while the sun
+        is in sidereal Aries. The last one starts Nija Vaishakha.
+
+        Panchami detection (sunrise tithi):
+        - Present at sunrise -> include first day
+        - Skipped between days (4 -> 6) -> include previous day
+        """
+        # Find last Vaishakha Amavasya
+        vaishakha_ama = self._get_amavasya(date(year, 4, 1), zodiac_sign=0, last=True)
+
+        if not vaishakha_ama:
+            return None
+
+        # Find Panchami (tithi 5) at sunrise, or skipped case (4 -> 6)
+        for delta in range(3, 8):
+            dt = vaishakha_ama + timedelta(days=delta)
+            t = self._tithi(self._sunrise(dt))
+
+            if t == 5 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 5:
+                return dt
+            if t == 6 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 4:
+                return dt - timedelta(days=1)
+
+        return None
+
     def get_anant_chaturdashi(self, year: int) -> date | None:
         """
         Anant Chaturdashi = Bhadrapada Shukla Chaturdashi.
@@ -2238,6 +2269,7 @@ _lunisolar = _Lunisolar()
 _solar = _Solar()
 
 HINDU_LUNISOLAR_HOLIDAYS = (
+    ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
     # ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
     # ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
     # ("BATHUKAMMA", _lunisolar.get_bathukamma),
@@ -2253,7 +2285,7 @@ HINDU_LUNISOLAR_HOLIDAYS = (
     # ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
     # ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
     # ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
-    ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
+    # ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
     # ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
     # ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
     # ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
