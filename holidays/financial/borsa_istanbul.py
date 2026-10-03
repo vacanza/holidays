@@ -40,15 +40,6 @@ class BorsaIstanbul(Turkey):
     # Istanbul Stock Exchange (1986-2012), succeeded by Borsa İstanbul A.Ş. in 2013.
     start_year = 1986
 
-    def _populate(self, year):
-        super()._populate(year)
-        # Borsa Istanbul is closed on weekends, so remove any holidays
-        # (public or half-day) falling on Saturday/Sunday for clarity,
-        # as is done in most other financial markets.
-        for dt in tuple(self.keys()):
-            if dt.year == year and self._is_weekend(dt):
-                self.pop(dt)
-
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
         Args:
@@ -62,6 +53,15 @@ class BorsaIstanbul(Turkey):
             static_holidays_classes=(BorsaIstanbulStaticHolidays,),
             **kwargs,
         )
+
+    def _populate_common_holidays(self):
+        super()._populate_common_holidays()
+        # Borsa Istanbul is closed on weekends, so remove any holidays
+        # (public or half-day) falling on Saturday/Sunday for clarity,
+        # as is done in most other financial markets.
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
 
 
 class XIST(BorsaIstanbul):

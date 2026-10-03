@@ -58,7 +58,6 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
         self.assertHalfDayHolidaysInYear(
             2024,
             ("2024-04-09", "Ramazan Bayramı (saat 13.00'ten)"),
-            # 2024-06-15 (Kurban Bayramı eve) falls on Saturday — excluded.
             ("2024-10-28", "Cumhuriyet Bayramı (saat 13.00'ten)"),
         )
 
@@ -80,11 +79,7 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2023-06-28", "Kurban Bayramı"),
             ("2023-06-29", "Kurban Bayramı"),
             ("2023-06-30", "Kurban Bayramı"),
-            # 2023-07-01 (Saturday) — excluded (weekend).
-            # 2023-07-15 (Saturday) — excluded (weekend).
             ("2023-08-30", "Zafer Bayramı"),
-            # 2023-10-28 (Saturday) — excluded (weekend).
-            # 2023-10-29 (Sunday) — excluded (weekend).
         )
 
     def test_l10n_en_us(self):
@@ -106,9 +101,5 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2023-06-28", "Eid al-Adha"),
             ("2023-06-29", "Eid al-Adha"),
             ("2023-06-30", "Eid al-Adha"),
-            # 2023-07-01 (Saturday) — excluded (weekend).
-            # 2023-07-15 (Saturday) — excluded (weekend).
             ("2023-08-30", "Victory Day"),
-            # 2023-10-28 (Saturday) — excluded (weekend).
-            # 2023-10-29 (Sunday) — excluded (weekend).
         )
