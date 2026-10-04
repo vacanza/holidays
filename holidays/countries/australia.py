@@ -60,6 +60,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
             * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
         * SA:
+            * [SA Holidays Act 1909](https://classic.austlii.edu.au/au/legis/sa/num_act/tha976o1909182.pdf)
+            * [SA Holidays Act Amendment Act 1947](https://classic.austlii.edu.au/au/legis/sa/num_act/haaa6o1947253.pdf)
+            * [SA Holidays (Labour Day) Amendment Act 1991](https://classic.austlii.edu.au/au/legis/sa/num_act/hdaa36o1991322.pdf)
             * [SA Holidays Act 1910](https://web.archive.org/web/20250420203417/https://www.legislation.sa.gov.au/LZ/C/A/HOLIDAYS%20ACT%201910.aspx)
             * [SA Public Holidays Act 2023](https://web.archive.org/web/20250429092113/https://www.legislation.sa.gov.au/lz?path=/C/A/Public%20Holidays%20Act%202023)
             * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
@@ -691,8 +694,18 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1936:
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
-        # Labor Day.
-        self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
+        # Established on the 2nd Wednesday in October by SA Holidays Act 1909, moved to
+        # the 2nd Monday in October by Holidays Act Amendment Act 1947, moved to
+        # the 1st Monday in October by Holidays (Labour Day) Amendment Act 1991.
+        if self._year >= 1910:
+            # Labor Day.
+            name = tr("Labour Day")
+            if self._year >= 1992:
+                self._add_holiday_1st_mon_of_oct(name)
+            elif self._year >= 1947:
+                self._add_holiday_2nd_mon_of_oct(name)
+            else:
+                self._add_holiday_2nd_wed_of_oct(name)
 
         # Proclamation Day.
         # 1984-1992: SAT, SUN - move to MON.
