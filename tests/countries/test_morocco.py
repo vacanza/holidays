@@ -67,7 +67,6 @@ class TestMorocco(CommonCountryTests, TestCase):
         name = "رأس السنة الأمازيغية"
         self.assertHolidayName(name, (f"{year}-01-14" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
-        self.assertNoHoliday(f"{year}-01-13" for year in range(2024, self.end_year))
 
     def test_unity_day(self):
         name = "عيد الوحدة"

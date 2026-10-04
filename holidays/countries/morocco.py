@@ -21,8 +21,8 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_au_Maroc>
         * <https://web.archive.org/web/20230303001626/http://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
-        * [Amazigh New Year on January 14](https://telquel.ma/instant-t/2023/08/07/nouvel-an-amazigh-le-14-janvier-desormais-jour-ferie-national-officiellement-remunere_1825156/)
-        * [Unity Day](https://en.hespress.com/129525-129525.html)
+        * <https://web.archive.org/web/20260606234454/https://mmsp.gov.ma/fr/nos-metiers/horaires-de-travail-et-jours-fériés>
+        * [Unity Day](https://web.archive.org/web/20261004190305/https://www.mre.gov.ma/en/media-room/news/his-majesty-king-proclaims-october-31-unity-day-statement-royal-office)
     """
 
     country = "MA"
@@ -51,7 +51,6 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
         # In May 2023, Morocco recognized Berber New Year as official holiday.
-        # https://web.archive.org/web/20230515114330/https://www.diplomatie.ma/en/statement-royal-office-12
         if self._year >= 2024:
             # Amazigh New Year.
             self._add_holiday_jan_14(tr("رأس السنة الأمازيغية"))
@@ -81,7 +80,6 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         else:
             self._add_holiday_jul_9(name)
 
-        # Decrees No. 2.25.1140 and No. 2.26.14, after the Royal decision of November 4, 2025.
         if self._year >= 2026:
             # Unity Day.
             self._add_holiday_oct_31(tr("عيد الوحدة"))
