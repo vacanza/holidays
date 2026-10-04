@@ -94,6 +94,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "TAS",  # Tasmania.
         "VIC",  # Victoria.
         "WA",   # Western Australia.
+        # School calendar variants.
+        "NSW Western",  # New South Wales, Western Division.
     )
     # fmt: on
     subdivisions_aliases = {
@@ -105,6 +107,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Tasmania": "TAS",
         "Victoria": "VIC",
         "Western Australia": "WA",
+        "New South Wales Western Division": "NSW Western",
     }
     supported_categories = (BANK, HALF_DAY, PUBLIC, SCHOOL)
     supported_languages = ("en_AU", "en_US", "th")
@@ -443,6 +446,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2011:
             # Bank Holiday.
             self._add_holiday_1st_mon_of_aug(tr("Bank Holiday"))
+
+    def _populate_subdiv_nsw_western_public_holidays(self):
+        # Western Division schools are in New South Wales and keep its public
+        # holidays. Only the school calendar sets them apart.
+        self._populate_subdiv_nsw_public_holidays()
+
+    def _populate_subdiv_nsw_western_bank_holidays(self):
+        self._populate_subdiv_nsw_bank_holidays()
 
     def _populate_subdiv_nt_public_holidays(self):
         # New Year's Day.

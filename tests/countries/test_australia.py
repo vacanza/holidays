@@ -659,6 +659,7 @@ class TestAustralia(CommonCountryTests, TestCase):
         subdiv_start_years = {
             "ACT": 2016,
             "NSW": 2011,
+            "NSW Western": 2011,
             "NT": 2024,
             "QLD": 2017,
             "SA": 2024,
@@ -1764,7 +1765,7 @@ class TestAustralia(CommonCountryTests, TestCase):
 
         # PUBLIC.
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NSW":
+            if subdiv in {"NSW", "NSW Western"}:
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -2094,8 +2095,9 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertEqual(dataset_ids, known_ids)
 
     def test_school_holidays_cover_only_known_subdivisions(self):
+        known = {subdiv.replace(" ", "_") for subdiv in Australia.subdivisions}
         for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
-            self.assertLessEqual(set(year_data), set(Australia.subdivisions), year)
+            self.assertLessEqual(set(year_data), known, year)
 
     def test_school_terms_are_not_holidays(self):
         # The first and last day of each Victorian term in 2026.
@@ -2273,3 +2275,44 @@ class TestAustralia(CommonCountryTests, TestCase):
             ("2026-12-19", "วันหยุดภาคฤดูร้อน"),
         ):
             self.assertHolidayName(name, th_holidays, dt)
+
+    # Western Division school holidays.
+
+    def test_western_division_returns_a_week_after_the_rest_of_the_state(self):
+        """Its schools start Term 1 about a week later, so summer runs on.
+
+        Everything else in the year is shared, so this is the only difference
+        between the two calendars.
+        """
+        self.assertSubdivNswSchoolHolidayName("Summer school holidays", "2027-01-27")
+        self.assertNoSubdivNswSchoolHoliday("2027-01-28", "2027-02-03")
+
+        self.assertSubdivNswWesternSchoolHolidayName(
+            "Summer school holidays", "2027-01-28", "2027-02-03"
+        )
+        self.assertNoSubdivNswWesternSchoolHoliday("2027-02-04")
+
+    def test_western_division_shares_the_rest_of_the_year(self):
+        """Only Term 1 and the summer break differ; the other breaks are common."""
+        for name, dt in (
+            ("Term 1 school holidays", "2027-04-12"),
+            ("Term 2 school holidays", "2027-07-05"),
+            ("Term 3 school holidays", "2027-09-27"),
+        ):
+            self.assertSubdivNswSchoolHolidayName(name, dt)
+            self.assertSubdivNswWesternSchoolHolidayName(name, dt)
+
+    def test_western_division_keeps_new_south_wales_public_holidays(self):
+        """These schools are in NSW. Only the school calendar sets them apart."""
+        nsw = Australia(subdiv="NSW", years=2027)
+        western = Australia(subdiv="NSW Western", years=2027)
+        self.assertEqual(dict(nsw), dict(western))
+
+    def test_western_division_is_covered_for_every_year_new_south_wales_is(self):
+        """A year with one and not the other would silently fall back to nothing."""
+        for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
+            self.assertEqual(
+                "NSW" in year_data,
+                "NSW_Western" in year_data,
+                f"{year} has only one of the two New South Wales calendars",
+            )
