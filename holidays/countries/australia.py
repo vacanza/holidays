@@ -52,6 +52,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
             * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
             * [NSW 2026-2027](https://web.archive.org/web/20260216073138/https://www.nsw.gov.au/about-nsw/public-holidays)
+        * NSW Western:
+            * [Western Division schools](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/late-start-schools)
+            * [NSW Teachers Award 2024](https://web.archive.org/web/20250423185043/https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf),
+              Schedule 8 (Locality Allowances), Part A, clause 2.1, which draws the
+              boundary the Western Division follows
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
@@ -95,7 +100,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "VIC",  # Victoria.
         "WA",   # Western Australia.
         # School calendar variants.
-        "NSW Western",  # New South Wales, Western Division.
+        "NSW Western",  # New South Wales, Western Division ("late start schools").
     )
     # fmt: on
     subdivisions_aliases = {
