@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-15 19:53+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-04 20:10+0200\n"
+"Last-Translator: Redouane-E <14999831+Redouane-E@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,10 @@ msgstr "La révolution du roi et du peuple"
 #. Youth Day.
 msgid "عيد الشباب"
 msgstr "Fête de la Jeunesse"
+
+#. Unity Day.
+msgid "عيد الوحدة"
+msgstr "Fête de l'Unité"
 
 #. Green March.
 msgid "ذكرى المسيرة الخضراء"

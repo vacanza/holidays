@@ -64,8 +64,15 @@ class TestMorocco(CommonCountryTests, TestCase):
         )
 
     def test_amazigh_new_year(self):
-        self.assertHoliday("2024-01-13")
-        self.assertNoHoliday("2023-01-13")
+        name = "رأس السنة الأمازيغية"
+        self.assertHolidayName(name, (f"{year}-01-14" for year in range(2024, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2024))
+        self.assertNoHoliday(f"{year}-01-13" for year in range(2024, self.end_year))
+
+    def test_unity_day(self):
+        name = "عيد الوحدة"
+        self.assertHolidayName(name, (f"{year}-10-31" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
 
     def test_independence_manifesto_day(self):
         self.assertHoliday("1945-01-11")
@@ -96,62 +103,68 @@ class TestMorocco(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-01-01", "رأس السنة الميلادية"),
-            ("2023-01-11", "ذكرى تقديم وثيقة الاستقلال"),
-            ("2023-04-21", "عيد الفطر (تقديري)"),
-            ("2023-04-22", "عيد الفطر (تقديري)"),
-            ("2023-05-01", "عيد العمال"),
-            ("2023-06-28", "عيد الأضحى (تقديري)"),
-            ("2023-06-29", "عيد الأضحى (تقديري)"),
-            ("2023-07-19", "رأس السنة الهجرية (تقديري)"),
-            ("2023-07-30", "عيد العرش"),
-            ("2023-08-14", "ذكرى استرجاع إقليم وادي الذهب"),
-            ("2023-08-20", "ذكرى ثورة الملك و الشعب"),
-            ("2023-08-21", "عيد الشباب"),
-            ("2023-09-27", "عيد المولد النبوي (تقديري)"),
-            ("2023-09-28", "عيد المولد النبوي (تقديري)"),
-            ("2023-11-06", "ذكرى المسيرة الخضراء"),
-            ("2023-11-18", "عيد الاستقلال"),
+            ("2026-01-01", "رأس السنة الميلادية"),
+            ("2026-01-11", "ذكرى تقديم وثيقة الاستقلال"),
+            ("2026-01-14", "رأس السنة الأمازيغية"),
+            ("2026-03-20", "عيد الفطر (تقديري)"),
+            ("2026-03-21", "عيد الفطر (تقديري)"),
+            ("2026-05-01", "عيد العمال"),
+            ("2026-05-27", "عيد الأضحى (تقديري)"),
+            ("2026-05-28", "عيد الأضحى (تقديري)"),
+            ("2026-06-16", "رأس السنة الهجرية (تقديري)"),
+            ("2026-07-30", "عيد العرش"),
+            ("2026-08-14", "ذكرى استرجاع إقليم وادي الذهب"),
+            ("2026-08-20", "ذكرى ثورة الملك و الشعب"),
+            ("2026-08-21", "عيد الشباب"),
+            ("2026-08-25", "عيد المولد النبوي (تقديري)"),
+            ("2026-08-26", "عيد المولد النبوي (تقديري)"),
+            ("2026-10-31", "عيد الوحدة"),
+            ("2026-11-06", "ذكرى المسيرة الخضراء"),
+            ("2026-11-18", "عيد الاستقلال"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2023-01-01", "New Year's Day"),
-            ("2023-01-11", "Proclamation of Independence Day"),
-            ("2023-04-21", "Eid al-Fitr (estimated)"),
-            ("2023-04-22", "Eid al-Fitr (estimated)"),
-            ("2023-05-01", "Labor Day"),
-            ("2023-06-28", "Eid al-Adha (estimated)"),
-            ("2023-06-29", "Eid al-Adha (estimated)"),
-            ("2023-07-19", "Islamic New Year (estimated)"),
-            ("2023-07-30", "Throne Day"),
-            ("2023-08-14", "Oued Ed-Dahab Day"),
-            ("2023-08-20", "Revolution Day"),
-            ("2023-08-21", "Youth Day"),
-            ("2023-09-27", "Prophet's Birthday (estimated)"),
-            ("2023-09-28", "Prophet's Birthday (estimated)"),
-            ("2023-11-06", "Green March"),
-            ("2023-11-18", "Independence Day"),
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-11", "Proclamation of Independence Day"),
+            ("2026-01-14", "Amazigh New Year"),
+            ("2026-03-20", "Eid al-Fitr (estimated)"),
+            ("2026-03-21", "Eid al-Fitr (estimated)"),
+            ("2026-05-01", "Labor Day"),
+            ("2026-05-27", "Eid al-Adha (estimated)"),
+            ("2026-05-28", "Eid al-Adha (estimated)"),
+            ("2026-06-16", "Islamic New Year (estimated)"),
+            ("2026-07-30", "Throne Day"),
+            ("2026-08-14", "Oued Ed-Dahab Day"),
+            ("2026-08-20", "Revolution Day"),
+            ("2026-08-21", "Youth Day"),
+            ("2026-08-25", "Prophet's Birthday (estimated)"),
+            ("2026-08-26", "Prophet's Birthday (estimated)"),
+            ("2026-10-31", "Unity Day"),
+            ("2026-11-06", "Green March"),
+            ("2026-11-18", "Independence Day"),
         )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
             "fr",
-            ("2023-01-01", "Nouvel an"),
-            ("2023-01-11", "Manifeste de l'indépendance"),
-            ("2023-04-21", "Fête de la rupture du jeûne (estimé)"),
-            ("2023-04-22", "Fête de la rupture du jeûne (estimé)"),
-            ("2023-05-01", "Fête du Travail"),
-            ("2023-06-28", "Fête du sacrifice (estimé)"),
-            ("2023-06-29", "Fête du sacrifice (estimé)"),
-            ("2023-07-19", "Nouvel an musulman (estimé)"),
-            ("2023-07-30", "Fête du Trône"),
-            ("2023-08-14", "Allégeance Oued Eddahab"),
-            ("2023-08-20", "La révolution du roi et du peuple"),
-            ("2023-08-21", "Fête de la Jeunesse"),
-            ("2023-09-27", "Anniversaire du prophète (estimé)"),
-            ("2023-09-28", "Anniversaire du prophète (estimé)"),
-            ("2023-11-06", "La marche verte"),
-            ("2023-11-18", "Fête de l'indépendance"),
+            ("2026-01-01", "Nouvel an"),
+            ("2026-01-11", "Manifeste de l'indépendance"),
+            ("2026-01-14", "Nouvel an Amazigh"),
+            ("2026-03-20", "Fête de la rupture du jeûne (estimé)"),
+            ("2026-03-21", "Fête de la rupture du jeûne (estimé)"),
+            ("2026-05-01", "Fête du Travail"),
+            ("2026-05-27", "Fête du sacrifice (estimé)"),
+            ("2026-05-28", "Fête du sacrifice (estimé)"),
+            ("2026-06-16", "Nouvel an musulman (estimé)"),
+            ("2026-07-30", "Fête du Trône"),
+            ("2026-08-14", "Allégeance Oued Eddahab"),
+            ("2026-08-20", "La révolution du roi et du peuple"),
+            ("2026-08-21", "Fête de la Jeunesse"),
+            ("2026-08-25", "Anniversaire du prophète (estimé)"),
+            ("2026-08-26", "Anniversaire du prophète (estimé)"),
+            ("2026-10-31", "Fête de l'Unité"),
+            ("2026-11-06", "La marche verte"),
+            ("2026-11-18", "Fête de l'indépendance"),
         )
