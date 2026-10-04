@@ -50,7 +50,7 @@ msgstr "اسلامی نیا سال"
 
 #. Prophet's Birthday.
 msgid "مولد النبي"
-msgstr "میلاد النبی"
+msgstr "عید میلاد النبی"
 
 #. Isra' and Mi'raj.
 msgid "الإسراء والمعراج"
