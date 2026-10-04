@@ -102,6 +102,7 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2024-12-31",
             "2025-12-24",
             "2025-12-31",
+            "2026-11-10",
         )
 
     def test_special_subdiv_holidays(self):
