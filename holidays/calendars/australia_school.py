@@ -31,9 +31,11 @@ Two notes on New South Wales. It runs two sets of term dates, and both are here:
 "NSW Western" is the Western Division, whose schools start Term 1 about a week
 later so their summer break runs on. Only that break differs; the rest of the
 year is shared. The department publishes the Western Division as a roll of named
-schools rather than a boundary, but they follow a line set out in the state's
-teachers award for its climatic allowance, running from the Murray opposite Swan
-Hill up to Bonshaw on the Queensland border.
+schools rather than a boundary, but they follow the line set out in the state's
+teachers award for its climatic disability allowance: schools "upon or to the
+west of a line starting from a point on the right bank of the Murray River
+opposite Swan Hill", running through Conargo, Hay, Condobolin, Coonabarabran and
+Moree to Bonshaw on the Queensland border.
 
 Its published holiday periods also stop short of the school development days that
 open each term, because the department counts those inside the term even though
@@ -50,6 +52,8 @@ Sources:
     * [TAS](https://web.archive.org/web/20260610091723/https://www.decyp.tas.gov.au/learning/term-dates/)
     * [VIC](https://web.archive.org/web/20260913195820/https://www.vic.gov.au/school-term-dates-and-holidays-victoria)
     * [WA](https://web.archive.org/web/20260911103607/https://www.education.wa.edu.au/future-term-dates)
+    * [NSW Western Division boundary](https://web.archive.org/web/20250423185043/https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf),
+      Schedule 8 (Locality Allowances), Part A, clause 2.1
 
 Coverage stops where each jurisdiction stops publishing approved dates, so it is
 uneven: the Northern Territory reaches 2032, the ACT and Tasmania only 2027.
