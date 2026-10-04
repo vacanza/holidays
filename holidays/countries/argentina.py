@@ -816,7 +816,7 @@ class ArgentinaStaticHolidays:
         * [Release P50983 (2020)](https://web.archive.org/web/20241203102423/https://www.bcra.gob.ar/Pdfs/comytexord/p50983.pdf)
         * [Release P51020 (2021)](https://web.archive.org/web/20240616000609/http://www.bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
         * [Release P51155 (2024)](https://web.archive.org/web/20250427172945/https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
-        * [Release P51199 (2025)]https://web.archive.org/web/20251221165343/https://www.bcra.gob.ar/archivos/Pdfs/comytexord/P51199.pdf)
+        * [Release P51199 (2025)](https://web.archive.org/web/20251221165343/https://www.bcra.gob.ar/archivos/Pdfs/comytexord/P51199.pdf)
         * [Communication A8487](https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8487.pdf)
 
     Special Subdivision-level Holidays References:
