@@ -140,7 +140,7 @@ class NationalStockExchangeOfIndia(
         self._move_holiday(self._add_dussehra(tr("Dussehra")))
 
         # Diwali Lakshmi Puja.
-        self._move_holiday(self._add_diwali_india(tr("Diwali Laxmi Pujan")))
+        self._add_diwali_india(tr("Diwali Laxmi Pujan"))
 
         if self._year <= 2002 or self._year >= 2011:
             # Diwali Balipratipada.

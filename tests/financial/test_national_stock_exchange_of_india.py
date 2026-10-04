@@ -246,7 +246,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
 
     def test_diwali_laxmi_pujan(self):
         name = "Diwali Laxmi Pujan"
-        self.assertNonObservedHolidayName(
+        self.assertHolidayName(
             name,
             "2020-11-14",
             "2021-11-04",
@@ -255,8 +255,8 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2024-11-01",
             "2025-10-21",
         )
-        self.assertNonObservedHolidayName(name, range(self.start_year, 2036))
-        self.assertNoHoliday(
+        self.assertHolidayName(name, range(self.start_year, 2036))
+        self.assertHoliday(
             "2013-11-03",
             "2016-10-30",
             "2019-10-27",
@@ -465,6 +465,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Mahatma Gandhi Jayanti"),
             ("2023-10-24", "Dussehra"),
+            ("2023-11-12", "Diwali Laxmi Pujan"),
             ("2023-11-14", "Diwali Balipratipada"),
             ("2023-11-27", "Guru Nanak Jayanti"),
             ("2023-12-25", "Christmas Day"),
@@ -485,6 +486,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "Ganesh Chaturthi"),
             ("2023-10-02", "Gandhi Jayanti"),
             ("2023-10-24", "Dussehra"),
+            ("2023-11-12", "Diwali Lakshmi Puja"),
             ("2023-11-14", "Diwali Balipratipada"),
             ("2023-11-27", "Guru Nanak Jayanti"),
             ("2023-12-25", "Christmas Day"),
@@ -505,6 +507,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "ગણેશ ચતુર્થી"),
             ("2023-10-02", "મહાત્મા ગાંધી જયંતિ"),
             ("2023-10-24", "દશેરા"),
+            ("2023-11-12", "દિવાળી લક્ષ્મી પૂજન"),
             ("2023-11-14", "દિવાળી બલિપ્રતિપદા"),
             ("2023-11-27", "ગુરુ નાનક જયંતિ"),
             ("2023-12-25", "નાતાલનો દિવસ"),
@@ -525,6 +528,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "गणेश चतुर्थी"),
             ("2023-10-02", "महात्मा गांधी जयंती"),
             ("2023-10-24", "दशहरा"),
+            ("2023-11-12", "दिवाली लक्ष्मी पूजन"),
             ("2023-11-14", "दिवाली बलिप्रतिपदा"),
             ("2023-11-27", "गुरु नानक जयंती"),
             ("2023-12-25", "क्रिसमस डे"),
@@ -545,6 +549,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             ("2023-09-19", "गणेश चतुर्थी"),
             ("2023-10-02", "महात्मा गांधी जयंती"),
             ("2023-10-24", "दसरा"),
+            ("2023-11-12", "दिवाळी लक्ष्मीपूजन"),
             ("2023-11-14", "दिवाळी बलिप्रतिपदा"),
             ("2023-11-27", "गुरुनानक जयंती"),
             ("2023-12-25", "नाताळ"),
