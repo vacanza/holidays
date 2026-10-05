@@ -50,7 +50,6 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Proclamation of Independence Day.
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
-        # In May 2023, Morocco recognized Berber New Year as official holiday.
         if self._year >= 2024:
             # Amazigh New Year.
             self._add_holiday_jan_14(tr("رأس السنة الأمازيغية"))
