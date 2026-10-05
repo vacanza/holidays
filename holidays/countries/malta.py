@@ -29,7 +29,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MT"
     default_language = "mt"
-    supported_languages = ("en_US", "mt")
+    supported_languages = ("ar", "en_US", "mt")
     # Earliest available source is 1980.
     start_year = 1980
 

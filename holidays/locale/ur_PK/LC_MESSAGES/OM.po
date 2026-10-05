@@ -1,0 +1,65 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Oman holidays ur_PK localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.106\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-04 15:17+0500\n"
+"PO-Revision-Date: 2026-10-05 04:21+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ur_PK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: ar\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (تقديري)"
+msgstr "%s (اندازاً)"
+
+#. Sultan's Accession Day.
+msgid "اليوم الوطني لتولي السلطان"
+msgstr "سلطان کی تخت نشینی کا قومی دن"
+
+#. Renaissance Day.
+msgid "يوم النهضة"
+msgstr "نشاۃ ثانیہ کا دن"
+
+#. National Day.
+msgid "يوم وطني"
+msgstr "قومی دن"
+
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "اسلامی نیا سال"
+
+#. Prophet's Birthday.
+msgid "مولد النبي"
+msgstr "عید میلاد النبی"
+
+#. Isra' and Mi'raj.
+msgid "الإسراء والمعراج"
+msgstr "اسراء و معراج"
+
+#. Eid al-Fitr.
+msgid "عيد الفطر"
+msgstr "عید الفطر"
+
+#. Eid al-Adha.
+msgid "عيد الأضحى"
+msgstr "عید الاضحی"

@@ -43,6 +43,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
 
     References:
         * ACT:
+            * [ACT Bank Holidays Ordinance 1930](https://web.archive.org/web/20260922180159/https://www.legislation.act.gov.au/DownloadFile/ord/1930-17/19300911-49003/PDF/1930-17.PDF)
+            * [ACT Bank Holidays Ordinance 1936](https://web.archive.org/web/20260927204814/https://www.legislation.act.gov.au/DownloadFile/ord/1936-18/19360514-47650/PDF/1936-18.PDF)
             * [ACT Holidays Act 1958](https://web.archive.org/web/20250322061953/https://www.legislation.act.gov.au/a/1958-19/)
             * [ACT 2013-2023](https://web.archive.org/web/20240401072340/https://www.cmtedd.act.gov.au/archived-content/holidays/previous-years)
             * [ACT 2026-2029](https://web.archive.org/web/20260323230558/https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving)
@@ -53,6 +55,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
+            * [QLD Bank Holidays Act 1904](https://web.archive.org/web/20260922180205/https://www.legislation.qld.gov.au/view/pdf/asmade/act-1904-008)
+            * [QLD Holidays Act 1912](https://web.archive.org/web/20260922180231/https://www.legislation.qld.gov.au/view/pdf/asmade/act-1912-017)
             * [QLD Holidays Act 1983](https://web.archive.org/web/20250404230918/https://www.legislation.qld.gov.au/view/html/inforce/current/act-1983-018)
             * [QLD 2013-2028](https://web.archive.org/web/20150703042947/http://www.qld.gov.au/recreation/travel/holidays/public/)
         * SA:
@@ -61,12 +65,16 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [SA 2007-2021](https://web.archive.org/web/20240610084716/https://www.safework.sa.gov.au/__data/assets/pdf_file/0007/235474/Public-Holidays-since-2007.pdf)
             * [SA 2023-2024](https://web.archive.org/web/20250404084235/https://www.safework.sa.gov.au/resources/public-holidays)
         * TAS:
+            * [TAS Bank Holidays Act 1944](https://archive.org/details/httpsclassic.austlii.edu.auaulegistasnum_actbha194478gvn81210.pdf)
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
         * VIC:
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
         * WA:
+            * [WA Bank Holidays Amendment Act 1899](https://web.archive.org/web/20241104022630/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_14258.pdf/$FILE/Bank%20Holidays%20Amendment%20Act%201899%20-%20%5B00-00-00%5D.pdf)
+            * [WA Bank Holidays Amendment Act 1921](https://web.archive.org/web/20241103185610/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_13231.pdf/$FILE/Bank%20Holidays%20Amendment%20Act%201921%20-%20%5B00-00-00%5D.pdf)
+            * [WA Bank Holidays Act Amendment Act 1948](https://web.archive.org/web/20241104061936/https://www.legislation.wa.gov.au/legislation/prod/filestore.nsf/FileURL/mrdoc_11806.pdf/$FILE/Bank%20Holidays%20Act%20Amendment%20Act%201948%20-%20%5B00-00-00%5D.pdf)
             * [WA Public and Bank Holidays Act 1972](https://web.archive.org/web/20241106220940/https://www.legislation.wa.gov.au/legislation/statutes.nsf/law_a639.html)
             * [WA 2019-2023](https://web.archive.org/web/20240805123535/https://www.commerce.wa.gov.au/labour-relations/previous-years-public-holiday-dates)
     """
@@ -305,8 +313,16 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Family & Community Day.
             self._add_holiday(tr("Family & Community Day"), fc_dates[self._year])
 
-        # Labor Day.
-        self._add_holiday_1st_mon_of_oct(tr("Labour Day"))
+        # Established as Eight Hours Day by ACT Bank Holidays Ordinance 1930, date fixed to
+        # the 1st Monday in October by Ordinance 1936, renamed Labour Day by Ordinance 1958.
+        if self._year >= 1931:
+            self._add_holiday_1st_mon_of_oct(
+                # Labor Day.
+                tr("Labour Day")
+                if self._year >= 1958
+                # Eight Hours Day.
+                else tr("Eight Hours Day")
+            )
 
         # Boxing Day.
         # 1958-1991: SUN - to MON, MON - to TUE.
@@ -550,12 +566,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
 
-        # Labor Day.
-        name = tr("Labour Day")
-        if 2013 <= self._year <= 2015:
-            self._add_holiday_1st_mon_of_oct(name)
-        else:
-            self._add_holiday_1st_mon_of_may(name)
+        # Established by QLD Bank Holidays Act 1904.
+        if self._year >= 1905:
+            # Labor Day.
+            name = tr("Labour Day")
+            if 2013 <= self._year <= 2015:
+                self._add_holiday_1st_mon_of_oct(name)
+            else:
+                self._add_holiday_1st_mon_of_may(name)
 
         # Sovereign's Birthday.
         if self._year >= 1936:
@@ -740,8 +758,15 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year >= 2001:
                 self._move_holiday(dt)
 
-        # Eight Hours Day.
-        self._add_holiday_2nd_mon_of_mar(tr("Eight Hours Day"))
+        # Established as the 1st Monday in March by TAS Bank Holidays Act 1944.
+        # Moved to the 2nd Monday in March by TAS Statutory Holidays Act 2000.
+        if self._year >= 1945:
+            # Eight Hours Day.
+            name = tr("Eight Hours Day")
+            if self._year >= 2001:
+                self._add_holiday_2nd_mon_of_mar(name)
+            else:
+                self._add_holiday_1st_mon_of_mar(name)
 
         if self._year <= 2010:
             # Easter Tuesday.
@@ -878,8 +903,16 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             elif self._year >= 1973:
                 self._move_holiday(dt, rule=ALL_TO_NEXT_MON)
 
-        # Labor Day.
-        self._add_holiday_1st_mon_of_mar(tr("Labour Day"))
+        # Established as the 1st day of May by WA Bank Holidays Amendment Act 1921.
+        # Moved to the 1st day of March by WA Bank Holidays Act Amendment Act 1948.
+        # (Observed on the following Monday by WA Bank Holidays Amendment Act 1899).
+        if self._year >= 1922:
+            # Labor Day.
+            name = tr("Labour Day")
+            if self._year >= 1949:
+                self._add_holiday_1st_mon_of_mar(name)
+            else:
+                self._add_holiday_1st_mon_of_may(name)
 
         if self._year >= 2022:
             # Easter Sunday.
