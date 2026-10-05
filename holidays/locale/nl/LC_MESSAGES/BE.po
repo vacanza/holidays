@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-05 20:41+0530\n"
+"Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -86,4 +86,48 @@ msgstr ""
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"
+msgstr ""
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr ""
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr ""
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr ""
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr ""
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr ""
+
+#. Spring Break.
+msgid "Lentevakantie"
+msgstr ""
+
+#. Mardi Gras.
+msgid "Vastenavond"
+msgstr ""
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Allerzielen"
+msgstr ""
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr ""
+
+#. Bridge Holiday.
+msgid "Brugdag"
 msgstr ""

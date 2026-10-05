@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-05 20:41+0530\n"
+"Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -87,3 +87,47 @@ msgstr "Пʼятниця після Вознесіння Господнього"
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Банківський вихідний"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Різдвяні канікули"
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr "Карнавальні канікули"
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr "Пасхальні канікули"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Літні канікули"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Осінні канікули"
+
+#. Spring Break.
+msgid "Lentevakantie"
+msgstr "Весняні канікули"
+
+#. Mardi Gras.
+msgid "Vastenavond"
+msgstr "Масний вівторок"
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr "День Французької спільноти"
+
+#. All Souls' Day.
+msgid "Allerzielen"
+msgstr "День усіх померлих"
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr "День Німецькомовної спільноти"
+
+#. Bridge Holiday.
+msgid "Brugdag"
+msgstr "Проміжний вихідний"
