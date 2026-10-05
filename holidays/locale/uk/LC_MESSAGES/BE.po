@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-10-05 20:41+0530\n"
+"PO-Revision-Date: 2026-10-05 21:42+0530\n"
 "Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -27,6 +27,18 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "День праці"
+
+#. Ascension Day.
+msgid "O. L. H. Hemelvaart"
+msgstr "Вознесіння Господнє"
+
+#. Friday after Ascension Day.
+msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr "Пʼятниця після Вознесіння Господнього"
 
 #. New Year's Day.
 msgid "Nieuwjaar"
@@ -39,14 +51,6 @@ msgstr "Великдень"
 #. Easter Monday.
 msgid "Paasmaandag"
 msgstr "Великодній понеділок"
-
-#. Labor Day.
-msgid "Dag van de Arbeid"
-msgstr "День праці"
-
-#. Ascension Day.
-msgid "O. L. H. Hemelvaart"
-msgstr "Вознесіння Господнє"
 
 #. Pentecost.
 msgid "Pinksteren"
@@ -79,10 +83,6 @@ msgstr "Різдво Христове"
 #. Good Friday.
 msgid "Goede vrijdag"
 msgstr "Страсна пʼятниця"
-
-#. Friday after Ascension Day.
-msgid "Vrijdag na O. L. H. Hemelvaart"
-msgstr "Пʼятниця після Вознесіння Господнього"
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"

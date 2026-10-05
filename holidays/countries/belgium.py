@@ -70,6 +70,15 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
     supported_categories = (BANK, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "fr", "nl", "uk")
 
+    # Labor Day.
+    labor_day = tr("Dag van de Arbeid")
+
+    # Ascension Day.
+    ascension_day = tr("O. L. H. Hemelvaart")
+
+    # Friday after Ascension Day.
+    friday_after_ascension_day = tr("Vrijdag na O. L. H. Hemelvaart")
+
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -137,10 +146,10 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_easter_monday(tr("Paasmaandag"))
 
         # Labor Day.
-        self._add_labor_day(tr("Dag van de Arbeid"))
+        self._add_labor_day(self.labor_day)
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+        self._add_ascension_thursday(self.ascension_day)
 
         # Pentecost.
         self._add_pentecost(tr("Pinksteren"))
@@ -168,7 +177,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_good_friday(tr("Goede vrijdag"))
 
         # Friday after Ascension Day.
-        self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))
+        self._add_holiday_40_days_past_easter(self.friday_after_ascension_day)
 
         # Bank Holiday.
         self._add_christmas_day_two(tr("Banksluitingsdag"))
@@ -184,13 +193,13 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_easter_break(tr("Paasvakantie"))
 
         # Labor Day.
-        self._add_labor_day(tr("Dag van de Arbeid"))
+        self._add_labor_day(self.labor_day)
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+        self._add_ascension_thursday(self.ascension_day)
 
         # Friday after Ascension Day.
-        self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))
+        self._add_holiday_40_days_past_easter(self.friday_after_ascension_day)
 
         # Pentecost Monday.
         self._add_pentecost_monday(tr("Pinkstermaandag"))
@@ -259,10 +268,10 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_easter_break(tr("Lentevakantie"))
 
             # Labor Day.
-            self._add_labor_day(tr("Dag van de Arbeid"))
+            self._add_labor_day(self.labor_day)
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+        self._add_ascension_thursday(self.ascension_day)
 
         # Pentecost Monday.
         self._add_pentecost_monday(tr("Pinkstermaandag"))
@@ -322,10 +331,10 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             self._add_easter_break(name)
 
         # Labor Day.
-        self._add_labor_day(tr("Dag van de Arbeid"))
+        self._add_labor_day(self.labor_day)
 
         # Ascension Day.
-        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+        self._add_ascension_thursday(self.ascension_day)
 
         # Pentecost Monday.
         self._add_pentecost_monday(tr("Pinkstermaandag"))
@@ -362,8 +371,7 @@ class BelgiumStaticHolidays:
     # Bridge Holiday.
     bridge_holiday = tr("Brugdag")
 
-    # Friday after Ascension Day.
-    friday_after_ascension_day = tr("Vrijdag na O. L. H. Hemelvaart")
+    friday_after_ascension_day = Belgium.friday_after_ascension_day
 
     special_french_school_holidays = {
         2015: (MAY, 15, friday_after_ascension_day),
