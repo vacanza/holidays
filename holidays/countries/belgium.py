@@ -50,6 +50,12 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             * [Calendrier scolaire](http://www.enseignement.be/index.php?page=23953)
             * [Calendriers scolaires 2012-2013 à 2020-2021](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
             * [Calendriers scolaires 2021-2022 et 2022-2023](https://web.archive.org/web/20220516141856/http://www.enseignement.be/index.php?page=23953)
+        * German-speaking Community school holidays:
+            * [Schulkalender und Ferienregelung](https://ostbelgienbildung.be/desktopdefault.aspx/tabid-2212/4397_read-31727/)
+            * [Osterferien in Belgien driften auseinander](https://brf.be/regional/1116887/)
+            * [Osterferien im Jahr 2025 in der DG](https://ostbelgiendirekt.be/fg-schuljahr-2024-2025-394972)
+            * [Feiertage und Schulferien 2026 in der DG](https://ostbelgiendirekt.be/feiertage-und-schulferien-2026-433031)
+            * [Tag der Deutschsprachigen Gemeinschaft](https://de.wikipedia.org/wiki/Tag_der_Deutschsprachigen_Gemeinschaft)
 
     Subdivisions are the Communities in charge of education, used for `SCHOOL` holidays.
     """
@@ -300,6 +306,42 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Armistice Day.
         self._add_remembrance_day(tr("Wapenstilstand"))
 
+    def _populate_subdiv_german_school_holidays(self):
+        # Christmas Break.
+        self._add_christmas_break(tr("Kerstvakantie"))
+
+        # Carnival Break.
+        self._add_carnival_break(tr("Krokusvakantie"))
+
+        # Easter Break.
+        name = tr("Paasvakantie")
+        if self._year >= 2025:
+            # Easter Monday → 2 weeks.
+            self._add_multiday_holiday(_timedelta(self._easter_sunday, +1), 14, name=name)
+        else:
+            self._add_easter_break(name)
+
+        # Labor Day.
+        self._add_labor_day(tr("Dag van de Arbeid"))
+
+        # Ascension Day.
+        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pinkstermaandag"))
+
+        # Summer Break.
+        self._add_summer_break(tr("Zomervakantie"))
+
+        # Autumn Break.
+        self._add_autumn_break(tr("Herfstvakantie"))
+
+        # Armistice Day.
+        self._add_remembrance_day(tr("Wapenstilstand"))
+
+        if self._year >= 1994:
+            # German-speaking Community Day.
+            self._add_holiday_nov_15(tr("Feestdag van de Duitstalige Gemeenschap"))
 
 
 class BE(Belgium):
