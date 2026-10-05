@@ -1,5 +1,6 @@
 function holidayDownloads() {
   const currentYear = new Date().getFullYear();
+  const PREVIEW_LIMIT = 200;
 
   return {
     // State
@@ -22,11 +23,11 @@ function holidayDownloads() {
     showPreview: false,
     previewData: [],
     previewRows: [],
-
-    // Pagination
-    previewPage: 1,
-    previewPageSize: 100,
-    previewTotal: 0,
+    previewTotal: 0,            // events actually shown
+    previewAvailableTotal: 0,   // events available before the cap
+    previewRegionCount: 0,      // regions shown in the preview
+    previewAvailableRegions: 0, // regions available before the cap
+    previewTruncated: false,
 
     // Year range
     startYear: currentYear,
@@ -65,9 +66,9 @@ function holidayDownloads() {
       return `ics/${this.type}/${entity}/${subdiv}_${language}_${category}.${ext}`;
     },
 
-    _fetchFile(path) {
+    _fetchFile(path, options = {}) {
       const url = this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
-      return fetch(url);
+      return fetch(url, options);
     },
 
     // --- Computed ---
@@ -136,18 +137,6 @@ function holidayDownloads() {
     get showSubdivisionPicker() {
       return this.selectedEntities.length === 1 &&
              this.availableSubdivisions.length > 1;
-    },
-
-    get regionCount() {
-      return this.previewRows.filter(row => row.type === 'region').length;
-    },
-
-    get previewTotalPages() {
-      return Math.max(1, Math.ceil(this.previewTotal / this.previewPageSize));
-    },
-
-    get showPagination() {
-      return this.previewTotal > this.previewPageSize;
     },
 
     // --- Helpers ---
@@ -230,7 +219,10 @@ function holidayDownloads() {
       this.previewData = [];
       this.previewRows = [];
       this.previewTotal = 0;
-      this.previewPage = 1;
+      this.previewAvailableTotal = 0;
+      this.previewRegionCount = 0;
+      this.previewAvailableRegions = 0;
+      this.previewTruncated = false;
       this.showCalendarList = false;
       this.showPreview = false;
     },
@@ -271,26 +263,6 @@ function holidayDownloads() {
       this._resetResults();
     },
 
-    // --- Pagination ---
-
-    goToPage(n) {
-      const clamped = Math.min(Math.max(1, n), this.previewTotalPages);
-      if (clamped === this.previewPage) return;
-      this.previewPage = clamped;
-      this._renderPage();
-    },
-
-    nextPage() { this.goToPage(this.previewPage + 1); },
-    prevPage() { this.goToPage(this.previewPage - 1); },
-    firstPage() { this.goToPage(1); },
-    lastPage() { this.goToPage(this.previewTotalPages); },
-
-    _renderPage() {
-      const start = (this.previewPage - 1) * this.previewPageSize;
-      const slice = this.previewData.slice(start, start + this.previewPageSize);
-      this.previewRows = this._buildPreviewRows(slice);
-    },
-
     // --- Preview ---
 
     _filterEventsByYearRange(events, startYear, endYear) {
@@ -300,8 +272,7 @@ function holidayDownloads() {
       });
     },
 
-    // Flatten { region: { year: [events] } } into single-root rows
-    // because Alpine's x-for requires one root element per iteration.
+    // Flatten events into single-root rows for Alpine's x-for.
     _buildPreviewRows(events) {
       const grouped = {};
 
@@ -334,12 +305,52 @@ function holidayDownloads() {
       return rows;
     },
 
+    // Take whole regions in alphabetical order until we hit the hard limit.
+    // A region is never split unless it alone exceeds the limit, in which
+    // case we take only the first `limit` events from that region.
+    _limitByRegion(events, limit) {
+      const byRegion = new Map();
+
+      events.forEach(event => {
+        const region = event._entity || 'Unknown';
+        if (!byRegion.has(region)) byRegion.set(region, []);
+        byRegion.get(region).push(event);
+      });
+
+      const sortedRegions = [...byRegion.keys()].sort();
+      const kept = [];
+      let truncated = false;
+
+      for (const region of sortedRegions) {
+        const regionEvents = byRegion.get(region);
+        const remaining = limit - kept.length;
+
+        if (remaining <= 0) {
+          truncated = true;
+          break;
+        }
+
+        if (regionEvents.length <= remaining) {
+          kept.push(...regionEvents);
+        } else {
+          kept.push(...regionEvents.slice(0, remaining));
+          truncated = true;
+          break;
+        }
+      }
+
+      return { events: kept, truncated };
+    },
+
     async loadPreview() {
       if (!this.selectedEntities.length || !this.selectedCategories.length) {
         this.previewData = [];
         this.previewRows = [];
         this.previewTotal = 0;
-        this.previewPage = 1;
+        this.previewAvailableTotal = 0;
+        this.previewRegionCount = 0;
+        this.previewAvailableRegions = 0;
+        this.previewTruncated = false;
         this.showPreview = false;
         return;
       }
@@ -389,10 +400,17 @@ function holidayDownloads() {
 
       deduped.sort((a, b) => a.date.localeCompare(b.date));
 
-      this.previewData = deduped;
-      this.previewTotal = deduped.length;
-      this.previewPage = 1;
-      this._renderPage();
+      const availableRegions = new Set(deduped.map(e => e._entity));
+      this.previewAvailableTotal = deduped.length;
+      this.previewAvailableRegions = availableRegions.size;
+
+      const { events, truncated } = this._limitByRegion(deduped, PREVIEW_LIMIT);
+
+      this.previewData = events;
+      this.previewTotal = events.length;
+      this.previewRegionCount = new Set(events.map(e => e._entity)).size;
+      this.previewTruncated = truncated;
+      this.previewRows = this._buildPreviewRows(events);
       this.showPreview = this.previewRows.length > 0;
     },
 
@@ -421,18 +439,43 @@ function holidayDownloads() {
           entity,
           name: (data.name || entity) + subdivLabel,
           languageName: this._getLanguageName(entity, language),
-          calendars: this.selectedCategories.map(category => ({
-            category,
-            available: supported.includes(category),
-            icsDownloading: false,
-            jsonDownloading: false,
-            error: false,
-            webcal: supported.includes(category) ? this._getWebcalUrl(entity, category) : ''
-          }))
+          calendars: this.selectedCategories.map(category => {
+            const candidate = supported.includes(category);
+            return {
+              category,
+              available: candidate,
+              checking: candidate,
+              icsDownloading: false,
+              jsonDownloading: false,
+              error: false,
+              webcal: ''
+            };
+          })
         };
       });
 
       this.showCalendarList = true;
+
+      this.calendarRows.forEach(row => {
+        row.calendars.forEach(async cell => {
+          if (!cell.checking) return;
+
+          try {
+            const path = this._getRelativePath(row.entity, cell.category, 'json');
+            const response = await this._fetchFile(path, { method: 'HEAD' });
+
+            if (!response.ok) {
+              cell.available = false;
+            } else {
+              cell.webcal = this._getWebcalUrl(row.entity, cell.category);
+            }
+          } catch (e) {
+            cell.available = false;
+          } finally {
+            cell.checking = false;
+          }
+        });
+      });
     },
 
     async downloadCalendar(entity, category, format) {
@@ -484,8 +527,6 @@ function holidayDownloads() {
       return `${name}${subdiv}-${category}-${yearLabel}.${format}`;
     },
 
-    // Trim an ICS string to events whose DTSTART year is in range,
-    // preserving the VCALENDAR header and footer.
     _filterIcsByYearRange(icsText, startYear, endYear) {
       const [header, ...chunks] = icsText.split('BEGIN:VEVENT');
       if (chunks.length === 0) return icsText;

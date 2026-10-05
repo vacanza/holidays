@@ -399,8 +399,7 @@
   min-width: 140px;
 }
 
-/* Force the Holiday column to fill all remaining table width,
-   even when both columns contain short text. */
+/* Force the Holiday column to fill all remaining table width. */
 .preview-table th:last-child,
 .preview-table td:last-child {
   width: 100%;
@@ -479,44 +478,15 @@
   white-space: nowrap;
 }
 
-/* Pagination */
-.preview-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
+.preview-truncated {
+  margin: 12px 0 0 0;
+  padding: 10px 14px;
   font-size: 0.85rem;
   color: var(--md-default-fg-color--light);
-}
-
-.pagination-btn {
-  min-width: 32px;
-  height: 32px;
-  padding: 0 10px;
+  background: var(--portal-header-bg);
   border: 1px solid var(--portal-border);
   border-radius: 6px;
-  background: var(--portal-bg);
-  color: var(--portal-fg);
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-.pagination-btn:hover:not(:disabled) {
-  background: var(--portal-header-bg);
-  border-color: var(--portal-primary);
-}
-
-.pagination-btn:disabled {
-  color: var(--md-default-fg-color--lighter);
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.pagination-info {
-  padding: 0 8px;
+  text-align: center;
 }
 
 /* Calendar results table */
@@ -622,6 +592,11 @@
   flex-shrink: 0;
 }
 
+.calendar-checking {
+  color: var(--md-default-fg-color--lighter);
+  font-size: 0.9rem;
+}
+
 .calendar-error {
   margin-top: 4px;
   font-size: 0.75rem;
@@ -688,16 +663,5 @@
   .calendar-preview-section .table-scroll-area {
     max-height: 400px;
     min-height: 150px;
-  }
-
-  .preview-pagination {
-    font-size: 0.75rem;
-  }
-
-  .pagination-btn {
-    min-width: 28px;
-    height: 28px;
-    padding: 0 8px;
-    font-size: 0.9rem;
   }
 }

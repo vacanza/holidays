@@ -171,7 +171,7 @@ hide:
     <div x-show="showPreview && previewRows.length > 0" class="calendar-preview-section" x-cloak>
       <div class="preview-header">
         <h3>Holiday Preview</h3>
-        <span class="preview-count" x-text="`${previewTotal} holidays across ${regionCount} region${regionCount === 1 ? '' : 's'}`"></span>
+        <span class="preview-count" x-text="`${previewTotal} of ${previewAvailableTotal} holidays · ${previewRegionCount} of ${previewAvailableRegions} region${previewAvailableRegions === 1 ? '' : 's'}`"></span>
       </div>
       <div class="table-scroll-area">
         <table class="preview-table">
@@ -200,42 +200,14 @@ hide:
         </table>
       </div>
 
-      <!-- Pagination -->
-      <div class="preview-pagination" x-show="showPagination" x-cloak>
-        <button
-          type="button"
-          class="pagination-btn"
-          @click="firstPage()"
-          :disabled="previewPage === 1"
-          aria-label="First page"
-        >«</button>
-        <button
-          type="button"
-          class="pagination-btn"
-          @click="prevPage()"
-          :disabled="previewPage === 1"
-          aria-label="Previous page"
-        >‹</button>
-
-        <span class="pagination-info">
-          Page <span x-text="previewPage"></span> of <span x-text="previewTotalPages"></span>
-        </span>
-
-        <button
-          type="button"
-          class="pagination-btn"
-          @click="nextPage()"
-          :disabled="previewPage === previewTotalPages"
-          aria-label="Next page"
-        >›</button>
-        <button
-          type="button"
-          class="pagination-btn"
-          @click="lastPage()"
-          :disabled="previewPage === previewTotalPages"
-          aria-label="Last page"
-        >»</button>
-      </div>
+      <p class="preview-truncated" x-show="previewTruncated" x-cloak>
+        Showing <span x-text="previewTotal"></span> of
+        <span x-text="previewAvailableTotal"></span> holidays from
+        <span x-text="previewRegionCount"></span> of
+        <span x-text="previewAvailableRegions"></span>
+        region<span x-text="previewAvailableRegions === 1 ? '' : 's'"></span>.
+        Download the full calendars from the links below.
+      </p>
     </div>
 
     <!-- Calendar Download Links -->
@@ -271,21 +243,24 @@ hide:
                 </td>
                 <template x-for="calendar in row.calendars" :key="calendar.category">
                   <td>
-                    <template x-if="calendar.available">
+                    <template x-if="calendar.checking">
+                      <span class="calendar-checking">…</span>
+                    </template>
+                    <template x-if="!calendar.checking && calendar.available">
                       <div class="calendar-links">
                         <button type="button" @click="downloadCalendar(row.entity, calendar.category, 'ics')" :disabled="calendar.icsDownloading">
-                          <span x-text="calendar.icsDownloading ? '...' : 'ICS'"></span>
+                          <span x-text="calendar.icsDownloading ? '…' : 'ICS'"></span>
                         </button>
                         <span>·</span>
                         <button type="button" @click="downloadCalendar(row.entity, calendar.category, 'json')" :disabled="calendar.jsonDownloading">
-                          <span x-text="calendar.jsonDownloading ? '...' : 'JSON'"></span>
+                          <span x-text="calendar.jsonDownloading ? '…' : 'JSON'"></span>
                         </button>
                         <span>·</span>
                         <a :href="calendar.webcal">Webcal</a>
                         <div x-show="calendar.error" class="calendar-error">Download failed, try again.</div>
                       </div>
                     </template>
-                    <template x-if="!calendar.available">
+                    <template x-if="!calendar.checking && !calendar.available">
                       <span class="calendar-unavailable">-</span>
                     </template>
                   </td>
