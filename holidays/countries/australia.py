@@ -694,9 +694,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 1936:
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
-        # Established on the 2nd Wednesday in October by SA Holidays Act 1909, moved to
-        # the 2nd Monday in October by Holidays Act Amendment Act 1947, moved to
-        # the 1st Monday in October by Holidays (Labour Day) Amendment Act 1991.
+        # Labor Day.
+        # Established on the 2nd Wednesday in October by SA Holidays Act 1909.
+        # Moved to the 2nd Monday in October by Holidays Act Amendment Act 1947.
+        # Moved to the 1st Monday in October by Holidays (Labour Day) Amendment Act 1991.
+
         if self._year >= 1910:
             # Labor Day.
             name = tr("Labour Day")
