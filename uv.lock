@@ -7,9 +7,6 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 
-[manifest]
-constraints = [{ name = "virtualenv", specifier = ">=21.14.4" }]
-
 [[package]]
 name = "arrow"
 version = "1.4.0"
