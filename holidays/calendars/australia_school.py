@@ -30,13 +30,7 @@ Two notes on New South Wales. It runs two sets of term dates, and both are here:
 "NSW" is the Eastern Division, which covers the great majority of schools, and
 "NSW Western" is the Western Division, whose schools start Term 1 about a week
 later so their summer break runs on. Only that break differs; the rest of the
-year is shared. Which schools those are is set by the department's own
-published roll, and that roll is what the dates here cover. It closely follows,
-without exactly matching, the line the state's teachers award draws for its
-climatic disability allowance, from the Murray opposite Swan Hill up to Bonshaw
-on the Queensland border; that line explains why the division reaches three
-state borders at once, but it is not the test for membership, so coverage should
-be updated from the roll rather than from the award.
+year is shared.
 
 Its published holiday periods also stop short of the school development days that
 open each term, because the department counts those inside the term even though
@@ -53,8 +47,7 @@ Sources:
     * [TAS](https://web.archive.org/web/20260610091723/https://www.decyp.tas.gov.au/learning/term-dates/)
     * [VIC](https://web.archive.org/web/20260913195820/https://www.vic.gov.au/school-term-dates-and-holidays-victoria)
     * [WA](https://web.archive.org/web/20260911103607/https://www.education.wa.edu.au/future-term-dates)
-    * [NSW Western Division boundary](https://web.archive.org/web/20250423185043/https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf),
-      Schedule 8 (Locality Allowances), Part A, clause 2.1
+    * [Western Division schools](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/late-start-schools)
 
 Coverage stops where each jurisdiction stops publishing approved dates, so it is
 uneven: the Northern Territory reaches 2032, the ACT and Tasmania only 2027.
@@ -79,7 +72,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 9, 28, 0, 10, 9, TERM_3_HOLIDAYS),
             (0, 12, 18, 1, 1, 27, SUMMER_HOLIDAYS),
         ),
-        "NSW_Western": (
+        "NSW_WESTERN": (
             (0, 1, 1, 0, 2, 2, SUMMER_HOLIDAYS),
             (0, 4, 7, 0, 4, 17, TERM_1_HOLIDAYS),
             (0, 7, 6, 0, 7, 17, TERM_2_HOLIDAYS),
@@ -144,7 +137,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 9, 27, 0, 10, 8, TERM_3_HOLIDAYS),
             (0, 12, 21, 1, 1, 28, SUMMER_HOLIDAYS),
         ),
-        "NSW_Western": (
+        "NSW_WESTERN": (
             (-1, 12, 18, 0, 2, 3, SUMMER_HOLIDAYS),
             (0, 4, 12, 0, 4, 23, TERM_1_HOLIDAYS),
             (0, 7, 5, 0, 7, 16, TERM_2_HOLIDAYS),
@@ -202,7 +195,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 10, 3, 0, 10, 13, TERM_3_HOLIDAYS),
             (0, 12, 22, 1, 1, 25, SUMMER_HOLIDAYS),
         ),
-        "NSW_Western": (
+        "NSW_WESTERN": (
             (-1, 12, 21, 0, 2, 4, SUMMER_HOLIDAYS),
             (0, 4, 10, 0, 4, 21, TERM_1_HOLIDAYS),
             (0, 7, 10, 0, 7, 21, TERM_2_HOLIDAYS),
@@ -253,7 +246,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 10, 2, 0, 10, 12, TERM_3_HOLIDAYS),
             (0, 12, 21, 1, 1, 30, SUMMER_HOLIDAYS),
         ),
-        "NSW_Western": (
+        "NSW_WESTERN": (
             (-1, 12, 22, 0, 2, 2, SUMMER_HOLIDAYS),
             (0, 4, 16, 0, 4, 27, TERM_1_HOLIDAYS),
             (0, 7, 9, 0, 7, 20, TERM_2_HOLIDAYS),
@@ -304,7 +297,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
             (0, 9, 30, 0, 10, 11, TERM_3_HOLIDAYS),
             (0, 12, 20, 1, 1, 27, SUMMER_HOLIDAYS),
         ),
-        "NSW_Western": (
+        "NSW_WESTERN": (
             (-1, 12, 21, 0, 2, 6, SUMMER_HOLIDAYS),
             (0, 4, 15, 0, 4, 26, TERM_1_HOLIDAYS),
             (0, 7, 8, 0, 7, 19, TERM_2_HOLIDAYS),
@@ -335,7 +328,7 @@ AUSTRALIA_SCHOOL_HOLIDAYS = {
     },
     2031: {
         "NSW": ((-1, 12, 20, 0, 1, 27, SUMMER_HOLIDAYS),),
-        "NSW_Western": ((-1, 12, 20, 0, 2, 3, SUMMER_HOLIDAYS),),
+        "NSW_WESTERN": ((-1, 12, 20, 0, 2, 3, SUMMER_HOLIDAYS),),
         "NT": (
             (-1, 12, 13, 0, 1, 28, SUMMER_HOLIDAYS),
             (0, 4, 5, 0, 4, 15, TERM_1_HOLIDAYS),
