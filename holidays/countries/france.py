@@ -10,6 +10,19 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
+from holidays.calendars.france_school import (
+    ALL_SAINTS_BREAK,
+    ASCENSION_BREAK,
+    CHRISTMAS_BREAK,
+    FRANCE_SCHOOL_HOLIDAYS,
+    SPRING_BREAK,
+    SUMMER_BREAK,
+    WINTER_BREAK,
+)
+from holidays.calendars.gregorian import JAN, DEC
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
@@ -48,6 +61,10 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,
     which makes it difficult to enumerate.
+
+    !!! note "School holidays"
+        School holidays are available for the mainland school zones A, B and C
+        (by académie). Moselle and Alsace are in zone B.
     """
 
     country = "FR"
@@ -71,6 +88,10 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "PM",   # Saint-Pierre-et-Miquelon.
         "TF",   # Terres australes françaises.
         "WF",   # Wallis-et-Futuna.
+        # School zones.
+        "A",    # Zone A.
+        "B",    # Zone B.
+        "C",    # Zone C.
     )
     # fmt: on
     subdivisions_aliases = {
@@ -96,7 +117,11 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Pierre-et-Miquelon": "PM",
         "Terres australes françaises": "TF",
         "Wallis-et-Futuna": "WF",
+        "Zone A": "A",
+        "Zone B": "B",
+        "Zone C": "C",
     }
+    supported_categories: tuple[str, ...] = (PUBLIC, SCHOOL)
     supported_languages = ("en_US", "fr", "th", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
@@ -109,6 +134,23 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
+
+    @staticmethod
+    def _get_school_holiday_names() -> dict[int, str]:
+        return {
+            # All Saints' Break.
+            ALL_SAINTS_BREAK: tr("Vacances de la Toussaint"),
+            # Christmas Break.
+            CHRISTMAS_BREAK: tr("Vacances de Noël"),
+            # Winter Break.
+            WINTER_BREAK: tr("Vacances d'hiver"),
+            # Spring Break.
+            SPRING_BREAK: tr("Vacances de printemps"),
+            # Ascension Break.
+            ASCENSION_BREAK: tr("Pont de l'Ascension"),
+            # Summer Break.
+            SUMMER_BREAK: tr("Vacances d'été"),
+        }
 
     def _populate_public_holidays(self):
         # Established on March 28th, 1810.
@@ -179,6 +221,33 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._populate_subdiv_6ae_public_holidays()
             case "Saint-Barthélémy":
                 self._populate_subdiv_bl_public_holidays()
+
+    def _populate_school_holidays(self):
+        # School holidays are set by school zone, not for the country as a whole.
+        if self.subdiv is None:
+            return None
+
+        # Moselle (académie de Nancy-Metz) and Alsace (académie de Strasbourg) are in zone B.
+        zone = "B" if self._normalized_subdiv in {"57", "6AE"} else self._normalized_subdiv
+        school_holiday_names = self._get_school_holiday_names()
+        for (
+            start_year_offset,
+            start_month,
+            start_day,
+            end_year_offset,
+            end_month,
+            end_day,
+            holiday_id,
+        ) in FRANCE_SCHOOL_HOLIDAYS.get(self._year, {}).get(zone, ()):
+            name = school_holiday_names[holiday_id]
+            start_date = date(self._year + start_year_offset, start_month, start_day)
+            end_date = date(self._year + end_year_offset, end_month, end_day)
+            active_start = max(start_date, date(self._year, JAN, 1))
+            active_end = min(end_date, date(self._year, DEC, 31))
+            self._add_holiday(name, active_start)
+
+            if duration_days := (active_end - active_start).days:
+                self._add_multiday_holiday(active_start, duration_days, name=name)
 
     # Moselle.
     def _populate_subdiv_57_public_holidays(self):

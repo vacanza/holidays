@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -30,6 +31,7 @@ class Mayotte(ChildEntity, France):
     parent_entity_subdivision_code = "976"
     # Sold to France on April 25th, 1841.
     start_year = 1842
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysYT(Mayotte):
