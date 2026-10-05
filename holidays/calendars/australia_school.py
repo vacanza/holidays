@@ -30,12 +30,13 @@ Two notes on New South Wales. It runs two sets of term dates, and both are here:
 "NSW" is the Eastern Division, which covers the great majority of schools, and
 "NSW Western" is the Western Division, whose schools start Term 1 about a week
 later so their summer break runs on. Only that break differs; the rest of the
-year is shared. The department publishes the Western Division as a roll of named
-schools rather than a boundary, but they follow the line set out in the state's
-teachers award for its climatic disability allowance: schools "upon or to the
-west of a line starting from a point on the right bank of the Murray River
-opposite Swan Hill", running through Conargo, Hay, Condobolin, Coonabarabran and
-Moree to Bonshaw on the Queensland border.
+year is shared. Which schools those are is set by the department's own
+published roll, and that roll is what the dates here cover. It closely follows,
+without exactly matching, the line the state's teachers award draws for its
+climatic disability allowance, from the Murray opposite Swan Hill up to Bonshaw
+on the Queensland border; that line explains why the division reaches three
+state borders at once, but it is not the test for membership, so coverage should
+be updated from the roll rather than from the award.
 
 Its published holiday periods also stop short of the school development days that
 open each term, because the department counts those inside the term even though

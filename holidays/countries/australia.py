@@ -56,7 +56,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [Western Division schools](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/late-start-schools)
             * [NSW Teachers Award 2024](https://web.archive.org/web/20250423185043/https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf),
               Schedule 8 (Locality Allowances), Part A, clause 2.1, which draws the
-              boundary the Western Division follows
+              boundary for the climatic disability allowance. The school calendar
+              follows it closely but is set by the roll above, not by this clause
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
