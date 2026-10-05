@@ -16,20 +16,24 @@ from holidays.calendars.gregorian import (
     JAN,
     MAR,
     APR,
+    MAY,
     JUL,
+    AUG,
+    SEP,
     NOV,
     MON,
+    FRI,
     _timedelta,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
 )
 from holidays.constants import BANK, PUBLIC, SCHOOL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
-class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Belgium holidays.
 
     References:
@@ -41,6 +45,11 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
             * [Besluit van de Vlaamse Regering van 17 april 1991, art. 4-5](https://codex.vlaanderen.be/Portals/Codex/documenten/1000373.html)
             * [Besluit van de Vlaamse Regering van 31 augustus 2001, art. 7](https://codex.vlaanderen.be/Portals/Codex/documenten/1008428.html)
             * [Schoolvakanties](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties)
+        * French Community school holidays:
+            * [Décret du 31 mars 2022 relatif à l'adaptation des rythmes scolaires annuels, art. 3-4](https://etaamb.openjustice.be/fr/decret-du-31-mars-2022_n2022040888)
+            * [Calendrier scolaire](http://www.enseignement.be/index.php?page=23953)
+            * [Calendriers scolaires 2012-2013 à 2020-2021](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
+            * [Calendriers scolaires 2021-2022 et 2022-2023](https://web.archive.org/web/20220516141856/http://www.enseignement.be/index.php?page=23953)
 
     Subdivisions are the Communities in charge of education, used for `SCHOOL` holidays.
     """
@@ -58,6 +67,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, BelgiumStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _add_multiday_holiday(
@@ -188,6 +198,108 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Armistice Day.
         self._add_remembrance_day(tr("Wapenstilstand"))
 
+    def _populate_subdiv_french_school_holidays(self):
+        # The same rules as in the Flemish Community applied until the 2021-2022 school year.
+        # Since 2022-2023 the school year starts on the last Monday of August, ends on the first
+        # Friday of July and alternates 7 (or 8) weeks of classes with 2 weeks of break.
+
+        # Christmas Break.
+        christmas_break_end = self._add_christmas_break(tr("Kerstvakantie"))
+
+        if self._year >= 2023:
+            # 8th Monday after the Christmas Break → 2 weeks.
+            # 7th Monday after the Christmas Break instead if that is Carnival Monday.
+            carnival_start = _timedelta(christmas_break_end, +50)
+            carnival_monday = _timedelta(self._easter_sunday, -48)
+            if carnival_monday == _timedelta(carnival_start, -7):
+                carnival_start = carnival_monday
+            # Carnival Break.
+            self._add_multiday_holiday(carnival_start, 14, name=tr("Krokusvakantie"))
+
+            # Monday of the week of May 1 → 2 weeks.
+            spring_start = _get_nth_weekday_from(-1, MON, date(self._year, MAY, 1))
+            # Spring Break.
+            self._add_multiday_holiday(spring_start, 14, name=tr("Lentevakantie"))
+
+            # Easter Monday.
+            self._add_easter_monday(tr("Paasmaandag"))
+
+            # Only if the school year (185 class days before deductions) still has at least
+            # 180 class days once the individual days off and Mardi Gras itself are deducted.
+            easter_sunday = self._easter_sunday
+            spring_end = _timedelta(spring_start, +13)
+            days_off = (
+                date(self._year - 1, SEP, 27),
+                date(self._year - 1, NOV, 11),
+                _timedelta(easter_sunday, +1),
+                _timedelta(easter_sunday, +39),
+                _timedelta(easter_sunday, +50),
+            )
+            days_off_count = sum(
+                not self._is_weekend(dt) and not spring_start <= dt <= spring_end
+                for dt in days_off
+            ) + self._is_sunday(date(self._year - 1, NOV, 1))
+            mardi_gras = _timedelta(easter_sunday, -47)
+            if days_off_count <= 4 and not carnival_start <= mardi_gras <= _timedelta(
+                carnival_start, +13
+            ):
+                # Mardi Gras.
+                self._add_carnival_tuesday(tr("Vastenavond"))
+        else:
+            # Carnival Break.
+            self._add_carnival_break(tr("Krokusvakantie"))
+
+            # Spring Break.
+            self._add_easter_break(tr("Lentevakantie"))
+
+            # Labor Day.
+            self._add_labor_day(tr("Dag van de Arbeid"))
+
+        # Ascension Day.
+        self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
+
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pinkstermaandag"))
+
+        # Jul 1 (since 2023: day after the 1st Friday of July) → Aug 31 (since 2022: day before
+        # the school year start, i.e. 44 weeks and 5 days before the next 1st Friday of July).
+        summer_start = (
+            _timedelta(_get_nth_weekday_of_month(1, FRI, JUL, self._year), +1)
+            if self._year >= 2023
+            else date(self._year, JUL, 1)
+        )
+        summer_end = (
+            _timedelta(_get_nth_weekday_of_month(1, FRI, JUL, self._year + 1), -313)
+            if self._year >= 2022
+            else date(self._year, AUG, 31)
+        )
+        # Summer Break.
+        self._add_multiday_holiday(
+            summer_start, (summer_end - summer_start).days + 1, name=tr("Zomervakantie")
+        )
+
+        if self._year >= 1975:
+            # French Community Day.
+            self._add_holiday_sep_27(tr("Feestdag van de Franse Gemeenschap"))
+
+        if self._year >= 2022:
+            # 2nd Monday before the week of Nov 1 → 2 weeks.
+            nov_1 = date(self._year, NOV, 1)
+            # Autumn Break.
+            self._add_multiday_holiday(
+                _get_nth_weekday_from(-2, MON, nov_1), 14, name=tr("Herfstvakantie")
+            )
+
+            if self._is_sunday(nov_1):
+                # All Souls' Day.
+                self._add_all_souls_day(tr("Allerzielen"))
+        else:
+            # Autumn Break.
+            self._add_autumn_break(tr("Herfstvakantie"))
+
+        # Armistice Day.
+        self._add_remembrance_day(tr("Wapenstilstand"))
+
 
 
 class BE(Belgium):
@@ -197,3 +309,29 @@ class BE(Belgium):
 class BEL(Belgium):
     pass
 
+
+class BelgiumStaticHolidays:
+    """Belgium special holidays.
+
+    References:
+        * [Calendriers scolaires 2014-2015 à 2020-2021](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
+    """
+
+    # Bridge Holiday.
+    bridge_holiday = tr("Brugdag")
+
+    # Friday after Ascension Day.
+    friday_after_ascension_day = tr("Vrijdag na O. L. H. Hemelvaart")
+
+    special_french_school_holidays = {
+        2015: (MAY, 15, friday_after_ascension_day),
+        2016: (
+            (MAY, 4, bridge_holiday),
+            (MAY, 6, friday_after_ascension_day),
+        ),
+        2020: (MAY, 22, friday_after_ascension_day),
+        2021: (
+            (APR, 30, bridge_holiday),
+            (MAY, 14, friday_after_ascension_day),
+        ),
+    }
