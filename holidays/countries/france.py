@@ -245,9 +245,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             active_start = max(start_date, date(self._year, JAN, 1))
             active_end = min(end_date, date(self._year, DEC, 31))
             self._add_holiday(name, active_start)
-
-            if duration_days := (active_end - active_start).days:
-                self._add_multiday_holiday(active_start, duration_days, name=name)
+            # No school break is a single day, so the remaining span is never empty.
+            self._add_multiday_holiday(active_start, (active_end - active_start).days, name=name)
 
     # Moselle.
     def _populate_subdiv_57_public_holidays(self):
