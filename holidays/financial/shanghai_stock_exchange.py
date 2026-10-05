@@ -12,13 +12,11 @@
 
 from holidays.calendars.gregorian import FEB
 from holidays.constants import PUBLIC
-from holidays.countries.china import China, ChinaStaticHolidays
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.countries.china import China
 from holidays.helpers import tr
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
-class ShanghaiStockExchange(China, ChinaStaticHolidays):
+class ShanghaiStockExchange(China):
     """Shanghai Stock Exchange (SSE) holidays.
 
     This class provides Shanghai Stock Exchange-specific market holidays.
@@ -40,16 +38,13 @@ class ShanghaiStockExchange(China, ChinaStaticHolidays):
     country = None  # type: ignore[assignment]
     market = "XSHG"
     parent_entity = China
-    supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
+    supported_categories = (PUBLIC,)
     start_year = 2001
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, cls=ShanghaiStockExchangeStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
-        kwargs.setdefault("observed_since", 2000)
-        ObservedHolidayBase.__init__(self, *args, **kwargs)
+        super().__init__(
+            *args, static_holidays_classes=(ShanghaiStockExchangeStaticHolidays,), **kwargs
+        )
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
@@ -69,10 +64,6 @@ class SSE(ShanghaiStockExchange):
 
 class ShanghaiStockExchangeStaticHolidays:
     special_public_holidays = {
-        **ChinaStaticHolidays.special_public_holidays,
-        2024: (
-            *ChinaStaticHolidays.special_public_holidays[2024],
-            # Chinese New Year's Eve.
-            (FEB, 9, tr("农历除夕")),
-        ),
+        # Chinese New Year's Eve.
+        2024: (FEB, 9, tr("农历除夕")),
     }

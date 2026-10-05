@@ -15,10 +15,12 @@ from holidays.financial.australian_securities_exchange import (
     XASX,
     ASX,
 )
+from holidays.financial.bolsa_de_valores_de_colombia import BolsaDeValoresDeColombia, XBOG, BVC
 from holidays.financial.bolsa_mexicana_de_valores import BolsaMexicanaDeValores, XMEX, BMV
 from holidays.financial.bolsas_y_mercados_argentinos import BolsasYMercadosArgentinos, XBUE, BYMA
 from holidays.financial.bolsas_y_mercados_espanoles import BolsasYMercadosEspanoles, XMAD, BME
 from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, BSE
+from holidays.financial.borsa_istanbul import BorsaIstanbul, XIST, BIST
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
@@ -43,3 +45,4 @@ from holidays.financial.singapore_exchange import SingaporeExchange, XSES, SGX
 from holidays.financial.six_swiss_exchange import SIXSwissExchange, XSWX, SIX
 from holidays.financial.taiwan_stock_exchange import TaiwanStockExchange, TWSE, XTAI
 from holidays.financial.toronto_stock_exchange import TorontoStockExchange, XTSE, TSX
+from holidays.financial.warsaw_stock_exchange import WarsawStockExchange, XWAR, GPW

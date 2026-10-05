@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-09-23 16:58+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,22 @@ msgstr "Australia Day"
 #. Anniversary Day.
 msgid "Anniversary Day"
 msgstr "Anniversary Day"
+
+#. Term 1 school holidays.
+msgid "Term 1 school holidays"
+msgstr "Term 1 school holidays"
+
+#. Term 2 school holidays.
+msgid "Term 2 school holidays"
+msgstr "Term 2 school holidays"
+
+#. Term 3 school holidays.
+msgid "Term 3 school holidays"
+msgstr "Term 3 school holidays"
+
+#. Summer school holidays.
+msgid "Summer school holidays"
+msgstr "Summer school holidays"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -107,6 +123,10 @@ msgstr "Family & Community Day"
 msgid "Labour Day"
 msgstr "Labor Day"
 
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "Eight Hours Day"
+
 #. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "Bank Holiday"
@@ -138,10 +158,6 @@ msgstr "Adelaide Cup Day"
 #. Proclamation Day.
 msgid "Proclamation Day"
 msgstr "Proclamation Day"
-
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "Eight Hours Day"
 
 #. Easter Tuesday.
 msgid "Easter Tuesday"

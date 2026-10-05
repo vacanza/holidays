@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-09-23 01:05+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -126,6 +126,10 @@ msgstr "Santa Maria of Africa"
 #. Ceuta Day.
 msgid "Día de Ceuta"
 msgstr "Ceuta Day"
+
+#. Eid al-Fitr.
+msgid "Fiesta de Culminación del Ramadán-Eidul Fitr"
+msgstr "Eid al-Fitr"
 
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Eidul Adha"
