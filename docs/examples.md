@@ -45,18 +45,18 @@ Use `years` parameter to populate the holidays years you are interested in:
 Let's print out the holidays in 2014 specific to California, USA:
 
 ``` python
->>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
->>>     print(date, name)
+>>> for dt, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
+>>>     print(dt, name)
 2014-01-01 New Year's Day
 2014-01-20 Martin Luther King Jr. Day
 2014-02-15 Susan B. Anthony Day
-2014-02-17 Washington's Birthday
+2014-02-17 Presidents' Day
 2014-03-31 Cesar Chavez Day
 2014-05-26 Memorial Day
 2014-07-04 Independence Day
 2014-09-01 Labor Day
 2014-11-11 Veterans Day
-2014-11-27 Thanksgiving
+2014-11-27 Thanksgiving Day
 2014-11-28 Day After Thanksgiving
 2014-12-25 Christmas Day
 ```
@@ -120,7 +120,7 @@ adjusted accordingly:
 >>> us_holidays.observed = False
 >>> date(2012, 1, 2) in us_holidays
 False
-us_holidays.observed = True
+>>> us_holidays.observed = True
 >>> date(2012, 1, 2) in us_holidays
 True
 ```
@@ -170,11 +170,19 @@ Get only unofficial holidays (cultural celebrations).
 
 ``` python
 >>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
->>> for date, name in sorted(us_unofficial.items()):
->>>     print(date, name)
+>>> for dt, name in sorted(us_unofficial.items()):
+>>>     print(dt, name)
+2024-02-02 Groundhog Day
 2024-02-14 Valentine's Day
 2024-03-17 Saint Patrick's Day
+2024-03-29 Good Friday
+2024-03-31 Easter Sunday
+2024-05-12 Mother's Day
+2024-06-16 Father's Day
 2024-10-31 Halloween
+2024-11-05 Election Day
+2024-12-24 Christmas Eve
+2024-12-31 New Year's Eve
 ```
 
 ### Multiple Categories
@@ -193,8 +201,8 @@ Get both public and bank holidays for Belgium:
 2023-05-01 Labor Day
 2023-05-18 Ascension Day
 2023-05-19 Friday after Ascension Day
-2023-05-28 Whit Sunday
-2023-05-29 Whit Monday
+2023-05-28 Pentecost
+2023-05-29 Pentecost Monday
 2023-07-21 National Day
 2023-08-15 Assumption Day
 2023-11-01 All Saints' Day
@@ -211,9 +219,9 @@ Get Catholic holidays in Germany (Saxony subdivision):
 ``` python
 >>> from holidays.constants import CATHOLIC
 >>> de_sn_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
->>> for date, name in sorted(de_sn_catholic.items()):
->>>     print(date, name)
-2024-08-15 Mariä Himmelfahrt
+>>> for dt, name in sorted(de_sn_catholic.items()):
+>>>     print(dt, name)
+2024-05-30 Fronleichnam
 ```
 
 ### Checking Supported Categories
@@ -222,7 +230,7 @@ Each country defines which categories it supports:
 
 ``` python
 >>> print("US categories:", holidays.UnitedStates.supported_categories)
-US categories: ('government', 'public', 'unofficial')
+US categories: ('government', 'half_day', 'public', 'unofficial')
 
 >>> print("Germany categories:", holidays.Germany.supported_categories)
 Germany categories: ('catholic', 'public', 'school')
@@ -331,7 +339,8 @@ of holidays matching it (even partially, with case-insensitive check):
 datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
 datetime.date(2020, 7, 3), datetime.date(2020, 7, 4),
 datetime.date(2020, 9, 7), datetime.date(2020, 10, 12),
-datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
+datetime.date(2020, 11, 11), datetime.date(2020, 11, 26),
+datetime.date(2020, 12, 25)]
 ```
 
 ## Additions
