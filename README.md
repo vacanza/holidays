@@ -261,7 +261,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Australia</td>
 <td>AU</td>
-<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)</td>
+<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia); school calendar variants: NSW Western (New South Wales Western Division)</td>
 <td><strong>en_AU</strong>, en_US, th</td>
 <td>BANK, HALF_DAY, SCHOOL</td>
 </tr>

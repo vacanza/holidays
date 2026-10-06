@@ -659,6 +659,7 @@ class TestAustralia(CommonCountryTests, TestCase):
         subdiv_start_years = {
             "ACT": 2016,
             "NSW": 2011,
+            "NSW Western": 2011,
             "NT": 2024,
             "QLD": 2017,
             "SA": 2024,
@@ -1764,7 +1765,7 @@ class TestAustralia(CommonCountryTests, TestCase):
 
         # PUBLIC.
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "NSW":
+            if subdiv in {"NSW", "NSW Western"}:
                 self.assertHolidayName(
                     name,
                     holidays,
@@ -2094,8 +2095,9 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertEqual(dataset_ids, known_ids)
 
     def test_school_holidays_cover_only_known_subdivisions(self):
+        known = {subdiv.replace(" ", "_").upper() for subdiv in Australia.subdivisions}
         for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
-            self.assertLessEqual(set(year_data), set(Australia.subdivisions), year)
+            self.assertLessEqual(set(year_data), known, year)
 
     def test_school_terms_are_not_holidays(self):
         # The first and last day of each Victorian term in 2026.
@@ -2125,13 +2127,6 @@ class TestAustralia(CommonCountryTests, TestCase):
         # Each state sets its own calendar; there is no national one.
         self.assertFalse(Australia(years=2026, categories=SCHOOL))
 
-    def test_school_holidays_nsw_uses_the_eastern_division(self):
-        # NSW runs two sets of term dates and only one can stand for the state.
-        # Eastern students return on 28 January 2027; Western would still be on
-        # holiday until 3 February.
-        self.assertSubdivNswSchoolHolidayName("Summer school holidays", "2027-01-27")
-        self.assertNoSubdivNswSchoolHoliday("2027-01-28", "2027-02-03")
-
     def test_school_holidays_qld_2029_summer(self):
         # Queensland publishes the start of the 2029 summer break but not its
         # end, which awaits the Minister. The approved part still counts.
@@ -2143,6 +2138,47 @@ class TestAustralia(CommonCountryTests, TestCase):
         )
         # Term 4 2029 ends on 7 December, so that is still a school day.
         self.assertNoSubdivQldSchoolHoliday("2029-12-07")
+
+    def test_western_division_returns_a_week_after_the_rest_of_the_state(self):
+        # "NSW" is the Eastern Division. Western Division schools start Term 1
+        # about a week later, so their summer runs on: Eastern students are back
+        # on 28 January 2027, Western not until 4 February. Everything else in
+        # the year is shared, so this is the only difference between them.
+        name = "Summer school holidays"
+        self.assertSubdivNswSchoolHolidayName(name, "2027-01-27")
+        self.assertNoSubdivNswSchoolHoliday("2027-01-28", "2027-02-03")
+        self.assertSubdivNswWesternSchoolHolidayName(name, "2027-01-28", "2027-02-03")
+        self.assertNoSubdivNswWesternSchoolHoliday("2027-02-04")
+
+    def test_western_division_shares_the_rest_of_the_year(self):
+        # Only Term 1 and the summer break differ; every other day of every
+        # other break is common to both calendars.
+        shared = {
+            "Term 1 school holidays",
+            "Term 2 school holidays",
+            "Term 3 school holidays",
+        }
+        nsw = self.subdiv_school_holidays["NSW"]
+        western = self.subdiv_school_holidays["NSW Western"]
+        self.assertEqual(
+            {dt: name for dt, name in nsw.items() if name in shared},
+            {dt: name for dt, name in western.items() if name in shared},
+        )
+
+    def test_western_division_keeps_nsw_public_holidays(self):
+        # These schools are in NSW. Only the school calendar sets them apart.
+        nsw = self.subdiv_holidays["NSW"]
+        western = self.subdiv_holidays["NSW Western"]
+        self.assertEqual(dict(nsw), dict(western))
+
+    def test_western_division_is_covered_for_every_year_nsw_is(self):
+        # A year with one and not the other would silently fall back to nothing.
+        for year, year_data in AUSTRALIA_SCHOOL_HOLIDAYS.items():
+            self.assertEqual(
+                "NSW" in year_data,
+                "NSW_WESTERN" in year_data,
+                f"{year} has only one of the two New South Wales calendars",
+            )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

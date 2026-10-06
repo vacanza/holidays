@@ -52,6 +52,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [NSW Banks and Bank Holidays Act 1912](https://web.archive.org/web/20241107225523/https://legislation.nsw.gov.au/view/html/repealed/current/act-1912-043)
             * [NSW Public Holidays Act 2010](https://web.archive.org/web/20250316173922/https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115)
             * [NSW 2026-2027](https://web.archive.org/web/20260216073138/https://www.nsw.gov.au/about-nsw/public-holidays)
+        * NSW Western:
+            * [Western Division schools](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/late-start-schools)
         * NT:
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
@@ -94,6 +96,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "TAS",  # Tasmania.
         "VIC",  # Victoria.
         "WA",   # Western Australia.
+        # School calendar variants.
+        "NSW Western",  # New South Wales, Western Division ("late start schools").
     )
     # fmt: on
     subdivisions_aliases = {
@@ -105,6 +109,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         "Tasmania": "TAS",
         "Victoria": "VIC",
         "Western Australia": "WA",
+        "New South Wales Western Division": "NSW Western",
     }
     supported_categories = (BANK, HALF_DAY, PUBLIC, SCHOOL)
     supported_languages = ("en_AU", "en_US", "th")
@@ -182,7 +187,9 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             end_month,
             end_day,
             holiday_id,
-        ) in AUSTRALIA_SCHOOL_HOLIDAYS.get(self._year, {}).get(self._normalized_subdiv, ()):
+        ) in AUSTRALIA_SCHOOL_HOLIDAYS.get(self._year, {}).get(
+            self._normalized_subdiv.upper(), ()
+        ):
             name = school_holiday_names[holiday_id]
             start_date = date(self._year + start_year_offset, start_month, start_day)
             end_date = date(self._year + end_year_offset, end_month, end_day)
@@ -443,6 +450,14 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         if self._year >= 2011:
             # Bank Holiday.
             self._add_holiday_1st_mon_of_aug(tr("Bank Holiday"))
+
+    def _populate_subdiv_nsw_western_public_holidays(self):
+        # Western Division schools are in New South Wales and keep its public
+        # holidays. Only the school calendar sets them apart.
+        self._populate_subdiv_nsw_public_holidays()
+
+    def _populate_subdiv_nsw_western_bank_holidays(self):
+        self._populate_subdiv_nsw_bank_holidays()
 
     def _populate_subdiv_nt_public_holidays(self):
         # New Year's Day.
