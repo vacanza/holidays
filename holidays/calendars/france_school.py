@@ -37,6 +37,7 @@ Sources:
     * [Le calendrier scolaire (open data)](https://web.archive.org/web/20260202011841/https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/)
     * [Arrêté du 7 décembre 2022 (2023-2024 to 2025-2026)](https://web.archive.org/web/20250326034935/https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046704476/)
     * [Arrêté du 22 octobre 2025 (2026-2027)](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052416058)
+    * [Arrêté du 21 juillet 2026 (2027-2028)](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054457294)
 
 The open data starts with the 2017-2018 school year. The summer break of 2028 is not
 included, since the date classes resume in September 2028 is not published yet.

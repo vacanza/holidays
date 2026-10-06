@@ -41,6 +41,7 @@ Alternatively, run with uv:
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 from collections import defaultdict
 from datetime import date, datetime, timedelta
@@ -86,7 +87,11 @@ def load_records(cache_path: Path, url: str) -> list[dict[str, str]]:
     if not cache_path.exists():
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         with urlopen(url, timeout=URL_TIMEOUT_SECONDS) as response:  # noqa: S310
-            cache_path.write_bytes(response.read())
+            content = response.read()
+        # The server sometimes sends gzip data without a Content-Encoding header.
+        if content[:2] == b"\x1f\x8b":
+            content = gzip.decompress(content)
+        cache_path.write_bytes(content)
     return json.loads(cache_path.read_text(encoding="utf-8"))
 
 
