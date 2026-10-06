@@ -40,7 +40,6 @@ Alternatively, run with uv:
 
 from __future__ import annotations
 
-import argparse
 import gzip
 import json
 from collections import defaultdict
@@ -79,16 +78,16 @@ HOLIDAY_IDS = {
 PUPIL_POPULATIONS = frozenset(("-", "Élèves"))
 
 
-def load_records(cache_path: Path, url: str) -> list[dict[str, str]]:
-    if not cache_path.exists():
-        cache_path.parent.mkdir(parents=True, exist_ok=True)
-        with urlopen(url, timeout=URL_TIMEOUT_SECONDS) as response:  # noqa: S310
+def load_records() -> list[dict[str, str]]:
+    if not CACHE_PATH.exists():
+        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with urlopen(DATASET_URL, timeout=URL_TIMEOUT_SECONDS) as response:
             content = response.read()
         # The server sometimes sends gzip data without a Content-Encoding header.
         if content[:2] == b"\x1f\x8b":
             content = gzip.decompress(content)
-        cache_path.write_bytes(content)
-    return json.loads(cache_path.read_text(encoding="utf-8"))
+        CACHE_PATH.write_bytes(content)
+    return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
 
 
 def _to_local_date(value: str) -> date:
@@ -227,16 +226,8 @@ def render_python_module(
     return "\n".join(lines)
 
 
-def _parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", type=Path, default=CACHE_PATH)
-    parser.add_argument("--download-url", default=DATASET_URL)
-    return parser.parse_args()
-
-
 def main() -> None:
-    args = _parse_args()
-    data = normalize_ranges(collect_breaks(load_records(args.input, args.download_url)))
+    data = normalize_ranges(collect_breaks(load_records()))
     OUTPUT_PATH.write_text(render_python_module(data), encoding="utf-8", newline="\n")
 
 
