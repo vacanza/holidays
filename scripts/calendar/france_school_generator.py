@@ -23,8 +23,7 @@ Alternatively, run with uv:
 
     uv run -m scripts.calendar.france_school_generator
 
-2. On cold start, the script downloads the official "Le calendrier scolaire" dataset
-   (JSON export) into a local cache directory outside the repository.
+2. The script downloads the latest official "Le calendrier scolaire" dataset (JSON export).
 
 3. The script writes fresh data to ``holidays/calendars/france_school_dates.py`` - a
    throwaway file that is **not committed**. It mirrors the structure of the committed
@@ -45,12 +44,10 @@ import json
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from tempfile import gettempdir
 from urllib.request import urlopen
 from zoneinfo import ZoneInfo
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-CACHE_PATH = Path(gettempdir()).resolve() / "holidays-france-school-holidays" / "calendar.json"
 DATASET_URL = (
     "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/"
     "fr-en-calendrier-scolaire/exports/json"
@@ -76,18 +73,19 @@ HOLIDAY_IDS = {
 # Summer has separate rows for pupils ("Élèves") and teachers ("Enseignants"); other
 # breaks have a single row for everyone ("-"). Pupil dates are used.
 PUPIL_POPULATIONS = frozenset(("-", "Élèves"))
+TEACHER_POPULATION = "Enseignants"
+
+# Start of a summer break whose end is not published yet (the next rentrée is unknown).
+SUMMER_START_DESCRIPTION = "Début des Vacances d'Été"
 
 
 def load_records() -> list[dict[str, str]]:
-    if not CACHE_PATH.exists():
-        CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with urlopen(DATASET_URL, timeout=URL_TIMEOUT_SECONDS) as response:
-            content = response.read()
-        # The server sometimes sends gzip data without a Content-Encoding header.
-        if content[:2] == b"\x1f\x8b":
-            content = gzip.decompress(content)
-        CACHE_PATH.write_bytes(content)
-    return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    with urlopen(DATASET_URL, timeout=URL_TIMEOUT_SECONDS) as response:
+        content = response.read()
+    # The server sometimes sends gzip data without a Content-Encoding header.
+    if content[:2] == b"\x1f\x8b":
+        content = gzip.decompress(content)
+    return json.loads(content.decode("utf-8"))
 
 
 def _to_local_date(value: str) -> date:
@@ -130,12 +128,16 @@ def collect_breaks(records: list[dict[str, str]]) -> dict[str, set[tuple[date, d
     # The dataset has one row per académie; all académies of a zone must agree.
     ranges: dict[tuple[str, str, str], set[tuple[date, date]]] = defaultdict(set)
     for record in records:
-        if (
-            (zone := record["zones"]) not in ZONES
-            or (holiday_id := HOLIDAY_IDS.get(record["description"])) is None
-            or record["population"] not in PUPIL_POPULATIONS
-        ):
+        if (zone := record["zones"]) not in ZONES:
             continue
+        description = record["description"]
+        population = record["population"]
+        if description == SUMMER_START_DESCRIPTION or population == TEACHER_POPULATION:
+            continue
+        if (holiday_id := HOLIDAY_IDS.get(description)) is None:
+            raise ValueError(f"Unsupported break description: {description}")
+        if population not in PUPIL_POPULATIONS:
+            raise ValueError(f"Unsupported population: {population}")
         start, end = _get_break_dates(
             holiday_id, _to_local_date(record["start_date"]), _to_local_date(record["end_date"])
         )
