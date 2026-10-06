@@ -290,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bahrain</td>
 <td>BH</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1004,7 +1004,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1340,7 +1340,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Oman</td>
 <td>OM</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
