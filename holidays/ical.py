@@ -37,7 +37,8 @@ UID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, UID_DOMAIN)
 # RFC 5545 `dur-value` without the optional sign.
 DURATION_PATTERN = re.compile(
     r"^P(?:\d+W|\d+D(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?"
-    r"|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))$"
+    r"|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))$",
+    re.ASCII,
 )
 
 
@@ -141,7 +142,10 @@ class ICalExporter:
         """
         refresh_interval = refresh_interval.strip().upper()
 
-        if not DURATION_PATTERN.fullmatch(refresh_interval):
+        # A zero-length duration is not a usable refresh interval.
+        if not DURATION_PATTERN.fullmatch(refresh_interval) or not refresh_interval.strip(
+            "0DHMPSTW"
+        ):
             raise ValueError(
                 f"Invalid refresh interval: '{refresh_interval}'. Expected an RFC 5545 "
                 "duration, e.g., 'P1W' or 'P1D'."
@@ -330,8 +334,10 @@ class ICalExporter:
             self._fold_line(f"X-WR-CALNAME:{self._escape_text(self.calendar_name)}"),
         ]
         if self.refresh_interval:
-            lines.append(f"REFRESH-INTERVAL;VALUE=DURATION:{self.refresh_interval}")
-            lines.append(f"X-PUBLISHED-TTL:{self.refresh_interval}")
+            lines.append(
+                self._fold_line(f"REFRESH-INTERVAL;VALUE=DURATION:{self.refresh_interval}")
+            )
+            lines.append(self._fold_line(f"X-PUBLISHED-TTL:{self.refresh_interval}"))
 
         # Merged continuous holiday with the same name and use `DURATION` instead.
         holiday_sequences: dict[str, list[date]] = {}

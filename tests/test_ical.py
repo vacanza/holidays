@@ -581,6 +581,12 @@ class TestIcalExporter(TestCase):
             )
             self.assertIn(f"X-PUBLISHED-TTL:{refresh_interval.strip().upper()}\r\n", output)
 
+        # Long durations are folded like any other content line.
+        refresh_interval = f"P{'1' * 80}W"
+        output = ICalExporter(self.us_holidays, refresh_interval=refresh_interval).generate()
+        self.assertIn(f"REFRESH-INTERVAL;VALUE=DURATION:P{'1' * 41}\r\n {'1' * 39}W\r\n", output)
+        self.assertIn(f"X-PUBLISHED-TTL:P{'1' * 57}\r\n {'1' * 23}W\r\n", output)
+
     def test_invalid_refresh_interval(self):
         for refresh_interval in (
             "",
@@ -593,6 +599,14 @@ class TestIcalExporter(TestCase):
             "P1W1D",
             "P1DT",
             "7 days",
+            # Zero-length durations.
+            "P0W",
+            "P0D",
+            "PT0S",
+            "P0DT0H0M0S",
+            # Non-ASCII digits.
+            "P١W",
+            "P１W",
         ):
             with self.assertRaises(ValueError) as context:
                 ICalExporter(self.us_holidays, refresh_interval=refresh_interval)
