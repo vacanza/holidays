@@ -54,21 +54,21 @@ included, since the date classes resume in September 2028 is not published yet.
 
 FRANCE_SCHOOL_HOLIDAYS = {
     2017: {
-        "A": (
+        "Zone A": (
             (0, 10, 21, 0, 11, 5, ALL_SAINTS_BREAK),
             (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (0, 10, 21, 0, 11, 5, ALL_SAINTS_BREAK),
             (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (0, 10, 21, 0, 11, 5, ALL_SAINTS_BREAK),
             (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
         ),
     },
     2018: {
-        "A": (
+        "Zone A": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 10, 0, 2, 25, WINTER_BREAK),
             (0, 4, 7, 0, 4, 22, SPRING_BREAK),
@@ -76,7 +76,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 20, 0, 11, 4, ALL_SAINTS_BREAK),
             (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 24, 0, 3, 11, WINTER_BREAK),
             (0, 4, 21, 0, 5, 6, SPRING_BREAK),
@@ -84,7 +84,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 20, 0, 11, 4, ALL_SAINTS_BREAK),
             (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 17, 0, 3, 4, WINTER_BREAK),
             (0, 4, 14, 0, 4, 29, SPRING_BREAK),
@@ -94,7 +94,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2019: {
-        "A": (
+        "Zone A": (
             (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
             (0, 2, 16, 0, 3, 3, WINTER_BREAK),
             (0, 4, 13, 0, 4, 28, SPRING_BREAK),
@@ -103,7 +103,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 19, 0, 11, 3, ALL_SAINTS_BREAK),
             (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
             (0, 2, 9, 0, 2, 24, WINTER_BREAK),
             (0, 4, 6, 0, 4, 22, SPRING_BREAK),
@@ -112,7 +112,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 19, 0, 11, 3, ALL_SAINTS_BREAK),
             (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
             (0, 2, 23, 0, 3, 10, WINTER_BREAK),
             (0, 4, 20, 0, 5, 5, SPRING_BREAK),
@@ -123,7 +123,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2020: {
-        "A": (
+        "Zone A": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 22, 0, 3, 8, WINTER_BREAK),
             (0, 4, 18, 0, 5, 3, SPRING_BREAK),
@@ -132,7 +132,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 17, 0, 11, 1, ALL_SAINTS_BREAK),
             (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 15, 0, 3, 1, WINTER_BREAK),
             (0, 4, 11, 0, 4, 26, SPRING_BREAK),
@@ -141,7 +141,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 17, 0, 11, 1, ALL_SAINTS_BREAK),
             (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 8, 0, 2, 23, WINTER_BREAK),
             (0, 4, 4, 0, 4, 19, SPRING_BREAK),
@@ -152,7 +152,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2021: {
-        "A": (
+        "Zone A": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 6, 0, 2, 21, WINTER_BREAK),
             (0, 4, 10, 0, 4, 25, SPRING_BREAK),
@@ -161,7 +161,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 23, 0, 11, 7, ALL_SAINTS_BREAK),
             (0, 12, 18, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 20, 0, 3, 7, WINTER_BREAK),
             (0, 4, 10, 0, 4, 25, SPRING_BREAK),
@@ -170,7 +170,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 23, 0, 11, 7, ALL_SAINTS_BREAK),
             (0, 12, 18, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 13, 0, 2, 28, WINTER_BREAK),
             (0, 4, 10, 0, 4, 25, SPRING_BREAK),
@@ -181,7 +181,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2022: {
-        "A": (
+        "Zone A": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 12, 0, 2, 27, WINTER_BREAK),
             (0, 4, 16, 0, 5, 1, SPRING_BREAK),
@@ -190,7 +190,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 22, 0, 11, 6, ALL_SAINTS_BREAK),
             (0, 12, 17, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 5, 0, 2, 20, WINTER_BREAK),
             (0, 4, 9, 0, 4, 24, SPRING_BREAK),
@@ -199,7 +199,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 22, 0, 11, 6, ALL_SAINTS_BREAK),
             (0, 12, 17, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 19, 0, 3, 6, WINTER_BREAK),
             (0, 4, 23, 0, 5, 8, SPRING_BREAK),
@@ -210,7 +210,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2023: {
-        "A": (
+        "Zone A": (
             (-1, 12, 17, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 4, 0, 2, 19, WINTER_BREAK),
             (0, 4, 8, 0, 4, 23, SPRING_BREAK),
@@ -219,7 +219,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 21, 0, 11, 5, ALL_SAINTS_BREAK),
             (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 17, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 11, 0, 2, 26, WINTER_BREAK),
             (0, 4, 15, 0, 5, 1, SPRING_BREAK),
@@ -228,7 +228,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 21, 0, 11, 5, ALL_SAINTS_BREAK),
             (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 17, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 18, 0, 3, 5, WINTER_BREAK),
             (0, 4, 22, 0, 5, 8, SPRING_BREAK),
@@ -239,7 +239,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2024: {
-        "A": (
+        "Zone A": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 17, 0, 3, 3, WINTER_BREAK),
             (0, 4, 13, 0, 4, 28, SPRING_BREAK),
@@ -248,7 +248,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 19, 0, 11, 3, ALL_SAINTS_BREAK),
             (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 24, 0, 3, 10, WINTER_BREAK),
             (0, 4, 20, 0, 5, 5, SPRING_BREAK),
@@ -257,7 +257,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 19, 0, 11, 3, ALL_SAINTS_BREAK),
             (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
             (0, 2, 10, 0, 2, 25, WINTER_BREAK),
             (0, 4, 6, 0, 4, 21, SPRING_BREAK),
@@ -268,7 +268,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2025: {
-        "A": (
+        "Zone A": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 22, 0, 3, 9, WINTER_BREAK),
             (0, 4, 19, 0, 5, 4, SPRING_BREAK),
@@ -277,7 +277,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 18, 0, 11, 2, ALL_SAINTS_BREAK),
             (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 8, 0, 2, 23, WINTER_BREAK),
             (0, 4, 5, 0, 4, 21, SPRING_BREAK),
@@ -286,7 +286,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 18, 0, 11, 2, ALL_SAINTS_BREAK),
             (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
             (0, 2, 15, 0, 3, 2, WINTER_BREAK),
             (0, 4, 12, 0, 4, 27, SPRING_BREAK),
@@ -297,7 +297,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2026: {
-        "A": (
+        "Zone A": (
             (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
             (0, 2, 7, 0, 2, 22, WINTER_BREAK),
             (0, 4, 4, 0, 4, 19, SPRING_BREAK),
@@ -306,7 +306,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 17, 0, 11, 1, ALL_SAINTS_BREAK),
             (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
             (0, 2, 14, 0, 3, 1, WINTER_BREAK),
             (0, 4, 11, 0, 4, 26, SPRING_BREAK),
@@ -315,7 +315,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 17, 0, 11, 1, ALL_SAINTS_BREAK),
             (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
             (0, 2, 21, 0, 3, 8, WINTER_BREAK),
             (0, 4, 18, 0, 5, 3, SPRING_BREAK),
@@ -326,7 +326,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2027: {
-        "A": (
+        "Zone A": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 13, 0, 2, 28, WINTER_BREAK),
             (0, 4, 10, 0, 4, 25, SPRING_BREAK),
@@ -335,7 +335,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 23, 0, 11, 7, ALL_SAINTS_BREAK),
             (0, 12, 18, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 20, 0, 3, 7, WINTER_BREAK),
             (0, 4, 17, 0, 5, 2, SPRING_BREAK),
@@ -344,7 +344,7 @@ FRANCE_SCHOOL_HOLIDAYS = {
             (0, 10, 23, 0, 11, 7, ALL_SAINTS_BREAK),
             (0, 12, 18, 1, 1, 2, CHRISTMAS_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
             (0, 2, 6, 0, 2, 21, WINTER_BREAK),
             (0, 4, 3, 0, 4, 18, SPRING_BREAK),
@@ -355,19 +355,19 @@ FRANCE_SCHOOL_HOLIDAYS = {
         ),
     },
     2028: {
-        "A": (
+        "Zone A": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 19, 0, 3, 5, WINTER_BREAK),
             (0, 4, 22, 0, 5, 8, SPRING_BREAK),
             (0, 5, 25, 0, 5, 28, ASCENSION_BREAK),
         ),
-        "B": (
+        "Zone B": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 5, 0, 2, 20, WINTER_BREAK),
             (0, 4, 8, 0, 4, 23, SPRING_BREAK),
             (0, 5, 25, 0, 5, 28, ASCENSION_BREAK),
         ),
-        "C": (
+        "Zone C": (
             (-1, 12, 18, 0, 1, 2, CHRISTMAS_BREAK),
             (0, 2, 12, 0, 2, 27, WINTER_BREAK),
             (0, 4, 15, 0, 5, 1, SPRING_BREAK),

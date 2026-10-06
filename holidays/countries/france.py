@@ -89,9 +89,9 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "TF",   # Terres australes françaises.
         "WF",   # Wallis-et-Futuna.
         # School zones.
-        "A",    # Zone A.
-        "B",    # Zone B.
-        "C",    # Zone C.
+        "Zone A",
+        "Zone B",
+        "Zone C",
     )
     # fmt: on
     subdivisions_aliases = {
@@ -117,9 +117,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Pierre-et-Miquelon": "PM",
         "Terres australes françaises": "TF",
         "Wallis-et-Futuna": "WF",
-        "Zone A": "A",
-        "Zone B": "B",
-        "Zone C": "C",
     }
     supported_categories: tuple[str, ...] = (PUBLIC, SCHOOL)
     supported_languages = ("en_US", "fr", "th", "uk")
@@ -228,7 +225,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Moselle (académie de Nancy-Metz) and Alsace (académie de Strasbourg) are in zone B.
-        zone = "B" if self._normalized_subdiv in {"57", "6AE"} else self._normalized_subdiv
+        zone = "Zone B" if self._normalized_subdiv in {"57", "6AE"} else self.subdiv
         school_holiday_names = self._get_school_holiday_names()
         for (
             start_year_offset,

@@ -61,12 +61,8 @@ OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "france_school_dates.py"
 PARIS_TZ = ZoneInfo("Europe/Paris")
 URL_TIMEOUT_SECONDS = 60
 
-# Dataset zone labels mapped to library subdivision codes.
-ZONE_LABEL_TO_CODE = {
-    "Zone A": "A",
-    "Zone B": "B",
-    "Zone C": "C",
-}
+# Dataset zone labels, also used as library subdivision codes.
+ZONES = {"Zone A", "Zone B", "Zone C"}
 
 # Dataset break descriptions mapped to the constant names used in the runtime dataset.
 HOLIDAY_IDS = {
@@ -136,7 +132,7 @@ def collect_breaks(records: list[dict[str, str]]) -> dict[str, set[tuple[date, d
     ranges: dict[tuple[str, str, str], set[tuple[date, date]]] = defaultdict(set)
     for record in records:
         if (
-            (zone := ZONE_LABEL_TO_CODE.get(record["zones"])) is None
+            (zone := record["zones"]) not in ZONES
             or (holiday_id := HOLIDAY_IDS.get(record["description"])) is None
             or record["population"] not in PUPIL_POPULATIONS
         ):

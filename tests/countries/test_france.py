@@ -398,7 +398,7 @@ class TestFrance(CommonCountryTests, TestCase):
 
     def test_all_zones_present_for_all_dataset_years(self):
         for year, year_data in FRANCE_SCHOOL_HOLIDAYS.items():
-            self.assertEqual(set(year_data), {"A", "B", "C"}, year)
+            self.assertEqual(set(year_data), {"Zone A", "Zone B", "Zone C"}, year)
 
     def test_all_school_holiday_ids_are_mapped(self):
         known_ids = set(France._get_school_holiday_names())
@@ -411,61 +411,61 @@ class TestFrance(CommonCountryTests, TestCase):
         self.assertEqual(dataset_ids, known_ids)
 
     def test_school_holidays(self):
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances de la Toussaint",
             "2025-10-18",
             "2025-11-02",
         )
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances de Noël",
             "2025-12-20",
             "2025-12-31",
             "2026-01-01",
             "2026-01-04",
         )
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances d'hiver",
             "2026-02-07",
             "2026-02-22",
         )
-        self.assertNoSubdivASchoolHoliday("2026-02-06", "2026-02-23")
-        self.assertSubdivASchoolHolidayName(
+        self.assertNoSubdivZoneASchoolHoliday("2026-02-06", "2026-02-23")
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances de printemps",
             "2026-04-04",
             "2026-04-19",
         )
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Pont de l'Ascension",
             "2026-05-14",
             "2026-05-17",
         )
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances d'été",
             "2026-07-04",
             "2026-08-31",
         )
-        self.assertNoSubdivASchoolHoliday("2026-07-03", "2026-09-01")
-        self.assertSubdivBSchoolHolidayName(
+        self.assertNoSubdivZoneASchoolHoliday("2026-07-03", "2026-09-01")
+        self.assertSubdivZoneBSchoolHolidayName(
             "Vacances d'hiver",
             "2026-02-14",
             "2026-03-01",
         )
-        self.assertSubdivBSchoolHolidayName(
+        self.assertSubdivZoneBSchoolHolidayName(
             "Vacances de printemps",
             "2026-04-11",
             "2026-04-26",
         )
-        self.assertSubdivCSchoolHolidayName(
+        self.assertSubdivZoneCSchoolHolidayName(
             "Vacances d'hiver",
             "2026-02-21",
             "2026-03-08",
         )
-        self.assertSubdivCSchoolHolidayName(
+        self.assertSubdivZoneCSchoolHolidayName(
             "Vacances de printemps",
             "2026-04-18",
             "2026-05-03",
         )
-        self.assertSubdivCSchoolHolidayName(
+        self.assertSubdivZoneCSchoolHolidayName(
             "Vacances d'hiver",
             "2027-02-06",
             "2027-02-21",
@@ -473,8 +473,8 @@ class TestFrance(CommonCountryTests, TestCase):
 
     def test_school_holidays_last_class_on_weekday(self):
         # Classes ended after class on Tuesday, July 6, 2021 and Thursday, July 7, 2022.
-        self.assertNoSubdivASchoolHoliday("2021-07-06", "2022-07-07")
-        self.assertSubdivASchoolHolidayName("Vacances d'été", "2021-07-07", "2022-07-08")
+        self.assertNoSubdivZoneASchoolHoliday("2021-07-06", "2022-07-07")
+        self.assertSubdivZoneASchoolHolidayName("Vacances d'été", "2021-07-07", "2022-07-08")
 
     def test_school_holidays_ascension_bridge(self):
         for dts in (
@@ -485,39 +485,34 @@ class TestFrance(CommonCountryTests, TestCase):
             # Only Friday, May 7, 2027 was set as a day without classes.
             ("2027-05-06", "2027-05-09"),
         ):
-            self.assertSubdivBSchoolHolidayName("Pont de l'Ascension", *dts)
-        self.assertNoSubdivBSchoolHoliday("2019-05-29", "2019-06-03", "2027-05-05", "2027-05-10")
+            self.assertSubdivZoneBSchoolHolidayName("Pont de l'Ascension", *dts)
+        self.assertNoSubdivZoneBSchoolHoliday(
+            "2019-05-29", "2019-06-03", "2027-05-05", "2027-05-10"
+        )
 
     def test_school_holidays_dataset_range(self):
         self.assertNoHolidays(
-            France(subdiv="A", years=range(self.start_year, 2017), categories=SCHOOL)
+            France(subdiv="Zone A", years=range(self.start_year, 2017), categories=SCHOOL)
         )
-        self.assertNoSubdivASchoolHoliday("2017-10-20", "2028-05-29", "2028-07-04")
-        self.assertSubdivASchoolHolidayName(
+        self.assertNoSubdivZoneASchoolHoliday("2017-10-20", "2028-05-29", "2028-07-04")
+        self.assertSubdivZoneASchoolHolidayName(
             "Vacances de la Toussaint",
             "2017-10-21",
             "2017-11-05",
         )
-        self.assertSubdivASchoolHolidayName(
+        self.assertSubdivZoneASchoolHolidayName(
             "Pont de l'Ascension",
             "2028-05-25",
             "2028-05-28",
         )
 
     def test_school_holidays_alsace_moselle(self):
-        zone_b_holidays = France(subdiv="B", years=range(2017, 2029), categories=SCHOOL)
+        zone_b_holidays = France(subdiv="Zone B", years=range(2017, 2029), categories=SCHOOL)
         for subdiv in ("57", "6AE", "Alsace", "Moselle"):
             self.assertEqual(
                 dict(France(subdiv=subdiv, years=range(2017, 2029), categories=SCHOOL)),
                 dict(zone_b_holidays),
                 subdiv,
-            )
-
-    def test_school_holidays_subdivision_aliases(self):
-        for subdiv in ("A", "B", "C"):
-            self.assertEqual(
-                dict(France(subdiv=f"Zone {subdiv}", years=2026, categories=SCHOOL)),
-                dict(France(subdiv=subdiv, years=2026, categories=SCHOOL)),
             )
 
     def test_school_holidays_not_supported(self):
@@ -539,12 +534,12 @@ class TestFrance(CommonCountryTests, TestCase):
             self.assertNoHolidays(France(subdiv=subdiv, years=2026, categories=SCHOOL))
 
     def test_school_and_public_categories(self):
-        holidays = France(subdiv="A", years=2026, categories=(PUBLIC, SCHOOL))
+        holidays = France(subdiv="Zone A", years=2026, categories=(PUBLIC, SCHOOL))
         self.assertHolidayName("Ascension", holidays, "2026-05-14")
         self.assertHolidayName("Pont de l'Ascension", holidays, "2026-05-14", "2026-05-17")
 
     def test_public_category_excludes_school_holidays(self):
-        self.assertNoHolidayName("Vacances d'été", France(subdiv="A", years=2026))
+        self.assertNoHolidayName("Vacances d'été", France(subdiv="Zone A", years=2026))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -678,7 +673,7 @@ class TestFrance(CommonCountryTests, TestCase):
         )
 
     def test_l10n_default_school(self):
-        default_holidays = France(subdiv="A", years=2026, categories=SCHOOL)
+        default_holidays = France(subdiv="Zone A", years=2026, categories=SCHOOL)
         for dt, name in (
             ("2026-01-02", "Vacances de Noël"),
             ("2026-02-09", "Vacances d'hiver"),
@@ -690,7 +685,7 @@ class TestFrance(CommonCountryTests, TestCase):
             self.assertHolidayName(name, default_holidays, dt)
 
     def test_l10n_en_us_school(self):
-        en_us_holidays = France(subdiv="A", years=2026, language="en_US", categories=SCHOOL)
+        en_us_holidays = France(subdiv="Zone A", years=2026, language="en_US", categories=SCHOOL)
         for dt, name in (
             ("2026-01-02", "Christmas Break"),
             ("2026-02-09", "Winter Break"),
@@ -702,7 +697,7 @@ class TestFrance(CommonCountryTests, TestCase):
             self.assertHolidayName(name, en_us_holidays, dt)
 
     def test_l10n_th_school(self):
-        th_holidays = France(subdiv="A", years=2026, language="th", categories=SCHOOL)
+        th_holidays = France(subdiv="Zone A", years=2026, language="th", categories=SCHOOL)
         for dt, name in (
             ("2026-01-02", "ปิดเทอมคริสต์มาส"),
             ("2026-02-09", "ปิดเทอมฤดูหนาว"),
@@ -714,7 +709,7 @@ class TestFrance(CommonCountryTests, TestCase):
             self.assertHolidayName(name, th_holidays, dt)
 
     def test_l10n_uk_school(self):
-        uk_holidays = France(subdiv="A", years=2026, language="uk", categories=SCHOOL)
+        uk_holidays = France(subdiv="Zone A", years=2026, language="uk", categories=SCHOOL)
         for dt, name in (
             ("2026-01-02", "Різдвяні канікули"),
             ("2026-02-09", "Зимові канікули"),
