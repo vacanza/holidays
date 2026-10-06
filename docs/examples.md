@@ -681,7 +681,7 @@ Calendar for specific year:
 holidays-ics US --years 2035
 ```
 
-Specifying an explicit year range:
+Calendar for an explicit year range:
 
 ```shell
 holidays-ics US --years 2021-2030
@@ -723,19 +723,19 @@ Calendar for Switzerland, specific to the Canton of Zurich, localized in German:
 holidays-ics CH --subdiv ZH --language de
 ```
 
-Create a German-localized calendar for Switzerland, naming the file from the language and country codes:
+Calendar for Switzerland, localized in German, saved to a file named from the language and country codes:
 
 ```shell
 holidays-ics CH --language de --output-template "{language}_{code}.ics"
 ```
 
-Naming the output calendar file using the country code:
+Save calendar to a file named after the country code:
 
 ```shell
 holidays-ics US --output-template "{code}.ics"
 ```
 
-Create a custom calendar file name by prepending "HOLIDAYS_" to the default file name:
+Prepend "HOLIDAYS_" to the default file name:
 
 ```shell
 holidays-ics US --years 2021-2030 --categories unofficial --subdiv TX --language th --output-template "HOLIDAYS_{all}.ics"
