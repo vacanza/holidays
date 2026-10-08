@@ -456,9 +456,11 @@ class TestIcalExporter(TestCase):
         # Adding another year keeps the UIDs of existing events.
         self.assertEqual(
             uids,
-            self._get_uids(ICalExporter(country_holidays("US", years=(2024, 2025))).generate())[
-                : len(uids)
-            ],
+            self._get_uids(
+                ICalExporter(
+                    country_holidays("US", years=(2024, 2025), language="en_US")
+                ).generate()
+            )[: len(uids)],
         )
 
         # Pinned value: this must never change between library versions.
