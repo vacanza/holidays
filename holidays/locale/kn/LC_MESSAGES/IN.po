@@ -74,7 +74,7 @@ msgstr "ಮಹಾವೀರ ಜಯಂತಿ"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
+msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮೆ"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -94,7 +94,7 @@ msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
+msgstr "ಮೊಹರಂ"
 
 #. Prophet's Birthday.
 msgid "Milad-un-Nabi"

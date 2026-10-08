@@ -90,11 +90,11 @@ msgstr "ವಿಜಯದಶಮಿ"
 
 #. Diwali Lakshmi Puja.
 msgid "Diwali Laxmi Pujan"
-msgstr "ದೀಪಾವಳಿ ಧನಲಕ್ಷ್ಮಿ ಪೂಜೆ"
+msgstr "ದೀಪಾವಳಿ ಲಕ್ಷ್ಮೀ ಪೂಜೆ"
 
 #. Diwali Balipratipada.
 msgid "Diwali Balipratipada"
-msgstr "ಬಲಿ ಪಾಡ್ಯಮಿ"
+msgstr "ದೀಪಾವಳಿ ಬಲಿ ಪಾಡ್ಯಮಿ"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
@@ -106,11 +106,11 @@ msgstr "ಸೋದರ ಬಿದಿಗೆ"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
+msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮೆ"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
+msgstr "ಮೊಹರಂ"
 
 #. Prophet's Birthday.
 msgid "Id-E-Milad-Un-Nabi"
