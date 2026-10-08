@@ -19,7 +19,12 @@ from holidays.groups import (
     StaticHolidays,
 )
 from holidays.helpers import tr
-from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NONE
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NEXT_MON,
+    SUN_TO_NEXT_MON,
+    SUN_TO_NONE,
+)
 
 
 class Spain(
@@ -50,6 +55,14 @@ class Spain(
         * [2026](https://web.archive.org/web/20251028115438/https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667)
 
     Subdivisions Holidays References:
+        * Barcelona:
+            * [2020](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2020_barcelona_ciutat-pdf)
+            * [2021](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2021_barcelona_ciutat-pdf)
+            * [2022](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2022_barcelona_ciutat-pdf)
+            * [2023](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2023_barcelona_ciutat-pdf)
+            * [2024](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2024_barcelona_ciutat-pdf)
+            * [2025](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2025_barcelona_ciutat-pdf)
+            * [2026](https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?documentId=1032232&type=01&language=ca_ES)
         * Ceuta:
             * Official Calendars:
                 * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
@@ -100,6 +113,8 @@ class Spain(
             * [2026](https://web.archive.org/web/20251028120003/https://www.lexnavarra.navarra.es/detalle.asp?r=57937)
 
     Holidays checked with official sources for 2008-2026 only.
+
+    Barcelona city holidays checked with official sources for 2020-2026 only.
     """
 
     country = "ES"
@@ -132,6 +147,8 @@ class Spain(
         "PV",  # País Vasco.
         "RI",  # La Rioja.
         "VC",  # Valenciana.
+        # Cities.
+        "Barcelona",
     )
     subdivisions_aliases = {
         "Andalucía": "AN",
@@ -950,6 +967,28 @@ class Spain(
         if self._year == 2016:
             # Christmas Day.
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
+
+    def _populate_subdiv_barcelona_public_holidays(self):
+        self._populate_subdiv_ct_public_holidays()
+
+        # Barcelona city holidays are only known from official sources since 2020.
+        if self._year <= 2019:
+            return None
+
+        # Pentecost Monday.
+        name = tr("Día de la Pascua Granada")
+        if self._year == 2023:
+            self._add_holiday_jun_5(name)
+        # Already added for Catalonia when Labor Day falls on Sunday.
+        elif not self._is_sunday(MAY, 1):
+            self._add_pentecost_monday(name)
+
+        # Our Lady of Mercy.
+        dt = self._add_holiday_sep_24(tr("Nuestra Señora de la Merced"))
+        if self._year == 2022:
+            self._add_observed(dt, rule=SAT_TO_NEXT_MON)
+        else:
+            self._move_holiday(dt)
 
 
 class ES(Spain):
