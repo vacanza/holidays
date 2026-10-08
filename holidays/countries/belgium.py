@@ -47,7 +47,6 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             * [Schoolvakanties](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties)
         * French Community school holidays:
             * [Décret du 31 mars 2022 relatif à l'adaptation des rythmes scolaires annuels, art. 3-4](https://etaamb.openjustice.be/fr/decret-du-31-mars-2022_n2022040888)
-            * [Calendrier scolaire](http://www.enseignement.be/index.php?page=23953)
             * [Calendriers scolaires 2009-2025](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
             * [Calendriers scolaires 2026-2029](https://web.archive.org/web/20260907033123/https://www.enseignement.be/calendrier-scolaire)
         * German-speaking Community school holidays:
