@@ -21,6 +21,8 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_au_Maroc>
         * <https://web.archive.org/web/20230303001626/http://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
+        * <https://web.archive.org/web/20260606234454/https://mmsp.gov.ma/fr/nos-metiers/horaires-de-travail-et-jours-fériés>
+        * [Unity Day](https://web.archive.org/web/20261004190305/https://www.mre.gov.ma/en/media-room/news/his-majesty-king-proclaims-october-31-unity-day-statement-royal-office)
     """
 
     country = "MA"
@@ -48,11 +50,9 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             # Proclamation of Independence Day.
             self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
-        # In May 2023, Morocco recognized Berber New Year as official holiday.
-        # https://web.archive.org/web/20230515114330/https://www.diplomatie.ma/en/statement-royal-office-12
         if self._year >= 2024:
             # Amazigh New Year.
-            self._add_holiday_jan_13(tr("رأس السنة الأمازيغية"))
+            self._add_holiday_jan_14(tr("رأس السنة الأمازيغية"))
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
@@ -78,6 +78,10 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_holiday_aug_21(name)
         else:
             self._add_holiday_jul_9(name)
+
+        if self._year >= 2026:
+            # Unity Day.
+            self._add_holiday_oct_31(tr("عيد الوحدة"))
 
         if self._year >= 1976:
             # Green March.
