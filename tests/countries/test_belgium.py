@@ -275,6 +275,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         # Flemish Community.
         self.assertSubdivFlemishSchoolHolidayName(
             name,
+            "2001-04-02",
+            "2001-04-16",
             "2016-03-28",
             "2016-04-10",
             "2019-04-08",
@@ -299,6 +301,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2030-04-22",
         )
         self.assertNoSubdivFlemishSchoolHoliday(
+            "2001-04-01",
+            "2001-04-17",
             "2016-03-27",
             "2016-04-11",
             "2019-04-07",
@@ -313,6 +317,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         # Starts on Easter Monday in the German-speaking Community since 2025.
         self.assertSubdivGermanSchoolHolidayName(
             name,
+            "2001-04-02",
+            "2001-04-16",
             "2019-04-08",
             "2019-04-22",
             "2020-04-06",
@@ -335,6 +341,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2029-04-15",
         )
         self.assertNoSubdivGermanSchoolHoliday(
+            "2001-04-01",
+            "2001-04-17",
             "2023-04-02",
             "2023-04-17",
             "2025-04-07",
@@ -349,6 +357,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertSubdivFrenchSchoolHolidayName(
             name,
             # Easter-based until 2022.
+            "2001-04-02",
+            "2001-04-16",
             "2013-04-01",
             "2013-04-14",
             "2014-04-07",
@@ -386,6 +396,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2029-05-13",
         )
         self.assertNoSubdivFrenchSchoolHoliday(
+            "2001-04-01",
+            "2001-04-17",
             "2017-04-02",
             "2017-04-18",
             "2022-04-03",
