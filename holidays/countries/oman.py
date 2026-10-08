@@ -50,7 +50,7 @@ class Oman(HolidayBase, IslamicHolidays):
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
     start_year = 1970
-    supported_languages = ("ar", "en_US","hi", "ur_PK")
+    supported_languages = ("ar", "en_US", "hi", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
