@@ -48,11 +48,10 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * French Community school holidays:
             * [Décret du 31 mars 2022 relatif à l'adaptation des rythmes scolaires annuels, art. 3-4](https://etaamb.openjustice.be/fr/decret-du-31-mars-2022_n2022040888)
             * [Calendrier scolaire](http://www.enseignement.be/index.php?page=23953)
-            * [Calendriers scolaires 2012-2013 à 2020-2021](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
-            * [Calendriers scolaires 2021-2022 et 2022-2023](https://web.archive.org/web/20220516141856/http://www.enseignement.be/index.php?page=23953)
+            * [Calendriers scolaires 2009-2025](https://web.archive.org/web/20210205180850/http://www.enseignement.be/index.php?page=23953)
+            * [Calendriers scolaires 2026-2029](https://web.archive.org/web/20260907033123/https://www.enseignement.be/calendrier-scolaire)
         * German-speaking Community school holidays:
             * [Schulkalender und Ferienregelung](https://ostbelgienbildung.be/desktopdefault.aspx/tabid-2212/4397_read-31727/)
-            * [Osterferien in Belgien driften auseinander](https://brf.be/regional/1116887/)
             * [Osterferien im Jahr 2025 in der DG](https://ostbelgiendirekt.be/fg-schuljahr-2024-2025-394972)
             * [Feiertage und Schulferien 2026 in der DG](https://ostbelgiendirekt.be/feiertage-und-schulferien-2026-433031)
             * [Tag der Deutschsprachigen Gemeinschaft](https://de.wikipedia.org/wiki/Tag_der_Deutschsprachigen_Gemeinschaft)
@@ -214,7 +213,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_remembrance_day(tr("Wapenstilstand"))
 
     def _populate_subdiv_french_school_holidays(self):
-        # The same rules as in the Flemish Community applied until the 2021-2022 school year.
+        # The same rules as in other communities applied until the 2021-2022 school year.
         # Since 2022-2023 the school year starts on the last Monday of August, ends on the first
         # Friday of July and alternates 7 (or 8) weeks of classes with 2 weeks of break.
 
@@ -233,8 +232,8 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
             # Monday of the week of May 1 → 2 weeks.
             spring_start = _get_nth_weekday_from(-1, MON, date(self._year, MAY, 1))
-            # Spring Break.
-            self._add_multiday_holiday(spring_start, 14, name=tr("Lentevakantie"))
+            # Easter Break.
+            self._add_multiday_holiday(spring_start, 14, name=tr("Paasvakantie"))
 
             # Easter Monday.
             self._add_easter_monday(tr("Paasmaandag"))
@@ -264,8 +263,8 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # Carnival Break.
             self._add_carnival_break(tr("Krokusvakantie"))
 
-            # Spring Break.
-            self._add_easter_break(tr("Lentevakantie"))
+            # Easter Break.
+            self._add_easter_break(tr("Paasvakantie"))
 
             # Labor Day.
             self._add_labor_day(self.labor_day)
@@ -348,7 +347,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Armistice Day.
         self._add_remembrance_day(tr("Wapenstilstand"))
 
-        if self._year >= 1994:
+        if self._year >= 1990:
             # German-speaking Community Day.
             self._add_holiday_nov_15(tr("Feestdag van de Duitstalige Gemeenschap"))
 

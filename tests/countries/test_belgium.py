@@ -271,7 +271,6 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_school_easter_break(self):
         name = "Paasvakantie"
         self.assertNoHolidayName(name)
-        self.assertNoSubdivFrenchSchoolHolidayName(name)
 
         # Flemish Community.
         self.assertSubdivFlemishSchoolHolidayName(
@@ -346,11 +345,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
         self.assertSubdivGermanSchoolHolidayName(name, self.full_range)
 
-    def test_school_spring_break(self):
-        name = "Lentevakantie"
-        self.assertNoHolidayName(name)
-        self.assertNoSubdivFlemishSchoolHolidayName(name)
-        self.assertNoSubdivGermanSchoolHolidayName(name)
+        # French Community.
         self.assertSubdivFrenchSchoolHolidayName(
             name,
             # Easter-based until 2022.
@@ -549,7 +544,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertSubdivGermanSchoolHolidayName(
             name, (f"{year}-05-01" for year in self.full_range)
         )
-        # Falls within the Spring Break since 2023.
+        # Falls within the Easter Break since 2023.
         self.assertSubdivFrenchSchoolHolidayName(
             name, (f"{year}-05-01" for year in range(self.start_year, 2023))
         )
@@ -567,7 +562,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertSubdivGermanSchoolHoliday(
             "2019-04-22", "2022-04-18", "2024-04-01", "2025-04-21", "2027-03-29"
         )
-        # Falls within the Spring Break until 2022.
+        # Falls within the Easter Break until 2022.
         self.assertNoSubdivFrenchSchoolHolidayName(name, range(self.start_year, 2023))
         self.assertSubdivFrenchSchoolHoliday("2019-04-22", "2022-04-18")
         self.assertSubdivFrenchSchoolHolidayName(
@@ -662,9 +657,9 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertNoSubdivFlemishSchoolHolidayName(name)
         self.assertNoSubdivFrenchSchoolHolidayName(name)
         self.assertSubdivGermanSchoolHolidayName(
-            name, (f"{year}-11-15" for year in range(1994, 2050))
+            name, (f"{year}-11-15" for year in range(1990, 2050))
         )
-        self.assertNoSubdivGermanSchoolHolidayName(name, range(self.start_year, 1994))
+        self.assertNoSubdivGermanSchoolHolidayName(name, range(self.start_year, 1990))
 
     def test_school_all_souls_day(self):
         name = "Allerzielen"
@@ -899,7 +894,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("Flemish", 2026, "2026-11-02", "Herfstvakantie"),
             ("French", 2021, "2021-04-30", "Brugdag"),
             ("French", 2024, "2024-02-13", "Vastenavond"),
-            ("French", 2026, "2026-04-27", "Lentevakantie"),
+            ("French", 2026, "2026-04-27", "Paasvakantie"),
             ("French", 2026, "2026-09-27", "Feestdag van de Franse Gemeenschap"),
             ("French", 2026, "2026-11-02", "Allerzielen"),
             ("German", 2026, "2026-11-15", "Feestdag van de Duitstalige Gemeenschap"),
@@ -915,7 +910,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("Flemish", 2026, "2026-11-02", "Herbstferien"),
             ("French", 2021, "2021-04-30", "Brückentag"),
             ("French", 2024, "2024-02-13", "Karnevalsdienstag"),
-            ("French", 2026, "2026-04-27", "Frühlingsferien"),
+            ("French", 2026, "2026-04-27", "Osterferien"),
             ("French", 2026, "2026-09-27", "Feiertag der Französischen Gemeinschaft"),
             ("French", 2026, "2026-11-02", "Allerseelen"),
             ("German", 2026, "2026-11-15", "Tag der Deutschsprachigen Gemeinschaft"),
@@ -931,7 +926,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("Flemish", 2026, "2026-11-02", "Autumn Break"),
             ("French", 2021, "2021-04-30", "Bridge Holiday"),
             ("French", 2024, "2024-02-13", "Mardi Gras"),
-            ("French", 2026, "2026-04-27", "Spring Break"),
+            ("French", 2026, "2026-04-27", "Easter Break"),
             ("French", 2026, "2026-09-27", "French Community Day"),
             ("French", 2026, "2026-11-02", "All Souls' Day"),
             ("German", 2026, "2026-11-15", "German-speaking Community Day"),
@@ -940,9 +935,9 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_l10n_fr_school(self):
         self._assert_school_l10n(
             "fr",
-            ("Flemish", 2026, "2026-01-01", "Vacances de Noël"),
+            ("Flemish", 2026, "2026-01-01", "Vacances d'hiver"),
             ("Flemish", 2026, "2026-02-16", "Vacances de carnaval"),
-            ("Flemish", 2026, "2026-04-06", "Vacances de Pâques"),
+            ("Flemish", 2026, "2026-04-06", "Vacances de printemps"),
             ("Flemish", 2026, "2026-07-01", "Vacances d'été"),
             ("Flemish", 2026, "2026-11-02", "Vacances d'automne"),
             ("French", 2021, "2021-04-30", "Jour pont"),
@@ -963,7 +958,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("Flemish", 2026, "2026-11-02", "Осінні канікули"),
             ("French", 2021, "2021-04-30", "Проміжний вихідний"),
             ("French", 2024, "2024-02-13", "Масний вівторок"),
-            ("French", 2026, "2026-04-27", "Весняні канікули"),
+            ("French", 2026, "2026-04-27", "Пасхальні канікули"),
             ("French", 2026, "2026-09-27", "День Французької спільноти"),
             ("French", 2026, "2026-11-02", "День усіх померлих"),
             ("German", 2026, "2026-11-15", "День Німецькомовної спільноти"),

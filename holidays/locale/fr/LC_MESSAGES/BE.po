@@ -90,7 +90,7 @@ msgstr "Jour de fermeture bancaire"
 
 #. Christmas Break.
 msgid "Kerstvakantie"
-msgstr "Vacances de Noël"
+msgstr "Vacances d'hiver"
 
 #. Carnival Break.
 msgid "Krokusvakantie"
@@ -98,7 +98,7 @@ msgstr "Vacances de carnaval"
 
 #. Easter Break.
 msgid "Paasvakantie"
-msgstr "Vacances de Pâques"
+msgstr "Vacances de printemps"
 
 #. Summer Break.
 msgid "Zomervakantie"
@@ -107,10 +107,6 @@ msgstr "Vacances d'été"
 #. Autumn Break.
 msgid "Herfstvakantie"
 msgstr "Vacances d'automne"
-
-#. Spring Break.
-msgid "Lentevakantie"
-msgstr "Vacances de printemps"
 
 #. Mardi Gras.
 msgid "Vastenavond"
