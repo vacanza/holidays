@@ -20,13 +20,15 @@ from tests.common import CommonCountryTests
 class TestBelgium(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Belgium, with_subdiv_categories=True)
+        super().setUpClass(
+            Belgium, with_subdiv_categories=True, years_all_subdivs=range(2010, 2050)
+        )
 
     def test_no_school_holidays(self):
         self.assertNoHolidays(Belgium(categories=SCHOOL, years=range(self.start_year, 2050)))
         for subdiv in Belgium.subdivisions:
             self.assertNoHolidays(
-                Belgium(subdiv=subdiv, categories=SCHOOL, years=Belgium.start_year - 1)
+                Belgium(subdiv=subdiv, categories=SCHOOL, years=range(Belgium.start_year, 2010))
             )
 
     def test_new_years_day(self):
@@ -195,7 +197,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2026-12-20",
                 "2027-01-04",
             )
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
 
     def test_school_carnival_break(self):
         name = "Krokusvakantie"
@@ -217,7 +219,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2022-03-06",
             )
             self.assertNoHoliday(holidays, "2019-03-03", "2019-03-11", "2022-02-27", "2022-03-07")
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
             if subdiv == "French":
                 self.assertHolidayName(
                     name,
@@ -275,8 +277,6 @@ class TestBelgium(CommonCountryTests, TestCase):
         # Flemish Community.
         self.assertSubdivFlemishSchoolHolidayName(
             name,
-            "2001-04-02",
-            "2001-04-16",
             "2016-03-28",
             "2016-04-10",
             "2019-04-08",
@@ -301,8 +301,6 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2030-04-22",
         )
         self.assertNoSubdivFlemishSchoolHoliday(
-            "2001-04-01",
-            "2001-04-17",
             "2016-03-27",
             "2016-04-11",
             "2019-04-07",
@@ -312,13 +310,11 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2027-03-28",
             "2027-04-12",
         )
-        self.assertSubdivFlemishSchoolHolidayName(name, self.full_range)
+        self.assertSubdivFlemishSchoolHolidayName(name, range(2010, 2050))
 
         # Starts on Easter Monday in the German-speaking Community since 2025.
         self.assertSubdivGermanSchoolHolidayName(
             name,
-            "2001-04-02",
-            "2001-04-16",
             "2019-04-08",
             "2019-04-22",
             "2020-04-06",
@@ -341,8 +337,6 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2029-04-15",
         )
         self.assertNoSubdivGermanSchoolHoliday(
-            "2001-04-01",
-            "2001-04-17",
             "2023-04-02",
             "2023-04-17",
             "2025-04-07",
@@ -351,14 +345,12 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2028-04-03",
             "2028-04-16",
         )
-        self.assertSubdivGermanSchoolHolidayName(name, self.full_range)
+        self.assertSubdivGermanSchoolHolidayName(name, range(2010, 2050))
 
         # French Community.
         self.assertSubdivFrenchSchoolHolidayName(
             name,
             # Easter-based until 2022.
-            "2001-04-02",
-            "2001-04-16",
             "2013-04-01",
             "2013-04-14",
             "2014-04-07",
@@ -396,8 +388,6 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2029-05-13",
         )
         self.assertNoSubdivFrenchSchoolHoliday(
-            "2001-04-01",
-            "2001-04-17",
             "2017-04-02",
             "2017-04-18",
             "2022-04-03",
@@ -409,7 +399,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2028-04-30",
             "2028-05-15",
         )
-        self.assertSubdivFrenchSchoolHolidayName(name, self.full_range)
+        self.assertSubdivFrenchSchoolHolidayName(name, range(2010, 2050))
 
     def test_school_summer_break(self):
         name = "Zomervakantie"
@@ -426,7 +416,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2021-08-31",
             )
             self.assertNoHoliday(holidays, "2019-06-30", "2019-09-01", "2021-06-30", "2021-09-01")
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
             if subdiv == "French":
                 self.assertHolidayName(
                     name,
@@ -504,7 +494,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2020-11-01",
                 "2020-11-09",
             )
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
             if subdiv == "French":
                 self.assertHolidayName(
                     name,
@@ -551,14 +541,14 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_school_labor_day(self):
         name = "Dag van de Arbeid"
         self.assertSubdivFlemishSchoolHolidayName(
-            name, (f"{year}-05-01" for year in self.full_range)
+            name, (f"{year}-05-01" for year in range(2010, 2050))
         )
         self.assertSubdivGermanSchoolHolidayName(
-            name, (f"{year}-05-01" for year in self.full_range)
+            name, (f"{year}-05-01" for year in range(2010, 2050))
         )
         # Falls within the Easter Break since 2023.
         self.assertSubdivFrenchSchoolHolidayName(
-            name, (f"{year}-05-01" for year in range(self.start_year, 2023))
+            name, (f"{year}-05-01" for year in range(2010, 2023))
         )
         self.assertNoSubdivFrenchSchoolHolidayName(name, range(2023, 2050))
         self.assertSubdivFrenchSchoolHoliday(f"{year}-05-01" for year in range(2023, 2050))
@@ -575,7 +565,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2019-04-22", "2022-04-18", "2024-04-01", "2025-04-21", "2027-03-29"
         )
         # Falls within the Easter Break until 2022.
-        self.assertNoSubdivFrenchSchoolHolidayName(name, range(self.start_year, 2023))
+        self.assertNoSubdivFrenchSchoolHolidayName(name, range(2010, 2023))
         self.assertSubdivFrenchSchoolHoliday("2019-04-22", "2022-04-18")
         self.assertSubdivFrenchSchoolHolidayName(
             name,
@@ -604,7 +594,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
         for holidays in self.subdiv_school_holidays.values():
             self.assertHolidayName(name, holidays, dts)
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
 
     def test_school_friday_after_ascension_day(self):
         name = "Vrijdag na O. L. H. Hemelvaart"
@@ -620,14 +610,14 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2026-05-15",
             "2027-05-07",
         )
-        self.assertSubdivFlemishSchoolHolidayName(name, self.full_range)
+        self.assertSubdivFlemishSchoolHolidayName(name, range(2010, 2050))
         self.assertNoSubdivGermanSchoolHolidayName(name)
         self.assertNoSubdivGermanSchoolHoliday("2019-05-31", "2024-05-10", "2027-05-07")
         self.assertSubdivFrenchSchoolHolidayName(
             name, "2015-05-15", "2016-05-06", "2020-05-22", "2021-05-14"
         )
         self.assertNoSubdivFrenchSchoolHolidayName(
-            name, range(self.start_year, 2015), 2017, 2018, 2019, range(2022, 2050)
+            name, range(2010, 2015), 2017, 2018, 2019, range(2022, 2050)
         )
         self.assertNoSubdivFrenchSchoolHoliday("2017-05-26", "2019-05-31", "2022-05-27")
 
@@ -646,12 +636,12 @@ class TestBelgium(CommonCountryTests, TestCase):
         )
         for holidays in self.subdiv_school_holidays.values():
             self.assertHolidayName(name, holidays, dts)
-            self.assertHolidayName(name, holidays, self.full_range)
+            self.assertHolidayName(name, holidays, range(2010, 2050))
 
     def test_school_armistice_day(self):
         name = "Wapenstilstand"
         for holidays in self.subdiv_school_holidays.values():
-            self.assertHolidayName(name, holidays, (f"{year}-11-11" for year in self.full_range))
+            self.assertHolidayName(name, holidays, (f"{year}-11-11" for year in range(2010, 2050)))
 
     def test_school_french_community_day(self):
         name = "Feestdag van de Franse Gemeenschap"
@@ -659,9 +649,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertNoSubdivFlemishSchoolHolidayName(name)
         self.assertNoSubdivGermanSchoolHolidayName(name)
         self.assertSubdivFrenchSchoolHolidayName(
-            name, (f"{year}-09-27" for year in range(1975, 2050))
+            name, (f"{year}-09-27" for year in range(2010, 2050))
         )
-        self.assertNoSubdivFrenchSchoolHolidayName(name, range(self.start_year, 1975))
 
     def test_school_german_speaking_community_day(self):
         name = "Feestdag van de Duitstalige Gemeenschap"
@@ -669,9 +658,8 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertNoSubdivFlemishSchoolHolidayName(name)
         self.assertNoSubdivFrenchSchoolHolidayName(name)
         self.assertSubdivGermanSchoolHolidayName(
-            name, (f"{year}-11-15" for year in range(1990, 2050))
+            name, (f"{year}-11-15" for year in range(2010, 2050))
         )
-        self.assertNoSubdivGermanSchoolHolidayName(name, range(self.start_year, 1990))
 
     def test_school_all_souls_day(self):
         name = "Allerzielen"
@@ -681,7 +669,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         # Only when Nov 1 falls on Sunday since 2022.
         self.assertSubdivFrenchSchoolHolidayName(name, "2026-11-02", "2037-11-02", "2043-11-02")
         self.assertNoSubdivFrenchSchoolHolidayName(
-            name, range(self.start_year, 2026), range(2027, 2037), range(2038, 2043)
+            name, range(2010, 2026), range(2027, 2037), range(2038, 2043)
         )
         self.assertSubdivFrenchSchoolHoliday("2020-11-02", "2025-11-02", "2027-11-02")
 
@@ -699,7 +687,7 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2035-02-06",
         )
         self.assertNoSubdivFrenchSchoolHolidayName(
-            name, range(self.start_year, 2024), 2025, 2026, 2028, 2030, 2031, 2033, 2034, 2036
+            name, range(2010, 2024), 2025, 2026, 2028, 2030, 2031, 2033, 2034, 2036
         )
         self.assertNoSubdivFrenchSchoolHolidayName(name, "2025-03-04", "2033-03-01")
         self.assertSubdivFrenchSchoolHoliday("2023-02-21", "2026-02-17", "2028-02-29")
@@ -711,7 +699,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertNoSubdivGermanSchoolHolidayName(name)
         self.assertSubdivFrenchSchoolHolidayName(name, "2016-05-04", "2021-04-30")
         self.assertNoSubdivFrenchSchoolHolidayName(
-            name, range(self.start_year, 2016), range(2017, 2021), range(2022, 2050)
+            name, range(2010, 2016), range(2017, 2021), range(2022, 2050)
         )
 
     def test_school_days(self):

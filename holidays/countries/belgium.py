@@ -181,6 +181,9 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_christmas_day_two(tr("Banksluitingsdag"))
 
     def _populate_subdiv_flemish_school_holidays(self):
+        if self._year <= 2009:
+            return
+
         # Christmas Break.
         self._add_christmas_break(tr("Kerstvakantie"))
 
@@ -212,6 +215,9 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_remembrance_day(tr("Wapenstilstand"))
 
     def _populate_subdiv_french_school_holidays(self):
+        if self._year <= 2009:
+            return
+
         # The same rules as in other communities applied until the 2021-2022 school year.
         # Since 2022-2023 the school year starts on the last Monday of August, ends on the first
         # Friday of July and alternates 7 (or 8) weeks of classes with 2 weeks of break.
@@ -291,9 +297,8 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             summer_start, (summer_end - summer_start).days + 1, name=tr("Zomervakantie")
         )
 
-        if self._year >= 1975:
-            # French Community Day.
-            self._add_holiday_sep_27(tr("Feestdag van de Franse Gemeenschap"))
+        # French Community Day.
+        self._add_holiday_sep_27(tr("Feestdag van de Franse Gemeenschap"))
 
         if self._year >= 2022:
             # 2nd Monday before the week of Nov 1 → 2 weeks.
@@ -314,6 +319,9 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_remembrance_day(tr("Wapenstilstand"))
 
     def _populate_subdiv_german_school_holidays(self):
+        if self._year <= 2009:
+            return
+
         # Christmas Break.
         self._add_christmas_break(tr("Kerstvakantie"))
 
@@ -346,9 +354,8 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # Armistice Day.
         self._add_remembrance_day(tr("Wapenstilstand"))
 
-        if self._year >= 1990:
-            # German-speaking Community Day.
-            self._add_holiday_nov_15(tr("Feestdag van de Duitstalige Gemeenschap"))
+        # German-speaking Community Day.
+        self._add_holiday_nov_15(tr("Feestdag van de Duitstalige Gemeenschap"))
 
 
 class BE(Belgium):
