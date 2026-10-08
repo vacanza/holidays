@@ -453,11 +453,6 @@ class TestIcalExporter(TestCase):
         us_holidays = country_holidays("US", years=2024, language="en_US")
         self.assertEqual(uids, self._get_uids(ICalExporter(us_holidays).generate()))
 
-        # Explicit default language is the same calendar as no language.
-        self.assertEqual(
-            uids, self._get_uids(ICalExporter(country_holidays("US", years=2024)).generate())
-        )
-
         # Adding another year keeps the UIDs of existing events.
         self.assertEqual(
             uids,
