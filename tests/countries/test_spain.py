@@ -526,6 +526,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
+            (MAY, 28): {"Barcelona"},
             (MAY, 30): {"CN"},
             (MAY, 31): {"CM"},
             (JUN, 7): {"CM"},
@@ -536,6 +537,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 15): {"CB"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 9): {"VC"},
             (OCT, 25): {"PV"},
             (OCT, 26): {"ML"},
@@ -589,6 +591,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
+            (MAY, 20): {"Barcelona"},
             (MAY, 30): {"CM", "CN"},
             (MAY, 31): {"CM"},
             (JUN, 10): {"RI"},
@@ -598,6 +601,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 9): {"AS", "EX", "ML"},
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 9): {"VC"},
             (OCT, 15): {"CE", "ML"},
             (OCT, 25): {"PV"},
@@ -636,7 +640,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
             (MAY, 30): {"CN"},
-            (JUN, 9): {"MC", "RI"},
+            (JUN, 9): {"MC", "RI", "Barcelona"},
             (JUN, 13): {"CE"},
             (JUN, 19): {"CM", "MD"},
             (JUN, 24): {"CT", "Barcelona"},
@@ -645,6 +649,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 15): {"CB"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 4): {"ML"},
             (OCT, 6): {"CE"},
             (OCT, 9): {"VC"},
@@ -683,6 +688,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"MD"},
             (MAY, 30): {"CN"},
+            (JUN, 1): {"Barcelona"},
             (JUN, 4): {"CM"},
             (JUN, 9): {"MC", "RI"},
             (JUN, 13): {"CE"},
@@ -692,6 +698,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 15): {"CB"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (SEP, 25): {"CE", "ML"},
             (OCT, 9): {"VC"},
             (NOV, 2): {"AN", "AR", "AS", "CB", "CE", "CL", "CN", "EX", "GA", "IB"},
@@ -703,6 +710,7 @@ class TestSpain(CommonCountryTests, TestCase):
 
     def test_variable_holidays_2016(self):
         province_days = {
+            (FEB, 12): {"Barcelona"},
             (FEB, 29): {"AN"},
             (MAR, 1): {"IB"},
             (MAR, 19): {"MC", "ML", "VC"},
@@ -744,6 +752,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 12): {"CE", "ML"},
             (SEP, 15): {"CB"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 7): {"PV"},
             (DEC, 3): {"NC"},
             (DEC, 26): {
@@ -799,6 +808,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (MAY, 17): {"GA"},
             (MAY, 30): {"CN"},
             (MAY, 31): {"CM"},
+            (JUN, 5): {"Barcelona"},
             (JUN, 9): {"MC", "RI"},
             (JUN, 13): {"CE"},
             (JUN, 15): {"CM"},
@@ -811,6 +821,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 15): {"CB"},
             (SEP, 18): {"ML"},
+            (SEP, 25): {"Barcelona"},
             (OCT, 9): {"VC"},
             (DEC, 4): {"NC"},
             (DEC, 26): {"CT", "Barcelona"},
@@ -844,6 +855,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (APR, 23): {"AR", "CL"},
             (MAY, 2): {"MD"},
             (MAY, 17): {"GA"},
+            (MAY, 21): {"Barcelona"},
             (MAY, 30): {"CN"},
             (MAY, 31): {"CM"},
             (JUN, 9): {"MC", "RI"},
@@ -855,6 +867,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 15): {"CB"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 9): {"VC"},
             (DEC, 3): {"NC"},
             (DEC, 26): {"CT", "Barcelona"},
@@ -892,7 +905,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (MAY, 17): {"GA"},
             (MAY, 30): {"CN"},
             (MAY, 31): {"CM"},
-            (JUN, 10): {"MC", "RI"},
+            (JUN, 10): {"MC", "RI", "Barcelona"},
             (JUN, 13): {"CE"},
             (JUN, 20): {"CM"},
             (JUN, 24): {"CT", "VC", "Barcelona"},
@@ -902,6 +915,7 @@ class TestSpain(CommonCountryTests, TestCase):
             (SEP, 9): {"AS", "EX", "ML"},
             (SEP, 11): {"CT", "Barcelona"},
             (SEP, 17): {"ML"},
+            (SEP, 24): {"Barcelona"},
             (OCT, 9): {"VC"},
             (DEC, 3): {"NC"},
             (DEC, 9): {"AN", "AR", "AS", "CB", "CL", "EX", "MD", "ML", "RI"},
@@ -1301,12 +1315,20 @@ class TestSpain(CommonCountryTests, TestCase):
         self._assertVariableDays(2026, province_days)
 
     def test_barcelona_holidays(self):
-        barcelona_holidays = Spain(subdiv="Barcelona", years=range(2019, 2027))
+        barcelona_holidays = Spain(subdiv="Barcelona", years=range(2011, 2027))
 
         name = "Día de la Pascua Granada"
         self.assertHolidayName(
             name,
             barcelona_holidays,
+            "2012-05-28",
+            "2013-05-20",
+            "2014-06-09",
+            "2015-06-01",
+            "2016-05-16",
+            "2017-06-05",
+            "2018-05-21",
+            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
@@ -1315,22 +1337,23 @@ class TestSpain(CommonCountryTests, TestCase):
             "2025-06-09",
             "2026-05-25",
         )
-        self.assertNoHolidayName(name, barcelona_holidays, 2019)
+        self.assertNoHolidayName(name, barcelona_holidays, "2015-05-25", "2023-05-29")
+
+        self.assertHolidayName("Santa Eulalia", barcelona_holidays, "2016-02-12")
 
         name = "Nuestra Señora de la Merced"
         self.assertHolidayName(
             name,
             barcelona_holidays,
-            "2020-09-24",
-            "2021-09-24",
-            "2022-09-24",
-            "2024-09-24",
-            "2025-09-24",
-            "2026-09-24",
+            (f"{year}-09-24" for year in range(2012, 2027) if year not in {2017, 2023}),
         )
-        self.assertNoHolidayName(name, barcelona_holidays, 2019, 2023)
+        self.assertNoHolidayName(name, barcelona_holidays, 2011, 2017, 2023)
         self.assertHolidayName(
-            f"Lunes siguiente a {name}", barcelona_holidays, "2022-09-26", "2023-09-25"
+            f"Lunes siguiente a {name}",
+            barcelona_holidays,
+            "2017-09-25",
+            "2022-09-26",
+            "2023-09-25",
         )
 
         barcelona_holidays_non_observed = Spain(

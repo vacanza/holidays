@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
@@ -19,12 +19,7 @@ from holidays.groups import (
     StaticHolidays,
 )
 from holidays.helpers import tr
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_TO_NEXT_MON,
-    SUN_TO_NEXT_MON,
-    SUN_TO_NONE,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NONE
 
 
 class Spain(
@@ -56,13 +51,19 @@ class Spain(
 
     Subdivisions Holidays References:
         * Barcelona:
-            * [2020](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2020_barcelona_ciutat-pdf)
-            * [2021](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2021_barcelona_ciutat-pdf)
-            * [2022](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2022_barcelona_ciutat-pdf)
-            * [2023](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2023_barcelona_ciutat-pdf)
-            * [2024](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2024_barcelona_ciutat-pdf)
-            * [2025](https://seuelectronica.diba.cat/documents/d/seu-electronica/festes_locals_2025_barcelona_ciutat-pdf)
-            * [2026](https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?documentId=1032232&type=01&language=ca_ES)
+            * [2012-2014](https://analisi.transparenciacatalunya.cat/Treball/Calendari-de-festes-locals-a-Catalunya/b4eh-r8up/about_data)
+            * [2015](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=676282)
+            * [2016](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=710235)
+            * [2017](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=769997)
+            * [2018](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=804379)
+            * [2019](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=837669)
+            * [2020](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=864486)
+            * [2021](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=887990)
+            * [2022](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=915823)
+            * [2023](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=946309)
+            * [2024](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=974872)
+            * [2025](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1003280)
+            * [2026](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1032232)
         * Ceuta:
             * Official Calendars:
                 * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
@@ -114,7 +115,7 @@ class Spain(
 
     Holidays checked with official sources for 2008-2026 only.
 
-    Barcelona city holidays checked with official sources for 2020-2026 only.
+    Barcelona city holidays checked with official sources for 2012-2026 only.
     """
 
     country = "ES"
@@ -971,24 +972,22 @@ class Spain(
     def _populate_subdiv_barcelona_public_holidays(self):
         self._populate_subdiv_ct_public_holidays()
 
-        # Barcelona city holidays are only known from official sources since 2020.
-        if self._year <= 2019:
+        if self._year <= 2011:
             return None
 
         # Pentecost Monday.
         name = tr("Día de la Pascua Granada")
-        if self._year == 2023:
-            self._add_holiday_jun_5(name)
-        # Already added for Catalonia when Labor Day falls on Sunday.
-        elif not self._is_sunday(MAY, 1):
+        dates = {
+            2015: (JUN, 1),
+            2023: (JUN, 5),
+        }
+        if dt := dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
             self._add_pentecost_monday(name)
 
         # Our Lady of Mercy.
-        dt = self._add_holiday_sep_24(tr("Nuestra Señora de la Merced"))
-        if self._year == 2022:
-            self._add_observed(dt, rule=SAT_TO_NEXT_MON)
-        else:
-            self._move_holiday(dt)
+        self._move_holiday(self._add_holiday_sep_24(tr("Nuestra Señora de la Merced")))
 
 
 class ES(Spain):
@@ -1020,6 +1019,16 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SpainStaticHolidays:
+    special_barcelona_public_holidays = {
+        # Saint Eulalia.
+        2016: (FEB, 12, tr("Santa Eulalia")),
+    }
+
+    special_barcelona_public_holidays_observed = {
+        # Our Lady of Mercy.
+        2022: (SEP, 26, tr("Nuestra Señora de la Merced")),
+    }
+
     special_ga_public_holidays = {
         # Day following Saint Joseph's Day.
         2015: (MAR, 20, tr("Día siguiente a San José")),

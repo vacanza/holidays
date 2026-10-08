@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2026-10-08 13:28+0200\n"
+"PO-Revision-Date: 2026-10-08 22:15+0200\n"
 "Last-Translator: Marcos Chicote <chicotemarcos@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: es\n"
@@ -237,6 +237,10 @@ msgstr ""
 
 #. Our Lady of Mercy.
 msgid "Nuestra Señora de la Merced"
+msgstr ""
+
+#. Saint Eulalia.
+msgid "Santa Eulalia"
 msgstr ""
 
 #. Day following Saint Joseph's Day.
