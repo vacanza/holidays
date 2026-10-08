@@ -15,6 +15,7 @@ from __future__ import annotations
 import re
 import uuid
 from datetime import date, datetime, timezone
+from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -30,13 +31,32 @@ if TYPE_CHECKING:
 CONTENT_LINE_MAX_LENGTH = 75
 CONTENT_LINE_DELIMITER = "\r\n"
 CONTENT_LINE_DELIMITER_WRAP = f"{CONTENT_LINE_DELIMITER} "
+UID_DOMAIN = "holidays.vacanza.dev"
+UID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, UID_DOMAIN)
+
+# RFC 5545 `dur-value` without the optional sign.
+DURATION_PATTERN = re.compile(
+    r"^P(?:\d+W|\d+D(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?"
+    r"|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))$",
+    re.ASCII,
+)
 
 
 class ICalExporter:
-    def __init__(self, instance: HolidayBase, show_language: bool = False) -> None:
+    def __init__(
+        self,
+        instance: HolidayBase,
+        show_language: bool = False,
+        *,
+        refresh_interval: str | None = None,
+    ) -> None:
         """Initialize iCalendar exporter.
 
         Args:
+            instance:
+                [`HolidayBase`][holidays.holiday_base.HolidayBase] object
+                containing holiday data.
+
             show_language:
                 Determines whether to include the `;LANGUAGE=` attribute in the
                 `SUMMARY` field. Defaults to `False`.
@@ -48,12 +68,21 @@ class ICalExporter:
                 If neither attribute exists and `show_language=True`, an
                 exception will be raised.
 
-            instance:
-                [`HolidayBase`][holidays.holiday_base.HolidayBase] object
-                containing holiday data.
+            refresh_interval:
+                Suggested refresh interval for calendar clients subscribed to
+                the published calendar, as an
+                [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
+                duration (e.g. `P1W` for one week). Emits the `REFRESH-INTERVAL`
+                ([RFC 7986](https://web.archive.org/web/20260611035104/https://datatracker.ietf.org/doc/html/rfc7986))
+                and `X-PUBLISHED-TTL` properties. Defaults to `None` (not emitted).
         """
         self.holidays = instance
         self.show_language = show_language
+        self.refresh_interval = (
+            self._validate_refresh_interval(refresh_interval)
+            if refresh_interval is not None
+            else None
+        )
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         language = getattr(self.holidays, "language", None) or getattr(
@@ -98,6 +127,117 @@ class ICalExporter:
                 "refer to: https://www.loc.gov/standards/iso639-2/php/code_list.php."
             )
         return language
+
+    def _validate_refresh_interval(self, refresh_interval: str) -> str:
+        """Validate the refresh interval to ensure it is a positive
+        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
+        duration.
+
+        Args:
+            refresh_interval:
+                The duration to validate.
+
+        Returns:
+            Validated duration.
+        """
+        refresh_interval = refresh_interval.strip().upper()
+
+        # A zero-length duration is not a usable refresh interval.
+        if not DURATION_PATTERN.fullmatch(refresh_interval) or not refresh_interval.strip(
+            "0DHMPSTW"
+        ):
+            raise ValueError(
+                f"Invalid refresh interval: '{refresh_interval}'. Expected an RFC 5545 "
+                "duration, e.g., 'P1W' or 'P1D'."
+            )
+        return refresh_interval
+
+    @cached_property
+    def entity_name(self) -> str:
+        """Human-readable name of the exported entity.
+
+        Taken from the entity docstring (e.g. `Belgium holidays.`), falling back to
+        the entity code(s) for combined or custom holiday objects.
+        """
+        for cls in type(self.holidays).__mro__:
+            match = re.fullmatch(r"(.+) holidays\.", (cls.__doc__ or "").strip().split("\n")[0])
+            if match:
+                return match.group(1)
+
+        codes = getattr(self.holidays, "country", None) or getattr(self.holidays, "market", None)
+        return ", ".join(codes) if isinstance(codes, list) else codes or ""
+
+    @cached_property
+    def calendar_name(self) -> str:
+        """Calendar display name used for the `X-WR-CALNAME` property.
+
+        Examples: `Thailand Holidays`, `Israel School Holidays`,
+        `Belgium Holidays [en-US]`.
+        """
+        parts = [self.entity_name] if self.entity_name else []
+
+        subdiv = self.holidays.subdiv
+        if subdiv:
+            parts.append(f"({', '.join(subdiv) if isinstance(subdiv, list) else subdiv})")
+
+        categories = sorted(self.holidays.categories)
+        if categories != [self.holidays.default_category]:
+            parts.append(", ".join(category.replace("_", " ").title() for category in categories))
+
+        parts.append("Holidays")
+
+        language = self.holidays.language
+        if language and language != getattr(self.holidays, "default_language", None):
+            parts.append(f"[{self.language or language}]")
+
+        return " ".join(parts)
+
+    @cached_property
+    def _uid_prefix(self) -> str:
+        """Entity-specific part of the event UID key."""
+        codes = getattr(self.holidays, "country", None) or getattr(self.holidays, "market", None)
+        subdiv = self.holidays.subdiv
+        return "|".join(
+            (
+                ",".join(codes) if isinstance(codes, list) else codes or "",
+                ",".join(subdiv) if isinstance(subdiv, list) else subdiv or "",
+                self.language or "",
+                ",".join(sorted(self.holidays.categories)),
+            )
+        )
+
+    def _generate_uid(self, dt: date, holiday_name: str) -> str:
+        """Generate a deterministic event UID.
+
+        The UID is a UUID5 of the entity, subdivision, language, categories, holiday
+        name and start date, so it stays the same across runs and library versions.
+        Calendar clients rely on this to update subscribed events in place.
+
+        Args:
+            dt:
+                Holiday start date.
+
+            holiday_name:
+                Holiday name.
+
+        Returns:
+            The event UID.
+        """
+        key = f"{self._uid_prefix}|{holiday_name}|{dt.isoformat()}"
+        return f"{uuid.uuid5(UID_NAMESPACE, key)}@{UID_DOMAIN}"
+
+    def _escape_text(self, text: str) -> str:
+        """Escape special characters in a `TEXT` value per
+        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+
+        Args:
+            text:
+                The text to escape.
+
+        Returns:
+            The escaped text.
+        """
+        return text.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
 
     def _fold_line(self, line: str) -> str:
         """Fold long lines according to
@@ -161,19 +301,14 @@ class ICalExporter:
         Returns:
             Iterable of iCalendar format event lines.
         """
-        # Escape special characters per RFC 5545.
         # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
         # so a name with a semicolon gets split into two separate `VEVENT`s.
-        sanitized_holiday_name = (
-            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
-        )
-        event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
         yield "BEGIN:VEVENT"
         yield f"DTSTAMP:{self.ical_timestamp}"
-        yield f"UID:{event_uid}"
-        yield self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}")
+        yield f"UID:{self._generate_uid(dt, holiday_name)}"
+        yield self._fold_line(f"SUMMARY{language_tag}:{self._escape_text(holiday_name)}")
         yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
         yield f"DURATION:P{holiday_length}D"
         if len(self.holidays.categories) == 1:
@@ -196,7 +331,13 @@ class ICalExporter:
             f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//EN",
             "VERSION:2.0",
             "CALSCALE:GREGORIAN",
+            self._fold_line(f"X-WR-CALNAME:{self._escape_text(self.calendar_name)}"),
         ]
+        if self.refresh_interval:
+            lines.append(
+                self._fold_line(f"REFRESH-INTERVAL;VALUE=DURATION:{self.refresh_interval}")
+            )
+            lines.append(self._fold_line(f"X-PUBLISHED-TTL:{self.refresh_interval}"))
 
         # Merged continuous holiday with the same name and use `DURATION` instead.
         holiday_sequences: dict[str, list[date]] = {}

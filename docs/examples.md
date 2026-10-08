@@ -532,6 +532,27 @@ True
 1
 ```
 
+Each calendar is named after its holidays object (`X-WR-CALNAME`), and every event gets a
+UID derived from the entity, subdivision, language, categories, holiday name and start date,
+so re-generating a calendar yields the same UIDs and subscribed clients update events in place.
+For calendars published for subscription, `refresh_interval` adds the `REFRESH-INTERVAL` and
+`X-PUBLISHED-TTL` hints as an [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545)
+duration.
+
+``` python
+>>> from holidays import country_holidays
+>>> from holidays.ical import ICalExporter
+>>> be_holidays = country_holidays('BE', years=2024, language='en_US')
+>>> exporter = ICalExporter(be_holidays, refresh_interval='P1W')
+>>> exporter.calendar_name
+'Belgium Holidays [en-US]'
+>>> ical_content = exporter.generate()
+>>> "X-WR-CALNAME:Belgium Holidays [en-US]\r\n" in ical_content
+True
+>>> "REFRESH-INTERVAL;VALUE=DURATION:P1W\r\nX-PUBLISHED-TTL:P1W\r\n" in ical_content
+True
+```
+
 > [!tip]
 >
 > Although the iCalendar specification supports a wide range of language formats as outlined
