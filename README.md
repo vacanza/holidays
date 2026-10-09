@@ -2092,6 +2092,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Pakistan Stock Exchange</td>
+<td>XKAR</td>
+<td>Pakistan Stock Exchange (PSX) market holidays</td>
+<td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
 <td>Shanghai Stock Exchange</td>
 <td>XSHG</td>
 <td>Shanghai Stock Exchange (SSE) market holidays</td>
