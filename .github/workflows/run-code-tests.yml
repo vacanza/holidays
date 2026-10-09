@@ -2,6 +2,12 @@ name: Code tests
 
 on:
   workflow_call:
+    inputs:
+      full:
+        default: true
+        description: Run every Python version on every OS image
+        required: false
+        type: boolean
     secrets:
       CODECOV_TOKEN:
         required: false
@@ -18,15 +24,24 @@ jobs:
     permissions:
       contents: read
     runs-on: ${{ matrix.os }}
+    # pull_request sets full=false: every Python on ubuntu-26.04, and Python 3.14
+    # (DEFAULT_PYTHON_VERSION) on the other images. Other events run the full
+    # cross product. A new Python version only needs the list below. A new OS
+    # image needs an entry in both os lists.
+    #
+    # previous: macos-15, ubuntu-24.04, windows-2022
+    # latest:   macos-26, ubuntu-26.04, windows-2025
     strategy:
       matrix:
-        os:
-          - macos-15      # previous
-          - macos-26      # latest
-          - ubuntu-24.04  # previous
-          - ubuntu-26.04  # latest
-          - windows-2022  # previous
-          - windows-2025  # latest
+        os: >-
+          ${{ fromJSON(inputs.full && '[
+            "macos-15",
+            "macos-26",
+            "ubuntu-24.04",
+            "ubuntu-26.04",
+            "windows-2022",
+            "windows-2025"
+          ]' || '["ubuntu-26.04"]') }}
         python-version:
           - '3.10'
           - '3.11'
@@ -34,6 +49,29 @@ jobs:
           - '3.13'
           - '3.14'
           - '3.15'
+        include: >-
+          ${{ fromJSON(inputs.full && '[]' || '[
+            {
+              "os": "macos-15",
+              "python-version": "3.14"
+            },
+            {
+              "os": "macos-26",
+              "python-version": "3.14"
+            },
+            {
+              "os": "ubuntu-24.04",
+              "python-version": "3.14"
+            },
+            {
+              "os": "windows-2022",
+              "python-version": "3.14"
+            },
+            {
+              "os": "windows-2025",
+              "python-version": "3.14"
+            }
+          ]') }}
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
