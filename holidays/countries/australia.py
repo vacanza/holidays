@@ -73,7 +73,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [TAS Bank Holidays Act 1944](https://archive.org/details/httpsclassic.austlii.edu.auaulegistasnum_actbha194478gvn81210.pdf)
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
         * VIC:
-            * [VIC Public and Bank Holidays Act 1953](https://classic.austlii.edu.au/au/legis/vic/hist_act/pabha1953203.pdf)
+            * [VIC Public and Bank Holidays Act 1953](https://archive.org/details/httpsclassic.austlii.edu.auaulegisvichist_actpabha1953203.pdf)
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
