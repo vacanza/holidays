@@ -306,7 +306,7 @@ msgstr "लिंकनच्या वाढदिवसाच्या आद�
 
 #. Monday before Decoration Day.
 msgid "Monday before Decoration Day"
-msgstr "सजावट दिनाच्या आधीचा सोमवार"
+msgstr "स्मृती दिनाच्या आधीचा सोमवार"
 
 #. Monday before Independence Day.
 msgid "Monday before Independence Day"
