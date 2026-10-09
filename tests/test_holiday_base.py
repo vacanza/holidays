@@ -383,6 +383,7 @@ class TestReassignment(TestCase):
         # `HolidaySum._populate` re-populates from its operands, so the assigned
         # years are added to the ones they already cover.
         hs.years = 2025
+        self.assertIn("2024-01-01", hs)
         self.assertIn("2025-01-01", hs)
 
 
