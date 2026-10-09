@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-05 21:42+0530\n"
+"Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,18 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "Fête du Travail"
+
+#. Ascension Day.
+msgid "O. L. H. Hemelvaart"
+msgstr "Ascension"
+
+#. Friday after Ascension Day.
+msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr "Vendredi suivant l'Ascension"
 
 #. New Year's Day.
 msgid "Nieuwjaar"
@@ -39,14 +51,6 @@ msgstr "Pâques"
 #. Easter Monday.
 msgid "Paasmaandag"
 msgstr "Lundi de Pâques"
-
-#. Labor Day.
-msgid "Dag van de Arbeid"
-msgstr "Fête du Travail"
-
-#. Ascension Day.
-msgid "O. L. H. Hemelvaart"
-msgstr "Ascension"
 
 #. Pentecost.
 msgid "Pinksteren"
@@ -80,10 +84,46 @@ msgstr "Noël"
 msgid "Goede vrijdag"
 msgstr "Vendredi Saint"
 
-#. Friday after Ascension Day.
-msgid "Vrijdag na O. L. H. Hemelvaart"
-msgstr "Vendredi suivant l'Ascension"
-
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Jour de fermeture bancaire"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Vacances d'hiver"
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr "Vacances de carnaval"
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr "Vacances de printemps"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Vacances d'été"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Vacances d'automne"
+
+#. Mardi Gras.
+msgid "Vastenavond"
+msgstr "Mardi gras"
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr "Fête de la Communauté française"
+
+#. All Souls' Day.
+msgid "Allerzielen"
+msgstr "Fête des morts"
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr "Fête de la Communauté germanophone"
+
+#. Bridge Holiday.
+msgid "Brugdag"
+msgstr "Jour pont"
