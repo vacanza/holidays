@@ -51,19 +51,19 @@ class Spain(
 
     Subdivisions Holidays References:
         * Barcelona:
-            * [2012-2014](https://analisi.transparenciacatalunya.cat/Treball/Calendari-de-festes-locals-a-Catalunya/b4eh-r8up/about_data)
-            * [2015](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=676282)
-            * [2016](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=710235)
-            * [2017](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=769997)
-            * [2018](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=804379)
-            * [2019](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=837669)
-            * [2020](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=864486)
-            * [2021](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=887990)
-            * [2022](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=915823)
-            * [2023](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=946309)
-            * [2024](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=974872)
-            * [2025](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1003280)
-            * [2026](https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1032232)
+            * [2012-2014](https://web.archive.org/web/20261009073820/https://analisi.transparenciacatalunya.cat/Treball/Calendari-de-festes-locals-a-Catalunya/b4eh-r8up/about_data)
+            * [2015](https://web.archive.org/web/20261009074112/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=676282)
+            * [2016](https://web.archive.org/web/20261009074206/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=710235)
+            * [2017](https://web.archive.org/web/20261009074302/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=769997)
+            * [2018](https://web.archive.org/web/20261009074434/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=804379)
+            * [2019](https://web.archive.org/web/20261009074503/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=837669)
+            * [2020](https://web.archive.org/web/20261009074556/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=864486)
+            * [2021](https://web.archive.org/web/20250408234026/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=887990)
+            * [2022](https://web.archive.org/web/20261009074728/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=915823)
+            * [2023](https://web.archive.org/web/20230306181634/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=946309)
+            * [2024](https://web.archive.org/web/20251029111341/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=974872)
+            * [2025](https://web.archive.org/web/20250104133137/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1003280)
+            * [2026](https://web.archive.org/web/20251220145400/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1032232)
         * Ceuta:
             * Official Calendars:
                 * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
@@ -1020,7 +1020,7 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
 
 class SpainStaticHolidays:
     special_barcelona_public_holidays = {
-        # Saint Eulalia.
+        # Saint Eulalia Day.
         2016: (FEB, 12, tr("Santa Eulalia")),
     }
 

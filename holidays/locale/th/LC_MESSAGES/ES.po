@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-29 21:10+0700\n"
-"PO-Revision-Date: 2026-10-08 22:15+0200\n"
+"PO-Revision-Date: 2026-10-09 09:37+0200\n"
 "Last-Translator: Marcos Chicote <chicotemarcos@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -239,7 +239,7 @@ msgstr "วันแคว้นบาเลนเซีย"
 msgid "Nuestra Señora de la Merced"
 msgstr "วันแม่พระแห่งความเมตตา"
 
-#. Saint Eulalia.
+#. Saint Eulalia Day.
 msgid "Santa Eulalia"
 msgstr "วันสมโภชนักบุญยูลาเลีย"
 

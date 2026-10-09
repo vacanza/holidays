@@ -1315,12 +1315,9 @@ class TestSpain(CommonCountryTests, TestCase):
         self._assertVariableDays(2026, province_days)
 
     def test_barcelona_holidays(self):
-        barcelona_holidays = Spain(subdiv="Barcelona", years=range(2011, 2027))
-
         name = "Día de la Pascua Granada"
-        self.assertHolidayName(
+        self.assertSubdivBarcelonaHolidayName(
             name,
-            barcelona_holidays,
             "2012-05-28",
             "2013-05-20",
             "2014-06-09",
@@ -1337,34 +1334,21 @@ class TestSpain(CommonCountryTests, TestCase):
             "2025-06-09",
             "2026-05-25",
         )
-        self.assertNoHolidayName(name, barcelona_holidays, "2015-05-25", "2023-05-29")
+        self.assertNoSubdivBarcelonaHolidayName(name, "2015-05-25", "2023-05-29")
 
-        self.assertHolidayName("Santa Eulalia", barcelona_holidays, "2016-02-12")
+        self.assertSubdivBarcelonaHolidayName("Santa Eulalia", "2016-02-12")
 
         name = "Nuestra Señora de la Merced"
-        self.assertHolidayName(
-            name,
-            barcelona_holidays,
-            (f"{year}-09-24" for year in range(2012, 2027) if year not in {2017, 2023}),
+        self.assertSubdivBarcelonaHolidayName(
+            name, (f"{year}-09-24" for year in range(2012, 2027) if year not in {2017, 2023})
         )
-        self.assertNoHolidayName(name, barcelona_holidays, 2011, 2017, 2023)
-        self.assertHolidayName(
-            f"Lunes siguiente a {name}",
-            barcelona_holidays,
-            "2017-09-25",
-            "2022-09-26",
-            "2023-09-25",
+        self.assertNoSubdivBarcelonaHolidayName(name, 2011, 2017, 2023)
+        self.assertSubdivBarcelonaHolidayName(
+            f"Lunes siguiente a {name}", "2017-09-25", "2022-09-26", "2023-09-25"
         )
 
-        barcelona_holidays_non_observed = Spain(
-            subdiv="Barcelona", observed=False, years=range(2022, 2024)
-        )
-        self.assertNonObservedHolidayName(
-            name, barcelona_holidays_non_observed, "2022-09-24", "2023-09-24"
-        )
-        self.assertNoNonObservedHolidayName(
-            f"Lunes siguiente a {name}", barcelona_holidays_non_observed
-        )
+        self.assertSubdivBarcelonaNonObservedHolidayName(name, "2022-09-24", "2023-09-24")
+        self.assertNoSubdivBarcelonaNonObservedHolidayName(f"Lunes siguiente a {name}")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
