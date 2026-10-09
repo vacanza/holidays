@@ -1601,6 +1601,10 @@ class TestAustralia(CommonCountryTests, TestCase):
         self.assertNoSubdivSaHolidayName(name, range(self.start_year, 1910))
 
         dts = (
+            "1954-03-08",
+            "1955-03-14",
+            "1993-03-08",
+            "1994-03-14",
             "2020-03-09",
             "2021-03-08",
             "2022-03-14",
@@ -1609,7 +1613,8 @@ class TestAustralia(CommonCountryTests, TestCase):
             "2025-03-10",
         )
         self.assertSubdivVicHolidayName(name, dts)
-        self.assertSubdivVicHolidayName(name, self.full_range)
+        self.assertSubdivVicHolidayName(name, range(1954, self.end_year))
+        self.assertNoSubdivVicHolidayName(name, range(self.start_year, 1954))
 
         dts = (
             "1922-05-01",
