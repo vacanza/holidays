@@ -115,6 +115,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2022-10-09",
             "2023-09-29",
             "2024-09-17",
+            "2025-09-06",
+            "2026-08-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
@@ -134,6 +136,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2024-07-16",
             "2025-07-05",
             "2025-07-06",
+            "2026-06-25",
+            "2026-06-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 

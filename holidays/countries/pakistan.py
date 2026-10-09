@@ -106,7 +106,8 @@ class PAK(Pakistan):
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
-    ASHURA_DATES_CONFIRMED_YEARS = (2005, 2025)
+    # https://web.archive.org/web/20261009165128/https://www.sbp.org.pk/assets/documents/press-release/Pr-23-Jun-2026.pdf
+    ASHURA_DATES_CONFIRMED_YEARS = (2005, 2026)
     ASHURA_DATES = {
         2005: (FEB, 18),
         2006: (FEB, 8),
@@ -117,6 +118,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2018: (SEP, 21),
         2022: (AUG, 9),
         2025: (JUL, 6),
+        2026: (JUN, 26),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -157,8 +159,9 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250724061027/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
-
-    MAWLID_DATES_CONFIRMED_YEARS = (2005, 2024)
+    # https://www.sbp.org.pk/bprd/2025/CL19.htm
+    # https://web.archive.org/web/20261009165136/https://www.sbp.org.pk/assets/documents/press-release/PR-25-August-2026.pdf
+    MAWLID_DATES_CONFIRMED_YEARS = (2005, 2026)
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),
@@ -177,4 +180,6 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
+        2025: (SEP, 6),
+        2026: (AUG, 26),
     }
