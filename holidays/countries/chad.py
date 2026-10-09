@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.groups import (
@@ -28,16 +30,18 @@ class Chad(
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Chad>
-        * <https://web.archive.org/web/20240619220557/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
+        * <https://web.archive.org/web/20221207165912/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
     """
 
     country = "TD"
+    default_language = "fr"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimé)")
     # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
+    observed_estimated_label = tr("%s (observé, estimé)")
     # %s (observed).
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observé)")
+    supported_languages = ("ar", "en_US", "fr")
     # On 11 August 1960, Chad gained independence from France.
     start_year = 1961
 
@@ -59,41 +63,47 @@ class Chad(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("Jour de l'An")))
 
         # International Women's Day.
-        self._add_observed(self._add_womens_day("International Women's Day"))
+        self._add_observed(self._add_womens_day(tr("Journée internationale de la femme")))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Lundi de Pâques"))
 
-        # Labour Day.
-        self._add_observed(self._add_labor_day("Labour Day"))
+        # Labor Day.
+        self._add_observed(self._add_labor_day(tr("Fête du Travail")))
 
-        # Independence Day.
-        self._add_observed(self._add_holiday_aug_11("Independence Day"))
+        self._add_observed(
+            # Independence Day.
+            self._add_holiday_aug_11(tr("Anniversaire de la Proclamation de l'Indépendance"))
+        )
 
         # All Saints' Day.
-        self._add_all_saints_day("All Saints' Day")
+        self._add_all_saints_day(tr("Fête de la Toussaint"))
 
-        # Republic Day.
-        self._add_observed(self._add_holiday_nov_28("Republic Day"))
+        self._add_observed(
+            # Republic Day.
+            self._add_holiday_nov_28(tr("Anniversaire de la Proclamation de la République"))
+        )
 
         if self._year >= 1991:
-            # Freedom and Democracy Day.
-            self._add_observed(self._add_holiday_dec_1("Freedom and Democracy Day"))
+            self._add_observed(
+                # Freedom and Democracy Day.
+                self._add_holiday_dec_1(tr("Journée de la Liberté et de la Démocratie"))
+            )
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Fête de Noël"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Aïd El Fitir"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Aïd El Adha"))
 
-        # Mawlid.
-        self._add_mawlid_day("Mawlid")
+        # Prophet's Birthday.
+        self._add_mawlid_day(tr("Maouloud El Nebi"))
 
 
 class TD(Chad):
@@ -131,5 +141,6 @@ class ChadIslamicHolidays(_CustomIslamicHolidays):
 
 class ChadStaticHolidays:
     special_public_holidays = {
-        2021: (APR, 23, "Funeral of Idriss Déby Itno"),
+        # Funeral of Idriss Déby Itno.
+        2021: (APR, 23, tr("Funérailles d'Idriss Déby Itno")),
     }

@@ -1,0 +1,95 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Chad holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.106\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-09 20:33+0500\n"
+"PO-Revision-Date: 2026-10-09 20:39+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr ""
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr ""
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Jour de l'An"
+msgstr ""
+
+#. International Women's Day.
+msgid "Journée internationale de la femme"
+msgstr ""
+
+#. Easter Monday.
+msgid "Lundi de Pâques"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr ""
+
+#. Independence Day.
+msgid "Anniversaire de la Proclamation de l'Indépendance"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Fête de la Toussaint"
+msgstr ""
+
+#. Republic Day.
+msgid "Anniversaire de la Proclamation de la République"
+msgstr ""
+
+#. Freedom and Democracy Day.
+msgid "Journée de la Liberté et de la Démocratie"
+msgstr ""
+
+#. Christmas Day.
+msgid "Fête de Noël"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Aïd El Fitir"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Aïd El Adha"
+msgstr ""
+
+#. Prophet's Birthday.
+msgid "Maouloud El Nebi"
+msgstr ""
+
+#. Funeral of Idriss Déby Itno.
+msgid "Funérailles d'Idriss Déby Itno"
+msgstr ""
