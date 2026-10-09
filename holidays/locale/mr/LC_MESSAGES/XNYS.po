@@ -214,11 +214,11 @@ msgstr "गुड फ्रायडे नंतरचा शनिवार"
 
 #. Saturday before Decoration Day.
 msgid "Saturday before Decoration Day"
-msgstr "सजावट दिनाच्या आधीचा शनिवार"
+msgstr "स्मृती दिनाच्या आधीचा शनिवार"
 
 #. Saturday after Decoration Day.
 msgid "Saturday after Decoration Day"
-msgstr "सजावट दिवसानंतरचा शनिवार"
+msgstr "स्मृती दिनानंतरचा शनिवार"
 
 #. Saturday before Independence Day.
 msgid "Saturday before Independence Day"
@@ -442,7 +442,7 @@ msgstr "नाताळच्या दुसऱ्या दिवशी"
 
 #. Day before Decoration Day.
 msgid "Day before Decoration Day"
-msgstr "सजावटीच्या दिवसाच्या आदल्या दिवशी"
+msgstr "स्मृती दिनाच्या आधीचा दिवस"
 
 #. Funeral of President John F. Kennedy.
 msgid "Funeral of President John F. Kennedy"
@@ -554,7 +554,7 @@ msgstr "वादळाचा इशारा"
 
 #. Assassination attempt on President Reagan (markets close at 3:17pm).
 msgid "Assassination attempt on President Reagan (markets close at 3:17pm)"
-msgstr "राष्ट्राध्यक्ष रेगन यांच्यावर प्राणघातक हल्ला (बाजार दुपारी 3:17 वाजता बंद होतात)"
+msgstr "राष्ट्राध्यक्ष रेगन यांच्यावर हत्येचा प्रयत्न (बाजार दुपारी 3:17 वाजता बंद होतात)"
 
 #. Con Edison power failure in lower Manhattan (markets close at 3:28pm).
 msgid "Con Edison power failure in lower Manhattan (markets close at 3:28pm)"
