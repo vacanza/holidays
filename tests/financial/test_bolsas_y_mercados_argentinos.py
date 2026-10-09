@@ -25,6 +25,11 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_special_holidays(self):
+        self.assertHolidayName(
+            "Visita de Su Santidad el Papa León XIV", "2026-11-09", "2026-11-10"
+        )
+
     def test_restricted_settlement(self):
         self.assertRestrictedSettlementHolidaysInYear(
             2026,
@@ -70,6 +75,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
             ("2026-09-07", "Sin liquidación cable"),
             ("2026-10-12", "Día del Respeto a la Diversidad Cultural"),
             ("2026-11-06", "Sin liquidación local"),
+            ("2026-11-09", "Visita de Su Santidad el Papa León XIV"),
+            ("2026-11-10", "Visita de Su Santidad el Papa León XIV"),
             ("2026-11-11", "Sin liquidación cable"),
             ("2026-11-23", "Día de la Soberanía Nacional"),
             ("2026-11-26", "Sin liquidación cable"),
@@ -102,6 +109,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
             ("2026-09-07", "No cable settlement"),
             ("2026-10-12", "Respect for Cultural Diversity Day"),
             ("2026-11-06", "No local settlement"),
+            ("2026-11-09", "Visit of His Holiness Pope Leo XIV"),
+            ("2026-11-10", "Visit of His Holiness Pope Leo XIV"),
             ("2026-11-11", "No cable settlement"),
             ("2026-11-23", "National Sovereignty Day"),
             ("2026-11-26", "No cable settlement"),

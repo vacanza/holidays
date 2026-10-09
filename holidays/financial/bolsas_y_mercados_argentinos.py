@@ -32,7 +32,7 @@ class BolsasYMercadosArgentinos(Argentina):
     year-end market close on December 31st.
 
     References:
-        * [BYMA trading calendar](https://web.archive.org/web/20260309064908/https://www.byma.com.ar/mercado/calendario-bursatil)
+        * [BYMA trading calendar](https://web.archive.org/web/20261009124344/https://www.byma.com.ar/mercado/calendario-bursatil)
     """
 
     country = None  # type: ignore[assignment]
@@ -80,6 +80,9 @@ class BYMA(BolsasYMercadosArgentinos):
 class BolsasYMercadosArgentinosStaticHolidays:
     """Bolsas y Mercados Argentinos (BYMA) special holidays.
 
+    References:
+        * [Decree 1103/2026 (Papal Visit Holidays)](https://web.archive.org/web/20261003211655/https://www.argentina.gob.ar/normativa/nacional/decreto-1103-2026-430580/texto)
+
     BYMA settlement-restricted trading days.
 
     On these days the market trades a full session but one settlement type is
@@ -88,11 +91,22 @@ class BolsasYMercadosArgentinosStaticHolidays:
     Neither is derivable from a formula, so they are listed per year.
     """
 
+    # Visit of His Holiness Pope Leo XIV.
+    papal_visit = tr("Visita de Su Santidad el Papa León XIV")
+
     # No local settlement.
     no_local_settlement = tr("Sin liquidación local")
 
     # No cable settlement.
     no_cable_settlement = tr("Sin liquidación cable")
+
+    special_public_holidays = {
+        # Decree 1103/2026.
+        2026: (
+            (NOV, 9, papal_visit),
+            (NOV, 10, papal_visit),
+        ),
+    }
 
     special_restricted_settlement_holidays = {
         2026: (
