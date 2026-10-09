@@ -30,6 +30,7 @@ class Chad(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Chad>
         * <https://web.archive.org/web/20221207165912/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf>
+        * [Décret n° 273 du 7 mars 2019](https://web.archive.org/web/20261009185542/https://www.alwihdainfo.com/tchad-le-8-mars-declare-ferie-pour-la-journee-de-la-femme-a71248/)
     """
 
     country = "TD"
@@ -64,8 +65,9 @@ class Chad(
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Jour de l'An")))
 
-        # International Women's Day.
-        self._add_observed(self._add_womens_day(tr("Journée internationale de la femme")))
+        if self._year >= 2019:
+            # International Women's Day.
+            self._add_observed(self._add_womens_day(tr("Journée internationale de la femme")))
 
         # Easter Monday.
         self._add_easter_monday(tr("Lundi de Pâques"))

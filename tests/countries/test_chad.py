@@ -37,10 +37,11 @@ class TestChad(CommonCountryTests, TestCase):
 
     def test_international_womens_day(self):
         name = "Journée internationale de la femme"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in self.full_range))
+        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2019, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2019))
         obs_dts = (
-            "2015-03-09",
             "2020-03-09",
+            "2026-03-09",
         )
         self.assertHolidayName(f"{name} (observé)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
