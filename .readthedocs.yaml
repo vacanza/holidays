@@ -6,7 +6,7 @@ build:
   os: ubuntu-26.04
   tools:
     # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-tools-python
-    python: '3.14'
+    python: '3.15'
   jobs:
     install:
       - uv sync --frozen --no-dev --group docs

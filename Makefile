@@ -89,7 +89,7 @@ setup:
 		exit 1; \
 	}
 	# Bootstrap with PATH uv, then switch to the lockfile-pinned uv in .venv.
-	uv venv --clear --python 3.14
+	uv venv --clear --python 3.15
 	uv sync --frozen --only-group ci --no-install-project
 	.venv/bin/uv sync --all-groups
 	.venv/bin/uv run --no-sync pre-commit install --hook-type pre-commit \
