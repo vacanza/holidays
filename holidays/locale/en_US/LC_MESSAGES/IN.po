@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-10-02 11:43+0530\n"
+"PO-Revision-Date: 2026-10-09 17:29+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -87,7 +87,7 @@ msgstr "Dussehra"
 
 #. Diwali.
 msgid "Diwali (Deepavali)"
-msgstr "Diwali (Deepavali)"
+msgstr "Diwali"
 
 #. Guru Nanak's Birthday.
 msgid "Guru Nanak's Jayanti"
@@ -315,11 +315,11 @@ msgstr "Boxing Day"
 
 #. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
-msgstr "Shab-I-Miraj"
+msgstr "Isra' and Mi'raj"
 
 #. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
-msgstr "Eid-e-Ghadeer"
+msgstr "Eid al-Ghadir"
 
 #. Statehood Day.
 msgid "Statehood Day"
@@ -545,7 +545,7 @@ msgstr "New Year's Eve"
 msgid "Sardar Vallabhbhai Patel's Jayanti"
 msgstr "Sardar Vallabhbhai Patel's Birthday"
 
-#. Makar Sankranti.
+#. Uttarayan.
 msgid "Uttarayan"
 msgstr "Uttarayan"
 
@@ -655,7 +655,7 @@ msgstr "Mannam's Jayanti"
 
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
-msgstr "Shri Narayana Guru's Death Anniversary."
+msgstr "Shri Narayana Guru's Death Anniversary"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
@@ -663,11 +663,11 @@ msgstr "Onam (Day 2)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
-msgstr "Onam (Day 3)."
+msgstr "Onam (Day 3)"
 
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
-msgstr "Onam (Day 4)."
+msgstr "Onam (Day 4)"
 
 #. Chhatrapati Shivaji Maharaj's Birthday.
 msgid "Chhatrapati Shivaji Maharaj's Jayanti"
@@ -911,11 +911,11 @@ msgstr "Sikkim State Day"
 
 #. Bhanu's Birthday.
 msgid "Bhanu's Jayanti"
-msgstr "Bhanu's Jayanti"
+msgstr "Bhanu's Birthday"
 
 #. Nepali Bhasa Manyata Day.
 msgid "Nepali Bhasa Manyata Diwas"
-msgstr "Nepali Bhasa Manyata Diwas"
+msgstr "Nepali Bhasa Manyata Day"
 
 #. Late Nar Bahadur Bhandari's Birthday.
 msgid "Late Nar Bahadur Bhandari's Jayanti"
@@ -939,7 +939,7 @@ msgstr "The Dalai Lama's Jayanti"
 
 #. Drivers' Day.
 msgid "Sarathi Diwas"
-msgstr "Sarathi Diwas"
+msgstr "Sarathi Day"
 
 #. Satya Sai Baba of Puttaparthi's Birthday.
 msgid "Satya Sai Baba of Puttaparthi's Jayanti"

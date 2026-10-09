@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-10-02 11:43+0530\n"
+"PO-Revision-Date: 2026-10-09 17:29+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -544,7 +544,7 @@ msgstr "പുതുവത്സരത്തലേന്ന്"
 msgid "Sardar Vallabhbhai Patel's Jayanti"
 msgstr "സർദാർ വല്ലഭ്ഭായി പട്ടേൽ ജയന്തി"
 
-#. Makar Sankranti.
+#. Uttarayan.
 msgid "Uttarayan"
 msgstr "ഉത്തരായൻ"
 

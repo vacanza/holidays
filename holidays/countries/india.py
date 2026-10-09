@@ -121,7 +121,7 @@ class India(
             * <https://web.archive.org/web/20260826132225/https://only30sec.com/wp-content/uploads/2025/11/Odisha-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://archive.org/details/odisha-government-optional-holidays-list-2026>
         * Puducherry:
-            * <https://only30sec.com/wp-content/uploads/2025/11/Puducherry-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://web.archive.org/web/20260827192917/https://only30sec.com/wp-content/uploads/2025/11/Puducherry-UT-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Punjab:
             * <https://web.archive.org/web/20260216022835/https://punjab.gov.in/wp-content/uploads/2025/12/Calender-2026.pdf>
         * Rajasthan:
@@ -458,7 +458,7 @@ class India(
             self._add_ram_navami(tr("Ram Navami"))
 
         # Meshadi (Tamil New Year's Day).
-        self._add_holiday_apr_14(tr("Meshadi (Tamil New Year's Day)"))
+        self._add_puthandu(tr("Meshadi (Tamil New Year's Day)"))
 
         # Bahag Bihu.
         self._add_vaisakhadi(tr("Bahag Bihu"))
@@ -940,7 +940,7 @@ class India(
 
         # Hindu holidays.
 
-        # Makar Sankranti.
+        # Uttarayan.
         self._add_makar_sankranti(tr("Uttarayan"))
 
         # Cheti Chand.
@@ -1612,9 +1612,10 @@ class India(
 
         # Mahashtami.
         name = tr("Mahashtami")
-        self._add_holiday(name, _timedelta(mahasaptami_dt, +1)) if (
-            dt := mahasaptami_dates.get(self._year)
-        ) else self._add_maha_ashtami(name)
+        if self._year in mahasaptami_dates:
+            self._add_holiday(name, _timedelta(mahasaptami_dt, +1))
+        else:
+            self._add_maha_ashtami(name)
 
         # Mahanavami.
         self._add_maha_navami(tr("Mahanavami"))
@@ -1643,20 +1644,14 @@ class India(
         }
         # Vishu.
         name = tr("Vishu")
-        if dt := vishu_dates.get(self._year):
+        vishu_dt = (
             self._add_holiday(name, dt)
-        else:
-            self._add_vishu(name)
-
-        vishu_day_two_dates = {
-            2025: (APR, 15),
-        }
-        # Vishu (Day 2).
-        name = tr("Vishu (Day 2)")
-        if dt := vishu_day_two_dates.get(self._year):
-            self._add_holiday(name, dt)
-        else:
-            self._add_vishu_day_two(name)
+            if (dt := vishu_dates.get(self._year))
+            else self._add_vishu(name)
+        )
+        if vishu_dt:
+            # Vishu (Day 2).
+            self._add_holiday(tr("Vishu (Day 2)"), _timedelta(vishu_dt, +1))
 
         # Onam.
         self._add_onam(tr("Onam"))

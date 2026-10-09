@@ -607,11 +607,6 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertSubdivUpOptionalHolidayName(name, (f"{year}-04-05" for year in self.full_range))
 
-    def test_meshadi(self):
-        name = "Meshadi (Tamil New Year's Day)"
-        self.assertNoHolidayName(name)
-        self.assertOptionalHolidayName(name, (f"{year}-04-14" for year in self.full_range))
-
     def test_chandrashekhar_jayanti(self):
         name = "Chandrashekhar's Jayanti"
         self.assertNoHolidayName(name)
@@ -809,18 +804,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-09-16",
             "2025-09-06",
         )
-        self._assertHinduHolidayHelper(
-            "Onam (Day 2)",
-            (
-                "2020-09-01",
-                "2021-08-22",
-                "2022-09-09",
-                "2023-08-30",
-                "2024-09-16",
-                "2025-09-06",
-            ),
-            subdivs={"KL", "PY"},
-        )
+        self._assertHinduHolidayHelper("Onam (Day 2)", dts, subdivs={"KL", "PY"})
         dts = (
             "2020-09-02",
             "2021-08-23",
@@ -1033,8 +1017,8 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts, subdivs={"DH", "MP", "UP", "RJ"})
         self._assertHinduHolidayHelper("Diwali (Bali Pratipada)", dts, subdivs={"MH"})
         self._assertHinduHolidayHelper("Vishwakarma Day", dts, subdivs={"HR", "PB"})
-        self.assertSubdivMpGovernmentHolidayName(name, dts)
         self.assertSubdivJhGovernmentHolidayName(name, dts)
+        self.assertSubdivMpGovernmentHolidayName(name, dts)
 
     def test_vikram_samvat_new_year(self):
         dts = (
@@ -1079,11 +1063,11 @@ class TestIndia(CommonCountryTests, TestCase):
             name, dts, category=OPTIONAL, hindu_range=range(2011, self.hindu_end_year + 1)
         )
         # SUBDIVS.
-        self.assertSubdivBrGovernmentHolidayName(name_subdiv, dts)
-        self.assertSubdivCgGovernmentHolidayName(name_subdiv, dts)
         self._assertHinduHolidayHelper(name, dts, subdivs={"DH"})
         self._assertHinduHolidayHelper(name_subdiv, dts, subdivs={"JH", "WB"})
         self._assertHinduHolidayHelper(name_subdiv, dts, category=OPTIONAL, subdivs={"SK"})
+        self.assertSubdivBrGovernmentHolidayName(name_subdiv, dts)
+        self.assertSubdivCgGovernmentHolidayName(name_subdiv, dts)
 
     def test_guru_tegh_bahadurs_martyrdom_day(self):
         name = "Guru Tegh Bahadur's Shaheedi Diwas"
@@ -1310,7 +1294,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name)
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv in {"SK"}:
+            if subdiv == "SK":
                 self.assertHolidayName(name, holidays, dts)
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -1614,6 +1598,8 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-04-14",
             "2025-04-14",
         )
+        self._assertHinduHolidayHelper("Meshadi (Tamil New Year's Day)", dts, category=OPTIONAL)
+        # SUBDIVS.
         self._assertHinduHolidayHelper("Puthandu", dts, subdivs={"PY", "TN"})
 
     def test_gurudev_kalicharan_brahma_jayanti(self):
@@ -1658,6 +1644,7 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "KL":
                 self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -1700,6 +1687,7 @@ class TestIndia(CommonCountryTests, TestCase):
         name_majdoor_divas = "Majdoor Diwas"
         self.assertNoHolidayName(name)
         self.assertNoHolidayName(name_maharashtra)
+        self.assertNoHolidayName(name_majdoor_divas)
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv in {"AS", "KA", "KL", "PY", "TN", "WB"}:
                 self.assertHolidayName(
@@ -2081,10 +2069,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2024-09-06",
             "2025-08-26",
         )
-        self.assertNoHolidayName(name)
-        self.assertSubdivCgGovernmentHolidayName(name, dts)
         self._assertHinduHolidayHelper(name, dts, subdivs={"SK"})
         self._assertHinduHolidayHelper(name, dts, category=OPTIONAL, subdivs={"BR"})
+        self.assertSubdivCgGovernmentHolidayName(name, dts)
 
     def test_dol_gyaras(self):
         dts = (
@@ -3045,9 +3032,9 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "Shri Vallabhacharya's Birthday"),
             (
                 "2018-04-14",
-                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; Maha Visuva Sankranti; "
-                "Meshadi (Tamil New Year's Day); Shab-I-Miraj (estimated); Tamil New Year; "
-                "Vaisakhi; Vishu",
+                "Bahag Bihu; Baisakhi; Dr. B. R. Ambedkar's Birthday; "
+                "Isra' and Mi'raj (estimated); Maha Visuva Sankranti; "
+                "Meshadi (Tamil New Year's Day); Tamil New Year; Vaisakhi; Vishu",
             ),
             (
                 "2018-04-15",
@@ -3080,12 +3067,12 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-06-28", "Sant Kabir's Birthday"),
             ("2018-06-30", "Remna Ni"),
             ("2018-07-06", "Mizo Hmeichhe Insuihkhawm Pawl's Day; The Dalai Lama's Jayanti"),
-            ("2018-07-13", "Bhanu's Jayanti"),
+            ("2018-07-13", "Bhanu's Birthday"),
             ("2018-07-14", "Rath Yatra"),
             ("2018-07-16", "Harela"),
             ("2018-07-17", "U Tirot Sing's Death Anniversary"),
             ("2018-07-21", "Kharchi Puja"),
-            ("2018-07-27", "Guru Purnima; Sarathi Diwas"),
+            ("2018-07-27", "Guru Purnima; Sarathi Day"),
             ("2018-07-31", "Shaheed Udham Singh's Martyrdom Day"),
             ("2018-08-04", "Ker Puja"),
             ("2018-08-06", "Bonalu"),
@@ -3096,13 +3083,13 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-08-16", "Puducherry De Jure Transfer Day"),
             ("2018-08-17", "Parsi New Year; Parsi New Year (Shahenshahi); Tulsidas's Birthday"),
             ("2018-08-19", "Maharaja Bir Bikram Kishore Manikya Bahadur's Birthday"),
-            ("2018-08-20", "Nepali Bhasa Manyata Diwas"),
+            ("2018-08-20", "Nepali Bhasa Manyata Day"),
             ("2018-08-22", "Eid al-Adha"),
             ("2018-08-24", "Onam; Varalakshmi Vratam"),
             ("2018-08-25", "Onam (Day 2)"),
-            ("2018-08-26", "Onam (Day 3).; Raksha Bandhan"),
-            ("2018-08-27", "Onam (Day 4)."),
-            ("2018-08-30", "Eid-e-Ghadeer (estimated)"),
+            ("2018-08-26", "Onam (Day 3); Raksha Bandhan"),
+            ("2018-08-27", "Onam (Day 4)"),
+            ("2018-08-30", "Eid al-Ghadir (estimated)"),
             ("2018-09-01", "Harchath"),
             ("2018-09-03", "Janmashtami (Vaishnava)"),
             ("2018-09-11", "Khejarli's Martyrdom Day"),
@@ -3111,7 +3098,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-09-14", "Ganesh Chaturthi (Day 2); Samvatsari Day"),
             ("2018-09-17", "Vishwakarma Puja"),
             ("2018-09-20", "Dol Gyaras; Karma Puja"),
-            ("2018-09-21", "Ashura; Shri Narayana Guru's Death Anniversary."),
+            ("2018-09-21", "Ashura; Shri Narayana Guru's Death Anniversary"),
             ("2018-09-23", "Haryana War Heroes' Martyrdom Day; Maharaja Hari Singh's Birthday"),
             ("2018-09-24", "Anant Chaturdashi"),
             ("2018-09-28", "Bhagat Singh's Birthday"),
@@ -3138,7 +3125,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-01", "Haryana Day; Kut; New Punjab Day; Puducherry Liberation Day"),
             ("2018-11-02", "All Souls' Day"),
             ("2018-11-06", "Diwali (South India); Kali Puja; Naraka Chaturdashi"),
-            ("2018-11-07", "Diwali (Deepavali)"),
+            ("2018-11-07", "Diwali"),
             (
                 "2018-11-08",
                 "Diwali (Bali Pratipada); Govardhan Puja; Gujarati New Year; Vishwakarma Day",
