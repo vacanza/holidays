@@ -132,7 +132,7 @@ GoTo :Help
         Exit /B 1
     )
     Rem Bootstrap with PATH uv, then switch to the lockfile-pinned uv in .venv.
-    uv venv --clear --python 3.14
+    uv venv --clear --python 3.15
     uv sync --frozen --only-group ci --no-install-project
     Set "UV=.venv\Scripts\uv.exe"
     Set "UV_RUN_CMD=!UV! run --no-sync"
