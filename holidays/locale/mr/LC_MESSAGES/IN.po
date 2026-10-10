@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-10-10 13:24+0530\n"
+"PO-Revision-Date: 2026-10-10 13:55+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
@@ -344,7 +344,7 @@ msgstr "नेताजी सुभाषचंद्र बोस जयंत
 msgid "May Day"
 msgstr "मे दिन"
 
-#. Silpi Divas.
+#. Silpi Day.
 msgid "Silpi Divas"
 msgstr "शिल्पी दिवस"
 
@@ -808,7 +808,7 @@ msgstr "ख्रिसमसनंतरचा दिवस (चौथा द�
 msgid "Dola Purnima"
 msgstr "डोला पौर्णिमा"
 
-#. Utkal Divas.
+#. Utkal Day.
 msgid "Utkal Divas"
 msgstr "उत्कल दिन"
 

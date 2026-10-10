@@ -656,7 +656,7 @@ class India(
         self._add_vaisakhadi_day_two(name)
 
     def _populate_subdiv_as_optional_holidays(self):
-        # Silpi Divas.
+        # Silpi Day.
         self._add_holiday_jan_17(tr("Silpi Divas"))
 
         # Gurudev Kalicharan Brahma's Birthday.
@@ -1584,7 +1584,7 @@ class India(
         # Dola Purnima.
         self._add_holika_dahan(tr("Dola Purnima"))
 
-        # Utkal Divas.
+        # Utkal Day.
         self._add_holiday_apr_1(tr("Utkal Divas"))
 
         # Maha Visuva Sankranti.
@@ -1633,11 +1633,19 @@ class India(
 
         # Hindu holidays.
 
+        pongal_dates = {
+            2026: (JAN, 15),
+        }
         # Pongal.
-        self._add_pongal(tr("Pongal"))
-
-        # Thiruvalluvar Day.
-        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
+        name = tr("Pongal")
+        pongal_dt = (
+            self._add_holiday(name, dt)
+            if (dt := pongal_dates.get(self._year))
+            else self._add_pongal(name)
+        )
+        if pongal_dt:
+            # Thiruvalluvar Day.
+            self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
 
         vishu_dates = {
             2025: (APR, 14),
@@ -1680,8 +1688,15 @@ class India(
 
         # Hindu holidays.
 
+        kanuma_dates = {
+            2026: (JAN, 16),
+        }
         # Kanuma.
-        self._add_vassi_uttarayan(tr("Kanuma"))
+        name = tr("Kanuma")
+        if dt := kanuma_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_vassi_uttarayan(name)
 
     # Punjab.
     def _populate_subdiv_pb_public_holidays(self):

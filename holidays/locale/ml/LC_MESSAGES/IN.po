@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-10-10 13:24+0530\n"
+"PO-Revision-Date: 2026-10-10 13:55+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -344,7 +344,7 @@ msgstr "നേതാജി സുഭാഷ് ചന്ദ്ര ബോസ് �
 msgid "May Day"
 msgstr "മേയ് ദിനം"
 
-#. Silpi Divas.
+#. Silpi Day.
 msgid "Silpi Divas"
 msgstr "ശിൽപി ദിവസ്"
 
@@ -808,7 +808,7 @@ msgstr "ക്രിസ്മസിന് ശേഷമുള്ള ദിവസ�
 msgid "Dola Purnima"
 msgstr "ഡോള പൂർണിമ"
 
-#. Utkal Divas.
+#. Utkal Day.
 msgid "Utkal Divas"
 msgstr "ഉത്കൾ ദിനം"
 

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-10-10 13:24+0530\n"
+"PO-Revision-Date: 2026-10-10 13:55+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -345,9 +345,9 @@ msgstr "Netaji Subhas Chandra Bose's Birthday"
 msgid "May Day"
 msgstr "May Day"
 
-#. Silpi Divas.
+#. Silpi Day.
 msgid "Silpi Divas"
-msgstr "Silpi Divas"
+msgstr "Silpi Day"
 
 #. Gurudev Kalicharan Brahma's Birthday.
 msgid "Gurudev Kalicharan Brahma's Jayanti"
@@ -363,7 +363,7 @@ msgstr "Kut"
 
 #. Martyrs' Day.
 msgid "Shaheedi Divas"
-msgstr "Shaheedi Divas"
+msgstr "Martyrs' Day"
 
 #. Wangala Festival.
 msgid "Wangala Festival"
@@ -643,7 +643,7 @@ msgstr "Karma Puja"
 
 #. Labor Day.
 msgid "Majdoor Diwas"
-msgstr "Majdoor Diwas"
+msgstr "Labor Day"
 
 #. Holy Saturday.
 msgid "Holy Saturday"
@@ -809,9 +809,9 @@ msgstr "Post Christmas (Day 4)"
 msgid "Dola Purnima"
 msgstr "Dola Purnima"
 
-#. Utkal Divas.
+#. Utkal Day.
 msgid "Utkal Divas"
-msgstr "Utkal Divas"
+msgstr "Utkal Day"
 
 #. Maha Visuva Sankranti.
 msgid "Maha Visuva Sankranti"
