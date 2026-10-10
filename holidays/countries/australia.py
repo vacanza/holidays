@@ -503,7 +503,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             self._add_easter_sunday(tr("Easter Sunday"))
 
         # Established as the 1st day of May by NT Holidays Ordinance 1957.
-        # Moved to the following Monday by NT Holidays Ordinance 1963.
+        # Moved to the 1st Monday of May by NT Holidays Ordinance 1963.
         if self._year >= 1958:
             # May Day.
             name = tr("May Day")
