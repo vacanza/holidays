@@ -1659,7 +1659,7 @@ class India(
         # Onam (Day 2).
         self._add_onam_day_two(tr("Onam (Day 2)"))
 
-        # Puthandu.
+        # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
 
         # Ganesh Chaturthi.
@@ -1893,7 +1893,7 @@ class India(
         # Uzhavar Thirunal.
         self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
 
-        # Puthandu.
+        # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
 
         # Ganesh Chaturthi.

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-10-09 17:29+0530\n"
+"PO-Revision-Date: 2026-10-10 13:24+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -387,7 +387,7 @@ msgstr "Karpuri Thakur's Birthday"
 
 #. Rajendra Prasad's Birthday.
 msgid "Rajendra Prasad's Jayanti"
-msgstr "Rajendra Prasad's Jayanti"
+msgstr "Rajendra Prasad's Birthday"
 
 #. Hartalika Teej.
 msgid "Hartalika Teej"
@@ -651,7 +651,7 @@ msgstr "Holy Saturday"
 
 #. Mannam's Birthday.
 msgid "Mannam's Jayanti"
-msgstr "Mannam's Jayanti"
+msgstr "Mannam's Birthday"
 
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
@@ -787,7 +787,7 @@ msgstr "Young Mizo Association's Day"
 
 #. Peace Accord Day.
 msgid "Remna Ni"
-msgstr "Remna Ni"
+msgstr "Peace Accord Day"
 
 #. Mizo Hmeichhe Insuihkhawm Pawl's Day.
 msgid "Mizo Hmeichhe Insuihkhawm Pawl's Day"
@@ -837,7 +837,7 @@ msgstr "Thiruvalluvar Day"
 msgid "Vishu (Day 2)"
 msgstr "Vishu (Day 2)"
 
-#. Puthandu.
+#. Tamil New Year.
 msgid "Puthandu"
 msgstr "Tamil New Year"
 
@@ -919,7 +919,7 @@ msgstr "Nepali Bhasa Manyata Day"
 
 #. Late Nar Bahadur Bhandari's Birthday.
 msgid "Late Nar Bahadur Bhandari's Jayanti"
-msgstr "Late Nar Bahadur Bhandari's Jayanti"
+msgstr "Late Nar Bahadur Bhandari's Birthday"
 
 #. Sonam Lochhar.
 msgid "Sonam Lochhar"
@@ -931,11 +931,11 @@ msgstr "Tamu Lochhar"
 
 #. Late Tenzing Norgay Sherpa's Birthday.
 msgid "Late Tenzing Norgay Sherpa's Jayanti"
-msgstr "Late Tenzing Norgay Sherpa's Jayanti"
+msgstr "Late Tenzing Norgay Sherpa's Birthday"
 
 #. The Dalai Lama's Birthday.
 msgid "The Dalai Lama's Jayanti"
-msgstr "The Dalai Lama's Jayanti"
+msgstr "The Dalai Lama's Birthday"
 
 #. Drivers' Day.
 msgid "Sarathi Diwas"
@@ -943,7 +943,7 @@ msgstr "Sarathi Day"
 
 #. Satya Sai Baba of Puttaparthi's Birthday.
 msgid "Satya Sai Baba of Puttaparthi's Jayanti"
-msgstr "Satya Sai Baba of Puttaparthi's Jayanti"
+msgstr "Satya Sai Baba of Puttaparthi's Birthday"
 
 #. Uzhavar Thirunal.
 msgid "Uzhavar Thirunal"
@@ -1015,7 +1015,7 @@ msgstr "Chaudhary Charan Singh's Birthday"
 
 #. Swami Vivekananda's Birthday.
 msgid "Swami Vivekananda's Jayanti"
-msgstr "Swami Vivekananda's Jayanti"
+msgstr "Swami Vivekananda's Birthday"
 
 #. Rabindranath Tagore's Birthday.
 msgid "Rabindranath Tagore's Jayanti"
@@ -1023,7 +1023,7 @@ msgstr "Rabindranath Tagore's Birthday"
 
 #. Birsa Munda's Birthday.
 msgid "Birsa Munda's Jayanti"
-msgstr "Birsa Munda's Jayanti"
+msgstr "Birsa Munda's Birthday"
 
 #. Kali Puja.
 msgid "Kali Puja"
