@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -29,6 +30,7 @@ class SaintMartin(ChildEntity, France):
     parent_entity = France
     # Cession from Guadeloupe on July 15th, 2007.
     start_year = 2008
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysMF(SaintMartin):
