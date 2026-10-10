@@ -214,11 +214,11 @@ msgstr "गुड फ्रायडे नंतरचा शनिवार"
 
 #. Saturday before Decoration Day.
 msgid "Saturday before Decoration Day"
-msgstr "स्मृती दिनाच्या आधीचा शनिवार"
+msgstr "सजावट दिनाच्या आधीचा शनिवार"
 
 #. Saturday after Decoration Day.
 msgid "Saturday after Decoration Day"
-msgstr "स्मृती दिनानंतरचा शनिवार"
+msgstr "सजावट दिनानंतरचा शनिवार"
 
 #. Saturday before Independence Day.
 msgid "Saturday before Independence Day"
@@ -306,7 +306,7 @@ msgstr "लिंकनच्या वाढदिवसाच्या आद�
 
 #. Monday before Decoration Day.
 msgid "Monday before Decoration Day"
-msgstr "स्मृती दिनाच्या आधीचा सोमवार"
+msgstr "सजावट दिनाच्या आधीचा सोमवार"
 
 #. Monday before Independence Day.
 msgid "Monday before Independence Day"
@@ -442,7 +442,7 @@ msgstr "नाताळच्या दुसऱ्या दिवशी"
 
 #. Day before Decoration Day.
 msgid "Day before Decoration Day"
-msgstr "स्मृती दिनाच्या आधीचा दिवस"
+msgstr "सजावट दिनाच्या आधीचा दिवस"
 
 #. Funeral of President John F. Kennedy.
 msgid "Funeral of President John F. Kennedy"
