@@ -60,6 +60,9 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             "2023-09-08",
             "2024-09-06",
         )
+        self.assertHolidayNameCount(name, 1, 2017, 2020, 2021, 2024)
+        self.assertHolidayNameCount(name, 2, 2016)
+        self.assertHolidayNameCount(name, 3, 2023)
         self.assertNoHolidayName(
             name, range(self.start_year, 2016), 2018, 2019, 2022, range(2025, self.end_year)
         )
