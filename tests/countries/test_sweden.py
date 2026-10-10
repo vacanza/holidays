@@ -20,7 +20,6 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Sweden)
-        cls.holidays = Sweden(years=cls.full_range)
 
     def test_new_years_day(self):
         self.assertHolidayName("Nyårsdagen", (f"{year}-01-01" for year in self.full_range))
