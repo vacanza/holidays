@@ -12,12 +12,12 @@
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
-class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
+class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """Pakistan holidays.
 
     References:
@@ -46,6 +46,7 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(
             self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, PakistanStaticHolidays)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -78,14 +79,18 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Eid al-Fitr.
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
+        # In 2026, March 20 was declared instead of the second and third days.
+        if self._year != 2026:
+            self._add_eid_al_fitr_day_two(name)
+            self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
         name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        self._add_eid_al_adha_day_three(name)
+        # In 2026, May 26 was declared instead of the third day.
+        if self._year != 2026:
+            self._add_eid_al_adha_day_three(name)
 
         # Prophet's Birthday.
         self._add_mawlid_day(tr("Eid Milad-un-Nabi"))
@@ -106,7 +111,8 @@ class PAK(Pakistan):
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
-    ASHURA_DATES_CONFIRMED_YEARS = (2005, 2025)
+    # https://web.archive.org/web/20261009165128/https://www.sbp.org.pk/assets/documents/press-release/Pr-23-Jun-2026.pdf
+    ASHURA_DATES_CONFIRMED_YEARS = (2005, 2026)
     ASHURA_DATES = {
         2005: (FEB, 18),
         2006: (FEB, 8),
@@ -117,10 +123,12 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2018: (SEP, 21),
         2022: (AUG, 9),
         2025: (JUL, 6),
+        2026: (JUN, 26),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2025)
+    # https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_ADHA_DATES = {
         2008: (DEC, 9),
         2009: (NOV, 28),
@@ -137,10 +145,12 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 29),
         2024: (JUN, 17),
         2025: (JUN, 7),
+        2026: (MAY, 27),
     }
 
     # https://web.archive.org/web/20250724060834/https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2025)
+    # https://web.archive.org/web/20260318213743/https://www.sbp.org.pk/bprd/2026/CL6.htm
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
@@ -154,11 +164,13 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (MAY, 3),
         2023: (APR, 22),
         2025: (MAR, 31),
+        2026: (MAR, 21),
     }
 
     # https://web.archive.org/web/20250724061027/https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
-
-    MAWLID_DATES_CONFIRMED_YEARS = (2005, 2024)
+    # https://web.archive.org/web/20261009182535/https://www.sbp.org.pk/circulars/bprd-circular-letter-no-19-of-2025
+    # https://web.archive.org/web/20261009165136/https://www.sbp.org.pk/assets/documents/press-release/PR-25-August-2026.pdf
+    MAWLID_DATES_CONFIRMED_YEARS = (2005, 2026)
     MAWLID_DATES = {
         2005: (APR, 22),
         2006: (APR, 11),
@@ -177,4 +189,24 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
         2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
+        2025: (SEP, 6),
+        2026: (AUG, 26),
+    }
+
+
+class PakistanStaticHolidays:
+    """Pakistan special holidays.
+
+    References:
+        * [2026 Eid-ul-Fitr](https://web.archive.org/web/20260318213743/https://www.sbp.org.pk/bprd/2026/CL6.htm)
+        * [2026 Eid-ul-Adha](https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf)
+    """
+
+    special_public_holidays = {
+        2026: (
+            # Eid al-Fitr.
+            (MAR, 20, tr("Eid-ul-Fitr")),
+            # Eid al-Adha.
+            (MAY, 26, tr("Eid-ul-Adha")),
+        ),
     }

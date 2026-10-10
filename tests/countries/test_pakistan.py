@@ -78,7 +78,10 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
             "2025-04-02",
+            "2026-03-20",
+            "2026-03-21",
         )
+        self.assertNoHolidayName(name, "2026-03-22", "2026-03-23")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_eid_ul_adha(self):
@@ -103,7 +106,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
             "2025-06-09",
+            "2026-05-26",
+            "2026-05-27",
+            "2026-05-28",
         )
+        self.assertNoHoliday("2026-05-29")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_eid_milad_un_nabi(self):
@@ -115,6 +122,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2022-10-09",
             "2023-09-29",
             "2024-09-17",
+            "2025-09-06",
+            "2026-08-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
@@ -134,6 +143,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2024-07-16",
             "2025-07-05",
             "2025-07-06",
+            "2026-06-25",
+            "2026-06-26",
         )
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
