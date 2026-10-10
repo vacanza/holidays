@@ -1825,6 +1825,9 @@ class TestAustralia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
+                    "1958-05-01",
+                    "1962-05-01",
+                    "1963-05-06",
                     "2020-05-04",
                     "2021-05-03",
                     "2022-05-02",
@@ -1832,7 +1835,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                     "2024-05-06",
                     "2025-05-05",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayName(name, holidays, range(1958, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1958))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -1845,6 +1849,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
+                    "1982-08-02",
+                    "1983-08-01",
                     "2020-08-03",
                     "2021-08-02",
                     "2022-08-01",
@@ -1852,7 +1858,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                     "2024-08-05",
                     "2025-08-04",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayName(name, holidays, range(1982, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1982))
             else:
                 self.assertNoHolidayName(name, holidays)
 
