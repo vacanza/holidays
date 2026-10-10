@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-25 14:00-0700\n"
-"PO-Revision-Date: 2026-03-29 21:34-0700\n"
-"Last-Translator: Chengxi Meng <mengchengxi0615@gmail.com>\n"
+"PO-Revision-Date: 2026-10-11 01:09+1100\n"
+"Last-Translator: Ryan Duguid <ryanduguid@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: zh_HK\n"
 "MIME-Version: 1.0\n"
@@ -42,4 +42,8 @@ msgstr ""
 
 #. New Year's Eve.
 msgid "新年前夕"
+msgstr ""
+
+#. Trading Suspended for the Whole Day due to Severe Weather.
+msgid "惡劣天氣全日暫停交易"
 msgstr ""

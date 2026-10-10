@@ -38,11 +38,30 @@ class TestHongKongStockExchange(CommonFinancialTests, TestCase):
             ("2024-05-15", "佛誕"),
             ("2024-06-10", "端午節"),
             ("2024-07-01", "香港特別行政區成立紀念日"),
+            ("2024-09-06", "惡劣天氣全日暫停交易"),
             ("2024-09-18", "中秋節翌日"),
             ("2024-10-01", "國慶日"),
             ("2024-10-11", "重陽節"),
             ("2024-12-25", "聖誕節"),
             ("2024-12-26", "聖誕節後第一個周日"),
+        )
+
+    def test_severe_weather(self):
+        name = "惡劣天氣全日暫停交易"
+        self.assertHolidayName(
+            name,
+            "2016-08-02",
+            "2016-10-21",
+            "2017-08-23",
+            "2020-10-13",
+            "2021-10-13",
+            "2023-07-17",
+            "2023-09-01",
+            "2023-09-08",
+            "2024-09-06",
+        )
+        self.assertNoHolidayName(
+            name, range(self.start_year, 2016), 2018, 2019, 2022, range(2025, self.end_year)
         )
 
     def test_2024_half_day(self):
