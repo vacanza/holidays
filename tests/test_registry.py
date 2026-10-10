@@ -10,10 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import ast
 import importlib
 import inspect
+import pathlib
 import subprocess
 import sys
+import textwrap
 import warnings
 from unittest import TestCase
 
@@ -186,6 +189,10 @@ class TestEntityLoader(TestCase):
                 self.assertIn(entity, dir(package))
             self.assertIn(module_name, package.__all__)
 
+            # Already cached: `__getattr__` is not called by normal lookup.
+            self.assertEqual(package.__getattr__(module_name), module)
+            self.assertEqual(package.__getattr__(entities[0]), getattr(module, entities[0]))
+
             with self.assertRaises(AttributeError):
                 package.NonExistentEntity
 
@@ -236,13 +243,64 @@ class TestEntityLoader(TestCase):
             registry.IMPORT_LOCK = original_lock
 
     def test_lazy_package_loading(self):
-        code = (
-            "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
-            "holidays.financial_holidays('XNYS'); "
-            "print(sorted(m for m in sys.modules "
-            "if m.startswith(('holidays.countries.', 'holidays.financial.'))))"
+        code = """
+            import sys
+            import holidays
+
+            holidays.country_holidays("CA")
+            holidays.financial_holidays("XNYS")
+            holidays.countries.Canada
+            holidays.financial.NYSE
+            print(
+                "\\n".join(
+                    m
+                    for m in sorted(sys.modules)
+                    if m.startswith(("holidays.countries.", "holidays.financial."))
+                )
+            )
+            """
+        output = subprocess.check_output(  # noqa: S603
+            [sys.executable, "-c", textwrap.dedent(code)],
+            text=True,
         )
         self.assertEqual(
-            subprocess.check_output([sys.executable, "-c", code], text=True).strip(),  # noqa: S603
-            "['holidays.countries.canada', 'holidays.financial.ny_stock_exchange']",
+            output.splitlines(),
+            [
+                "holidays.countries.canada",
+                "holidays.financial.ny_stock_exchange",
+            ],
         )
+
+    def test_type_checking_imports_match_registry(self):
+        for package, container in (
+            (countries, registry.COUNTRIES),
+            (financial, registry.FINANCIAL),
+        ):
+            # Parse source: `TYPE_CHECKING` imports are skipped at runtime.
+            imported: set[tuple[str, str]] = set()
+            tree = ast.parse(pathlib.Path(package.__file__).read_text(encoding="utf-8"))
+            for node in tree.body:
+                test = getattr(node, "test", None)
+                if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
+                    continue
+                for statement in node.body:
+                    # Pair each name with its module so a wrong import path fails.
+                    if isinstance(statement, ast.ImportFrom) and statement.module is not None:
+                        imported.update(
+                            (statement.module, alias.asname or alias.name)
+                            for alias in statement.names
+                        )
+
+            registered = {
+                (f"{package.__name__}.{module}", name)
+                for module, entities in container.items()
+                for name in entities
+            }
+            differences = []
+            if missing := sorted(registered - imported):
+                differences.append(f"missing {missing}")
+            if extra := sorted(imported - registered):
+                differences.append(f"extra {extra}")
+
+            if differences:
+                self.fail(f"{package.__name__} TYPE_CHECKING imports: {', '.join(differences)}.")

@@ -427,31 +427,40 @@ class EntityLoader:
 
     @staticmethod
     def load_package(prefix: str, scope: dict) -> None:
-        """Set up lazy (PEP 562) loading of country or financial package entities.
+        """Set up lazy loading (PEP 562) for a country or financial package.
 
         An entity module is imported on first access only, so loading a single
         country or market doesn't import all of them.
         """
         entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
-        package = f"holidays.{prefix}"
         entity_modules = {
             entity: module for module, entities in entity_mapping.items() for entity in entities
         }
+        package = f"holidays.{prefix}"
 
-        def getattr_(name: str) -> Any:
-            if name in entity_mapping:
-                with IMPORT_LOCK:
-                    return importlib.import_module(f"{package}.{name}")
-            if name not in entity_modules:
-                raise AttributeError(f"module {package!r} has no attribute {name!r}")
-            with IMPORT_LOCK:
-                module = importlib.import_module(f"{package}.{entity_modules[name]}")
-            scope[name] = getattr(module, name)
-            return scope[name]
-
-        def dir_() -> list[str]:
+        def list_attributes() -> list[str]:
+            """Return sorted package attribute names."""
             return sorted({*scope, *scope["__all__"]})
 
+        def load_attribute(name: str) -> Any:
+            """Return a lazily imported package attribute."""
+            if (
+                module_name := name if name in entity_mapping else entity_modules.get(name)
+            ) is None:
+                raise AttributeError(f"module {package!r} has no attribute {name!r}")
+
+            with IMPORT_LOCK:
+                if name in scope:
+                    return scope[name]
+
+                module = importlib.import_module(f"{package}.{module_name}")
+                if name in entity_mapping:
+                    scope[name] = module
+                    return module
+
+                scope[name] = getattr(module, name)
+                return scope[name]
+
         scope["__all__"] = [*entity_mapping, *entity_modules]
-        scope["__dir__"] = dir_
-        scope["__getattr__"] = getattr_
+        scope["__dir__"] = list_attributes
+        scope["__getattr__"] = load_attribute

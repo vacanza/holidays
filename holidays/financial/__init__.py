@@ -61,4 +61,4 @@ else:
     from holidays.registry import EntityLoader
 
     EntityLoader.load_package("financial", globals())
-    del EntityLoader
+    del EntityLoader, TYPE_CHECKING
