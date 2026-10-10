@@ -79,8 +79,10 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
         # Eid al-Fitr.
         name = tr("Eid-ul-Fitr")
         self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
+        # In 2026, March 20 was declared instead of the second and third days.
+        if self._year != 2026:
+            self._add_eid_al_fitr_day_two(name)
+            self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
         name = tr("Eid-ul-Adha")
@@ -125,7 +127,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
-    # https://www.sbp.org.pk/circulars/bprd-circular-letter-no-12-public-holidays
+    # https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_ADHA_DATES = {
         2008: (DEC, 9),
@@ -197,7 +199,7 @@ class PakistanStaticHolidays:
 
     References:
         * [2026 Eid-ul-Fitr](https://web.archive.org/web/20260318213743/https://www.sbp.org.pk/bprd/2026/CL6.htm)
-        * [2026 Eid-ul-Adha](https://www.sbp.org.pk/circulars/bprd-circular-letter-no-12-public-holidays)
+        * [2026 Eid-ul-Adha](https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf)
     """
 
     special_public_holidays = {

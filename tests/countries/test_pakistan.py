@@ -80,9 +80,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2025-04-02",
             "2026-03-20",
             "2026-03-21",
-            "2026-03-22",
-            "2026-03-23",
         )
+        self.assertNoHolidayName(name, "2026-03-22", "2026-03-23")
         self.assertHolidayName(name, self.no_estimated_holidays, range(1948, 2050))
 
     def test_eid_ul_adha(self):
