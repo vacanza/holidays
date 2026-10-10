@@ -56,7 +56,8 @@ class TaiwanStockExchange(Taiwan):
         # No Trading (Market opens only for Clearing & Settlement).
         name = tr("無交易（僅辦理結算交割）")
         dt = _timedelta(self._chinese_new_year, -1)
-        for _ in range(2):
+        # In 2021 there were three such days.
+        for _ in range(3 if self._year == 2021 else 2):
             dt = self._get_next_workday(dt, -1)
             self._add_holiday(name, dt)
 

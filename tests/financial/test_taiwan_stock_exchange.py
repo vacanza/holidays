@@ -43,6 +43,7 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
         name = "無交易（僅辦理結算交割）"
         self.assertHolidayName(
             name,
+            "2021-02-05",
             "2021-02-08",
             "2021-02-09",
             "2022-01-27",
@@ -56,7 +57,10 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
             "2026-02-12",
             "2026-02-13",
         )
-        self.assertHolidayNameCount(name, 2, self.full_range)
+        self.assertHolidayNameCount(name, 3, 2021)
+        self.assertHolidayNameCount(
+            name, 2, range(self.start_year, 2021), range(2022, self.end_year)
+        )
 
     def test_2025(self):
         self.assertHolidaysInYear(
