@@ -55,6 +55,8 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         * NSW Western:
             * [Western Division schools](https://web.archive.org/web/20260726052159/https://education.nsw.gov.au/schooling/calendars/late-start-schools)
         * NT:
+            * [NT Holidays Ordinance 1957-1959](https://classic.austlii.edu.au/au/legis/nt/reprint_ord/ho19571959159/ho19571959159.pdf)
+            * [NT Holidays Ordinance 1963](https://classic.austlii.edu.au/au/legis/nt/num_ord/ho196329o1963205.pdf)
             * [NT Public Holidays Act 1981](https://web.archive.org/web/20250315072128/https://legislation.nt.gov.au/api/sitecore/Act/PDF?id=12145)
         * QLD:
             * [QLD Bank Holidays Act 1904](https://web.archive.org/web/20260922180205/https://www.legislation.qld.gov.au/view/pdf/asmade/act-1904-008)
@@ -500,15 +502,24 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             # Easter Sunday.
             self._add_easter_sunday(tr("Easter Sunday"))
 
-        # May Day.
-        self._add_holiday_1st_mon_of_may(tr("May Day"))
+        # Established as the 1st day of May by NT Holidays Ordinance 1957.
+        # Moved to the 1st Monday of May by NT Holidays Ordinance 1963.
+        if self._year >= 1958:
+            # May Day.
+            name = tr("May Day")
+            if self._year >= 1963:
+                self._add_holiday_1st_mon_of_may(name)
+            else:
+                self._add_holiday_may_1(name)
 
         # Sovereign's Birthday.
         if self._year >= 1936:
             self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
-        # Picnic Day.
-        self._add_holiday_1st_mon_of_aug(tr("Picnic Day"))
+        # Established by NT Public Holidays Act 1981.
+        if self._year >= 1982:
+            # Picnic Day.
+            self._add_holiday_1st_mon_of_aug(tr("Picnic Day"))
 
         # Boxing Day.
         # 1981-2022: SAT - to MON, SUN - to TUE, MON - to TUE.
