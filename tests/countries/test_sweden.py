@@ -356,8 +356,8 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidays(
-            Sweden(years=2022),
+        self.assertHolidaysInYear(
+            2022,
             ("2022-01-01", "Nyårsdagen"),
             ("2022-01-06", "Trettondedag jul"),
             ("2022-04-15", "Långfredagen"),
