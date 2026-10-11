@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars import _CustomIslamicHolidays
+from holidays.calendars.gregorian import MAR, APR, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import IslamicHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
@@ -21,6 +23,11 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
     References:
         * <https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_au_Maroc>
         * <https://web.archive.org/web/20230303001626/http://www.mmsp.gov.ma/fr/pratiques.aspx?id=38>
+        * [Working hours and public holidays (MMSP)](https://www.mmsp.gov.ma/fr/nos-metiers/horaires-de-travail-et-jours-f%C3%A9ri%C3%A9s)
+        * [Moroccan public holidays (maintained summary)](https://www.wadifa-info.com/fr/jours-feries-maroc)
+
+    Islamic holidays dates are announced by the Ministry of Habous and Islamic Affairs after
+    the local crescent sighting, and often differ by one day from other countries.
     """
 
     country = "MA"
@@ -37,7 +44,9 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
                 if holiday date is estimated.
         """
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, show_estimated=islamic_show_estimated)
+        IslamicHolidays.__init__(
+            self, cls=MoroccoIslamicHolidays, show_estimated=islamic_show_estimated
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -104,6 +113,55 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         name = tr("عيد المولد النبوي")
         self._add_mawlid_day(name)
         self._add_mawlid_day_two(name)
+
+
+class MoroccoIslamicHolidays(_CustomIslamicHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2015, 2026)
+    EID_AL_ADHA_DATES = {
+        2015: (SEP, 24),
+        2016: (SEP, 12),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2021: (JUL, 21),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
+        2024: (JUN, 17),
+        2025: (JUN, 7),
+    }
+
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2015, 2026)
+    EID_AL_FITR_DATES = {
+        2015: (JUL, 18),
+        2017: (JUN, 26),
+        2019: (JUN, 5),
+        2023: (APR, 22),
+        2025: (MAR, 31),
+    }
+
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2015, 2026)
+    HIJRI_NEW_YEAR_DATES = {
+        2015: (OCT, 15),
+        2016: (OCT, 3),
+        2017: (SEP, 22),
+        2019: (SEP, 1),
+        2020: (AUG, 21),
+        2021: (AUG, 10),
+        2025: (JUN, 27),
+        2026: (JUN, 17),
+    }
+
+    MAWLID_DATES_CONFIRMED_YEARS = (2015, 2026)
+    MAWLID_DATES = {
+        2015: (DEC, 24),
+        2016: (DEC, 12),
+        2017: (DEC, 1),
+        2019: (NOV, 10),
+        2021: (OCT, 19),
+        2022: (OCT, 9),
+        2023: (SEP, 28),
+        2024: (SEP, 16),
+        2025: (SEP, 5),
+    }
 
 
 class MA(Morocco):
