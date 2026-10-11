@@ -20,6 +20,7 @@ from holidays.countries import UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import SUN_TO_NEXT_WORKDAY, ObservedHolidayBase
 
 
 class EntityStubStaticHolidays:
@@ -154,6 +155,22 @@ class CountryStub7(CountryStub6):
         super().__init__(*args, static_holidays_classes=(EntityInheritedStaticHolidays,), **kwargs)
 
 
+class CountryStub8(ObservedHolidayBase):
+    country = "CS8"
+    observed_label = "%s (observed)"
+    subdivisions = ("SD1", "SD2")
+
+    def __init__(self, *args, **kwargs) -> None:
+        kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
+        super().__init__(*args, **kwargs)
+
+    def _populate_subdiv_sd1_public_holidays(self):
+        self._add_observed(self._add_holiday_jan_7("Holiday 1"))
+
+    def _populate_subdiv_sd2_public_holidays(self):
+        self._add_holiday_jan_8("Holiday 2")
+
+
 class MarketStub1(EntityStub):
     market = "MS1"
 
@@ -225,6 +242,11 @@ class TestArgs(TestCase):
                 + CountryStub1(subdiv="S2", years={2021, 2022})
             ),
         )
+
+        # The observed date of one subdivision is not shifted by another one's holiday.
+        hb = CountryStub8(subdiv=("SD2", "SD1"), years=2024)
+        self.assertEqual(hb["2024-01-08"], "Holiday 1 (observed); Holiday 2")
+        self.assertNotIn("2024-01-09", hb)
 
     def test_subdivisions_aliases(self):
         subdivisions_aliases = {

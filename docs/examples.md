@@ -373,7 +373,7 @@ To get holidays of several subdivisions in one object, pass them as a tuple:
 >>> on_qc.get('2024-02-19')
 "Family Day"
 >>> on_qc.get('2024-06-24')
-"Saint John the Baptist Day"
+"Saint Jean Baptiste Day"
 ```
 
 ## Creating custom holidays (or augmenting existing ones with private ones)
