@@ -206,6 +206,25 @@ class TestArgs(TestCase):
     def test_subdivision(self):
         self.assertEqual(CountryStub1(subdiv="Subdiv 1").subdiv, "Subdiv 1")
         self.assertEqual(CountryStub1(subdiv=3).subdiv, "3")
+        self.assertEqual(CountryStub1(subdiv=("Subdiv 1",)).subdiv, "Subdiv 1")
+        self.assertEqual(CountryStub1(subdiv=("Subdiv 1", 3)).subdiv, ("Subdiv 1", "3"))
+        self.assertRaises(
+            NotImplementedError, lambda: CountryStub1(subdiv=("Subdiv 1", "Subdiv 4"))
+        )
+
+    def test_multiple_subdivisions(self):
+        hb = CountryStub1(subdiv=("Subdiv 1", "S2"), years=2021)
+        self.assertIsNone(hb._normalized_subdiv)
+        self.assertIn("2021-01-01", hb)
+        self.assertEqual(hb["2021-08-10"], "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday")
+        self.assertEqual(hb["2022-08-10"], "Subdiv 1 Custom Holiday; Subdiv 2 Custom Holiday")
+        self.assertEqual(
+            dict(hb),
+            dict(
+                CountryStub1(subdiv="Subdiv 1", years={2021, 2022})
+                + CountryStub1(subdiv="S2", years={2021, 2022})
+            ),
+        )
 
     def test_subdivisions_aliases(self):
         subdivisions_aliases = {
@@ -717,6 +736,10 @@ class TestHolidaySum(TestCase):
         self.assertListEqual((self.hb_1 + self.hb_2).subdiv, ["Subdiv 1", "Subdiv-3"])
         self.assertListEqual((self.hb_2 + self.hb_1).subdiv, ["Subdiv-3", "Subdiv 1"])
         self.assertEqual((self.hb_1 + self.hb_3).subdiv, "Subdiv 1")
+        self.assertListEqual(
+            (CountryStub1(subdiv=("Subdiv 1", "Subdiv 2")) + self.hb_2).subdiv,
+            ["Subdiv 1", "Subdiv 2", "Subdiv-3"],
+        )
 
         self.assertTrue((self.hb_2 + self.hb_3).expand)
         self.assertSetEqual((self.hb_2 + self.hb_3).years, {2014, 2015})

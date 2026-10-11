@@ -33,7 +33,7 @@ from holidays.registry import EntityLoader
 
 def country_holidays(
     country: str,
-    subdiv: str | None = None,
+    subdiv: str | tuple[str, ...] | None = None,
     years: int | Iterable[int] | None = None,
     expand: bool = True,
     observed: bool = True,
@@ -53,6 +53,7 @@ def country_holidays(
         subdiv:
             The subdivision (e.g. state or province) as a ISO 3166-2 code
             or its alias; not implemented for all countries (see documentation).
+            Pass a tuple to get holidays of multiple subdivisions.
 
         years:
             The year(s) to pre-calculate public holidays for at instantiation.
