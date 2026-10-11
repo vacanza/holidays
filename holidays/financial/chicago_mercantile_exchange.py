@@ -50,7 +50,7 @@ class ChicagoMercantileExchange(
 
     market = "XCME"
     default_language = "en_US"
-    supported_languages = ("en_US", "gu", "hi")
+    supported_languages = ("en_US", "gu", "hi", "mr")
     start_year = 2000
     supported_categories = (HALF_DAY, PUBLIC)
 

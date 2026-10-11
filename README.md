@@ -479,7 +479,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Chad</td>
 <td>TD</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1249,7 +1249,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1640,7 +1640,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Spain</td>
 <td>ES</td>
-<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
+<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana); cities: Barcelona</td>
 <td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -2004,7 +2004,7 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2067,7 +2067,7 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2081,7 +2081,7 @@ code when available. The following financial markets are available:
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

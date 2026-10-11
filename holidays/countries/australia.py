@@ -73,6 +73,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             * [TAS Bank Holidays Act 1944](https://archive.org/details/httpsclassic.austlii.edu.auaulegistasnum_actbha194478gvn81210.pdf)
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
         * VIC:
+            * [VIC Public and Bank Holidays Act 1953](https://archive.org/details/httpsclassic.austlii.edu.auaulegisvichist_actpabha1953203.pdf)
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
             * [VIC Minister appointment](https://web.archive.org/web/20240328142238/https://www.gazette.vic.gov.au/gazette/Gazettes2015/GG2015S229.pdf)
             * [VIC 2018-2024](https://web.archive.org/web/20250422235530/https://business.vic.gov.au/business-information/public-holidays)
@@ -853,8 +854,10 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
             if self._year >= 2009:
                 self._move_holiday(dt)
 
-        # Labor Day.
-        self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
+        # Established on the 2nd Monday in March by VIC Public and Bank Holidays Act 1953.
+        if self._year >= 1954:
+            # Labor Day.
+            self._add_holiday_2nd_mon_of_mar(tr("Labour Day"))
 
         if self._year >= 2003:
             # Easter Saturday.
