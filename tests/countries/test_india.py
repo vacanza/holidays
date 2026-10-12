@@ -2048,17 +2048,6 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper("Samvatsari Day", dts, category=OPTIONAL, subdivs={"PB"})
 
-    def test_karma(self):
-        dts = (
-            "2020-08-23",
-            "2021-09-11",
-            "2022-09-01",
-            "2023-09-20",
-            "2024-09-08",
-            "2025-08-28",
-        )
-        self._assertHinduHolidayHelper("Samvatsari Day", dts, category=OPTIONAL, subdivs={"PB"})
-
     def test_hartalika_teej(self):
         name = "Hartalika Teej"
         dts = (
