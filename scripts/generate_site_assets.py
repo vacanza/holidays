@@ -395,29 +395,83 @@ search.addEventListener("input", () => {
     }
 });
 
+
+let sortColumn = null;
+let sortAscending = true;
+
 for (const [index, heading] of [...table.tHead.rows[0].cells].entries()) {
     if (index === 5) continue;
+
     const label = heading.textContent;
     const button = document.createElement("button");
-    button.textContent = label + " ↕";
     button.setAttribute("aria-label", "Sort by " + label);
+    heading.setAttribute("aria-sort", "none");
+
+    const updateButton = () => {
+        if (sortColumn === index) {
+            button.textContent = label + (sortAscending ? " ↑" : " ↓");
+            button.setAttribute(
+                "aria-label",
+                "Sort by " + label + ", currently " +
+                    (sortAscending ? "ascending" : "descending")
+            );
+            heading.setAttribute(
+                "aria-sort",
+                sortAscending ? "ascending" : "descending"
+            );
+        } else {
+            button.textContent = label + " ↕";
+            button.setAttribute("aria-label", "Sort by " + label);
+            heading.setAttribute("aria-sort", "none");
+        }
+    };
+
+    updateButton();
     heading.replaceChildren(button);
-    let ascending = true;
 
     button.addEventListener("click", () => {
+        if (sortColumn === index) {
+            sortAscending = !sortAscending;
+        } else {
+            sortColumn = index;
+            sortAscending = true;
+        }
+
+        for (const [otherIndex, otherHeading] of
+            [...table.tHead.rows[0].cells].entries()) {
+            if (otherIndex === 5) continue;
+
+            const otherButton = otherHeading.querySelector("button");
+            if (!otherButton) continue;
+
+            if (otherIndex === index) {
+                updateButton();
+            } else {
+                otherButton.textContent =
+                    otherHeading.textContent + " ↕";
+                otherButton.setAttribute(
+                    "aria-label",
+                    "Sort by " + otherHeading.textContent
+                );
+                otherHeading.setAttribute("aria-sort", "none");
+            }
+        }
+
         const rows = [...body.rows];
+
         rows.sort((a, b) => {
             const result = a.cells[index].textContent.localeCompare(
                 b.cells[index].textContent,
                 undefined,
                 { numeric: true, sensitivity: "base" }
             );
-            return ascending ? result : -result;
+            return sortAscending ? result : -result;
         });
-        ascending = !ascending;
+
         body.append(...rows);
     });
 }
+
 </script>
 </body>
 </html>
