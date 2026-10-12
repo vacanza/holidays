@@ -72,6 +72,7 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
         * TAS:
             * [TAS Bank Holidays Act 1944](https://archive.org/details/httpsclassic.austlii.edu.auaulegistasnum_actbha194478gvn81210.pdf)
             * [TAS Statutory Holidays Act 2000](https://web.archive.org/web/20250423095807/https://www.legislation.tas.gov.au/view/html/inforce/current/act-2000-096)
+            * [TAS Statutory Holidays Amendment Act 2026](https://www.legislation.tas.gov.au/view/whole/html/asmade/act-2026-018)
         * VIC:
             * [VIC Public and Bank Holidays Act 1953](https://archive.org/details/httpsclassic.austlii.edu.auaulegisvichist_actpabha1953203.pdf)
             * [VIC Public Holidays Act 1993](https://web.archive.org/web/20250212090816/https://www.legislation.vic.gov.au/in-force/acts/public-holidays-act-1993/027)
@@ -798,6 +799,11 @@ class Australia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, S
                 self._add_holiday_2nd_mon_of_mar(name)
             else:
                 self._add_holiday_1st_mon_of_mar(name)
+
+        # Added by TAS Statutory Holidays Amendment Act 2026.
+        if self._year >= 2027:
+            # Easter Sunday.
+            self._add_easter_sunday(tr("Easter Sunday"))
 
         if self._year <= 2010:
             # Easter Tuesday.
