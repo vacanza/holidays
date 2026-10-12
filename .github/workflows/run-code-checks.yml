@@ -31,7 +31,7 @@ jobs:
         run: uv python install "$UV_PYTHON"
 
       - name: Install CI tools
-        run: uv sync --frozen --no-default-groups --only-group ci --no-install-project --no-build
+        run: uv sync --frozen --no-default-groups --only-group ci --no-install-project
 
       - name: Cache pre-commit environments
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0

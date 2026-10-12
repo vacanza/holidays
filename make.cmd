@@ -100,7 +100,7 @@ GoTo :Help
     Set "SBOM_ERROR=0"
 
     Set "UV_PROJECT_ENVIRONMENT=!TOOLS_ENV!"
-    %UV% sync --frozen --no-default-groups --only-group ci --no-install-project --no-build >nul
+    %UV% sync --frozen --no-default-groups --only-group ci --no-install-project >nul
     Set "SBOM_ERROR=!ErrorLevel!"
     Set "UV_PROJECT_ENVIRONMENT="
     If Not "!SBOM_ERROR!"=="0" Goto :SbomDone
