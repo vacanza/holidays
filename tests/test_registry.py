@@ -18,7 +18,7 @@ import subprocess
 import sys
 import textwrap
 import warnings
-from unittest import TestCase
+from unittest import TestCase, mock
 
 import pytest
 
@@ -210,9 +210,7 @@ class TestEntityLoader(TestCase):
                 return self.lock.__exit__(*args)
 
         tracking_lock = TrackingLock(registry.IMPORT_LOCK)
-        original_lock = registry.IMPORT_LOCK
-        registry.IMPORT_LOCK = tracking_lock
-        try:
+        with mock.patch.object(registry, "IMPORT_LOCK", tracking_lock):
             for package, container in (
                 (countries, registry.COUNTRIES),
                 (financial, registry.FINANCIAL),
@@ -239,8 +237,6 @@ class TestEntityLoader(TestCase):
                     if cached is not None:
                         setattr(package, entity, cached)
                 self.assertEqual(tracking_lock.entered, entered + 1)
-        finally:
-            registry.IMPORT_LOCK = original_lock
 
     def test_lazy_package_loading(self):
         code = """
