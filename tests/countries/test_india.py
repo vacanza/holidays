@@ -3072,7 +3072,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-07-16", "Harela"),
             ("2018-07-17", "U Tirot Sing's Death Anniversary"),
             ("2018-07-21", "Kharchi Puja"),
-            ("2018-07-27", "Guru Purnima; Sarathi Day"),
+            ("2018-07-27", "Drivers' Day; Guru Purnima"),
             ("2018-07-31", "Shaheed Udham Singh's Martyrdom Day"),
             ("2018-08-04", "Ker Puja"),
             ("2018-08-06", "Bonalu"),

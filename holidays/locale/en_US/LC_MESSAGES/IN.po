@@ -939,7 +939,7 @@ msgstr "The Dalai Lama's Birthday"
 
 #. Drivers' Day.
 msgid "Sarathi Diwas"
-msgstr "Sarathi Day"
+msgstr "Drivers' Day"
 
 #. Satya Sai Baba of Puttaparthi's Birthday.
 msgid "Satya Sai Baba of Puttaparthi's Jayanti"
