@@ -227,12 +227,9 @@ class TestZambia(CommonCountryTests, TestCase):
 
     def test_national_prayer_day(self):
         name = "National Prayer Day"
-        self.assertHolidayName(name, (f"{year}-10-18" for year in range(2016, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2016))
-        obs_dts = (
-            "2020-10-19",
-            "2026-10-19",
-        )
+        self.assertHolidayName(name, (f"{year}-10-18" for year in range(2016, 2025)))
+        self.assertNoHolidayName(name, range(self.start_year, 2016), range(2026, self.end_year))
+        obs_dts = ("2020-10-19",)
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
@@ -260,6 +257,14 @@ class TestZambia(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_national_day_of_prayer_and_christian_heritage(self):
+        name = "National Day of Prayer and Christian Heritage"
+        self.assertHolidayName(name, (f"{year}-12-29" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+        obs_dts = ("2030-12-30",)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
@@ -282,4 +287,27 @@ class TestZambia(CommonCountryTests, TestCase):
             ("2022-10-24", "Independence Day"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_2026(self):
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-03-08", "International Women's Day"),
+            ("2026-03-09", "International Women's Day (observed)"),
+            ("2026-03-12", "Youth Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-04", "Holy Saturday"),
+            ("2026-04-05", "Easter Sunday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-04-28", "Kenneth Kaunda Day"),
+            ("2026-05-01", "Labour Day"),
+            ("2026-05-25", "Africa Freedom Day"),
+            ("2026-07-06", "Heroes' Day"),
+            ("2026-07-07", "Unity Day"),
+            ("2026-08-03", "Farmers' Day"),
+            ("2026-08-13", "General Election Day"),
+            ("2026-10-24", "Independence Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-29", "National Day of Prayer and Christian Heritage"),
         )
