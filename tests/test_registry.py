@@ -267,6 +267,36 @@ class TestEntityLoader(TestCase):
             ],
         )
 
+    def test_lazy_package_loading_attributes_first(self):
+        code = """
+            import sys
+            import holidays.countries
+            import holidays.financial
+
+            holidays.countries.Canada
+            holidays.financial.NYSE
+            holidays.country_holidays("CA")
+            holidays.financial_holidays("XNYS")
+            print(
+                "\\n".join(
+                    m
+                    for m in sorted(sys.modules)
+                    if m.startswith(("holidays.countries.", "holidays.financial."))
+                )
+            )
+            """
+        output = subprocess.check_output(  # noqa: S603
+            [sys.executable, "-c", textwrap.dedent(code)],
+            text=True,
+        )
+        self.assertEqual(
+            output.splitlines(),
+            [
+                "holidays.countries.canada",
+                "holidays.financial.ny_stock_exchange",
+            ],
+        )
+
     def test_type_checking_imports_match_registry(self):
         for package, container in (
             (countries, registry.COUNTRIES),
