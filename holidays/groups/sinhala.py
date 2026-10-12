@@ -24,14 +24,14 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
     Sinhala Buddhist Uposatha day calculation method is different from Thai LuniSolar
     and Buddhist (Mahayana) used in East Asia.
 
-    Due to the fact that Poya (Uposatha) days are calculated astronomically
-    based on how close a particular day is closest to full moon at noon, and that
-    an extra month is added every 33 months interval, this is hardcoded for now.
+    Poya (Uposatha) days are based on official government gazettes for 2003-2026,
+    and estimated using astronomical Full Moon calculations in Sri Lanka Standard
+    Time (UTC+5:30) for subsequent years.
 
     Adhi month dates are instead hardcoded in Sri Lanka country implementation.
     """
 
-    def __init__(self, cls=None, *, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=True) -> None:
         self._sinhala_calendar = cls() if cls else _SinhalaLunar()
         self._sinhala_calendar_show_estimated = show_estimated
 
