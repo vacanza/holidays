@@ -226,10 +226,10 @@ class SriLanka(
         self._add_bak_poya(tr("බක් පුර පසළොස්වක පෝය දිනය"))
 
         # Vesak Full Moon Poya Day.
-        vesak_poya = self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
+        self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
 
         # Day Following Vesak Full Moon Poya Day.
-        self._add_holiday(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"), _timedelta(vesak_poya, +1))
+        self._add_day_following_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"))
 
         # Poson Full Moon Poya Day.
         self._add_poson_poya(tr("පොසොන් පුර පසළොස්වක පෝය දිනය"))

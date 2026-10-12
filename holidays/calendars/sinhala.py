@@ -41,11 +41,7 @@ def _full_moon_jde(k: float) -> float:
     t4 = t3 * t
 
     jde = (
-        2451550.09766
-        + 29.530588861 * k
-        + 0.00015437 * t2
-        - 0.000000150 * t3
-        + 0.00000000073 * t4
+        2451550.09766 + 29.530588861 * k + 0.00015437 * t2 - 0.000000150 * t3 + 0.00000000073 * t4
     )
 
     e = 1.0 - 0.002516 * t - 0.0000074 * t2
@@ -143,46 +139,40 @@ def _get_slst_full_moons(year: int) -> tuple[date, ...]:
     return tuple(sorted(set(fms)))
 
 
+POYA_NAMES = (
+    DURUTHU_POYA,
+    NAWAM_POYA,
+    MEDIN_POYA,
+    BAK_POYA,
+    VESAK_POYA,
+    POSON_POYA,
+    ESALA_POYA,
+    NIKINI_POYA,
+    BINARA_POYA,
+    VAP_POYA,
+    IL_POYA,
+    UNDUVAP_POYA,
+)
+
+
 @cache
-def _calculate_poya_dates(year: int) -> dict[str, tuple[date, ...] | date]:
+def _calculate_poya_dates(year: int) -> dict[str, date]:
     """Map Full Moons to the 12 traditional Sinhala Poya days for a future year."""
-    fms = _get_slst_full_moons(year)
-    by_month: dict[int, list[date]] = {}
-    for d in fms:
-        by_month.setdefault(d.month, []).append(d)
+    fms = list(_get_slst_full_moons(year))
+    if len(fms) == 13:
+        feb_has_fm = any(d.month == 2 for d in fms)
+        extra_idx = None
+        for i in range(len(fms) - 1):
+            if fms[i].month == fms[i + 1].month:
+                if fms[i].month == 1 and not feb_has_fm:
+                    continue
+                extra_idx = i + 1
+                break
+        if extra_idx is None:
+            extra_idx = len(fms) - 1
+        fms.pop(extra_idx)
 
-    jan_fms = by_month.get(1, [])
-    dec_fms = by_month.get(12, [])
-
-    duruthu = [jan_fms[0]]
-    if len(dec_fms) == 2:
-        duruthu.append(dec_fms[1])
-
-    feb_fms = by_month.get(2, [])
-    if feb_fms:
-        nawam = feb_fms[0]
-        medin = by_month[3][0]
-    elif len(jan_fms) > 1:
-        nawam = jan_fms[1]
-        medin = by_month[3][0]
-    else:
-        nawam = by_month[3][0]
-        medin = by_month[3][1]
-
-    return {
-        DURUTHU_POYA: tuple(duruthu),
-        NAWAM_POYA: nawam,
-        MEDIN_POYA: medin,
-        BAK_POYA: by_month[4][0],
-        VESAK_POYA: by_month[5][0],
-        POSON_POYA: by_month[6][0],
-        ESALA_POYA: by_month[7][0],
-        NIKINI_POYA: by_month[8][0],
-        BINARA_POYA: by_month[9][0],
-        VAP_POYA: by_month[10][0],
-        IL_POYA: by_month[11][0],
-        UNDUVAP_POYA: dec_fms[0],
-    }
+    return dict(zip(POYA_NAMES, fms))
 
 
 class _SinhalaLunar:
@@ -530,25 +520,31 @@ class _SinhalaLunar:
             dt = confirmed_dates[year]
             return date(year, *dt), False
 
+        if year <= 2026:
+            return None, False
+
         calc_date = _calculate_poya_dates(year).get(holiday)
         return (calc_date if isinstance(calc_date, date) else None, True)
 
     def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        confirmed_dates = getattr(self, f"{holiday}_DATES", {})
+        if year in exact_dates:
+            for dt in _normalize_tuple(exact_dates[year]):
+                yield date(year, *dt), False
+            return
 
-        for check_year in (year - 1, year):
-            if check_year in exact_dates:
-                for dt in _normalize_tuple(exact_dates[check_year]):
-                    yield date(check_year, *dt), False
-            elif check_year in confirmed_dates:
-                for dt in _normalize_tuple(confirmed_dates[check_year]):
-                    yield date(check_year, *dt), False
-            else:
-                calc_val = _calculate_poya_dates(check_year).get(holiday, ())
-                calc_dates = calc_val if isinstance(calc_val, tuple) else ((calc_val,) if calc_val else ())
-                for d in calc_dates:
-                    yield d, True
+        confirmed_dates = getattr(self, f"{holiday}_DATES", {})
+        if year in confirmed_dates:
+            for dt in _normalize_tuple(confirmed_dates[year]):
+                yield date(year, *dt), False
+            return
+
+        if year <= 2026:
+            return
+
+        calc_date = _calculate_poya_dates(year).get(holiday)
+        if calc_date:
+            yield calc_date, True
 
     def bak_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BAK_POYA, year)

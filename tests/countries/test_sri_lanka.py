@@ -582,27 +582,67 @@ class TestSriLanka(CommonCountryTests, TestCase):
         h_est = SriLanka(years=2027, sinhala_show_estimated=True)
         self.assertIn("2027-05-20", h_est)
         self.assertEqual(h_est["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
+        self.assertIn("2027-05-21", h_est)
+        self.assertEqual(h_est["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය (අනුමානිත)")
 
         # sinhala_show_estimated=False suppresses the estimation label.
         h_no_est = SriLanka(years=2027, sinhala_show_estimated=False)
         self.assertIn("2027-05-20", h_no_est)
         self.assertEqual(h_no_est["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2027-05-21", h_no_est)
+        self.assertEqual(h_no_est["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
 
         # English localization with estimation label.
         h_en = SriLanka(years=2027, language="en_US", sinhala_show_estimated=True)
         self.assertIn("2027-05-20", h_en)
         self.assertEqual(h_en["2027-05-20"], "Vesak Full Moon Poya Day (estimated)")
+        self.assertIn("2027-05-21", h_en)
+        self.assertEqual(h_en["2027-05-21"], "Day Following Vesak Full Moon Poya Day (estimated)")
 
-        # Confirmed historical year (2026) has NO estimation label even if sinhala_show_estimated=True.
+        # Confirmed historical year (2026) has NO estimation label even if
+        # sinhala_show_estimated=True.
         h_2026 = SriLanka(years=2026, sinhala_show_estimated=True)
         self.assertIn("2026-01-03", h_2026)
         self.assertEqual(h_2026["2026-01-03"], "දුරුතු පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2026-05-02", h_2026)
+        self.assertEqual(h_2026["2026-05-02"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
 
     def test_2028_duruthu_poya_estimations(self):
-        # 2028 has 13 full moons with two in December (2028-01-12 and 2028-12-31).
-        # Both are observed as Duruthu Poya.
+        # 2028 has 13 full moons with the 13th occurring on December 31.
+        # Duruthu Poya is observed only on January 12; December 31 is not Duruthu Poya.
         h = SriLanka(years=2028, sinhala_show_estimated=False)
         self.assertIn("2028-01-12", h)
         self.assertEqual(h["2028-01-12"], "දුරුතු පුර පසළොස්වක පෝය දිනය")
-        self.assertIn("2028-12-31", h)
-        self.assertEqual(h["2028-12-31"], "දුරුතු පුර පසළොස්වක පෝය දිනය")
+        self.assertNotIn("2028-12-31", h)
+
+    def test_2028_all(self):
+        self.assertHolidays(
+            SriLanka(
+                years=2028,
+                islamic_show_estimated=False,
+                sinhala_show_estimated=False,
+            ),
+            ("2028-01-12", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
+            ("2028-01-15", "දෙමළ තෛපොංැලල් දිනය"),
+            ("2028-02-04", "නිදහස් සමරු දිනය"),
+            ("2028-02-10", "නවම් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-02-27", "ඊදුල් ෆීතර්"),
+            ("2028-03-11", "මැදින් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-04-09", "බක් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-04-13", "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"),
+            ("2028-04-14", "මහ සිකුරාදා දිනය; සිංහල හා දෙමළ අලුත් අවුරුදු දිනය"),
+            ("2028-05-01", "ලොක කම්කරු දිනය"),
+            ("2028-05-06", "ඊදුල් අල්හා"),
+            ("2028-05-09", "වෙසක් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-05-10", "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"),
+            ("2028-06-07", "පොසොන් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-07-06", "ඇසල පුර පසළොස්වක පෝය දිනය"),
+            ("2028-08-04", "නබි නායකතුමාගේ උපන් දිනය"),
+            ("2028-08-05", "නිකිණි පුර පසළොස්වක පෝය දිනය"),
+            ("2028-09-04", "බිනර පුර පසළොස්වක පෝය දිනය"),
+            ("2028-10-03", "වප් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-11-02", "ඉල් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-11-15", "දීපවාලි උත්සව දිනය"),
+            ("2028-12-02", "උඳුවප් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-12-25", "නත්තල් උත්සව දිනය"),
+        )

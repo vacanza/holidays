@@ -36,7 +36,7 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         self._sinhala_calendar_show_estimated = show_estimated
 
     def _add_sinhala_calendar_holiday(
-        self, name: str, dt_estimated: tuple[date | None, bool]
+        self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
     ) -> date | None:
         """
         Add Sinhala calendar holiday.
@@ -45,7 +45,10 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, show_estimated=self._sinhala_calendar_show_estimated
+            name,
+            dt_estimated,
+            show_estimated=self._sinhala_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_sinhala_calendar_holiday_set(
@@ -186,4 +189,12 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.vesak_poya_date(self._year)
+        )
+
+    def _add_day_following_vesak_poya(self, name) -> date | None:
+        """
+        Add Day Following Vesak Full Moon Poya Day.
+        """
+        return self._add_sinhala_calendar_holiday(
+            name, self._sinhala_calendar.vesak_poya_date(self._year), days_delta=+1
         )
