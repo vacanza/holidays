@@ -30,7 +30,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     estimated_label = tr("%s (تقديري)")
     # Independence declared on August 15, 1971.
     start_year = 1972
-    supported_languages = ("ar", "en_US")
+    supported_languages = ("ar", "en_US", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

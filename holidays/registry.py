@@ -292,6 +292,7 @@ FINANCIAL: RegistryDict = {
     "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
+    "borsa_istanbul": ("BorsaIstanbul", "XIST", "BIST"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),

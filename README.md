@@ -261,7 +261,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Australia</td>
 <td>AU</td>
-<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)</td>
+<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia); school calendar variants: NSW Western (New South Wales Western Division)</td>
 <td><strong>en_AU</strong>, en_US, th</td>
 <td>BANK, HALF_DAY, SCHOOL</td>
 </tr>
@@ -290,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bahrain</td>
 <td>BH</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -479,7 +479,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Chad</td>
 <td>TD</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1004,7 +1004,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1249,7 +1249,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1340,7 +1340,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Oman</td>
 <td>OM</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1431,7 +1431,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Qatar</td>
 <td>QA</td>
 <td></td>
-<td><strong>ar_QA</strong>, en_US</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
 <td>BANK</td>
 </tr>
 <tr>
@@ -1640,7 +1640,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Spain</td>
 <td>ES</td>
-<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
+<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana); cities: Barcelona</td>
 <td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1987,6 +1987,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Borsa Istanbul</td>
+<td>XIST</td>
+<td>Borsa Istanbul (BIST) market holidays</td>
+<td>en_US, <strong>tr</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Brasil, Bolsa, Balcão</td>
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
@@ -1997,7 +2004,7 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2060,7 +2067,7 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2074,7 +2081,7 @@ code when available. The following financial markets are available:
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
