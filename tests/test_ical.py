@@ -584,7 +584,7 @@ class TestIcalExporter(TestCase):
         self.assertIn("X-PUBLISHED-TTL:P12W\r\n", output)
 
     def test_invalid_refresh_interval(self):
-        for refresh_interval in (0, -1):
+        for refresh_interval in (0, -1, 1.5, True, "P1W"):
             with self.assertRaises(ValueError) as context:
                 ICalExporter(self.us_holidays, refresh_interval=refresh_interval)
             self.assertEqual(

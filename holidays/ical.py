@@ -75,7 +75,9 @@ class ICalExporter:
         """
         self.holidays = instance
         self.show_language = show_language
-        if refresh_interval is not None and refresh_interval < 1:
+        if refresh_interval is not None and (
+            type(refresh_interval) is not int or refresh_interval < 1
+        ):
             raise ValueError(
                 f"Invalid refresh interval: {refresh_interval}. "
                 "Expected a positive number of weeks."
