@@ -150,7 +150,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dt)
 
     def test_founding_day(self):
-        name = "يوم التأسيسي"
+        name = "يوم التأسيس"
         self.assertHolidayName(name, (f"{year}-02-22" for year in range(2022, 2050)))
         self.assertNoHolidayName(name, range(1950, 2022))
 
@@ -184,7 +184,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
-            ("2022-02-22", "يوم التأسيسي"),
+            ("2022-02-22", "يوم التأسيس"),
             ("2022-05-01", "عطلة عيد الفطر"),
             ("2022-05-02", "عطلة عيد الفطر"),
             ("2022-05-03", "عطلة عيد الفطر"),
@@ -202,7 +202,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-02-22", "يوم التأسيسي"),
+            ("2023-02-22", "يوم التأسيس"),
             ("2023-04-21", "عطلة عيد الفطر"),
             ("2023-04-22", "عطلة عيد الفطر"),
             ("2023-04-23", "عطلة عيد الفطر"),
