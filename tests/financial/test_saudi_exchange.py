@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections import Counter
 from unittest import TestCase
 
 from holidays.financial.saudi_exchange import SaudiExchange
@@ -21,6 +22,11 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(SaudiExchange)
 
+    def _assert_eid_holiday_count(self, name):
+        counts = Counter(dt.year for dt in self.holidays.get_named(name, lookup="exact"))
+        for year in self.full_range:
+            self.assertGreaterEqual(counts[year], 4, year)
+
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")
 
@@ -28,11 +34,14 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
         name = "يوم التأسيس"
         self.assertHolidayName(name, (f"{year}-02-22" for year in range(2022, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2022))
-        self.assertHolidayName(f"{name} (يوم تعويضي)", "2025-02-23")
+        obs_dts = ("2025-02-23",)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_fitr(self):
+        name = "عطلة عيد الفطر"
         self.assertHolidayName(
-            "عطلة عيد الفطر",
+            name,
             "2020-05-24",
             "2020-05-25",
             "2020-05-26",
@@ -76,6 +85,7 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-03-23",
         )
         self.assertNoHoliday("2021-05-10", "2021-05-17", "2022-04-28", "2022-05-08")
+        self._assert_eid_holiday_count(name)
 
     def test_arafah_day(self):
         name = "يوم عرفة"
@@ -89,11 +99,12 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2025-06-05",
             "2026-05-26",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
+        name = "عطلة عيد الأضحى"
         self.assertHolidayName(
-            "عطلة عيد الأضحى",
+            name,
             "2020-07-29",
             "2020-07-31",
             "2020-08-01",
@@ -133,6 +144,7 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-05-29",
             "2026-05-30",
         )
+        self._assert_eid_holiday_count(name)
 
     def test_national_day(self):
         name = "اليوم الوطني"
@@ -147,7 +159,9 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-09-23",
         )
         self.assertHolidayName(name, self.full_range)
-        self.assertHolidayName(f"{name} (يوم تعويضي)", "2022-09-22", "2023-09-24")
+        obs_dts = ("2022-09-22", "2023-09-24")
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
