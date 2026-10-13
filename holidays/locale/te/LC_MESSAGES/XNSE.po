@@ -98,11 +98,11 @@ msgstr "దీపావళి బలి పాడ్యమి"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
-msgstr "గురు నానక్ జయంతి"
+msgstr "గురునానక్ జయంతి"
 
 #. Bhai Dooj.
 msgid "Bhau Bhij"
-msgstr "భగినీ హస్త భోజనం"
+msgstr "భాయ్ దూజ్"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
