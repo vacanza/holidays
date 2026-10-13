@@ -180,3 +180,77 @@ class TestSinhalaCalendar(TestCase):
         dt, is_estimated = self.calendar.vesak_poya_date(2030)
         self.assertEqual(dt, date(2030, 5, 24))
         self.assertFalse(is_estimated)
+
+    def test_poya_dates_generator(self):
+        # 2027 has 12 poyas in chronological order
+        poyas_2027 = list(self.calendar.poya_dates(2027))
+        self.assertEqual(len(poyas_2027), 12)
+        dates = [dt for _, dt, _ in poyas_2027]
+        self.assertEqual(dates, sorted(dates))
+
+        # Check confirmed flags in generator output
+        poyas_dict = {name: (dt, est) for name, dt, est in poyas_2027}
+        self.assertEqual(poyas_dict["NAWAM_POYA"], (date(2027, 2, 21), False))
+        self.assertEqual(poyas_dict["VESAK_POYA"], (date(2027, 5, 20), False))
+        self.assertEqual(poyas_dict["MEDIN_POYA"], (date(2027, 3, 22), True))
+
+        # 2009 has 13 poyas (two Duruthu Poyas: Jan 10 and Dec 31)
+        poyas_2009 = list(self.calendar.poya_dates(2009))
+        self.assertEqual(len(poyas_2009), 13)
+        self.assertEqual(poyas_2009[0], ("DURUTHU_POYA", date(2009, 1, 10), False))
+        self.assertEqual(poyas_2009[-1], ("DURUTHU_POYA", date(2009, 12, 31), False))
+
+    def test_poya_days_set(self):
+        days_2027 = self.calendar.poya_days(2027)
+        self.assertIsInstance(days_2027, set)
+        self.assertEqual(len(days_2027), 12)
+        self.assertIn(date(2027, 2, 21), days_2027)
+        self.assertIn(date(2027, 5, 20), days_2027)
+
+        days_2009 = self.calendar.poya_days(2009)
+        self.assertEqual(len(days_2009), 13)
+        self.assertIn(date(2009, 1, 10), days_2009)
+        self.assertIn(date(2009, 12, 31), days_2009)
+
+    def test_generate_poya_dates_range(self):
+        range_poyas = list(self.calendar.generate_poya_dates(2027, 2028))
+        # 12 poyas in 2027 + 12 poyas in 2028 = 24 poyas
+        self.assertEqual(len(range_poyas), 24)
+        for _, dt, _ in range_poyas[:12]:
+            self.assertEqual(dt.year, 2027)
+        for _, dt, _ in range_poyas[12:]:
+            self.assertEqual(dt.year, 2028)
+
+    def test_sinhala_lunar_iterator(self):
+        cal_year = _SinhalaLunar(year=2027)
+        self.assertEqual(list(cal_year), list(self.calendar.poya_dates(2027)))
+
+        cal_range = _SinhalaLunar(year_range=(2027, 2028))
+        self.assertEqual(list(cal_range), list(self.calendar.generate_poya_dates(2027, 2028)))
+
+        # Default initialization iterates over START_YEAR to END_YEAR
+        cal_default = _SinhalaLunar()
+        first_poya = next(iter(cal_default))
+        self.assertEqual(first_poya[1].year, _SinhalaLunar.START_YEAR)
+
+    def test_individual_poya_dates_generators(self):
+        self.assertEqual(
+            list(self.calendar.vesak_poya_dates(2027)),
+            [(date(2027, 5, 20), False)],
+        )
+        self.assertEqual(
+            list(self.calendar.vesak_poya_dates(2030)),
+            [(date(2030, 5, 24), False)],
+        )
+        self.assertEqual(
+            list(self.calendar.duruthu_poya_dates(2009)),
+            [(date(2009, 1, 10), False), (date(2009, 12, 31), False)],
+        )
+        self.assertEqual(
+            list(self.calendar.duruthu_poya_dates(2010)),
+            [],
+        )
+        self.assertEqual(
+            list(self.calendar.bak_poya_dates(2027)),
+            [(date(2027, 4, 21), True)],
+        )

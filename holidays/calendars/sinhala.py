@@ -512,6 +512,51 @@ class _SinhalaLunar:
         2030: (MAY, 24),
     }
 
+    def __init__(
+        self,
+        year: int | None = None,
+        year_range: tuple[int, int] | None = None,
+    ) -> None:
+        self.year = year
+        self.year_range = year_range
+
+    def __iter__(self) -> Iterable[tuple[str, date, bool]]:
+        """Yield (poya_name, date, is_estimated) tuples."""
+        if self.year_range is not None:
+            yield from self.generate_poya_dates(*self.year_range)
+        elif self.year is not None:
+            yield from self.poya_dates(self.year)
+        else:
+            yield from self.generate_poya_dates(self.START_YEAR, self.END_YEAR)
+
+    def poya_dates(self, year: int) -> Iterable[tuple[str, date, bool]]:
+        """Generate all Poya (Full Moon) dates for a given year.
+
+        Yields:
+            Tuple of (poya_name, date, is_estimated) in chronological order.
+        """
+        results: list[tuple[str, date, bool]] = []
+        for holiday in POYA_NAMES:
+            for dt, is_est in self._get_holiday_set(holiday, year):
+                results.append((holiday, dt, is_est))
+        results.sort(key=lambda item: item[1])
+        yield from results
+
+    def generate_poya_dates(
+        self, start_year: int, end_year: int
+    ) -> Iterable[tuple[str, date, bool]]:
+        """Generate Poya dates across the specified year range [start_year, end_year].
+
+        Yields:
+            Tuple of (poya_name, date, is_estimated) in chronological order.
+        """
+        for year in range(start_year, end_year + 1):
+            yield from self.poya_dates(year)
+
+    def poya_days(self, year: int) -> set[date]:
+        """Return the set of all Poya calendar dates for a given year."""
+        return {dt for _, dt, _ in self.poya_dates(year)}
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         if year in exact_dates:
@@ -552,38 +597,74 @@ class _SinhalaLunar:
     def bak_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BAK_POYA, year)
 
+    def bak_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(BAK_POYA, year)
+
     def binara_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BINARA_POYA, year)
 
+    def binara_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(BINARA_POYA, year)
+
     def duruthu_poya_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(DURUTHU_POYA, year)
+
+    def duruthu_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(DURUTHU_POYA, year)
 
     def esala_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ESALA_POYA, year)
 
+    def esala_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(ESALA_POYA, year)
+
     def il_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(IL_POYA, year)
+
+    def il_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(IL_POYA, year)
 
     def medin_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MEDIN_POYA, year)
 
+    def medin_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(MEDIN_POYA, year)
+
     def nawam_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NAWAM_POYA, year)
+
+    def nawam_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(NAWAM_POYA, year)
 
     def nikini_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NIKINI_POYA, year)
 
+    def nikini_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(NIKINI_POYA, year)
+
     def poson_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(POSON_POYA, year)
+
+    def poson_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(POSON_POYA, year)
 
     def unduvap_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(UNDUVAP_POYA, year)
 
+    def unduvap_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(UNDUVAP_POYA, year)
+
     def vap_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAP_POYA, year)
 
+    def vap_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(VAP_POYA, year)
+
     def vesak_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VESAK_POYA, year)
+
+    def vesak_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(VESAK_POYA, year)
 
 
 class _CustomSinhalaHolidays(_CustomCalendar, _SinhalaLunar):
