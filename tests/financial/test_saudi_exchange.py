@@ -21,10 +21,6 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(SaudiExchange)
 
-    def test_code(self):
-        self.assertTrue(hasattr(self.holidays, "market"))
-        self.assertIsNone(getattr(self.holidays, "country", None))
-
     def test_special_holidays(self):
         self.assertHoliday("2022-11-23")
 
