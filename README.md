@@ -479,7 +479,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Chad</td>
 <td>TD</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1983,7 +1983,7 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, mr</td>
 <td></td>
 </tr>
 <tr>
@@ -2004,7 +2004,7 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2067,21 +2067,21 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, mr</td>
 <td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

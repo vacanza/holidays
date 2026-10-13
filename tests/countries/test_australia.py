@@ -663,6 +663,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "NT": 2024,
             "QLD": 2017,
             "SA": 2024,
+            "TAS": 2027,
             "VIC": 2016,
             "WA": 2022,
         }
