@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-26 12:14+0530\n"
-"PO-Revision-Date: 2026-10-10 13:55+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-10-11 15:29-0230\n"
+"Last-Translator: Saikiran <saikiranvbembalge@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: kn\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "ಮಹಾವೀರ ಜಯಂತಿ"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮ"
+msgstr "ಬುದ್ಧ ಪೂರ್ಣಿಮೆ"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -94,7 +94,7 @@ msgstr "ಗುರು ನಾನಕ್ ಜಯಂತಿ"
 
 #. Ashura.
 msgid "Muharram"
-msgstr "ಮೊಹರಂ ಕಡೆ ದಿನ"
+msgstr "ಮೊಹರಂ"
 
 #. Prophet's Birthday.
 msgid "Milad-un-Nabi"
