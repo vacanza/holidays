@@ -10,15 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, NOV, FRI, SAT
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, NOV, FRI, SAT
 from holidays.countries.saudi_arabia import SaudiArabiaIslamicHolidays
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    FRI_TO_PREV_THU,
-    SAT_TO_NEXT_SUN,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_PREV_THU, SAT_TO_NEXT_SUN
 
 
 class SaudiExchange(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
@@ -145,5 +141,22 @@ class SaudiExchangeStaticHolidays:
             (MAR, 19, eid_al_fitr_holiday),
             (MAY, 24, eid_al_adha_holiday),
             (MAY, 25, eid_al_adha_holiday),
+        ),
+        2027: (
+            (MAR, 7, eid_al_fitr_holiday),
+            (MAR, 8, eid_al_fitr_holiday),
+            (MAY, 20, eid_al_adha_holiday),
+        ),
+        2028: (
+            (MAR, 1, eid_al_fitr_holiday),
+            (MAR, 2, eid_al_fitr_holiday),
+            (MAY, 3, eid_al_adha_holiday),
+            (MAY, 9, eid_al_adha_holiday),
+        ),
+        2029: (
+            (FEB, 12, eid_al_fitr_holiday),
+            (FEB, 13, eid_al_fitr_holiday),
+            (FEB, 18, eid_al_fitr_holiday),
+            (APR, 22, eid_al_adha_holiday),
         ),
     }

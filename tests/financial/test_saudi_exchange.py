@@ -26,10 +26,7 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
 
     def test_founding_day(self):
         name = "يوم التأسيس"
-        self.assertHolidayName(
-            name, "2022-02-22", "2023-02-22", "2024-02-22", "2025-02-22", "2026-02-22"
-        )
-        self.assertHolidayName(name, range(2022, self.end_year))
+        self.assertHolidayName(name, (f"{year}-02-22" for year in range(2022, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2022))
         self.assertHolidayName(f"{name} (يوم تعويضي)", "2025-02-23")
 
@@ -77,6 +74,25 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-03-21",
             "2026-03-22",
             "2026-03-23",
+            "2027-03-07",
+            "2027-03-08",
+            "2027-03-09",
+            "2027-03-10",
+            "2027-03-11",
+            "2027-03-12",
+            "2028-02-26",
+            "2028-02-27",
+            "2028-02-28",
+            "2028-02-29",
+            "2028-03-01",
+            "2028-03-02",
+            "2029-02-12",
+            "2029-02-13",
+            "2029-02-14",
+            "2029-02-15",
+            "2029-02-16",
+            "2029-02-17",
+            "2029-02-18",
         )
         self.assertNoHoliday("2021-05-10", "2021-05-17", "2022-04-28", "2022-05-08")
 
@@ -91,6 +107,9 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2024-06-15",
             "2025-06-05",
             "2026-05-26",
+            "2027-05-15",
+            "2028-05-04",
+            "2029-04-23",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -135,6 +154,22 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-05-28",
             "2026-05-29",
             "2026-05-30",
+            "2027-05-16",
+            "2027-05-17",
+            "2027-05-18",
+            "2027-05-19",
+            "2027-05-20",
+            "2028-05-03",
+            "2028-05-05",
+            "2028-05-06",
+            "2028-05-07",
+            "2028-05-08",
+            "2028-05-09",
+            "2029-04-22",
+            "2029-04-24",
+            "2029-04-25",
+            "2029-04-26",
+            "2029-04-27",
         )
 
     def test_national_day(self):
