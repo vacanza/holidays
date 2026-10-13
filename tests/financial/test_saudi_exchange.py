@@ -84,7 +84,12 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-03-22",
             "2026-03-23",
         )
-        self.assertNoHoliday("2021-05-10", "2021-05-17", "2022-04-28", "2022-05-08")
+        self.assertNoHoliday(
+            "2021-05-10",
+            "2021-05-17",
+            "2022-04-28",
+            "2022-05-08",
+        )
         self._assert_eid_holiday_count(name)
 
     def test_arafah_day(self):
@@ -159,7 +164,10 @@ class TestSaudiExchange(CommonFinancialTests, TestCase):
             "2026-09-23",
         )
         self.assertHolidayName(name, self.full_range)
-        obs_dts = ("2022-09-22", "2023-09-24")
+        obs_dts = (
+            "2022-09-22",
+            "2023-09-24",
+        )
         self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
