@@ -10,10 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import math
 from collections.abc import Iterable
 from datetime import date, datetime, timedelta, timezone
 from functools import cache
-import math
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -178,8 +178,8 @@ def _calculate_poya_dates(year: int) -> dict[str, date]:
 class _SinhalaLunar:
     """Sinhala Lunar calendar.
 
-    Confirmed Poya dates for 2003-2026 are based on official government gazettes.
-    Dates for subsequent years are calculated astronomically based on Full Moon
+    Confirmed Poya dates are based on official government gazettes.
+    Dates for unconfirmed years are calculated astronomically based on Full Moon
     instants converted to Sri Lanka Standard Time (UTC+5:30).
     """
 
@@ -372,6 +372,7 @@ class _SinhalaLunar:
         2024: (FEB, 23),
         2025: (FEB, 12),
         2026: (FEB, 1),
+        2027: (FEB, 21),
     }
 
     NIKINI_POYA_DATES = {
@@ -507,6 +508,8 @@ class _SinhalaLunar:
         2024: (MAY, 23),
         2025: (MAY, 12),
         2026: (MAY, 1),
+        2027: (MAY, 20),
+        2030: (MAY, 24),
     }
 
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:

@@ -216,6 +216,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2023-02-05",
             "2024-02-23",
             "2025-02-12",
+            "2027-02-21",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -255,6 +256,8 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2023-05-05",
             "2024-05-23",
             "2025-05-12",
+            "2027-05-20",
+            "2030-05-24",
         )
         self.assertHolidayName(name, self.full_range)
         # Day Following Vesak Full Moon Poya Day.
@@ -577,27 +580,39 @@ class TestSriLanka(CommonCountryTests, TestCase):
         )
 
     def test_sinhala_show_estimated(self):
-        # In 2027 (future/estimated):
-        # Default (sinhala_show_estimated=True) adds the estimation label.
-        h_est = SriLanka(years=2027, sinhala_show_estimated=True)
-        self.assertIn("2027-05-20", h_est)
-        self.assertEqual(h_est["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
-        self.assertIn("2027-05-21", h_est)
-        self.assertEqual(h_est["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය (අනුමානිත)")
+        # In 2027:
+        # Confirmed dates (such as Navam and Vesak) have NO estimation label.
+        h_2027 = SriLanka(years=2027, sinhala_show_estimated=True)
+        self.assertIn("2027-02-21", h_2027)
+        self.assertEqual(h_2027["2027-02-21"], "නවම් පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2027-05-20", h_2027)
+        self.assertEqual(h_2027["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2027-05-21", h_2027)
+        self.assertEqual(h_2027["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
 
-        # sinhala_show_estimated=False suppresses the estimation label.
+        # Unconfirmed / estimated dates in 2027 carry estimation label when
+        # sinhala_show_estimated=True.
+        self.assertIn("2027-06-19", h_2027)
+        self.assertEqual(h_2027["2027-06-19"], "පොසොන් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
+
+        # sinhala_show_estimated=False suppresses the estimation label for estimated dates.
         h_no_est = SriLanka(years=2027, sinhala_show_estimated=False)
-        self.assertIn("2027-05-20", h_no_est)
-        self.assertEqual(h_no_est["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය")
-        self.assertIn("2027-05-21", h_no_est)
-        self.assertEqual(h_no_est["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
+        self.assertIn("2027-06-19", h_no_est)
+        self.assertEqual(h_no_est["2027-06-19"], "පොසොන් පුර පසළොස්වක පෝය දිනය")
 
-        # English localization with estimation label.
+        # English localization: confirmed dates have no estimation label, estimated dates do.
         h_en = SriLanka(years=2027, language="en_US", sinhala_show_estimated=True)
         self.assertIn("2027-05-20", h_en)
-        self.assertEqual(h_en["2027-05-20"], "Vesak Full Moon Poya Day (estimated)")
+        self.assertEqual(h_en["2027-05-20"], "Vesak Full Moon Poya Day")
         self.assertIn("2027-05-21", h_en)
-        self.assertEqual(h_en["2027-05-21"], "Day Following Vesak Full Moon Poya Day (estimated)")
+        self.assertEqual(h_en["2027-05-21"], "Day Following Vesak Full Moon Poya Day")
+        self.assertIn("2027-06-19", h_en)
+        self.assertEqual(h_en["2027-06-19"], "Poson Full Moon Poya Day (estimated)")
+
+        # In 2028: estimated Vesak date carries estimation label.
+        h_2028 = SriLanka(years=2028, sinhala_show_estimated=True)
+        self.assertIn("2028-05-09", h_2028)
+        self.assertEqual(h_2028["2028-05-09"], "වෙසක් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
 
         # Confirmed historical year (2026) has NO estimation label even if
         # sinhala_show_estimated=True.

@@ -24,9 +24,9 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
     Sinhala Buddhist Uposatha day calculation method is different from Thai LuniSolar
     and Buddhist (Mahayana) used in East Asia.
 
-    Poya (Uposatha) days are based on official government gazettes for 2003-2026,
+    Poya (Uposatha) days are based on official government gazettes where available,
     and estimated using astronomical Full Moon calculations in Sri Lanka Standard
-    Time (UTC+5:30) for subsequent years.
+    Time (UTC+5:30) for subsequent unconfirmed years.
 
     Adhi month dates are instead hardcoded in Sri Lanka country implementation.
     """

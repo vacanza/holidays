@@ -65,7 +65,7 @@ class TestSinhalaCalendar(TestCase):
                 self.assertEqual(list(self.calendar.duruthu_poya_date(2010)), [])
 
     def test_future_dates_estimated(self):
-        # Future years (2027+) are calculated astronomically and marked as estimated.
+        # Unconfirmed future years/poyas are calculated astronomically and marked as estimated.
         for year in (2027, 2028, 2029, 2030):
             for poya_func in (
                 self.calendar.bak_poya_date,
@@ -82,10 +82,22 @@ class TestSinhalaCalendar(TestCase):
             ):
                 dt, is_estimated = poya_func(year)
                 self.assertIsNotNone(dt, f"{poya_func.__name__} returned None for {year}")
-                self.assertTrue(
-                    is_estimated,
-                    f"{poya_func.__name__} for {year} should be estimated",
-                )
+                confirmed_2027 = poya_func in {
+                    self.calendar.nawam_poya_date,
+                    self.calendar.vesak_poya_date,
+                }
+                if (year == 2027 and confirmed_2027) or (
+                    year == 2030 and poya_func == self.calendar.vesak_poya_date
+                ):
+                    self.assertFalse(
+                        is_estimated,
+                        f"{poya_func.__name__} for {year} should be confirmed",
+                    )
+                else:
+                    self.assertTrue(
+                        is_estimated,
+                        f"{poya_func.__name__} for {year} should be estimated",
+                    )
 
             duruthu_dts = list(self.calendar.duruthu_poya_date(year))
             self.assertTrue(duruthu_dts)
@@ -94,24 +106,24 @@ class TestSinhalaCalendar(TestCase):
                 self.assertTrue(is_estimated, f"Duruthu {year} should be estimated")
 
     def test_future_2027_calculated_dates(self):
-        # Precise astronomical dates in Sri Lanka Standard Time (UTC+5:30) for 2027.
+        # Precise dates in Sri Lanka Standard Time (UTC+5:30) for 2027.
         expected = {
-            self.calendar.nawam_poya_date: date(2027, 2, 21),
-            self.calendar.medin_poya_date: date(2027, 3, 22),
-            self.calendar.bak_poya_date: date(2027, 4, 21),
-            self.calendar.vesak_poya_date: date(2027, 5, 20),
-            self.calendar.poson_poya_date: date(2027, 6, 19),
-            self.calendar.esala_poya_date: date(2027, 7, 18),
-            self.calendar.nikini_poya_date: date(2027, 8, 17),
-            self.calendar.binara_poya_date: date(2027, 9, 16),
-            self.calendar.vap_poya_date: date(2027, 10, 15),
-            self.calendar.il_poya_date: date(2027, 11, 14),
-            self.calendar.unduvap_poya_date: date(2027, 12, 13),
+            self.calendar.nawam_poya_date: (date(2027, 2, 21), False),
+            self.calendar.medin_poya_date: (date(2027, 3, 22), True),
+            self.calendar.bak_poya_date: (date(2027, 4, 21), True),
+            self.calendar.vesak_poya_date: (date(2027, 5, 20), False),
+            self.calendar.poson_poya_date: (date(2027, 6, 19), True),
+            self.calendar.esala_poya_date: (date(2027, 7, 18), True),
+            self.calendar.nikini_poya_date: (date(2027, 8, 17), True),
+            self.calendar.binara_poya_date: (date(2027, 9, 16), True),
+            self.calendar.vap_poya_date: (date(2027, 10, 15), True),
+            self.calendar.il_poya_date: (date(2027, 11, 14), True),
+            self.calendar.unduvap_poya_date: (date(2027, 12, 13), True),
         }
-        for func, expected_dt in expected.items():
+        for func, (expected_dt, expected_est) in expected.items():
             dt, is_estimated = func(2027)
             self.assertEqual(dt, expected_dt)
-            self.assertTrue(is_estimated)
+            self.assertEqual(is_estimated, expected_est)
 
         duruthu_2027 = [dt for dt, _ in self.calendar.duruthu_poya_date(2027)]
         self.assertEqual(duruthu_2027, [date(2027, 1, 22)])
@@ -162,4 +174,9 @@ class TestSinhalaCalendar(TestCase):
         custom_cal = _MockCustomSinhalaCalendar()
         dt, is_estimated = custom_cal.vesak_poya_date(2027)
         self.assertEqual(dt, date(2027, 5, 15))
+        self.assertFalse(is_estimated)
+
+    def test_vesak_poya_2030(self):
+        dt, is_estimated = self.calendar.vesak_poya_date(2030)
+        self.assertEqual(dt, date(2030, 5, 24))
         self.assertFalse(is_estimated)
