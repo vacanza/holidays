@@ -34,21 +34,20 @@ CONTENT_LINE_DELIMITER_WRAP = f"{CONTENT_LINE_DELIMITER} "
 UID_DOMAIN = "holidays.vacanza.dev"
 UID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, UID_DOMAIN)
 
-# RFC 5545 `dur-value` without the optional sign.
-DURATION_PATTERN = re.compile(
-    r"^P(?:\d+W|\d+D(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?"
-    r"|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))$",
-    re.ASCII,
-)
-
 
 class ICalExporter:
+    """Export holiday data in the iCalendar format.
+
+    The generated content follows
+    [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+    """
+
     def __init__(
         self,
         instance: HolidayBase,
         show_language: bool = False,
         *,
-        refresh_interval: str | None = None,
+        refresh_interval: int | None = None,
     ) -> None:
         """Initialize iCalendar exporter.
 
@@ -69,20 +68,19 @@ class ICalExporter:
                 exception will be raised.
 
             refresh_interval:
-                Suggested refresh interval for calendar clients subscribed to
-                the published calendar, as an
-                [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
-                duration (e.g. `P1W` for one week). Emits the `REFRESH-INTERVAL`
+                Suggested refresh interval, in weeks, for calendar clients
+                subscribed to the published calendar. Emits the `REFRESH-INTERVAL`
                 ([RFC 7986](https://web.archive.org/web/20260611035104/https://datatracker.ietf.org/doc/html/rfc7986))
                 and `X-PUBLISHED-TTL` properties. Defaults to `None` (not emitted).
         """
         self.holidays = instance
         self.show_language = show_language
-        self.refresh_interval = (
-            self._validate_refresh_interval(refresh_interval)
-            if refresh_interval is not None
-            else None
-        )
+        if refresh_interval is not None and refresh_interval < 1:
+            raise ValueError(
+                f"Invalid refresh interval: {refresh_interval}. "
+                "Expected a positive number of weeks."
+            )
+        self.refresh_interval = refresh_interval
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         language = getattr(self.holidays, "language", None) or getattr(
@@ -128,30 +126,6 @@ class ICalExporter:
             )
         return language
 
-    def _validate_refresh_interval(self, refresh_interval: str) -> str:
-        """Validate the refresh interval to ensure it is a positive
-        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
-        duration.
-
-        Args:
-            refresh_interval:
-                The duration to validate.
-
-        Returns:
-            Validated duration.
-        """
-        refresh_interval = refresh_interval.strip().upper()
-
-        # A zero-length duration is not a usable refresh interval.
-        if not DURATION_PATTERN.fullmatch(refresh_interval) or not refresh_interval.strip(
-            "0DHMPSTW"
-        ):
-            raise ValueError(
-                f"Invalid refresh interval: '{refresh_interval}'. Expected an RFC 5545 "
-                "duration, e.g., 'P1W' or 'P1D'."
-            )
-        return refresh_interval
-
     @cached_property
     def entity_name(self) -> str:
         """Human-readable name of the exported entity.
@@ -164,15 +138,15 @@ class ICalExporter:
             if match:
                 return match.group(1)
 
-        codes = getattr(self.holidays, "country", None) or getattr(self.holidays, "market", None)
+        codes = self.holidays._entity_code
         return ", ".join(codes) if isinstance(codes, list) else codes or ""
 
     @cached_property
     def calendar_name(self) -> str:
         """Calendar display name used for the `X-WR-CALNAME` property.
 
-        Examples: `Thailand Holidays`, `Israel School Holidays`,
-        `Belgium Holidays [en-US]`.
+        Examples: `Thailand Public Holidays [th]`, `Israel School Holidays [he]`,
+        `Belgium Public Holidays [en-US]`.
         """
         parts = [self.entity_name] if self.entity_name else []
 
@@ -180,22 +154,22 @@ class ICalExporter:
         if subdiv:
             parts.append(f"({', '.join(subdiv) if isinstance(subdiv, list) else subdiv})")
 
-        categories = sorted(self.holidays.categories)
-        if categories != [self.holidays.default_category]:
-            parts.append(", ".join(category.replace("_", " ").title() for category in categories))
-
+        parts.append(
+            ", ".join(
+                category.replace("_", " ").title() for category in self.holidays._sorted_categories
+            )
+        )
         parts.append("Holidays")
 
-        language = self.holidays.language
-        if language and language != getattr(self.holidays, "default_language", None):
-            parts.append(f"[{self.language or language}]")
+        if self.language:
+            parts.append(f"[{self.language}]")
 
         return " ".join(parts)
 
     @cached_property
     def _uid_prefix(self) -> str:
         """Entity-specific part of the event UID key."""
-        codes = getattr(self.holidays, "country", None) or getattr(self.holidays, "market", None)
+        codes = self.holidays._entity_code
         subdiv = self.holidays.subdiv
         return "|".join(
             (
@@ -227,8 +201,7 @@ class ICalExporter:
         return f"{uuid.uuid5(UID_NAMESPACE, key)}@{UID_DOMAIN}"
 
     def _escape_text(self, text: str) -> str:
-        """Escape special characters in a `TEXT` value per
-        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+        """Escape special characters in a `TEXT` value per RFC 5545.
 
         Args:
             text:
@@ -240,8 +213,7 @@ class ICalExporter:
         return text.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
 
     def _fold_line(self, line: str) -> str:
-        """Fold long lines according to
-        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+        """Fold long lines according to RFC 5545.
 
         Content lines SHOULD NOT exceed 75 octets. If a line is too long,
         it must be split into multiple lines, with each continuation line
@@ -334,10 +306,9 @@ class ICalExporter:
             self._fold_line(f"X-WR-CALNAME:{self._escape_text(self.calendar_name)}"),
         ]
         if self.refresh_interval:
-            lines.append(
-                self._fold_line(f"REFRESH-INTERVAL;VALUE=DURATION:{self.refresh_interval}")
-            )
-            lines.append(self._fold_line(f"X-PUBLISHED-TTL:{self.refresh_interval}"))
+            duration = f"P{self.refresh_interval}W"
+            lines.append(f"REFRESH-INTERVAL;VALUE=DURATION:{duration}")
+            lines.append(f"X-PUBLISHED-TTL:{duration}")
 
         # Merged continuous holiday with the same name and use `DURATION` instead.
         holiday_sequences: dict[str, list[date]] = {}
@@ -370,9 +341,8 @@ class ICalExporter:
     def save_ics(self, file_path: str | Path) -> None:
         """Export the calendar data to a `.ics` file.
 
-        While [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
-        does not explicitly restrict filenames for `.ics` files, it is still advisable to follow
-        general filesystem conventions and avoid problematic characters.
+        While RFC 5545 does not explicitly restrict filenames for `.ics` files, it is still
+        advisable to follow general filesystem conventions and avoid problematic characters.
 
         Args:
             file_path:

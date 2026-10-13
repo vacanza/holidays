@@ -142,7 +142,9 @@ class TestIcalExporter(TestCase):
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
         self.assertIn("CALSCALE:GREGORIAN", output)
-        self.assertIn("X-WR-CALNAME:United States of America (the) Holidays", output)
+        self.assertIn(
+            "X-WR-CALNAME:United States of America (the) Public Holidays [en-US]", output
+        )
         self.assertNotIn("REFRESH-INTERVAL", output)
         self.assertNotIn("X-PUBLISHED-TTL", output)
         self.assertIn("END:VCALENDAR", output)
@@ -371,7 +373,7 @@ class TestIcalExporter(TestCase):
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
         self.assertIn("CALSCALE:GREGORIAN", output)
-        self.assertIn("X-WR-CALNAME:Thailand Holidays", output)
+        self.assertIn("X-WR-CALNAME:Thailand Public Holidays [th]", output)
         self.assertIn("END:VCALENDAR", output)
 
         # Verify no `VEVENT`s are generated for empty holiday set.
@@ -499,47 +501,53 @@ class TestIcalExporter(TestCase):
             return ICalExporter(holidays).calendar_name
 
         self.assertEqual(
-            calendar_name(self.us_holidays), "United States of America (the) Holidays"
+            calendar_name(self.us_holidays),
+            "United States of America (the) Public Holidays [en-US]",
         )
         self.assertEqual(
             calendar_name(country_holidays("US", years=2024, subdiv="CA")),
-            "United States of America (the) (CA) Holidays",
+            "United States of America (the) (CA) Public Holidays [en-US]",
         )
         self.assertEqual(
             calendar_name(country_holidays("IL", years=2024, categories=SCHOOL)),
-            "Israel School Holidays",
+            "Israel School Holidays [he]",
         )
         self.assertEqual(
             calendar_name(country_holidays("US", years=2024, categories=(HALF_DAY, UNOFFICIAL))),
-            "United States of America (the) Half Day, Unofficial Holidays",
+            "United States of America (the) Half Day, Unofficial Holidays [en-US]",
         )
-        # Default language (nl) is not shown, other languages are.
+        # The default category comes first.
         self.assertEqual(
-            calendar_name(country_holidays("BE", years=2024, language="nl")), "Belgium Holidays"
+            calendar_name(country_holidays("US", years=2024, categories=(UNOFFICIAL, PUBLIC))),
+            "United States of America (the) Public, Unofficial Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("BE", years=2024, language="nl")),
+            "Belgium Public Holidays [nl]",
         )
         self.assertEqual(
             calendar_name(country_holidays("BE", years=2024, language="en_US")),
-            "Belgium Holidays [en-US]",
+            "Belgium Public Holidays [en-US]",
         )
-        self.assertEqual(calendar_name(self.th_holidays), "Thailand Holidays")
+        self.assertEqual(calendar_name(self.th_holidays), "Thailand Public Holidays [th]")
         self.assertEqual(
             calendar_name(country_holidays("US", years=2024, language="th")),
-            "United States of America (the) Holidays [th]",
+            "United States of America (the) Public Holidays [th]",
         )
         self.assertEqual(
             calendar_name(financial_holidays("NYSE", years=2024)),
-            "New York Stock Exchange Holidays",
+            "New York Stock Exchange Public Holidays [en-US]",
         )
         # Entities without a docstring name fall back to their codes.
         self.assertEqual(
             calendar_name(country_holidays("CN", years=2024) + country_holidays("JP", years=2024)),
-            "CN, JP Holidays",
+            "CN, JP Public Holidays",
         )
-        self.assertEqual(calendar_name(MockHolidays()), "Holidays [en]")
+        self.assertEqual(calendar_name(MockHolidays()), "Public Holidays [en]")
 
     def test_calendar_name_property(self):
         output = self.th_exporter.generate()
-        self.assertIn("X-WR-CALNAME:Thailand Holidays\r\n", output)
+        self.assertIn("X-WR-CALNAME:Thailand Public Holidays [th]\r\n", output)
 
         # Escaped and folded like any other TEXT value.
         east_asia_holidays = (
@@ -548,7 +556,7 @@ class TestIcalExporter(TestCase):
             + country_holidays("KR", years=2024)
         )
         output = ICalExporter(east_asia_holidays).generate()
-        self.assertIn("X-WR-CALNAME:CN\\, JP\\, KR Holidays\r\n", output)
+        self.assertIn("X-WR-CALNAME:CN\\, JP\\, KR Public Holidays\r\n", output)
 
         us_holidays = country_holidays(
             "US", years=2024, subdiv="CA", categories=(HALF_DAY, UNOFFICIAL), language="th"
@@ -561,57 +569,29 @@ class TestIcalExporter(TestCase):
         )
 
     def test_refresh_interval(self):
-        output = ICalExporter(self.us_holidays, refresh_interval="P1W").generate()
+        output = ICalExporter(self.us_holidays, refresh_interval=1).generate()
         self.assertIn(
             "CALSCALE:GREGORIAN\r\n"
-            "X-WR-CALNAME:United States of America (the) Holidays\r\n"
+            "X-WR-CALNAME:United States of America (the) Public Holidays [en-US]\r\n"
             "REFRESH-INTERVAL;VALUE=DURATION:P1W\r\n"
             "X-PUBLISHED-TTL:P1W\r\n"
             "BEGIN:VEVENT\r\n",
             output,
         )
 
-        for refresh_interval in ("P1D", "P12W", "PT12H", "P1DT12H30M", "PT30M15S", " p1w "):
-            output = ICalExporter(self.us_holidays, refresh_interval=refresh_interval).generate()
-            self.assertIn(
-                f"REFRESH-INTERVAL;VALUE=DURATION:{refresh_interval.strip().upper()}\r\n", output
-            )
-            self.assertIn(f"X-PUBLISHED-TTL:{refresh_interval.strip().upper()}\r\n", output)
-
-        # Long durations are folded like any other content line.
-        refresh_interval = f"P{'1' * 80}W"
-        output = ICalExporter(self.us_holidays, refresh_interval=refresh_interval).generate()
-        self.assertIn(f"REFRESH-INTERVAL;VALUE=DURATION:P{'1' * 41}\r\n {'1' * 39}W\r\n", output)
-        self.assertIn(f"X-PUBLISHED-TTL:P{'1' * 57}\r\n {'1' * 23}W\r\n", output)
+        output = ICalExporter(self.us_holidays, refresh_interval=12).generate()
+        self.assertIn("REFRESH-INTERVAL;VALUE=DURATION:P12W\r\n", output)
+        self.assertIn("X-PUBLISHED-TTL:P12W\r\n", output)
 
     def test_invalid_refresh_interval(self):
-        for refresh_interval in (
-            "",
-            "P",
-            "PT",
-            "1W",
-            "P1Y",
-            "P1M",
-            "-P1W",
-            "P1W1D",
-            "P1DT",
-            "7 days",
-            # Zero-length durations.
-            "P0W",
-            "P0D",
-            "PT0S",
-            "P0DT0H0M0S",
-            # Non-ASCII digits.
-            "P١W",
-            "P１W",
-        ):
+        for refresh_interval in (0, -1):
             with self.assertRaises(ValueError) as context:
                 ICalExporter(self.us_holidays, refresh_interval=refresh_interval)
             self.assertEqual(
                 str(context.exception),
                 (
-                    f"Invalid refresh interval: '{refresh_interval.strip().upper()}'. Expected "
-                    "an RFC 5545 duration, e.g., 'P1W' or 'P1D'."
+                    f"Invalid refresh interval: {refresh_interval}. "
+                    "Expected a positive number of weeks."
                 ),
             )
 
