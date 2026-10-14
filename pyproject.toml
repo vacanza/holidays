@@ -89,6 +89,11 @@ tests = [
 packages.find.include = [ "holidays*" ]
 dynamic.version = { file = "VERSION" }
 
+[tool.uv]
+# PyYAML 6.0.3 publishes wheels only through Python 3.14. On 3.15 the source
+# build imports Cython and fails, so use the pure-Python implementation.
+extra-build-variables.pyyaml = { PYYAML_FORCE_LIBYAML = "0" }
+
 [tool.ruff]
 target-version = "py310"
 line-length = 99

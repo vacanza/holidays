@@ -13,7 +13,7 @@ on:
         required: false
 
 env:
-  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_PYTHON_VERSION: '3.15'
   FORCE_COLOR: 1
 
 permissions: {}
