@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-09-18 11:13+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-10-12 21:04-0230\n"
+"Last-Translator: Saikiran <saikiranvbembalge@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "డా. బి.ఆర్. అంబేద్కర్ జయంతి"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "స్వాతంత్ర దినోత్సవం"
+msgstr "స్వాతంత్ర్య దినోత్సవం"
 
 #. Mahatma Gandhi's Birthday.
 msgid "Mahatma Gandhi's Jayanti"
