@@ -47,7 +47,7 @@ def generate_data() -> None:
     for holiday in POYA_NAMES:
         holiday_func = getattr(calendar, f"{holiday.lower()}_dates")
         for year in years:
-            poya_dts = [dt for dt, _ in holiday_func(year)]
+            poya_dts = [dt for dt, is_estimated in holiday_func(year) if not is_estimated]
             if poya_dts:
                 dates[holiday][year] = poya_dts if len(poya_dts) > 1 else poya_dts[0]
 
