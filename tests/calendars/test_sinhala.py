@@ -290,3 +290,121 @@ class TestSinhalaCalendar(TestCase):
             poyas = _calculate_poya_dates.__wrapped__(2099)
             self.assertEqual(len(poyas), 12)
             self.assertEqual(poyas["UNDUVAP_POYA"], MockDate(2099, 12, 1))
+
+
+class TestSinhalaCalendarGenerator(TestCase):
+    def setUp(self):
+        super().setUp()
+        from scripts.calendar.sinhala_generator import SinhalaCalendarGenerator
+
+        self.generator = SinhalaCalendarGenerator()
+
+    def test_inheritance(self):
+        from scripts.calendar.generator import CalendarGenerator
+
+        self.assertIsInstance(self.generator, CalendarGenerator)
+        self.assertEqual(self.generator.class_name, "_SinhalaLunar")
+
+    def test_full_moon_jde(self):
+        # Full Moon around January 2000 (k = 0.5)
+        jde = self.generator.full_moon_jde(0.5)
+        self.assertGreater(jde, 2451550.0)
+
+    def test_slst_full_moons_2027(self):
+        fms = self.generator.get_slst_full_moons(2027)
+        self.assertEqual(len(fms), 12)
+        self.assertEqual(fms[0], date(2027, 1, 22))
+
+    def test_calculate_poya_dates_2027(self):
+        poyas = self.generator.calculate_poya_dates(2027)
+        self.assertEqual(len(poyas), 12)
+        self.assertEqual(poyas["VESAK_POYA"], date(2027, 5, 20))
+        self.assertEqual(poyas["NAWAM_POYA"], date(2027, 2, 21))
+
+    def test_calculate_poya_dates_2037(self):
+        # 13 full moons without February full moon
+        poyas = self.generator.calculate_poya_dates(2037)
+        self.assertEqual(len(poyas), 12)
+        self.assertEqual(poyas["DURUTHU_POYA"], date(2037, 1, 2))
+        self.assertEqual(poyas["NAWAM_POYA"], date(2037, 1, 31))
+
+    def test_calculate_poya_dates_fallback(self):
+        MockDate = namedtuple("MockDate", ["year", "month", "day"])
+        mock_dates = tuple(MockDate(2099, i, 1) for i in range(1, 14))
+        with patch.object(self.generator, "get_slst_full_moons", return_value=mock_dates):
+            poyas = self.generator.calculate_poya_dates.__wrapped__(self.generator, 2099)
+            self.assertEqual(len(poyas), 12)
+            self.assertEqual(poyas["UNDUVAP_POYA"], MockDate(2099, 12, 1))
+
+    def test_poya_date_and_dates(self):
+        # Confirmed date
+        dt, is_est = self.generator.vesak_poya_date(2027)
+        self.assertEqual(dt, date(2027, 5, 20))
+        self.assertFalse(is_est)
+        self.assertEqual(
+            self.generator.vesak_poya_dates(2027),
+            [(date(2027, 5, 20), False)],
+        )
+
+        # Duruthu 2009 double date
+        duruthu_dts = self.generator.duruthu_poya_dates(2009)
+        self.assertEqual(
+            duruthu_dts,
+            [(date(2009, 1, 10), False), (date(2009, 12, 31), False)],
+        )
+        self.assertEqual(self.generator.duruthu_poya_date(2009), duruthu_dts)
+
+        # Calculated estimated date
+        dt, is_est = self.generator.bak_poya_date(2027)
+        self.assertEqual(dt, date(2027, 4, 21))
+        self.assertTrue(is_est)
+        self.assertEqual(
+            self.generator.bak_poya_dates(2027),
+            [(date(2027, 4, 21), True)],
+        )
+
+        # Unsupported year (< 2003 or > 2100)
+        self.assertEqual(self.generator.bak_poya_date(2000), (None, False))
+        self.assertEqual(self.generator.bak_poya_dates(2000), [])
+
+        # All individual helpers
+        for poya in (
+            "binara",
+            "esala",
+            "il",
+            "medin",
+            "nawam",
+            "nikini",
+            "poson",
+            "unduvap",
+            "vap",
+        ):
+            single_func = getattr(self.generator, f"{poya}_poya_date")
+            list_func = getattr(self.generator, f"{poya}_poya_dates")
+            res_dt, _ = single_func(2027)
+            self.assertIsNotNone(res_dt)
+            self.assertTrue(len(list_func(2027)) >= 1)
+
+    def test_get_dates(self):
+        dates_confirmed = self.generator.get_dates(2003, 2026, confirmed_only=True)
+        self.assertEqual(len(dates_confirmed), 12)
+        self.assertIn(2003, dates_confirmed["BAK_POYA"])
+        self.assertIn(2026, dates_confirmed["BAK_POYA"])
+        self.assertNotIn(2027, dates_confirmed["BAK_POYA"])
+
+        dates_all = self.generator.get_dates(2027, 2028, confirmed_only=False)
+        self.assertIn(2027, dates_all["BAK_POYA"])
+        self.assertIn(2028, dates_all["BAK_POYA"])
+
+    def test_generate_calendar_and_generate_data(self):
+        with patch.object(self.generator, "generate") as mock_generate:
+            self.generator.generate_calendar(2003, 2004)
+            mock_generate.assert_called_once()
+
+        from scripts.calendar.sinhala_generator import generate_data
+
+        with patch(
+            "scripts.calendar.sinhala_generator.SinhalaCalendarGenerator.generate_calendar"
+        ) as mock_gen_cal:
+            generate_data()
+            mock_gen_cal.assert_called_once()
