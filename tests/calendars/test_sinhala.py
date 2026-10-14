@@ -10,13 +10,17 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections import namedtuple
 from datetime import date
 from unittest import TestCase
+from unittest.mock import patch
 
 from holidays.calendars.gregorian import MAY
 from holidays.calendars.sinhala import (
+    POYA_NAMES,
     _CustomSinhalaHolidays,
     _SinhalaLunar,
+    _calculate_poya_dates,
 )
 
 
@@ -175,6 +179,8 @@ class TestSinhalaCalendar(TestCase):
         dt, is_estimated = custom_cal.vesak_poya_date(2027)
         self.assertEqual(dt, date(2027, 5, 15))
         self.assertFalse(is_estimated)
+        dts = list(custom_cal.vesak_poya_dates(2027))
+        self.assertEqual(dts, [(date(2027, 5, 15), False)])
 
     def test_vesak_poya_2030(self):
         dt, is_estimated = self.calendar.vesak_poya_date(2030)
@@ -234,6 +240,11 @@ class TestSinhalaCalendar(TestCase):
         self.assertEqual(first_poya[1].year, _SinhalaLunar.START_YEAR)
 
     def test_individual_poya_dates_generators(self):
+        for poya in POYA_NAMES:
+            func = getattr(self.calendar, f"{poya.lower()}_dates")
+            res = list(func(2027))
+            self.assertTrue(len(res) >= 1)
+
         self.assertEqual(
             list(self.calendar.vesak_poya_dates(2027)),
             [(date(2027, 5, 20), False)],
@@ -254,3 +265,28 @@ class TestSinhalaCalendar(TestCase):
             list(self.calendar.bak_poya_dates(2027)),
             [(date(2027, 4, 21), True)],
         )
+
+    def test_unsupported_pre_2003_year(self):
+        dt, is_estimated = self.calendar.bak_poya_date(2000)
+        self.assertIsNone(dt)
+        self.assertFalse(is_estimated)
+        self.assertEqual(list(self.calendar.bak_poya_dates(2000)), [])
+
+    def test_unknown_poya_name(self):
+        self.assertEqual(list(self.calendar._get_holiday_set("UNKNOWN_POYA", 2030)), [])
+
+    def test_future_year_without_february_full_moon(self):
+        # 2037 has 13 full moons and no full moon in February.
+        # Duruthu Poya is Jan 2 and Nawam Poya is Jan 31; March has two full moons.
+        poyas_2037 = _calculate_poya_dates(2037)
+        self.assertEqual(len(poyas_2037), 12)
+        self.assertEqual(poyas_2037["DURUTHU_POYA"], date(2037, 1, 2))
+        self.assertEqual(poyas_2037["NAWAM_POYA"], date(2037, 1, 31))
+
+    def test_calculate_poya_dates_fallback(self):
+        MockDate = namedtuple("MockDate", ["year", "month", "day"])
+        mock_dates = tuple(MockDate(2099, i, 1) for i in range(1, 14))
+        with patch("holidays.calendars.sinhala._get_slst_full_moons", return_value=mock_dates):
+            poyas = _calculate_poya_dates.__wrapped__(2099)
+            self.assertEqual(len(poyas), 12)
+            self.assertEqual(poyas["UNDUVAP_POYA"], MockDate(2099, 12, 1))
