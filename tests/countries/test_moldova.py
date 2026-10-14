@@ -84,18 +84,18 @@ class TestMoldova(CommonCountryTests, TestCase):
             ("2022-01-01", "Anul Nou"),
             ("2022-01-07", "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
             ("2022-01-08", "Nașterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
-            ("2022-03-08", "Ziua internatională a femeii"),
+            ("2022-03-08", "Ziua internațională a femeii"),
             ("2022-04-24", "Paștele"),
             ("2022-04-25", "Paștele"),
-            ("2022-05-01", "Ziua internaţională a solidarităţii oamenilor muncii"),
+            ("2022-05-01", "Ziua internațională a solidarității oamenilor muncii"),
             ("2022-05-02", "Paștele blajinilor"),
             (
                 "2022-05-09",
                 "Ziua Europei; Ziua Victoriei și a comemorării eroilor "
-                "căzuţi pentru Independenţa Patriei",
+                "căzuți pentru Independența Patriei",
             ),
             ("2022-06-01", "Ziua Ocrotirii Copilului"),
-            ("2022-08-27", "Ziua independenţei Republicii Moldova"),
+            ("2022-08-27", "Ziua independenței Republicii Moldova"),
             ("2022-08-31", "Limba noastră"),
             ("2022-12-25", "Nașterea lui Iisus Hristos (Crăciunul pe stil nou)"),
         )
