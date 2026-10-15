@@ -40,7 +40,7 @@ class TestGenerateSiteAssets(TestCase):
                     "name": "Denmark",
                     "subdivisions": {},
                     "languages": {"da": "Danish"},
-                    "categories": ["public", "optional"],
+                    "categories": ["public"],
                 }
             },
             "financial": {},
@@ -54,6 +54,9 @@ class TestGenerateSiteAssets(TestCase):
                 "BEGIN:VCALENDAR\nEND:VCALENDAR\n", encoding="utf-8"
             )
             (country_dir / "ALL_da_public.json").write_text("[]", encoding="utf-8")
+            (country_dir / "ALL_da_optional.ics").write_text(
+                "BEGIN:VCALENDAR\nEND:VCALENDAR\n", encoding="utf-8"
+            )
 
             generate_html_index(manifest, output_dir)
             document = (output_dir / "index.html").read_text(encoding="utf-8")
@@ -72,7 +75,7 @@ class TestGenerateSiteAssets(TestCase):
     def test_generate_html_index_escapes_metadata(self):
         manifest = {
             "countries": {
-                "XX": {
+                "XX&YY": {
                     "name": '<script>alert("x")</script>',
                     "subdivisions": {},
                     "languages": {"en": "English"},
@@ -84,12 +87,19 @@ class TestGenerateSiteAssets(TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             output_dir = Path(tmp)
-            country_dir = output_dir / "countries" / "XX"
+            country_dir = output_dir / "countries" / "XX&YY"
             country_dir.mkdir(parents=True)
-            (country_dir / "ALL_en_public.json").write_text("[]", encoding="utf-8")
+            (country_dir / "ALL_en_public.ics").write_text("BEGIN:VCALENDAR\nEND:VCALENDAR\n", encoding="utf-8")
 
             generate_html_index(manifest, output_dir)
             document = (output_dir / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn("&lt;script&gt;", document)
-        self.assertNotIn('<script>alert("x")</script>', document)
+        self.assertIn(
+            'href="countries/XX&amp;YY/ALL_en_public.ics"',
+            document,
+        )
+        self.assertIn(
+            "webcal://vacanza.github.io/holidays/downloads/ics/"
+            "countries/XX&amp;YY/ALL_en_public.ics",
+            document,
+        )

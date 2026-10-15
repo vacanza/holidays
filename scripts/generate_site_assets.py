@@ -37,6 +37,132 @@ DEFAULT_YEAR_END = 2035
 
 OUTPUT_DIR = Path("site/downloads/ics")
 
+HTML_INDEX_HEADER = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holiday Calendar Downloads</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2rem auto;
+       padding: 0 1rem; max-width: 1400px; color: #222; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ddd; padding: .65rem; text-align: left; }
+th { background: #f3f3f3; }
+tbody tr:nth-child(even) { background: #fafafa; }
+a { margin-right: .35rem; }
+input { padding: .6rem; margin: 1rem 0; max-width: 100%; width: 24rem; }
+button { font: inherit; border: 0; background: none; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>Holiday Calendar Downloads</h1>
+<p>Browse available holiday calendars. Download ICS or JSON files,
+or use Webcal to subscribe in a compatible calendar application.</p>
+<div id="controls"></div>
+<table id="calendars">
+<thead><tr>
+<th>Country / Market</th><th>Type</th><th>Subdivision</th>
+<th>Language</th><th>Category</th><th>Available formats</th>
+</tr></thead>
+<tbody>
+"""
+
+HTML_INDEX_FOOTER = """
+</tbody>
+</table>
+<script>
+const table = document.getElementById("calendars");
+const body = table.tBodies[0];
+const controls = document.getElementById("controls");
+const search = document.createElement("input");
+search.type = "search";
+search.placeholder = "Search countries, languages, or categories";
+search.setAttribute("aria-label", "Search holiday calendars");
+controls.appendChild(search);
+
+search.addEventListener("input", () => {
+    const query = search.value.toLocaleLowerCase();
+    for (const row of body.rows) {
+        row.hidden = !row.textContent.toLocaleLowerCase().includes(query);
+    }
+});
+
+let sortColumn = 0;
+let sortAscending = true;
+
+for (const [index, heading] of [...table.tHead.rows[0].cells].entries()) {
+    if (index === 5) continue;
+
+    const label = heading.textContent.trim();
+    const button = document.createElement("button");
+    button.dataset.label = label;
+    button.setAttribute("aria-label", "Sort by " + label);
+
+    const updateButton = () => {
+        if (sortColumn === index) {
+            button.textContent = label + (sortAscending ? " ↑" : " ↓");
+            button.setAttribute(
+                "aria-label",
+                "Sort by " + label + ", currently " +
+                    (sortAscending ? "ascending" : "descending")
+            );
+            heading.setAttribute(
+                "aria-sort",
+                sortAscending ? "ascending" : "descending"
+            );
+        } else {
+            button.textContent = label + " ↕";
+            button.setAttribute("aria-label", "Sort by " + label);
+            heading.setAttribute("aria-sort", "none");
+        }
+    };
+
+    updateButton();
+    heading.replaceChildren(button);
+
+    button.addEventListener("click", () => {
+        if (sortColumn === index) {
+            sortAscending = !sortAscending;
+        } else {
+            sortColumn = index;
+            sortAscending = true;
+        }
+
+        for (const otherHeading of table.tHead.rows[0].cells) {
+            const otherButton = otherHeading.querySelector("button");
+            if (!otherButton) continue;
+
+            if (otherHeading === heading) {
+                updateButton();
+                continue;
+            }
+
+            const otherLabel = otherButton.dataset.label;
+            otherButton.textContent = otherLabel + " ↕";
+            otherButton.setAttribute("aria-label", "Sort by " + otherLabel);
+            otherHeading.setAttribute("aria-sort", "none");
+        }
+
+
+        const rows = [...body.rows];
+        rows.sort((a, b) => {
+            const result = a.cells[index].textContent.localeCompare(
+                b.cells[index].textContent,
+                undefined,
+                { numeric: true, sensitivity: "base" }
+            );
+            return sortAscending ? result : -result;
+        });
+        body.append(...rows);
+    });
+}
+</script>
+</body>
+</html>
+"""
+
+
 LANGUAGES = {
     # --- Base Languages ---
     "am": "Amharic",
@@ -296,9 +422,9 @@ def generate_html_index(manifest: dict[str, dict], output_dir: Path = OUTPUT_DIR
     for entity_type, entities in manifest.items():
         for code, metadata in entities.items():
             entity_name = metadata["name"]
-            subdivisions = {"ALL": "All subdivisions", **metadata["subdivisions"]}
+            subdivisions = [("ALL", "Nationwide"), *metadata["subdivisions"].items()]
 
-            for subdiv_code, subdiv_name in subdivisions.items():
+            for subdiv_code, subdiv_name in subdivisions:
                 for language, language_name in metadata["languages"].items():
                     for category in metadata["categories"]:
                         filename = f"{subdiv_code}_{language}_{category}"
@@ -344,139 +470,10 @@ def generate_html_index(manifest: dict[str, dict], output_dir: Path = OUTPUT_DIR
     rows.sort(key=lambda row: row[:4])
 
     document = (
-        """<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Holiday Calendar Downloads</title>
-<style>
-body { font-family: system-ui, sans-serif; margin: 2rem auto;
-       padding: 0 1rem; max-width: 1400px; color: #222; }
-table { border-collapse: collapse; width: 100%; }
-th, td { border: 1px solid #ddd; padding: .65rem; text-align: left; }
-th { background: #f3f3f3; }
-tbody tr:nth-child(even) { background: #fafafa; }
-a { margin-right: .35rem; }
-input { padding: .6rem; margin: 1rem 0; max-width: 100%; width: 24rem; }
-button { font: inherit; border: 0; background: none; cursor: pointer; }
-</style>
-</head>
-<body>
-<h1>Holiday Calendar Downloads</h1>
-<p>Browse available holiday calendars. Download ICS or JSON files,
-or use Webcal to subscribe in a compatible calendar application.</p>
-<div id="controls"></div>
-<table id="calendars">
-<thead><tr>
-<th>Country / Market</th><th>Type</th><th>Subdivision</th>
-<th>Language</th><th>Category</th><th>Available formats</th>
-</tr></thead>
-<tbody>
-"""
-        + "\n".join(row[4] for row in rows)
-        + """
-</tbody>
-</table>
-<script>
-const table = document.getElementById("calendars");
-const body = table.tBodies[0];
-const controls = document.getElementById("controls");
-const search = document.createElement("input");
-search.type = "search";
-search.placeholder = "Search countries, languages, or categories";
-search.setAttribute("aria-label", "Search holiday calendars");
-controls.appendChild(search);
-
-search.addEventListener("input", () => {
-    const query = search.value.toLocaleLowerCase();
-    for (const row of body.rows) {
-        row.hidden = !row.textContent.toLocaleLowerCase().includes(query);
-    }
-});
-
-
-let sortColumn = null;
-let sortAscending = true;
-
-for (const [index, heading] of [...table.tHead.rows[0].cells].entries()) {
-    if (index === 5) continue;
-
-    const label = heading.textContent;
-    const button = document.createElement("button");
-    button.setAttribute("aria-label", "Sort by " + label);
-    heading.setAttribute("aria-sort", "none");
-
-    const updateButton = () => {
-        if (sortColumn === index) {
-            button.textContent = label + (sortAscending ? " ↑" : " ↓");
-            button.setAttribute(
-                "aria-label",
-                "Sort by " + label + ", currently " +
-                    (sortAscending ? "ascending" : "descending")
-            );
-            heading.setAttribute(
-                "aria-sort",
-                sortAscending ? "ascending" : "descending"
-            );
-        } else {
-            button.textContent = label + " ↕";
-            button.setAttribute("aria-label", "Sort by " + label);
-            heading.setAttribute("aria-sort", "none");
-        }
-    };
-
-    updateButton();
-    heading.replaceChildren(button);
-
-    button.addEventListener("click", () => {
-        if (sortColumn === index) {
-            sortAscending = !sortAscending;
-        } else {
-            sortColumn = index;
-            sortAscending = true;
-        }
-
-        for (const [otherIndex, otherHeading] of
-            [...table.tHead.rows[0].cells].entries()) {
-            if (otherIndex === 5) continue;
-
-            const otherButton = otherHeading.querySelector("button");
-            if (!otherButton) continue;
-
-            if (otherIndex === index) {
-                updateButton();
-            } else {
-                otherButton.textContent =
-                    otherHeading.textContent + " ↕";
-                otherButton.setAttribute(
-                    "aria-label",
-                    "Sort by " + otherHeading.textContent
-                );
-                otherHeading.setAttribute("aria-sort", "none");
-            }
-        }
-
-        const rows = [...body.rows];
-
-        rows.sort((a, b) => {
-            const result = a.cells[index].textContent.localeCompare(
-                b.cells[index].textContent,
-                undefined,
-                { numeric: true, sensitivity: "base" }
-            );
-            return sortAscending ? result : -result;
-        });
-
-        body.append(...rows);
-    });
-}
-
-</script>
-</body>
-</html>
-"""
-    )
+    HTML_INDEX_HEADER
+    + "\n".join(row[4] for row in rows)
+    + HTML_INDEX_FOOTER
+)
 
     index_path = output_dir / "index.html"
     index_path.write_text(document, encoding="utf-8", newline="\n")
