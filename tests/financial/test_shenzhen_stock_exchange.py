@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange
 from holidays.financial.shenzhen_stock_exchange import ShenzhenStockExchange
 from tests.common import CommonFinancialTests
 
@@ -24,6 +25,7 @@ class TestShenzhenStockExchange(CommonFinancialTests, TestCase):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
+        self.assertEqual(self.holidays.parent_entity, ShanghaiStockExchange)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

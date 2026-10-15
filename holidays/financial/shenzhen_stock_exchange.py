@@ -27,6 +27,7 @@ class ShenzhenStockExchange(ShanghaiStockExchange):
     """
 
     market = "XSHE"
+    parent_entity = ShanghaiStockExchange
 
 
 class XSHE(ShenzhenStockExchange):
