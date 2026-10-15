@@ -331,7 +331,9 @@ class TestSinhalaCalendarGenerator(TestCase):
     def test_calculate_poya_dates_fallback(self):
         MockDate = namedtuple("MockDate", ["year", "month", "day"])
         mock_dates = tuple(MockDate(2099, i, 1) for i in range(1, 14))
-        with patch("holidays.calendars.sinhala._get_slst_full_moons", return_value=mock_dates):
+        with patch(
+            "scripts.calendar.sinhala_generator.get_slst_full_moons", return_value=mock_dates
+        ):
             poyas = self.generator.calculate_poya_dates.__wrapped__(2099)
             self.assertEqual(len(poyas), 12)
             self.assertEqual(poyas["UNDUVAP_POYA"], MockDate(2099, 12, 1))
