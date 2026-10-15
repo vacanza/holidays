@@ -3,7 +3,7 @@
 
 build:
   # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-os
-  os: ubuntu-24.04
+  os: ubuntu-26.04
   tools:
     # https://docs.readthedocs.com/platform/stable/config-file/v2.html#build-tools-python
     python: '3.14'
