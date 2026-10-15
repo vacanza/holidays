@@ -227,7 +227,7 @@ class TestZambia(CommonCountryTests, TestCase):
 
     def test_national_prayer_day(self):
         name = "National Prayer Day"
-        self.assertHolidayName(name, (f"{year}-10-18" for year in range(2016, 2025)))
+        self.assertHolidayName(name, (f"{year}-10-18" for year in range(2016, 2026)))
         self.assertNoHolidayName(name, range(self.start_year, 2016), range(2026, self.end_year))
         obs_dts = ("2020-10-19",)
         self.assertHolidayName(f"{name} (observed)", obs_dts)
