@@ -25,6 +25,14 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
         * <https://ur.wikipedia.org/wiki/تعطیلات_پاکستان>
         * [Public and optional holidays](https://web.archive.org/web/20250118105814/https://cabinet.gov.pk/Detail/OTE2ODBiYmItZmI0MS00NDAwLWE5NGUtYmE1MGVjYzllMzAz)
         * [No.10-01/2024-Min-II](https://web.archive.org/web/20241103080918/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/28-5-24.pdf)
+        * [2016 Ashura](https://web.archive.org/web/20260219000903/https://www.sbp.org.pk/bprd/2016/CL32.htm)
+        * [2017 Ashura](https://web.archive.org/web/20260207170949/https://www.sbp.org.pk/bprd/2017/CL26.htm)
+        * [2019 Ashura](https://web.archive.org/web/20260217233627/https://www.sbp.org.pk/bprd/2019/CL20.htm)
+        * [2020 Ashura](https://web.archive.org/web/20260207201644/https://www.sbp.org.pk/bprd/2020/CL39.htm)
+        * [2021 Ashura](https://web.archive.org/web/20260219005125/https://www.sbp.org.pk/bprd/2021/CL27.htm)
+        * [2023 Ashura](https://web.archive.org/web/20260208115606/https://www.sbp.org.pk/bprd/2023/CL14.htm)
+        * [2024 Ashura](https://web.archive.org/web/20260207195440/https://www.sbp.org.pk/bprd/2024/CL14.htm)
+        * [2026 Ashura](https://web.archive.org/web/20261009165128/https://www.sbp.org.pk/assets/documents/press-release/Pr-23-Jun-2026.pdf)
     """
 
     country = "PK"
@@ -109,14 +117,6 @@ class PAK(Pakistan):
 
 class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20250724060822/https://www.timeanddate.com/holidays/pakistan/ashura
-    # https://web.archive.org/web/20260219000903/https://www.sbp.org.pk/bprd/2016/CL32.htm
-    # https://web.archive.org/web/20260207170949/https://www.sbp.org.pk/bprd/2017/CL26.htm
-    # https://web.archive.org/web/20260217233627/https://www.sbp.org.pk/bprd/2019/CL20.htm
-    # https://web.archive.org/web/20260207201644/https://www.sbp.org.pk/bprd/2020/CL39.htm
-    # https://web.archive.org/web/20260219005125/https://www.sbp.org.pk/bprd/2021/CL27.htm
-    # https://web.archive.org/web/20260208115606/https://www.sbp.org.pk/bprd/2023/CL14.htm
-    # https://web.archive.org/web/20260207195440/https://www.sbp.org.pk/bprd/2024/CL14.htm
-    # https://web.archive.org/web/20261009165128/https://www.sbp.org.pk/assets/documents/press-release/Pr-23-Jun-2026.pdf
     ASHURA_DATES_CONFIRMED_YEARS = (2005, 2026)
     ASHURA_DATES = {
         2005: (FEB, 18),
