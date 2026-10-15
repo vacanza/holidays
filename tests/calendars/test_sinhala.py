@@ -58,15 +58,19 @@ class TestSinhalaCalendar(TestCase):
                     f"{poya_func.__name__} for {year} should be confirmed (not estimated)",
                 )
 
-            # Duruthu Poya returns an iterable of dates (2010 had no Duruthu Poya in gazette).
+            # Duruthu Poya returns confirmed dates (2010 had no Duruthu Poya in gazette).
             if year != 2010:
-                duruthu_dts = list(self.calendar.duruthu_poya_date(year))
+                dt, is_estimated = self.calendar.duruthu_poya_date(year)
+                self.assertIsNotNone(dt)
+                self.assertFalse(is_estimated, f"Duruthu {year} should be confirmed")
+                duruthu_dts = list(self.calendar.duruthu_poya_dates(year))
                 self.assertTrue(duruthu_dts)
-                for dt, is_estimated in duruthu_dts:
-                    self.assertEqual(dt.year, year)
-                    self.assertFalse(is_estimated, f"Duruthu {year} should be confirmed")
+                for d, est in duruthu_dts:
+                    self.assertEqual(d.year, year)
+                    self.assertFalse(est, f"Duruthu {year} should be confirmed")
             else:
-                self.assertEqual(list(self.calendar.duruthu_poya_date(2010)), [])
+                self.assertEqual(self.calendar.duruthu_poya_date(2010), (None, False))
+                self.assertEqual(list(self.calendar.duruthu_poya_dates(2010)), [])
 
     def test_future_dates_estimated(self):
         # Unconfirmed future years/poyas are calculated astronomically and marked as estimated.
@@ -103,11 +107,14 @@ class TestSinhalaCalendar(TestCase):
                         f"{poya_func.__name__} for {year} should be estimated",
                     )
 
-            duruthu_dts = list(self.calendar.duruthu_poya_date(year))
+            duruthu_dts = list(self.calendar.duruthu_poya_dates(year))
             self.assertTrue(duruthu_dts)
             for dt, is_estimated in duruthu_dts:
                 self.assertEqual(dt.year, year)
                 self.assertTrue(is_estimated, f"Duruthu {year} should be estimated")
+            single_dt, is_estimated = self.calendar.duruthu_poya_date(year)
+            self.assertEqual(single_dt, duruthu_dts[0][0])
+            self.assertTrue(is_estimated)
 
     def test_future_2027_calculated_dates(self):
         # Precise dates in Sri Lanka Standard Time (UTC+5:30) for 2027.
@@ -129,8 +136,9 @@ class TestSinhalaCalendar(TestCase):
             self.assertEqual(dt, expected_dt)
             self.assertEqual(is_estimated, expected_est)
 
-        duruthu_2027 = [dt for dt, _ in self.calendar.duruthu_poya_date(2027)]
-        self.assertEqual(duruthu_2027, [date(2027, 1, 22)])
+        dt, is_estimated = self.calendar.duruthu_poya_date(2027)
+        self.assertEqual(dt, date(2027, 1, 22))
+        self.assertTrue(is_estimated)
 
     def test_future_2028_calculated_dates(self):
         # In 2028 (13 full moons): Duruthu is observed only on Jan 12 (not Dec 31).
@@ -152,8 +160,9 @@ class TestSinhalaCalendar(TestCase):
             self.assertEqual(dt, expected_dt)
             self.assertTrue(is_estimated)
 
-        duruthu_2028 = [dt for dt, _ in self.calendar.duruthu_poya_date(2028)]
-        self.assertEqual(duruthu_2028, [date(2028, 1, 12)])
+        dt, is_estimated = self.calendar.duruthu_poya_date(2028)
+        self.assertEqual(dt, date(2028, 1, 12))
+        self.assertTrue(is_estimated)
 
     def test_future_2089_calculated_dates(self):
         # In 2089: Nikini is Aug 21, Binara is Sep 20 without duplicate or misassignment.
@@ -167,12 +176,29 @@ class TestSinhalaCalendar(TestCase):
 
     def test_duruthu_leap_year_double_dates(self):
         # 2009 historical gazette: two Duruthu Poyas (Jan 10 and Dec 31).
-        dts_2009 = [dt for dt, _ in self.calendar.duruthu_poya_date(2009)]
+        dt, is_estimated = self.calendar.duruthu_poya_date(2009)
+        self.assertEqual(dt, date(2009, 1, 10))
+        self.assertFalse(is_estimated)
+        dts_2009 = [d for d, _ in self.calendar.duruthu_poya_dates(2009)]
         self.assertEqual(dts_2009, [date(2009, 1, 10), date(2009, 12, 31)])
 
         # 2028 future: single Duruthu Poya (Jan 12).
-        dts_2028 = [dt for dt, _ in self.calendar.duruthu_poya_date(2028)]
+        dt_2028, is_estimated_2028 = self.calendar.duruthu_poya_date(2028)
+        self.assertEqual(dt_2028, date(2028, 1, 12))
+        self.assertTrue(is_estimated_2028)
+        dts_2028 = [d for d, _ in self.calendar.duruthu_poya_dates(2028)]
         self.assertEqual(dts_2028, [date(2028, 1, 12)])
+
+    def test_2018_duruthu_poya_historical_override(self):
+        # Official gazette records 2018-01-01, whereas astronomical full moon was 2018-01-02.
+        self.assertEqual(
+            self.calendar.duruthu_poya_date(2018),
+            (date(2018, 1, 1), False),
+        )
+        self.assertEqual(
+            list(self.calendar.duruthu_poya_dates(2018)),
+            [(date(2018, 1, 1), False)],
+        )
 
     def test_custom_sinhala_holidays(self):
         custom_cal = _MockCustomSinhalaCalendar()
@@ -354,7 +380,7 @@ class TestSinhalaCalendarGenerator(TestCase):
             duruthu_dts,
             [(date(2009, 1, 10), False), (date(2009, 12, 31), False)],
         )
-        self.assertEqual(self.generator.duruthu_poya_date(2009), duruthu_dts)
+        self.assertEqual(self.generator.duruthu_poya_date(2009), (date(2009, 1, 10), False))
 
         # Calculated estimated date
         dt, is_est = self.generator.bak_poya_date(2027)
@@ -386,6 +412,16 @@ class TestSinhalaCalendarGenerator(TestCase):
             res_dt, _ = single_func(2027)
             self.assertIsNotNone(res_dt)
             self.assertTrue(len(list_func(2027)) >= 1)
+
+    def test_2018_duruthu_poya_historical_override(self):
+        self.assertEqual(
+            self.generator.duruthu_poya_date(2018),
+            (date(2018, 1, 1), False),
+        )
+        self.assertEqual(
+            self.generator.duruthu_poya_dates(2018),
+            [(date(2018, 1, 1), False)],
+        )
 
     def test_get_dates(self):
         dates_confirmed = self.generator.get_dates(2003, 2026, confirmed_only=True)

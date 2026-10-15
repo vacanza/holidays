@@ -117,7 +117,7 @@ def full_moon_jde(k: float) -> float:
     f = math.radians(
         160.7108 + 390.67050284 * k - 0.0016118 * t2 - 0.00000227 * t3 + 0.0000011 * t4
     )
-    omega = math.radians(124.97 - 1.9337 * k + 0.00206 * t2 + 0.0000215 * t3)
+    omega = math.radians(124.97 - 1.9337 * k + 0.00206 * t2 + 0.00000215 * t3)
 
     corr = sum(
         c * e_powers[ep] * math.sin(mp * mprime + mm * m + ff * f + om * omega)
@@ -240,13 +240,9 @@ class SinhalaCalendarGenerator(CalendarGenerator):
         calc_date = self.calculate_poya_dates(year).get(holiday)
         return [(calc_date, True)] if calc_date else []
 
-    def poya_date(
-        self, holiday: str, year: int
-    ) -> tuple[date | None, bool] | list[tuple[date, bool]]:
+    def poya_date(self, holiday: str, year: int) -> tuple[date | None, bool]:
         """Return the date and estimated status of a Poya day for a year."""
         dts = self.poya_dates(holiday, year)
-        if holiday == "DURUTHU_POYA" and len(dts) > 1:
-            return dts
         return dts[0] if dts else (None, False)
 
     def __getattr__(self, name: str) -> Any:
