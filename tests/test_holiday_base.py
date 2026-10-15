@@ -13,6 +13,7 @@
 import pickle
 from datetime import date, datetime, timedelta
 from unittest import TestCase
+from unittest.mock import patch
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
@@ -716,6 +717,13 @@ class TestHolidaySum(TestCase):
         self.assertIn("2021-08-09", hb_combined)
         self.assertNotIn("2021-08-10", hb_combined)
         self.assertNotIn("2021-08-10", jp)
+        self.assertSetEqual(jp.years, {2021})
+
+    def test_add_populate_error(self):
+        jp = JP(years=2021)
+        hb_combined = jp + US(years=2021)
+        with patch.object(jp, "_populate", side_effect=ValueError):
+            self.assertRaises(ValueError, hb_combined._populate, 2022)
         self.assertSetEqual(jp.years, {2021})
 
     def test_args(self):
