@@ -25,10 +25,14 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
-    def test_juma_tul_wida(self):
+    def test_jumuatul_wida(self):
         name = "Juma-tul-Wida"
         self.assertHolidayName(
             name,
+            "2016-07-01",
+            "2017-06-23",
+            "2018-06-08",
+            "2019-05-31",
             "2020-05-22",
             "2021-05-07",
             "2022-04-29",

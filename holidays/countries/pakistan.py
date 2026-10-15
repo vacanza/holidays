@@ -168,7 +168,7 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://dps.psx.com.pk/download/attachment/268947-1.pdf
-    JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2020, 2026)
+    JUMUATUL_WIDA_DATES_CONFIRMED_YEARS = (2016, 2026)
     JUMUATUL_WIDA_DATES = {
         2026: (MAR, 20),
     }

@@ -17,26 +17,39 @@ from holidays.helpers import tr
 class PakistanStockExchange(Pakistan):
     """Pakistan Stock Exchange (PSX) holidays.
 
-    PSX follows the Pakistan public holiday calendar and is also closed on Juma-tul-Wida,
+    PSX follows the Pakistan public holiday calendar and is also closed on Jumu'atul-Wida,
     the last Friday of Ramadan, which isn't a federal public holiday.
 
     References:
-        * [Calendar Holidays](https://web.archive.org/web/20261009171342/https://www.psx.com.pk/psx/exchange/general/calendar-holidays)
+        * [PSX/N-351 Holiday Calendar 2016](https://dps.psx.com.pk/download/attachment/75591-1.pdf)
+        * [PSX/N-458 Holiday Calendar 2018](https://dps.psx.com.pk/download/attachment/108910-1.pdf)
+        * [PSX/N-88 Holiday Calendar 2019](https://dps.psx.com.pk/download/attachment/125038-1.pdf)
+        * [PSX/N-1596 Holiday Calendar 2020](https://dps.psx.com.pk/download/attachment/140396-1.pdf)
+        * [PSX/N-1381 Holiday Calendar 2021](https://dps.psx.com.pk/download/attachment/158530-1.pdf)
         * [PSX/N-59 Holiday Calendar 2022](https://dps.psx.com.pk/download/attachment/180241-1.pdf)
+        * [PSX/N-1313 Holiday Calendar 2023](https://dps.psx.com.pk/download/attachment/199827-1.pdf)
+        * [PSX/N-1311 Holiday Calendar 2024](https://dps.psx.com.pk/download/attachment/222892-1.pdf)
+        * [PSX/N-1268 Holiday Calendar 2025](https://dps.psx.com.pk/download/attachment/244903-1.pdf)
         * [PSX/N-89 Holiday Calendar 2026](https://dps.psx.com.pk/download/attachment/268947-1.pdf)
 
-    Historical data (Juma-tul-Wida):
-        * [2020](https://web.archive.org/web/20261009171650/https://profit.pakistantoday.com.pk/2020/05/22/psx-to-remain-closed-from-friday-to-wednesday)
-        * [2021](https://web.archive.org/web/20261009171807/https://pkrevenue.com/holiday-notice/)
-        * [2023](https://web.archive.org/web/20261009172257/https://www.thenews.com.pk/latest/1059325-psx-to-remain-closed-on-juma-tul-wida)
-        * [2024](https://web.archive.org/web/20261009171937/https://mettisglobal.news/psx-to-remain-close-on-april-5-on-account-of-juma-tul-wida/)
-        * [2025](https://web.archive.org/web/20261009172003/https://profit.pakistantoday.com.pk/2025/03/20/psx-announces-eid-ul-fitr-holiday-schedule)
+    Historical data (Jumu'atul-Wida):
+        * [2016](https://dps.psx.com.pk/download/attachment/83332-1.pdf)
+        * [2017](https://dps.psx.com.pk/download/attachment/100101-1.pdf)
+        * [2018](https://dps.psx.com.pk/download/attachment/115114-1.pdf)
+        * [2019](https://dps.psx.com.pk/download/attachment/131307-1.pdf)
+        * [2020](https://dps.psx.com.pk/download/attachment/148004-1.pdf)
+        * [2021](https://dps.psx.com.pk/download/attachment/166699-1.pdf)
+        * [2022](https://dps.psx.com.pk/download/attachment/185742-1.pdf)
+        * [2023](https://dps.psx.com.pk/download/attachment/205531-1.pdf)
+        * [2024](https://dps.psx.com.pk/download/attachment/228365-1.pdf)
+        * [2025](https://dps.psx.com.pk/download/attachment/249862-1.pdf)
+        * [2026](https://dps.psx.com.pk/download/attachment/272674-1.pdf)
     """
 
     country = None  # type: ignore[assignment]
     market = "XKAR"
     parent_entity = Pakistan
-    start_year = 2020
+    start_year = 2016
 
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
