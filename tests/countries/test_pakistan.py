@@ -24,32 +24,35 @@ class TestPakistan(CommonCountryTests, TestCase):
         cls.no_estimated_holidays = Pakistan(years=years, islamic_show_estimated=False)
 
     def test_special_holidays(self):
-        self.assertHoliday(
+        self.assertHolidayName(
+            "Eid-ul-Fitr",
             "2016-07-05",
-            "2017-09-01",
             "2018-06-15",
-            "2018-07-25",
-            "2018-08-21",
             "2019-06-04",
-            "2019-08-15",
             "2020-05-22",
             "2020-05-23",
             "2020-05-27",
             "2021-05-10",
             "2021-05-11",
             "2021-05-12",
-            "2021-07-20",
             "2022-05-02",
-            "2022-07-08",
-            "2022-07-09",
             "2023-04-21",
             "2023-04-25",
-            "2023-06-28",
-            "2024-02-08",
-            "2025-06-06",
             "2026-03-20",
+        )
+        self.assertHolidayName(
+            "Eid-ul-Adha",
+            "2017-09-01",
+            "2018-08-21",
+            "2019-08-15",
+            "2021-07-20",
+            "2022-07-08",
+            "2022-07-09",
+            "2023-06-28",
+            "2025-06-06",
             "2026-05-26",
         )
+        self.assertHolidayName("General Election Day", "2018-07-25", "2024-02-08")
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
