@@ -46,6 +46,7 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2024-02-05", "Kashmir Solidarity Day"),
+            ("2024-02-08", "General Election Day"),
             ("2024-03-23", "Pakistan Day"),
             ("2024-04-05", "Juma-tul-Wida"),
             ("2024-04-10", "Eid-ul-Fitr"),
@@ -56,8 +57,8 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
             ("2024-06-17", "Eid-ul-Adha"),
             ("2024-06-18", "Eid-ul-Adha"),
             ("2024-06-19", "Eid-ul-Adha"),
-            ("2024-07-15", "Ashura"),
             ("2024-07-16", "Ashura"),
+            ("2024-07-17", "Ashura"),
             ("2024-08-14", "Independence Day"),
             ("2024-09-17", "Eid Milad-un-Nabi"),
             ("2024-11-09", "Iqbal Day"),
@@ -68,6 +69,7 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2024-02-05", "Kashmir Solidarity Day"),
+            ("2024-02-08", "General Election Day"),
             ("2024-03-23", "Pakistan Day"),
             ("2024-04-05", "Jumu'atul-Wida"),
             ("2024-04-10", "Eid al-Fitr"),
@@ -78,8 +80,8 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
             ("2024-06-17", "Eid al-Adha"),
             ("2024-06-18", "Eid al-Adha"),
             ("2024-06-19", "Eid al-Adha"),
-            ("2024-07-15", "Ashura"),
             ("2024-07-16", "Ashura"),
+            ("2024-07-17", "Ashura"),
             ("2024-08-14", "Independence Day"),
             ("2024-09-17", "Prophet's Birthday"),
             ("2024-11-09", "Iqbal Day"),
@@ -90,6 +92,7 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "ur_PK",
             ("2024-02-05", "یوم یکجہتی کشمیر"),
+            ("2024-02-08", "عام انتخابات کا دن"),
             ("2024-03-23", "یوم پاکستان"),
             ("2024-04-05", "جمعۃ الوداع"),
             ("2024-04-10", "عید الفطر"),
@@ -100,8 +103,8 @@ class TestPakistanStockExchange(CommonFinancialTests, TestCase):
             ("2024-06-17", "عید الاضحی"),
             ("2024-06-18", "عید الاضحی"),
             ("2024-06-19", "عید الاضحی"),
-            ("2024-07-15", "عاشورہ"),
             ("2024-07-16", "عاشورہ"),
+            ("2024-07-17", "عاشورہ"),
             ("2024-08-14", "یوم آزادی"),
             ("2024-09-17", "عید میلاد النبی"),
             ("2024-11-09", "یوم اقبال"),
