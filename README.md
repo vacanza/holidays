@@ -1983,7 +1983,7 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, mr, te</td>
 <td></td>
 </tr>
 <tr>
@@ -2074,7 +2074,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, mr, te</td>
 <td></td>
 </tr>
 <tr>
@@ -2096,6 +2096,13 @@ code when available. The following financial markets are available:
 <td>XKAR</td>
 <td>Pakistan Stock Exchange (PSX) market holidays</td>
 <td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Saudi Exchange</td>
+<td>XSAU</td>
+<td>Saudi Exchange (Tadawul) market holidays</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>

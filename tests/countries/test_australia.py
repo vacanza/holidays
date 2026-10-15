@@ -663,6 +663,7 @@ class TestAustralia(CommonCountryTests, TestCase):
             "NT": 2024,
             "QLD": 2017,
             "SA": 2024,
+            "TAS": 2027,
             "VIC": 2016,
             "WA": 2022,
         }
@@ -1823,8 +1824,12 @@ class TestAustralia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "NT":
                 self.assertHolidayName(
+                    name, holidays, (f"{year}-05-01" for year in range(1958, 1963))
+                )
+                self.assertHolidayName(
                     name,
                     holidays,
+                    "1963-05-06",
                     "2020-05-04",
                     "2021-05-03",
                     "2022-05-02",
@@ -1832,7 +1837,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                     "2024-05-06",
                     "2025-05-05",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayName(name, holidays, range(1963, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1958))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -1845,6 +1851,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
+                    "1982-08-02",
+                    "1983-08-01",
                     "2020-08-03",
                     "2021-08-02",
                     "2022-08-01",
@@ -1852,7 +1860,8 @@ class TestAustralia(CommonCountryTests, TestCase):
                     "2024-08-05",
                     "2025-08-04",
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertHolidayName(name, holidays, range(1982, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1982))
             else:
                 self.assertNoHolidayName(name, holidays)
 
