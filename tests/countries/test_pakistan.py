@@ -52,7 +52,11 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2025-06-06",
             "2026-05-26",
         )
-        self.assertHolidayName("General Election Day", "2018-07-25", "2024-02-08")
+        self.assertHolidayName(
+            "General Election Day",
+            "2018-07-25",
+            "2024-02-08",
+        )
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
