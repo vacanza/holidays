@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.106\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
 "PO-Revision-Date: 2026-10-05 21:42+0530\n"
@@ -38,6 +38,26 @@ msgstr ""
 
 #. Friday after Ascension Day.
 msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr ""
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr ""
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr ""
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr ""
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr ""
+
+#. Summer Break.
+msgid "Zomervakantie"
 msgstr ""
 
 #. New Year's Day.
@@ -86,26 +106,6 @@ msgstr ""
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"
-msgstr ""
-
-#. Christmas Break.
-msgid "Kerstvakantie"
-msgstr ""
-
-#. Carnival Break.
-msgid "Krokusvakantie"
-msgstr ""
-
-#. Easter Break.
-msgid "Paasvakantie"
-msgstr ""
-
-#. Summer Break.
-msgid "Zomervakantie"
-msgstr ""
-
-#. Autumn Break.
-msgid "Herfstvakantie"
 msgstr ""
 
 #. Mardi Gras.

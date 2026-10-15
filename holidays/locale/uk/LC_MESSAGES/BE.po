@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.106\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
 "PO-Revision-Date: 2026-10-05 21:42+0530\n"
@@ -39,6 +39,26 @@ msgstr "Вознесіння Господнє"
 #. Friday after Ascension Day.
 msgid "Vrijdag na O. L. H. Hemelvaart"
 msgstr "Пʼятниця після Вознесіння Господнього"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Осінні канікули"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Різдвяні канікули"
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr "Карнавальні канікули"
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr "Пасхальні канікули"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Літні канікули"
 
 #. New Year's Day.
 msgid "Nieuwjaar"
@@ -87,26 +107,6 @@ msgstr "Страсна пʼятниця"
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Банківський вихідний"
-
-#. Christmas Break.
-msgid "Kerstvakantie"
-msgstr "Різдвяні канікули"
-
-#. Carnival Break.
-msgid "Krokusvakantie"
-msgstr "Карнавальні канікули"
-
-#. Easter Break.
-msgid "Paasvakantie"
-msgstr "Пасхальні канікули"
-
-#. Summer Break.
-msgid "Zomervakantie"
-msgstr "Літні канікули"
-
-#. Autumn Break.
-msgid "Herfstvakantie"
-msgstr "Осінні канікули"
 
 #. Mardi Gras.
 msgid "Vastenavond"
