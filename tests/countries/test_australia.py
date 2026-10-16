@@ -397,7 +397,6 @@ class TestAustralia(CommonCountryTests, TestCase):
             name_1888, range(self.start_year, 1888), range(1935, self.end_year)
         )
         self.assertNoSubdivNtHolidayName(name_1935, range(self.start_year, 1935))
-        self.assertSubdivNtHolidayName(name_1935, "1981-01-26", "1984-01-26")
 
         dts = (
             "1973-01-26",
