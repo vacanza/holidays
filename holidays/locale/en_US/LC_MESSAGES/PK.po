@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.70\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
-"PO-Revision-Date: 2025-04-08 04:13+0200\n"
-"Last-Translator: Wasif Shahzad <wasif_shahzad_1@outlook.com>\n"
+"PO-Revision-Date: 2026-10-15 19:34+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -76,3 +76,7 @@ msgstr "Prophet's Birthday"
 #. Ashura.
 msgid "Ashura"
 msgstr "Ashura"
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr "General Election Day"
