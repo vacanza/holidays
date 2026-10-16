@@ -26,6 +26,13 @@ class TestPakistan(CommonCountryTests, TestCase):
     def test_special_holidays(self):
         self.assertHolidayName(
             "Eid-ul-Fitr",
+            "2007-10-16",
+            "2008-10-01",
+            "2010-09-13",
+            "2011-09-03",
+            "2014-08-01",
+            "2015-07-20",
+            "2015-07-21",
             "2016-07-05",
             "2018-06-15",
             "2019-06-04",
@@ -42,6 +49,10 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(
             "Eid-ul-Adha",
+            "2008-12-08",
+            "2009-11-27",
+            "2012-10-29",
+            "2013-10-18",
             "2017-09-01",
             "2018-08-21",
             "2019-08-15",
@@ -54,9 +65,12 @@ class TestPakistan(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(
             "General Election Day",
+            "2008-02-18",
             "2018-07-25",
             "2024-02-08",
         )
+        self.assertHolidayName("Benazir Bhutto's Martyrdom Day", "2008-12-27")
+        self.assertHolidayName("Youm-e-Ishq-e-Rasool", "2012-09-21")
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
