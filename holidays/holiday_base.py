@@ -1487,9 +1487,5 @@ class HolidaySum(HolidayBase):
         for operand in self.holidays:
             if year not in operand.years:
                 operand.years.add(year)
-                try:
-                    operand._populate(year)
-                except Exception:
-                    operand.years.discard(year)
-                    raise
+                operand._populate(year)
             self.update(cast("dict[DateLike, str]", operand))
