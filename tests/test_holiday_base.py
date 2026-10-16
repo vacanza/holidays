@@ -718,6 +718,8 @@ class TestHolidaySum(TestCase):
         self.assertNotIn("2021-08-10", hb_combined)
         self.assertNotIn("2021-08-10", jp)
         self.assertSetEqual(jp.years, {2021})
+        self.assertNotIn("2024-05-07", hb_combined)
+        self.assertNotIn("2024-05-07", jp)
 
     def test_add_populate_error(self):
         jp = JP(years=2021)
