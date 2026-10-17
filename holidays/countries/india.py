@@ -348,8 +348,9 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        # Dussehra.
-        self._add_dussehra(tr("Dussehra"))
+        if self._normalized_subdiv != "KL":
+            # Dussehra.
+            self._add_dussehra(tr("Dussehra"))
 
         # Diwali.
         self._add_diwali_india(tr("Diwali (Deepavali)"))
@@ -1233,10 +1234,18 @@ class India(
         }
         # Mahanavami.
         name = tr("Mahanavami")
-        if dt := mahanavami_dates.get(self._year):
+        mahanavami_dt = (
             self._add_holiday(name, dt)
+            if (dt := mahanavami_dates.get(self._year))
+            else self._add_maha_navami(name)
+        )
+
+        # Vijayadashami.
+        name = tr("Vijayadashami")
+        if dt := mahanavami_dates.get(self._year):
+            self._add_holiday(name, _timedelta(mahanavami_dt, +1))
         else:
-            self._add_maha_navami(name)
+            self._add_dussehra(name)
 
     def _populate_subdiv_kl_optional_holidays(self):
         # Hindu holidays.
@@ -2131,10 +2140,18 @@ class India(
         }
         # Mahanavami.
         name = tr("Mahanavami")
-        if dt := mahanavami_dates.get(self._year):
+        mahanavami_dt = (
             self._add_holiday(name, dt)
+            if (dt := mahanavami_dates.get(self._year))
+            else self._add_maha_navami(name)
+        )
+
+        # Vijayadashami.
+        name = tr("Vijayadashami")
+        if dt := mahanavami_dates.get(self._year):
+            self._add_holiday(name, _timedelta(mahanavami_dt, +1))
         else:
-            self._add_maha_navami(name)
+            self._add_dussehra(name)
 
         # Kali Puja.
         self._add_kali_puja(tr("Kali Puja"))

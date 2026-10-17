@@ -295,6 +295,7 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_dussehra(self):
         name = "Dussehra"
+        name_vijayadashami = "Vijayadashami"
         dts = (
             "2020-10-25",
             "2021-10-15",
@@ -304,6 +305,13 @@ class TestIndia(CommonCountryTests, TestCase):
             "2025-10-02",
         )
         self._assertHinduHolidayHelper(name, dts)
+        # SUBDIVS.
+        self.assertNoHolidayName(name_vijayadashami)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv in {"KL", "WB"}:
+                self.assertHolidayName(name_vijayadashami, holidays, dts)
+            else:
+                self.assertNoHolidayName(name_vijayadashami, holidays)
 
     def test_diwali(self):
         name = "Diwali (Deepavali)"
@@ -2728,7 +2736,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Ayudha Puja; Durgashtami; Dussehra (Mahanavami); Dussehra (Mahashtami); "
                 "Mahanavami; Mahashtami",
             ),
-            ("2018-10-19", "Dussehra"),
+            ("2018-10-19", "Dussehra; Vijayadashami"),
             (
                 "2018-10-24",
                 "Maharaj Ajmodh Dev's Jayanti; Maharshi Valmiki's Jayanti; Sant Guru Tekchand "
@@ -3101,7 +3109,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "Ayudha Puja; Durgashtami; Dussehra (Mahanavami); Dussehra (Mahashtami); "
                 "Mahanavami; Mahashtami",
             ),
-            ("2018-10-19", "Dussehra"),
+            ("2018-10-19", "Dussehra; Vijayadashami"),
             (
                 "2018-10-24",
                 "Maharaj Ajmodh Dev's Birthday; Maharishi Valmiki's Birthday; Sant Guru Tekchand "
@@ -3282,7 +3290,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-10", "મહારાજા અગ્રસેન જયંતિ; મેરા ચાઓરેન હૌબા; શારદ નવરાત્રી"),
             ("2018-10-16", "દશેરા (સપ્તમી); બાબા બંદા સિંહ બહાદુર જયંતિ; મહાસપ્તમી"),
             ("2018-10-17", "આયુધ પૂજા; દશેરા (મહાનવમી); દશેરા (મહાષ્ટમી); દુર્ગાષ્ટમી; મહાનવમી; મહાષ્ટમી"),
-            ("2018-10-19", "દશેરા"),
+            ("2018-10-19", "દશેરા; વિજયાદશમી"),
             (
                 "2018-10-24",
                 "મહર્ષિ વાલ્મિકી જયંતિ; મહારાજ અજમોઢ દેવ જયંતિ; સંત ગુરુ ટેકચંદ મહારાજ સમાધિ ઉત્સવ",
@@ -3452,7 +3460,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-10-17",
                 "आयुध पूजा; दशहरा (महानवमी); दशहरा (महाष्टमी); दुर्गाष्टमी; महानवमी; महाष्टमी",
             ),
-            ("2018-10-19", "दशहरा"),
+            ("2018-10-19", "दशहरा; विजयादशमी"),
             (
                 "2018-10-24",
                 "महर्षि वाल्मीकि जयंती; महाराज अजमोढ़ देव जयंती; संत गुरु टेकचंद महाराज समाधि उत्सव",
@@ -3786,7 +3794,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-10", "മഹാരാജ അഗ്രസേൻ ജയന്തി; മേര ചാവോറെൻ ഹൗബ; ശാരദ നവരാത്രി"),
             ("2018-10-16", "ദസറ (സപ്തമി); ബാബാ ബന്ദാ സിംഗ് ബഹാദൂർ ജയന്തി; മഹാസപ്തമി"),
             ("2018-10-17", "ആയുധ പൂജ; ദസറ (മഹാനവമി); ദസറ (മഹാഷ്ടമി); ദുർഗാഷ്ടമി; മഹാനവമി; മഹാഷ്ടമി"),
-            ("2018-10-19", "ദശര"),
+            ("2018-10-19", "ദശര; വിജയദശമി"),
             (
                 "2018-10-24",
                 "മഹാരാജ് അജ്മോഢ് ദേവ് ജയന്തി; മഹർഷി വാൽമീകി ജയന്തി; സന്ത് ഗുരു ടെക്ചന്ദ് മഹാരാജ് സമാധി ഉത്സവം",
@@ -3956,7 +3964,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-10", "महाराज अग्रसेन जयंती; मेरा चाओरेन हौबा; शारदीय नवरात्र"),
             ("2018-10-16", "दसरा (सप्तमी); बाबा बंदा सिंह बहादूर जयंती; महासप्तमी"),
             ("2018-10-17", "आयुध पूजा; दसरा (महानवमी); दसरा (महाष्टमी); दुर्गाष्टमी; महानवमी; महाष्टमी"),
-            ("2018-10-19", "दसरा"),
+            ("2018-10-19", "दसरा; विजयादशमी"),
             (
                 "2018-10-24",
                 "महर्षी वाल्मिकी जयंती; महाराज अजमोढ देव जयंती; संत गुरू टेकचंद महाराज समाधी उत्सव",
@@ -4132,7 +4140,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 "2018-10-17",
                 "ਆਯੁਧ ਪੂਜਾ; ਦੁਰਗਾਸ਼ਟਮੀ; ਦੁਸਹਿਰਾ (ਮਹਾਅਸ਼ਟਮੀ); ਦੁਸਹਿਰਾ (ਮਹਾਨਵਮੀ); ਮਹਾਅਸ਼ਟਮੀ; ਮਹਾਨਵਮੀ",
             ),
-            ("2018-10-19", "ਦੁਸਹਿਰਾ"),
+            ("2018-10-19", "ਦੁਸਹਿਰਾ; ਵਿਜਯਾਦਸ਼ਮੀ"),
             (
                 "2018-10-24",
                 "ਮਹਾਰਾਜ ਅਜਮੋਢ ਦੇਵ ਜਯੰਤੀ; ਮਹਾਰਿਸ਼ੀ ਵਾਲਮੀਕੀ ਜਯੰਤੀ; ਸੰਤ ਗੁਰੂ ਟੇਕਚੰਦ ਮਹਾਰਾਜ ਸਮਾਧੀ ਉਤਸਵ",

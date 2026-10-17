@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-10-10 13:55+0530\n"
+"PO-Revision-Date: 2026-10-17 08:36+0530\n"
 "Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -668,6 +668,10 @@ msgstr "ओणम (तीसरा दिन)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ओणम (चौथा दिन)"
+
+#. Vijayadashami.
+msgid "Vijayadashami"
+msgstr "विजयादशमी"
 
 #. Chhatrapati Shivaji Maharaj's Birthday.
 msgid "Chhatrapati Shivaji Maharaj's Jayanti"
