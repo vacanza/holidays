@@ -8,6 +8,7 @@ function holidayDownloads() {
     manifest: {},
     fetchMode: null,
     remoteBaseUrl: 'https://vacanza.github.io/holidays/downloads/',
+    requestGeneration: 0,
 
     // Selection
     type: 'countries',
@@ -21,7 +22,6 @@ function holidayDownloads() {
     showCalendarList: false,
     calendarRows: [],
     showPreview: false,
-    previewData: [],
     previewRows: [],
     previewTotal: 0,            // events actually shown
     previewAvailableTotal: 0,   // events available before the cap
@@ -95,7 +95,7 @@ function holidayDownloads() {
         const data = this.currentManifest[entity] || {};
         (data.categories || ['public']).forEach(category => categories.add(category));
       });
-      return [...categories].sort();
+      return [...categories].sort((a, b) => a.localeCompare(b));
     },
 
     get availableLanguages() {
@@ -117,21 +117,11 @@ function holidayDownloads() {
       const data = this.currentManifest[this.selectedEntities[0]] || {};
       const subs = data.subdivisions || {};
 
-      const list = Object.entries(subs).map(([code, name]) => ({
-        code,
-        name: typeof name === 'string' ? name : (name?.name || code)
-      }));
-
-      if (!list.some(sub => sub.code === 'ALL')) {
-        list.unshift({ code: 'ALL', name: 'Entire Country' });
-      }
-
-      const allOption = list.find(sub => sub.code === 'ALL');
-      const rest = list
-        .filter(sub => sub.code !== 'ALL')
+      const subdivisions = Object.entries(subs)
+        .map(([code, name]) => ({ code, name }))
         .sort((a, b) => a.name.localeCompare(b.name));
 
-      return [allOption, ...rest];
+      return [{ code: 'ALL', name: 'Entire Country' }, ...subdivisions];
     },
 
     get showSubdivisionPicker() {
@@ -143,7 +133,7 @@ function holidayDownloads() {
 
     formatLabel(str) {
       if (!str) return '';
-      return str.charAt(0).toUpperCase() + str.slice(1).replace(/_/g, ' ');
+      return str.charAt(0).toUpperCase() + str.slice(1).replaceAll('_', ' ');
     },
 
     _getLanguage(entity) {
@@ -164,7 +154,7 @@ function holidayDownloads() {
 
     _getWebcalUrl(entity, category) {
       const path = this._getRelativePath(entity, category, 'ics');
-      const url = this.fetchMode === 'remote' ? this.remoteBaseUrl + path : path;
+      const url = this.remoteBaseUrl + path;
       return url.replace(/^https?:\/\//, 'webcal://');
     },
 
@@ -210,13 +200,13 @@ function holidayDownloads() {
       this.selectedCategories = this.selectedCategories.filter(c => available.includes(c));
 
       if (this.selectedCategories.length === 0 && available.length > 0) {
-        this.selectedCategories = [available[0]];
+        this.selectedCategories = [available.includes('public') ? 'public' : available[0]];
       }
     },
 
     _resetResults() {
+      this.requestGeneration++;
       this.calendarRows = [];
-      this.previewData = [];
       this.previewRows = [];
       this.previewTotal = 0;
       this.previewAvailableTotal = 0;
@@ -233,7 +223,7 @@ function holidayDownloads() {
         this.selectedEntities.length > 0 && this.selectedCategories.length > 0;
 
       if (hasResults && hasSelection) {
-        this.listCalendars();
+        void this.listCalendars();
       } else {
         this._resetResults();
       }
@@ -267,7 +257,7 @@ function holidayDownloads() {
 
     _filterEventsByYearRange(events, startYear, endYear) {
       return (events || []).filter(event => {
-        const year = parseInt(String(event.date).slice(0, 4), 10);
+        const year = Number.parseInt(String(event.date).slice(0, 4), 10);
         return year >= startYear && year <= endYear;
       });
     },
@@ -287,10 +277,10 @@ function holidayDownloads() {
 
       const rows = [];
 
-      Object.keys(grouped).sort().forEach(region => {
+      Object.keys(grouped).sort((a, b) => a.localeCompare(b)).forEach(region => {
         rows.push({ type: 'region', label: region });
 
-        Object.keys(grouped[region]).sort().forEach(year => {
+        Object.keys(grouped[region]).sort((a, b) => a.localeCompare(b)).forEach(year => {
           rows.push({ type: 'year', label: year });
 
           grouped[region][year]
@@ -317,7 +307,7 @@ function holidayDownloads() {
         byRegion.get(region).push(event);
       });
 
-      const sortedRegions = [...byRegion.keys()].sort();
+      const sortedRegions = [...byRegion.keys()].sort((a, b) => a.localeCompare(b));
       const kept = [];
       let truncated = false;
 
@@ -342,76 +332,104 @@ function holidayDownloads() {
       return { events: kept, truncated };
     },
 
-    async loadPreview() {
+    async loadPreview(gen = ++this.requestGeneration) {
       if (!this.selectedEntities.length || !this.selectedCategories.length) {
-        this.previewData = [];
-        this.previewRows = [];
-        this.previewTotal = 0;
-        this.previewAvailableTotal = 0;
-        this.previewRegionCount = 0;
-        this.previewAvailableRegions = 0;
-        this.previewTruncated = false;
-        this.showPreview = false;
-        return;
+        this._resetResults();
+        return new Set();
       }
 
-      const allEvents = [];
+      const pairsWithEvents = new Set();
+      const fetchPromises = [];
 
       for (const entity of this.selectedEntities) {
+        const entityLabel = this._getEntityLabel(entity);
         const data = this.currentManifest[entity] || {};
-        const subdivName = data.subdivisions?.[this.selectedSubdiv];
-        const subdivLabel =
-          this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
-            ? ` - ${subdivName}`
-            : '';
-        const entityLabel = (data.name || entity) + subdivLabel;
+        const supported = data.categories || ['public'];
 
         for (const category of this.selectedCategories) {
-          try {
-            const path = this._getRelativePath(entity, category, 'json');
-            const response = await this._fetchFile(path);
-            if (!response.ok) continue;
+          if (!supported.includes(category)) continue;
 
-            const events = await response.json();
-            const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
-
-            filtered.forEach(event => {
-              event._entity = entityLabel;
-              event._category = category;
-            });
-
-            allEvents.push(...filtered);
-          } catch (e) {
-            console.warn(`Could not load preview for ${entity}/${category}`, e);
-          }
+          fetchPromises.push(
+            this._fetchCategoryEvents(
+              entity,
+              category,
+              entityLabel,
+              gen,
+              pairsWithEvents
+            )
+          );
         }
       }
 
-      // Dedupe - events often appear in multiple category files.
+      const results = await Promise.all(fetchPromises);
+      if (this.requestGeneration !== gen) return new Set();
+
+      const allEvents = results.flat();
+
+      const deduped = this._dedupeEvents(allEvents);
+      const availableRegions = new Set(deduped.map(e => e._entity));
+      const { events, truncated } = this._limitByRegion(deduped, PREVIEW_LIMIT);
+
+      if (this.requestGeneration !== gen) return new Set();
+
+      this.previewAvailableTotal = deduped.length;
+      this.previewAvailableRegions = availableRegions.size;
+      this.previewTotal = events.length;
+      this.previewRegionCount = new Set(events.map(e => e._entity)).size;
+      this.previewTruncated = truncated;
+      this.previewRows = this._buildPreviewRows(events);
+      this.showPreview = this.previewRows.length > 0;
+
+      return pairsWithEvents;
+    },
+
+    _getEntityLabel(entity) {
+      const data = this.currentManifest[entity] || {};
+      const subdivName = data.subdivisions?.[this.selectedSubdiv];
+      const subdivLabel =
+        this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
+          ? ` - ${subdivName}`
+          : '';
+      return (data.name || entity) + subdivLabel;
+    },
+
+    async _fetchCategoryEvents(entity, category, entityLabel, gen, pairsWithEvents) {
+      try {
+        const path = this._getRelativePath(entity, category, 'json');
+        const response = await this._fetchFile(path);
+        if (this.requestGeneration !== gen || !response.ok) return [];
+
+        const events = await response.json();
+        if (this.requestGeneration !== gen) return [];
+        const filtered = this._filterEventsByYearRange(events, this.startYear, this.endYear);
+
+        if (filtered.length > 0) {
+          pairsWithEvents.add(`${entity}|${category}`);
+        }
+
+        filtered.forEach(event => {
+          event._entity = entityLabel;
+        });
+
+        return filtered;
+      } catch (e) {
+        if (this.requestGeneration !== gen) return [];
+        console.warn(`Could not load preview for ${entity}/${category}`, e);
+        return [];
+      }
+    },
+
+    _dedupeEvents(events) {
       const seen = new Set();
       const deduped = [];
-      for (const event of allEvents) {
+      for (const event of events) {
         const key = `${event._entity}|${event.date}|${event.name}`;
         if (!seen.has(key)) {
           seen.add(key);
           deduped.push(event);
         }
       }
-
-      deduped.sort((a, b) => a.date.localeCompare(b.date));
-
-      const availableRegions = new Set(deduped.map(e => e._entity));
-      this.previewAvailableTotal = deduped.length;
-      this.previewAvailableRegions = availableRegions.size;
-
-      const { events, truncated } = this._limitByRegion(deduped, PREVIEW_LIMIT);
-
-      this.previewData = events;
-      this.previewTotal = events.length;
-      this.previewRegionCount = new Set(events.map(e => e._entity)).size;
-      this.previewTruncated = truncated;
-      this.previewRows = this._buildPreviewRows(events);
-      this.showPreview = this.previewRows.length > 0;
+      return deduped.sort((a, b) => a.date.localeCompare(b.date));
     },
 
     // --- Downloads ---
@@ -422,60 +440,37 @@ function holidayDownloads() {
         return;
       }
 
-      await this.loadPreview();
+      const gen = ++this.requestGeneration;
+
+      const pairsWithEvents = await this.loadPreview(gen);
+      if (this.requestGeneration !== gen) return;
 
       this.calendarRows = this.selectedEntities.map(entity => {
         const data = this.currentManifest[entity] || {};
         const language = this._getLanguage(entity);
         const supported = data.categories || ['public'];
 
-        const subdivName = data.subdivisions?.[this.selectedSubdiv];
-        const subdivLabel =
-          this.selectedEntities.length === 1 && this.selectedSubdiv !== 'ALL' && subdivName
-            ? ` - ${subdivName}`
-            : '';
-
         return {
           entity,
-          name: (data.name || entity) + subdivLabel,
+          name: this._getEntityLabel(entity),
           languageName: this._getLanguageName(entity, language),
           calendars: this.selectedCategories.map(category => {
-            const candidate = supported.includes(category);
+            const hasEvents =
+              supported.includes(category) &&
+              pairsWithEvents.has(`${entity}|${category}`);
             return {
               category,
-              available: candidate,
-              checking: candidate,
+              available: hasEvents,
               icsDownloading: false,
               jsonDownloading: false,
               error: false,
-              webcal: ''
+              webcal: hasEvents ? this._getWebcalUrl(entity, category) : ''
             };
           })
         };
       });
 
       this.showCalendarList = true;
-
-      this.calendarRows.forEach(row => {
-        row.calendars.forEach(async cell => {
-          if (!cell.checking) return;
-
-          try {
-            const path = this._getRelativePath(row.entity, cell.category, 'json');
-            const response = await this._fetchFile(path, { method: 'HEAD' });
-
-            if (!response.ok) {
-              cell.available = false;
-            } else {
-              cell.webcal = this._getWebcalUrl(row.entity, cell.category);
-            }
-          } catch (e) {
-            cell.available = false;
-          } finally {
-            cell.checking = false;
-          }
-        });
-      });
     },
 
     async downloadCalendar(entity, category, format) {
@@ -513,7 +508,7 @@ function holidayDownloads() {
 
     _getDownloadFilename(entity, category, format) {
       const data = this.currentManifest[entity] || {};
-      const name = (data.name || entity).replace(/\s+/g, '-');
+      const name = (data.name || entity).replaceAll(/\s+/g, '-');
       const subdiv =
         this.selectedEntities.length === 1 &&
         this.selectedEntities[0] === entity &&
@@ -551,7 +546,7 @@ function holidayDownloads() {
         }
 
         const match = body.match(/DTSTART[^:\r\n]*:(\d{4})/);
-        const year = match ? parseInt(match[1], 10) : null;
+        const year = match ? Number.parseInt(match[1], 10) : null;
 
         if (year !== null && year >= startYear && year <= endYear) {
           kept.push('BEGIN:VEVENT' + body + tail);
@@ -569,7 +564,7 @@ function holidayDownloads() {
       link.download = filename;
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
+      link.remove();
       URL.revokeObjectURL(url);
     }
   };

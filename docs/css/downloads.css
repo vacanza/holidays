@@ -371,9 +371,12 @@
 /* Preview table */
 .table-scroll-area {
   overflow: auto;
-  max-height: 70vh;
+  max-height: 500px;
+  min-height: 200px;
   scrollbar-width: thin;
   width: 100%;
+  border: 1px solid var(--portal-border);
+  border-radius: 6px;
 }
 
 .preview-table {
@@ -397,6 +400,7 @@
 .preview-table td:first-child {
   width: 140px;
   min-width: 140px;
+  white-space: nowrap;
 }
 
 /* Force the Holiday column to fill all remaining table width. */
@@ -418,21 +422,21 @@
   background-color: var(--portal-zebra);
 }
 
-.region-divider td {
-  background-color: var(--portal-primary) !important;
-  color: white !important;
+.preview-table tr.region-divider td {
+  background-color: var(--portal-primary);
+  color: white;
   font-weight: 800;
-  padding: 12px 16px !important;
-  border: none !important;
+  padding: 12px 16px;
+  border: none;
   text-align: center;
 }
 
-.year-divider td {
-  background-color: #e8f0fe !important;
-  color: var(--portal-fg) !important;
+.preview-table tr.year-divider td {
+  background-color: #e8f0fe;
+  color: var(--portal-fg);
   font-weight: 700;
-  padding: 8px 16px !important;
-  border: none !important;
+  padding: 8px 16px;
+  border: none;
   font-size: 0.85rem;
   text-align: center;
 }
@@ -465,18 +469,6 @@
   border-radius: 12px;
 }
 
-.calendar-preview-section .table-scroll-area {
-  max-height: 500px;
-  min-height: 200px;
-  border: 1px solid var(--portal-border);
-  border-radius: 6px;
-}
-
-.calendar-preview-section .preview-table td:first-child {
-  width: 140px;
-  min-width: 140px;
-  white-space: nowrap;
-}
 
 .preview-truncated {
   margin: 12px 0 0 0;
@@ -592,10 +584,6 @@
   flex-shrink: 0;
 }
 
-.calendar-checking {
-  color: var(--md-default-fg-color--lighter);
-  font-size: 0.9rem;
-}
 
 .calendar-error {
   margin-top: 4px;
@@ -639,7 +627,7 @@
 }
 
 @media (max-width: 600px) {
-  .calendar-preview-section .preview-table td:first-child {
+  .preview-table td:first-child {
     width: 100px;
     min-width: 100px;
     font-size: 0.8rem;
@@ -650,17 +638,17 @@
     font-size: 0.8rem;
   }
 
-  .region-divider td {
+  .preview-table tr.region-divider td {
     font-size: 0.9rem;
-    padding: 8px 10px !important;
+    padding: 8px 10px;
   }
 
-  .year-divider td {
+  .preview-table tr.year-divider td {
     font-size: 0.75rem;
-    padding: 6px 10px !important;
+    padding: 6px 10px;
   }
 
-  .calendar-preview-section .table-scroll-area {
+  .table-scroll-area {
     max-height: 400px;
     min-height: 150px;
   }

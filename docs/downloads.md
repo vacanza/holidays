@@ -135,9 +135,9 @@ hide:
         </select>
       </div>
       <div class="quick-actions" style="margin-top: 10px;">
-        <button class="chip-btn" @click="setRange('current')">This Year</button>
-        <button class="chip-btn" @click="setRange('next3')">Next 3 Years</button>
-        <button class="chip-btn" @click="setRange('all')">All Years</button>
+        <button type="button" class="chip-btn" @click="setRange('current')">This Year</button>
+        <button type="button" class="chip-btn" @click="setRange('next3')">Next 3 Years</button>
+        <button type="button" class="chip-btn" @click="setRange('all')">All Years</button>
       </div>
     </div>
 
@@ -160,7 +160,7 @@ hide:
   </div>
 
   <!-- Main Content Area -->
-  <div class="portal-preview" x-show="!isLoading" x-cloak>
+  <div class="portal-preview" x-cloak>
 
     <!-- Loading State -->
     <div x-show="isLoading" class="loading-state">
@@ -243,10 +243,7 @@ hide:
                 </td>
                 <template x-for="calendar in row.calendars" :key="calendar.category">
                   <td>
-                    <template x-if="calendar.checking">
-                      <span class="calendar-checking">…</span>
-                    </template>
-                    <template x-if="!calendar.checking && calendar.available">
+                    <template x-if="calendar.available">
                       <div class="calendar-links">
                         <button type="button" @click="downloadCalendar(row.entity, calendar.category, 'ics')" :disabled="calendar.icsDownloading">
                           <span x-text="calendar.icsDownloading ? '…' : 'ICS'"></span>
@@ -260,7 +257,7 @@ hide:
                         <div x-show="calendar.error" class="calendar-error">Download failed, try again.</div>
                       </div>
                     </template>
-                    <template x-if="!calendar.checking && !calendar.available">
+                    <template x-if="!calendar.available">
                       <span class="calendar-unavailable">-</span>
                     </template>
                   </td>
