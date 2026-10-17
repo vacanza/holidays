@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAY, JUN, OCT, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_PREV_FRI,
@@ -79,8 +78,8 @@ class BritishVirginIslands(
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
         # Sovereign's Birthday.
         name = tr("Sovereign's Birthday")

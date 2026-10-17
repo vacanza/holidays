@@ -11,13 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
@@ -75,8 +75,8 @@ class Ukraine(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Easter Sunday (Pascha).
             dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
-            # Holy Trinity Day.
-            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
+            # Pentecost.
+            dts_observed.add(self._add_pentecost(tr("Трійця")))
 
             name = (
                 # Labor Day.
@@ -218,7 +218,7 @@ class UkraineStaticHolidays:
         * [1995](https://web.archive.org/web/20220713111605/https://zakon.rada.gov.ua/laws/show/13/95)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Вихідний день (перенесено з %s)")

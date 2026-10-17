@@ -178,6 +178,22 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2025-06-09",
             "2025-08-18",
             "2025-12-26",
+            "2026-02-16",
+            "2026-03-18",
+            "2026-03-20",
+            "2026-03-23",
+            "2026-03-24",
+            "2026-05-15",
+            "2026-05-28",
+            "2026-12-24",
+            "2027-02-05",
+            "2027-03-09",
+            "2027-03-12",
+            "2027-03-15",
+            "2027-03-25",
+            "2027-05-18",
+            "2027-05-19",
+            "2027-12-24",
         )
         obs_dts = ("2020-12-31",)
         self.assertGovernmentHoliday(dts, obs_dts)
@@ -464,16 +480,17 @@ class TestIndonesia(CommonCountryTests, TestCase):
     def test_nuzul_al_quran(self):
         name = "Nuzululqur'an"
         self.assertHoliday(
-            "1953-05-30",
+            "1953-05-31",
             "1954-05-20",
             "1955-05-10",
-            "1956-04-28",
-            "1957-04-17",
-            "1958-04-06",
+            "1956-04-29",
+            "1957-04-18",
+            "1958-04-07",
             "1959-03-27",
             "1960-03-15",
-            "1961-03-04",
-            "1962-02-21",
+            "1961-03-05",
+            "1962-02-22",
+            "1963-02-12",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1953, 1964))
         self.assertNoIslamicNoEstimatedHolidayName(

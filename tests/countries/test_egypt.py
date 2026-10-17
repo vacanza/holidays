@@ -347,7 +347,7 @@ class TestEgypt(CommonCountryTests, TestCase):
             ("2024-04-25", "Sinai Liberation Day"),
             ("2024-05-05", "Labor Day (observed)"),
             ("2024-05-06", "Spring Festival"),
-            ("2024-06-15", "Arafat Day"),
+            ("2024-06-15", "Day of Arafah"),
             ("2024-06-16", "Eid al-Adha"),
             ("2024-06-17", "Eid al-Adha"),
             ("2024-06-18", "Eid al-Adha; Evacuation Day"),

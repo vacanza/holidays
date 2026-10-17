@@ -11,12 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAY, JUL, AUG, SEP, FRI, SAT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -51,7 +51,7 @@ class Sudan(HolidayBase, ChristianHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         # Independence Day.
-        self._add_holiday_jan_1(tr("عيد الإستقلال"))
+        self._add_holiday_jan_1(tr("عيد الاستقلال"))
 
         # Christian public holidays were suspended 2011-2018 and reinstated in 2019.
         if self._year <= 2010 or self._year >= 2019:

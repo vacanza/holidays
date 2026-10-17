@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_PREV_FRI,
@@ -50,7 +49,7 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Eerste paasdag"))
@@ -82,8 +81,8 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Eerste Pinksterdag"))
+        # Pentecost.
+        self._add_pentecost(tr("Eerste pinksterdag"))
 
         # Established on June 13th, 2012.
         if self._year >= 2012:
@@ -104,10 +103,10 @@ class SintMaarten(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             self._move_holiday(self._add_holiday_dec_15(tr("Koninkrijksdag")))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Eerste Kerstdag"))
+        self._add_christmas_day(tr("Eerste kerstdag"))
 
         # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Tweede Kerstdag"))
+        self._add_christmas_day_two(tr("Tweede kerstdag"))
 
 
 class SX(SintMaarten):

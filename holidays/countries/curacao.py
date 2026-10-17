@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -116,8 +115,8 @@ class Curacao(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Presumed to be removed from 2010 onwards.
 
         if self._year <= 2009:
-            # Whit Sunday.
-            self._add_whit_sunday(tr("Domingo di Pentekòstès"))
+            # Pentecost.
+            self._add_pentecost(tr("Domingo di Pentekòstès"))
 
         # Dia di Himno i Bandera.
         # Status: In-Use.

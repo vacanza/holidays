@@ -31,7 +31,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertHolidayName(
             name,
             "2020-04-10",
@@ -151,7 +151,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_sunday(self):
-        name = "Eerste Pinksterdag"
+        name = "Eerste pinksterdag"
         self.assertHolidayName(
             name,
             "2020-05-31",
@@ -164,7 +164,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
-        name = "Tweede Pinksterdag"
+        name = "Tweede pinksterdag"
         self.assertHolidayName(
             name,
             "2020-06-01",
@@ -177,24 +177,24 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_christmas_day(self):
-        self.assertHolidayName("Eerste Kerstdag", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in self.full_range))
 
     def test_second_day_of_christmas(self):
-        self.assertHolidayName("Tweede Kerstdag", (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Nieuwjaarsdag"),
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-04-17", "Eerste paasdag"),
             ("2022-04-18", "Tweede paasdag"),
             ("2022-04-27", "Koningsdag"),
             ("2022-05-05", "Bevrijdingsdag"),
             ("2022-05-26", "Hemelvaartsdag"),
-            ("2022-06-05", "Eerste Pinksterdag"),
-            ("2022-06-06", "Tweede Pinksterdag"),
-            ("2022-12-25", "Eerste Kerstdag"),
-            ("2022-12-26", "Tweede Kerstdag"),
+            ("2022-06-05", "Eerste pinksterdag"),
+            ("2022-06-06", "Tweede pinksterdag"),
+            ("2022-12-25", "Eerste kerstdag"),
+            ("2022-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_en_us(self):
@@ -207,8 +207,8 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-04-27", "King's Day"),
             ("2022-05-05", "Liberation Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-05", "Pentecost"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
         )
@@ -255,8 +255,8 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-04-27", "День короля"),
             ("2022-05-05", "День визволення"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-05", "Пʼятидесятниця"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
         )

@@ -26,19 +26,19 @@ from holidays import (
 from holidays.constants import PUBLIC
 
 
-class TestAuthors(TestCase):
+class TestContributors(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.content = Path("CONTRIBUTORS").read_text(encoding="UTF-8").strip().split("\n")
         super().setUpClass()
 
-    def test_authors_list(self):
-        authors = self.content[1:]
+    def test_contributors_list(self):
+        names = self.content
         self.assertEqual(
-            authors,
-            sorted(authors),
+            names,
+            sorted(names),
             "Contributors list should be sorted alphabetically.\n"
-            + "\n".join((f"{c} != {s}" for c, s in zip(authors, sorted(authors)) if c != s)),
+            + "\n".join((f"{c} != {s}" for c, s in zip(names, sorted(names)) if c != s)),
         )
 
 
@@ -155,8 +155,10 @@ class TestReadme(TestCase):
             supported_categories = row[4]
             if supported_categories:
                 categories = [PUBLIC]
-                for supported_category in supported_categories.split(","):
-                    categories.append(supported_category.strip().lower())
+                categories.extend(
+                    supported_category.strip().lower()
+                    for supported_category in supported_categories.split(",")
+                )
                 country_supported_categories[country_code] = sorted(categories)
 
         # Check the data.
@@ -252,13 +254,7 @@ class TestReadme(TestCase):
 
         # Parse 2nd table.
         table_content = self._parse_table(1)
-        replace_chars = str.maketrans(
-            {
-                " ": "",
-                ",": "",
-                "ã": "a",
-            }
-        )
+        replace_chars = str.maketrans({" ": "", ",": "", "ã": "a", "ñ": "n"})
 
         for row in table_content:
             # Market: 1st column.
@@ -288,8 +284,10 @@ class TestReadme(TestCase):
             supported_categories = row[4]
             if supported_categories:
                 categories = [PUBLIC]
-                for supported_category in supported_categories.split(","):
-                    categories.append(supported_category.strip().lower())
+                categories.extend(
+                    supported_category.strip().lower()
+                    for supported_category in supported_categories.split(",")
+                )
                 market_supported_categories[market_code] = sorted(categories)
 
         # Check the data.

@@ -69,11 +69,11 @@ msgstr ""
 msgid "Nationaldagen"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pingstdagen"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annandag pingst"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "Dag före Midsommarafton"
 msgstr ""
 
-#. Day before Whitsun Eve.
+#. Day before Pentecost Eve.
 msgid "Dag före Pingstafton"
 msgstr ""
 
@@ -153,6 +153,6 @@ msgstr ""
 msgid "Klämdag"
 msgstr ""
 
-#. Whitsun Eve.
+#. Pentecost Eve.
 msgid "Pingstafton"
 msgstr ""

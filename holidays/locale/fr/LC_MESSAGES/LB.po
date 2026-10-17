@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-25 00:00+0000\n"
-"PO-Revision-Date: 2026-03-29 00:00+0000\n"
-"Last-Translator: Osama Alnajar <osama.alnajar.26@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Noël Arménien"
 
 #. Saint Maron's Day.
 msgid "عيد مار مارون"
-msgstr "Saint Maron"
+msgstr "Saint-Maron"
 
 #. Feast of the Annunciation.
 msgid "عيد بشارة السيدة مريم العذراء"
@@ -110,7 +110,7 @@ msgstr "Fête Nationale"
 msgid "عيد الميلاد"
 msgstr "Noël"
 
-#. Islamic New Year.
+#. Islamic New Year Day.
 msgid "عيد رأس السنة الهجرية"
 msgstr "Hégire"
 

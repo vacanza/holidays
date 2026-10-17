@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.87\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-04 16:13+0300\n"
-"PO-Revision-Date: 2025-12-02 18:19+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,6 +27,30 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: de\n"
+
+#. Autumn Break.
+msgid "Herbstferien"
+msgstr "Autumn Break"
+
+#. Christmas Break.
+msgid "Weihnachtsferien"
+msgstr "Christmas Break"
+
+#. Winter Break.
+msgid "Winterferien"
+msgstr "Winter Break"
+
+#. Easter/Spring Break.
+msgid "Oster-/Frühjahrsferien"
+msgstr "Easter/Spring Break"
+
+#. Ascension/Whit Break.
+msgid "Himmelfahrts-/Pfingstferien"
+msgstr "Ascension/Whit Break"
+
+#. Summer Break.
+msgid "Sommerferien"
+msgstr "Summer Break"
 
 #. New Year's Day.
 msgid "Neujahr"
@@ -48,9 +72,9 @@ msgstr "Labor Day"
 msgid "Christi Himmelfahrt"
 msgstr "Ascension Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. German Unity Day.
 msgid "Tag der Deutschen Einheit"
@@ -72,9 +96,9 @@ msgstr "Second Day of Christmas"
 msgid "Ostersonntag"
 msgstr "Easter Sunday"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pfingstsonntag"
-msgstr "Whit Sunday"
+msgstr "Pentecost"
 
 #. Reformation Day.
 msgid "Reformationstag"

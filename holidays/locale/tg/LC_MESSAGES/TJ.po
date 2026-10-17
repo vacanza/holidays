@@ -52,7 +52,7 @@ msgstr ""
 msgid "Рӯзи Ғалаба дар Ҷанги Бузурги Ватанӣ"
 msgstr ""
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Рӯзи Ваҳдати миллӣ"
 msgstr ""
 

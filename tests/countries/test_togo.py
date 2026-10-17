@@ -206,7 +206,7 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2025-05-01", "Labor Day"),
             ("2025-05-29", "Ascension Day"),
             ("2025-06-07", "Eid al-Adha"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-06-21", "Martyrs' Day"),
             ("2025-08-15", "Assumption Day"),
             ("2025-09-24", "Anniversary of the Failed Attack on Lomé"),

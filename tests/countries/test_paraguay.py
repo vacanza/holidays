@@ -109,6 +109,15 @@ class TestParaguay(CommonCountryTests, TestCase):
             "2025-06-16",
         )
 
+    def test_constitution_oath_day(self):
+        name = "Día de la Jura de la Constitución Nacional"
+        self.assertHolidayName(
+            name,
+            (f"{year}-06-20" for year in range(2026, self.end_year) if year not in {2026}),
+            "2026-06-22",
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+
     def test_asuncion_foundations_day(self):
         self.assertHolidayName(
             "Día de la Fundación de Asunción",
@@ -230,7 +239,7 @@ class TestParaguay(CommonCountryTests, TestCase):
             ("2022-05-01", "Workers' Day"),
             ("2022-05-02", "Public sector holiday"),
             ("2022-05-14", "National Holiday"),
-            ("2022-05-15", "Independence Day"),
+            ("2022-05-15", "National Independence Day"),
             ("2022-06-12", "Chaco Armistice Day"),
             ("2022-08-15", "Asuncion Foundation's Day"),
             ("2022-10-03", "Boqueron Battle Day"),
@@ -252,7 +261,7 @@ class TestParaguay(CommonCountryTests, TestCase):
             ("2022-05-01", "День трудящих"),
             ("2022-05-02", "Вихідний державних установ"),
             ("2022-05-14", "Національне свято"),
-            ("2022-05-15", "День незалежності"),
+            ("2022-05-15", "День національної незалежності"),
             ("2022-06-12", "День мирного договору в Чако"),
             ("2022-08-15", "День заснування Асунсьйона"),
             ("2022-10-03", "День битви за Бокерон"),

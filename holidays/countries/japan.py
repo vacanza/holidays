@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     FEB,
@@ -28,6 +27,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 

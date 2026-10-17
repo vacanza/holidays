@@ -79,7 +79,7 @@ msgstr ""
 msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
 msgstr ""
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Milli Müstəqillik Günü"
 msgstr ""
 

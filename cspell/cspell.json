@@ -77,23 +77,6 @@
     "scripts/l10n/**/*",
     "mkdocs.yml"
   ],
-  "ignorePaths": [
-    "node_modules/**",
-    ".git/**",
-    ".venv/**",
-    "__pycache__/**",
-    "*.pyc",
-    "dist/**",
-    "build/**",
-    ".mypy_cache/**",
-    ".pytest_cache/**",
-    "docs/_build/**",
-    "snapshots/**",
-    "*.egg-info/**",
-    ".tox/**",
-    "requirements/*.txt",
-    "cspell/dictionaries/**"
-  ],
   "ignoreRegExpList": [
     "#\\w+",
     "<@\\w+>",

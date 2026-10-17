@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -52,8 +51,8 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfaart"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Péngschtméindeg"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Péngschtméindeg"))
 
         # National Day.
         self._add_holiday_jun_23(tr("Nationalfeierdag"))

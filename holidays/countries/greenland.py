@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,11 +59,11 @@ class Greenland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Qilaliarfik"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Piinsip ullua"))
+        # Pentecost.
+        self._add_pentecost(tr("Piinsip ullua"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Piinsip-aappaa"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Piinsip-aappaa"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Juullip ullua"))

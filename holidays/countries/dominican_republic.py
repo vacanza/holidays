@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_WED_TO_PREV_MON,
@@ -54,8 +53,8 @@ class DominicanRepublic(ObservedHolidayBase, ChristianHolidays, InternationalHol
         # Juan Pablo Duarte Day.
         self._move_holiday(self._add_holiday_jan_26(tr("Día de Duarte")))
 
-        # Independence Day.
-        self._add_holiday_feb_27(tr("Día de Independencia"))
+        # National Independence Day.
+        self._add_holiday_feb_27(tr("Día de la Independencia Nacional"))
 
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))

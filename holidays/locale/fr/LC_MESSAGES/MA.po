@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-15 19:53+0300\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-05 21:05+0200\n"
+"Last-Translator: Redouane El Alami <redouaneelalami@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Nouvel an Amazigh"
 msgid "عيد العمال"
 msgstr "Fête du Travail"
 
-#. Throne day.
+#. Throne Day.
 msgid "عيد العرش"
 msgstr "Fête du Trône"
 
@@ -65,12 +65,16 @@ msgstr "La révolution du roi et du peuple"
 msgid "عيد الشباب"
 msgstr "Fête de la Jeunesse"
 
+#. Unity Day.
+msgid "عيد الوحدة"
+msgstr "Fête de l'Unité"
+
 #. Green March.
 msgid "ذكرى المسيرة الخضراء"
 msgstr "La marche verte"
 
 #. Independence Day.
-msgid "عيد الإستقلال"
+msgid "عيد الاستقلال"
 msgstr "Fête de l'indépendance"
 
 #. Eid al-Fitr.

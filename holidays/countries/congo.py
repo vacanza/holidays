@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -51,8 +50,8 @@ class Congo(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Reconciliation Day.
         self._add_holiday_jun_10(tr("Fête de la Réconciliation"))

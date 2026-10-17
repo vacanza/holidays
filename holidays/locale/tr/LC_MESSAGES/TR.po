@@ -89,6 +89,6 @@ msgstr ""
 msgid "%s (saat 13.00'ten)"
 msgstr ""
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Genel tati̇l"
 msgstr ""

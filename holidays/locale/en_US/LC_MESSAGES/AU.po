@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.89\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-01-14 04:15+0000\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-09-23 16:58+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,16 @@ msgstr ""
 #, c-format
 msgid "%s (observed)"
 msgstr "%s (observed)"
+
+#. %s (from 6pm).
+#, c-format
+msgid "%s (from 6pm)"
+msgstr "%s (from 6pm)"
+
+#. %s (from 7pm).
+#, c-format
+msgid "%s (from 7pm)"
+msgstr "%s (from 7pm)"
 
 #. King's Birthday.
 msgid "King's Birthday"
@@ -48,6 +58,22 @@ msgstr "Australia Day"
 #. Anniversary Day.
 msgid "Anniversary Day"
 msgstr "Anniversary Day"
+
+#. Term 1 school holidays.
+msgid "Term 1 school holidays"
+msgstr "Term 1 school holidays"
+
+#. Term 2 school holidays.
+msgid "Term 2 school holidays"
+msgstr "Term 2 school holidays"
+
+#. Term 3 school holidays.
+msgid "Term 3 school holidays"
+msgstr "Term 3 school holidays"
+
+#. Summer school holidays.
+msgid "Summer school holidays"
+msgstr "Summer school holidays"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -97,6 +123,10 @@ msgstr "Family & Community Day"
 msgid "Labour Day"
 msgstr "Labor Day"
 
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "Eight Hours Day"
+
 #. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "Bank Holiday"
@@ -108,11 +138,6 @@ msgstr "May Day"
 #. Picnic Day.
 msgid "Picnic Day"
 msgstr "Picnic Day"
-
-#. %s (from 7pm).
-#, c-format
-msgid "%s (from 7pm)"
-msgstr "%s (from 7pm)"
 
 #. Christmas Eve.
 msgid "Christmas Eve"
@@ -126,11 +151,6 @@ msgstr "New Year's Eve"
 msgid "The Royal Queensland Show"
 msgstr "The Royal Queensland Show"
 
-#. %s (from 6pm).
-#, c-format
-msgid "%s (from 6pm)"
-msgstr "%s (from 6pm)"
-
 #. Adelaide Cup Day.
 msgid "Adelaide Cup Day"
 msgstr "Adelaide Cup Day"
@@ -139,17 +159,13 @@ msgstr "Adelaide Cup Day"
 msgid "Proclamation Day"
 msgstr "Proclamation Day"
 
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "Eight Hours Day"
-
 #. Easter Tuesday.
 msgid "Easter Tuesday"
 msgstr "Easter Tuesday"
 
-#. Grand Final Day.
-msgid "Grand Final Day"
-msgstr "Grand Final Day"
+#. Friday before the AFL Grand Final.
+msgid "Friday before the AFL Grand Final"
+msgstr "Friday before the AFL Grand Final"
 
 #. Melbourne Cup Day.
 msgid "Melbourne Cup Day"
@@ -163,21 +179,21 @@ msgstr "Western Australia Day"
 msgid "Foundation Day"
 msgstr "Foundation Day"
 
-#. Special public holiday.
-msgid "Special public holiday"
-msgstr "Special public holiday"
+#. Special Public Holiday.
+msgid "Special Public Holiday"
+msgstr "Special Public Holiday"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "National Day of Mourning for Queen Elizabeth II"
 
-#. Declared public holiday.
-msgid "Declared public holiday"
-msgstr "Declared public holiday"
+#. Declared Public Holiday.
+msgid "Declared Public Holiday"
+msgstr "Declared Public Holiday"
 
-#. Additional public holiday.
-msgid "Additional public holiday"
-msgstr "Additional public holiday"
+#. Additional Public Holiday.
+msgid "Additional Public Holiday"
+msgstr "Additional Public Holiday"
 
 #. Queen's Diamond Jubilee.
 msgid "Queen's Diamond Jubilee"

@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import APR
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -81,7 +80,7 @@ class Tajikistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Established by Law #628 from May 22, 1998.
         if self._year >= 1998:
-            # Day of National Unity.
+            # National Unity Day.
             self._add_holiday_jun_27(tr("Рӯзи Ваҳдати миллӣ"))
 
         # Independence Day.

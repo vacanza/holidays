@@ -101,6 +101,14 @@ Examples:
 - Christmas Eve (afternoon only)
 - New Year's Eve (afternoon only)
 
+#### RESTRICTED_SETTLEMENT
+
+Trading days on which a financial market operates a full, normal-hours session but one or more settlement types are unavailable.
+
+Examples:
+
+- **Bolsas y Mercados Argentinos (XBUE)**: days with no local (ARS) settlement, or no foreign (USD C) settlement.
+
 #### DE_FACTO
 
 Holidays that are legally treated equivalently to public holidays for specific purposes (such as working day calculations) but are not officially designated as public holidays. These observances have legal backing that grants them similar status to public holidays in certain contexts.
@@ -118,7 +126,7 @@ from holidays.constants import PUBLIC, DE_FACTO
 
 # For accurate is_working_day() behavior in Sweden.
 se = holidays.Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
-print(se.is_working_day('2024-12-24'))  # False (Christmas Eve)
+print(se.is_working_day("2024-12-24"))  # False (Christmas Eve)
 ```
 
 ### Religious Categories
@@ -294,7 +302,7 @@ Get only Catholic holidays in Germany (Saxony subdivision):
 import holidays
 from holidays.constants import CATHOLIC
 
-germany_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
+germany_catholic = holidays.Germany(subdiv="SN", categories=CATHOLIC, years=2024)
 for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
 ```
@@ -336,9 +344,9 @@ The returned categories are lowercase strings corresponding to the constants in 
 
 - Supports federal holidays, state holidays, and cultural observances
 
-**Germany**: `('catholic', 'public')`
+**Germany**: `('catholic', 'public', 'school')`
 
-- Supports public holidays and Catholic religious holidays in certain regions
+- Supports public holidays, Catholic holidays in certain regions, and school holidays
 
 **India**: `('optional', 'public')`
 

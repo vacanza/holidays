@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.89\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-05 12:21+0700\n"
-"PO-Revision-Date: 2026-01-14 04:15+0000\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-09-23 16:58+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,16 @@ msgstr ""
 #, c-format
 msgid "%s (observed)"
 msgstr "ชดเชย%s"
+
+#. %s (from 6pm).
+#, c-format
+msgid "%s (from 6pm)"
+msgstr "%s (ตั้งแต่ 18:00 น.)"
+
+#. %s (from 7pm).
+#, c-format
+msgid "%s (from 7pm)"
+msgstr "%s (ตั้งแต่ 19:00 น.)"
 
 #. King's Birthday.
 msgid "King's Birthday"
@@ -48,6 +58,22 @@ msgstr "วันชาติออสเตรเลีย"
 #. Anniversary Day.
 msgid "Anniversary Day"
 msgstr "วันครบรอบการก่อตั้งอาณานิคม"
+
+#. Term 1 school holidays.
+msgid "Term 1 school holidays"
+msgstr "วันหยุดภาคเรียนที่ 1"
+
+#. Term 2 school holidays.
+msgid "Term 2 school holidays"
+msgstr "วันหยุดภาคเรียนที่ 2"
+
+#. Term 3 school holidays.
+msgid "Term 3 school holidays"
+msgstr "วันหยุดภาคเรียนที่ 3"
+
+#. Summer school holidays.
+msgid "Summer school holidays"
+msgstr "วันหยุดภาคฤดูร้อน"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -97,6 +123,10 @@ msgstr "วันครอบครัวและชุมชน"
 msgid "Labour Day"
 msgstr "วันแรงงาน"
 
+#. Eight Hours Day.
+msgid "Eight Hours Day"
+msgstr "วันแปดชั่วโมง (วันแรงงาน)"
+
 #. Bank Holiday.
 msgid "Bank Holiday"
 msgstr "วันหยุดธนาคาร"
@@ -108,11 +138,6 @@ msgstr "วันเมย์เดย์ (วันแรงงาน)"
 #. Picnic Day.
 msgid "Picnic Day"
 msgstr "วันปิกนิก"
-
-#. %s (from 7pm).
-#, c-format
-msgid "%s (from 7pm)"
-msgstr "%s (ตั้งแต่ 19:00 น.)"
 
 #. Christmas Eve.
 msgid "Christmas Eve"
@@ -126,11 +151,6 @@ msgstr "วันสิ้นปี"
 msgid "The Royal Queensland Show"
 msgstr "เทศกาลรอยัลควีนส์แลนด์โชว์"
 
-#. %s (from 6pm).
-#, c-format
-msgid "%s (from 6pm)"
-msgstr "%s (ตั้งแต่ 18:00 น.)"
-
 #. Adelaide Cup Day.
 msgid "Adelaide Cup Day"
 msgstr "วันแอดิเลดคัพ"
@@ -139,16 +159,12 @@ msgstr "วันแอดิเลดคัพ"
 msgid "Proclamation Day"
 msgstr "วันสถาปนา"
 
-#. Eight Hours Day.
-msgid "Eight Hours Day"
-msgstr "วันแปดชั่วโมง (วันแรงงาน)"
-
 #. Easter Tuesday.
 msgid "Easter Tuesday"
 msgstr "วันอังคารอีสเตอร์"
 
-#. Grand Final Day.
-msgid "Grand Final Day"
+#. Friday before the AFL Grand Final.
+msgid "Friday before the AFL Grand Final"
 msgstr "วันศุกร์ก่อนวันแข่งฟุตบอลออสเตรเลีย (AFL) รอบสุดท้าย"
 
 #. Melbourne Cup Day.
@@ -163,20 +179,20 @@ msgstr "วันเวสเทิร์นออสเตรเลีย"
 msgid "Foundation Day"
 msgstr "วันสถาปนา"
 
-#. Special public holiday.
-msgid "Special public holiday"
+#. Special Public Holiday.
+msgid "Special Public Holiday"
 msgstr "วันหยุดพิเศษ"
 
 #. National Day of Mourning for Queen Elizabeth II.
 msgid "National Day of Mourning for Queen Elizabeth II"
 msgstr "วันไว้ทุกข์แห่งชาติแด่สมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
 
-#. Declared public holiday.
-msgid "Declared public holiday"
+#. Declared Public Holiday.
+msgid "Declared Public Holiday"
 msgstr "วันหยุดพิเศษ (ตามประกาศ)"
 
-#. Additional public holiday.
-msgid "Additional public holiday"
+#. Additional Public Holiday.
+msgid "Additional Public Holiday"
 msgstr "วันหยุดพิเศษ (เพิ่มเติม)"
 
 #. Queen's Diamond Jubilee.

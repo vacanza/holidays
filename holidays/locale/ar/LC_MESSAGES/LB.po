@@ -110,7 +110,7 @@ msgstr ""
 msgid "عيد الميلاد"
 msgstr ""
 
-#. Islamic New Year.
+#. Islamic New Year Day.
 msgid "عيد رأس السنة الهجرية"
 msgstr ""
 

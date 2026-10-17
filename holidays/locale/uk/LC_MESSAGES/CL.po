@@ -60,7 +60,7 @@ msgstr "День праці"
 msgid "Día de las Glorias Navales"
 msgstr "День військово-морської слави"
 
-#. National Day of Indigenous Peoples.
+#. National Indigenous Peoples Day.
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr "Національний день корінних народів"
 
@@ -68,7 +68,7 @@ msgstr "Національний день корінних народів"
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 
-#. Day of Virgin of Carmen.
+#. Our Lady of Mount Carmel.
 msgid "Virgen del Carmen"
 msgstr "Матір Божа Кармельська"
 
@@ -76,11 +76,11 @@ msgstr "Матір Божа Кармельська"
 msgid "Asunción de la Virgen"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
-#. Day of National Liberation.
+#. National Liberation Day.
 msgid "Día de la Liberación Nacional"
 msgstr "День національного визволення"
 
-#. Day of National Unity.
+#. National Unity Day.
 msgid "Día de la Unidad Nacional"
 msgstr "День національної єдності"
 

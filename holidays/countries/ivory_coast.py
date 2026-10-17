@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import FEB, OCT
 from holidays.groups import (
     ChristianHolidays,
@@ -19,6 +17,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
@@ -89,8 +88,8 @@ class IvoryCoast(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jour de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Independence Day.
         self._add_observed(self._add_holiday_aug_7(tr("Fête Nationale")))

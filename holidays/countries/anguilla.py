@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import FEB, APR, JUN, SEP, SUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -83,8 +82,8 @@ class Anguilla(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # Whit Monday.
-        whit_monday = self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        whit_monday = self._add_pentecost_monday(tr("Whit Monday"))
 
         name = (
             # Queen's Birthday.

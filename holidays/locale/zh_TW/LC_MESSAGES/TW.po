@@ -163,7 +163,7 @@ msgstr ""
 msgid "臺灣聯合國日"
 msgstr ""
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%Y-%m-%d"
 msgstr ""
 

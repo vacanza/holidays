@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -125,8 +124,8 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Removed on June 30th, 2004.
             # Readded on April 16th, 2008.
             if self._year not in {2005, 2006, 2007}:
-                # Whit Monday.
-                self._add_whit_monday(tr("Lundi de Pentecôte"))
+                # Pentecost Monday.
+                self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Made unofficial public holiday with no name on April 23rd, 1919.
         # Included in official list by Vichy France with new name on April 24th, 1941.
@@ -191,7 +190,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Established on August 16th, 1892.
         if self._year >= 1892:
             # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Étienne"))
+            self._add_christmas_day_two(tr("Saint-Étienne"))
 
     # Alsace.
     def _populate_subdiv_6ae_public_holidays(self):
@@ -203,7 +202,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Established on August 16th, 1892.
         if self._year >= 1892:
             # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Étienne"))
+            self._add_christmas_day_two(tr("Saint-Étienne"))
 
     # Guadeloupe.
     def _populate_subdiv_971_public_holidays(self):

@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -37,6 +35,7 @@ from holidays.groups import (
     InternationalHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -323,7 +322,7 @@ class UnitedStates(
         """
         self._observed_rule = (
             SAT_TO_PREV_FRI + SUN_TO_NEXT_MON
-            if self._year >= 1966 and self.subdiv != "MA"
+            if self._year >= 1966 and self._normalized_subdiv != "MA"
             else SUN_TO_NEXT_MON
         )
 
@@ -435,7 +434,7 @@ class UnitedStates(
 
     def _populate_subdiv_holidays(self):
         if PUBLIC in self.categories:
-            if self._year >= 1986 and self.subdiv not in {
+            if self._year >= 1986 and self._normalized_subdiv not in {
                 "AK",
                 "AL",
                 "AR",
@@ -448,7 +447,7 @@ class UnitedStates(
                 # Martin Luther King Jr. Day.
                 self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
 
-            if self._year >= 1879 and self.subdiv not in {
+            if self._year >= 1879 and self._normalized_subdiv not in {
                 "AK",
                 "AL",
                 "AR",
@@ -463,7 +462,7 @@ class UnitedStates(
                 # Washington's Birthday.
                 name = tr("Washington's Birthday")
                 if self._year >= 1971:
-                    if self.subdiv not in {
+                    if self._normalized_subdiv not in {
                         "AZ",
                         "CA",
                         "CO",
@@ -493,7 +492,7 @@ class UnitedStates(
 
             if self._year >= 1937 and (
                 self.subdiv is None
-                or self.subdiv
+                or self._normalized_subdiv
                 in {
                     "AS",
                     "AZ",
@@ -521,7 +520,7 @@ class UnitedStates(
                 else:
                     self._add_columbus_day(name)
 
-            if self._year >= 1938 and self.subdiv != "PR":
+            if self._year >= 1938 and self._normalized_subdiv != "PR":
                 name = (
                     # Veterans Day.
                     tr("Veterans Day")
@@ -1332,10 +1331,12 @@ class UnitedStates(
         # Established by Law No. 305 of Dec 25, 2002.
         if self._year >= 2003:
             # %s (from 12pm).
-            begin_time_label = self.tr("%s (from 12pm)")
+            begin_time_label = tr("%s (from 12pm)")
 
-            # Christmas Eve.
-            self._add_christmas_eve(begin_time_label % self.tr("Christmas Eve"))
+            self._add_christmas_eve(
+                # Christmas Eve.
+                self._format_holiday_name(begin_time_label, tr("Christmas Eve"))
+            )
 
     def _populate_subdiv_ri_public_holidays(self):
         if self._year >= 1948:
@@ -1570,7 +1571,7 @@ class UnitedStates(
     def _populate_government_holidays(self):
         # Added by 16 Stat. 168, effectdive date June 28th, 1870.
         # New Year's Day check for 1871 is included.
-        if self._year >= 1870 and self.subdiv != "PR":
+        if self._year >= 1870 and self._normalized_subdiv != "PR":
             # Federal holidays in the United States.
             self._populate_common(include_federal=True)
 
@@ -1634,7 +1635,7 @@ class UnitedStates(
 
         # Continental US non-Public dates
 
-        if self.subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
+        if self._normalized_subdiv not in {"AS", "GU", "MP", "PR", "UM", "VI"}:
             # Groundhog Day
             # First observed on Feb 2 in 1886 in Continental US + Hawaii.
 
@@ -1728,7 +1729,7 @@ class UnitedStatesStaticHolidays(StaticHolidays):
 
     special_government_holidays = {
         2001: (DEC, 24, christmas_eve_name),
-        2002: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2002: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2003: (DEC, 26, day_after_christmas_name),
         # National Day of Mourning for former President Ronald Reagan.
         2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
@@ -1738,10 +1739,10 @@ class UnitedStatesStaticHolidays(StaticHolidays):
             (DEC, 24, christmas_eve_name),
         ),
         2008: (DEC, 26, day_after_christmas_name),
-        2009: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2009: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2012: (DEC, 24, christmas_eve_name),
         2014: (DEC, 26, day_after_christmas_name),
-        2015: (DEC, 24, half_day_closing_label % christmas_eve_name),
+        2015: (DEC, 24, (half_day_closing_label, christmas_eve_name)),
         2018: (
             # National Day of Mourning for former President George H. W. Bush.
             (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),

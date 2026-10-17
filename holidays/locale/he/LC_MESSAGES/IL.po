@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2026-07-26 14:50+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: he\n"
@@ -97,10 +97,10 @@ msgstr ""
 msgid "חנוכה"
 msgstr ""
 
-#. Ta`anit Ester (Fast of Esther).
+#. Ta'anit Ester (Fast of Esther).
 msgid "תענית אסתר"
 msgstr ""
 
 #. Lag Ba'omer (Lag BaOmer).
-msgid "ל\"ג בעומר"
+msgid "ל״ג בעומר"
 msgstr ""

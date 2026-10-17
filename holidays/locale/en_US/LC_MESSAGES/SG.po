@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.80\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-02 15:30+0700\n"
-"PO-Revision-Date: 2025-08-21 11:37+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,6 @@ msgid "Labour Day"
 msgstr "Labor Day"
 
 #. Vesak Day.
-#. type: ignore[arg-type]
 msgid "Vesak Day"
 msgstr "Vesak Day"
 
@@ -88,10 +87,9 @@ msgstr "Vesak Day"
 msgid "National Day"
 msgstr "National Day"
 
-#. Deepavali.
-#. type: ignore[arg-type]
+#. Diwali.
 msgid "Deepavali"
-msgstr "Deepavali"
+msgstr "Diwali"
 
 #. Christmas Day.
 msgid "Christmas Day"

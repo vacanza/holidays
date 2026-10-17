@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.groups import (
@@ -20,6 +18,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
@@ -109,8 +108,8 @@ class Senegal(
         # Ascension Day.
         self._add_ascension_thursday(tr("Jeudi de l'Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))
@@ -176,7 +175,7 @@ class SenegalStaticHolidays:
         * [26th December, 2022 Public holiday](https://web.archive.org/web/20250608135605/https://primature.sn/publications/conseil-des-ministres/conseil-des-ministres-du-22-decembre-2022)
     """
 
-    # Public holiday.
+    # Public Holiday.
     name = tr("Jour férié")
     special_public_holidays = {
         2018: (OCT, 29, name),

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.68\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-26 23:09+0200\n"
-"PO-Revision-Date: 2025-02-27 00:21+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -99,17 +99,17 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. Eid-al-Fitr.
+#. Eid al-Fitr.
 msgid "Idd-ul-Fitr"
-msgstr "Eid-al-Fitr"
+msgstr "Eid al-Fitr"
 
 #. Diwali.
 msgid "Diwali"
 msgstr "Diwali"
 
-#. Eid-al-Adha.
+#. Eid al-Adha.
 msgid "Idd-ul-Azha"
-msgstr "Eid-al-Adha"
+msgstr "Eid al-Adha"
 
 #. Election Day.
 msgid "Election Day"

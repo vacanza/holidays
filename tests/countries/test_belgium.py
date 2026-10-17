@@ -25,7 +25,7 @@ class TestBelgium(CommonCountryTests, TestCase):
         self.assertHolidayName("Nieuwjaar", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
-        name = "Goede Vrijdag"
+        name = "Goede vrijdag"
         self.assertNoHolidayName(name)
         self.assertBankHolidayName(
             name,
@@ -196,7 +196,7 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_2022_bank(self):
         self.assertBankHolidaysInYear(
             2022,
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-05-27", "Vrijdag na O. L. H. Hemelvaart"),
             ("2022-12-26", "Banksluitingsdag"),
         )
@@ -204,7 +204,7 @@ class TestBelgium(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Nieuwjaar"),
-            ("2022-04-15", "Goede Vrijdag"),
+            ("2022-04-15", "Goede vrijdag"),
             ("2022-04-17", "Pasen"),
             ("2022-04-18", "Paasmaandag"),
             ("2022-05-01", "Dag van de Arbeid"),
@@ -250,8 +250,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-26", "Ascension Day"),
             ("2022-05-27", "Friday after Ascension Day"),
-            ("2022-06-05", "Whit Sunday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-05", "Pentecost"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-07-21", "National Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
@@ -290,8 +290,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             ("2022-05-01", "День праці"),
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-05-27", "Пʼятниця після Вознесіння Господнього"),
-            ("2022-06-05", "Трійця"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-05", "Пʼятидесятниця"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-07-21", "Національне свято"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),

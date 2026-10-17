@@ -99,7 +99,7 @@ msgstr "Siku ya Krismasi"
 msgid "Boxing Day"
 msgstr "Siku ya Ndondi"
 
-#. Eid-al-Fitr.
+#. Eid al-Fitr.
 msgid "Idd-ul-Fitr"
 msgstr "Sikukuu ya Idd-ul-Fitr"
 
@@ -107,7 +107,7 @@ msgstr "Sikukuu ya Idd-ul-Fitr"
 msgid "Diwali"
 msgstr "Diwali"
 
-#. Eid-al-Adha.
+#. Eid al-Adha.
 msgid "Idd-ul-Azha"
 msgstr "Sikukuu ya Idd-ul-Azha"
 

@@ -64,7 +64,7 @@ msgstr ""
 msgid "Dia di Asenshon"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Domingo di Pentekòstès"
 msgstr ""
 

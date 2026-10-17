@@ -101,7 +101,7 @@ msgstr "Holy Saturday"
 msgid "端午節"
 msgstr "Tung Ng Festival (Dragon Boat Festival)"
 
-#. All Soul's Day.
+#. All Souls' Day.
 msgid "追思節"
 msgstr "All Soul's Day"
 

@@ -12,7 +12,6 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import (
@@ -35,6 +34,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     ObservedRule,
@@ -342,7 +342,7 @@ class TaiwanStaticHolidays:
         * [2026](https://web.archive.org/web/20251220074207/https://www.dgpa.gov.tw/en/information?uid=353&pid=12580)
     """
 
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%Y-%m-%d")
 
     # Day off (substituted from %s).

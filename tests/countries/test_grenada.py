@@ -256,7 +256,7 @@ class TestGrenada(CommonCountryTests, TestCase):
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
             ("2025-05-01", "Labor Day"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-06-19", "Corpus Christi"),
             ("2025-08-01", "Emancipation Day"),
             ("2025-08-11", "Carnival Monday"),

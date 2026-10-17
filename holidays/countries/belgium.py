@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -53,11 +52,11 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("O. L. H. Hemelvaart"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pinksteren"))
+        # Pentecost.
+        self._add_pentecost(tr("Pinksteren"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pinkstermaandag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pinkstermaandag"))
 
         # National Day.
         self._add_holiday_jul_21(tr("Nationale feestdag"))
@@ -76,7 +75,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_bank_holidays(self):
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Friday after Ascension Day.
         self._add_holiday_40_days_past_easter(tr("Vrijdag na O. L. H. Hemelvaart"))

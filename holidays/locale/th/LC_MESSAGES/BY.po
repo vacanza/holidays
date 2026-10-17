@@ -97,7 +97,7 @@ msgstr "วันธงชาติ ตราแผ่นดิน และเ�
 msgid "Дзень народнага адзінства"
 msgstr "วันแห่งความสามัคคีของประชาชน"
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%d/%m/%Y"
 

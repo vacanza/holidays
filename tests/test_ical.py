@@ -17,7 +17,7 @@ from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
-from holidays.constants import HALF_DAY, UNOFFICIAL
+from holidays.constants import HALF_DAY, SCHOOL, UNOFFICIAL
 from holidays.holiday_base import HolidayBase
 from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalExporter
 
@@ -83,9 +83,7 @@ class TestIcalExporter(TestCase):
         test_holidays = MockHolidays()._add_custom_holiday(escaped_name)
         output = ICalExporter(test_holidays).generate()
         self.assertIn(
-            f"SUMMARY:{sanitized_name}\r\n",
-            output,
-            f"Failed for holiday name: {escaped_name}",
+            f"SUMMARY:{sanitized_name}\r\n", output, f"Failed for holiday name: {escaped_name}"
         )
 
     def _assert_valid_language_code(self, language_name):
@@ -223,11 +221,11 @@ class TestIcalExporter(TestCase):
 
     def test_show_language_true_language_code_none(self):
         # Neither language nor default_language param exists.
-        nyse_holidays = financial_holidays("NYSE", years=2024)
-        self._assert_language_not_provided(nyse_holidays)
+        xecb_holidays = financial_holidays("XECB", years=2024)
+        self._assert_language_not_provided(xecb_holidays)
 
         # Combined Holidays List, one of them is None -> language got set to None.
-        self._assert_language_not_provided(nyse_holidays + self.jp_holidays)
+        self._assert_language_not_provided(xecb_holidays + self.jp_holidays)
 
         # Combined Holidays List, different language -> language got set to None.
         self._assert_language_not_provided(self.th_holidays + self.jp_holidays)
@@ -259,6 +257,19 @@ class TestIcalExporter(TestCase):
         self.assertIn("DTSTART;VALUE=DATE:20050501\r\n", output)
         self.assertIn("DURATION:P2D\r\n", output)
 
+    def test_single_holiday_multiple_date_cross_year_boundary(self):
+        # Multiple-date holiday that crosses the beginning of the year
+        # should be divided into two entries.
+        il_holidays = country_holidays(
+            "IL", years=(2024, 2025), categories=SCHOOL, language="en_US"
+        )
+        output = ICalExporter(il_holidays).generate()
+
+        hanukkah_count = output.count("SUMMARY:Hanukkah\r\n")
+        self.assertEqual(hanukkah_count, 3)
+        self.assertIn("DTSTART;VALUE=DATE:20241226\r\nDURATION:P6D\r\n", output)
+        self.assertIn("DTSTART;VALUE=DATE:20250101\r\nDURATION:P2D\r\n", output)
+
     def test_single_holiday_multiple_date_noncontinuous(self):
         # 2x "Eid al-Fitr", 2x "Eid al-Fitr Second Day".
         output = self.id_exporter.generate()
@@ -267,6 +278,38 @@ class TestIcalExporter(TestCase):
         self.assertEqual(eid_al_fitr_count, 2)
         eid_duration_count = output.count("DURATION:P1D\r\n")
         self.assertGreaterEqual(eid_duration_count, 2, "Expected at least 2 single-day events")
+
+    def test_multiname_shared_start_different_run_lengths(self):
+        # A 2-day run (AAA, Jan 1-2) shares its start date with a single-day
+        # holiday (CCC, Jan 1). Every name must appear exactly once.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        hol[date(2024, 1, 2)] = "AAA"
+        hol[date(2024, 1, 1)] = "CCC"
+        output = ICalExporter(hol).generate()
+
+        self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:CCC\r\n"), 1)
+        self.assertIn("SUMMARY:AAA\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+        self.assertIn("SUMMARY:CCC\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
+
+    def test_multiname_shared_date_drops_continuing_holiday(self):
+        # AAA (1-day, Jan 1), BBB (2-day, Jan 1-2), CCC (1-day, Jan 2 only).
+        # The merge loop advanced the date index by only the last name's run
+        # length, over-advancing past Jan 2 and dropping CCC entirely.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        hol[date(2024, 1, 1)] = "BBB"
+        hol[date(2024, 1, 2)] = "BBB"
+        hol[date(2024, 1, 2)] = "CCC"
+        output = ICalExporter(hol).generate()
+
+        self.assertEqual(output.count("SUMMARY:AAA\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:BBB\r\n"), 1)
+        self.assertEqual(output.count("SUMMARY:CCC\r\n"), 1)
+        self.assertIn("SUMMARY:AAA\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P1D\r\n", output)
+        self.assertIn("SUMMARY:BBB\r\nDTSTART;VALUE=DATE:20240101\r\nDURATION:P2D\r\n", output)
+        self.assertIn("SUMMARY:CCC\r\nDTSTART;VALUE=DATE:20240102\r\nDURATION:P1D\r\n", output)
 
     def test_generate_from_combined_holidays_list(self):
         # All 3 "New Year's Day" should be merged into 1 single instance.

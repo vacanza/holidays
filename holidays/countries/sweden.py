@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
     MAR,
@@ -22,6 +21,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import BANK, DE_FACTO, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -39,8 +39,8 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [Bank Holidays 2025](https://web.archive.org/web/20250811112642/https://www.riksbank.se/sv/press-och-publicerat/kalender/helgdagar-2025/)
         * [Swedish Annual Leave Law (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/)
 
-    In Sweden, ALL sundays are considered a holiday.
-    Initialize this class with `include_sundays=False` to not include sundays as a holiday.
+    In Sweden, all Sundays are considered holidays.
+    Initialize this class with `include_sundays=True` to include Sundays as holidays.
 
     Supported holiday categories:
 
@@ -73,11 +73,11 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (BANK, DE_FACTO, OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "sv", "th", "uk")
 
-    def __init__(self, *args, include_sundays: bool = True, **kwargs):
+    def __init__(self, *args, include_sundays: bool = False, **kwargs):
         """
         Args:
             include_sundays:
-                Whether to consider sundays as a holiday (which they are in Sweden)
+                Whether to include Sundays as holidays.
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)
@@ -123,12 +123,12 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
             # National Day.
             self._add_holiday_jun_6(tr("Nationaldagen"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pingstdagen"))
+        # Pentecost.
+        self._add_pentecost(tr("Pingstdagen"))
 
         if self._year <= 2004:
-            # Whit Monday.
-            self._add_whit_monday(tr("Annandag pingst"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Annandag pingst"))
 
         # Midsummer Day.
         self._add_holiday_1st_sat_from_jun_20(tr("Midsommardagen"))
@@ -161,18 +161,24 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_common(self):
         """Populate holidays that are both optional and bank holidays."""
 
-        # Twelfth Night.
-        self._add_holiday_jan_5(self.tr(self.begin_time_label) % self.tr("Trettondagsafton"))
+        self._add_holiday_jan_5(
+            # Twelfth Night.
+            self._format_holiday_name(self.begin_time_label, tr("Trettondagsafton"))
+        )
 
-        # Maundy Thursday.
-        self._add_holy_thursday(self.tr(self.begin_time_label) % self.tr("Skärtorsdagen"))
+        self._add_holy_thursday(
+            # Maundy Thursday.
+            self._format_holiday_name(self.begin_time_label, tr("Skärtorsdagen"))
+        )
 
-        # Walpurgis Night.
-        self._add_holiday_apr_30(self.tr(self.begin_time_label) % self.tr("Valborgsmässoafton"))
+        self._add_holiday_apr_30(
+            # Walpurgis Night.
+            self._format_holiday_name(self.begin_time_label, tr("Valborgsmässoafton"))
+        )
 
         self._add_holiday_1st_fri_from_oct_30(
             # All Saints' Eve.
-            self.tr(self.begin_time_label) % self.tr("Allahelgonsafton")
+            self._format_holiday_name(self.begin_time_label, tr("Allahelgonsafton"))
         )
 
     def _populate_bank_holidays(self):
@@ -181,24 +187,28 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_holiday_38_days_past_easter(
             # Day before Ascension Day.
-            self.tr(self.begin_time_label) % self.tr("Dag före Kristi himmelsfärdsdag")
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Kristi himmelsfärdsdag"))
         )
 
         self._add_holiday_1st_thu_from_jun_18(
             # Day before Midsummer Eve.
-            self.tr(self.begin_time_label) % self.tr("Dag före Midsommarafton")
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Midsommarafton"))
         )
 
         self._add_holiday_47_days_past_easter(
-            # Day before Whitsun Eve.
-            self.tr(self.begin_time_label) % self.tr("Dag före Pingstafton")
+            # Day before Pentecost Eve.
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Pingstafton"))
         )
 
-        # Day before Christmas Eve.
-        self._add_holiday_dec_23(self.tr(self.begin_time_label) % self.tr("Dag före Julafton"))
+        self._add_holiday_dec_23(
+            # Day before Christmas Eve.
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Julafton"))
+        )
 
-        # Day before New Year's Eve.
-        self._add_holiday_dec_30(self.tr(self.begin_time_label) % self.tr("Dag före Nyårsafton"))
+        self._add_holiday_dec_30(
+            # Day before New Year's Eve.
+            self._format_holiday_name(self.begin_time_label, tr("Dag före Nyårsafton"))
+        )
 
     def _populate_optional_holidays(self):
         self._populate_common()
@@ -212,7 +222,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Squeeze day.
         self._add_holiday_40_days_past_easter(tr("Klämdag"))
 
-        # Whitsun Eve.
+        # Pentecost Eve.
         self._add_holiday_48_days_past_easter(tr("Pingstafton"))
 
 

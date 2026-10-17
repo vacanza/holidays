@@ -80,8 +80,7 @@ class TestTurkey(CommonCountryTests, TestCase):
             (f"{year}-10-30" for year in range(self.start_year, 1981)),
         )
         self.assertHalfDayHolidayName(
-            f"{name} (saat 13.00'ten)",
-            (f"{year}-10-28" for year in self.full_range),
+            f"{name} (saat 13.00'ten)", (f"{year}-10-28" for year in self.full_range)
         )
 
     def test_eid_al_fitr(self):

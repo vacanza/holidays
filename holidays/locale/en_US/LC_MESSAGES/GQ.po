@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-01 05:05+0000\n"
-"PO-Revision-Date: 2025-05-01 05:05+0000\n"
-"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Generated-By: Lingva 5.0.5\n"
 "X-Source-Language: es\n"
 
-#. %s observed.
+#. %s (observed).
 #, c-format
 msgid "%s (observado)"
 msgstr "%s (observed)"
@@ -72,9 +72,9 @@ msgstr "Armed Forces Day"
 msgid "Día de la Constitución"
 msgstr "Constitution Day"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Día de la Independencia Nacional"
-msgstr "Independence Day"
+msgstr "National Independence Day"
 
 #. Immaculate Conception.
 msgid "Festividad de la Inmaculada Concepción de María"

@@ -1,0 +1,29 @@
+name: CodeQL
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  code-ql:
+    name: CodeQL
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@1c5b675653bb5c22dbe9b12b556ec555138e09fd  # v4.38.1
+        with:
+          languages: python
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@1c5b675653bb5c22dbe9b12b556ec555138e09fd  # v4.38.1
+        with:
+          category: '/language:python'

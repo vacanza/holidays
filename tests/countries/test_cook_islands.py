@@ -340,7 +340,7 @@ class TestCookIslands(CommonCountryTests, TestCase):
             ("2022-01-04", "Day after New Year's Day (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-04-25", "Anzac Day"),
+            ("2022-04-25", "ANZAC Day"),
             ("2022-06-06", "Sovereign's Birthday"),
             ("2022-07-01", "Day of the House of Ariki"),
             ("2022-08-04", "Constitution Day"),

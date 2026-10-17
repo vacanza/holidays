@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, MAR, APR, MAY, JUN, JUL, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -153,7 +152,7 @@ class BelarusStaticHolidays:
         * [2026](https://web.archive.org/web/20251230174418/https://belarusbank.by/en/financial-institutions/11163)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходны (перанесены з %s)")

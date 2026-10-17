@@ -10,12 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
@@ -28,6 +26,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 
@@ -47,7 +46,7 @@ class Indonesia(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia>
         * <https://id.wikipedia.org/wiki/Hari_libur_di_Indonesia>
         * <https://web.archive.org/web/20250413192412/https://www.liburnasional.com/sejarah/>
-        * [1963-2025](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
+        * [1963-2026](https://id.wikipedia.org/wiki/Indonesia_dalam_tahun_1963)
         * <https://web.archive.org/web/20250413192423/https://www.timeanddate.com/holidays/indonesia/>
     """
 
@@ -117,8 +116,8 @@ class Indonesia(
             # Easter Monday.
             self._add_easter_monday(tr("Hari kedua Paskah"))
 
-            # Whit Monday.
-            self._add_whit_monday(tr("Hari kedua Pentakosta"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Hari kedua Pentakosta"))
 
             # Nuzul Al Quran.
             self._add_nuzul_al_quran_day(tr("Nuzululqur'an"))
@@ -241,11 +240,13 @@ class IndonesiaBuddhistHolidays(_CustomBuddhistHolidays):
         2023: (JUN, 4),
         2024: (MAY, 23),
         2025: (MAY, 12),
+        2026: (MAY, 31),
+        2027: (MAY, 20),
     }
 
 
 class IndonesiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2025)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2003, 2027)
     LUNAR_NEW_YEAR_DATES = {
         2006: (JAN, 30),
         2007: (FEB, 19),
@@ -254,186 +255,82 @@ class IndonesiaChineseHolidays(_CustomChineseHolidays):
     }
 
 
-class IndonesiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2025)
+class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_ADHA_DATES = {
-        1963: (MAY, 4),
-        1964: (APR, 23),
-        1965: (APR, 12),
         1966: (APR, 2),
         1967: (MAR, 22),
-        1970: (FEB, 17),
-        1972: (JAN, 27),
-        1973: (JAN, 15),
-        1974: ((JAN, 4), (DEC, 24)),
-        1976: (DEC, 2),
-        1978: (NOV, 11),
-        1982: (SEP, 28),
-        1984: (SEP, 6),
-        1986: (AUG, 16),
-        1987: (AUG, 5),
-        1988: (JUL, 24),
-        1990: (JUL, 3),
-        1991: (JUN, 23),
-        1993: (JUN, 1),
-        1994: (MAY, 21),
-        1995: (MAY, 10),
-        1996: (APR, 28),
-        1997: (APR, 18),
-        1999: (MAR, 28),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
+        1968: (MAR, 9),
+        1977: (NOV, 21),
+        1985: (AUG, 26),
+        1989: (JUL, 13),
+        1992: (JUN, 11),
+        2001: (MAR, 5),
         2004: (FEB, 2),
-        2010: (NOV, 17),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
+        2025: (JUN, 6),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
     EID_AL_FITR_DATES = {
-        1963: (FEB, 25),
-        1964: (FEB, 15),
-        1965: (FEB, 3),
-        1966: (JAN, 23),
         1968: ((JAN, 2), (DEC, 21)),
-        1969: (DEC, 11),
-        1974: (OCT, 17),
-        1976: (SEP, 25),
-        1977: (SEP, 15),
-        1978: (SEP, 4),
-        1979: (AUG, 24),
-        1982: (JUL, 22),
-        1983: (JUL, 12),
-        1985: (JUN, 20),
-        1986: (JUN, 9),
-        1987: (MAY, 29),
-        1988: (MAY, 17),
-        1989: (MAY, 7),
-        1991: (APR, 16),
-        1992: (APR, 5),
-        1993: (MAR, 25),
-        1994: (MAR, 14),
-        1995: (MAR, 3),
-        1996: (FEB, 20),
-        1997: (FEB, 9),
-        1998: (JAN, 30),
-        1999: (JAN, 19),
-        2002: (DEC, 6),
-        2006: (OCT, 24),
-        2019: (JUN, 5),
-        2023: (APR, 22),
-        2025: (MAR, 31),
+        1971: (NOV, 19),
+        1972: (NOV, 7),
+        1973: (OCT, 27),
+        1975: (OCT, 6),
+        1990: (APR, 26),
+        2005: (NOV, 3),
+        2011: (AUG, 30),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2025)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (1968, 2027)
     HIJRI_NEW_YEAR_DATES = {
+        1969: (MAR, 19),
         1970: (MAR, 10),
-        1971: (FEB, 27),
-        1973: (FEB, 5),
-        1974: (JAN, 25),
-        1975: (JAN, 14),
-        1976: ((JAN, 3), (DEC, 22)),
-        1977: (DEC, 12),
-        1979: (NOV, 21),
-        1981: (OCT, 29),
-        1983: (OCT, 8),
-        1985: (SEP, 16),
-        1987: (AUG, 26),
-        1988: (AUG, 14),
-        1989: (AUG, 3),
-        1991: (JUL, 13),
-        1992: (JUL, 2),
-        1994: (JUN, 11),
-        1995: (MAY, 31),
-        1996: (MAY, 19),
-        1997: (MAY, 8),
-        1998: (APR, 28),
+        1978: (DEC, 1),
+        1986: (SEP, 5),
         2003: (MAR, 3),
         2004: (FEB, 23),
-        2011: (NOV, 27),
-        2013: (NOV, 5),
-        2019: (SEP, 1),
         2021: (AUG, 11),
-        2025: (JUN, 27),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (1968, 2027)
     ISRA_AND_MIRAJ_DATES = {
-        1968: (OCT, 20),
-        1969: (OCT, 9),
         1970: (SEP, 29),
-        1972: (SEP, 6),
-        1973: (AUG, 26),
-        1974: (AUG, 16),
-        1976: (JUL, 25),
-        1977: (JUL, 14),
-        1978: (JUL, 3),
-        1980: (JUN, 11),
-        1982: (MAY, 21),
-        1984: (APR, 29),
-        1985: (APR, 18),
-        1986: (APR, 7),
-        1988: (MAR, 16),
-        1990: (FEB, 23),
-        1991: (FEB, 12),
-        1992: (FEB, 1),
-        1994: ((JAN, 10), (DEC, 30)),
-        1995: (DEC, 20),
-        1997: (NOV, 28),
-        1998: (NOV, 17),
-        1999: (NOV, 6),
-        2000: (OCT, 25),
-        2001: (OCT, 15),
+        1975: (AUG, 5),
+        1983: (MAY, 10),
+        1989: (MAR, 5),
         2003: (SEP, 22),
         2004: (SEP, 13),
         2005: (SEP, 2),
-        2007: (AUG, 11),
-        2010: (JUL, 10),
-        2014: (MAY, 27),
         2016: (MAY, 6),
-        2018: (APR, 14),
+        2022: (FEB, 28),
+        2026: (JAN, 16),
+        2027: ((JAN, 5), (DEC, 26)),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (1968, 2027)
     MAWLID_DATES = {
-        1972: (APR, 26),
+        1968: (JUN, 8),
+        1969: (MAY, 28),
+        1971: (MAY, 7),
         1973: (APR, 14),
-        1974: (APR, 5),
         1975: (MAR, 25),
         1976: (MAR, 13),
-        1978: (FEB, 20),
-        1982: ((JAN, 8), (DEC, 28)),
-        1983: (DEC, 17),
-        1984: (DEC, 5),
-        1985: (NOV, 25),
-        1987: (NOV, 4),
-        1988: (OCT, 23),
-        1989: (OCT, 12),
-        1991: (SEP, 21),
-        1993: (AUG, 30),
-        1994: (AUG, 20),
-        1995: (AUG, 9),
-        1996: (JUL, 28),
-        1997: (JUL, 17),
-        2000: (JUN, 15),
-        2002: (MAY, 25),
+        1977: (MAR, 2),
+        1979: (FEB, 9),
+        1981: (JAN, 18),
+        1986: (NOV, 14),
+        1990: (OCT, 1),
+        1992: (SEP, 9),
+        1998: (JUL, 6),
         2003: (MAY, 15),
         2004: (MAY, 3),
         2005: (APR, 22),
-        2012: (FEB, 5),
-        2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 24)),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
+        2006: (APR, 10),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
+        2011: (FEB, 15),
         2021: (OCT, 20),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
     }
 
 
@@ -487,10 +384,12 @@ class IndonesiaStaticHolidays:
         * <https://web.archive.org/web/20250413193243/https://setkab.go.id/inilah-keppres-7-2024-tentang-cuti-bersama-asn-tahun-2024/>
         * <https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/>
         * <https://web.archive.org/web/20250802143125/https://news.detik.com/berita/d-8039857/pemerintah-tetapkan-senin-18-agustus-hari-libur>
+        * <https://web.archive.org/web/20260605113344/https://www.detik.com/hikmah/khazanah/d-8346579/libur-nasional-dan-cuti-bersama-2026-cek-jadwalnya-di-sini>
+        * <https://web.archive.org/web/20260917182154/https://setneg.go.id/baca/index/inilah_skb_3_menteri_libur_nasional_dan_cuti_bersama_2027>
     """
 
     # General Election Day.
-    general_election_day = tr("Hari Pemilihan Unum")
+    general_election_day = tr("Hari Pemilihan Umum")
     # Presidential Election Day.
     presidential_election_day = tr("Hari Pemilihan Presiden")
     # Legislative Election Day.
@@ -520,6 +419,8 @@ class IndonesiaStaticHolidays:
     new_years_joint_holiday = tr("Cuti Bersama Tahun Baru Masehi")
     # Independence Day Joint Holiday.
     independence_day_joint_holiday = tr("Cuti Bersama Hari Kemerdekaan Republik Indonesia")
+    # Good Friday Joint Holiday.
+    good_friday_joint_holiday = tr("Cuti Bersama Wafat Yesus Kristus")
 
     special_public_holidays = {
         1999: (JUN, 7, legislative_election_day),
@@ -546,10 +447,12 @@ class IndonesiaStaticHolidays:
             (NOV, 27, local_election_day),
         ),
     }
+
     special_public_holidays_observed = {
         # Eid al-Fitr.
         2004: (NOV, 16, tr("Hari Raya Idul Fitri")),
     }
+
     special_government_holidays = {
         # Cuti Bersama (Joint Holidays/Collective Leaves).
         # This was first implemented in 2002.
@@ -730,7 +633,28 @@ class IndonesiaStaticHolidays:
             (AUG, 18, independence_day_joint_holiday),
             (DEC, 26, christmas_joint_holiday),
         ),
+        2026: (
+            (FEB, 16, lunar_new_year_joint_holiday),
+            (MAR, 18, day_of_silence_joint_holiday),
+            (MAR, 20, eid_al_fitr_joint_holiday),
+            (MAR, 23, eid_al_fitr_joint_holiday),
+            (MAR, 24, eid_al_fitr_joint_holiday),
+            (MAY, 15, ascension_joint_holiday),
+            (MAY, 28, eid_al_adha_joint_holiday),
+            (DEC, 24, christmas_joint_holiday),
+        ),
+        2027: (
+            (FEB, 5, lunar_new_year_joint_holiday),
+            (MAR, 9, eid_al_fitr_joint_holiday),
+            (MAR, 12, eid_al_fitr_joint_holiday),
+            (MAR, 15, eid_al_fitr_joint_holiday),
+            (MAR, 25, good_friday_joint_holiday),
+            (MAY, 18, eid_al_adha_joint_holiday),
+            (MAY, 19, vesak_joint_holiday),
+            (DEC, 24, christmas_joint_holiday),
+        ),
     }
+
     special_government_holidays_observed = {
         2020: (DEC, 31, eid_al_fitr_joint_holiday),
     }

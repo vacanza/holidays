@@ -117,8 +117,8 @@ class Guernsey(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Fully Removed in 1977.
 
         if self._year <= 1966 or self._year in {1968, 1969, 1971, 1972}:
-            # Whit Monday.
-            self._add_whit_monday("Whit Monday")
+            # Pentecost Monday.
+            self._add_pentecost_monday("Whit Monday")
 
         # His/Her Majesty's Birthday
         # La jour fixé pour la célébration du jour de naissanee de Sa Majesté

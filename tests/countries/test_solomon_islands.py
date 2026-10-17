@@ -179,26 +179,17 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def _test_province_day_helper(
-        self,
-        province_code: str,
-        holiday_name: str,
-        month: int,
-        day: int,
-        obs_dts: tuple[str, ...],
+        self, province_code: str, holiday_name: str, month: int, day: int, obs_dts: tuple[str, ...]
     ):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == province_code:
                 self.assertHolidayName(
-                    holiday_name,
-                    holidays,
-                    (f"{year}-{month}-{day}" for year in self.full_range),
+                    holiday_name, holidays, (f"{year}-{month}-{day}" for year in self.full_range)
                 )
                 observed_name = f"{holiday_name} (observed)"
                 self.assertHolidayName(observed_name, holidays, obs_dts)
                 self.assertNoNonObservedHolidayName(
-                    observed_name,
-                    self.subdiv_holidays_non_observed[subdiv],
-                    obs_dts,
+                    observed_name, self.subdiv_holidays_non_observed[subdiv], obs_dts
                 )
             else:
                 self.assertNoHolidayName(holiday_name, holidays, self.full_range)

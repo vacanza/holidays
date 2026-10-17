@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAY, SUN, _timedelta, _get_nth_weekday_of_month
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -57,17 +56,17 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Fiakaran'ny Jesosy kristy tany an-danitra"))
 
-        # Whit Sunday.
-        whit_sunday = self._add_whit_sunday(tr("Pentekosta"))
+        # Pentecost.
+        pentecost = self._add_pentecost(tr("Pentekosta"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Alatsinain'ny pentekosta"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Alatsinain'ny pentekosta"))
 
         last_sun_of_may = _get_nth_weekday_of_month(-1, SUN, MAY, self._year)
         self._add_holiday(
             # Mother's Day.
             tr("Fetin'ny reny"),
-            _timedelta(last_sun_of_may, +7) if last_sun_of_may == whit_sunday else last_sun_of_may,
+            _timedelta(last_sun_of_may, +7) if last_sun_of_may == pentecost else last_sun_of_may,
         )
 
         # Father's Day.

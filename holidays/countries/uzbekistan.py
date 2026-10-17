@@ -11,11 +11,11 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, DEC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
@@ -147,7 +147,7 @@ class UzbekistanStaticHolidays:
         * [2025-2026](https://web.archive.org/web/20251227000438/https://lex.uz/docs/-7938920)
     """
 
-    # Date format (see strftime() Format Codes)
+    # Substituted date format.
     substituted_date_format = tr("%d/%m %Y")
     # Day off (substituted from %s).
     substituted_label = tr("Dam olish kuni (%s dan koʻchirilgan)")

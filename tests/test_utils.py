@@ -10,14 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 import warnings
 from collections import defaultdict
 from collections.abc import Callable
 from concurrent.futures import ProcessPoolExecutor
 from datetime import date
 from pathlib import Path
-from unittest import mock
+from unittest import TestCase, mock
 
 import pytest
 
@@ -37,7 +36,7 @@ from holidays.utils import (
 from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
-class TestCountryHolidays(unittest.TestCase):
+class TestCountryHolidays(TestCase):
     def setUp(self):
         self.holidays = country_holidays("US")
 
@@ -74,7 +73,7 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertIn("CountryHoliday is deprecated", str(ctx.warning))
 
 
-class TestFinancialHolidays(unittest.TestCase):
+class TestFinancialHolidays(TestCase):
     def setUp(self):
         self.holidays = financial_holidays("XNYS")
 
@@ -102,7 +101,7 @@ class TestFinancialHolidays(unittest.TestCase):
             financial_holidays("XNYS", subdiv="XXXX")
 
 
-class TestAllInSameYear(unittest.TestCase):
+class TestAllInSameYear(TestCase):
     """Ensure only holidays in the year(s) requested are returned."""
 
     years = set(range(1950, 2051))
@@ -162,7 +161,7 @@ class TestAllInSameYear(unittest.TestCase):
         self._check_holidays_years(financial_holidays, list_supported_financial())
 
 
-class TestListLocalizedEntities(unittest.TestCase):
+class TestListLocalizedEntities(TestCase):
     def assertLocalizedEntities(self, localized_entities, supported_entities):  # noqa: N802
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
@@ -173,7 +172,7 @@ class TestListLocalizedEntities(unittest.TestCase):
         for path in locale_dir.rglob("*.mo"):
             entity_to_languages[path.stem].append(path.parts[-3])
 
-        for entity_code in supported_entities.keys():
+        for entity_code in supported_entities:
             actual_languages = sorted(entity_to_languages.get(entity_code, []))
             expected_languages = localized_entities.get(entity_code, [])
 
@@ -211,7 +210,7 @@ class TestListLocalizedEntities(unittest.TestCase):
         )
 
 
-class TestListSupportedEntities(unittest.TestCase):
+class TestListSupportedEntities(TestCase):
     def test_list_supported_countries(self):
         supported_countries = list_supported_countries(include_aliases=False)
 
@@ -293,7 +292,7 @@ class CountryStub5(HolidayBase):
             self._add_holiday_dec_31("Custom December 31st Holiday")
 
 
-class TestListLongBreaks(unittest.TestCase):
+class TestListLongBreaks(TestCase):
     def assertLongBreaksEqual(  # noqa: N802
         self, instance, expected, *, minimum_break_length=3, require_weekend_overlap=True
     ):
@@ -306,10 +305,7 @@ class TestListLongBreaks(unittest.TestCase):
 
     def test_long_break_single(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongBreaksEqual(
-            cs1,
-            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
-        )
+        self.assertLongBreaksEqual(cs1, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
 
     def test_long_break_multiple(self):
         cs2 = CountryStub2(years=2025)
@@ -323,10 +319,7 @@ class TestListLongBreaks(unittest.TestCase):
 
     def test_long_break_require_weekend_overlap(self):
         cs1 = CountryStub1(years=2025)
-        self.assertLongBreaksEqual(
-            cs1,
-            [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]],
-        )
+        self.assertLongBreaksEqual(cs1, [[date(2025, 7, 4), date(2025, 7, 5), date(2025, 7, 6)]])
         self.assertLongBreaksEqual(
             cs1,
             [
@@ -339,8 +332,7 @@ class TestListLongBreaks(unittest.TestCase):
     def test_long_break_custom_weekend(self):
         cs3 = CountryStub3(years=2025)
         self.assertLongBreaksEqual(
-            cs3,
-            [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]],
+            cs3, [[date(2025, 4, 10), date(2025, 4, 11), date(2025, 4, 12)]]
         )
 
     def test_long_break_no_holidays(self):
@@ -364,14 +356,10 @@ class TestListLongBreaks(unittest.TestCase):
     def test_long_break_across_years(self):
         cs5 = CountryStub5(years=2024)
         self.assertLongBreaksEqual(
-            cs5,
-            [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]],
+            cs5, [[date(2023, 12, 30), date(2023, 12, 31), date(2024, 1, 1)]]
         )
         cs5 = CountryStub5(years=2021)
-        self.assertLongBreaksEqual(
-            cs5,
-            [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]],
-        )
+        self.assertLongBreaksEqual(cs5, [[date(2021, 12, 31), date(2022, 1, 1), date(2022, 1, 2)]])
 
     def test_long_break_real_country_holidays_data(self):
         self.assertEqual(

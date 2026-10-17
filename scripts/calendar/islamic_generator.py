@@ -13,114 +13,108 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from pathlib import Path
+"""Generate Gregorian dates for holidays based on the Hijri lunar calendar.
 
-from hijridate import convert
-from hijridate.ummalqura import HIJRI_RANGE
+Run with:
 
-CLASS_NAME = "_IslamicLunar"
-OUT_FILE_NAME = "islamic_dates.py"
+    python -m scripts.calendar.islamic_generator
 
-CLASS_TEMPLATE = """class {class_name}:
-{holiday_data}"""
+Alternatively, run with uv:
 
-HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
-{year_dates}
-    }}
+    uv run -m scripts.calendar.islamic_generator
+
+This generates the file `holidays/calendars/islamic_dates.py`,
+whose data can then be copied to `holidays/calendars/islamic.py`.
 """
 
-YEAR_TEMPLATE = "        {year}: {dates},"
+from __future__ import annotations
 
-ISLAMIC_HOLIDAYS = (
-    # BH, DJ, EG, ID, MY, MA, TN, AE
-    (1, 1, "HIJRI_NEW_YEAR"),  # Islamic New Year
-    # BH (days-1), IN, IR, PK
-    (1, 10, "ASHURA"),  # Ashura
-    # MY
-    (2, 6, "HARI_HOL_JOHOR"),  # Hari Hol of Johor
-    # SN
-    (2, 18, "GRAND_MAGAL_OF_TOUBA"),  # Grand Magal of Touba
-    # BH, DJ, EG, ET, IN, ID, MY, MA, NG, PK, TN, AE
-    (3, 12, "MAWLID"),  # Birthday of Prophet
-    # DJ, ID, IR, MY, AE
-    (7, 27, "ISRA_AND_MIRAJ"),  # Isra and Mi'raj
-    # MY
-    (9, 1, "RAMADAN_BEGINNING"),  # Beginning of Ramadan
-    # MY
-    (9, 17, "NUZUL_AL_QURAN"),  # Nuzul Al-Quran Day
-    # CI, GN
-    (9, 27, "LAYLAT_AL_QADR"),  # Laylat Al-Qadr (The Night of Power)
-    # AL, AZ, BH, BA, BI, DJ, EG, ET, ID, IN, IR, KG, MY, MA, NG, MK, PK, PH,
-    # SA, SG, ES, TN, TR, AE, UZ
-    (10, 1, "EID_AL_FITR"),  # Eid al-Fitr
-    # AL, AZ, BH, BA, BI, DJ, EG, ET, ID, IN, IR, KZ, KG, MY, MA, NG, PK, PH,
-    # SA, SG, ES, TN, TR, AE, UZ
-    (12, 10, "EID_AL_ADHA"),  # Eid al-Adha
-    # IR holidays:
-    (1, 9, "TASUA"),  # Tasua
-    (2, 20, "ARBAEEN"),  # Arbaeen
-    (2, 28, "PROPHET_DEATH"),  # Demise of Prophet Muhammad and Martyrdom of Imam Hassan
-    (2, -1, "ALI_AL_RIDA_DEATH"),  # Martyrdom of Imam Reza (last day of Safar)
-    (3, 8, "HASAN_AL_ASKARI_DEATH"),  # Martyrdom of Imam Hasan al-Askari
-    (3, 17, "SADIQ_BIRTHDAY"),  # Birthday of Prophet Muhammad and Imam Sadeq
-    (6, 3, "FATIMA_DEATH"),  # Martyrdom of Fatima
-    (7, 13, "ALI_BIRTHDAY"),  # Birthday of Imam Ali
-    (8, 15, "IMAM_MAHDI_BIRTHDAY"),  # Birthday of Imam Mahdi
-    (9, 21, "ALI_DEATH"),  # Martyrdom of Imam Ali
-    (10, 25, "SADIQ_DEATH"),  # Martyrdom of Imam Sadeq
-    (12, 18, "EID_AL_GHADIR"),  # Eid al-Ghadir
-    # MV holidays:
-    (3, 1, "QUAMEE_DHUVAS"),  # National Day in Maldives
-    (4, 1, "MALDIVES_EMBRACED_ISLAM"),  # The Day Maldives Embraced Islam
-)
+from collections import defaultdict
+from datetime import timedelta
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from datetime import date
+
+from hijridate.convert import Hijri
+from hijridate.ummalqura import HIJRI_RANGE
+
+from .generator import CalendarGenerator
+
+# holiday_name: (month, day)
+#     Fixed Hijri date, e.g. "EID_AL_FITR": (10, 1).
+#     Negative day values count from the end of the month,
+#     e.g. "ALI_AL_RIDA_DEATH": (2, -1) for the last day of Safar.
+# holiday_name: (month, nth, weekday)
+#     n-th weekday of Hijri month, e.g. "JUMUATUL_WIDA": (9, -1, 4)
+#     for the last Friday of Ramadan.
+ISLAMIC_HOLIDAYS = {
+    "HIJRI_NEW_YEAR": (1, 1),  # Islamic New Year.
+    "TASUA": (1, 9),  # Tasua.
+    "ASHURA": (1, 10),  # Ashura.
+    "HARI_HOL_JOHOR": (2, 6),  # Hari Hol of Johor.
+    "GRAND_MAGAL_OF_TOUBA": (2, 18),  # Grand Magal of Touba.
+    "ARBAEEN": (2, 20),  # Arbaeen.
+    "PROPHET_DEATH": (2, 28),  # Demise of Prophet Muhammad and Martyrdom of Imam Hassan.
+    "ALI_AL_RIDA_DEATH": (2, -1),  # Martyrdom of Imam Reza (last day of Safar).
+    "QUAMEE_DHUVAS": (3, 1),  # National Day in Maldives.
+    "HASAN_AL_ASKARI_DEATH": (3, 8),  # Martyrdom of Imam Hasan al-Askari.
+    "MAWLID": (3, 12),  # Birthday of Prophet.
+    "SADIQ_BIRTHDAY": (3, 17),  # Birthday of Prophet Muhammad and Imam Sadeq.
+    "MALDIVES_EMBRACED_ISLAM_DAY": (4, 1),  # The Day Maldives Embraced Islam.
+    "FATIMA_DEATH": (6, 3),  # Martyrdom of Fatima.
+    "ALI_BIRTHDAY": (7, 13),  # Birthday of Imam Ali.
+    "ISRA_AND_MIRAJ": (7, 27),  # Isra and Mi'raj.
+    "IMAM_MAHDI_BIRTHDAY": (8, 15),  # Birthday of Imam Mahdi.
+    "RAMADAN_BEGINNING": (9, 1),  # Beginning of Ramadan.
+    "NUZUL_AL_QURAN": (9, 17),  # Nuzul Al-Quran Day.
+    "ALI_DEATH": (9, 21),  # Martyrdom of Imam Ali.
+    "LAYLAT_AL_QADR": (9, 27),  # Laylat Al-Qadr.
+    "JUMUATUL_WIDA": (9, -1, 4),  # Jumuatul-Wida (last Friday of Ramadan).
+    "EID_AL_FITR": (10, 1),  # Eid al-Fitr.
+    "SADIQ_DEATH": (10, 25),  # Martyrdom of Imam Sadeq.
+    "EID_AL_ADHA": (12, 10),  # Eid al-Adha.
+    "EID_AL_GHADIR": (12, 18),  # Eid al-Ghadir.
+}
 
 
-def generate_data():
-    h_year_min, h_year_max = (d[0] for d in HIJRI_RANGE)
+def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
+    """Return the n-th occurrence of weekday relative to given date.
 
-    dates = {}
-    for h_year in range(h_year_min, h_year_max + 1):
-        for h_month, h_day, hol_name in ISLAMIC_HOLIDAYS:
-            if h_day < 0:  # days from end of month
-                h_day = convert.Hijri(h_year, h_month, 1).month_length() + h_day + 1
-            g_date = convert.Hijri(h_year, h_month, h_day).to_gregorian()
-            g_year = g_date.year
-            if dt := dates.get(g_year):
-                if dts := dt.get(hol_name):
-                    dts.append(g_date)
-                else:
-                    dt[hol_name] = [g_date]
-            else:
-                dates[g_year] = {hol_name: [g_date]}
-
-    g_year_min = min(dates.keys())
-    g_year_max = max(dates.keys())
-
-    holiday_names = sorted(d[2] for d in ISLAMIC_HOLIDAYS)
-    holiday_data = []
-    for hol_name in holiday_names:
-        year_dates = []
-        for year in range(g_year_min, g_year_max + 1):
-            dts = dates[year].get(hol_name)
-            if not dts:
-                continue
-            dt = (f"({d.strftime('%b').upper()}, {d.day})" for d in dts)
-            dates_str = ", ".join(dt)
-            if len(dts) > 1:
-                dates_str = f"({dates_str})"
-            year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
-        year_dates_str = "\n".join(year_dates)
-        holiday_data.append(
-            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
-        )
-    holiday_data_str = "\n".join(holiday_data)
-    class_str = CLASS_TEMPLATE.format(
-        class_name=CLASS_NAME,
-        holiday_data=holiday_data_str,
+    Positive `n` counts forward, negative `n` counts backward,
+    including `from_dt` itself.
+    """
+    return from_dt + timedelta(
+        (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
+        if n > 0
+        else (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
     )
 
-    path = Path("holidays/calendars") / OUT_FILE_NAME
-    path.write_text(class_str, encoding="UTF-8")
+
+def generate_data() -> None:
+    h_years = range(HIJRI_RANGE[0][0], HIJRI_RANGE[1][0] + 1)
+
+    dates: dict[str, dict[int, list[date]]] = defaultdict(lambda: defaultdict(list))
+    for name, (holiday_month, *items) in ISLAMIC_HOLIDAYS.items():
+        for year in h_years:
+            first_day = Hijri(year, holiday_month, 1)
+            g_date = first_day.to_gregorian()
+
+            match items:
+                case (holiday_num, holiday_weekday):
+                    if holiday_num < 0:
+                        g_date += timedelta(days=first_day.month_length() - 1)
+                    g_date = _get_nth_weekday_from(holiday_num, holiday_weekday, g_date)
+
+                case (holiday_day,):
+                    if holiday_day < 0:
+                        g_date += timedelta(days=first_day.month_length() + 1)
+                    g_date += timedelta(days=holiday_day - 1)
+
+            dates[name][g_date.year].append(g_date)
+
+    cal_gen = CalendarGenerator("islamic", "_IslamicLunar")
+    cal_gen.generate(dates)
 
 
 if __name__ == "__main__":

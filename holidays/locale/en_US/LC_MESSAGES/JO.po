@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-02-28 09:55-0800\n"
-"PO-Revision-Date: 2025-06-26 17:55+0300\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -42,7 +42,7 @@ msgid "عيد العمال"
 msgstr "Labor Day"
 
 #. Independence Day.
-msgid "عيد الإستقلال"
+msgid "عيد الاستقلال"
 msgstr "Independence Day"
 
 #. Christmas Day.
@@ -69,9 +69,9 @@ msgstr "Eid al-Fitr"
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "يوم عرفة"
-msgstr "Arafat Day"
+msgstr "Day of Arafah"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"

@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import NOV
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,7 +33,9 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(self, PolandStaticHolidays)
+        StaticHolidays.__init__(
+            self, (PolandStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -72,11 +73,11 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
             self._add_ascension_thursday(tr("Wniebowstąpienie Pańskie"))
 
         # Pentecost.
-        self._add_whit_sunday(tr("Zielone Świątki"))
+        self._add_pentecost(tr("Zielone Świątki"))
 
         if self._year <= 1950:
-            # Whit Monday.
-            self._add_whit_monday(tr("Drugi dzień Zielonych Świątek"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Drugi dzień Zielonych Świątek"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Dzień Bożego Ciała"))

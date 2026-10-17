@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import _timedelta, FRI, SAT
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import HebrewCalendarHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -129,7 +128,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
 
         self._add_observed(
             _timedelta(self._hebrew_calendar.purim_date(self._year), -1),
-            # Ta`anit Ester (Fast of Esther).
+            # Ta'anit Ester (Fast of Esther).
             tr("תענית אסתר"),
             SAT_TO_PREV_THU,
         )
@@ -141,7 +140,7 @@ class Israel(ObservedHolidayBase, HebrewCalendarHolidays):
         self._add_passover(tr("חול המועד פסח"), range(1, 6))
 
         # Lag Ba'omer (Lag BaOmer).
-        self._add_lag_baomer(tr('ל"ג בעומר'))
+        self._add_lag_baomer(tr("ל״ג בעומר"))
 
 
 class IL(Israel):

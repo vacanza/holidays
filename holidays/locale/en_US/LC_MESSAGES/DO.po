@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.42\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-05 12:33+0200\n"
-"PO-Revision-Date: 2024-01-22 13:55+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -44,9 +44,9 @@ msgstr "Lady of Altagracia"
 msgid "Día de Duarte"
 msgstr "Juan Pablo Duarte Day"
 
-#. Independence Day.
-msgid "Día de Independencia"
-msgstr "Independence Day"
+#. National Independence Day.
+msgid "Día de la Independencia Nacional"
+msgstr "National Independence Day"
 
 #. Good Friday.
 msgid "Viernes Santo"

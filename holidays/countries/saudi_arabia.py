@@ -11,11 +11,11 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JUN, SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.calendars.gregorian import JAN, FEB, JUN, SEP, NOV, THU, FRI, SAT, _timedelta
 from holidays.groups import IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     THU_TO_PREV_WED,
@@ -34,6 +34,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_السعودية>
         * <https://web.archive.org/web/20240610223551/http://laboreducation.hrsd.gov.sa/en/labor-education/322>
         * <https://web.archive.org/web/20250329052253/https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order>
+        * [Royal Order No. A/371 of 2022](https://web.archive.org/web/20220705191421/https://www.spa.gov.sa/2324646)
         * [2015 (1436 AH) Dhu al-Hijjah begin on September 15](https://web.archive.org/web/20250430191246/https://qna.org.qa/en/news/news-details?id=saudi-arabia-eid-aladha-to-start-on-september-24&date=14/09/2015)
     """
 
@@ -45,7 +46,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
-    supported_languages = ("ar", "bn", "en_US")
+    supported_languages = ("ar", "bn", "en_US", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = False, **kwargs):
@@ -98,7 +99,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
                 # Add 4 Shawwal.
                 self._add_islamic_observed(self._add_holiday(eid_al_fitr_name, _timedelta(dt, +3)))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))
 
         # Eid al-Adha Holiday.
@@ -110,7 +111,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
 
         if self._year >= 2022:
             # Founding Day.
-            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيسي")))
+            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيس")))
 
         if self._year >= 2005:
             # National Day.
@@ -135,7 +136,19 @@ class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SaudiArabiaStaticHolidays:
+    """Saudi Arabia special holidays.
+
+    References:
+        [Occasion of King Abdullah's return](https://web.archive.org/web/20130712223303/https://www.arabnews.com/node/369196)
+        [Day of mourning for King Abdullah](https://web.archive.org/web/20221216055244/https://www.arabnews.com/saudi-arabia/news/694326)
+        [Win against Argentina in the World Cup](https://web.archive.org/web/20250409214752/https://www.theguardian.com/world/2022/nov/22/saudi-arabia-declares-public-holiday-mark-world-cup-win-over-argentina)
+    """
+
     special_public_holidays = {
-        # Celebrate the country's win against Argentina in the World Cup.
-        2022: (NOV, 23, tr("يوم وطني")),
+        # King Abdullah's Return from Medical Treatment Abroad.
+        2011: (FEB, 26, tr("عطلة رسمية بمناسبة عودة الملك عبد الله")),
+        # Day of Mourning for King Abdullah.
+        2015: (JAN, 25, tr("يوم حداد على الملك عبد الله")),
+        # Holiday for the National Team's Victory in the World Cup.
+        2022: (NOV, 23, tr("عطلة فوز المنتخب في كأس العالم")),
     }

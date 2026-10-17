@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
@@ -59,8 +58,8 @@ class SaintLucia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._add_observed(self._add_labor_day(tr("Labour Day")))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Whit Monday"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))

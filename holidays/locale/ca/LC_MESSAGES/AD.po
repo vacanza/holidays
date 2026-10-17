@@ -56,7 +56,7 @@ msgstr ""
 msgid "Festa del treball"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Dilluns de Pentecosta"
 msgstr ""
 

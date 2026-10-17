@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.77\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-05 14:06+0300\n"
-"PO-Revision-Date: 2025-06-30 11:50+0700\n"
-"Last-Translator: Muhammad Waqar <waqar216447@gmail.com>\n"
+"PO-Revision-Date: 2026-06-30 23:03+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -57,9 +57,9 @@ msgstr "National Workers' Day"
 msgid "National Spiritual Baptist Day"
 msgstr "National Spiritual Baptist Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Carnival Monday.
 msgid "Carnival Monday"

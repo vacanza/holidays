@@ -65,7 +65,7 @@ msgstr ""
 msgid "Eid al-Fitr deuxième jour"
 msgstr ""
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Arafat"
 msgstr ""
 

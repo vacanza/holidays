@@ -327,10 +327,10 @@ class TestUruguay(CommonCountryTests, TestCase):
             ("2022-05-16", "Battle of Las Piedras"),
             ("2022-06-19", "Birthday of Artigas"),
             ("2022-07-18", "Constitution Day"),
-            ("2022-08-25", "Independence Day"),
+            ("2022-08-25", "Independence Declaration Day"),
             ("2022-10-10", "Cultural Diversity Day"),
             ("2022-11-02", "All Souls' Day"),
-            ("2022-12-25", "Day of the Family"),
+            ("2022-12-25", "Family Day"),
         )
 
     def test_l10n_uk(self):

@@ -12,12 +12,12 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars.gregorian import MAR
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     TUE_WED_TO_PREV_MON,
@@ -88,7 +88,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Constitution Day.
         self._add_holiday_jul_18(tr("Jura de la Constitución"))
 
-        # Independence Day.
+        # Independence Declaration Day.
         self._add_holiday_aug_25(tr("Declaratoria de la Independencia"))
 
         if self._year <= 1932:
@@ -102,7 +102,7 @@ class Uruguay(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
             # Beaches Day.
             self._add_holiday_dec_8(tr("Día de las Playas"))
 
-        # Day of the Family.
+        # Family Day.
         self._add_christmas_day(tr("Día de la Familia"))
 
     def _populate_bank_holidays(self):

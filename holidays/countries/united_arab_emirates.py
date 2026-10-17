@@ -12,7 +12,6 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars import _CustomIslamicHolidays
@@ -33,6 +32,7 @@ from holidays.calendars.gregorian import (
 )
 from holidays.constants import GOVERNMENT, OPTIONAL, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 if TYPE_CHECKING:
@@ -67,7 +67,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
-    supported_languages = ("ar", "en_US", "th")
+    supported_languages = ("ar", "en_US", "th", "ur_PK")
     # Founded on DEC 2, 1971.
     start_year = 1972
 
@@ -118,7 +118,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
             # Ramadan 30 not confirmed yet for 2025 onwards.
             self._add_eid_al_fitr_eve(eid_al_fitr_holiday)
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("وقفة عرفة"))
 
         # Eid al-Adha.

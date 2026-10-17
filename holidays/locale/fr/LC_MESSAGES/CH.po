@@ -60,7 +60,7 @@ msgstr "Lundi de Pâques"
 msgid "Tag der Arbeit"
 msgstr "Fête du Travail"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
 msgstr "Lundi de Pentecôte"
 
@@ -128,7 +128,7 @@ msgstr "Lundi du Jeûne fédéral"
 msgid "Ostersonntag"
 msgstr "Jour de Pâques"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pfingstsonntag"
 msgstr "Jour de Pentecôte"
 

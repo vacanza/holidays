@@ -175,7 +175,7 @@ class TestBrazil(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_ash_wednesday(self):
-        name = "Início da Quaresma"
+        name = "Quarta-feira de Cinzas"
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(
             name,
@@ -795,7 +795,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-01-25", "Aniversário da Cidade de São Paulo"),
             ("2023-02-20", "Carnaval"),
             ("2023-02-21", "Carnaval"),
-            ("2023-02-22", "Início da Quaresma"),
+            ("2023-02-22", "Quarta-feira de Cinzas"),
             ("2023-03-06", "Revolução Pernambucana de 1817"),
             ("2023-03-10", "Dia Internacional da Mulher"),
             ("2023-03-18", "Dia da Autonomia"),

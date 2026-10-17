@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -83,7 +82,7 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # Independence Day.
             self._add_holiday_dec_24(tr("عيد الاستقلال"))
 
-            # Islamic New Year.
+            # Islamic New Year Day.
             self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
 
         # Prophet's Birthday.
@@ -118,13 +117,13 @@ class Libya(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
             # Italian Forces Evacuation Day.
             self._add_holiday_oct_7(tr("عيد إجلاء الطليان"))
 
-            # Islamic New Year.
+            # Islamic New Year Day.
             self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية"))
 
             # Ashura.
             self._add_ashura_day(tr("عاشوراء"))
 
-            # Isra and Mi'raj.
+            # Isra' and Mi'raj.
             self._add_isra_and_miraj_day(tr("ذكرى الإسراء والمعراج"))
 
             # Night of Forgiveness.

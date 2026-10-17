@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-09 14:31+0300\n"
-"PO-Revision-Date: 2025-01-27 19:04+0200\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -60,13 +60,13 @@ msgstr "День праці"
 msgid "Uppstigningardagur"
 msgstr "Вознесіння Господнє"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Hvítasunnudagur"
-msgstr "Трійця"
+msgstr "Пʼятидесятниця"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Annar í hvítasunnu"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. National Day.
 msgid "Þjóðhátíðardagurinn"

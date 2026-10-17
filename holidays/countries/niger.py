@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays import OPTIONAL, PUBLIC
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
@@ -30,6 +28,7 @@ from holidays.calendars.gregorian import (
     SUN,
 )
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
@@ -146,8 +145,8 @@ class Niger(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Islam
         # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day(tr("Assomption")))

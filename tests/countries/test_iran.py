@@ -370,7 +370,7 @@ class TestIran(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
-    def test_eid_al_ghadeer(self):
+    def test_eid_al_ghadir(self):
         name = "عید سعید غدیر خم"
         self.assertIslamicNoEstimatedHolidayName(
             name,
@@ -503,7 +503,7 @@ class TestIran(CommonCountryTests, TestCase):
             ("2023-06-04", "Death of Imam Khomeini"),
             ("2023-06-05", "15 Khordad Uprising"),
             ("2023-06-29", "Eid al-Adha"),
-            ("2023-07-07", "Eid al-Ghadeer"),
+            ("2023-07-07", "Eid al-Ghadir"),
             ("2023-07-27", "Tasua"),
             ("2023-07-28", "Ashura"),
             ("2023-08-01", "Public Holiday"),

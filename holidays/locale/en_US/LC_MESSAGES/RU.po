@@ -89,7 +89,7 @@ msgstr "Anniversary of the Great October Socialist Revolution"
 msgid "День Конституции Российской Федерации"
 msgstr "Constitution Day"
 
-#. Date format (see strftime() Format Codes).
+#. Substituted date format.
 msgid "%d.%m.%Y"
 msgstr "%m/%d/%Y"
 

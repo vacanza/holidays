@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.74\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-19 07:23+0530\n"
-"PO-Revision-Date: 2025-05-19 07:23+0530\n"
-"Last-Translator: Devaraj K <devarajkaliyamoorthy@gmail.com>\n"
+"PO-Revision-Date: 2026-06-30 23:03+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -52,9 +52,9 @@ msgstr "Good Friday"
 msgid "Easter Monday"
 msgstr "Easter Monday"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Sovereign's Birthday.
 msgid "Sovereign's Birthday"

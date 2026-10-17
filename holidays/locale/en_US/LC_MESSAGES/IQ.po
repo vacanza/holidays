@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.79\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-29 16:42+0530\n"
-"PO-Revision-Date: 2025-06-29 16:42+0530\n"
-"Last-Translator: Kriti Birda <workwithkritibirda@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -109,7 +109,7 @@ msgid "عيد الفصح"
 msgstr "Pesach"
 
 #. Yom Kippur.
-msgid "يوم الكفارة"
+msgid "عيد الغفران"
 msgstr "Yom Kippur"
 
 #. Sukkot.

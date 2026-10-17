@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -58,8 +57,8 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Easter Sunday.
             self._add_easter_sunday(tr("ülestõusmispühade 1. püha"))
 
-            # Whit Sunday.
-            self._add_whit_sunday(tr("nelipühade 1. püha"))
+            # Pentecost.
+            self._add_pentecost(tr("nelipühade 1. püha"))
 
         self._add_holiday_may_1(
             # May Day.

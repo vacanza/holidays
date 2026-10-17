@@ -244,7 +244,7 @@ class TestSaintHelenaAscensionAndTristanDaCunha(CommonCountryTests, TestCase):
             ("2025-05-21", "Saint Helena Day"),
             ("2025-05-29", "Ascension Day"),
             ("2025-05-30", "Ratting Day"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-08-14", "Anniversary Day"),
             ("2025-08-25", "August Bank Holiday"),
             ("2025-11-14", "King's Birthday"),

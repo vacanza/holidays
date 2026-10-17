@@ -12,14 +12,13 @@
 
 from __future__ import annotations
 
-from gettext import gettext as tr
 from typing import TYPE_CHECKING
 
 from holidays.calendars import (
     _CustomBuddhistHolidays,
     _CustomChineseHolidays,
     _CustomHinduHolidays,
-    _CustomIslamicHolidays,
+    _CustomIslamicMabimsHolidays,
 )
 from holidays.calendars.gregorian import (
     JAN,
@@ -47,6 +46,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     FRI_TO_NEXT_WORKDAY,
@@ -74,12 +74,38 @@ class Malaysia(
         * [Holidays Act 1951](https://web.archive.org/web/20241202103403/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/1951_12_31_act369.pdf)
         * [Holidays Ordinance (Sabah Cap. 56)](https://web.archive.org/web/20201028045259/https://sagc.sabah.gov.my/sites/default/files/law/HolidaysOrdinance.pdf)
         * [Public Holidays Ordinance (Sarawak Cap. 8)](https://web.archive.org/web/20221208142318/https://www.kabinet.gov.my/bkpp/pdf/akta_warta/sarawak_public_holidays_ord_chapter8.pdf)
+        * [P.U. (B) 471/2013, 472/2013](https://web.archive.org/web/20140328205851/http://www.kabinet.gov.my/images/stories/kelepasanam/Pub2013_471_472.pdf)
+        * [P.U. (B) 474/2013, 475/2013](https://web.archive.org/web/20140124095523/http://www.kabinet.gov.my/images/stories/kelepasanam/Pub2013_474_475.pdf)
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>
         * <https://web.archive.org/web/20250123115300/https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8>
         * <https://web.archive.org/web/20240228225038/https://www.nst.com.my/news/nation/2024/02/1014012/melaka-cm-suggests-declaring-feb-20-federal-public-holiday-mark>
-        * <https://web.archive.org/web/20251216120554/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf>
+        * [Additional public holiday for Hari Raya Aidilfitri 2026 (20 Mar 2026)](https://web.archive.org/web/20260413140838/https://www.malaymail.com/news/malaysia/2026/03/15/anwar-announces-extra-public-holiday-for-hari-raya-either-march-20-or-23-depending-on-moon-sighting/212709)
+
+    Checked With:
+        * [2012](https://web.archive.org/web/20140109095450/http://www.kabinet.gov.my/images/stories/kelepasanam/2012_merged.pdf)
+        * [2013](https://web.archive.org/web/20140606042951/http://www.kabinet.gov.my/images/stories/kelepasanam/2013_merged.pdf)
+        * [2014](https://web.archive.org/web/20140109095644/http://www.kabinet.gov.my/images/stories/kelepasanam/2014_merged.pdf)
+        * [2015](https://web.archive.org/web/20150203230515/http://www.kabinet.gov.my/images/stories/kelepasanam/2015_merged.pdf)
+        * [2016](https://web.archive.org/web/20161011225226/http://www.kabinet.gov.my/v2/pdf/hari_kelepasan_am/hka2016.pdf)
+        * [2017](https://web.archive.org/web/20180613233902/http://www.kabinet.gov.my:80/bkpp/pdf/hari_kelepasan_am/hka2017.pdf)
+        * [2018](https://web.archive.org/web/20191126142605/http://www.kabinet.gov.my:80/bkpp/pdf/hari_kelepasan_am/hka_2018.pdf)
+        * [2019](https://web.archive.org/web/20231201041318/http://www.kabinet.gov.my:80/bkpp/pdf/hari_kelepasan_am/hka_2019.pdf)
+        * [2020](https://web.archive.org/web/20231201031320/http://www.kabinet.gov.my:80/bkpp/pdf/hari_kelepasan_am/hka_2020.pdf)
+        * [2021](https://web.archive.org/web/20231201021639/http://www.kabinet.gov.my/bkpp/pdf/hari_kelepasan_am/hka_2021.pdf)
+        * [2022](https://web.archive.org/web/20250505071917/http://www.kabinet.gov.my/bkpp/pdf/hari_kelepasan_am/hka_2022.pdf)
+        * [2023](https://web.archive.org/web/20250321055105/https://www.kabinet.gov.my/bkpp/pdf/hari_kelepasan_am/hka_2023.pdf)
+        * [2024](https://web.archive.org/web/20250220000205/https://www.kabinet.gov.my/bkpp/pdf/hari_kelepasan_am/hka_2024.pdf)
+        * [2025](https://web.archive.org/web/20250530072049/https://www.kabinet.gov.my/bkpp/pdf/hari_kelepasan_am/hka_2025.pdf)
+        * [2026](https://web.archive.org/web/20260501214357/https://www.kabinet.gov.my/storage/2025/08/HKA-2026.pdf)
+        * [2027](https://web.archive.org/web/20260904160020/https://www.kabinet.gov.my/storage/2026/08/HKA_2027.pdf)
 
     Subdivisions Holidays References:
+        * Kedah:
+            * [Birthday of the Sultan in 2026 has been moved to Jul 5](https://web.archive.org/web/20260613161531/https://www.kedah.gov.my/wp-content/uploads/2026/05/DOC070526-07052026114442.pdf)
+        * Labuan:
+            * [Labuan Federal Territory](https://web.archive.org/web/20151117024115/http://www.dvs.gov.my/c/document_library/get_file?uuid=01e32808-0a2b-4369-9747-2021f14012c9&groupId=16746)
+            * [P.U. (A) 511/2005](https://web.archive.org/web/20140109101936/http://www.kabinet.gov.my/images/stories/kelepasanam/Perintah_WP_Labuan_%5BPU_A_5112005%5D.pdf)
+            * [P.U. (A) 438/2012](https://web.archive.org/web/20140109095456/http://www.kabinet.gov.my/images/stories/kelepasanam/Perintah_WP_Labuan_Deepavali_PUA438_2012.pdf)
         * Sabah:
             * [2001](https://web.archive.org/web/20230605164302/https://www.sabah.gov.my/gazette/docs/000207.pdf)
             * [2002](https://web.archive.org/web/20230605173234/https://www.sabah.gov.my/gazette/docs/000968.pdf)
@@ -189,8 +215,8 @@ class Malaysia(
 
     def _get_weekend(self, dt: date) -> set[int]:
         if (
-            self.subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
-        ) or self.subdiv in {"02", "03", "11"}:
+            self._normalized_subdiv == "01" and (dt.year <= 1994 or 2014 <= dt.year <= 2024)
+        ) or self._normalized_subdiv in {"02", "03", "11"}:
             return {FRI, SAT}
         else:
             return {SAT, SUN}
@@ -251,17 +277,17 @@ class Malaysia(
         self.dts_observed.update(self._add_eid_al_adha_day(tr("Hari Raya Qurban")))
 
     def _populate_subdiv_holidays(self):
-        if self.subdiv and self.subdiv not in {"13", "15"}:
-            # Deepavali.
+        if self.subdiv and self._normalized_subdiv not in {"13", "14", "15", "16"}:
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
         super()._populate_subdiv_holidays()
 
         if (
-            self.subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
-        ) or self.subdiv == "02":
+            self._normalized_subdiv == "01" and (self._year <= 1994 or 2014 <= self._year <= 2024)
+        ) or self._normalized_subdiv == "02":
             self._observed_rule = FRI_TO_NEXT_WORKDAY
-        elif self.subdiv in {"03", "11"}:
+        elif self._normalized_subdiv in {"03", "11"}:
             self._observed_rule = SAT_TO_NEXT_WORKDAY
         else:
             self._observed_rule = SUN_TO_NEXT_WORKDAY
@@ -269,6 +295,27 @@ class Malaysia(
         if self.observed:
             self._populate_observed(self.dts_observed)
 
+    def _populate_federal_territories_holidays(self):
+        """Holidays common to the federal territories."""
+
+        # New Year's Day.
+        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+
+        dates_obs = {
+            # P.U. (B) 471/2013, 472/2013.
+            2014: (FEB, 3),
+        }
+        self.dts_observed.add(
+            # Federal Territory Day.
+            self._add_holiday(tr("Hari Wilayah Persekutuan"), dates_obs.get(self._year, (FEB, 1)))
+        )
+
+        # P.U. (B) 474/2013, 475/2013.
+        if self._year >= 2014:
+            # Nuzul Al-Quran Day.
+            self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+
+    # Johor.
     def _populate_subdiv_01_public_holidays(self):
         # Thaipusam.
         self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
@@ -284,18 +331,21 @@ class Malaysia(
         # Beginning of Ramadan.
         self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
 
+    # Kedah.
     def _populate_subdiv_02_public_holidays(self):
-        if self._year >= 2022:
-            # Thaipusam.
-            self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
-
-        if self._year >= 2018:
-            # Birthday of The Sultan of Kedah.
-            name = tr("Hari Keputeraan Sultan Kedah")
-            if self._year == 2024:
-                self._add_holiday_jun_30(name)
+        # Birthday of The Sultan of Kedah.
+        name = tr("Hari Keputeraan Sultan Kedah")
+        if self._year >= 2020:
+            dates_obs = {
+                2024: (JUN, 30),
+                2026: (JUL, 5),
+            }
+            if dt := dates_obs.get(self._year):
+                self._add_holiday(name, dt)
             else:
                 self._add_holiday_3rd_sun_of_jun(name)
+        else:
+            self._add_holiday_3rd_sun_of_jan(name)
 
         # Isra' and Mi'raj.
         self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
@@ -303,11 +353,12 @@ class Malaysia(
         # Beginning of Ramadan.
         self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
 
-        # Eid al-Adha (Second Day).
         self.dts_observed.update(
+            # Eid al-Adha (Second Day).
             self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
         )
 
+    # Kelantan.
     def _populate_subdiv_03_public_holidays(self):
         if self._year >= 2010:
             # Birthday of the Sultan of Kelantan.
@@ -326,14 +377,15 @@ class Malaysia(
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
         if self._year >= 2023:
-            # Arafat Day.
+            # Day of Arafah.
             self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
-        # Eid al-Adha (Second Day).
         self.dts_observed.update(
+            # Eid al-Adha (Second Day).
             self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
         )
 
+    # Melaka.
     def _populate_subdiv_04_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -368,6 +420,7 @@ class Malaysia(
             # Beginning of Ramadan.
             self.dts_observed.update(self._add_ramadan_beginning_day(tr("Awal Ramadan")))
 
+    # Negeri Sembilan.
     def _populate_subdiv_05_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -386,6 +439,7 @@ class Malaysia(
         # Isra' and Mi'raj.
         self.dts_observed.update(self._add_isra_and_miraj_day(tr("Israk dan Mikraj")))
 
+    # Pahang.
     def _populate_subdiv_06_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -401,8 +455,12 @@ class Malaysia(
 
             # Birthday of the Sultan of Pahang.
             name = tr("Hari Keputeraan Sultan Pahang")
+            dates_obs = {
+                2022: (AUG, 1),
+                2026: (JUL, 31),
+            }
             self.dts_observed.add(
-                self._add_holiday_jul_30(name)
+                self._add_holiday(name, dates_obs.get(self._year, (JUL, 30)))
                 if self._year >= 2019
                 else self._add_holiday_oct_24(name)
             )
@@ -410,6 +468,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
+    # Pulau Pinang.
     def _populate_subdiv_07_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -431,6 +490,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
+    # Perak.
     def _populate_subdiv_08_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -448,6 +508,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
+    # Perlis.
     def _populate_subdiv_09_public_holidays(self):
         if self._year >= 2000:
             # Birthday of the Raja of Perlis.
@@ -464,11 +525,12 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-        # Eid al-Adha (Second Day).
         self.dts_observed.update(
+            # Eid al-Adha (Second Day).
             self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
         )
 
+    # Selangor.
     def _populate_subdiv_10_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -482,6 +544,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
+    # Terengganu.
     def _populate_subdiv_11_public_holidays(self):
         if self._year >= 2000:
             self.dts_observed.add(
@@ -503,7 +566,7 @@ class Malaysia(
         # Nuzul Al-Quran Day.
         self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
 
-        # Arafat Day.
+        # Day of Arafah.
         self.dts_observed.update(self._add_arafah_day(tr("Hari Arafah")))
 
         self.dts_observed.update(
@@ -511,6 +574,7 @@ class Malaysia(
             self._add_eid_al_adha_day_two(tr("Hari Raya Qurban (Hari Kedua)"))
         )
 
+    # Sabah.
     def _populate_subdiv_12_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -539,6 +603,7 @@ class Malaysia(
             # Christmas Eve.
             self._add_christmas_eve(tr("Krismas (Eve)"))
 
+    # Sarawak.
     def _populate_subdiv_13_public_holidays(self):
         # New Year's Day.
         self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
@@ -559,53 +624,57 @@ class Malaysia(
             # Sarawak Independence Day.
             self.dts_observed.add(self._add_holiday_jul_22(tr("Hari Kemerdekaan Sarawak")))
 
+    # Wilayah Persekutuan Kuala Lumpur.
     def _populate_subdiv_14_public_holidays(self):
-        # New Year's Day.
-        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+        # Kuala Lumpur became a federal territory on Feb 1, 1974.
+        if self._year <= 1973:
+            return None
+
+        self._populate_federal_territories_holidays()
 
         # Thaipusam.
         self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
 
-        if self._year >= 1974:
-            # Federal Territory Day.
-            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
+        # Diwali.
+        self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
-        # Nuzul Al-Quran Day.
-        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
-
+    # Wilayah Persekutuan Labuan.
     def _populate_subdiv_15_public_holidays(self):
-        # New Year's Day.
-        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+        # Labuan became a federal territory on Apr 16, 1984,
+        # but until Jan 1, 2006, Sabah holidays law applied.
+        if self._year <= 1984:
+            return None
 
-        if self._year >= 1974:
-            # Federal Territory Day.
-            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
+        # P.U. (A) 511/2005.
+        if self._year <= 2005:
+            self._populate_subdiv_12_public_holidays()
+            return None
+
+        self._populate_federal_territories_holidays()
 
         # Pesta Kaamatan.
         name = tr("Pesta Kaamatan")
         self._add_holiday_may_30(name)
         self._add_holiday_may_31(name)
 
-        if self._year >= 2014:
-            # Deepavali.
+        # P.U. (A) 438/2012.
+        if self._year >= 2013:
+            # Diwali.
             self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
-        # Nuzul Al-Quran Day.
-        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
-
+    # Wilayah Persekutuan Putrajaya.
     def _populate_subdiv_16_public_holidays(self):
-        # New Year's Day.
-        self.dts_observed.add(self._add_new_years_day(tr("Tahun Baharu")))
+        # Putrajaya became a federal territory on Feb 1, 2001.
+        if self._year <= 2000:
+            return None
+
+        self._populate_federal_territories_holidays()
 
         # Thaipusam.
         self.dts_observed.add(self._add_thaipusam(tr("Hari Thaipusam")))
 
-        if self._year >= 1974:
-            # Federal Territory Day.
-            self.dts_observed.add(self._add_holiday_feb_1(tr("Hari Wilayah Persekutuan")))
-
-        # Nuzul Al-Quran Day.
-        self.dts_observed.update(self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")))
+        # Diwali.
+        self.dts_observed.add(self._add_diwali(tr("Hari Deepavali")))
 
 
 class MY(Malaysia):
@@ -644,11 +713,12 @@ class MalaysiaBuddhistHolidays(_CustomBuddhistHolidays):
         2024: (MAY, 22),
         2025: (MAY, 12),
         2026: (MAY, 31),
+        2027: (MAY, 20),
     }
 
 
 class MalaysiaChineseHolidays(_CustomChineseHolidays):
-    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    LUNAR_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2027)
 
 
 class MalaysiaHinduHolidays(_CustomHinduHolidays):
@@ -679,9 +749,17 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
         2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
+        2027: (OCT, 28),
     }
 
     THAIPUSAM_DATES = {
+        2011: (JAN, 20),
+        2012: (FEB, 7),
+        2013: (JAN, 27),
+        2014: (JAN, 17),
+        2015: (FEB, 3),
+        2016: (JAN, 24),
+        2017: (FEB, 9),
         2018: (JAN, 31),
         2019: (JAN, 21),
         2020: (FEB, 8),
@@ -695,41 +773,23 @@ class MalaysiaHinduHolidays(_CustomHinduHolidays):
     }
 
 
-class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
+class MalaysiaIslamicHolidays(_CustomIslamicMabimsHolidays):
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2027)
     EID_AL_ADHA_DATES = {
-        2001: (MAR, 6),
-        2002: (FEB, 23),
-        2003: (FEB, 12),
         2004: (FEB, 2),
         2008: (DEC, 9),
         2009: (NOV, 28),
-        2010: (NOV, 17),
         2011: (NOV, 7),
-        2014: (OCT, 5),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2018: (AUG, 22),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2027)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
-        2002: (DEC, 6),
         2003: (NOV, 26),
-        2006: (OCT, 24),
-        2011: (AUG, 31),
-        2019: (JUN, 5),
-        2023: (APR, 22),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
+        2005: (NOV, 3),
     }
 
-    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2026)
+    HARI_HOL_JOHOR_DATES_CONFIRMED_YEARS = (2011, 2027)
     HARI_HOL_JOHOR_DATES = {
         2011: (JAN, 12),
         2012: (DEC, 20),
@@ -743,82 +803,50 @@ class MalaysiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (AUG, 23),
         2024: (AUG, 11),
         2026: (JUL, 21),
+        2027: (JUL, 11),
     }
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2026)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2001, 2027)
     HIJRI_NEW_YEAR_DATES = {
         2003: (MAR, 5),
-        2004: (FEB, 22),
         2010: (DEC, 8),
-        2011: (NOV, 27),
-        2013: (NOV, 5),
         2017: (SEP, 22),
-        2019: (SEP, 1),
-        2021: (AUG, 10),
-        2025: (JUN, 27),
         2026: (JUN, 17),
     }
 
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2026)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2001, 2027)
     ISRA_AND_MIRAJ_DATES = {
-        2001: (OCT, 15),
         2006: (AUG, 22),
-        2007: (AUG, 11),
         2008: (JUL, 31),
-        2014: (MAY, 27),
-        2016: (MAY, 5),
-        2018: (APR, 14),
-        2022: (MAR, 1),
-        2026: (JAN, 17),
+        2010: (JUL, 9),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2026)
+    MAWLID_DATES_CONFIRMED_YEARS = (2001, 2027)
     MAWLID_DATES = {
-        2003: (MAY, 14),
-        2004: (MAY, 2),
-        2006: (APR, 11),
-        2011: (FEB, 16),
-        2012: (FEB, 5),
-        2014: (JAN, 14),
-        2015: ((JAN, 3), (DEC, 24)),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
+        2002: (MAY, 24),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
         2021: (OCT, 19),
         2022: (OCT, 10),
-        2023: (SEP, 28),
-        2024: (SEP, 16),
-        2025: (SEP, 5),
     }
 
-    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2026)
+    NUZUL_AL_QURAN_DATES_CONFIRMED_YEARS = (2001, 2027)
     NUZUL_AL_QURAN_DATES = {
-        2001: (DEC, 3),
-        2003: (NOV, 12),
         2004: (NOV, 1),
-        2005: (OCT, 21),
         2008: (SEP, 18),
-        2014: (JUL, 15),
-        2018: (JUN, 2),
-        2022: (APR, 19),
-        2024: (MAR, 28),
-        2025: (MAR, 18),
-        2026: (MAR, 7),
+        2010: (AUG, 27),
+        2012: (AUG, 5),
+        2013: (JUL, 25),
     }
 
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2026)
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2001, 2027)
     RAMADAN_BEGINNING_DATES = {
-        2001: (NOV, 17),
-        2003: (OCT, 27),
         2004: (OCT, 16),
-        2005: (OCT, 5),
         2008: (SEP, 2),
-        2014: (JUN, 29),
+        2010: (AUG, 11),
+        2012: (JUL, 20),
+        2013: (JUL, 9),
         2016: (JUN, 7),
-        2018: (MAY, 17),
-        2022: (APR, 3),
-        2024: (MAR, 12),
-        2025: (MAR, 2),
-        2026: (FEB, 19),
     }
 
 
@@ -838,6 +866,9 @@ class MalaysiaStaticHolidays:
     # Malaysia Cup Holiday.
     malaysia_cup_holiday = tr("Cuti Piala Malaysia")
 
+    # Eid al-Fitr (additional holiday).
+    eid_al_fitr_additional_holiday = tr("Hari Raya Puasa (pergantian hari)")
+
     special_public_holidays = {
         1999: (NOV, 29, general_election_additional_holiday),
         2017: (
@@ -854,9 +885,9 @@ class MalaysiaStaticHolidays:
             (NOV, 19, general_election_additional_holiday),
             (NOV, 28, additional_holiday),
         ),
-        # Eid al-Fitr (additional holiday).
-        2023: (APR, 21, tr("Hari Raya Puasa (pergantian hari)")),
+        2023: (APR, 21, eid_al_fitr_additional_holiday),
         2025: (SEP, 15, additional_holiday),
+        2026: (MAR, 20, eid_al_fitr_additional_holiday),
     }
 
     special_01_public_holidays = {
@@ -874,6 +905,8 @@ class MalaysiaStaticHolidays:
             (MAY, 10, additional_holiday),
             (MAY, 13, additional_holiday),
         ),
+        # Thaipusam.
+        2022: (JAN, 18, tr("Hari Thaipusam")),
     }
     special_02_public_holidays_observed = {
         2022: (MAY, 4, labor_day),
@@ -894,6 +927,8 @@ class MalaysiaStaticHolidays:
             (MAY, 10, additional_holiday),
             (MAY, 11, additional_holiday),
         ),
+        # Birthday of the Governor of Malacca.
+        2024: (AUG, 26, tr("Hari Jadi Yang di-Pertua Negeri Melaka")),
     }
     special_04_public_holidays_observed = {
         2007: (JAN, 2, eid_al_adha),
@@ -966,7 +1001,7 @@ class MalaysiaStaticHolidays:
         ),
     }
     special_11_public_holidays_observed = {
-        # Arafat Day.
+        # Day of Arafah.
         2007: (JAN, 2, tr("Hari Arafah")),
         2022: (MAY, 4, labor_day),
     }

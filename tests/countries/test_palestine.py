@@ -34,7 +34,7 @@ class TestPalestine(CommonCountryTests, TestCase):
         self.assertHolidayName("عيد العمال", (f"{year}-05-01" for year in self.full_range))
 
     def test_independence_day(self):
-        self.assertHolidayName("عيد الإستقلال", (f"{year}-11-15" for year in self.full_range))
+        self.assertHolidayName("عيد الاستقلال", (f"{year}-11-15" for year in self.full_range))
 
     def test_christmas_orthodox(self):
         name = "عيد الميلاد المجيد الشرقي"
@@ -411,7 +411,7 @@ class TestPalestine(CommonCountryTests, TestCase):
             ("2024-06-18", "Eid al-Adha"),
             ("2024-06-19", "Eid al-Adha"),
             ("2024-06-23", "Pentecost"),
-            ("2024-07-07", "Hijri New Year"),
+            ("2024-07-07", "Islamic New Year"),
             ("2024-09-15", "Prophet's Birthday"),
             ("2024-11-15", "Independence Day"),
             ("2024-12-25", "Catholic Christmas Day"),
@@ -454,7 +454,7 @@ class TestPalestine(CommonCountryTests, TestCase):
             ("2024-06-23", "أحد العنصرة"),
             ("2024-07-07", "رأس السنة الهجرية"),
             ("2024-09-15", "ذكرى المولد النبوي الشريف"),
-            ("2024-11-15", "عيد الإستقلال"),
+            ("2024-11-15", "عيد الاستقلال"),
             ("2024-12-25", "عيد الميلاد المجيد الغربي"),
             ("2024-12-26", "عيد الميلاد المجيد الغربي"),
         )

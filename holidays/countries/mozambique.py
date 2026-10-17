@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
@@ -45,7 +44,7 @@ class Mozambique(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # International Workers' Day.
         self._add_observed(self._add_labor_day(tr("Dia Internacional dos Trabalhadores")))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_observed(self._add_holiday_jun_25(tr("Dia da Independência Nacional")))
 
         # Victory Day.

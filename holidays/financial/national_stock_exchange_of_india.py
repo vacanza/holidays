@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.groups import (
@@ -20,7 +18,8 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NONE
+from holidays.helpers import tr
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NONE
 
 
 class NationalStockExchangeOfIndia(
@@ -57,13 +56,14 @@ class NationalStockExchangeOfIndia(
         * [2023](https://web.archive.org/web/20250821071635/https://nsearchives.nseindia.com/content/circulars/CMTR54757.pdf)
         * [2024](https://web.archive.org/web/20250821071650/https://nsearchives.nseindia.com/content/circulars/CMTR59722.pdf)
         * [2025](https://web.archive.org/web/20250624132016/https://nsearchives.nseindia.com/content/circulars/CMTR65587.pdf)
+        * [2026](https://web.archive.org/web/20260308055957/https://nsearchives.nseindia.com/content/circulars/CMTR71775.pdf)
     """
 
     market = "XNSE"
     default_language = "en_IN"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_languages = ("en_IN", "en_US", "gu", "hi", "mr")
+    supported_languages = ("en_IN", "en_US", "gu", "hi", "kn", "mr", "te")
     start_year = 2001
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
@@ -85,7 +85,7 @@ class NationalStockExchangeOfIndia(
             calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, cls=NationalStockExchangeOfIndiaStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_TO_NONE + SUN_TO_NONE)
+        kwargs.setdefault("observed_rule", SAT_SUN_TO_NONE)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -212,6 +212,7 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
 
     HOLI_DATES = {
         2023: (MAR, 7),
+        2026: (MAR, 3),
     }
 
     MAHAVIR_JAYANTI_DATES = {

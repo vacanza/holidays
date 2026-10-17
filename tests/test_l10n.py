@@ -12,17 +12,16 @@
 
 import os
 import re
-import unittest
 from collections import Counter
 from pathlib import Path
-from unittest import mock
+from unittest import TestCase, mock
 
 from polib import pofile as create_po_file
 
 import holidays
 
 
-class TestLocalization(unittest.TestCase):
+class TestLocalization(TestCase):
     @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
     def test_language_unavailable_en_us(self):
         self.assertEqual(os.environ["LANGUAGE"], "en_US")
@@ -55,17 +54,17 @@ class TestLocalization(unittest.TestCase):
         for po_path in sorted(locale_dir.rglob("*.po")):
             try:
                 po_file = create_po_file(po_path, check_for_duplicates=True)
-            except ValueError as e:
+            except Exception as e:
                 # Make sure no duplicated entries added.
-                match = re.match(r"Entry (.*) already exists", str(e))
-                self.assertEqual(
-                    0,
-                    len(match.groups()),
-                    f"Entry `{match.group(1)}` already exists in {po_path}. "
-                    "Please remove the duplicate.",
-                )
-
-                raise e
+                if match := re.match(r"Entry (.*) already exists", str(e.__context__)):
+                    self.assertEqual(
+                        0,
+                        len(match.groups()),
+                        f"Entry `{match.group(1)}` already exists in {po_path}. "
+                        "Please remove the duplicate.",
+                    )
+                else:
+                    raise e
 
             missing_fields = mandatory_fields - set(po_file.metadata)
             self.assertFalse(
@@ -88,6 +87,14 @@ class TestLocalization(unittest.TestCase):
                 f"The {entity_code} {language} localization contains obsolete entries: "
                 f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
+
+            # Make sure no entries without l10n comment.
+            for entry in po_file:
+                self.assertTrue(
+                    entry.comment,
+                    f"The {entity_code} {language} localization contains missing comment "
+                    f"in line {entry.linenum}: msgid `{entry.msgid}`",
+                )
 
             entity = getattr(holidays, entity_code)
 

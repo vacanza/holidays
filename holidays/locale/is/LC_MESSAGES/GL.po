@@ -56,11 +56,11 @@ msgstr "Kóngsbænadagur"
 msgid "Qilaliarfik"
 msgstr "Uppstigningardagur"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Piinsip ullua"
 msgstr "Hvítasunnudagur"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Piinsip-aappaa"
 msgstr "Annar í hvítasunnu"
 

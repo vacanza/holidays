@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
@@ -21,6 +19,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -142,8 +141,8 @@ class Guyana(
         )
 
         self._add_observed(
-            # Day after Christmas.
-            self._add_christmas_day_two(tr("Day after Christmas")),
+            # Day After Christmas.
+            self._add_christmas_day_two(tr("Day After Christmas")),
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 

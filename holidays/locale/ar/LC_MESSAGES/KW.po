@@ -65,7 +65,7 @@ msgstr ""
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "يوم عرفة"
 msgstr ""
 

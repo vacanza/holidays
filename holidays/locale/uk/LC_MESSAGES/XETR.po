@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-20 15:56+0700\n"
-"PO-Revision-Date: 2026-03-20 16:04+0700\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -44,9 +44,9 @@ msgstr "Великодній понеділок"
 msgid "Erster Mai"
 msgstr "День праці"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Pfingstmontag"
-msgstr "День Святого Духа"
+msgstr "Другий день Пʼятидесятниці"
 
 #. German Unity Day.
 msgid "Tag der Deutschen Einheit"

@@ -11,12 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, JUL, AUG, SEP, OCT, NOV, DEC, THU, FRI, SAT
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -36,7 +36,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     estimated_label = tr("%s (تقديري)")
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
-    supported_languages = ("ar_QA", "en_US")
+    supported_languages = ("ar_QA", "en_US", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

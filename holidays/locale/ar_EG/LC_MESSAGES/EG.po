@@ -91,7 +91,7 @@ msgstr ""
 msgid "عيد الفطر المبارك"
 msgstr ""
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "وقفة عيد الأضحى المبارك"
 msgstr ""
 

@@ -11,8 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 __all__ = (
-    "country_holidays",
     "CountryHoliday",
+    "country_holidays",
     "financial_holidays",
     "list_localized_countries",
     "list_localized_financial",

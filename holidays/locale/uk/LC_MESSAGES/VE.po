@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2026-01-04 15:43+0700\n"
+"PO-Revision-Date: 2026-07-02 22:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -58,7 +58,7 @@ msgstr "Міжнародний день трудящих"
 
 #. Family Day.
 msgid "Día de la Familia"
-msgstr "День сімʼї"
+msgstr "День родини"
 
 #. Battle of Carabobo.
 msgid "Batalla de Carabobo"

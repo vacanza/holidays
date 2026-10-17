@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -561,8 +560,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoliday
     def _populate_subdiv_bz_public_holidays(self):
         # Province Law 36 of Oct 16, 1992.
         if self._year >= 1993:
-            # Whit Monday.
-            self._add_whit_monday(tr("Lunedì di Pentecoste"))
+            # Pentecost Monday.
+            self._add_pentecost_monday(tr("Lunedì di Pentecoste"))
 
     def _populate_subdiv_bz_half_day_holidays(self):
         # Province Law 36 of Oct 16, 1992.

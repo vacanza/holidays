@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
@@ -20,6 +18,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -94,11 +93,11 @@ class Gabon(
             # Ascension Day.
             self._add_ascension_thursday(tr("Ascension"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pentecôte"))
+        # Pentecost.
+        self._add_pentecost(tr("Pentecôte"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Lundi de Pentecôte"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Lundi de Pentecôte"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption de Marie"))
@@ -183,7 +182,7 @@ class GabonStaticHolidays:
         * <https://web.archive.org/web/20260307182549/https://info241.com/gabon-le-samedi-27-septembre-declare-jour-ferie-pour-les,2558>
     """
 
-    # Public holiday.
+    # Public Holiday.
     public_holiday = tr("Jour férié")
 
     special_public_holidays = {

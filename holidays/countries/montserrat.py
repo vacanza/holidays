@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_TO_NEXT_TUE,
@@ -93,9 +92,9 @@ class Montserrat(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             else self._add_holiday_2_days_past_2nd_sat_of_jun(name)
         )
 
-        # Whit Monday.
+        # Pentecost Monday.
         name = tr("Whit Monday")
-        whit_monday_dt = self._add_whit_monday(name)
+        whit_monday_dt = self._add_pentecost_monday(name)
         if whit_monday_dt == sovereign_birthday_dt:
             self._add_observed(whit_monday_dt, name=name, rule=MON_TO_NEXT_TUE)
 

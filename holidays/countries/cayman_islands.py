@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays import APR, MAY, JUN, JUL, SEP, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -38,7 +37,7 @@ class CaymanIslands(ObservedHolidayBase, ChristianHolidays, InternationalHoliday
 
     country = "KY"
     default_language = "en_GB"
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observed)")
     # Earliest year of holidays with an accessible online record.
     start_year = 2006

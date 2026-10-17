@@ -289,7 +289,7 @@ class TestAnguilla(CommonCountryTests, TestCase):
             ("2022-05-02", "Labor Day (observed)"),
             ("2022-05-30", "Anguilla Day"),
             ("2022-06-03", "Queen's Birthday"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-08-01", "August Monday"),
             ("2022-08-04", "August Thursday"),
             ("2022-08-05", "Constitution Day"),

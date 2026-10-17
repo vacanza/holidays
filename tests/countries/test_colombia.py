@@ -175,6 +175,22 @@ class TestColombia(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observado)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_day_of_our_lady_of_the_rosary_of_chiquinquira(self):
+        name = "Día de Nuestra Señora del Rosario de Chiquinquirá"
+        self.assertNonObservedHolidayName(
+            name, (f"{year}-07-09" for year in range(2026, self.end_year))
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+        obs_dts = (
+            "2026-07-13",
+            "2027-07-12",
+            "2028-07-10",
+            "2030-07-15",
+            "2031-07-14",
+        )
+        self.assertHolidayName(f"{name} (observado)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
     def test_independence_day(self):
         self.assertHolidayName(
             "Día de la Independencia", (f"{year}-07-20" for year in self.full_range)
@@ -235,68 +251,71 @@ class TestColombia(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "Año Nuevo"),
-            ("2022-01-10", "Día de los Reyes Magos (observado)"),
-            ("2022-03-21", "Día de San José (observado)"),
-            ("2022-04-14", "Jueves Santo"),
-            ("2022-04-15", "Viernes Santo"),
-            ("2022-05-01", "Día del Trabajo"),
-            ("2022-05-30", "Ascensión del señor (observado)"),
-            ("2022-06-20", "Corpus Christi (observado)"),
-            ("2022-06-27", "Sagrado Corazón (observado)"),
-            ("2022-07-04", "San Pedro y San Pablo (observado)"),
-            ("2022-07-20", "Día de la Independencia"),
-            ("2022-08-07", "Batalla de Boyacá"),
-            ("2022-08-15", "La Asunción"),
-            ("2022-10-17", "Día de la Raza (observado)"),
-            ("2022-11-07", "Día de Todos los Santos (observado)"),
-            ("2022-11-14", "Independencia de Cartagena (observado)"),
-            ("2022-12-08", "La Inmaculada Concepción"),
-            ("2022-12-25", "Navidad"),
+            ("2026-01-01", "Año Nuevo"),
+            ("2026-01-12", "Día de los Reyes Magos (observado)"),
+            ("2026-03-23", "Día de San José (observado)"),
+            ("2026-04-02", "Jueves Santo"),
+            ("2026-04-03", "Viernes Santo"),
+            ("2026-05-01", "Día del Trabajo"),
+            ("2026-05-18", "Ascensión del señor (observado)"),
+            ("2026-06-08", "Corpus Christi (observado)"),
+            ("2026-06-15", "Sagrado Corazón (observado)"),
+            ("2026-06-29", "San Pedro y San Pablo"),
+            ("2026-07-13", "Día de Nuestra Señora del Rosario de Chiquinquirá (observado)"),
+            ("2026-07-20", "Día de la Independencia"),
+            ("2026-08-07", "Batalla de Boyacá"),
+            ("2026-08-17", "La Asunción (observado)"),
+            ("2026-10-12", "Día de la Raza"),
+            ("2026-11-02", "Día de Todos los Santos (observado)"),
+            ("2026-11-16", "Independencia de Cartagena (observado)"),
+            ("2026-12-08", "La Inmaculada Concepción"),
+            ("2026-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-10", "Epiphany (observed)"),
-            ("2022-03-21", "Saint Joseph's Day (observed)"),
-            ("2022-04-14", "Maundy Thursday"),
-            ("2022-04-15", "Good Friday"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-05-30", "Ascension Day (observed)"),
-            ("2022-06-20", "Corpus Christi (observed)"),
-            ("2022-06-27", "Sacred Heart (observed)"),
-            ("2022-07-04", "Saint Peter and Saint Paul's Day (observed)"),
-            ("2022-07-20", "Independence Day"),
-            ("2022-08-07", "Battle of Boyacá"),
-            ("2022-08-15", "Assumption Day"),
-            ("2022-10-17", "Columbus Day (observed)"),
-            ("2022-11-07", "All Saints' Day (observed)"),
-            ("2022-11-14", "Independence of Cartagena (observed)"),
-            ("2022-12-08", "Immaculate Conception"),
-            ("2022-12-25", "Christmas Day"),
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-12", "Epiphany (observed)"),
+            ("2026-03-23", "Saint Joseph's Day (observed)"),
+            ("2026-04-02", "Maundy Thursday"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-05-01", "Labor Day"),
+            ("2026-05-18", "Ascension Day (observed)"),
+            ("2026-06-08", "Corpus Christi (observed)"),
+            ("2026-06-15", "Sacred Heart (observed)"),
+            ("2026-06-29", "Saint Peter and Saint Paul's Day"),
+            ("2026-07-13", "Day of Our Lady of the Rosary of Chiquinquirá (observed)"),
+            ("2026-07-20", "Independence Day"),
+            ("2026-08-07", "Battle of Boyacá"),
+            ("2026-08-17", "Assumption Day (observed)"),
+            ("2026-10-12", "Columbus Day"),
+            ("2026-11-02", "All Saints' Day (observed)"),
+            ("2026-11-16", "Independence of Cartagena (observed)"),
+            ("2026-12-08", "Immaculate Conception"),
+            ("2026-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",
-            ("2022-01-01", "Новий рік"),
-            ("2022-01-10", "Богоявлення (вихідний)"),
-            ("2022-03-21", "День Святого Йосипа (вихідний)"),
-            ("2022-04-14", "Великий четвер"),
-            ("2022-04-15", "Страсна пʼятниця"),
-            ("2022-05-01", "День праці"),
-            ("2022-05-30", "Вознесіння Господнє (вихідний)"),
-            ("2022-06-20", "Свято Тіла і Крові Христових (вихідний)"),
-            ("2022-06-27", "Свято Найсвятішого Серця Ісуса (вихідний)"),
-            ("2022-07-04", "День Святих Петра і Павла (вихідний)"),
-            ("2022-07-20", "День незалежності"),
-            ("2022-08-07", "Річниця перемоги при Бояка"),
-            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
-            ("2022-10-17", "День Колумба (вихідний)"),
-            ("2022-11-07", "День усіх святих (вихідний)"),
-            ("2022-11-14", "День незалежності Картахени (вихідний)"),
-            ("2022-12-08", "Непорочне зачаття Діви Марії"),
-            ("2022-12-25", "Різдво Христове"),
+            ("2026-01-01", "Новий рік"),
+            ("2026-01-12", "Богоявлення (вихідний)"),
+            ("2026-03-23", "День Святого Йосипа (вихідний)"),
+            ("2026-04-02", "Великий четвер"),
+            ("2026-04-03", "Страсна пʼятниця"),
+            ("2026-05-01", "День праці"),
+            ("2026-05-18", "Вознесіння Господнє (вихідний)"),
+            ("2026-06-08", "Свято Тіла і Крові Христових (вихідний)"),
+            ("2026-06-15", "Свято Найсвятішого Серця Ісуса (вихідний)"),
+            ("2026-06-29", "День Святих Петра і Павла"),
+            ("2026-07-13", "День Богоматері Розарію з Чікінкіри (вихідний)"),
+            ("2026-07-20", "День незалежності"),
+            ("2026-08-07", "Річниця перемоги при Бояка"),
+            ("2026-08-17", "Внебовзяття Пресвятої Діви Марії (вихідний)"),
+            ("2026-10-12", "День Колумба"),
+            ("2026-11-02", "День усіх святих (вихідний)"),
+            ("2026-11-16", "День незалежності Картахени (вихідний)"),
+            ("2026-12-08", "Непорочне зачаття Діви Марії"),
+            ("2026-12-25", "Різдво Христове"),
         )

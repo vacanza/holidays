@@ -53,7 +53,7 @@ msgstr "วันจันทร์อีสเตอร์"
 msgid "Late Summer Bank Holiday"
 msgstr "วันหยุดช่วงปลายฤดูร้อนของธนาคาร"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 

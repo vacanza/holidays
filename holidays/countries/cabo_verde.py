@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -118,7 +117,7 @@ class CaboVerde(HolidayBase, ChristianHolidays, InternationalHolidays):
             # International Children's Day.
             self._add_childrens_day(tr("Dia Mundial da Criança"))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_holiday_jul_5(tr("Dia da Independência Nacional"))
 
         # Assumption Day.

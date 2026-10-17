@@ -118,10 +118,7 @@ class BurmeseCalendarHolidays:
         )
 
     def _add_myanmar_new_year(
-        self,
-        name: str,
-        extra_days_before: int = 0,
-        extra_days_after: int = 0,
+        self, name: str, extra_days_before: int = 0, extra_days_after: int = 0
     ) -> set[date]:
         """Add Myanmar New Year (Thingyan, Water Festival).
 

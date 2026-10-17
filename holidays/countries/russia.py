@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, NOV, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase
 
 
@@ -119,7 +118,7 @@ class RUS(Russia):
 
 
 class RussiaStaticHolidays:
-    # Date format (see strftime() Format Codes).
+    # Substituted date format.
     substituted_date_format = tr("%d.%m.%Y")
     # Day off (substituted from %s).
     substituted_label = tr("Выходной (перенесено с %s)")

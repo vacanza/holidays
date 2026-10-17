@@ -64,11 +64,11 @@ msgstr ""
 msgid "Ascension"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pentecôte"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lundi de Pentecôte"
 msgstr ""
 
@@ -104,6 +104,6 @@ msgstr ""
 msgid "Fête du sacrifice"
 msgstr ""
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Jour férié"
 msgstr ""

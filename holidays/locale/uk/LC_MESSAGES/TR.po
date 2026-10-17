@@ -89,6 +89,6 @@ msgstr "Курбан-байрам"
 msgid "%s (saat 13.00'ten)"
 msgstr "%s (з 13:00)"
 
-#. Public holiday.
+#. Public Holiday.
 msgid "Genel tati̇l"
 msgstr "Загальний вихідний"

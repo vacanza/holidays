@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT, SUN_TO_NEXT_MON
 
 
@@ -51,7 +50,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         self._add_new_years_day(tr("Nieuwjaarsdag"))
 
         # Good Friday.
-        self._add_good_friday(tr("Goede Vrijdag"))
+        self._add_good_friday(tr("Goede vrijdag"))
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Eerste paasdag"))
@@ -78,17 +77,17 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Eerste Pinksterdag"))
+        # Pentecost.
+        self._add_pentecost(tr("Eerste pinksterdag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Tweede Pinksterdag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Tweede pinksterdag"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Eerste Kerstdag"))
+        self._add_christmas_day(tr("Eerste kerstdag"))
 
         # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Tweede Kerstdag"))
+        self._add_christmas_day_two(tr("Tweede kerstdag"))
 
     def _populate_optional_holidays(self):
         if self._year >= 1982:

@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_TUE,
@@ -64,7 +63,7 @@ class CookIslands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Anzac Day.
+        # ANZAC Day.
         self._add_anzac_day(tr("Anzac Day"))
 
         # Good Friday.

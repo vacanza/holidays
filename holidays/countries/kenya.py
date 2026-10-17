@@ -10,8 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
 from holidays.calendars.gregorian import FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import HINDU, ISLAMIC, PUBLIC
@@ -22,6 +20,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
@@ -129,7 +128,7 @@ class Kenya(
         # Boxing Day.
         dts_observed.add(self._add_christmas_day_two(tr("Boxing Day")))
 
-        # Eid-al-Fitr.
+        # Eid al-Fitr.
         dts_observed.update(self._add_eid_al_fitr_day(tr("Idd-ul-Fitr")))
 
         if self.observed:
@@ -145,7 +144,7 @@ class Kenya(
     def _populate_islamic_holidays(self):
         """Additional Islamic public holidays."""
 
-        # Eid-al-Adha.
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("Idd-ul-Azha"))
 
 

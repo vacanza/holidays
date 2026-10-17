@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-08-31 16:41+0000\n"
-"PO-Revision-Date: 2025-08-31 16:41+0000\n"
-"Last-Translator: Abheelash Mishra <abheelashdev@gmail.com>\n"
+"PO-Revision-Date: 2026-06-30 23:03+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -76,9 +76,9 @@ msgstr "Anniversary Day"
 msgid "New Year's Day"
 msgstr "New Year's Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. August Bank Holiday.
 msgid "August Bank Holiday"

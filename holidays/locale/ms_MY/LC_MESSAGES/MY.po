@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.88\n"
+"Project-Id-Version: Holidays 0.105\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-04-28 21:03+0300\n"
-"PO-Revision-Date: 2025-12-16 15:26+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-09-08 23:06+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ms_MY\n"
 "MIME-Version: 1.0\n"
@@ -95,8 +95,20 @@ msgstr ""
 msgid "Hari Raya Qurban"
 msgstr ""
 
-#. Deepavali.
+#. Diwali.
 msgid "Hari Deepavali"
+msgstr ""
+
+#. New Year's Day.
+msgid "Tahun Baharu"
+msgstr ""
+
+#. Federal Territory Day.
+msgid "Hari Wilayah Persekutuan"
+msgstr ""
+
+#. Nuzul Al-Quran Day.
+msgid "Hari Nuzul Al-Quran"
 msgstr ""
 
 #. Thaipusam.
@@ -131,16 +143,8 @@ msgstr ""
 msgid "Hari Keputeraan Sultan Kelantan"
 msgstr ""
 
-#. Nuzul Al-Quran Day.
-msgid "Hari Nuzul Al-Quran"
-msgstr ""
-
-#. Arafat Day.
+#. Day of Arafah.
 msgid "Hari Arafah"
-msgstr ""
-
-#. New Year's Day.
-msgid "Tahun Baharu"
 msgstr ""
 
 #. Declaration of Independence Day.
@@ -227,10 +231,6 @@ msgstr ""
 msgid "Hari Kemerdekaan Sarawak"
 msgstr ""
 
-#. Federal Territory Day.
-msgid "Hari Wilayah Persekutuan"
-msgstr ""
-
 #. General election additional holiday.
 msgid "Cuti Peristiwa (pilihan raya umum)"
 msgstr ""
@@ -243,6 +243,10 @@ msgstr ""
 msgid "Cuti Piala Malaysia"
 msgstr ""
 
+#. Eid al-Fitr (additional holiday).
+msgid "Hari Raya Puasa (pergantian hari)"
+msgstr ""
+
 #. Day of Installation of the 15th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-15"
 msgstr ""
@@ -253,8 +257,4 @@ msgstr ""
 
 #. Day of Installation of the 16th Yang di-Pertuan Agong.
 msgid "Hari Pertabalan Yang di-Pertuan Agong ke-16"
-msgstr ""
-
-#. Eid al-Fitr (additional holiday).
-msgid "Hari Raya Puasa (pergantian hari)"
 msgstr ""

@@ -65,7 +65,7 @@ msgstr ""
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
 msgstr ""
 
-#. International Workers' Day.
+#. International Labor Day.
 msgid "Dita Ndërkombëtare e Punës"
 msgstr ""
 

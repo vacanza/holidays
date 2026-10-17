@@ -23,7 +23,7 @@ class TestSudan(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "عيد الإستقلال", (f"{year}-01-01" for year in range(self.start_year, self.end_year))
+            "عيد الاستقلال", (f"{year}-01-01" for year in range(self.start_year, self.end_year))
         )
 
     def test_coptic_christmas(self):
@@ -121,9 +121,7 @@ class TestSudan(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, self.end_year))
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            5,
-            set(range(self.start_year, self.end_year)) - {2006, 2007, 2039},
+            name, 5, set(range(self.start_year, self.end_year)) - {2006, 2007, 2039}
         )
 
     def test_weekend(self):
@@ -147,7 +145,7 @@ class TestSudan(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "عيد الإستقلال"),
+            ("2022-01-01", "عيد الاستقلال"),
             ("2022-01-07", "عيد الميلاد المجيد"),
             ("2022-04-24", "عيد الفصح القبطي"),
             ("2022-05-01", "عيد الفطر المبارك"),
@@ -168,7 +166,7 @@ class TestSudan(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "Independence Day"),
-            ("2022-01-07", "Coptic Christmas"),
+            ("2022-01-07", "Coptic Christmas Day"),
             ("2022-04-24", "Coptic Easter"),
             ("2022-05-01", "Eid al-Fitr"),
             ("2022-05-02", "Eid al-Fitr"),

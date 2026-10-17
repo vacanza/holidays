@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.66\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2025-02-02 19:32+0200\n"
+"PO-Revision-Date: 2026-07-02 22:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -78,11 +78,11 @@ msgstr "День створення незалежної чехословаць�
 
 #. Struggle for Freedom and Democracy Day and International Students' Day.
 msgid "Den boje za svobodu a demokracii a Mezinárodní den studentstva"
-msgstr "День боротьби за свободу і демократію та Міжнародний день студентів"
+msgstr "День боротьби за свободу та демократію і Міжнародний день студентів"
 
 #. Struggle for Freedom and Democracy Day.
 msgid "Den boje za svobodu a demokracii"
-msgstr "День боротьби за свободу і демократію"
+msgstr "День боротьби за свободу та демократію"
 
 #. Christmas Eve.
 msgid "Štědrý den"

@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.83\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-16 17:02+0700\n"
-"PO-Revision-Date: 2025-10-16 17:44+0700\n"
+"PO-Revision-Date: 2026-07-28 23:07+0700\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -56,11 +56,11 @@ msgstr "วันแห่งการอธิษฐานใหญ่"
 msgid "Kristi himmelfartsdag"
 msgstr "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Pinsedag"
 msgstr "วันสมโภชพระจิตเจ้า"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Anden pinsedag"
 msgstr "วันจันทร์หลังวันสมโภชพระจิตเจ้า"
 
@@ -74,7 +74,7 @@ msgstr "วันคริสต์มาสวันที่สอง"
 
 #. Workers' Day.
 msgid "Arbejdernes kampdag"
-msgstr "วันแรงงาน"
+msgstr "วันกรรมกร"
 
 #. Constitution Day.
 msgid "Grundlovsdag"

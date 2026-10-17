@@ -259,7 +259,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2018(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2018/
         self.assertHolidaysInYear(
             2018,
             ("2018-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -280,7 +279,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2019(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2019-2/
         self.assertHolidaysInYear(
             2019,
             ("2019-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -303,7 +301,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2020(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2020/
         self.assertHolidaysInYear(
             2020,
             ("2020-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -324,7 +321,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2021(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2021/
         self.assertHolidaysInYear(
             2021,
             ("2021-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -350,7 +346,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2022(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2022/
         self.assertHolidaysInYear(
             2022,
             ("2022-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -371,7 +366,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_2024(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2024/
         self.assertHolidaysInYear(
             2024,
             ("2024-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
@@ -392,7 +386,6 @@ class TestTonga(CommonCountryTests, TestCase):
         )
 
     def test_l10n_default(self):
-        # https://www.gov.to/press-release/tonga-public-holidays-for-2023/
         self.assertLocalizedHolidays(
             ("2023-01-01", "ʻUluaki ʻAho ʻo e Taʻu Foʻou"),
             ("2023-04-07", "Falaite Lelei"),
@@ -417,7 +410,7 @@ class TestTonga(CommonCountryTests, TestCase):
             ("2023-01-01", "New Year's Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
-            ("2023-04-25", "Anzac Day"),
+            ("2023-04-25", "ANZAC Day"),
             ("2023-06-05", "Emancipation Day (observed)"),
             ("2023-07-04", "Birthday of the Reigning Sovereign of Tonga"),
             ("2023-09-17", "Birthday of the Heir to the Crown of Tonga"),

@@ -56,11 +56,11 @@ msgstr "Stora bönedagen"
 msgid "Qilaliarfik"
 msgstr "Kristi himmelsfärdsdag"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Piinsip ullua"
 msgstr "Pingstdagen"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Piinsip-aappaa"
 msgstr "Annandag pingst"
 

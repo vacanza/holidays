@@ -190,7 +190,7 @@ class TestSaintLucia(CommonCountryTests, TestCase):
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Labor Day (observed)"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-06-16", "Corpus Christi"),
             ("2022-08-01", "Emancipation Day"),
             ("2022-10-03", "Thanksgiving Day"),

@@ -92,6 +92,12 @@ hide:
       <span x-text="filename"></span>
     </div>
 
+    <div style="text-align: center; margin-top: 10px; font-size: 0.8rem;">
+      Need data outside the 2015-2035 range?<br>Use our
+      <a href="../examples/#holidays-ics-tool" target="_blank" rel="noopener">holidays-ics</a>
+      tool instead.
+    </div>
+
   </div>
 
   <div class="portal-preview" x-show="!isLoading" style="display: none;">
@@ -113,8 +119,8 @@ hide:
             </tr>
             <template x-for="(event, index) in yearData.events" :key="index">
               <tr>
-                <td style="font-family: monospace;" x-text="formatDate(event.date || event.start)"></td>
-                <td x-text="event.name || event.summary"></td>
+                <td x-text="event.date"></td>
+                <td x-text="event.name"></td>
               </tr>
             </template>
           </tbody>

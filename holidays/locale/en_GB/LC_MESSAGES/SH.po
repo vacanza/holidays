@@ -76,7 +76,7 @@ msgstr ""
 msgid "New Year's Day"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
 msgstr ""
 

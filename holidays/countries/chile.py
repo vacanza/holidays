@@ -10,11 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import APR, JUN, SEP, DEC
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_ONLY,
@@ -146,7 +145,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._add_holiday_may_21(tr("Día de las Glorias Navales"))
 
         if self._year >= 2021:
-            # National Day of Indigenous Peoples.
+            # National Indigenous Peoples Day.
             name = tr("Día Nacional de los Pueblos Indígenas")
             if self._year == 2021:
                 self._add_holiday_jun_21(name)
@@ -158,17 +157,17 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
         if self._year >= 2007:
-            # Day of Virgin of Carmen.
+            # Our Lady of Mount Carmel.
             self._add_holiday_jul_16(tr("Virgen del Carmen"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         if 1981 <= self._year <= 1998:
-            # Day of National Liberation.
+            # National Liberation Day.
             self._add_holiday_sep_11(tr("Día de la Liberación Nacional"))
         elif 1999 <= self._year <= 2001:
-            # Day of National Unity.
+            # National Unity Day.
             self._add_holiday_1st_mon_of_sep(tr("Día de la Unidad Nacional"))
 
         # National Holiday.
@@ -243,7 +242,7 @@ class Chile(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         if 1957 <= self._year <= 1975:
             self._add_holiday_jun_30(name)
 
-        if 1956 <= self._year and self._year != 1997:
+        if self._year >= 1956 and self._year != 1997:
             self._add_holiday_dec_31(name)
 
     @property

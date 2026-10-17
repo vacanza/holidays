@@ -271,7 +271,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             "nl",
             ("2023-01-01", "Nieuwjaarsdag"),
             ("2023-02-20", "De maandag na de Grote Karnaval"),
-            ("2023-04-07", "Goede Vrijdag"),
+            ("2023-04-07", "Goede vrijdag"),
             ("2023-04-09", "Paasdag"),
             ("2023-04-10", "Tweede paasdag"),
             ("2023-04-27", "Koningsdag"),
@@ -279,7 +279,7 @@ class TestCuracao(CommonCountryTests, TestCase):
             ("2023-05-18", "Hemelvaartsdag"),
             ("2023-07-02", "Nationale vlag en volkslied"),
             ("2023-10-10", "Dag van Land Curaçao"),
-            ("2023-12-25", "Eerste Kerstdag"),
+            ("2023-12-25", "Eerste kerstdag"),
             ("2023-12-26", "Tweede kerstdag"),
             ("2023-12-31", "Oudejaarsavond"),
         )

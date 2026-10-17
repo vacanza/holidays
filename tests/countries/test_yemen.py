@@ -304,9 +304,9 @@ class TestYemen(CommonCountryTests, TestCase):
             ("2023-07-01", "Eid al-Adha"),
             ("2023-07-02", "Eid al-Adha (observed)"),
             ("2023-07-07", "Victory Day"),
-            ("2023-07-19", "Hijri New Year"),
+            ("2023-07-19", "Islamic New Year Day"),
             ("2023-09-26", "Revolution Day"),
             ("2023-09-27", "Prophet's Birthday"),
             ("2023-10-14", "Liberation Day"),
-            ("2023-11-30", "Independence Day"),
+            ("2023-11-30", "Evacuation Day"),
         )

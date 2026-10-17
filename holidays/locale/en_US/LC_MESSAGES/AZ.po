@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.41\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-15 20:42+0200\n"
-"PO-Revision-Date: 2023-11-15 20:52+0200\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -79,9 +79,9 @@ msgstr "National Liberation Day"
 msgid "Azərbaycan Respublikasının Silahlı Qüvvələri günü"
 msgstr "Armed Forces Day"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Milli Müstəqillik Günü"
-msgstr "Independence Day"
+msgstr "National Independence Day"
 
 #. Victory Day.
 msgid "Zəfər Günü"

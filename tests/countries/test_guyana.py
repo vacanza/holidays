@@ -154,7 +154,7 @@ class TestGuyana(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_day_after_christmas(self):
-        name = "Day after Christmas"
+        name = "Day After Christmas"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         dt = (
             "2009-12-28",
@@ -267,7 +267,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             ("2024-09-16", "Youman Nabi"),
             ("2024-10-31", "Deepavali"),
             ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "Day after Christmas"),
+            ("2024-12-26", "Day After Christmas"),
         )
 
     def test_l10n_default(self):
@@ -286,7 +286,7 @@ class TestGuyana(CommonCountryTests, TestCase):
             ("2025-09-05", "Youman Nabi"),
             ("2025-10-20", "Deepavali"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "Day after Christmas"),
+            ("2025-12-26", "Day After Christmas"),
         )
 
     def test_l10n_en_us(self):
@@ -306,5 +306,5 @@ class TestGuyana(CommonCountryTests, TestCase):
             ("2025-09-05", "Prophet's Birthday"),
             ("2025-10-20", "Diwali"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "Day after Christmas"),
+            ("2025-12-26", "Day After Christmas"),
         )

@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -84,8 +83,8 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2009:
             # Pentecost.
             name = tr("Rusaliile")
-            self._add_whit_sunday(name)
-            self._add_whit_monday(name)
+            self._add_pentecost(name)
+            self._add_pentecost_monday(name)
 
             # Dormition of the Mother of God.
             self._add_assumption_of_mary_day(tr("Adormirea Maicii Domnului"))

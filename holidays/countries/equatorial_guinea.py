@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import JAN
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_MON
 
 
@@ -40,7 +39,7 @@ class EquatorialGuinea(
     country = "GQ"
     default_language = "es"
     supported_languages = ("en_US", "es")
-    # %s observed.
+    # %s (observed).
     observed_label = tr("%s (observado)")
     # Decree 9/2007.
     start_year = 2007
@@ -111,7 +110,7 @@ class EquatorialGuinea(
         # Constitution Day.
         self._add_observed(self._add_holiday_aug_15(tr("Día de la Constitución")))
 
-        # Independence Day.
+        # National Independence Day.
         self._add_observed(self._add_holiday_oct_12(tr("Día de la Independencia Nacional")))
 
         self._add_observed(

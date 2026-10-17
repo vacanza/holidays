@@ -43,7 +43,7 @@ msgstr ""
 msgid "%s (يوم تعويضي تقديري)"
 msgstr ""
 
-#. Hijri New Year.
+#. Islamic New Year Day.
 msgid "عيد رأس السنة الهجرية"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "ثورة 14 أكتوبر المجيدة"
 msgstr ""
 
-#. Independence Day.
+#. Evacuation Day.
 msgid "عيد الجلاء"
 msgstr ""
 

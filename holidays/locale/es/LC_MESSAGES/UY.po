@@ -60,7 +60,7 @@ msgstr ""
 msgid "Jura de la Constitución"
 msgstr ""
 
-#. Independence Day.
+#. Independence Declaration Day.
 msgid "Declaratoria de la Independencia"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Día de las Playas"
 msgstr ""
 
-#. Day of the Family.
+#. Family Day.
 msgid "Día de la Familia"
 msgstr ""
 

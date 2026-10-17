@@ -15,8 +15,9 @@ Thanks a lot for your support.
 
 ## Running tests
 
-First step is setting up the development environment and installing all the required dependencies
-with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) setup:
+First step is setting up the development environment and installing all the required dependencies.
+Install any recent [`uv`](https://docs.astral.sh/uv/getting-started/installation/#installation-methods)
+on your `PATH` (used only to bootstrap), then run:
 
 <!-- markdownlint-disable MD046 -->
 === "macOS and Linux"
@@ -30,6 +31,10 @@ with, once you have [`uv`](https://docs.astral.sh/uv/getting-started/installatio
     ``` shell
     .\make setup
     ```
+
+`make setup` creates `.venv`, installs the lockfile-pinned `uv` into it, and syncs all dependency
+groups. Later `make` targets prefer `.venv/bin/uv` (or `.venv\Scripts\uv.exe` on Windows), so the
+system `uv` version no longer matters after bootstrap.
 
 > [!note]
 > **WSL Windows File Permission Fix**

@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import FRI, SAT
 from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,7 +65,7 @@ class Djibouti(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("Eid al-Fitr deuxième jour"))
 
-        # Arafat Day.
+        # Day of Arafah.
         self._add_arafah_day(tr("Arafat"))
 
         # Eid al-Adha.

@@ -1,11 +1,18 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help
+.PHONY: archive-links check clean doc doc-serve help icalendar l10n package \
+        pre-commit release-notes sbom setup snapshot sort-custom-dict spellcheck \
+        test upgrade
+
+# Prefer the project-local uv (pinned via the ci dependency group) when present.
+UV = $(if $(wildcard .venv/bin/uv),.venv/bin/uv,uv)
+UV_RUN_CMD = $(UV) run --no-sync
 
 help:
 	@echo "Usage: make <target>"
 	@echo "    archive-links update URLs using Wayback Machine"
 	@echo "    check         run pre-commit and tests"
+	@echo "    clean         clean development environment"
 	@echo "    doc           run documentation build process"
 	@echo "    doc-serve     serve documentation locally"
 	@echo "    help          show summary of available commands"
@@ -13,20 +20,23 @@ help:
 	@echo "    l10n          update .pot and .po files"
 	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
+	@echo "    release-notes generate release notes"
+	@echo "    sbom          generate CycloneDX SBOM from the built wheel"
 	@echo "    setup         setup development environment"
+	@echo "    snapshot      generate project snapshots"
 	@echo "    spellcheck    run spell check across the repository (docs, l10n)"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
 
 archive-links:
-	uv run --no-sync scripts/archive_links.py
+	$(UV_RUN_CMD) scripts/archive_links.py
 
 check:
-	make l10n
-	make pre-commit
-	make doc
-	make spellcheck
-	make test
+	$(MAKE) l10n
+	$(MAKE) pre-commit
+	$(MAKE) doc
+	$(MAKE) spellcheck
+	$(MAKE) test
 
 sort-custom-dict:
 	python tools/sort_cspell_dict.py
@@ -42,50 +52,72 @@ clean:
 	@rm -rf .mypy_cache .pytest_cache dist
 
 doc:
-	uv run --no-sync properdocs build -f .properdocs.yml
+	$(UV_RUN_CMD) properdocs build -f .properdocs.yml
 
 doc-serve:
-	uv run --no-sync properdocs serve -f .properdocs.yml
+	$(UV_RUN_CMD) properdocs serve -f .properdocs.yml
 
 icalendar:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync scripts/generate_site_assets.py
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/generate_site_assets.py
 
 l10n:
 	find . -type f -name "*.pot" -delete
-	uv run --no-sync scripts/l10n/generate_po_files.py 2>/dev/null
-	uv run --no-sync scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/l10n/generate_po_files.py 2>/dev/null
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
 
 package:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv build
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV) build
 
 pre-commit:
-	uv run --no-sync pre-commit run --all-files
+	$(UV_RUN_CMD) pre-commit run --all-files
 
 release-notes:
-	uv run --no-sync scripts/generate_release_notes.py
+	$(UV_RUN_CMD) scripts/generate_release_notes.py
 
 sbom:
-	uv tool run --from cyclonedx-bom cyclonedx-py environment "$(uv python find)"
+	@set -e; \
+	version="$$(tr -d '[:space:]' < VERSION)"; \
+	wheel="dist/holidays-$${version}-py3-none-any.whl"; \
+	if [ ! -f "$$wheel" ]; then \
+		echo "No wheel for version $${version} in dist/; run 'make package' first." >&2; \
+		exit 1; \
+	fi; \
+	tools_env="$$(mktemp -d)"; \
+	sbom_env="$$(mktemp -d)"; \
+	trap 'rm -rf "$$tools_env" "$$sbom_env"' EXIT; \
+	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) sync --frozen --no-default-groups --only-group ci --no-install-project --no-build >/dev/null; \
+	$(UV) venv "$$sbom_env" >/dev/null; \
+	$(UV) pip install --python "$$sbom_env" "$$wheel" >/dev/null; \
+	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV_RUN_CMD) -- cyclonedx-py environment "$$sbom_env"
 
 setup:
+	@command -v uv >/dev/null 2>&1 || { \
+		echo "uv is required to bootstrap the environment:" >&2; \
+		echo "  https://docs.astral.sh/uv/getting-started/installation/" >&2; \
+		exit 1; \
+	}
+	# Bootstrap with PATH uv, then switch to the lockfile-pinned uv in .venv.
 	uv venv --clear --python 3.14
-	uv sync --all-groups
-	uv run --no-sync pre-commit install --hook-type pre-commit
-	uv run --no-sync pre-commit install --hook-type pre-push
-	make l10n
-	make package
+	uv sync --frozen --only-group ci --no-install-project
+	.venv/bin/uv sync --all-groups
+	.venv/bin/uv run --no-sync pre-commit install --hook-type pre-commit \
+		|| echo "warning: could not install pre-commit hooks (check git core.hooksPath)" >&2
+	.venv/bin/uv run --no-sync pre-commit install --hook-type pre-push \
+		|| echo "warning: could not install pre-push hooks (check git core.hooksPath)" >&2
+	$(MAKE) l10n
+	$(MAKE) package
 
 snapshot:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync scripts/generate_snapshots.py
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) scripts/generate_snapshots.py
 
 test:
-	uv run --no-sync scripts/l10n/generate_mo_files.py
-	uv run --no-sync pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+	$(UV_RUN_CMD) scripts/l10n/generate_mo_files.py
+	$(UV_RUN_CMD) pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 upgrade:
-	pre-commit autoupdate
-	uv lock --upgrade
-	uv sync --all-groups
+	$(UV_RUN_CMD) pre-commit autoupdate
+	$(UV) lock --upgrade
+	$(UV) sync --all-groups

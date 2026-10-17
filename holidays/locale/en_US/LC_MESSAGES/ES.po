@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.84\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-12-26 19:23+0200\n"
-"PO-Revision-Date: 2025-10-29 20:45+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-10-09 09:37+0200\n"
+"Last-Translator: Marcos Chicote <chicotemarcos@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -127,6 +127,10 @@ msgstr "Santa Maria of Africa"
 msgid "Día de Ceuta"
 msgstr "Ceuta Day"
 
+#. Eid al-Fitr.
+msgid "Fiesta de Culminación del Ramadán-Eidul Fitr"
+msgstr "Eid al-Fitr"
+
 #. Eid al-Adha.
 msgid "Fiesta del Sacrificio-Eidul Adha"
 msgstr "Eid al-Adha"
@@ -151,9 +155,9 @@ msgstr "Castilla-La Mancha Day"
 msgid "Día de Canarias"
 msgstr "Day of the Canary Islands"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Día de la Pascua Granada"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Saint John the Baptist.
 msgid "San Juan"
@@ -230,6 +234,14 @@ msgstr "La Rioja Day"
 #. Valencian Community Day.
 msgid "Día de la Comunidad Valenciana"
 msgstr "Valencian Community Day"
+
+#. Our Lady of Mercy.
+msgid "Nuestra Señora de la Merced"
+msgstr "Our Lady of Mercy"
+
+#. Saint Eulalia Day.
+msgid "Santa Eulalia"
+msgstr "Saint Eulalia Day"
 
 #. Day following Saint Joseph's Day.
 msgid "Día siguiente a San José"

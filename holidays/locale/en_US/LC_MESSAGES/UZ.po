@@ -83,7 +83,7 @@ msgstr "Eid al-Fitr"
 msgid "Qurbon hayit"
 msgstr "Eid al-Adha"
 
-#. Date format (see strftime() Format Codes)
+#. Substituted date format.
 msgid "%d/%m %Y"
 msgstr "%m/%d/%Y"
 

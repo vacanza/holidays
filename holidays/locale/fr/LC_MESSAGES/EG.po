@@ -91,7 +91,7 @@ msgstr "Naissance du Prophète"
 msgid "عيد الفطر المبارك"
 msgstr "Aïd-Al-Fitr"
 
-#. Arafat Day.
+#. Day of Arafah.
 msgid "وقفة عيد الأضحى المبارك"
 msgstr "Le jour d'Arafat"
 

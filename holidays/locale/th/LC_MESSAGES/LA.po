@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.94\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-11 15:10+0700\n"
-"PO-Revision-Date: 2026-03-30 23:06+0530\n"
-"Last-Translator: Sourav Singh <souravsingh202036@gmail.com>\n"
+"PO-Revision-Date: 2026-07-28 23:07+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "วันปีใหม่ลาว"
 
 #. International Labor Day.
 msgid "ວັນກຳມະກອນສາກົນ"
-msgstr "วันแรงงานสากล"
+msgstr "วันกรรมกรสากล"
 
 #. International Children's Day.
 msgid "ວັນເດັກສາກົນ"

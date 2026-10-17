@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.93\n"
+"Project-Id-Version: Holidays 0.100\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-11-22 18:20+0200\n"
-"PO-Revision-Date: 2026-03-11 20:15+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -204,9 +204,9 @@ msgstr "Saint Richard of Andria's Day"
 msgid "San Ruggero"
 msgstr "Saint Roger's Day"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Lunedì di Pentecoste"
-msgstr "Whit Monday"
+msgstr "Pentecost Monday"
 
 #. Fat Thursday.
 msgid "Giovedì grasso"

@@ -11,12 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import AUG, THU, FRI, SAT, _timedelta
 from holidays.constants import PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, FRI_TO_NEXT_WORKDAY
 
 
@@ -69,7 +69,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
     def _populate_public_holidays(self):
         dts_observed = set()
 
-        # Hijri New Year.
+        # Islamic New Year Day.
         dts_observed.update(self._add_islamic_new_year_day(tr("عيد رأس السنة الهجرية")))
 
         if self._year <= 1999:
@@ -111,7 +111,7 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         # Liberation Day.
         dts_observed.add(self._add_holiday_oct_14(tr("ثورة 14 أكتوبر المجيدة")))
 
-        # Independence Day.
+        # Evacuation Day.
         dts_observed.add(self._add_holiday_nov_30(tr("عيد الجلاء")))
 
         if self.observed:

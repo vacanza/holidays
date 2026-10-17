@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.76\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-13 16:35+0700\n"
-"PO-Revision-Date: 2025-06-25 16:09+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "De maandag na de Grote Karnaval"
 
 #. Good Friday.
 msgid "Bièrnèsantu"
-msgstr "Goede Vrijdag"
+msgstr "Goede vrijdag"
 
 #. Easter Sunday.
 msgid "Pasku di Resurekshon"
@@ -64,7 +64,7 @@ msgstr "Koninginnedag"
 msgid "Dia di Asenshon"
 msgstr "Hemelvaartsdag"
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Domingo di Pentekòstès"
 msgstr "Pinksterzondag"
 
@@ -82,7 +82,7 @@ msgstr "Koninkrijksdag"
 
 #. Christmas Day.
 msgid "Pasku di Nasementu"
-msgstr "Eerste Kerstdag"
+msgstr "Eerste kerstdag"
 
 #. Second Day of Christmas.
 msgid "Di dos dia di Pasku di Nasementu"

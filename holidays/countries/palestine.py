@@ -10,13 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import CATHOLIC, ORTHODOX, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -72,12 +71,12 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_labor_day(tr("عيد العمال"))
 
         # Independence Day.
-        self._add_holiday_nov_15(tr("عيد الإستقلال"))
+        self._add_holiday_nov_15(tr("عيد الاستقلال"))
 
         # Catholic Christmas Day.
         self._add_christmas_day(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
 
-        # Hijri New Year.
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
@@ -125,7 +124,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_ascension_thursday(tr("خميس الصعود"), GREGORIAN_CALENDAR)
 
         # Pentecost.
-        self._add_whit_sunday(tr("أحد العنصرة"), GREGORIAN_CALENDAR)
+        self._add_pentecost(tr("أحد العنصرة"), GREGORIAN_CALENDAR)
 
         # Catholic Christmas Day.
         self._add_christmas_day_two(tr("عيد الميلاد المجيد الغربي"), GREGORIAN_CALENDAR)
@@ -159,7 +158,7 @@ class Palestine(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHo
         self._add_ascension_thursday(tr("خميس الصعود"))
 
         # Pentecost.
-        self._add_whit_sunday(tr("أحد العنصرة"))
+        self._add_pentecost(tr("أحد العنصرة"))
 
 
 class PS(Palestine):

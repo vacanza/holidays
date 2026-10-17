@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.84\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-12 23:29+0530\n"
-"PO-Revision-Date: 2025-10-30 15:47+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -65,9 +65,9 @@ msgstr "Christmas Day"
 msgid "මහ සිවරාත්රි දිනය"
 msgstr "Maha Sivarathri Day"
 
-#. Deepavali Festival Day.
+#. Diwali.
 msgid "දීපවාලි උත්සව දිනය"
-msgstr "Deepavali Festival Day"
+msgstr "Diwali"
 
 #. Duruthu Full Moon Poya Day.
 msgid "දුරුතු පුර පසළොස්වක පෝය දිනය"

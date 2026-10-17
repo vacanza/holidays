@@ -10,9 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -143,7 +142,7 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_may_1(tr("San Giuseppe Artigiano"))
 
         # Solemnity of Pentecost.
-        self._add_whit_sunday(tr("Solennità della Pentecoste"))
+        self._add_pentecost(tr("Solennità della Pentecoste"))
 
         # Solemnity of Holy Trinity.
         self._add_trinity_sunday(tr("Solennità della Santissima Trinità"))

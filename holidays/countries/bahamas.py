@@ -75,8 +75,8 @@ class Bahamas(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Pentecost Monday.
+        self._add_pentecost_monday("Whit Monday")
 
         # Randol Fawkes Labour Day.
         # This was simply known as "Labour Day" prior to Randol Fawkes Labour Day Act 2013.

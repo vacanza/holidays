@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.96\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-04 01:55+0530\n"
-"PO-Revision-Date: 2025-09-07 13:47+0300\n"
+"PO-Revision-Date: 2026-04-12 19:22+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -115,6 +115,14 @@ msgstr "New Harvest Days"
 #. Memorial Day of Political Victims.
 msgid "Улс төрийн хэлмэгдэгсдийн дурсгалын өдөр"
 msgstr "Memorial Day of Political Victims"
+
+#. National Literary, Cultural and Book Days.
+msgid "Үндэсний бичиг соёл, номын өдрүүд"
+msgstr "National Literary, Cultural and Book Days"
+
+#. Environmental Protection Days.
+msgid "Байгаль орчныг хамгаалах өдрүүд"
+msgstr "Environmental Protection Days"
 
 #. Elders' Day.
 msgid "Ахмадын өдөр"

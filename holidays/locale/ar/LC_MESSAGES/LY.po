@@ -72,7 +72,7 @@ msgstr ""
 msgid "عيد الاستقلال"
 msgstr ""
 
-#. Islamic New Year.
+#. Islamic New Year Day.
 msgid "عيد رأس السنة الهجرية"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "عاشوراء"
 msgstr ""
 
-#. Isra and Mi'raj.
+#. Isra' and Mi'raj.
 msgid "ذكرى الإسراء والمعراج"
 msgstr ""
 

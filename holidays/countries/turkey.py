@@ -10,12 +10,11 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -49,7 +48,9 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         IslamicHolidays.__init__(
             self, cls=TurkeyIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        StaticHolidays.__init__(self, TurkeyStaticHolidays)
+        StaticHolidays.__init__(
+            self, (TurkeyStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -111,16 +112,20 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
     def _populate_half_day_holidays(self):
         # %s (from 1pm).
-        begin_time_label = self.tr("%s (saat 13.00'ten)")
+        begin_time_label = tr("%s (saat 13.00'ten)")
 
-        # Republic Day.
-        self._add_holiday_oct_28(begin_time_label % self.tr("Cumhuriyet Bayramı"))
+        self._add_holiday_oct_28(
+            # Republic Day.
+            self._format_holiday_name(begin_time_label, tr("Cumhuriyet Bayramı"))
+        )
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_eve(begin_time_label % self.tr("Ramazan Bayramı"))
+        self._add_eid_al_fitr_eve(
+            # Eid al-Fitr.
+            self._format_holiday_name(begin_time_label, tr("Ramazan Bayramı"))
+        )
 
         # Eid al-Adha.
-        self._add_arafah_day(begin_time_label % self.tr("Kurban Bayramı"))
+        self._add_arafah_day(self._format_holiday_name(begin_time_label, tr("Kurban Bayramı")))
 
 
 class TR(Turkey):
@@ -221,6 +226,6 @@ class TurkeyIslamicHolidays(_CustomIslamicHolidays):
 
 class TurkeyStaticHolidays:
     special_public_holidays = {
-        # Public holiday.
+        # Public Holiday.
         1999: (DEC, 31, tr("Genel tati̇l"))
     }

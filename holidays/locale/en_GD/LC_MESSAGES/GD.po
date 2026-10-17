@@ -52,7 +52,7 @@ msgstr ""
 msgid "Labour Day"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
 msgstr ""
 

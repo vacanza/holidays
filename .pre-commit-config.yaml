@@ -26,13 +26,13 @@ repos:
           - --py310-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: c60c980e561ed3e73101667fe8365c609d19a438  # v0.15.9
+    rev: 2eeb5678de71a00c0902cbda7105d328432f72cb  # v0.16.8
     hooks:
       - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e  # v0.48.0
+    rev: 5b5dddc4fb0f83c3ea1fc5616fa63e115dce83e0  # v0.49.1
     hooks:
       - id: markdownlint
         args:
@@ -50,22 +50,21 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: a333737ed43df02b18e6c95477ea1b285b3de15a  # 8.0.1
+    rev: 131f4adcd5582bfc53928ab0d740eceb8b506b6c  # 9.0.1
     hooks:
       - id: isort
         exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 8e5c80792e2ec0c87804d8ef915bf35e2caea6da  # v1.20.0
+    rev: 7ff8d35ae36a7d2b968f2f90b4c723e292e594ee  # v2.3.1
     hooks:
       - id: mypy
         additional_dependencies:
-          - types-polib
-          - types-python-dateutil
-          - types-requests
+          - types-polib==1.2.0.20260518
+          - types-python-dateutil==2.9.0.20260807
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 6e10264313f53d6247a8b1b984f5b5ccf50ba539  # v2.21.0
+    rev: 59e7b26529dc6f15c43063064b8b06ded60d0910  # v2.29.4
     hooks:
       - id: pyproject-fmt
 

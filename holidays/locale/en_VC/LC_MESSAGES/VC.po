@@ -57,7 +57,7 @@ msgstr ""
 msgid "National Spiritual Baptist Day"
 msgstr ""
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Whit Monday"
 msgstr ""
 

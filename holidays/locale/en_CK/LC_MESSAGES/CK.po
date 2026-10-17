@@ -40,7 +40,7 @@ msgstr ""
 msgid "Day after New Year's Day"
 msgstr ""
 
-#. Anzac Day.
+#. ANZAC Day.
 msgid "Anzac Day"
 msgstr ""
 

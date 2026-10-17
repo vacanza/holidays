@@ -68,7 +68,7 @@ class TestTunisia(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2023-01-01", "رأس السنة الميلادية"),
             ("2023-01-14", "عيد الثورة والشباب"),
-            ("2023-03-20", "عيد الإستقلال"),
+            ("2023-03-20", "عيد الاستقلال"),
             ("2023-04-09", "عيد الشهداء"),
             ("2023-04-21", "عيد الفطر (تقديري)"),
             ("2023-04-22", "عطلة عيد الفطر (تقديري)"),
@@ -96,7 +96,7 @@ class TestTunisia(CommonCountryTests, TestCase):
             ("2023-04-22", "Eid al-Fitr Holiday (estimated)"),
             ("2023-04-23", "Eid al-Fitr Holiday (estimated)"),
             ("2023-05-01", "Labor Day"),
-            ("2023-06-27", "Arafat Day (estimated)"),
+            ("2023-06-27", "Day of Arafah (estimated)"),
             ("2023-06-28", "Eid al-Adha (estimated)"),
             ("2023-06-29", "Eid al-Adha Holiday (estimated)"),
             ("2023-06-30", "Eid al-Adha Holiday (estimated)"),

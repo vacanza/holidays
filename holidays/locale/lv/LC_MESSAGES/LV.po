@@ -69,7 +69,7 @@ msgstr ""
 msgid "Mātes diena"
 msgstr ""
 
-#. Whit Sunday.
+#. Pentecost.
 msgid "Vasarsvētki"
 msgstr ""
 

@@ -49,7 +49,7 @@ msgstr "День жінок Мозамбіку"
 msgid "Dia Internacional dos Trabalhadores"
 msgstr "Міжнародний день трудящих"
 
-#. Independence Day.
+#. National Independence Day.
 msgid "Dia da Independência Nacional"
 msgstr "День національної незалежності"
 

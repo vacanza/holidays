@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import BANK, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,11 +59,11 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Auffahrt"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsonntag"))
+        # Pentecost.
+        self._add_pentecost(tr("Pfingstsonntag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))

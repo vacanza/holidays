@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.69\n"
+"Project-Id-Version: Holidays 0.102\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-13 19:31+0200\n"
-"PO-Revision-Date: 2025-03-13 19:31+0200\n"
-"Last-Translator: pyniuX <krzysiek01pk@gmail.com>\n"
+"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Heilige Drei Könige"
 
 #. Candlemas.
 msgid "Oczyszczenie Najświętszej Marii Panny"
-msgstr "Darstellung des Herrn"
+msgstr "Mariä Lichtmess"
 
 #. Easter Sunday.
 msgid "Niedziela Wielkanocna"
@@ -50,7 +50,7 @@ msgstr "Ostermontag"
 
 #. National Day.
 msgid "Święto Państwowe"
-msgstr "Tag der Arbeit"
+msgstr "Nationalfeiertag"
 
 #. National Day of the Third of May.
 msgid "Święto Narodowe Trzeciego Maja"
@@ -68,7 +68,7 @@ msgstr "Christi Himmelfahrt"
 msgid "Zielone Świątki"
 msgstr "Pfingsten"
 
-#. Whit Monday.
+#. Pentecost Monday.
 msgid "Drugi dzień Zielonych Świątek"
 msgstr "Pfingstmontag"
 

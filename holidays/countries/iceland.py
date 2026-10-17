@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,11 +59,11 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Uppstigningardagur"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Hvítasunnudagur"))
+        # Pentecost.
+        self._add_pentecost(tr("Hvítasunnudagur"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Annar í hvítasunnu"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Annar í hvítasunnu"))
 
         # National Day.
         self._add_holiday_jun_17(tr("Þjóðhátíðardagurinn"))
@@ -81,13 +80,13 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_half_day_holidays(self):
         # %s (from 1pm).
-        begin_time_label = self.tr("%s (frá kl. 13.00)")
+        begin_time_label = tr("%s (frá kl. 13.00)")
 
         # Christmas Eve.
-        self._add_christmas_eve(begin_time_label % self.tr("Aðfangadagur"))
+        self._add_christmas_eve(self._format_holiday_name(begin_time_label, tr("Aðfangadagur")))
 
         # New Year's Eve.
-        self._add_new_years_eve(begin_time_label % self.tr("Gamlársdagur"))
+        self._add_new_years_eve(self._format_holiday_name(begin_time_label, tr("Gamlársdagur")))
 
 
 class IS(Iceland):

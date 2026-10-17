@@ -10,17 +10,16 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.gregorian import MAR, APR, MON, THU, _timedelta, _get_nth_weekday_of_month
 from holidays.constants import DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     MON_ONLY,
     TUE_TO_NONE,
     SAT_TO_NONE,
-    SUN_TO_NONE,
+    SAT_SUN_TO_NONE,
     ALL_TO_NEXT_MON,
 )
 
@@ -44,7 +43,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     country = "CH"
     default_language = "de"
     start_year = 1801
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         # Cantons.
         "AG",  # Aargau.
         "AI",  # Appenzell Innerrhoden.
@@ -111,7 +110,7 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Cities.
         "Stadt Zürich": "Stadt Zurich",
     }
-    supported_categories = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
+    supported_categories: tuple[str, ...] = (DE_FACTO, HALF_DAY, OPTIONAL, PUBLIC)
     supported_languages = ("de", "en_US", "fr", "it", "th", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -145,8 +144,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -170,8 +169,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         self._add_observed(
             # Saint Stephen's Day.
@@ -186,8 +185,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -217,8 +216,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -233,8 +232,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -249,8 +248,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -266,8 +265,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -279,8 +278,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Genevan Fast.
         self._add_holiday_4_days_past_1st_sun_of_sep(tr("Genfer Bettag"))
@@ -304,8 +303,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
@@ -321,8 +320,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -344,8 +343,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -369,8 +368,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -435,8 +434,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -467,8 +466,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -480,8 +479,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))
@@ -503,8 +502,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -526,8 +525,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -569,8 +568,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -588,8 +587,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -622,8 +621,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Fronleichnam"))
@@ -653,8 +652,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Prayer Monday.
         self._add_holiday_1_day_past_3rd_sun_of_sep(tr("Bettagsmontag"))
@@ -682,8 +681,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -711,8 +710,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -727,8 +726,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Labor Day.
         self._add_labor_day(tr("Tag der Arbeit"))
 
-        # Whit Monday.
-        self._add_whit_monday(tr("Pfingstmontag"))
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Pfingstmontag"))
 
         # Saint Stephen's Day.
         self._add_christmas_day_two(tr("Stephanstag"))
@@ -737,8 +736,8 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         # Easter Sunday.
         self._add_easter_sunday(tr("Ostersonntag"))
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pfingstsonntag"))
+        # Pentecost.
+        self._add_pentecost(tr("Pfingstsonntag"))
 
         # Federal Day of Thanksgiving, Repentance, and Prayer.
         self._add_holiday_3rd_sun_of_sep(tr("Eidgenössischer Bettag"))
@@ -811,10 +810,10 @@ class Switzerland(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
 
         # Bridge Holiday.
         name = tr("Brückentag")
-        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_TO_NONE + SUN_TO_NONE)
-        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_TO_NONE + SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_27(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_28(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_29(name), rule=SAT_SUN_TO_NONE)
+        self._add_observed(self._add_holiday_dec_30(name), rule=SAT_SUN_TO_NONE)
 
     @property
     def _vernal_equinox_date(self) -> tuple[int, int]:

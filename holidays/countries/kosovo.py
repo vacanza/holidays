@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as tr
-
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_SUN_TO_NEXT_WORKDAY
 
 
@@ -77,7 +76,7 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
             self._add_holiday_apr_9(tr("Dita e Kushtetutës së Republikës së Kosovës"))
         )
 
-        # International Workers' Day.
+        # International Labor Day.
         dts_observed.add(self._add_labor_day(tr("Dita Ndërkombëtare e Punës")))
 
         # Europe Day.

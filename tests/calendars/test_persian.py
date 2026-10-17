@@ -10,13 +10,13 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
+from unittest import TestCase
 
 from holidays.calendars.persian import _Persian
 
 
-class TestPersianCalendar(unittest.TestCase):
+class TestPersianCalendar(TestCase):
     def setUp(self):
         super().setUpClass()
         self.calendar = _Persian()

@@ -65,7 +65,7 @@ msgstr "Pravoslavni Uskrs"
 msgid "Dita e Kushtetutës së Republikës së Kosovës"
 msgstr "Dan Ustava Republike Kosova"
 
-#. International Workers' Day.
+#. International Labor Day.
 msgid "Dita Ndërkombëtare e Punës"
 msgstr "Međunarodni Dan Rada"
 

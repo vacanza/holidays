@@ -229,7 +229,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-09", "Europe Day"),
             ("2022-05-26", "Ascension Day"),
-            ("2022-06-06", "Whit Monday"),
+            ("2022-06-06", "Pentecost Monday"),
             ("2022-06-23", "National Day"),
             ("2022-08-15", "Assumption Day"),
             ("2022-11-01", "All Saints' Day"),
@@ -254,8 +254,8 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-11-01", "Toussaint"),
             ("2022-12-24", "Veille de Noël (après-midi)"),
             ("2022-12-25", "Noël"),
-            ("2022-12-26", "Saint Etienne"),
-            ("2022-12-31", "Saint Sylvestre"),
+            ("2022-12-26", "Saint-Étienne"),
+            ("2022-12-31", "Saint-Sylvestre"),
         )
 
     def test_l10n_uk(self):
@@ -267,7 +267,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-05-01", "День праці"),
             ("2022-05-09", "День Європи"),
             ("2022-05-26", "Вознесіння Господнє"),
-            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-06", "Другий день Пʼятидесятниці"),
             ("2022-06-23", "Національне свято"),
             ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
             ("2022-11-01", "День усіх святих"),
