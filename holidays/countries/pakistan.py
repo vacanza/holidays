@@ -236,9 +236,6 @@ class PakistanStaticHolidays:
         * [2026 Eid-ul-Adha](https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf)
     """
 
-    # Benazir Bhutto's Martyrdom Day.
-    benazir_bhutto_martyrdom_day = tr("Benazir Bhutto's Martyrdom Day")
-
     # Eid al-Adha.
     eid_al_adha = tr("Eid-ul-Adha")
 
@@ -248,22 +245,21 @@ class PakistanStaticHolidays:
     # General Election Day.
     general_election_day = tr("General Election Day")
 
-    # Youm-e-Ishq-e-Rasool.
-    youm_e_ishq_e_rasool = tr("Youm-e-Ishq-e-Rasool")
-
     special_public_holidays = {
         2007: (OCT, 16, eid_al_fitr),
         2008: (
             (FEB, 18, general_election_day),
             (OCT, 1, eid_al_fitr),
             (DEC, 8, eid_al_adha),
-            (DEC, 27, benazir_bhutto_martyrdom_day),
+            # Benazir Bhutto's Martyrdom Day.
+            (DEC, 27, tr("Benazir Bhutto's Martyrdom Day")),
         ),
         2009: (NOV, 27, eid_al_adha),
         2010: (SEP, 13, eid_al_fitr),
         2011: (SEP, 3, eid_al_fitr),
         2012: (
-            (SEP, 21, youm_e_ishq_e_rasool),
+            # Love for the Prophet Day.
+            (SEP, 21, tr("Youm-e-Ishq-e-Rasool")),
             (OCT, 29, eid_al_adha),
         ),
         2013: (OCT, 18, eid_al_adha),
