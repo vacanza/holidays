@@ -22,20 +22,26 @@ GoTo :Help
     Exit /B
 
 :Check
-    Call :L10n        & If ErrorLevel 1 Exit /B %ERRORLEVEL%
-    Call :Pre-commit  & If ErrorLevel 1 Exit /B %ERRORLEVEL%
-    Call :Doc         & If ErrorLevel 1 Exit /B %ERRORLEVEL%
-    Call :Spellcheck  & If ErrorLevel 1 Exit /B %ERRORLEVEL%
-    Call :Test        & Exit /B %ERRORLEVEL%
+    Call :L10n
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    Call :Pre-commit
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    Call :Doc
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    Call :Spellcheck
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    Call :Test
+    Exit /B !ERRORLEVEL!
 
 :Sort-custom-dict
-    python tools/sort_cspell_dict.py
+    %UV_RUN_CMD% tools\sort_cspell_dict.py
     Exit /B
 
 :Spellcheck
     call :Sort-custom-dict
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
     call cspell\make.cmd cspell-check
-    Exit /B %ERRORLEVEL%
+    Exit /B !ERRORLEVEL!
 
 :Clean
     Del /S /Q *.mo

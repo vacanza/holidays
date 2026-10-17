@@ -1,7 +1,7 @@
 .PHONY: cspell-install cspell-check sort-custom-dict
 
 cspell-install:
-	@which docker > /dev/null 2>&1 || (echo "ERROR: docker not found in PATH. Install Docker."; exit 1)
+	@command -v docker > /dev/null 2>&1 || (echo "ERROR: docker not found in PATH. Install Docker."; exit 1)
 	@DOCKER_BUILDKIT=1 docker build \
 	$(if $(FORCE),--no-cache,) \
 	-f cspell/Dockerfile \

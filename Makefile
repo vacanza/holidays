@@ -39,7 +39,7 @@ check:
 	$(MAKE) test
 
 sort-custom-dict:
-	python tools/sort_cspell_dict.py
+	$(UV_RUN_CMD) tools/sort_cspell_dict.py
 
 spellcheck: sort-custom-dict
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: docker not found. Install Docker or skip spellcheck."; exit 127; }

@@ -5,13 +5,11 @@ set TARGET=%1
 
 if "%TARGET%"=="cspell-check" goto cspell-check
 if "%TARGET%"=="cspell-install" goto cspell-install
-if "%TARGET%"=="cspell-run" goto cspell-run
 if "%TARGET%"=="sort-custom-dict" goto sort-custom-dict
 
 echo Usage: make.cmd ^<target^>
 echo     cspell-check      run cspell check
 echo     cspell-install    install cspell docker image
-echo     cspell-run        run cspell (placeholder)
 echo     sort-custom-dict  sort and uniquify custom-dict.txt
 goto end
 
@@ -30,10 +28,6 @@ if %errorlevel% neq 0 (
 )
 goto end
 
-:cspell-run
-rem Placeholder for cspell-run
-goto end
-
 :sort-custom-dict
 python tools/sort_cspell_dict.py
 goto end
@@ -42,7 +36,6 @@ goto end
 set CMD=--no-progress -r /holidays
 call :cspell-install
 if %errorlevel% neq 0 goto end
-call :cspell-run
 docker run --mount type=bind,src="%CD%",dst=/holidays,readonly --rm cspell lint -c cspell/cspell.json %CMD%
 goto end
 

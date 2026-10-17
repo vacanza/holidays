@@ -25,21 +25,27 @@ def sort_custom_dict():
         raise SystemExit(f"Dictionary file {dict_file} not found.")
 
     with open(dict_file, encoding="utf-8") as f:
-        words = f.read().splitlines()
+        lines = f.read().splitlines()
 
-    # Remove duplicates while preserving order (case-sensitive)
+    comments = [line for line in lines if line.startswith("#")]
+
+    # Remove duplicates case-insensitively (cspell itself is case-insensitive),
+    # preserving the first-seen casing, and drop blank lines.
     seen = set()
     unique_words = []
-    for word in words:
-        if word not in seen:
-            seen.add(word)
+    for line in lines:
+        word = line.strip()
+        if not word or word.startswith("#"):
+            continue
+        key = word.casefold()
+        if key not in seen:
+            seen.add(key)
             unique_words.append(word)
 
-    # Sort the words
-    unique_words.sort()
+    unique_words.sort(key=str.casefold)
 
     with open(dict_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(unique_words) + "\n")
+        f.write("\n".join(comments + unique_words) + "\n")
 
     sys.stdout.write(f"Sorted and uniquified {dict_file}\n")
 
