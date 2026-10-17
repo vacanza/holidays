@@ -335,7 +335,7 @@ class India(
             self._add_holi(tr("Holi"))
 
         if (self._ram_navami and not self._is_sunday(self._ram_navami)) and (
-            self._year != 2026 and self._normalized_subdiv != "OD"
+            self._year != 2026 and self._normalized_subdiv not in {"OD", "OR"}
         ):
             # Ram Navami.
             self._add_ram_navami(tr("Ram Navami"))
@@ -350,7 +350,7 @@ class India(
             # Janmashtami (Vaishnava).
             self._add_janmashtami(tr("Janmashtami (Vaishnava)"))
 
-        if self._normalized_subdiv != "KL":
+        if self._normalized_subdiv not in {"KL", "WB"}:
             # Dussehra.
             self._add_dussehra(tr("Dussehra"))
 
