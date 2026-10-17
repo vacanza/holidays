@@ -1,0 +1,85 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Comoros holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.107\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-16 12:35+0530\n"
+"PO-Revision-Date: 2026-10-16 12:35+0530\n"
+"Last-Translator: RAJJADHAV10 <sj41244124@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
+
+#. Cheikh al Maarouf Day.
+msgid "Journée Cheikh Al Maarouf"
+msgstr "Cheikh al Maarouf Day"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "Labor Day"
+
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr "Independence Day"
+
+#. Maore Day.
+msgid "Journée Maoré"
+msgstr "Maore Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Islamic New Year.
+msgid "Nouvel an musulman"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "Maoulid"
+msgstr "Prophet's Birthday"
+
+#. Isra' and Mi'raj.
+msgid "Miradj"
+msgstr "Isra' and Mi'raj"
+
+#. Eid al-Fitr.
+msgid "Id-El-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Id-El-Kabir"
+msgstr "Eid al-Adha"
+
+#. National Holiday.
+msgid "Jour férié national"
+msgstr "National Holiday"
+
+#. Election Partial Day Holiday.
+msgid "Journée chômée partielle d'élection"
+msgstr "Election Partial Day Holiday"
