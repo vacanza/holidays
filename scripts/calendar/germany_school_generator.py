@@ -15,9 +15,17 @@
 """Generate Germany school holidays runtime data from official KMK sources.
 
 Workflow:
-1. Run ``python scripts/calendar/germany_school_generator.py``.
+1. Run with:
+
+    python -m scripts.calendar.germany_school_generator
+
+Alternatively, run with uv:
+
+    uv run -m scripts.calendar.germany_school_generator
+
 2. On cold start, the script downloads official KMK school-year PDFs into a local cache
    directory outside the repository.
+
 3. The script writes fresh data to ``holidays/calendars/germany_school_dates.py`` - a
    throwaway file that is **not committed**. It mirrors the structure of the committed
    module ``holidays/calendars/germany_school.py`` so you can diff the two directly::
@@ -26,6 +34,7 @@ Workflow:
 
 4. Apply the relevant changes from ``germany_school_dates.py`` to ``germany_school.py``
    (the committed module that ships with the library).
+
 5. Run Germany tests and docs tests, then commit the updated ``germany_school.py``.
 
 The raw KMK PDFs and the generated ``germany_school_dates.py`` are dev-only artifacts and
@@ -46,8 +55,10 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import urlopen
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
+CACHE_ROOT = Path(gettempdir()).resolve() / "holidays-germany-school-holidays"
+DEFAULT_RAW_PDF_DIR = CACHE_ROOT / "pdfs"
 DEFAULT_KMK_PAGE_URL = "https://www.kmk.org/service/ferienregelung.html"
-DEFAULT_RAW_PDF_DIR = Path(gettempdir()) / "holidays-germany-school-holidays" / "pdfs"
+ALLOWED_KMK_HOST = "www.kmk.org"
 OUTPUT_PATH = ROOT_DIR / "holidays" / "calendars" / "germany_school_dates.py"
 SUPPORTED_START_YEAR = 1990
 URL_TIMEOUT_SECONDS = 30
@@ -75,16 +86,6 @@ STATE_LABEL_TO_CODE = {
     "Thüringen": "TH",
 }
 
-CANONICAL_COLUMN_KEYS = {
-    "Herbst": "Herbst",
-    "Sommer": "Sommer",
-    "Weihnachten": "Weihnachten",
-    "Winter": "Winter",
-    "Ostern/Frühjahr": "Ostern/Frühjahr",
-    "Himmelf./Pfingsten": "Himmelfahrt/Pfingsten",
-    "Himmelfahrt/Pfingsten": "Himmelfahrt/Pfingsten",
-}
-
 AUTUMN_BREAK = "AUTUMN_BREAK"
 CHRISTMAS_BREAK = "CHRISTMAS_BREAK"
 WINTER_BREAK = "WINTER_BREAK"
@@ -94,13 +95,17 @@ SUMMER_BREAK = "SUMMER_BREAK"
 
 HOLIDAY_IDS = {
     "Herbst": AUTUMN_BREAK,
-    "Sommer": SUMMER_BREAK,
     "Weihnachten": CHRISTMAS_BREAK,
     "Winter": WINTER_BREAK,
     "Ostern/Frühjahr": EASTER_SPRING_BREAK,
     "Himmelfahrt/Pfingsten": ASCENSION_WHIT_BREAK,
+    "Sommer": SUMMER_BREAK,
+}
+COLUMN_KEY_ALIASES = {
+    "Himmelf./Pfingsten": "Himmelfahrt/Pfingsten",
 }
 EXPECTED_SUBDIVISIONS = frozenset(STATE_LABEL_TO_CODE.values())
+
 
 DATE_TOKEN_RE = re.compile(
     r"""
@@ -124,11 +129,9 @@ TRAILING_APPENDED_RANGE_FOOTNOTE_RE = re.compile(
 )
 BROKEN_DAY_MONTH_SEPARATOR_RE = re.compile(r"(?<!\.\d)(?<!\.\d\d)(?<=\d)-(?=\d{1,2}\.)")
 DOUBLE_DOT_RANGE_RE = re.compile(r"\.\s*\.\s*-\s*")
-SHARED_MONTH_SPACED_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\.\s*/\s*(\d{1,2})\.(\d{1,2})\.")
-SHARED_MONTH_COMPACT_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\./(\d{1,2})\.(\d{1,2})\.")
-MULTIPLE_DOTS_RE = re.compile(r"\.{2,}")
-MULTIPLE_SLASHES_RE = re.compile(r"/{2,}")
-ONLY_DASHES_RE = re.compile(r"-+")
+SHARED_MONTH_RE = re.compile(r"(?<!\d\.)\b(\d{1,2})\.\s*/\s*(\d{1,2})\.(\d{1,2})\.")
+
+HEADER_PATH = ROOT_DIR / "docs" / "file_header.txt"
 
 
 class _AnchorCollector(HTMLParser):
@@ -188,6 +191,10 @@ def _extract_start_year(label: str, href: str) -> int | None:
 
 
 def _fetch_url(url: str) -> bytes:
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or parsed.hostname != ALLOWED_KMK_HOST:
+        raise ValueError(f"Unsupported KMK URL: {url}")
+    url = parsed._replace(scheme="https").geturl()
     with urlopen(url, timeout=URL_TIMEOUT_SECONDS) as response:  # noqa: S310
         return response.read()
 
@@ -216,6 +223,11 @@ def _get_school_year_pdf_links(index_url: str) -> list[tuple[int, str]]:
 
 
 def ensure_pdf_sources(raw_pdf_dir: Path, index_url: str) -> list[Path]:
+    raw_pdf_dir = raw_pdf_dir.resolve()
+
+    if not raw_pdf_dir.is_relative_to(CACHE_ROOT):
+        raise ValueError(f"PDF cache directory must be within {CACHE_ROOT}: {raw_pdf_dir}")
+
     raw_pdf_dir.mkdir(parents=True, exist_ok=True)
 
     indexed_pdfs = {
@@ -279,23 +291,19 @@ def _repair_pdf_artifacts(cell: str) -> str:
 
 def _expand_shared_month_notation(cell: str) -> str:
     """Expand forms like `20./21.06.` into explicit month-qualified dates."""
-
-    cell = SHARED_MONTH_SPACED_RE.sub(r"\1.\3/\2.\3", cell)
-    return SHARED_MONTH_COMPACT_RE.sub(r"\1.\3/\2.\3", cell)
+    return SHARED_MONTH_RE.sub(r"\1.\3/\2.\3", cell)
 
 
 def _collapse_cell_formatting(cell: str) -> str:
     """Collapse duplicate delimiters and normalize empty placeholders."""
 
-    cell = re.sub(r"\s*/\s*", "/", cell)
-    cell = re.sub(r"\s*-\s*", "-", cell)
+    cell = "/".join(part.strip() for part in cell.split("/"))
+    cell = "-".join(part.strip() for part in cell.split("-"))
     cell = cell.replace("./", "/")
-    cell = MULTIPLE_DOTS_RE.sub(".", cell)
-    cell = MULTIPLE_SLASHES_RE.sub("/", cell)
-    cell = re.sub(r"\s+", " ", cell).strip(" ./")
-    if ONLY_DASHES_RE.fullmatch(cell):
-        return "--"
-    return cell
+    cell = re.sub(r"\.{2,}", ".", cell)
+    cell = re.sub(r"/{2,}", "/", cell)
+    cell = " ".join(cell.split()).strip(" ./")
+    return "--" if cell and set(cell) == {"-"} else cell
 
 
 def _normalize_cell(cell: str) -> str:
@@ -312,11 +320,11 @@ def _parse_header_cell(cell: str) -> tuple[str, str]:
     if not parts:
         raise ValueError("Header cell is empty.")
     raw_label = re.sub(r"(?:\s*\d+\)|[*¹²³⁴⁵⁶⁷⁸⁹])+$", "", parts[0]).strip()
-    if raw_label != "Land" and raw_label not in CANONICAL_COLUMN_KEYS:
-        raise ValueError(f"Unsupported KMK header column: {raw_label!r}.")
-    label = CANONICAL_COLUMN_KEYS.get(raw_label, raw_label)
+    label = COLUMN_KEY_ALIASES.get(raw_label, raw_label)
     if label == "Land":
         return label, ""
+    if label not in HOLIDAY_IDS:
+        raise ValueError(f"Unsupported KMK header column: {raw_label!r}.")
     year_label = parts[1] if len(parts) > 1 else ""
     return label, year_label
 
@@ -491,20 +499,30 @@ def normalize_ranges(
     return {year: dict(sorted(year_data.items())) for year, year_data in sorted(data.items())}
 
 
+def _get_license_header() -> str:
+    """Read and format the license header from docs/file_header.txt."""
+    if not HEADER_PATH.exists():
+        return ""
+
+    if not (content := HEADER_PATH.read_text(encoding="utf-8").lstrip("\n")):
+        return ""
+
+    return "\n".join(
+        f"# {stripped}" if (stripped := line.rstrip()) else "#" for line in content.splitlines()
+    )
+
+
 def render_python_module(
     data: dict[int, dict[str, list[tuple[int, int, int, int, int, int, str]]]],
 ) -> str:
     lines = [
+        _get_license_header(),
+        "",
         '"""Auto-generated Germany school holidays dataset from official KMK sources."""',
         "",
         "(",
-        "    AUTUMN_BREAK,",
-        "    CHRISTMAS_BREAK,",
-        "    WINTER_BREAK,",
-        "    EASTER_SPRING_BREAK,",
-        "    ASCENSION_WHIT_BREAK,",
-        "    SUMMER_BREAK,",
-        ") = range(6)",
+        *(f"    {name}," for name in HOLIDAY_IDS.values()),
+        f") = range({len(HOLIDAY_IDS)})",
         "",
         "GERMANY_SCHOOL_HOLIDAYS = {",
     ]
@@ -520,17 +538,12 @@ def render_python_module(
                 )
             lines.append("        ),")
         lines.append("    },")
+    lines.extend(["}", "", "__all__ = ("])
     lines.extend(
-        [
-            "}",
-            "",
-            "__all__ = ("
-            '"AUTUMN_BREAK", "CHRISTMAS_BREAK", "WINTER_BREAK", '
-            '"EASTER_SPRING_BREAK", "ASCENSION_WHIT_BREAK", "SUMMER_BREAK", '
-            '"GERMANY_SCHOOL_HOLIDAYS")',
-        ]
+        f'    "{name}",' for name in sorted((*HOLIDAY_IDS.values(), "GERMANY_SCHOOL_HOLIDAYS"))
     )
-    return "\n".join(lines) + "\n"
+    lines.extend([")", ""])
+    return "\n".join(lines)
 
 
 def _parse_args() -> argparse.Namespace:

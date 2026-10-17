@@ -11,13 +11,13 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JUN, JUL, AUG, SEP, OCT, NOV
-from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.calendars.gregorian import JAN, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
-class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
+class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """Turkmenistan holidays.
 
     References:
@@ -53,33 +53,36 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
         IslamicHolidays.__init__(
             self, cls=TurkmenistanIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, cls=TurkmenistanStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         kwargs.setdefault("observed_since", 2010)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        dts_observed = set()
+        self.dts_observed = set()
 
         # New Year's Day.
-        dts_observed.add(self._add_new_years_day(tr("Täze ýyl")))
+        self.dts_observed.add(self._add_new_years_day(tr("Täze ýyl")))
 
         if 1995 <= self._year <= 2017:
-            # State Flag Day.
-            dts_observed.add(self._add_holiday_feb_19(tr("Türkmenistanyň Döwlet baýdagynyň güni")))
+            self.dts_observed.add(
+                # State Flag Day.
+                self._add_holiday_feb_19(tr("Türkmenistanyň Döwlet baýdagynyň güni"))
+            )
 
         # Spring Festival.
         name = tr("Milli bahar baýramy")
         if 2001 <= self._year <= 2007:
-            dts_observed.add(self._add_holiday_mar_20(name))
+            self.dts_observed.add(self._add_holiday_mar_20(name))
         else:
             # International Women's Day.
-            dts_observed.add(self._add_womens_day(tr("Halkara zenanlar güni")))
+            self.dts_observed.add(self._add_womens_day(tr("Halkara zenanlar güni")))
 
-        dts_observed.add(self._add_holiday_mar_21(name))
-        dts_observed.add(self._add_holiday_mar_22(name))
+        self.dts_observed.add(self._add_holiday_mar_21(name))
+        self.dts_observed.add(self._add_holiday_mar_22(name))
 
         if self._year <= 2017:
-            dts_observed.add(
+            self.dts_observed.add(
                 self._add_holiday_may_9(
                     # Victory Day.
                     tr("1941-1945-nji ýyllaryň Beýik Watançylyk urşunda ýeňiş güni")
@@ -98,37 +101,40 @@ class Turkmenistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
             else:
                 # Day of Revival, Unity and Poetry of Magtymguly Pyragy.
                 name = tr("Galkynyş, Agzybirlik we Magtymguly Pyragynyň şygryýet güni")
-            dts_observed.add(self._add_holiday_may_18(name))
+            self.dts_observed.add(self._add_holiday_may_18(name))
 
         # Independence Day.
         name = tr("Türkmenistanyň Garaşsyzlyk güni")
         if self._year <= 2017:
-            dts_observed.add(self._add_holiday_oct_27(name))
+            self.dts_observed.add(self._add_holiday_oct_27(name))
             if self._year >= 2008:
-                dts_observed.add(self._add_holiday_oct_28(name))
+                self.dts_observed.add(self._add_holiday_oct_28(name))
         else:
-            dts_observed.add(self._add_holiday_sep_27(name))
+            self.dts_observed.add(self._add_holiday_sep_27(name))
 
         if self._year >= 1995:
             # Memorial Day.
             name = tr("Hatyra güni")
             if 2009 <= self._year <= 2014:
-                dts_observed.add(self._add_holiday_jan_12(name))
+                self.dts_observed.add(self._add_holiday_jan_12(name))
                 # National Memorial Day.
-                dts_observed.add(self._add_holiday_oct_6(tr("Milli ýatlama güni")))
+                self.dts_observed.add(self._add_holiday_oct_6(tr("Milli ýatlama güni")))
             else:
-                dts_observed.add(self._add_holiday_oct_6(name))
+                self.dts_observed.add(self._add_holiday_oct_6(name))
 
             # International Neutrality Day.
-            dts_observed.add(self._add_holiday_dec_12(tr("Halkara Bitaraplyk güni")))
+            self.dts_observed.add(self._add_holiday_dec_12(tr("Halkara Bitaraplyk güni")))
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day(tr("Oraza baýramy")))
+        self.dts_observed.update(self._add_eid_al_fitr_day(tr("Oraza baýramy")))
 
         # Eid al-Adha.
-        dts_observed.update(self._add_eid_al_adha_day(tr("Gurban baýramy")))
+        self.dts_observed.update(self._add_eid_al_adha_day(tr("Gurban baýramy")))
 
-        self._populate_observed(dts_observed)
+    def _populate_common_holidays(self):
+        super()._populate_common_holidays()
+        if self.observed:
+            self._populate_observed(self.dts_observed)
 
 
 class TM(Turkmenistan):
@@ -160,4 +166,26 @@ class TurkmenistanIslamicHolidays(_CustomIslamicHolidays):
         2016: (SEP, 13),
         2017: (SEP, 2),
         2018: (AUG, 22),
+    }
+
+
+class TurkmenistanStaticHolidays:
+    """Turkmenistan special holidays.
+
+    References:
+        * [2021](https://web.archive.org/web/20260927222920/https://tdh.gov.tm/tk/post/25647/turkmenistanyň-prezidentiniň-permany)
+        * [2025](https://web.archive.org/web/20260419182525/https://www.tdh.gov.tm/tk/post/46993/turkmenistanyn-prezidentinin-permany-2025-nji-yylyn-11-13-nji-dekabryny-guni-dal-diyip-yglan-etmek-hakynda)
+        * [2026](https://web.archive.org/web/20260927220423/https://tdh.gov.tm/tk/post/49802/2026-njy-yylyn-28-nji-sentyabryny-guni-dal-diyip-yglan-etmek-hem-de-turkmenistanyn-garassyzlyk-gunune-dusyan-dync-gununi-gecirmek-hakynda-turkmenistanyn-prezidentinin-permany)
+    """
+
+    # Non-working day.
+    non_working_day = tr("Iş güni däl")
+
+    special_public_holidays = {
+        2021: (JAN, 2, non_working_day),
+        2025: (
+            (DEC, 11, non_working_day),
+            (DEC, 13, non_working_day),
+        ),
+        2026: (SEP, 28, non_working_day),
     }

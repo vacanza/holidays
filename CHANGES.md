@@ -1,3 +1,70 @@
+## Version 0.106
+
+Released October 5, 2026
+
+- Add Bolsa de Valores de Colombia (BVC) holidays (#3845 by @Jsebastian323)
+- Add Borsa Istanbul (BIST) holidays (#3858 by @priyen4, @borsad)
+- Add Warsaw Stock Exchange (GPW) holidays (#3837 by @Blizzeq)
+- Update Argentina holidays: add 2026 Visit of Pope Leo XIV holidays (#3860 by @KJhellico)
+- Update Australia holidays: add Labour Day (WA) and Eight Hours Day (TAS) start years (#3846 by @ryanduguid)
+- Update Australia holidays: add Labour Day start years (ACT, QLD) (#3832 by @ahmershahdev)
+- Update Azerbaijan holidays: add substituted holidays from earlier years (#3857 by @KJhellico)
+- Update Bahrain holidays: add Urdu language support (#3872 by @ahmershahdev)
+- Update Kuwait holidays: add Urdu language support (#3873 by @ahmershahdev)
+- Update Malta holidays: add Arabic language support (#3849 by @moustafa-ash)
+- Update Oman holidays: add Urdu language support (#3870 by @ahmershahdev)
+- Update Qatar holidays: add Urdu language support (#3866 by @ahmershahdev)
+- Update Saudi Arabia holidays: add Urdu language support (#3865 by @ahmershahdev)
+- Update Spain holidays: add Eid al-Fitr in Ceuta (CE) (#3838 by @KJhellico)
+- Update Turkmenistan holidays: add special holidays (#3847 by @KJhellico)
+- Update United Arab Emirates holidays: add Urdu language support (#3864 by @ahmershahdev)
+- Update Vietnam holidays: add Vietnam Cultural Day, 2025-2027 substituted holidays (#3862 by @PPsyrius)
+- Update Warsaw Stock Exchange holidays: add Ukrainian language support (#3851 by @KJhellico)
+- Update iCalendar generation tool: add `{all}` placeholder to output template (#3829 by @Kanishka-v21, @KJhellico)
+- Reference maintenance: archive links (#3859 by @PPsyrius)
+
+## Version 0.105
+
+Released September 21, 2026
+
+- Refactor German School Holidays generator (#3808 by @PPsyrius)
+- Refactor imports in tests (#3819 by @KJhellico)
+- Update Australia holidays: add school holidays support (#3821 by @gheydon)
+- Update Canada holidays: remove Boxing Day from optional holidays in QC (#3807 by @arbazkhan971)
+- Update India holidays: subdiv holidays improvement (East, North-East & South regions - I) (#3784 by @ankushhKapoor, @KJhellico)
+- Update Indonesia holidays: add 2027 special holidays (#3828 by @KJhellico)
+- Update Malaysia holidays (#3814 by @KJhellico)
+- Update Philippines holidays: add 2027 holidays (#3817 by @KJhellico)
+- Update South Africa holidays: add Nov 4, 2026 holiday (#3809 by @lispwarez)
+- Add support for special holidays inheritance from parent entity (#3830 by @KJhellico, @arkid15r)
+  
+## Version 0.104
+
+Released September 7, 2026
+
+- Refactor United States tests (#3790 by @KJhellico)
+- Refactor `HolidayBase::__getitem__` method (#3795 by @KJhellico)
+- Refactor l10n implementation (#3791 by @KJhellico)
+- Add Australian Securities Exchange (ASX) holidays (#3753 by @pareshjoshij, @KJhellico)
+- Add London Stock Exchange (LSE) holidays (#3654 by @eeshsaxena, @PPsyrius)
+- Fix unbounded `functools.cache` retention in Burmese and Thai calendars (#3777 by @wu-zhao-min, @arkid15r)
+- Improve Islamic holidays calculations among ASEAN countries (with MABIMS crescent visibility criteria) (#3603 by @akshiDhi, @KJhellico, @PPsyrius)
+- Update Ethiopia holidays: restrict May 28 holiday to 1992-2024 (#3783 by @SamAsEnd, @PPsyrius)
+- Update India holidays: fix 2026 Holi date in Maharashtra (#3773 by @Drona-jadhav7)
+- Update India holidays: fix Arbaeen holiday name (#3779 by @KJhellico)
+- Update India holidays: fix holidays structure (#3794 by @ankushhKapoor, @KJhellico)
+- Update India holidays: subdiv holidays improvement (Central and West region) (#3709 by @ankushhKapoor)
+- Update Iran holidays: add 2026 exact dates (#3797 by @KJhellico)
+- Update Mauritania holidays: add l10n support (#3660 by @TaniaRocks, @KJhellico)
+- Update United Kingdom holidays: add Urdu language support (#3765 by @shehrozsultani)
+- Update documentation build settings (#3780 by @KJhellico)
+- Update iCal exporter: fix dropping or duplicating events (#3704 by @chuenchen309, @arkid15r, @KJhellico)
+- Update l10n test: fix duplicated entries check (#3785 by @KJhellico)
+- Update ruff configuration (#3796 by @PPsyrius)
+- Update subdivision aliases handling (#3770 by @KJhellico)
+- Add Python 3.15 (beta) to CI/CD (#3771 by @PPsyrius)
+- Reference maintenance: archive links (#3772 by @PPsyrius)
+
 ## Version 0.103
 
 Released August 17, 2026

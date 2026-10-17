@@ -37,24 +37,28 @@ class Philippines(
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_the_Philippines>
         * [Revised Administrative Code of 1987](https://web.archive.org/web/20241203234427/https://www.officialgazette.gov.ph/1987/07/25/executive-order-no-292-book-ichapter-7-regular-holidays-and-nationwide-special-days/)
+        * [Nationwide holidays 2018-2025](https://web.archive.org/web/20240515022447/https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
         * [Republic Act No. 9177](https://web.archive.org/web/20230930164310/https://www.officialgazette.gov.ph/2002/11/13/republic-act-no-9177/)
         * [Republic Act No. 9256](https://web.archive.org/web/20240706140401/https://www.officialgazette.gov.ph/2004/02/25/republic-act-no-9256/)
         * [Republic Act No. 9492](https://web.archive.org/web/20250413180041/http://www.officialgazette.gov.ph/2007/07/24/republic-act-no-9492/)
         * [Republic Act No. 9645](https://web.archive.org/web/20231014172648/https://www.officialgazette.gov.ph/2009/06/12/republic-act-no-9645/)
         * [Republic Act No. 9849](https://web.archive.org/web/20250424053703/http://officialgazette.gov.ph/2009/12/11/republic-act-no-9849/)
         * [Republic Act No. 10966](https://web.archive.org/web/20250419183417/http://www.officialgazette.gov.ph/2017/12/28/republic-act-no-10966/)
+        * [Republic Act No. 11370](https://web.archive.org/web/20230915093809/https://www.officialgazette.gov.ph/2019/08/08/republic-act-no-11370/)
+        * [Republic Act No. 12228](https://archive.org/details/20250709-ra-12228)
         * [Proclamation No. 944/2020](https://web.archive.org/web/20250428055016/https://www.officialgazette.gov.ph/2020/05/19/proclamation-no-944-s-2020/)
         * [Proclamation No. 985/2020](https://web.archive.org/web/20230901112559/https://www.officialgazette.gov.ph/2020/07/29/proclamation-no-985-s-2020/)
         * [Proclamation No. 90/2022](https://web.archive.org/web/20231026052921/https://www.officialgazette.gov.ph/2022/11/09/proclamation-no-90-s-2022/)
         * [Proclamation No. 665/2024](https://archive.org/details/20241015-proc-665-frm)
+        * [Proclamation No. 727/2024](https://archive.org/details/20241030-proc-727)
         * [Proclamation No. 729/2024](https://archive.org/details/20241030-proc-729-frm)
-        * [Nationwide holidays 2018-2025](https://web.archive.org/web/20240515022447/https://www.officialgazette.gov.ph/nationwide-holidays/2018/)
         * [Proclamation No. 839/2025](https://archive.org/details/20250320-proc-839-frm_202506)
         * [Proclamation No. 878/2025](https://archive.org/details/20250506-proc-878-frm_202506)
         * [Proclamation No. 911/2025](https://archive.org/details/20250521-proc-911-frm_20250606_1800)
         * [Proclamation No. 1006/2025](https://archive.org/details/20250903-proc-1006-frm)
         * [Proclamation No. 1189/2026](https://archive.org/details/20260312-proc-1189)
         * [Proclamation No. 1264/2026](https://archive.org/details/20260521-proc-1264)
+        * [Proclamation No. 1427/2026](https://archive.org/details/20260908-proc-1427)
     """
 
     country = "PH"
@@ -182,16 +186,26 @@ class Philippines(
             self._add_eid_al_adha_day(tr("Eid'l Adha"))
 
     def _populate_workday_holidays(self):
-        # Added in 2009, get special non-working day status in 2025:
+        # Added from 2025 onwards as first decreed in Proclamation No. 727/2024.
+        if self._year >= 2025:
+            # EDSA People Power Revolution Anniversary.
+            self._add_holiday_feb_25(tr("EDSA People Power Revolution Anniversary"))
+
+        # Added by Republic Act No. 9645 in 2009.
+        # Declared as special non-working day in 2025 by Proclamation No. 729/2024.
         if self._year >= 2009 and self._year != 2025:
             # Founding Anniversary of Iglesia ni Cristo.
             self._add_holiday_jul_27(tr("Founding Anniversary of Iglesia ni Cristo"))
 
-        # Added from 2025 onwards as first decreed in
-        # https://web.archive.org/web/20250326064645/https://www.officialgazette.gov.ph/downloads/2024/10oct/20241030-PROC-727-FRM.pdf
+        # Republic Act No. 11370.
+        if self._year >= 2019:
+            # Nativity Of Mary.
+            self._add_nativity_of_mary_day(tr("Feast of the Nativity of the Blessed Virgin Mary"))
+
+        # Republic Act No. 12228.
         if self._year >= 2025:
-            # EDSA People Power Revolution Anniversary.
-            self._add_holiday_feb_25(tr("EDSA People Power Revolution Anniversary"))
+            # Sheikh Karim'ul Makhdum Day.
+            self._add_holiday_nov_7(tr("Sheikh Karim'ul Makhdum Day"))
 
 
 class PH(Philippines):
@@ -245,6 +259,9 @@ class PhilippinesStaticHolidays:
 
     # Elections special (non-working) day.
     election_special = tr("Elections special (non-working) day")
+
+    # All Souls' Day.
+    all_souls_day = tr("All Souls' Day")
 
     # Christmas Eve.
     christmas_eve = tr("Christmas Eve")
@@ -318,8 +335,11 @@ class PhilippinesStaticHolidays:
             (DEC, 24, christmas_eve),
         ),
         2026: (
-            # All Souls' Day.
-            (NOV, 2, tr("All Souls' Day")),
+            (NOV, 2, all_souls_day),
+            (DEC, 24, christmas_eve),
+        ),
+        2027: (
+            (NOV, 2, all_souls_day),
             (DEC, 24, christmas_eve),
         ),
     }

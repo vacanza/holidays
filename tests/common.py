@@ -356,7 +356,7 @@ class TestCase:
     def setUp(self):
         super().setUp()
 
-        if getattr(self.test_class, "default_language") is not None:
+        if self.test_class.default_language is not None:
             self.set_language(self.test_class.default_language)
 
     def set_language(self, language):
@@ -464,7 +464,7 @@ class TestCase:
         holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
 
-        filtered_holidays = {dt.strftime("%Y-%m-%d") for dt in holidays.keys() if dt.year == year}
+        filtered_holidays = {dt.strftime("%Y-%m-%d") for dt in holidays if dt.year == year}
 
         # Check one by one for descriptive error messages.
         for dt in dates:
@@ -553,7 +553,7 @@ class TestCase:
         self.assertEqual(
             len(filtered_holidays),
             len(expected_holidays),
-            {(dt, name) for dt, name in filtered_holidays.items()}.difference(
+            set(filtered_holidays.items()).difference(
                 (dt, name) for dt, name in expected_holidays
             ),
         )

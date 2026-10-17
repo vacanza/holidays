@@ -10,12 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+from unittest import TestCase
 
 from holidays.calendars.julian import julian_calendar_drift
 
 
-class TestJulianCalendar(unittest.TestCase):
+class TestJulianCalendar(TestCase):
     def test_julian_calendar_drift(self):
         known_julian_calendar_drift = {
             1400: -13,

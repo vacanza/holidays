@@ -68,7 +68,7 @@ class IcsGenerator:
             "--output-template",
             help=(
                 "Output filename template. Available placeholders: {code}, {subdiv}, "
-                "{language}, {categories}, {start_year}, {end_year}, {today}. "
+                "{language}, {categories}, {start_year}, {end_year}, {all}, {today}. "
                 "Use '{{' and '}}' for literal '{' and '}'"
             ),
         )
@@ -273,6 +273,9 @@ class IcsGenerator:
                 "end_year": end_year,
                 "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
             }
+            values["all"] = (
+                self.get_default_output_template().format(**values).removesuffix(".ics")
+            )
             self.validate_output_template(set(values))
             template = self.args.output_template or self.get_default_output_template()
             output_path = template.format(**values)
