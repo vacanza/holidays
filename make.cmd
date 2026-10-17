@@ -22,12 +22,11 @@ GoTo :Help
     Exit /B
 
 :Check
-    Call :L10n
-    Call :Pre-commit
-    Call :Doc
-    Call :Spellcheck
-    Call :Test
-    Exit /B
+    Call :L10n        & If ErrorLevel 1 Exit /B %ERRORLEVEL%
+    Call :Pre-commit  & If ErrorLevel 1 Exit /B %ERRORLEVEL%
+    Call :Doc         & If ErrorLevel 1 Exit /B %ERRORLEVEL%
+    Call :Spellcheck  & If ErrorLevel 1 Exit /B %ERRORLEVEL%
+    Call :Test        & Exit /B %ERRORLEVEL%
 
 :Sort-custom-dict
     python tools/sort_cspell_dict.py

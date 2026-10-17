@@ -60,4 +60,4 @@ jobs:
         working-directory: cspell
 
       - name: Run spellcheck
-        run: cspell/node_modules/.bin/cspell lint -c cspell/cspell.json --no-progress "docs/**/*" "README.md" "scripts/l10n/**/*" "mkdocs.yml"
+        run: cspell/node_modules/.bin/cspell lint -c cspell/cspell.json --no-progress "docs/**/*" "README.md" "scripts/l10n/**/*" ".properdocs.yml"

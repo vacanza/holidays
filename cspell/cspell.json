@@ -75,7 +75,7 @@
     "docs/**/*",
     "README.md",
     "scripts/l10n/**/*",
-    "mkdocs.yml"
+    ".properdocs.yml"
   ],
   "ignoreRegExpList": [
     "#\\w+",
