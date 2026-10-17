@@ -44,9 +44,9 @@ msgstr "يوم الشيخ المعروف"
 msgid "Fête du Travail"
 msgstr "عيد العمال"
 
-#. National Day.
-msgid "Fête nationale"
-msgstr "اليوم الوطني"
+#. Independence Day.
+msgid "Fête de l'Indépendance"
+msgstr "عيد الاستقلال"
 
 #. Maore Day.
 msgid "Journée Maoré"

@@ -37,7 +37,9 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertHolidayName("Fête du Travail", (f"{year}-05-01" for year in self.full_range))
 
     def test_national_day(self):
-        self.assertHolidayName("Fête nationale", (f"{year}-07-06" for year in self.full_range))
+        self.assertHolidayName(
+            "Fête de l'Indépendance", (f"{year}-07-06" for year in self.full_range)
+        )
 
     def test_maore_day(self):
         name = "Journée Maoré"
@@ -121,7 +123,7 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-05-02", "Id-El-Fitr (estimé)"),
             ("2022-05-03", "Id-El-Fitr (estimé)"),
             ("2022-05-04", "Id-El-Fitr (estimé)"),
-            ("2022-07-06", "Fête nationale"),
+            ("2022-07-06", "Fête de l'Indépendance"),
             ("2022-07-09", "Id-El-Kabir (estimé)"),
             ("2022-07-10", "Id-El-Kabir (estimé)"),
             ("2022-07-30", "Nouvel an musulman (estimé)"),
@@ -140,7 +142,7 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-05-02", "عيد الفطر (تقديري)"),
             ("2022-05-03", "عيد الفطر (تقديري)"),
             ("2022-05-04", "عيد الفطر (تقديري)"),
-            ("2022-07-06", "اليوم الوطني"),
+            ("2022-07-06", "عيد الاستقلال"),
             ("2022-07-09", "عيد الأضحى (تقديري)"),
             ("2022-07-10", "عيد الأضحى (تقديري)"),
             ("2022-07-30", "رأس السنة الهجرية (تقديري)"),
@@ -159,7 +161,7 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-05-02", "Eid al-Fitr (estimated)"),
             ("2022-05-03", "Eid al-Fitr (estimated)"),
             ("2022-05-04", "Eid al-Fitr (estimated)"),
-            ("2022-07-06", "National Day"),
+            ("2022-07-06", "Independence Day"),
             ("2022-07-09", "Eid al-Adha (estimated)"),
             ("2022-07-10", "Eid al-Adha (estimated)"),
             ("2022-07-30", "Islamic New Year (estimated)"),

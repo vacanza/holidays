@@ -44,8 +44,8 @@ msgstr ""
 msgid "Fête du Travail"
 msgstr ""
 
-#. National Day.
-msgid "Fête nationale"
+#. Independence Day.
+msgid "Fête de l'Indépendance"
 msgstr ""
 
 #. Maore Day.
