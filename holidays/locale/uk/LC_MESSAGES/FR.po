@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-05 18:19+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,30 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: fr\n"
+
+#. All Saints' Break.
+msgid "Vacances de la Toussaint"
+msgstr "Канікули на День усіх святих"
+
+#. Christmas Break.
+msgid "Vacances de Noël"
+msgstr "Різдвяні канікули"
+
+#. Winter Break.
+msgid "Vacances d'hiver"
+msgstr "Зимові канікули"
+
+#. Spring Break.
+msgid "Vacances de printemps"
+msgstr "Весняні канікули"
+
+#. Ascension Break.
+msgid "Pont de l'Ascension"
+msgstr "Канікули на Вознесіння"
+
+#. Summer Break.
+msgid "Vacances d'été"
+msgstr "Літні канікули"
 
 #. New Year's Day.
 msgid "Jour de l'an"
