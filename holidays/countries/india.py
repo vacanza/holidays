@@ -334,7 +334,9 @@ class India(
             # Holi.
             self._add_holi(tr("Holi"))
 
-        if self._ram_navami and not self._is_sunday(self._ram_navami):
+        if (self._ram_navami and not self._is_sunday(self._ram_navami)) and (
+            self._year != 2026 and self._normalized_subdiv != "OD"
+        ):
             # Ram Navami.
             self._add_ram_navami(tr("Ram Navami"))
 
@@ -2223,6 +2225,9 @@ class IndiaStaticHolidays:
     # Shri Panchami.
     name_shri_panchami = tr("Shri Panchami")
 
+    # Ram Navami.
+    name_ram_navami = "Ram Navami"
+
     # Guru Tegh Bahadur's Martyrdom Day.
     name_guru_tegh_bahadur_martyrdom_day = tr("Guru Tegh Bahadur's Shaheedi Diwas")
 
@@ -2267,6 +2272,10 @@ class IndiaStaticHolidays:
     special_dh_public_holidays = {
         2023: (JAN, 14, name_magh_bihu),
     }
+
+    special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}
+
+    special_od_public_holidays = {2026: (MAR, 27, name_ram_navami)}
 
     special_la_optional_holidays = {
         # Eid al-Ghadir.
