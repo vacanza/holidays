@@ -15,6 +15,7 @@ from __future__ import annotations
 import re
 import uuid
 from datetime import date, datetime, timezone
+from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -30,13 +31,31 @@ if TYPE_CHECKING:
 CONTENT_LINE_MAX_LENGTH = 75
 CONTENT_LINE_DELIMITER = "\r\n"
 CONTENT_LINE_DELIMITER_WRAP = f"{CONTENT_LINE_DELIMITER} "
+UID_DOMAIN = "holidays.vacanza.dev"
+UID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, UID_DOMAIN)
 
 
 class ICalExporter:
-    def __init__(self, instance: HolidayBase, show_language: bool = False) -> None:
+    """Export holiday data in the iCalendar format.
+
+    The generated content follows
+    [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+    """
+
+    def __init__(
+        self,
+        instance: HolidayBase,
+        show_language: bool = False,
+        *,
+        refresh_interval: int | None = None,
+    ) -> None:
         """Initialize iCalendar exporter.
 
         Args:
+            instance:
+                [`HolidayBase`][holidays.holiday_base.HolidayBase] object
+                containing holiday data.
+
             show_language:
                 Determines whether to include the `;LANGUAGE=` attribute in the
                 `SUMMARY` field. Defaults to `False`.
@@ -48,12 +67,22 @@ class ICalExporter:
                 If neither attribute exists and `show_language=True`, an
                 exception will be raised.
 
-            instance:
-                [`HolidayBase`][holidays.holiday_base.HolidayBase] object
-                containing holiday data.
+            refresh_interval:
+                Suggested refresh interval, in weeks, for calendar clients
+                subscribed to the published calendar. Emits the `REFRESH-INTERVAL`
+                ([RFC 7986](https://web.archive.org/web/20260611035104/https://datatracker.ietf.org/doc/html/rfc7986))
+                and `X-PUBLISHED-TTL` properties. Defaults to `None` (not emitted).
         """
         self.holidays = instance
         self.show_language = show_language
+        if refresh_interval is not None and (
+            type(refresh_interval) is not int or refresh_interval < 1
+        ):
+            raise ValueError(
+                f"Invalid refresh interval: {refresh_interval}. "
+                "Expected a positive number of weeks."
+            )
+        self.refresh_interval = refresh_interval
         self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         language = getattr(self.holidays, "language", None) or getattr(
@@ -99,9 +128,94 @@ class ICalExporter:
             )
         return language
 
+    @cached_property
+    def entity_name(self) -> str:
+        """Human-readable name of the exported entity.
+
+        Taken from the entity docstring (e.g. `Belgium holidays.`), falling back to
+        the entity code(s) for combined or custom holiday objects.
+        """
+        for cls in type(self.holidays).__mro__:
+            match = re.fullmatch(r"(.+) holidays\.", (cls.__doc__ or "").strip().split("\n")[0])
+            if match:
+                return match.group(1)
+
+        codes = self.holidays._entity_code
+        return ", ".join(codes) if isinstance(codes, list) else codes or ""
+
+    @cached_property
+    def calendar_name(self) -> str:
+        """Calendar display name used for the `X-WR-CALNAME` property.
+
+        Examples: `Thailand Public Holidays [th]`, `Israel School Holidays [he]`,
+        `Belgium Public Holidays [en-US]`.
+        """
+        parts = [self.entity_name] if self.entity_name else []
+
+        subdiv = self.holidays.subdiv
+        if subdiv:
+            parts.append(f"({', '.join(subdiv) if isinstance(subdiv, list) else subdiv})")
+
+        parts.append(
+            ", ".join(
+                category.replace("_", " ").title() for category in self.holidays._sorted_categories
+            )
+        )
+        parts.append("Holidays")
+
+        if self.language:
+            parts.append(f"[{self.language}]")
+
+        return " ".join(parts)
+
+    @cached_property
+    def _uid_prefix(self) -> str:
+        """Entity-specific part of the event UID key."""
+        codes = self.holidays._entity_code
+        subdiv = self.holidays.subdiv
+        return "|".join(
+            (
+                ",".join(codes) if isinstance(codes, list) else codes or "",
+                ",".join(subdiv) if isinstance(subdiv, list) else subdiv or "",
+                self.language or "",
+                ",".join(sorted(self.holidays.categories)),
+            )
+        )
+
+    def _generate_uid(self, dt: date, holiday_name: str) -> str:
+        """Generate a deterministic event UID.
+
+        The UID is a UUID5 of the entity, subdivision, language, categories, holiday
+        name and start date, so it stays the same across runs and library versions.
+        Calendar clients rely on this to update subscribed events in place.
+
+        Args:
+            dt:
+                Holiday start date.
+
+            holiday_name:
+                Holiday name.
+
+        Returns:
+            The event UID.
+        """
+        key = f"{self._uid_prefix}|{holiday_name}|{dt.isoformat()}"
+        return f"{uuid.uuid5(UID_NAMESPACE, key)}@{UID_DOMAIN}"
+
+    def _escape_text(self, text: str) -> str:
+        """Escape special characters in a `TEXT` value per RFC 5545.
+
+        Args:
+            text:
+                The text to escape.
+
+        Returns:
+            The escaped text.
+        """
+        return text.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
+
     def _fold_line(self, line: str) -> str:
-        """Fold long lines according to
-        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+        """Fold long lines according to RFC 5545.
 
         Content lines SHOULD NOT exceed 75 octets. If a line is too long,
         it must be split into multiple lines, with each continuation line
@@ -161,19 +275,14 @@ class ICalExporter:
         Returns:
             Iterable of iCalendar format event lines.
         """
-        # Escape special characters per RFC 5545.
         # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
         # so a name with a semicolon gets split into two separate `VEVENT`s.
-        sanitized_holiday_name = (
-            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
-        )
-        event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
         yield "BEGIN:VEVENT"
         yield f"DTSTAMP:{self.ical_timestamp}"
-        yield f"UID:{event_uid}"
-        yield self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}")
+        yield f"UID:{self._generate_uid(dt, holiday_name)}"
+        yield self._fold_line(f"SUMMARY{language_tag}:{self._escape_text(holiday_name)}")
         yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
         yield f"DURATION:P{holiday_length}D"
         if len(self.holidays.categories) == 1:
@@ -196,7 +305,12 @@ class ICalExporter:
             f"PRODID:-//Vacanza//Open World Holidays Framework v{self.holidays_version}//EN",
             "VERSION:2.0",
             "CALSCALE:GREGORIAN",
+            self._fold_line(f"X-WR-CALNAME:{self._escape_text(self.calendar_name)}"),
         ]
+        if self.refresh_interval:
+            duration = f"P{self.refresh_interval}W"
+            lines.append(f"REFRESH-INTERVAL;VALUE=DURATION:{duration}")
+            lines.append(f"X-PUBLISHED-TTL:{duration}")
 
         # Merged continuous holiday with the same name and use `DURATION` instead.
         holiday_sequences: dict[str, list[date]] = {}
@@ -229,9 +343,8 @@ class ICalExporter:
     def save_ics(self, file_path: str | Path) -> None:
         """Export the calendar data to a `.ics` file.
 
-        While [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545)
-        does not explicitly restrict filenames for `.ics` files, it is still advisable to follow
-        general filesystem conventions and avoid problematic characters.
+        While RFC 5545 does not explicitly restrict filenames for `.ics` files, it is still
+        advisable to follow general filesystem conventions and avoid problematic characters.
 
         Args:
             file_path:
