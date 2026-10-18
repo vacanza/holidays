@@ -37,8 +37,8 @@ class SecuritiesIndustryAndFinancialMarketsAssociation(
         * [U.S. Holiday Archive](https://web.archive.org/web/20261013030156/https://www.sifma.org/resources/guides-playbooks/us-holiday-archive)
         * [Holiday Schedule](https://web.archive.org/web/20261012114604/https://www.sifma.org/resources/general/holiday-schedule)
         * [Good Friday 2015](https://web.archive.org/web/20261018073918/https://www.sifma.org/news/press-releases/sifma-recommends-early-market-close-on-april-3-for-trading-of-us-dollar-denominated-fixed-income-securities-in-the-us-in-observance-of-the-good-friday-holiday)
-        * [Market closure 2001](https://home.treasury.gov/news/press-releases/po627)
-        * [National Day of Mourning 2004](https://www.isda.org/2004/06/11/u-s-exchange-and-market-closings-on-june-11-2004-for-mourning-president-ronald-reagan/)
+        * [Market closure 2001](https://web.archive.org/web/20260529072848/https://home.treasury.gov/news/press-releases/po627)
+        * [National Day of Mourning 2004](https://web.archive.org/web/20230607061001/https://www.isda.org/2004/06/11/u-s-exchange-and-market-closings-on-june-11-2004-for-mourning-president-ronald-reagan/)
         * [National Day of Mourning 2007](https://web.archive.org/web/20260516183523/https://www.sec.gov/news/press/2006/2006-222.htm)
         * [National Day of Mourning 2025](https://web.archive.org/web/20260217172921/https://www.sifma.org/news/press-releases/sifma-recommends-early-market-close-on-january-9-2025-for-the-national-day-of-mourning-in-honor-of-former-president-carter)
     """
