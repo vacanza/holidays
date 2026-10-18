@@ -1,5 +1,9 @@
 FROM node:20-alpine
 
+# Loading all locale dictionaries (via the "import" field in cspell.json) needs
+# more than Node's default heap, verified locally hitting OOM below ~6GB.
+ENV NODE_OPTIONS="--max-old-space-size=8192"
+
 # Set working directory for node modules installation
 WORKDIR /app
 

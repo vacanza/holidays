@@ -59,5 +59,13 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
         working-directory: cspell
 
+      - name: Cache cspell results
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
+        with:
+          key: cspell-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cspell/cspell.json', 'cspell/custom-dict.txt', 'cspell/package-lock.json') }}
+          path: cspell/.cspellcache
+
       - name: Run spellcheck
-        run: cspell/node_modules/.bin/cspell lint -c cspell/cspell.json --no-progress "docs/**/*" "README.md" "scripts/l10n/**/*" ".properdocs.yml"
+        env:
+          NODE_OPTIONS: "--max-old-space-size=8192"
+        run: cspell/node_modules/.bin/cspell lint -c cspell/cspell.json --no-progress --cache --cache-location cspell/.cspellcache "docs/**/*" "README.md" "scripts/l10n/**/*" ".properdocs.yml"

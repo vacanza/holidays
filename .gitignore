@@ -21,6 +21,7 @@ coverage.lcov
 coverage.xml
 design/
 dist/
+cspell/.cspellcache/
 docs/auto_gen_files/
 holidays/locale/pot/*.pot
 MANIFEST

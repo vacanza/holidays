@@ -33,10 +33,11 @@ python tools/sort_cspell_dict.py
 goto end
 
 :cspell-check
-set CMD=--no-progress -r /holidays
+set CMD=--no-progress --cache --cache-location /cspellcache/cache -r /holidays
 call :cspell-install
 if %errorlevel% neq 0 goto end
-docker run --mount type=bind,src="%CD%",dst=/holidays,readonly --rm cspell lint -c cspell/cspell.json %CMD%
+if not exist "%CD%\cspell\.cspellcache" mkdir "%CD%\cspell\.cspellcache"
+docker run --mount type=bind,src="%CD%",dst=/holidays,readonly --mount type=bind,src="%CD%\cspell\.cspellcache",dst=/cspellcache --rm cspell lint -c cspell/cspell.json %CMD%
 goto end
 
 :end
