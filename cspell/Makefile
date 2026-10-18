@@ -12,10 +12,16 @@ cspell-check: CMD=--no-progress --cache --cache-location /cspellcache/cache -r /
 cspell-check: cspell-install
 	@mkdir -p "$(CURDIR)/cspell/.cspellcache"
 	@docker run \
+	--user "$(shell id -u):$(shell id -g)" \
 	--mount type=bind,src="$(CURDIR)",dst=/holidays,readonly \
 	--mount type=bind,src="$(CURDIR)/cspell/.cspellcache",dst=/cspellcache \
 	--rm \
 	cspell lint -c cspell/cspell.json $(CMD)
 
+# Prefer the project-local uv (pinned via the ci dependency group) when present.
+# Invoked with -f from the repo root, so paths here are root-relative, same as Makefile.
+UV = $(if $(wildcard .venv/bin/uv),.venv/bin/uv,uv)
+UV_RUN_CMD = $(UV) run --no-sync
+
 sort-custom-dict:
-	@python tools/sort_cspell_dict.py
+	@$(UV_RUN_CMD) tools/sort_cspell_dict.py

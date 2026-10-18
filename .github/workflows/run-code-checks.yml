@@ -62,7 +62,9 @@ jobs:
       - name: Cache cspell results
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
         with:
-          key: cspell-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cspell/cspell.json', 'cspell/custom-dict.txt', 'cspell/package-lock.json') }}
+          key: cspell-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cspell/cspell.json', 'cspell/custom-dict.txt', 'cspell/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            cspell-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cspell/cspell.json', 'cspell/custom-dict.txt', 'cspell/package-lock.json') }}-
           path: cspell/.cspellcache
 
       - name: Run spellcheck
