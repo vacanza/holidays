@@ -142,8 +142,8 @@ hide:
     </div>
 
     <div class="calendar-actions">
-      <button type="button" class="list-calendars-button" @click="listCalendars()" :disabled="selectedEntities.length === 0 || selectedCategories.length === 0">
-        List calendars
+      <button type="button" class="list-calendars-button" @click="listCalendars()" :disabled="isListing || selectedEntities.length === 0 || selectedCategories.length === 0">
+        <span x-text="isListing ? 'Loading calendars…' : 'List calendars'">List calendars</span>
       </button>
     </div>
 

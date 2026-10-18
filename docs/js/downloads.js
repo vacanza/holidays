@@ -5,6 +5,7 @@ function holidayDownloads() {
   return {
     // State
     isLoading: true,
+    isListing: false,
     manifest: {},
     fetchMode: null,
     remoteBaseUrl: 'https://vacanza.github.io/holidays/downloads/',
@@ -206,6 +207,7 @@ function holidayDownloads() {
 
     _resetResults() {
       this.requestGeneration++;
+      this.isListing = false;
       this.calendarRows = [];
       this.previewRows = [];
       this.previewTotal = 0;
@@ -323,7 +325,9 @@ function holidayDownloads() {
         if (regionEvents.length <= remaining) {
           kept.push(...regionEvents);
         } else {
-          kept.push(...regionEvents.slice(0, remaining));
+          if (kept.length === 0) {
+            kept.push(...regionEvents.slice(0, remaining));
+          }
           truncated = true;
           break;
         }
@@ -441,36 +445,43 @@ function holidayDownloads() {
       }
 
       const gen = ++this.requestGeneration;
+      this.isListing = true;
 
-      const pairsWithEvents = await this.loadPreview(gen);
-      if (this.requestGeneration !== gen) return;
+      try {
+        const pairsWithEvents = await this.loadPreview(gen);
+        if (this.requestGeneration !== gen) return;
 
-      this.calendarRows = this.selectedEntities.map(entity => {
-        const data = this.currentManifest[entity] || {};
-        const language = this._getLanguage(entity);
-        const supported = data.categories || ['public'];
+        this.calendarRows = this.selectedEntities.map(entity => {
+          const data = this.currentManifest[entity] || {};
+          const language = this._getLanguage(entity);
+          const supported = data.categories || ['public'];
 
-        return {
-          entity,
-          name: this._getEntityLabel(entity),
-          languageName: this._getLanguageName(entity, language),
-          calendars: this.selectedCategories.map(category => {
-            const hasEvents =
-              supported.includes(category) &&
-              pairsWithEvents.has(`${entity}|${category}`);
-            return {
-              category,
-              available: hasEvents,
-              icsDownloading: false,
-              jsonDownloading: false,
-              error: false,
-              webcal: hasEvents ? this._getWebcalUrl(entity, category) : ''
-            };
-          })
-        };
-      });
+          return {
+            entity,
+            name: this._getEntityLabel(entity),
+            languageName: this._getLanguageName(entity, language),
+            calendars: this.selectedCategories.map(category => {
+              const hasEvents =
+                supported.includes(category) &&
+                pairsWithEvents.has(`${entity}|${category}`);
+              return {
+                category,
+                available: hasEvents,
+                icsDownloading: false,
+                jsonDownloading: false,
+                error: false,
+                webcal: hasEvents ? this._getWebcalUrl(entity, category) : ''
+              };
+            })
+          };
+        });
 
-      this.showCalendarList = true;
+        this.showCalendarList = true;
+      } finally {
+        if (this.requestGeneration === gen) {
+          this.isListing = false;
+        }
+      }
     },
 
     async downloadCalendar(entity, category, format) {
