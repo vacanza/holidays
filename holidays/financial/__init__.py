@@ -41,6 +41,11 @@ from holidays.financial.new_zealand_exchange import NewZealandExchange, XNZE, NZ
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
 from holidays.financial.pakistan_stock_exchange import PakistanStockExchange, XKAR, PSX
 from holidays.financial.saudi_exchange import SaudiExchange, XSAU
+from holidays.financial.securities_industry_and_financial_markets_association import (
+    SecuritiesIndustryAndFinancialMarketsAssociation,
+    XSIF,
+    USGS,
+)
 from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
 from holidays.financial.shenzhen_stock_exchange import ShenzhenStockExchange, XSHE, SZSE
 from holidays.financial.singapore_exchange import SingaporeExchange, XSES, SGX
