@@ -12,16 +12,14 @@
 
 from unittest import TestCase
 
-from holidays.financial.securities_industry_and_financial_markets_association import (
-    SecuritiesIndustryAndFinancialMarketsAssociation,
-)
+from holidays.financial.sifma import SIFMA
 from tests.common import CommonFinancialTests
 
 
-class TestSecuritiesIndustryAndFinancialMarketsAssociation(CommonFinancialTests, TestCase):
+class TestSIFMA(CommonFinancialTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SecuritiesIndustryAndFinancialMarketsAssociation)
+        super().setUpClass(SIFMA)
 
     def test_new_years_day(self):
         name = "New Year's Day"

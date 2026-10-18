@@ -23,9 +23,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class SecuritiesIndustryAndFinancialMarketsAssociation(
-    ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays
-):
+class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Securities Industry and Financial Markets Association (SIFMA) holidays.
 
     SIFMA recommends full and early closes for trading of U.S. dollar-denominated fixed income
@@ -57,9 +55,7 @@ class SecuritiesIndustryAndFinancialMarketsAssociation(
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        StaticHolidays.__init__(
-            self, SecuritiesIndustryAndFinancialMarketsAssociationStaticHolidays
-        )
+        StaticHolidays.__init__(self, SIFMAStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_TO_PREV_FRI + SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -190,15 +186,15 @@ class SecuritiesIndustryAndFinancialMarketsAssociation(
             )
 
 
-class XSIF(SecuritiesIndustryAndFinancialMarketsAssociation):
+class XSIF(SIFMA):
     pass
 
 
-class USGS(SecuritiesIndustryAndFinancialMarketsAssociation):
+class USGS(SIFMA):
     pass
 
 
-class SecuritiesIndustryAndFinancialMarketsAssociationStaticHolidays:
+class SIFMAStaticHolidays:
     """Securities Industry and Financial Markets Association (SIFMA) special holidays."""
 
     # %s (markets close at 11:00am).
