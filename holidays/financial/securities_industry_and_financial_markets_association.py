@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, APR, JUL, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
@@ -37,6 +37,8 @@ class SecuritiesIndustryAndFinancialMarketsAssociation(
         * [U.S. Holiday Archive](https://web.archive.org/web/20261013030156/https://www.sifma.org/resources/guides-playbooks/us-holiday-archive)
         * [Holiday Schedule](https://web.archive.org/web/20261012114604/https://www.sifma.org/resources/general/holiday-schedule)
         * [Good Friday 2015](https://web.archive.org/web/20261018073918/https://www.sifma.org/news/press-releases/sifma-recommends-early-market-close-on-april-3-for-trading-of-us-dollar-denominated-fixed-income-securities-in-the-us-in-observance-of-the-good-friday-holiday)
+        * [Market closure 2001](https://home.treasury.gov/news/press-releases/po627)
+        * [National Day of Mourning 2004](https://www.isda.org/2004/06/11/u-s-exchange-and-market-closings-on-june-11-2004-for-mourning-president-ronald-reagan/)
         * [National Day of Mourning 2007](https://web.archive.org/web/20260516183523/https://www.sec.gov/news/press/2006/2006-222.htm)
         * [National Day of Mourning 2025](https://web.archive.org/web/20260217172921/https://www.sifma.org/news/press-releases/sifma-recommends-early-market-close-on-january-9-2025-for-the-national-day-of-mourning-in-honor-of-former-president-carter)
     """
@@ -218,6 +220,10 @@ class SecuritiesIndustryAndFinancialMarketsAssociationStaticHolidays:
     name_hurricane_sandy = tr("Hurricane Sandy")
 
     special_public_holidays = {
+        # Closed following Attacks on the World Trade Center.
+        2001: (SEP, 12, tr("Closed following Attacks on the World Trade Center")),
+        # National Day of Mourning for former President Ronald Reagan.
+        2004: (JUN, 11, tr("National Day of Mourning for former President Ronald Reagan")),
         2012: (OCT, 30, name_hurricane_sandy),
         # National Day of Mourning for former President George H. W. Bush.
         2018: (DEC, 5, tr("National Day of Mourning for former President George H. W. Bush")),

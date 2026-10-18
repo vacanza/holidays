@@ -199,6 +199,8 @@ class TestSecuritiesIndustryAndFinancialMarketsAssociation(CommonFinancialTests,
 
     def test_special_public_holidays(self):
         self.assertHoliday(
+            "2001-09-12",
+            "2004-06-11",
             "2012-10-30",
             "2018-12-05",
         )
