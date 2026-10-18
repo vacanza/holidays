@@ -59,27 +59,40 @@ class Comoros(
         # New Year's Day.
         self._add_new_years_day(tr("Jour de l'an"))
 
+        if self._year >= 2026:
+            # National Reconciliation Day.
+            self._add_holiday_feb_17(tr("Jour de la Réconciliation nationale"))
+
         # Cheikh al Maarouf Day.
         self._add_holiday_mar_18(tr("Journée Cheikh Al Maarouf"))
 
-        # Labor Day.
-        self._add_labor_day(tr("Fête du Travail"))
+        # International Labor Day.
+        self._add_labor_day(tr("Fête internationale du Travail"))
 
         # Independence Day.
         self._add_holiday_jul_6(tr("Fête de l'Indépendance"))
 
-        if self._year >= 2006:
+        if self._year >= 2026:
+            # Day after Independence Day.
+            self._add_holiday_jul_7(tr("Lendemain de la Fête d'Indépendance"))
+
+        if 2006 <= self._year <= 2025:
             # Maore Day.
             self._add_holiday_nov_12(tr("Journée Maoré"))
+        elif self._year >= 2026:
+            self._add_holiday_nov_12(
+                # Day of the Admission of the Comoros to the United Nations.
+                tr("Jour de l'Admission des Comores aux Nations Unies")
+            )
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
         # Islamic New Year.
-        self._add_islamic_new_year_day(tr("Nouvel an musulman"))
+        self._add_islamic_new_year_day(tr("Premier jour de l'an musulman"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day(tr("Maoulid"))
+        self._add_mawlid_day(tr("Jour de la Naissance du Prophète Muhammad"))
 
         # Isra' and Mi'raj.
         self._add_isra_and_miraj_day(tr("Miradj"))

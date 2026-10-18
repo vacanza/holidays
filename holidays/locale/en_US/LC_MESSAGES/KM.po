@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-16 12:35+0530\n"
-"PO-Revision-Date: 2026-10-16 12:35+0530\n"
+"PO-Revision-Date: 2026-10-18 10:05+0530\n"
 "Last-Translator: RAJJADHAV10 <sj41244124@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -36,32 +36,44 @@ msgstr "%s (estimated)"
 msgid "Jour de l'an"
 msgstr "New Year's Day"
 
+#. National Reconciliation Day.
+msgid "Jour de la Réconciliation nationale"
+msgstr "National Reconciliation Day"
+
 #. Cheikh al Maarouf Day.
 msgid "Journée Cheikh Al Maarouf"
 msgstr "Cheikh al Maarouf Day"
 
-#. Labor Day.
-msgid "Fête du Travail"
-msgstr "Labor Day"
+#. International Labor Day.
+msgid "Fête internationale du Travail"
+msgstr "International Labor Day"
 
 #. Independence Day.
 msgid "Fête de l'Indépendance"
 msgstr "Independence Day"
 
+#. Day after Independence Day.
+msgid "Lendemain de la Fête d'Indépendance"
+msgstr "Day after Independence Day"
+
 #. Maore Day.
 msgid "Journée Maoré"
 msgstr "Maore Day"
+
+#. Day of the Admission of the Comoros to the United Nations.
+msgid "Jour de l'Admission des Comores aux Nations Unies"
+msgstr "Day of the Admission of the Comoros to the United Nations"
 
 #. Christmas Day.
 msgid "Noël"
 msgstr "Christmas Day"
 
 #. Islamic New Year.
-msgid "Nouvel an musulman"
+msgid "Premier jour de l'an musulman"
 msgstr "Islamic New Year"
 
 #. Prophet's Birthday.
-msgid "Maoulid"
+msgid "Jour de la Naissance du Prophète Muhammad"
 msgstr "Prophet's Birthday"
 
 #. Isra' and Mi'raj.
