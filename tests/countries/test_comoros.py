@@ -29,9 +29,9 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertHolidayName("Jour de l'an", (f"{year}-01-01" for year in self.full_range))
 
     def test_cheikh_al_maarouf_day(self):
-        self.assertHolidayName(
-            "Journée Cheikh Al Maarouf", (f"{year}-03-18" for year in self.full_range)
-        )
+        name = "Journée Cheikh Al Maarouf"
+        self.assertHolidayName(name, (f"{year}-03-18" for year in range(self.start_year, 2026)))
+        self.assertNoHolidayName(name, range(2026, self.end_year))
 
     def test_reconciliation_day(self):
         name = "Jour de la Réconciliation nationale"
@@ -65,7 +65,9 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-12" for year in range(2026, self.end_year)))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Noël", (f"{year}-12-25" for year in self.full_range))
+        name = "Noël"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(self.start_year, 2025)))
+        self.assertNoHolidayName(name, range(2025, self.end_year))
 
     def test_islamic_new_year(self):
         name = "Premier jour de l'an musulman"
@@ -104,7 +106,8 @@ class TestComoros(CommonCountryTests, TestCase):
             "2024-02-08",
             "2025-01-27",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, 2026))
+        self.assertNoHolidayName(name, range(2026, self.end_year))
 
     def test_eid_al_fitr(self):
         name = "Id-El-Fitr"
@@ -151,9 +154,7 @@ class TestComoros(CommonCountryTests, TestCase):
         )
         self.assertLocalizedHolidays(
             ("2026-01-01", "Jour de l'an"),
-            ("2026-01-16", "Miradj (estimé)"),
             ("2026-02-17", "Jour de la Réconciliation nationale"),
-            ("2026-03-18", "Journée Cheikh Al Maarouf"),
             ("2026-03-20", "Id-El-Fitr (estimé)"),
             ("2026-03-21", "Id-El-Fitr (estimé)"),
             ("2026-03-22", "Id-El-Fitr (estimé)"),
@@ -165,7 +166,6 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2026-07-07", "Lendemain de la Fête d'Indépendance"),
             ("2026-08-25", "Jour de la Naissance du Prophète Muhammad (estimé)"),
             ("2026-11-12", "Jour de l'Admission des Comores aux Nations Unies"),
-            ("2026-12-25", "Noël"),
         )
 
     def test_l10n_ar(self):
@@ -189,9 +189,7 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "ar",
             ("2026-01-01", "رأس السنة الميلادية"),
-            ("2026-01-16", "الإسراء والمعراج (تقديري)"),
             ("2026-02-17", "يوم المصالحة الوطنية"),
-            ("2026-03-18", "يوم الشيخ المعروف"),
             ("2026-03-20", "عيد الفطر (تقديري)"),
             ("2026-03-21", "عيد الفطر (تقديري)"),
             ("2026-03-22", "عيد الفطر (تقديري)"),
@@ -203,7 +201,6 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2026-07-07", "اليوم التالي لعيد الاستقلال"),
             ("2026-08-25", "المولد النبوي الشريف (تقديري)"),
             ("2026-11-12", "يوم انضمام جزر القمر إلى الأمم المتحدة"),
-            ("2026-12-25", "عيد الميلاد"),
         )
 
     def test_l10n_en_us(self):
@@ -227,9 +224,7 @@ class TestComoros(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2026-01-01", "New Year's Day"),
-            ("2026-01-16", "Isra' and Mi'raj (estimated)"),
             ("2026-02-17", "National Reconciliation Day"),
-            ("2026-03-18", "Cheikh al Maarouf Day"),
             ("2026-03-20", "Eid al-Fitr (estimated)"),
             ("2026-03-21", "Eid al-Fitr (estimated)"),
             ("2026-03-22", "Eid al-Fitr (estimated)"),
@@ -241,5 +236,4 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2026-07-07", "Day after Independence Day"),
             ("2026-08-25", "Prophet's Birthday (estimated)"),
             ("2026-11-12", "Day of the Admission of the Comoros to the United Nations"),
-            ("2026-12-25", "Christmas Day"),
         )

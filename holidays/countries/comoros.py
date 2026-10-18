@@ -63,8 +63,9 @@ class Comoros(
             # National Reconciliation Day.
             self._add_holiday_feb_17(tr("Jour de la Réconciliation nationale"))
 
-        # Cheikh al Maarouf Day.
-        self._add_holiday_mar_18(tr("Journée Cheikh Al Maarouf"))
+        if self._year <= 2025:
+            # Cheikh al Maarouf Day.
+            self._add_holiday_mar_18(tr("Journée Cheikh Al Maarouf"))
 
         # International Labor Day.
         self._add_labor_day(tr("Fête internationale du Travail"))
@@ -85,8 +86,9 @@ class Comoros(
                 tr("Jour de l'Admission des Comores aux Nations Unies")
             )
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Noël"))
+        if self._year <= 2024:
+            # Christmas Day.
+            self._add_christmas_day(tr("Noël"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("Premier jour de l'an musulman"))
@@ -94,8 +96,9 @@ class Comoros(
         # Prophet's Birthday.
         self._add_mawlid_day(tr("Jour de la Naissance du Prophète Muhammad"))
 
-        # Isra' and Mi'raj.
-        self._add_isra_and_miraj_day(tr("Miradj"))
+        if self._year <= 2025:
+            # Isra' and Mi'raj.
+            self._add_isra_and_miraj_day(tr("Miradj"))
 
         # Eid al-Fitr.
         name = tr("Id-El-Fitr")
