@@ -469,11 +469,7 @@ def generate_html_index(manifest: dict[str, dict], output_dir: Path = OUTPUT_DIR
 
     rows.sort(key=lambda row: row[:4])
 
-    document = (
-    HTML_INDEX_HEADER
-    + "\n".join(row[4] for row in rows)
-    + HTML_INDEX_FOOTER
-)
+    document = HTML_INDEX_HEADER + "\n".join(row[4] for row in rows) + HTML_INDEX_FOOTER
 
     index_path = output_dir / "index.html"
     index_path.write_text(document, encoding="utf-8", newline="\n")

@@ -89,7 +89,10 @@ class TestGenerateSiteAssets(TestCase):
             output_dir = Path(tmp)
             country_dir = output_dir / "countries" / "XX&YY"
             country_dir.mkdir(parents=True)
-            (country_dir / "ALL_en_public.ics").write_text("BEGIN:VCALENDAR\nEND:VCALENDAR\n", encoding="utf-8")
+            (country_dir / "ALL_en_public.ics").write_text(
+                "BEGIN:VCALENDAR\nEND:VCALENDAR\n",
+                encoding="utf-8",
+            )
 
             generate_html_index(manifest, output_dir)
             document = (output_dir / "index.html").read_text(encoding="utf-8")
