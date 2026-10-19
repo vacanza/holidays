@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-29 00:02+0500\n"
-"PO-Revision-Date: 2026-10-15 19:34+0500\n"
+"PO-Revision-Date: 2026-10-17 09:58+0500\n"
 "Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -80,3 +80,11 @@ msgstr "Ashura"
 #. General Election Day.
 msgid "General Election Day"
 msgstr "General Election Day"
+
+#. Benazir Bhutto's Martyrdom Day.
+msgid "Benazir Bhutto's Martyrdom Day"
+msgstr "Benazir Bhutto's Martyrdom Day"
+
+#. Love for the Prophet Day.
+msgid "Youm-e-Ishq-e-Rasool"
+msgstr "Love for the Prophet Day"
