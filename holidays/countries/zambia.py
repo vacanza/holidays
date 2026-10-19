@@ -37,6 +37,7 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         * [The Constitution of Zambia (Amendment) Act, 2016 (Act No. 2 of 2016)](https://web.archive.org/web/20260619050424/https://www.wipo.int/wipolex/en/legislation/details/18212)
         * [The Public Holidays (Declaration) Notice, 2021](https://web.archive.org/web/20260618085320/https://media.zambialii.org/media/legislation/20557/source_file/a522bf833eba3759/zm-act-si-2021-72-publication-document.pdf)
         * [Gazette Notice No. 1169 of 2025](http://archive.today/2026.06.19-063418/https://www.scribd.com/embeds/1014654689/content)
+        * [National Day of Prayer and Christian Heritage](https://web.archive.org/web/20261010150533/https://www.mwebantu.com/18th-october-2026-will-not-be-observed-as-a-public-holiday-says-government/)
     """
 
     country = "ZM"
@@ -99,10 +100,13 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
         # Farmers' Day.
         self._add_holiday_1st_mon_of_aug("Farmers' Day")
 
-        # The Public Holiday (Declaration), Notice, 2015.
         if self._year >= 2016:
-            # National Prayer Day.
-            self._add_observed(self._add_holiday_oct_18("National Prayer Day"))
+            # Established by The Public Holiday (Declaration), Notice, 2015
+            # (Statutory Instrument No. 78 of 2015).
+            # Abolished by Statutory Instrument No. 73 of 2026.
+            if self._year <= 2025:
+                # National Prayer Day.
+                self._add_observed(self._add_holiday_oct_18("National Prayer Day"))
 
             # The Constitution of Zambia (Amendment) Act, 2016 (Act No. 2 of 2016).
             if self._year % 5 == 1:
@@ -114,6 +118,13 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"))
+
+        # Established by Statutory Instrument No. 73 of 2026.
+        if self._year >= 2026:
+            self._add_observed(
+                # National Day of Prayer and Christian Heritage.
+                self._add_holiday_dec_29("National Day of Prayer and Christian Heritage")
+            )
 
 
 class ZM(Zambia):

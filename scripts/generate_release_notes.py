@@ -34,6 +34,13 @@ HEADER_TEMPLATE = """
 Released {month} {day}, {year}
 """
 IGNORED_CONTRIBUTORS = {"dependabot[bot]", "github-actions[bot]"}
+PR_ORDER_PATTERN = re.compile(
+    r"(BREAKING|Introduce|Refactor|.*Add .* support)"
+    r"|(Add .* holidays$)"
+    r"|(Localize|.*localization$)"
+    r"|(Fix)"
+    r"|(Change|Improve|Optimize|Update|Upgrade)"
+)
 REPOSITORY_NAME = "vacanza/holidays"
 
 
@@ -115,20 +122,8 @@ class ReleaseNotesGenerator:
     @property
     def sorted_pull_requests(self):
         def custom_order(pr):
-            if re.findall(r"^(Introduce|Refactor)", pr[0]) or re.findall(r"Add .* support", pr[0]):
-                weight = 10
-            elif re.findall(r"^Add .* holidays$", pr[0]):
-                weight = 20
-            elif re.findall(r"(^Localize)|(localization$)", pr[0]):
-                weight = 30
-            elif re.findall(r"^Fix", pr[0]):
-                weight = 40
-            elif re.findall(r"^(Change|Improve|Optimize|Update|Upgrade)", pr[0]):
-                weight = 50
-            else:
-                weight = 100
-
-            return weight, pr
+            m = PR_ORDER_PATTERN.match(pr[0])
+            return (m.lastindex if m else 10), pr
 
         return sorted(self.pull_requests.values(), key=custom_order)
 

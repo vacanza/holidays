@@ -44,6 +44,8 @@ jobs:
       - run-code-checks
     permissions:
       contents: read
+    uses: ./.github/workflows/run-code-tests.yml
+    with:
+      full: ${{ github.event_name != 'pull_request' }}
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    uses: ./.github/workflows/run-code-tests.yml
