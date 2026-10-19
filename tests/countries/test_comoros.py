@@ -35,8 +35,8 @@ class TestComoros(CommonCountryTests, TestCase):
 
     def test_reconciliation_day(self):
         name = "Jour de la Réconciliation nationale"
-        self.assertNoHolidayName(name, range(self.start_year, 2026))
         self.assertHolidayName(name, (f"{year}-02-17" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
 
     def test_labor_day(self):
         self.assertHolidayName(
@@ -50,19 +50,18 @@ class TestComoros(CommonCountryTests, TestCase):
 
     def test_day_after_independence_day(self):
         name = "Lendemain de la Fête d'Indépendance"
-        self.assertNoHolidayName(name, range(self.start_year, 2026))
         self.assertHolidayName(name, (f"{year}-07-07" for year in range(2026, self.end_year)))
-
-    def test_maore_day(self):
-        name = "Journée Maoré"
-        self.assertNoHolidayName(name, range(self.start_year, 2006))
-        self.assertHolidayName(name, (f"{year}-11-12" for year in range(2006, 2026)))
-        self.assertNoHolidayName(name, range(2026, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
 
     def test_admission_to_un_day(self):
-        name = "Jour de l'Admission des Comores aux Nations Unies"
-        self.assertNoHolidayName(name, range(self.start_year, 2026))
-        self.assertHolidayName(name, (f"{year}-11-12" for year in range(2026, self.end_year)))
+        name_2006 = "Journée Maoré"
+        name_2026 = "Jour de l'Admission des Comores aux Nations Unies"
+        self.assertHolidayName(name_2006, (f"{year}-11-12" for year in range(2006, 2026)))
+        self.assertHolidayName(name_2026, (f"{year}-11-12" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(
+            name_2006, range(self.start_year, 2006), range(2026, self.end_year)
+        )
+        self.assertNoHolidayName(name_2026, range(self.start_year, 2026))
 
     def test_christmas_day(self):
         name = "Noël"
@@ -107,33 +106,63 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-01-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(self.start_year, 2026))
-        self.assertNoHolidayName(name, range(2026, self.end_year))
+        self.assertNoIslamicNoEstimatedHolidayName(name, range(2026, self.end_year))
 
     def test_eid_al_fitr(self):
         name = "Id-El-Fitr"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-05-24",
+            "2020-05-25",
+            "2020-05-26",
             "2021-05-13",
+            "2021-05-14",
+            "2021-05-15",
             "2022-05-02",
+            "2022-05-03",
+            "2022-05-04",
             "2023-04-21",
+            "2023-04-22",
+            "2023-04-23",
             "2024-04-10",
+            "2024-04-11",
+            "2024-04-12",
             "2025-03-30",
+            "2025-03-31",
+            "2025-04-01",
         )
+        years_eid_al_fitr_twice = {2000, 2033}
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 3, set(self.full_range) - years_eid_al_fitr_twice
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_fitr_twice)
 
     def test_eid_al_adha(self):
         name = "Id-El-Kabir"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-07-31",
+            "2020-08-01",
             "2021-07-20",
+            "2021-07-21",
             "2022-07-09",
+            "2022-07-10",
             "2023-06-28",
+            "2023-06-29",
             "2024-06-16",
+            "2024-06-17",
             "2025-06-06",
+            "2025-06-07",
         )
+        years_eid_al_adha_three = {2006, 2007}
+        years_eid_al_adha_four = {2039}
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 2, set(self.full_range) - (years_eid_al_adha_three | years_eid_al_adha_four)
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, years_eid_al_adha_three)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, years_eid_al_adha_four)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

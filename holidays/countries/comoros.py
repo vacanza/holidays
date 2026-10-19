@@ -28,7 +28,8 @@ class Comoros(
     """Comoros holidays.
 
     References:
-        * [Décret N° 25-147/PR](https://web.archive.org/web/20260208013921/https://munganyo.km/decrees/526)
+        * [Décret N° 25-147/PR, p. 1](https://web.archive.org/web/20261017130944/https://html.scribdassets.com/4990cxzlkwh6p6g4/images/1-32b690543e.jpg)
+        * [Décret N° 25-147/PR, p. 2](https://web.archive.org/web/20261017131034/https://html.scribdassets.com/4990cxzlkwh6p6g4/images/2-e0791a8853.jpg)
         * [2021 Prophet's Birthday](https://web.archive.org/web/20250712053206/https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/471586197_1113861707132176_3696210890184034016_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=3hfvuVNGVbMQ7kNvwHvrgbW&_nc_oc=AdnuDzvtcvdBJMoN-qSW7Pnx2fnzj2TFgwMSRklpM_Na-5AaB9y8D0U5BINcxL-vVL0&_nc_zt=23&_nc_ht=scontent-del1-2.xx&_nc_gid=HWC_59SRsyDfwGxku5bqXw&oh=00_AfSk0LCPS7PARPjdX5-vfM_lr7WxZnrkA9jRyrdUFhoyMQ&oe=68736290)
     """
 
@@ -77,13 +78,13 @@ class Comoros(
             # Day after Independence Day.
             self._add_holiday_jul_7(tr("Lendemain de la Fête d'Indépendance"))
 
-        if 2006 <= self._year <= 2025:
-            # Maore Day.
-            self._add_holiday_nov_12(tr("Journée Maoré"))
-        elif self._year >= 2026:
+        if self._year >= 2006:
             self._add_holiday_nov_12(
                 # Day of the Admission of the Comoros to the United Nations.
                 tr("Jour de l'Admission des Comores aux Nations Unies")
+                if self._year >= 2026
+                # Maore Day.
+                else tr("Journée Maoré")
             )
 
         if self._year <= 2024:

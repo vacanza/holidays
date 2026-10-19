@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-16 12:35+0530\n"
-"PO-Revision-Date: 2026-10-18 10:05+0530\n"
-"Last-Translator: RAJJADHAV10 <sj41244124@gmail.com>\n"
+"PO-Revision-Date: 2026-10-19 20:02+0530\n"
+"Last-Translator: Raj Sanjay Jadhav <sj41244124@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -56,13 +56,13 @@ msgstr "عيد الاستقلال"
 msgid "Lendemain de la Fête d'Indépendance"
 msgstr "اليوم التالي لعيد الاستقلال"
 
-#. Maore Day.
-msgid "Journée Maoré"
-msgstr "يوم ماوري"
-
 #. Day of the Admission of the Comoros to the United Nations.
 msgid "Jour de l'Admission des Comores aux Nations Unies"
 msgstr "يوم انضمام جزر القمر إلى الأمم المتحدة"
+
+#. Maore Day.
+msgid "Journée Maoré"
+msgstr "يوم ماوري"
 
 #. Christmas Day.
 msgid "Noël"
