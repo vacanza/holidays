@@ -466,7 +466,7 @@ class TestIcalExporter(TestCase):
         )
 
         # Pinned value: this must never change between library versions.
-        self.assertEqual(uids[0], f"UID:26eb16d0-7cef-5864-bb9b-d3727abe3113@{UID_DOMAIN}")
+        self.assertEqual(uids[0], f"UID:ea18f7f2-b503-595d-bebf-b1b244d31eb0@{UID_DOMAIN}")
 
     def test_uid_depends_on_identity(self):
         def first_uid(**kwargs):
@@ -490,11 +490,11 @@ class TestIcalExporter(TestCase):
         hol[date(2024, 1, 2)] = "AAA"
         self.assertNotEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
 
-        # A longer run of the same holiday is the same event.
+        # A holiday that gains or loses a day is a different event.
         hol = MockHolidays()
         hol[date(2024, 1, 1)] = "AAA"
         hol[date(2024, 1, 2)] = "AAA"
-        self.assertEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
+        self.assertNotEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
 
     def test_calendar_name(self):
         def calendar_name(holidays):

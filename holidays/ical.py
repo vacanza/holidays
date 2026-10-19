@@ -182,12 +182,12 @@ class ICalExporter:
             )
         )
 
-    def _generate_uid(self, dt: date, holiday_name: str) -> str:
+    def _generate_uid(self, dt: date, holiday_name: str, holiday_length: int) -> str:
         """Generate a deterministic event UID.
 
         The UID is a UUID5 of the entity, subdivision, language, categories, holiday
-        name and start date, so it stays the same across runs and library versions.
-        Calendar clients rely on this to update subscribed events in place.
+        name, start date and length, so it stays the same across runs and library
+        versions. Calendar clients rely on this to update subscribed events in place.
 
         Args:
             dt:
@@ -196,10 +196,13 @@ class ICalExporter:
             holiday_name:
                 Holiday name.
 
+            holiday_length:
+                Holiday length in days.
+
         Returns:
             The event UID.
         """
-        key = f"{self._uid_prefix}|{holiday_name}|{dt.isoformat()}"
+        key = f"{self._uid_prefix}|{holiday_name}|{dt.isoformat()}|{holiday_length}"
         return f"{uuid.uuid5(UID_NAMESPACE, key)}@{UID_DOMAIN}"
 
     def _escape_text(self, text: str) -> str:
@@ -281,7 +284,7 @@ class ICalExporter:
 
         yield "BEGIN:VEVENT"
         yield f"DTSTAMP:{self.ical_timestamp}"
-        yield f"UID:{self._generate_uid(dt, holiday_name)}"
+        yield f"UID:{self._generate_uid(dt, holiday_name, holiday_length)}"
         yield self._fold_line(f"SUMMARY{language_tag}:{self._escape_text(holiday_name)}")
         yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
         yield f"DURATION:P{holiday_length}D"

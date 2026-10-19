@@ -532,8 +532,8 @@ True
 1
 ```
 
-Each calendar is named after its holidays object (`X-WR-CALNAME`), and every event gets a
-UID derived from the entity, subdivision, language, categories, holiday name and start date,
+Each calendar is named after its holidays object (`X-WR-CALNAME`), and every event gets a UID
+derived from the entity, subdivision, language, categories, holiday name, start date and length,
 so re-generating a calendar yields the same UIDs and subscribed clients update events in place.
 For calendars published for subscription, `refresh_interval` adds the `REFRESH-INTERVAL` and
 `X-PUBLISHED-TTL` hints, given in weeks.
