@@ -200,6 +200,14 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2027-01-04",
             )
             self.assertHolidayName(name, holidays, range(2010, self.end_year))
+            # Each break is two weeks, so a calendar year holds the December part of one
+            # break plus the January part of the previous one.
+            self.assertHolidayNameCount(
+                name, 15, holidays, 2015, range(2017, 2020), 2022, 2023, 2025, 2026, 2029, 2030
+            )
+            self.assertHolidayNameCount(name, 16, holidays, 2020, 2024, 2028)
+            self.assertHolidayNameCount(name, 9, holidays, 2016)
+            self.assertHolidayNameCount(name, 8, holidays, 2021, 2027)
 
     def test_school_carnival_break(self):
         name = "Krokusvakantie"
@@ -228,6 +236,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2022-03-07",
             )
             self.assertHolidayName(name, holidays, range(2010, self.end_year))
+            self.assertHolidayNameCount(name, 7, holidays, range(2010, 2023))
 
             if subdiv == "French":
                 self.assertHolidayName(
@@ -256,6 +265,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2027-02-21",
                     "2027-03-08",
                 )
+                self.assertHolidayNameCount(name, 14, holidays, range(2023, self.end_year))
             else:
                 self.assertHolidayName(
                     name,
@@ -283,6 +293,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2025-03-10",
                     "2027-02-15",
                 )
+                self.assertHolidayNameCount(name, 7, holidays, range(2023, self.end_year))
 
     def test_school_easter_break(self):
         name = "Paasvakantie"
@@ -325,6 +336,11 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2027-04-12",
         )
         self.assertSubdivFlemishSchoolHolidayName(name, range(2010, self.end_year))
+        # 15 days when Easter is on or after Apr 15.
+        self.assertSubdivFlemishSchoolHolidayNameCount(
+            name, 14, 2016, range(2023, 2025), 2026, 2027, 2029
+        )
+        self.assertSubdivFlemishSchoolHolidayNameCount(name, 15, 2019, 2022, 2025, 2028, 2030)
 
         # Starts on Easter Monday in the German-speaking Community since 2025.
         self.assertSubdivGermanSchoolHolidayName(
@@ -360,6 +376,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2028-04-16",
         )
         self.assertSubdivGermanSchoolHolidayName(name, range(2010, self.end_year))
+        self.assertSubdivGermanSchoolHolidayNameCount(name, 15, 2019, 2022)
+        self.assertSubdivGermanSchoolHolidayNameCount(name, 14, range(2025, self.end_year))
 
         # French Community.
         self.assertSubdivFrenchSchoolHolidayName(
@@ -414,6 +432,8 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2028-05-15",
         )
         self.assertSubdivFrenchSchoolHolidayName(name, range(2010, self.end_year))
+        self.assertSubdivFrenchSchoolHolidayNameCount(name, 15, 2014, 2017, 2019, 2022)
+        self.assertSubdivFrenchSchoolHolidayNameCount(name, 14, range(2023, self.end_year))
 
     def test_school_summer_break(self):
         name = "Zomervakantie"
@@ -437,6 +457,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2021-09-01",
             )
             self.assertHolidayName(name, holidays, range(2010, self.end_year))
+            self.assertHolidayNameCount(name, 62, holidays, range(2010, 2022))
             if subdiv == "French":
                 self.assertHolidayName(
                     name,
@@ -476,6 +497,11 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2029-07-06",
                     "2029-08-27",
                 )
+                # Seven or eight weeks and two days, depending on where the first Friday of
+                # July and the last Monday of August fall.
+                self.assertHolidayNameCount(name, 59, holidays, 2022)
+                self.assertHolidayNameCount(name, 51, holidays, range(2023, 2027), 2028, 2029)
+                self.assertHolidayNameCount(name, 58, holidays, 2027)
             else:
                 self.assertHolidayName(
                     name,
@@ -491,6 +517,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2022-09-01",
                     "2027-06-30",
                 )
+                self.assertHolidayNameCount(name, 62, holidays, range(2022, self.end_year))
 
     def test_school_autumn_break(self):
         name = "Herfstvakantie"
@@ -525,6 +552,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                 "2020-11-09",
             )
             self.assertHolidayName(name, holidays, range(2010, self.end_year))
+            self.assertHolidayNameCount(name, 7, holidays, range(2010, 2022))
             if subdiv == "French":
                 self.assertHolidayName(
                     name,
@@ -552,6 +580,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2027-10-24",
                     "2027-11-08",
                 )
+                self.assertHolidayNameCount(name, 14, holidays, range(2022, self.end_year))
             else:
                 self.assertHolidayName(
                     name,
@@ -577,6 +606,7 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2026-11-01",
                     "2026-11-09",
                 )
+                self.assertHolidayNameCount(name, 7, holidays, range(2022, self.end_year))
 
     def test_school_labor_day(self):
         name = "Dag van de Arbeid"
