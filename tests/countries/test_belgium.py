@@ -497,9 +497,10 @@ class TestBelgium(CommonCountryTests, TestCase):
                     "2029-07-06",
                     "2029-08-27",
                 )
-                # Seven or eight weeks and two days, depending on where the first Friday of
-                # July and the last Monday of August fall.
+                # Jul 1 until the day before the new school year start in 2022.
                 self.assertHolidayNameCount(name, 59, holidays, 2022)
+                # Seven or eight weeks and two days since 2023, depending on where the 1st
+                # Friday of July and the school year start fall.
                 self.assertHolidayNameCount(name, 51, holidays, range(2023, 2027), 2028, 2029)
                 self.assertHolidayNameCount(name, 58, holidays, 2027)
             else:
