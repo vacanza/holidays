@@ -26,14 +26,14 @@ Alternatively, run with uv:
 
 This generates the files:
 
-    * `holidays/calendars/hindu_dates.py`
+    * `holidays/calendars/hindu_solar_dates.py`
+    * `holidays/calendars/hindu_lunisolar_dates.py`
 
 whose data can then be copied to:
 
     * `holidays/calendars/hindu.py`
 """
 
-from collections import defaultdict
 from datetime import date, timedelta
 from functools import cache
 from time import perf_counter
@@ -90,7 +90,7 @@ class _Astronomy:
         """Return Nishita Kaal (midpoint of sunset -> next sunrise)."""
         ss = self._sunset(dt)
         sr = self._sunrise(dt + timedelta(days=1))
-        return ephem.Date((float(ss) + float(sr)) / 2)
+        return ephem.Date((ss + sr) / 2)
 
     def _nakshatra(self, ed: ephem.Date) -> int:
         """Return the nakshatra (1-27) of the Moon at the given date.
@@ -112,53 +112,53 @@ class _Lunisolar(_Astronomy):
     """Convert dates from the Hindu lunisolar calendar to Gregorian dates.
 
     Sources:
-    - https://web.archive.org/web/20251204101508/https://deadseaquake.info/pdfs/RD2018.pdf
-    - https://web.archive.org/web/20251207235328/https://www.drikpanchang.com
+        * <https://web.archive.org/web/20251204101508/https://deadseaquake.info/pdfs/RD2018.pdf>
+        * <https://web.archive.org/web/20251207235328/https://www.drikpanchang.com>
     """
 
-    # Lunar months (named after the zodiac sign of sun at sunset of Amavasya (new moon))
-    # LUNAR_MONTH_NAMES = [
-    #     "Vaishakh",  # (0°-30°) - Aries (0)
-    #     "Jyeshth",  # (30°-60°) - Taurus (1)
-    #     "Ashadh",  # (60°-90°) - Gemini (2)
-    #     "Shravan",  # (90°-120°) - Cancer (3)
-    #     "Bhadrapad",  # (120°-150°) - Leo (4)
-    #     "Ashwin",  # (150°-180°) - Virgo (5)
-    #     "Kartik",  # (180°-210°) - Libra (6)
-    #     "Margashirsh",  # (210°-240°) - Scorpio (7)
-    #     "Paush",  # (240°-270°) - Sagittarius (8)
-    #     "Magh",  # (270°-300°) - Capricorn (9)
-    #     "Phalgun",  # (300°-330°) - Aquarius (10)
-    #     "Chaitra",  # (330°-360°) - Pisces (11)
-    # ]
+    """
+    Lunar months (named after the zodiac sign of sun at sunset of Amavasya (new moon)):
+        Vaishakh (0°-30°) - Aries (0)
+        Jyeshth (30°-60°) - Taurus (1)
+        Ashadh (60°-90°) - Gemini (2)
+        Shravan (90°-120°) - Cancer (3)
+        Bhadrapad (120°-150°) - Leo (4)
+        Ashwin (150°-180°) - Virgo (5)
+        Kartik (180°-210°) - Libra (6)
+        Margashirsh (210°-240°) - Scorpio (7)
+        Paush (240°-270°) - Sagittarius (8)
+        Magh (270°-300°) - Capricorn (9)
+        Phalgun (300°-330°) - Aquarius (10)
+        Chaitra (330°-360°) - Pisces (11)
+    """
 
     @cache
     def _sangava_start(self, dt: date) -> ephem.Date:
         """Return Sangava start (2nd of 5 equal day-parts, end of Pratahkala) on dt."""
         sr = self._sunrise(dt)
         ss = self._sunset(dt)
-        return ephem.Date(float(sr) + (1 / 5) * (float(ss) - float(sr)))
+        return ephem.Date(sr + (1 / 5) * (ss - sr))
 
     @cache
     def _aparahna(self, dt: date) -> ephem.Date:
         """Return Aparahna (4th of 5 equal day-parts) on dt."""
         sr = self._sunrise(dt)
         ss = self._sunset(dt)
-        return ephem.Date(float(sr) + (3 / 5) * (float(ss) - float(sr)))
+        return ephem.Date(sr + (3 / 5) * (ss - sr))
 
     @cache
     def _madhyahna_start(self, dt: date) -> ephem.Date:
         """Return Madhyahna start (3rd of 5 equal day-parts) on dt."""
         sr = self._sunrise(dt)
         ss = self._sunset(dt)
-        return ephem.Date(float(sr) + (2 / 5) * (float(ss) - float(sr)))
+        return ephem.Date(sr + (2 / 5) * (ss - sr))
 
     @cache
     def _madhyahna(self, dt: date) -> ephem.Date:
         """Return Madhyahna (midpoint of sunrise -> sunset) on dt."""
         sr = self._sunrise(dt)
         ss = self._sunset(dt)
-        return ephem.Date((float(sr) + float(ss)) / 2)
+        return ephem.Date((sr + ss) / 2)
 
     def _karana(self, ed: ephem.Date) -> int:
         """Return the karana (1-60) at the given date.
@@ -273,7 +273,7 @@ class _Lunisolar(_Astronomy):
     def get_anant_chaturdashi(self, year: int) -> date | None:
         """
         Anant Chaturdashi = Bhadrapada Shukla Chaturdashi.
-        Tithi=14 (Chaturdashi) of Shukla Paksha in Bhadrapada month-sun in sidereal Leo (sign 4).
+        Tithi = 14 (Chaturdashi) of Shukla Paksha in Bhadrapada month-sun in sidereal Leo (sign 4).
         Evaluated at sunrise (Udaya tithi rule).
 
         Chaturdashi detection:
@@ -717,7 +717,7 @@ class _Lunisolar(_Astronomy):
 
         return None
 
-    def get_guru_gobind_singh_jayanti(self, year: int) -> date | tuple[date, ...] | None:
+    def get_guru_gobind_singh_jayanti(self, year: int) -> date | list[date] | None:
         """
         Guru Gobind Singh Jayanti = Pausha Shukla Saptami.
         Tithi = 7 (Saptami) of Shukla Paksha in Pausha month - sun in sidereal
@@ -771,9 +771,7 @@ class _Lunisolar(_Astronomy):
         if not dates:
             return None
 
-        dates.sort()
-
-        return dates[0] if len(dates) == 1 else tuple(dates)
+        return dates[0] if len(dates) == 1 else sorted(dates)
 
     def get_guru_nanak_jayanti(self, year: int) -> date | None:
         """
@@ -795,7 +793,7 @@ class _Lunisolar(_Astronomy):
             dt = kartik_ama + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
 
-            if t == 15 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 15:
+            if t == 15:
                 return dt
             if t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
                 return dt - timedelta(days=1)
@@ -975,14 +973,14 @@ class _Lunisolar(_Astronomy):
         for delta in range(3, 7):
             dt = bhadrapada_ama + timedelta(days=delta)
 
-            t_sr = self._tithi(self._sunrise(dt))
+            t = self._tithi(self._sunrise(dt))
 
             # Tritiya active at sunrise
-            if t_sr == 3:
+            if t == 3:
                 return dt
 
             # Tritiya skipped completely between two sunrises (2 -> 4)
-            if t_sr == 4 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 2:
+            if t == 4 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 2:
                 return dt - timedelta(days=1)
 
         return None
@@ -1005,12 +1003,10 @@ class _Lunisolar(_Astronomy):
         for delta in range(0, 3):
             dt = holi + timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
-            t_apar = self._tithi(self._aparahna(dt))
-
             if (
                 t == 15
                 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14
-                and t_apar == 16
+                and self._tithi(self._aparahna(dt)) == 16
             ):
                 return dt
             if t == 16:
@@ -1060,14 +1056,16 @@ class _Lunisolar(_Astronomy):
             t = self._tithi(self._sunset(dt))
 
             # skipped or spanned 2 sunsets
-            if t == 16 and self._tithi(self._sunset(dt - timedelta(days=1))) in (14, 16):
+            if t == 16 and self._tithi(self._sunset(dt - timedelta(days=1))) in {14, 16}:
                 return dt
-            # tithi 16 skipped entirely
-            if t > 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 15:
-                return dt
-            # moved past 16
-            if t > 16 and self._tithi(self._sunset(dt - timedelta(days=1))) == 16:
-                return dt - timedelta(days=1)
+            if t > 16:
+                t_prev = self._tithi(self._sunset(dt - timedelta(days=1)))
+                # tithi 16 skipped entirely
+                if t_prev == 15:
+                    return dt
+                # moved past 16
+                if t_prev == 16:
+                    return dt - timedelta(days=1)
 
         return None
 
@@ -1094,12 +1092,13 @@ class _Lunisolar(_Astronomy):
             dt = bhadrapad_ama - timedelta(days=delta)
             t = self._tithi(self._sunrise(dt))
 
-            # ended overnight
-            if t > 23 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 23:
-                return dt - timedelta(days=1)
-            # skipped entirely
-            if t > 23 and self._tithi(self._sunrise(dt - timedelta(days=1))) < 23:
-                return dt
+            if t > 23:
+                # ended overnight
+                if self._tithi(self._sunrise(dt - timedelta(days=1))) == 23:
+                    return dt - timedelta(days=1)
+                # skipped entirely
+                else:
+                    return dt
 
         return None
 
@@ -1236,7 +1235,7 @@ class _Lunisolar(_Astronomy):
                 # Prefer Tuesday (1) or Saturday (5) within one day of Ashtami
                 for shift in (0, 1, -1):
                     ker_puja = dt + timedelta(days=shift)
-                    if ker_puja.weekday() in (1, 5):
+                    if ker_puja.weekday() in {1, 5}:
                         return ker_puja
 
                 return dt
@@ -1363,7 +1362,7 @@ class _Lunisolar(_Astronomy):
             if is_chaturdashi and sign == 9 and not magh_chaturdashi:
                 magh_chaturdashi = dt
 
-            if is_chaturdashi and sign in (10, 11) and not phalgun_chaturdashi:
+            if is_chaturdashi and sign in {10, 11} and not phalgun_chaturdashi:
                 sign_prev = self._sidereal_solar_zodiac_sign(self._sunset(dt - timedelta(days=1)))
                 if sign == 11 and sign_prev == 10:
                     # sign_prev is 10 (Aquarius), so the dt-1 shift condition (sign_prev==9)
@@ -1436,9 +1435,9 @@ class _Lunisolar(_Astronomy):
 
         return None
 
-    def get_maharishi_valmiki_jayanti(self, year: int) -> date | None:
+    def get_maharshi_valmiki_jayanti(self, year: int) -> date | None:
         """
-        Maharishi Valmiki Jayanti = Ashwin Purnima.
+        Maharshi Valmiki Jayanti = Ashwin Purnima.
         Tithi = 15 (Purnima) of Shukla Paksha in Ashwin month - sun in
         sidereal Virgo (sign 5).
         Evaluated at sunrise (Udaya tithi rule).
@@ -1606,9 +1605,9 @@ class _Lunisolar(_Astronomy):
             if self._sidereal_solar_zodiac_sign(self._sunrise(dt)) != 4:
                 continue
 
-            if 22 in (
-                self._nakshatra(self._madhyahna_start(dt)),
-                self._nakshatra(self._aparahna(dt)),
+            if (
+                self._nakshatra(self._madhyahna_start(dt)) == 22
+                or self._nakshatra(self._aparahna(dt)) == 22
             ):
                 onam = dt
 
@@ -1639,13 +1638,12 @@ class _Lunisolar(_Astronomy):
         # Find Chaturdashi (tithi 29) at Arunodaya, or skipped case (28 -> 30)
         for delta in range(5, -1, -1):
             dt = diwali - timedelta(days=delta)
-            arunodaya = ephem.Date(float(self._sunrise(dt)) - 96 / 1440)
+            arunodaya = ephem.Date(self._sunrise(dt) - 96 / 1440)
             t = self._tithi(arunodaya)
-
-            arunodaya_prev = ephem.Date(float(self._sunrise(dt - timedelta(days=1))) - 96 / 1440)
 
             if t == 29:
                 return dt
+            arunodaya_prev = ephem.Date(self._sunrise(dt - timedelta(days=1)) - 96 / 1440)
             if t == 30 and self._tithi(arunodaya_prev) == 28:
                 return dt
 
@@ -1722,14 +1720,6 @@ class _Lunisolar(_Astronomy):
             if t == 3:
                 return dt
 
-            # Tritiya begins after sunset and is active at the following sunset
-            if t == 2 and self._tithi(self._sunset(dt + timedelta(days=1))) == 3:
-                return dt + timedelta(days=1)
-
-            # Tritiya ends before sunset after spanning the previous sunset
-            if t == 4 and self._tithi(self._sunset(dt - timedelta(days=1))) == 3:
-                return dt - timedelta(days=1)
-
             # Tritiya skipped entirely between sunsets
             if t == 4 and self._tithi(self._sunset(dt - timedelta(days=1))) == 2:
                 return dt
@@ -1762,12 +1752,14 @@ class _Lunisolar(_Astronomy):
         # Find Amavasya during Aparahna Kaal
         for delta in range(-1, 2):
             dt = ashwin_ama + timedelta(days=delta)
+
+            if self._tithi(self._aparahna(dt)) == 30:
+                return dt
+
             sunrise = self._sunrise(dt)
             sunset = self._sunset(dt)
-            aparahna_start = ephem.Date(float(sunrise) + (float(sunset) - float(sunrise)) * 3 / 5)
-            aparahna_end = ephem.Date(float(sunrise) + (float(sunset) - float(sunrise)) * 4 / 5)
-
-            if self._tithi(aparahna_start) == 30 or self._tithi(aparahna_end) == 30:
+            aparahna_end = ephem.Date(sunrise + (sunset - sunrise) * 4 / 5)
+            if self._tithi(aparahna_end) == 30:
                 return dt
 
         return None
@@ -1880,7 +1872,7 @@ class _Lunisolar(_Astronomy):
 
         return None
 
-    def get_shakambhari_purnima(self, year: int) -> date | tuple[date, ...] | None:
+    def get_shakambhari_purnima(self, year: int) -> date | list[date] | None:
         """
         Shakambhari Purnima = Pausha Shukla Purnima.
         Tithi = 15 (Purnima) of Pausha month - sun in sidereal Sagittarius
@@ -1916,7 +1908,7 @@ class _Lunisolar(_Astronomy):
                 t = self._tithi(self._sunrise(dt))
                 festival_date = None
 
-                if t == 15 and self._tithi(self._sunrise(dt - timedelta(days=1))) != 15:
+                if t == 15:
                     festival_date = dt
 
                 elif t == 16 and self._tithi(self._sunrise(dt - timedelta(days=1))) == 14:
@@ -1931,9 +1923,7 @@ class _Lunisolar(_Astronomy):
         if not dates:
             return None
 
-        dates.sort()
-
-        return dates[0] if len(dates) == 1 else tuple(dates)
+        return dates[0] if len(dates) == 1 else sorted(dates)
 
     def get_sharad_navratri(self, year: int) -> date | None:
         """
@@ -2065,27 +2055,20 @@ class _Lunisolar(_Astronomy):
             dt = date(year, 1, 10) + timedelta(days=delta)
 
             sunrise = self._sunrise(dt)
-            sunset = self._sunset(dt)
-            next_sunrise = self._sunrise(dt + timedelta(days=1))
-
             # Thai = Sun in sidereal Makara (Capricorn).
             if self._sidereal_solar_zodiac_sign(sunrise) != 9:
                 continue
 
-            sunrise_nakshatra = self._nakshatra(sunrise)
-            sunset_nakshatra = self._nakshatra(sunset)
-            next_sunrise_nakshatra = self._nakshatra(next_sunrise)
-
             # Pushya / Poosam = 8th Nakshatra.
-            if sunrise_nakshatra == 8:
+            if self._nakshatra(sunrise) == 8:
                 return dt
 
             # Pushya begins after sunrise but before sunset.
-            if sunset_nakshatra == 8:
+            if self._nakshatra(self._sunset(dt)) == 8:
                 return dt
 
             # Pushya begins after sunset and is active at the next sunrise.
-            if next_sunrise_nakshatra == 8:
+            if self._nakshatra(self._sunrise(dt + timedelta(days=1))) == 8:
                 return dt + timedelta(days=1)
 
         return None
@@ -2208,21 +2191,19 @@ class _Solar(_Astronomy):
     """Convert dates from Hindu solar calendar to Gregorian dates."""
 
     """
-    Sidereal solar zodiac signs (Rashi)
-    SOLAR_ZODIAC_SIGN_NAMES = [
-        "Mesha",  # (0°-30°) - Aries (0)
-        "Vrishabha",  # (30°-60°) - Taurus (1)
-        "Mithuna",  # (60°-90°) - Gemini (2)
-        "Karka",  # (90°-120°) - Cancer (3)
-        "Simha",  # (120°-150°) - Leo (4)
-        "Kanya",  # (150°-180°) - Virgo (5)
-        "Tula",  # (180°-210°) - Libra (6)
-        "Vrishchika",  # (210°-240°) - Scorpio (7)
-        "Dhanu",  # (240°-270°) - Sagittarius (8)
-        "Makara",  # (270°-300°) - Capricorn (9)
-        "Kumbha",  # (300°-330°) - Aquarius (10)
-        "Meena",  # (330°-360°) - Pisces (11)
-    ]
+    Sidereal solar zodiac signs (Rashi):
+        Mesha (0°-30°) - Aries (0)
+        Vrishabha (30°-60°) - Taurus (1)
+        Mithuna (60°-90°) - Gemini (2)
+        Karka (90°-120°) - Cancer (3)
+        Simha (120°-150°) - Leo (4)
+        Kanya (150°-180°) - Virgo (5)
+        Tula (180°-210°) - Libra (6)
+        Vrishchika (210°-240°) - Scorpio (7)
+        Dhanu (240°-270°) - Sagittarius (8)
+        Makara (270°-300°) - Capricorn (9)
+        Kumbha (300°-330°) - Aquarius (10)
+        Meena (330°-360°) - Pisces (11)
     """
 
     def get_makar_sankranti(self, year: int) -> date | None:
@@ -2323,7 +2304,6 @@ class _Solar(_Astronomy):
 
         for delta in range(5):
             dt = date(year, 4, 12) + timedelta(days=delta)
-
             sign = self._sidereal_solar_zodiac_sign(self._midnight(dt))
 
             if sign == 0:
@@ -2371,77 +2351,74 @@ class _Solar(_Astronomy):
         return None
 
 
-_lunisolar = _Lunisolar()
-_solar = _Solar()
-
 HINDU_LUNISOLAR_HOLIDAYS = (
-    ("ADI_SHANKARACHARYA_JAYANTI", _lunisolar.get_adi_shankaracharya_jayanti),
-    ("ANANT_CHATURDASHI", _lunisolar.get_anant_chaturdashi),
-    ("BASANT_PANCHAMI", _lunisolar.get_basant_panchami),
-    ("BATHUKAMMA", _lunisolar.get_bathukamma),
-    ("BONALU", _lunisolar.get_bonalu),
-    ("BUDDHA_PURNIMA", _lunisolar.get_buddha_purnima),
-    ("CHAITRA_NAVRATRI", _lunisolar.get_chaitra_navratri),
-    ("CHHATH_PUJA", _lunisolar.get_chhath_puja),
-    ("DATTATREYA_JAYANTI", _lunisolar.get_dattatreya_jayanti),
-    ("DEV_DIWALI", _lunisolar.get_dev_diwali),
-    ("DIWALI_INDIA", _lunisolar.get_diwali),
-    ("DUSSEHRA", _lunisolar.get_dussehra),
-    ("GANESH_CHATURTHI", _lunisolar.get_ganesh_chaturthi),
-    ("GOVARDHAN_PUJA", _lunisolar.get_govardhan_puja),
-    ("GUDI_PADWA", _lunisolar.get_gudi_padwa),
-    ("GURU_ARJUN_DEV_MARTYRDOM", _lunisolar.get_guru_arjun_dev_martyrdom),
-    ("GURU_GOBIND_SINGH_JAYANTI", _lunisolar.get_guru_gobind_singh_jayanti),
-    ("GURU_NANAK_JAYANTI", _lunisolar.get_guru_nanak_jayanti),
-    ("GURU_PURNIMA", _lunisolar.get_guru_purnima),
-    ("GURU_RAVIDAS_JAYANTI", _lunisolar.get_guru_ravidas_jayanti),
-    ("HAL_SHASHTHI", _lunisolar.get_hal_shashthi),
-    ("HANUMAN_JAYANTI", _lunisolar.get_hanuman_jayanti),
-    ("HARIYALI_AMAVASYA", _lunisolar.get_hariyali_amavasya),
-    ("HARTALIKA_TEEJ", _lunisolar.get_hartalika_teej),
-    ("HOLA_MOHOLLA", _lunisolar.get_hola_moholla),
-    ("HOLI", _lunisolar.get_holi),
-    ("JANMASHTAMI", _lunisolar.get_janmashtami),
-    ("KABIR_JAYANTI", _lunisolar.get_kabir_jayanti),
-    ("KALI_PUJA", _lunisolar.get_kali_puja),
-    ("KARWA_CHAUTH", _lunisolar.get_karwa_chauth),
-    ("KER_PUJA", _lunisolar.get_ker_puja),
-    ("KHARCHI_PUJA", _lunisolar.get_kharchi_puja),
-    ("MAHA_ASHTAMI", _lunisolar.get_maha_ashtami),
-    ("MAHA_NAVAMI", _lunisolar.get_maha_navami),
-    ("MAHARANA_PRATAP_JAYANTI", _lunisolar.get_maharana_pratap_jayanti),
-    ("MAHAVIR_JAYANTI", _lunisolar.get_mahavir_jayanti),
-    ("MAHARSHI_VALMIKI_JAYANTI", _lunisolar.get_maharishi_valmiki_jayanti),
-    ("MAHESH_NAVAMI", _lunisolar.get_mahesh_navami),
-    ("MATSYA_JAYANTI", _lunisolar.get_matsya_jayanti),
-    ("NAAG_PANCHAMI", _lunisolar.get_naag_panchami),
-    ("NARAKA_CHATURDASHI", _lunisolar.get_naraka_chaturdashi),
-    ("ONAM", _lunisolar.get_onam),
-    ("PARIVARTINI_EKADASHI", _lunisolar.get_parivartini_ekadashi),
-    ("PARSHURAM_JAYANTI", _lunisolar.get_parshuram_jayanti),
-    ("PITRA_MOKSH_AMAVASYA", _lunisolar.get_pitra_moksh_amavasya),
-    ("MAHA_SHIVARATRI", _lunisolar.get_maha_shivaratri),
-    ("RAKSHA_BANDHAN", _lunisolar.get_raksha_bandhan),
-    ("RAM_NAVAMI", _lunisolar.get_ram_navami),
-    ("RATH_YATRA", _lunisolar.get_rath_yatra),
-    ("SHAKAMBHARI_PURNIMA", _lunisolar.get_shakambhari_purnima),
-    ("SHARAD_NAVRATRI", _lunisolar.get_sharad_navratri),
-    ("SHRI_VALLABHACHARYA_JAYANTI", _lunisolar.get_shri_vallabhacharya_jayanti),
-    ("SWAMI_DAYANAND_SARASWATI_JAYANTI", _lunisolar.get_swami_dayanand_saraswati_jayanti),
-    ("THAIPUSAM", _lunisolar.get_thaipusam),
-    ("TULSIDAS_JAYANTI", _lunisolar.get_tulsidas_jayanti),
-    ("VARALAKSHMI_VRATAM", _lunisolar.get_varalakshmi_vratam),
-    ("VIKRAM_SAMVAT_NEW_YEAR", _lunisolar.get_vikram_samvat_new_year),
+    "ADI_SHANKARACHARYA_JAYANTI",
+    "ANANT_CHATURDASHI",
+    "BASANT_PANCHAMI",
+    "BATHUKAMMA",
+    "BONALU",
+    "BUDDHA_PURNIMA",
+    "CHAITRA_NAVRATRI",
+    "CHHATH_PUJA",
+    "DATTATREYA_JAYANTI",
+    "DEV_DIWALI",
+    "DIWALI",
+    "DUSSEHRA",
+    "GANESH_CHATURTHI",
+    "GOVARDHAN_PUJA",
+    "GUDI_PADWA",
+    "GURU_ARJUN_DEV_MARTYRDOM",
+    "GURU_GOBIND_SINGH_JAYANTI",
+    "GURU_NANAK_JAYANTI",
+    "GURU_PURNIMA",
+    "GURU_RAVIDAS_JAYANTI",
+    "HAL_SHASHTHI",
+    "HANUMAN_JAYANTI",
+    "HARIYALI_AMAVASYA",
+    "HARTALIKA_TEEJ",
+    "HOLA_MOHOLLA",
+    "HOLI",
+    "JANMASHTAMI",
+    "KABIR_JAYANTI",
+    "KALI_PUJA",
+    "KARWA_CHAUTH",
+    "KER_PUJA",
+    "KHARCHI_PUJA",
+    "MAHARANA_PRATAP_JAYANTI",
+    "MAHARSHI_VALMIKI_JAYANTI",
+    "MAHAVIR_JAYANTI",
+    "MAHA_ASHTAMI",
+    "MAHA_NAVAMI",
+    "MAHA_SHIVARATRI",
+    "MAHESH_NAVAMI",
+    "MATSYA_JAYANTI",
+    "NAAG_PANCHAMI",
+    "NARAKA_CHATURDASHI",
+    "ONAM",
+    "PARIVARTINI_EKADASHI",
+    "PARSHURAM_JAYANTI",
+    "PITRA_MOKSH_AMAVASYA",
+    "RAKSHA_BANDHAN",
+    "RAM_NAVAMI",
+    "RATH_YATRA",
+    "SHAKAMBHARI_PURNIMA",
+    "SHARAD_NAVRATRI",
+    "SHRI_VALLABHACHARYA_JAYANTI",
+    "SWAMI_DAYANAND_SARASWATI_JAYANTI",
+    "THAIPUSAM",
+    "TULSIDAS_JAYANTI",
+    "VARALAKSHMI_VRATAM",
+    "VIKRAM_SAMVAT_NEW_YEAR",
 )
 
 HINDU_SOLAR_HOLIDAYS = (
-    ("MAKAR_SANKRANTI", _solar.get_makar_sankranti),
-    ("POHELA_BOISHAKH", _solar.get_pohela_boishakh),
-    ("PONGAL", _solar.get_pongal),
-    ("PUTHANDU", _solar.get_puthandu),
-    ("VAISAKHI", _solar.get_vaisakhi),
-    ("VISHWAKARMA_PUJA", _solar.get_vishwakarma_puja),
-    ("VISHU", _solar.get_vishu),
+    "MAKAR_SANKRANTI",
+    "POHELA_BOISHAKH",
+    "PONGAL",
+    "PUTHANDU",
+    "VAISAKHI",
+    "VISHU",
+    "VISHWAKARMA_PUJA",
 )
 
 
@@ -2450,21 +2427,18 @@ def generate_data() -> None:
     total_start = perf_counter()
 
     calendars = (
-        ("hindu_lunisolar", "_HinduLunisolar", HINDU_LUNISOLAR_HOLIDAYS),
-        ("hindu_solar", "_HinduSolar", HINDU_SOLAR_HOLIDAYS),
+        ("hindu_lunisolar", "_HinduLunisolar", _Lunisolar(), HINDU_LUNISOLAR_HOLIDAYS),
+        ("hindu_solar", "_HinduSolar", _Solar(), HINDU_SOLAR_HOLIDAYS),
     )
 
-    for cal_name, class_name, holidays in calendars:
-        dates: dict[str, dict[int, date | list[date]]] = defaultdict(dict)
-
-        for hol_name, hol_func in holidays:
+    for cal_name, class_name, cal, holidays in calendars:
+        dates: dict[str, dict[int, date | list[date]]] = {}
+        for hol_name in holidays:
             method_start = perf_counter()
-            for year in years:
-                dt = hol_func(year)
-
-                if dt:
-                    dates[hol_name][year] = list(dt) if isinstance(dt, tuple) else dt
-            print(f"{cal_name}.{hol_func.__name__}: {perf_counter() - method_start:.3f}s")
+            method_name = f"get_{hol_name.lower()}"
+            hol_func = getattr(cal, method_name)
+            dates[hol_name] = {year: dt for year in years if (dt := hol_func(year))}
+            print(f"{cal_name}.{method_name}: {perf_counter() - method_start:.3f}s")
 
         CalendarGenerator(cal_name, class_name).generate(dates)
 
