@@ -16,11 +16,7 @@ from holidays.calendars.gregorian import JAN, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
-from holidays.observed_holiday_base import (
-    ObservedHolidayBase,
-    SAT_TO_PREV_FRI,
-    SUN_TO_NEXT_MON,
-)
+from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
 
 
 class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -60,9 +56,8 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         super().__init__(*args, **kwargs)
 
     def _add_day_before(self, name: str, dt: date) -> None:
-        """Add an early close on the last business day before the observed `dt`."""
-        observed_dt = self._get_observed_date(dt, self._observed_rule) or dt
-        self._add_holiday(name, self._get_next_workday(observed_dt, -1))
+        dt_observed = self._get_observed_date(dt, self._observed_rule) or dt
+        self._add_holiday(name, self._get_next_workday(dt_observed, -1))
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -106,6 +101,9 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
     def _populate_half_day_holidays(self):
+        # %s (markets close at 12:00pm).
+        close_12pm_label = tr("%s (markets close at 12:00pm)")
+
         # %s (markets close at 2:00pm).
         close_2pm_label = tr("%s (markets close at 2:00pm)")
 
@@ -130,6 +128,10 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
                 # Day before Good Friday.
                 self._format_holiday_name(close_2pm_label, tr("Day before Good Friday"))
             )
+
+        if self._year in self.good_friday_early_close_years and self._year != 2007:
+            # Good Friday.
+            self._add_good_friday(self._format_holiday_name(close_12pm_label, tr("Good Friday")))
 
         self._add_holiday_3_days_prior_last_mon_of_may(
             # Day before Memorial Day.
@@ -209,9 +211,6 @@ class SIFMAStaticHolidays:
     # %s (markets close at 2:00pm).
     close_2pm_label = tr("%s (markets close at 2:00pm)")
 
-    # Good Friday.
-    name_good_friday = tr("Good Friday")
-
     # Hurricane Sandy.
     name_hurricane_sandy = tr("Hurricane Sandy")
 
@@ -230,11 +229,8 @@ class SIFMAStaticHolidays:
         1996: (JUL, 5, (close_2pm_label, tr("Day after Independence Day"))),
         # Day after Christmas Day.
         1997: (DEC, 26, (close_2pm_label, tr("Day after Christmas Day"))),
-        1999: (
-            (APR, 2, (close_12pm_label, name_good_friday)),
-            # Day before New Year's Day.
-            (DEC, 31, (close_1pm_label, tr("Day before New Year's Day"))),
-        ),
+        # Day before New Year's Day.
+        1999: (DEC, 31, (close_1pm_label, tr("Day before New Year's Day"))),
         # Day after New Year's Day.
         2004: (JAN, 2, (close_2pm_label, tr("Day after New Year's Day"))),
         2007: (
@@ -247,21 +243,14 @@ class SIFMAStaticHolidays:
                     tr("National Day of Mourning for former President Gerald R. Ford"),
                 ),
             ),
-            (APR, 6, (close_11am_label, name_good_friday)),
+            # Good Friday.
+            (APR, 6, (close_11am_label, tr("Good Friday"))),
         ),
-        2010: (APR, 2, (close_12pm_label, name_good_friday)),
-        2012: (
-            (APR, 6, (close_12pm_label, name_good_friday)),
-            (OCT, 29, (close_12pm_label, name_hurricane_sandy)),
-        ),
-        2015: (APR, 3, (close_12pm_label, name_good_friday)),
-        2021: (APR, 2, (close_12pm_label, name_good_friday)),
-        2023: (APR, 7, (close_12pm_label, name_good_friday)),
+        2012: (OCT, 29, (close_12pm_label, name_hurricane_sandy)),
         2025: (
             JAN,
             9,
             # National Day of Mourning for former President Jimmy Carter.
             (close_2pm_label, tr("National Day of Mourning for former President Jimmy Carter")),
         ),
-        2026: (APR, 3, (close_12pm_label, name_good_friday)),
     }
