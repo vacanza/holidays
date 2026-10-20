@@ -63,11 +63,6 @@ class TestComoros(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name_2026, range(self.start_year, 2026))
 
-    def test_christmas_day(self):
-        name = "Noël"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(self.start_year, 2025)))
-        self.assertNoHolidayName(name, range(2025, self.end_year))
-
     def test_islamic_new_year(self):
         name = "Premier jour de l'an musulman"
         self.assertIslamicNoEstimatedHolidayName(
@@ -131,12 +126,9 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        years_eid_al_fitr_twice = {2000, 2033}
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 3, set(self.full_range) - years_eid_al_fitr_twice
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, years_eid_al_fitr_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, set(self.full_range) - {2000, 2033})
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2000, 2033)
 
     def test_eid_al_adha(self):
         name = "Id-El-Kabir"
@@ -155,14 +147,12 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
         )
-        years_eid_al_adha_three = {2006, 2007}
-        years_eid_al_adha_four = {2039}
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayNameCount(
-            name, 2, set(self.full_range) - (years_eid_al_adha_three | years_eid_al_adha_four)
+            name, 2, set(self.full_range) - {2006, 2007, 2039}
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, years_eid_al_adha_three)
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, years_eid_al_adha_four)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, 2006, 2007)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, 2039)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -179,7 +169,6 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-07-30", "Premier jour de l'an musulman (estimé)"),
             ("2022-10-08", "Jour de la Naissance du Prophète Muhammad (estimé)"),
             ("2022-11-12", "Journée Maoré"),
-            ("2022-12-25", "Noël"),
         )
         self.assertLocalizedHolidays(
             ("2026-01-01", "Jour de l'an"),
@@ -212,8 +201,7 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-07-10", "عيد الأضحى (تقديري)"),
             ("2022-07-30", "رأس السنة الهجرية (تقديري)"),
             ("2022-10-08", "المولد النبوي الشريف (تقديري)"),
-            ("2022-11-12", "يوم ماوري"),
-            ("2022-12-25", "عيد الميلاد"),
+            ("2022-11-12", "يوم مايوت"),
         )
         self.assertLocalizedHolidays(
             "ar",
@@ -248,7 +236,6 @@ class TestComoros(CommonCountryTests, TestCase):
             ("2022-07-30", "Islamic New Year (estimated)"),
             ("2022-10-08", "Prophet's Birthday (estimated)"),
             ("2022-11-12", "Maore Day"),
-            ("2022-12-25", "Christmas Day"),
         )
         self.assertLocalizedHolidays(
             "en_US",

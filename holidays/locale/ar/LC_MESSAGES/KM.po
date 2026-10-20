@@ -62,11 +62,7 @@ msgstr "يوم انضمام جزر القمر إلى الأمم المتحدة"
 
 #. Maore Day.
 msgid "Journée Maoré"
-msgstr "يوم ماوري"
-
-#. Christmas Day.
-msgid "Noël"
-msgstr "عيد الميلاد"
+msgstr "يوم مايوت"
 
 #. Islamic New Year.
 msgid "Premier jour de l'an musulman"

@@ -13,7 +13,6 @@
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, OCT
 from holidays.groups import (
-    ChristianHolidays,
     IslamicHolidays,
     InternationalHolidays,
     StaticHolidays,
@@ -22,9 +21,7 @@ from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
-class Comoros(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, StaticHolidays
-):
+class Comoros(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays):
     """Comoros holidays.
 
     References:
@@ -48,7 +45,6 @@ class Comoros(
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
         """
-        ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
             self, cls=ComorosIslamicHolidays, show_estimated=islamic_show_estimated
@@ -86,10 +82,6 @@ class Comoros(
                 # Maore Day.
                 else tr("Journée Maoré")
             )
-
-        if self._year <= 2024:
-            # Christmas Day.
-            self._add_christmas_day(tr("Noël"))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("Premier jour de l'an musulman"))

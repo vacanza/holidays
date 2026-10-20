@@ -64,10 +64,6 @@ msgstr ""
 msgid "Journée Maoré"
 msgstr ""
 
-#. Christmas Day.
-msgid "Noël"
-msgstr ""
-
 #. Islamic New Year.
 msgid "Premier jour de l'an musulman"
 msgstr ""

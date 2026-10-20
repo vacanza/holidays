@@ -64,10 +64,6 @@ msgstr "Day of the Admission of the Comoros to the United Nations"
 msgid "Journée Maoré"
 msgstr "Maore Day"
 
-#. Christmas Day.
-msgid "Noël"
-msgstr "Christmas Day"
-
 #. Islamic New Year.
 msgid "Premier jour de l'an musulman"
 msgstr "Islamic New Year"
