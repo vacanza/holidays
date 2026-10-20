@@ -23,7 +23,7 @@ repos:
       - id: pyupgrade
         args:
           - --keep-runtime-typing
-          - --py310-plus
+          - --py311-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 2eeb5678de71a00c0902cbda7105d328432f72cb  # v0.16.8
