@@ -133,7 +133,6 @@ class TestSIFMA(CommonFinancialTests, TestCase):
 
     def test_independence_day(self):
         name = "Independence Day"
-        name_observed = f"{name} (observed)"
         self.assertNonObservedHolidayName(name, (f"{year}-07-04" for year in self.full_range))
         obs_dts = (
             "2010-07-05",
@@ -142,7 +141,7 @@ class TestSIFMA(CommonFinancialTests, TestCase):
             "2021-07-05",
             "2026-07-03",
         )
-        self.assertHolidayName(name_observed, obs_dts)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_labor_day(self):
@@ -207,19 +206,15 @@ class TestSIFMA(CommonFinancialTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        name_observed = f"{name} (observed)"
         self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dts = (
-            "1999-12-24",
-            "2004-12-24",
-            "2005-12-26",
             "2010-12-24",
             "2011-12-26",
             "2016-12-26",
             "2021-12-24",
             "2022-12-26",
         )
-        self.assertHolidayName(name_observed, obs_dts)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_day_before_martin_luther_king_jr_day(self):
@@ -252,14 +247,13 @@ class TestSIFMA(CommonFinancialTests, TestCase):
 
     def test_day_before_good_friday(self):
         name = "Day before Good Friday (markets close at 2:00pm)"
-        years_absent = {1996, 2007, 2010, 2012, 2015, 2021, 2023, 2026}
         self.assertNoHolidayName(name)
+        years_absent = {1996, 2007, 2010, 2012, 2015, 2021, 2023, 2026}
         self.assertHalfDayHolidayName(
             name,
-            "1997-03-27",
-            "1999-04-01",
-            "2011-04-21",
+            "2019-04-18",
             "2020-04-09",
+            "2022-04-14",
             "2024-03-28",
             "2025-04-17",
         )
@@ -305,16 +299,11 @@ class TestSIFMA(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
-            "1996-07-03",
-            "1998-07-02",
-            "1999-07-02",
-            "2004-07-02",
-            "2008-07-03",
-            "2014-07-03",
-            "2015-07-02",
-            "2016-07-01",
             "2020-07-02",
             "2021-07-02",
+            "2022-07-01",
+            "2023-07-03",
+            "2024-07-03",
             "2025-07-03",
         )
         self.assertHalfDayHolidayName(
@@ -400,11 +389,7 @@ class TestSIFMA(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
-            "1999-12-23",
-            "2004-12-23",
-            "2005-12-23",
-            "2006-12-22",
-            "2017-12-22",
+            "2020-12-24",
             "2021-12-23",
             "2022-12-23",
             "2023-12-22",
@@ -418,11 +403,9 @@ class TestSIFMA(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
-            "2000-12-29",
-            "2004-12-31",
-            "2005-12-30",
-            "2016-12-30",
+            "2020-12-31",
             "2021-12-31",
+            "2022-12-30",
             "2023-12-29",
             "2024-12-31",
             "2025-12-31",
