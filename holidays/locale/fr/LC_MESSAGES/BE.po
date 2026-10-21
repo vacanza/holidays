@@ -28,18 +28,6 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
 
-#. Labor Day.
-msgid "Dag van de Arbeid"
-msgstr "Fête du Travail"
-
-#. Ascension Day.
-msgid "O. L. H. Hemelvaart"
-msgstr "Ascension"
-
-#. Friday after Ascension Day.
-msgid "Vrijdag na O. L. H. Hemelvaart"
-msgstr "Vendredi suivant l'Ascension"
-
 #. Autumn Break.
 msgid "Herfstvakantie"
 msgstr "Vacances d'automne"
@@ -76,6 +64,14 @@ msgstr "Pâques"
 msgid "Paasmaandag"
 msgstr "Lundi de Pâques"
 
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "Fête du Travail"
+
+#. Ascension Day.
+msgid "O. L. H. Hemelvaart"
+msgstr "Ascension"
+
 #. Pentecost.
 msgid "Pinksteren"
 msgstr "Pentecôte"
@@ -107,6 +103,10 @@ msgstr "Noël"
 #. Good Friday.
 msgid "Goede vrijdag"
 msgstr "Vendredi Saint"
+
+#. Friday after Ascension Day.
+msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr "Vendredi suivant l'Ascension"
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"

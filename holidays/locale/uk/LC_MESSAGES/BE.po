@@ -28,18 +28,6 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
 
-#. Labor Day.
-msgid "Dag van de Arbeid"
-msgstr "День праці"
-
-#. Ascension Day.
-msgid "O. L. H. Hemelvaart"
-msgstr "Вознесіння Господнє"
-
-#. Friday after Ascension Day.
-msgid "Vrijdag na O. L. H. Hemelvaart"
-msgstr "Пʼятниця після Вознесіння Господнього"
-
 #. Autumn Break.
 msgid "Herfstvakantie"
 msgstr "Осінні канікули"
@@ -76,6 +64,14 @@ msgstr "Великдень"
 msgid "Paasmaandag"
 msgstr "Великодній понеділок"
 
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "День праці"
+
+#. Ascension Day.
+msgid "O. L. H. Hemelvaart"
+msgstr "Вознесіння Господнє"
+
 #. Pentecost.
 msgid "Pinksteren"
 msgstr "Пʼятидесятниця"
@@ -107,6 +103,10 @@ msgstr "Різдво Христове"
 #. Good Friday.
 msgid "Goede vrijdag"
 msgstr "Страсна пʼятниця"
+
+#. Friday after Ascension Day.
+msgid "Vrijdag na O. L. H. Hemelvaart"
+msgstr "Пʼятниця після Вознесіння Господнього"
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"
