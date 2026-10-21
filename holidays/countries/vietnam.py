@@ -20,6 +20,7 @@ from holidays.calendars.gregorian import (
     FEB,
     APR,
     MAY,
+    AUG,
     SEP,
     DEC,
     MON,
@@ -56,6 +57,7 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         * [Labor Code 2012 (Art. 115) (vi)](https://web.archive.org/web/20240917113133/https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=27615)
         * [Labor Code 2019 (Art. 112) (en)](https://web.archive.org/web/20250108181808/https://vbpl.vn/TW/pages/vbpqen-toanvan.aspx?ItemID=11135)
         * [Labor Code 2019 (Art. 112) (vi)](https://web.archive.org/web/20250221171552/https://vbpl.vn/TW/Pages/vbpq-van-ban-goc.aspx?ItemID=139264)
+        * [Resolution No. 80-NQ/TW](https://web.archive.org/web/20261004022807/https://news.laodong.vn/thoi-su/thong-nhat-chon-ngay-2411-la-ngay-van-hoa-viet-nam-nghi-huong-luong-1639996.ldo)
     """
 
     country = "VN"
@@ -144,6 +146,10 @@ class Vietnam(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHoliday
         if self._year >= 2021:
             self._add_holiday(name, self._get_observed_date(sep_2, NATIONAL_DAY_RULE))
 
+        if self._year >= 2026:
+            # Vietnam Cultural Day.
+            dts_observed.add(self._add_holiday_nov_24(tr("Ngày Văn hóa Việt Nam")))
+
         if self.observed:
             self._add_lunar_new_year_observed(lny)
             self._populate_observed(dts_observed)
@@ -163,6 +169,8 @@ class VietnamStaticHolidays:
     References:
         * [2018-2019](https://web.archive.org/web/20250427182343/https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-6519-VPCP-KGVX-2018-national-holidays-for-public-sector-employees/387625/tieng-anh.aspx)
         * [2024](https://web.archive.org/web/20241002165957/https://thuvienphapluat.vn/cong-van/EN/Lao-dong-Tien-luong/Official-Dispatch-2450-VPCP-KGVX-2024-swap-of-working-days-during-the-Reunification-Day/606458/tieng-anh.aspx)
+        * [2025](https://web.archive.org/web/20250812111011/https://thuvienphapluat.vn/van-ban/EN/Lao-dong-Tien-luong/Announcement-6150-TB-BLDTBXH-2024-Lunar-New-Year-in-2025-of-officials-public-employees/634997/tieng-anh.aspx)
+        * [2026](https://web.archive.org/web/20260812072838/https://thuvienphapluat.vn/hoi-dap-phap-luat/lich-nghi-le-quoc-khanh-29-hai-quan-nam-2026-nhu-the-nao-138100727.html)
     """
 
     # Substituted date format.
@@ -186,4 +194,6 @@ class VietnamStaticHolidays:
         2018: (DEC, 31, JAN, 5, 2019),
         2019: (APR, 29, MAY, 4),
         2024: (APR, 29, MAY, 4),
+        2025: (MAY, 2, APR, 26),
+        2026: (AUG, 31, AUG, 22),
     }

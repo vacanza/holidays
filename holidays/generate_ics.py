@@ -16,7 +16,7 @@
 import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from collections.abc import Callable
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import holidays
 from holidays.holiday_base import HolidayBase
@@ -39,7 +39,7 @@ class IcsGenerator:
         parser.add_argument(
             "-y",
             "--years",
-            default=str(datetime.now(timezone.utc).year),
+            default=str(datetime.now(UTC).year),
             type=IcsGenerator.parse_years,
             help=(
                 "Year or year range (default: current year). "
@@ -68,7 +68,7 @@ class IcsGenerator:
             "--output-template",
             help=(
                 "Output filename template. Available placeholders: {code}, {subdiv}, "
-                "{language}, {categories}, {start_year}, {end_year}, {today}. "
+                "{language}, {categories}, {start_year}, {end_year}, {all}, {today}. "
                 "Use '{{' and '}}' for literal '{' and '}'"
             ),
         )
@@ -90,7 +90,7 @@ class IcsGenerator:
         try:
             if years.startswith(("+", "-")):
                 offset = int(years)
-                current_year = datetime.now(timezone.utc).year
+                current_year = datetime.now(UTC).year
                 return (
                     (current_year, current_year + offset)
                     if offset > 0
@@ -271,8 +271,11 @@ class IcsGenerator:
                 ),
                 "start_year": start_year,
                 "end_year": end_year,
-                "today": datetime.now(timezone.utc).strftime("%Y%m%d"),
+                "today": datetime.now(UTC).strftime("%Y%m%d"),
             }
+            values["all"] = (
+                self.get_default_output_template().format(**values).removesuffix(".ics")
+            )
             self.validate_output_template(set(values))
             template = self.args.output_template or self.get_default_output_template()
             output_path = template.format(**values)

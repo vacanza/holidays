@@ -84,31 +84,31 @@ import holidays
 
 us_holidays = holidays.US()  # this is a dict-like object
 # the below is the same, but takes a string:
-us_holidays = holidays.country_holidays('US')  # this is a dict-like object
+us_holidays = holidays.country_holidays("US")  # this is a dict-like object
 
 nyse_holidays = holidays.NYSE()  # this is a dict-like object
 # the below is the same, but takes a string:
-nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict-like object
+nyse_holidays = holidays.financial_holidays("NYSE")  # this is a dict-like object
 
 date(2015, 1, 1) in us_holidays  # True
 date(2015, 1, 2) in us_holidays  # False
-us_holidays.get('2014-01-01')  # "New Year's Day"
+us_holidays.get("2014-01-01")  # "New Year's Day"
 ```
 
 The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
 ``` python
-'2014-01-01' in us_holidays  # True
-'1/1/2014' in us_holidays    # True
-1388597445 in us_holidays    # True
+"2014-01-01" in us_holidays  # True
+"1/1/2014" in us_holidays  # True
+1388597445 in us_holidays  # True
 ```
 
 Some holidays may be only present in parts of a country:
 
 ``` python
-us_pr_holidays = holidays.country_holidays('US', subdiv='PR')
-'2018-01-06' in us_holidays     # False
-'2018-01-06' in us_pr_holidays  # True
+us_pr_holidays = holidays.country_holidays("US", subdiv="PR")
+"2018-01-06" in us_holidays  # False
+"2018-01-06" in us_pr_holidays  # True
 ```
 
 Please see the [holidays documentation](https://holidays.readthedocs.io/) for additional examples
@@ -261,7 +261,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Australia</td>
 <td>AU</td>
-<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia)</td>
+<td>States and territories: ACT (Australian Capital Territory), NSW (New South Wales), NT (Northern Territory), QLD (Queensland), SA (South Australia), TAS (Tasmania), VIC (Victoria), WA (Western Australia); school calendar variants: NSW Western (New South Wales Western Division)</td>
 <td><strong>en_AU</strong>, en_US, th</td>
 <td>BANK, HALF_DAY, SCHOOL</td>
 </tr>
@@ -290,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bahrain</td>
 <td>BH</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -479,7 +479,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Chad</td>
 <td>TD</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1004,7 +1004,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1123,7 +1123,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Malta</td>
 <td>MT</td>
 <td></td>
-<td>en_US, <strong>mt</strong></td>
+<td>ar, en_US, <strong>mt</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1249,7 +1249,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1340,7 +1340,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Oman</td>
 <td>OM</td>
 <td></td>
-<td><strong>ar</strong>, en_US</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1431,7 +1431,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Qatar</td>
 <td>QA</td>
 <td></td>
-<td><strong>ar_QA</strong>, en_US</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
 <td>BANK</td>
 </tr>
 <tr>
@@ -1536,7 +1536,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Saudi Arabia</td>
 <td>SA</td>
 <td></td>
-<td><strong>ar</strong>, bn, en_US</td>
+<td><strong>ar</strong>, bn, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1640,7 +1640,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Spain</td>
 <td>ES</td>
-<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana)</td>
+<td>Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla-La Mancha), CN (Canarias), CT (Cataluña, Catalunya), EX (Extremadura), GA (Galicia), IB (Islas Baleares, Illes Balears), MC (Murcia), MD (Madrid), ML (Melilla), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Valenciana); cities: Barcelona</td>
 <td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td></td>
 </tr>
@@ -1809,7 +1809,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -1952,6 +1952,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
+<td>Bolsa de Valores de Colombia</td>
+<td>XBOG</td>
+<td>Bolsa de Valores de Colombia (BVC) holidays</td>
+<td>en_US, <strong>es</strong></td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>Bolsa Mexicana de Valores</td>
 <td>XMEX</td>
 <td>Bolsa Mexicana de Valores (BMV) holidays</td>
@@ -1976,8 +1983,15 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
 <td></td>
+</tr>
+<tr>
+<td>Borsa Istanbul</td>
+<td>XIST</td>
+<td>Borsa Istanbul (BIST) market holidays</td>
+<td>en_US, <strong>tr</strong></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Brasil, Bolsa, Balcão</td>
@@ -1990,7 +2004,7 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2053,21 +2067,21 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, mr</td>
+<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
 <td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi</td>
+<td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2076,6 +2090,20 @@ code when available. The following financial markets are available:
 <td>New Zealand Exchange (NZX) market holidays</td>
 <td></td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Pakistan Stock Exchange</td>
+<td>XKAR</td>
+<td>Pakistan Stock Exchange (PSX) market holidays</td>
+<td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Saudi Exchange</td>
+<td>XSAU</td>
+<td>Saudi Exchange (Tadawul) market holidays</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
+<td></td>
 </tr>
 <tr>
 <td>Shanghai Stock Exchange</td>
@@ -2126,6 +2154,13 @@ code when available. The following financial markets are available:
 <td>Toronto Stock Exchange (TSX) market holidays</td>
 <td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Warsaw Stock Exchange</td>
+<td>XWAR</td>
+<td>Warsaw Stock Exchange (GPW) market holidays</td>
+<td>en_US, <strong>pl</strong>, uk</td>
+<td></td>
 </tr>
 </tbody>
 </table>

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import re
 import uuid
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -54,7 +54,7 @@ class ICalExporter:
         """
         self.holidays = instance
         self.show_language = show_language
-        self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        self.ical_timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         language = getattr(self.holidays, "language", None) or getattr(
             self.holidays, "default_language", None
@@ -71,11 +71,11 @@ class ICalExporter:
 
     def _validate_language(self, language: str) -> str:
         """Validate the language code to ensure it complies with
-        [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646).
+        [RFC 5646](https://web.archive.org/web/20261001095044/https://datatracker.ietf.org/doc/html/rfc5646).
 
         In the current implementation, all languages must comply with
-        either [ISO 639-1 or ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php)
-        if specified (part of [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646)).
+        either [ISO 639-1 or ISO 639-2](https://web.archive.org/web/20261003082739/https://www.loc.gov/standards/iso639-2/php/code_list.php)
+        if specified (part of [RFC 5646](https://web.archive.org/web/20261001095044/https://datatracker.ietf.org/doc/html/rfc5646)).
 
         Args:
             language:

@@ -112,6 +112,11 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-06-13",
             "2025-11-03",
             "2025-12-31",
+            "2026-01-09",
+            "2026-12-31",
+            "2027-02-22",
+            "2027-11-05",
+            "2027-12-31",
         )
         self.assertNoNonObservedHoliday(
             # Substituted Holidays (observed).
@@ -201,6 +206,11 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
             "2022-05-02",
             "2022-06-13",
             "2023-11-06",
+            "2026-03-09",
+            "2026-05-11",
+            "2027-05-03",
+            "2027-05-10",
+            "2027-06-14",
         )
 
     def test_workdays(self):
@@ -263,6 +273,7 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
             "2024-11-02",
             "2024-12-28",
             "2025-11-01",
+            "2027-02-20",
         )
 
     def test_new_year(self):

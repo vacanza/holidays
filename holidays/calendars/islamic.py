@@ -4311,9 +4311,9 @@ class _IslamicMabimsLunar(_IslamicLunar):
     - Geocentric elongation >= 6.4 degrees
 
     References:
-        * <https://www.muis.gov.sg/resources/islamic-calendar/>
-        * <https://www.muslim.sg/articles/ramadan-countdown-unity-in-diversity>
-        * <https://accuhijri.github.io/>
+        * <https://web.archive.org/web/20260921075416/https://www.muis.gov.sg/resources/islamic-calendar/>
+        * <https://web.archive.org/web/20260819172422/https://www.muslim.sg/articles/ramadan-countdown-unity-in-diversity>
+        * <https://web.archive.org/web/20260103025410/https://accuhijri.github.io/>
     """
 
     EID_AL_ADHA_DATES = {

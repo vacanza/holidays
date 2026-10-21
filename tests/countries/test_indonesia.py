@@ -186,6 +186,14 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2026-05-15",
             "2026-05-28",
             "2026-12-24",
+            "2027-02-05",
+            "2027-03-09",
+            "2027-03-12",
+            "2027-03-15",
+            "2027-03-25",
+            "2027-05-18",
+            "2027-05-19",
+            "2027-12-24",
         )
         obs_dts = ("2020-12-31",)
         self.assertGovernmentHoliday(dts, obs_dts)

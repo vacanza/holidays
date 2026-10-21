@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.81\n"
+"Project-Id-Version: Holidays 0.106\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-09-27 15:50+0700\n"
-"PO-Revision-Date: 2025-09-07 14:05+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-04 09:35+0800\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -94,6 +94,10 @@ msgstr "International Labor Day"
 #. National Day.
 msgid "Quốc khánh"
 msgstr "National Day"
+
+#. Vietnam Cultural Day.
+msgid "Ngày Văn hóa Việt Nam"
+msgstr "Vietnam Cultural Day"
 
 #. Substituted date format.
 msgid "%d/%m/%Y"

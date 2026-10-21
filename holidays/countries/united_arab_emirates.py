@@ -67,7 +67,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
     supported_categories = (GOVERNMENT, OPTIONAL, PUBLIC)
-    supported_languages = ("ar", "en_US", "th")
+    supported_languages = ("ar", "en_US", "th", "ur_PK")
     # Founded on DEC 2, 1971.
     start_year = 1972
 

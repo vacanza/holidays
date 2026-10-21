@@ -1,3 +1,78 @@
+## Version 0.107
+
+Released October 19, 2026
+
+- BREAKING: Update Sweden holidays, exclude Sundays by default (#3908 by @arkid15r)
+- Refactor release notes generator (#3935 by @KJhellico)
+- Add Pakistan Stock Exchange (PSX) holidays (#3913 by @ahmershahdev)
+- Add Saudi Exchange (Tadawul) holidays (#3921 by @ahmershahdev)
+- Update Australia holidays: add Easter Sunday (TAS) from 2027 (#3909 by @ryanduguid)
+- Update Australia holidays: add Labour Day (VIC) start year (#3899 by @ahmershahdev)
+- Update Australia holidays: add May Day and Picnic Day (NT) start years (#3904 by @ryanduguid, @KJhellico)
+- Update Australia holidays: add NSW Western Division school holidays (#3869 by @gheydon)
+- Update Australia holidays: fix Labour Day (SA) historical dates (#3863 by @ahmershahdev, @KJhellico)
+- Update Australia holidays: start NT observance rules in 1973 (#3922 by @ryanduguid, @KJhellico)
+- Update Bolsas y Mercados Argentinos holidays: add 2026 Visit of Pope Leo XIV holidays (#3901 by @SebastianFelgueras)
+- Update Brazil holidays: rename Ash Wednesday to Quarta-feira de Cinzas (#3914 by @lfonzie)
+- Update Chad holidays: add l10n support (#3900 by @ahmershahdev)
+- Update Hong Kong Stock Exchange holidays: add severe weather closures (#3906 by @ryanduguid)
+- Update India holidays: subdiv holidays improvement (East, North-East & South regions - II) (#3792 by @ankushhKapoor, @KJhellico, @PPsyrius)
+- Update Moldova holidays: fix Romanian diacritics (#3910 by @vicuts)
+- Update Morocco holidays: add Unity Day, fix Amazigh New Year (#3867 by @Redouane-E, @PPsyrius)
+- Update NSE and BSE holidays: add Kannada language support (#3885 by @saikiran6694)
+- Update NSE and BSE holidays: add Malayalam language support (#3927 by @vprayag2005)
+- Update NSE and BSE holidays: add Telugu language support (#3920 by @saikiran6694)
+- Update NYSE and CME holidays: add Marathi language support (#3818 by @VaishnaviBardapure, @KJhellico, @PPsyrius)
+- Update Nepal holidays: add Hindi language support (#3887 by @saikiran6694)
+- Update Pakistan holidays: add 2025-2026 Islamic holiday dates (#3903 by @ahmershahdev)
+- Update Pakistan holidays: fix 2007-2015 dates (#3929 by @ahmershahdev)
+- Update Russia holidays: add 2026-2027 substituted holidays (#3907 by @Rusich90)
+- Update Saudi Arabia holidays: fix Founding Day name (#3915 by @aalquwayfili)
+- Update Spain holidays: add Barcelona city holidays (#3894 by @marcoschicote)
+- Update Zambia holidays: 2026 holidays changes (#3926 by @KJhellico)
+- Update documentation: enhance iCalendar export examples (#3852 by @davidhedlund, @KJhellico)
+- Update runner versions, extend test suite to run on previous OS version. (#3897 by @arkid15r)
+
+## Version 0.106
+
+Released October 5, 2026
+
+- Add Bolsa de Valores de Colombia (BVC) holidays (#3845 by @Jsebastian323)
+- Add Borsa Istanbul (BIST) holidays (#3858 by @priyen4, @borsad)
+- Add Warsaw Stock Exchange (GPW) holidays (#3837 by @Blizzeq)
+- Update Argentina holidays: add 2026 Visit of Pope Leo XIV holidays (#3860 by @KJhellico)
+- Update Australia holidays: add Labour Day (WA) and Eight Hours Day (TAS) start years (#3846 by @ryanduguid)
+- Update Australia holidays: add Labour Day start years (ACT, QLD) (#3832 by @ahmershahdev)
+- Update Azerbaijan holidays: add substituted holidays from earlier years (#3857 by @KJhellico)
+- Update Bahrain holidays: add Urdu language support (#3872 by @ahmershahdev)
+- Update Kuwait holidays: add Urdu language support (#3873 by @ahmershahdev)
+- Update Malta holidays: add Arabic language support (#3849 by @moustafa-ash)
+- Update Oman holidays: add Urdu language support (#3870 by @ahmershahdev)
+- Update Qatar holidays: add Urdu language support (#3866 by @ahmershahdev)
+- Update Saudi Arabia holidays: add Urdu language support (#3865 by @ahmershahdev)
+- Update Spain holidays: add Eid al-Fitr in Ceuta (CE) (#3838 by @KJhellico)
+- Update Turkmenistan holidays: add special holidays (#3847 by @KJhellico)
+- Update United Arab Emirates holidays: add Urdu language support (#3864 by @ahmershahdev)
+- Update Vietnam holidays: add Vietnam Cultural Day, 2025-2027 substituted holidays (#3862 by @PPsyrius)
+- Update Warsaw Stock Exchange holidays: add Ukrainian language support (#3851 by @KJhellico)
+- Update iCalendar generation tool: add `{all}` placeholder to output template (#3829 by @Kanishka-v21, @KJhellico)
+- Reference maintenance: archive links (#3859 by @PPsyrius)
+
+## Version 0.105
+
+Released September 21, 2026
+
+- Refactor German School Holidays generator (#3808 by @PPsyrius)
+- Refactor imports in tests (#3819 by @KJhellico)
+- Update Australia holidays: add school holidays support (#3821 by @gheydon)
+- Update Canada holidays: remove Boxing Day from optional holidays in QC (#3807 by @arbazkhan971)
+- Update India holidays: subdiv holidays improvement (East, North-East & South regions - I) (#3784 by @ankushhKapoor, @KJhellico)
+- Update Indonesia holidays: add 2027 special holidays (#3828 by @KJhellico)
+- Update Malaysia holidays (#3814 by @KJhellico)
+- Update Philippines holidays: add 2027 holidays (#3817 by @KJhellico)
+- Update South Africa holidays: add Nov 4, 2026 holiday (#3809 by @lispwarez)
+- Add support for special holidays inheritance from parent entity (#3830 by @KJhellico, @arkid15r)
+  
 ## Version 0.104
 
 Released September 7, 2026

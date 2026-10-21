@@ -126,7 +126,7 @@ from holidays.constants import PUBLIC, DE_FACTO
 
 # For accurate is_working_day() behavior in Sweden.
 se = holidays.Sweden(categories=(PUBLIC, DE_FACTO), years=2024)
-print(se.is_working_day('2024-12-24'))  # False (Christmas Eve)
+print(se.is_working_day("2024-12-24"))  # False (Christmas Eve)
 ```
 
 ### Religious Categories
@@ -302,7 +302,7 @@ Get only Catholic holidays in Germany (Saxony subdivision):
 import holidays
 from holidays.constants import CATHOLIC
 
-germany_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
+germany_catholic = holidays.Germany(subdiv="SN", categories=CATHOLIC, years=2024)
 for date, name in sorted(germany_catholic.items()):
     print(f"{date}: {name}")
 ```

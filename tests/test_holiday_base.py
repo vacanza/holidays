@@ -41,6 +41,16 @@ class EntityStubStaticHolidays:
     substituted_label = "From %s"
 
 
+class EntityInheritedStaticHolidays:
+    special_public_holidays = {
+        2023: (FEB, 1, "Winter Special Holiday"),
+        2024: (
+            (FEB, 12, FEB, 17),
+            (OCT, 1, "Autumn Special Holiday"),
+        ),
+    }
+
+
 class EntityStub(HolidayBase):
     def _add_observed(self, dt: date, *, before: bool = True, after: bool = True) -> None:
         if not self.observed:
@@ -125,14 +135,23 @@ class CountryStub5(HolidayBase, ChristianHolidays):
 class CountryStub6(EntityStub, StaticHolidays):
     country = "CS6"
 
-    def __init__(self, *args, **kwargs) -> None:
-        StaticHolidays.__init__(self, cls=EntityStubStaticHolidays)
+    def __init__(self, *args, **kwargs):
+        StaticHolidays.__init__(
+            self, (EntityStubStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self) -> None:
         self._add_holiday_may_1("Labor Day")
         self._add_holiday_may_2("Labor Day Two")
         self._add_holiday_oct_12("Columbus Day")
+
+
+class CountryStub7(CountryStub6):
+    country = "CS7"
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, static_holidays_classes=(EntityInheritedStaticHolidays,), **kwargs)
 
 
 class MarketStub1(EntityStub):
@@ -1054,6 +1073,43 @@ class TestSpecialHolidays(TestCase):
         self.assertIn("2222-02-02", self.hb)
         self.assertIn("3333-02-02", self.hb)
         self.assertSetEqual(self.hb.years, {1111, 2222, 3333})
+
+
+class TestSpecialHolidaysMultiple(TestCase):
+    def test_special_holidays(self):
+        hb_parent = CountryStub6()
+        hb_inherited = CountryStub7()
+        self.assertNotIn("2023-02-01", hb_parent)
+        self.assertNotIn("2024-10-01", hb_parent)
+        self.assertIn("2023-02-01", hb_inherited)
+        self.assertIn("2024-10-01", hb_inherited)
+
+    def test_special_holidays_no_mutation(self):
+        original = dict(EntityStubStaticHolidays.special_public_holidays)
+        CountryStub7()
+        self.assertEqual(EntityStubStaticHolidays.special_public_holidays, original)
+
+    def test_special_holidays_merge(self):
+        hb = CountryStub7()
+        # Parent 2024 has 2 substituted entries; child adds one more and adds
+        # Autumn Special Holiday.
+        self.assertEqual(
+            hb.special_public_holidays[2024],
+            (
+                (FEB, 19, FEB, 24),
+                (OCT, 7, OCT, 12),
+                (FEB, 12, FEB, 17),
+                (OCT, 1, "Autumn Special Holiday"),
+            ),
+        )
+
+    def test_working_days(self):
+        hb_parent = CountryStub6()
+        hb_inherited = CountryStub7()
+        self.assertFalse(hb_parent.is_working_day("2024-02-17"))
+        self.assertTrue(hb_parent.is_working_day("2024-02-24"))
+        self.assertTrue(hb_inherited.is_working_day("2024-02-17"))
+        self.assertTrue(hb_inherited.is_working_day("2024-02-24"))
 
 
 class TestStandardMethods(TestCase):
