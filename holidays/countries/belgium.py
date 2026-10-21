@@ -128,11 +128,14 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         # 1st Monday of April → 2 weeks.
         # If Easter is in March: Easter Monday → 2 weeks.
         # If Easter is on or after Apr 15: 2nd Monday before Easter → until Easter Monday.
+        # Apr 14 is treated the same way as Apr 15: the start date is identical either way,
+        # but the 2 weeks from the 1st Monday of April would end on Easter Sunday and leave
+        # Easter Monday out of the break.
         easter_sunday = self._easter_sunday
         duration = 14
         if easter_sunday.month == MAR:
             start = _timedelta(easter_sunday, +1)
-        elif easter_sunday.day >= 15:
+        elif easter_sunday.day >= 14:
             start = _timedelta(easter_sunday, -13)
             duration = 15
         else:

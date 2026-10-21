@@ -316,6 +316,12 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2029-04-15",
             "2030-04-08",
             "2030-04-22",
+            # Starts on the 1st Monday of April when Easter Sunday is on Apr 13.
+            "2031-04-07",
+            "2031-04-20",
+            # Lasts through Easter Monday when Easter Sunday is on Apr 14.
+            "2047-04-01",
+            "2047-04-15",
         )
         self.assertNoSubdivFlemishSchoolHoliday(
             "2016-03-27",
@@ -326,6 +332,10 @@ class TestBelgium(CommonCountryTests, TestCase):
             "2025-04-22",
             "2027-03-28",
             "2027-04-12",
+            "2031-04-06",
+            "2031-04-21",
+            "2047-03-31",
+            "2047-04-16",
         )
         self.assertSubdivFlemishSchoolHolidayName(name, range(2010, self.end_year))
 
