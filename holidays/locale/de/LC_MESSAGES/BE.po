@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-10-05 21:42+0530\n"
+"PO-Revision-Date: 2026-10-21 22:46+0530\n"
 "Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: de\n"
@@ -51,6 +51,10 @@ msgstr "Weihnachtsferien"
 #. Carnival Break.
 msgid "Krokusvakantie"
 msgstr "Karnevalsferien"
+
+#. Mardi Gras.
+msgid "Vastenavond"
+msgstr "Karnevalsdienstag"
 
 #. Easter Break.
 msgid "Paasvakantie"
@@ -107,10 +111,6 @@ msgstr "Karfreitag"
 #. Bank Holiday.
 msgid "Banksluitingsdag"
 msgstr "Bankschlusstag"
-
-#. Mardi Gras.
-msgid "Vastenavond"
-msgstr "Karnevalsdienstag"
 
 #. French Community Day.
 msgid "Feestdag van de Franse Gemeenschap"
