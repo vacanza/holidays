@@ -126,7 +126,6 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 3, set(self.full_range) - {2000, 2033})
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2000, 2033)
 
@@ -147,7 +146,6 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 2, set(self.full_range) - {2006, 2007, 2039}
         )

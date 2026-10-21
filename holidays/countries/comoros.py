@@ -12,11 +12,7 @@
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import JAN, APR, OCT
-from holidays.groups import (
-    IslamicHolidays,
-    InternationalHolidays,
-    StaticHolidays,
-)
+from holidays.groups import InternationalHolidays, IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
