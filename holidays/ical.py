@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import re
 import uuid
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -83,7 +83,7 @@ class ICalExporter:
                 "Expected a positive number of weeks."
             )
         self.refresh_interval = refresh_interval
-        self.ical_timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        self.ical_timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
         language = getattr(self.holidays, "language", None) or getattr(
             self.holidays, "default_language", None
