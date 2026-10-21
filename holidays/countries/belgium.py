@@ -124,13 +124,35 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             name=tr("Krokusvakantie"),
         )
 
+    def _add_mardi_gras(self, carnival_start: date, spring_start: date):
+        # Only if the school year (185 class days before deductions) still has at least
+        # 180 class days once the individual days off and Mardi Gras itself are deducted.
+        easter_sunday = self._easter_sunday
+        mardi_gras = _timedelta(easter_sunday, -47)
+        if not carnival_start <= mardi_gras <= _timedelta(carnival_start, +13):
+            days_off = (
+                date(self._year - 1, SEP, 27),
+                date(self._year - 1, NOV, 11),
+                _timedelta(easter_sunday, +1),
+                _timedelta(easter_sunday, +39),
+                _timedelta(easter_sunday, +50),
+            )
+            spring_end = _timedelta(spring_start, +13)
+            days_off_count = sum(
+                not self._is_weekend(dt) and not spring_start <= dt <= spring_end
+                for dt in days_off
+            ) + self._is_sunday(date(self._year - 1, NOV, 1))
+            if days_off_count <= 4:
+                # Mardi Gras.
+                self._add_carnival_tuesday(tr("Vastenavond"))
+
     def _add_easter_break(self):
         # 1st Monday of April → 2 weeks.
         # If Easter is in March: Easter Monday → 2 weeks.
-        # If Easter is on or after Apr 15: 2nd Monday before Easter → until Easter Monday.
-        # Apr 14 is treated the same way as Apr 15: the start date is identical either way,
-        # but the 2 weeks from the 1st Monday of April would end on Easter Sunday and leave
-        # Easter Monday out of the break.
+        # If Easter is on or after Apr 14: 2nd Monday before Easter → until Easter Monday.
+        # The legislation sets that threshold at Apr 15. Apr 14 is included deliberately: the
+        # start date works out the same either way, but the 2 weeks from the 1st Monday of April
+        # would end on Easter Sunday and leave Easter Monday out of the break.
         easter_sunday = self._easter_sunday
         duration = 14
         if easter_sunday.month == MAR:
@@ -254,26 +276,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
             # Easter Monday.
             self._add_easter_monday(tr("Paasmaandag"))
 
-            # Only if the school year (185 class days before deductions) still has at least
-            # 180 class days once the individual days off and Mardi Gras itself are deducted.
-            easter_sunday = self._easter_sunday
-            mardi_gras = _timedelta(easter_sunday, -47)
-            if not carnival_start <= mardi_gras <= _timedelta(carnival_start, +13):
-                days_off = (
-                    date(self._year - 1, SEP, 27),
-                    date(self._year - 1, NOV, 11),
-                    _timedelta(easter_sunday, +1),
-                    _timedelta(easter_sunday, +39),
-                    _timedelta(easter_sunday, +50),
-                )
-                spring_end = _timedelta(spring_start, +13)
-                days_off_count = sum(
-                    not self._is_weekend(dt) and not spring_start <= dt <= spring_end
-                    for dt in days_off
-                ) + self._is_sunday(date(self._year - 1, NOV, 1))
-                if days_off_count <= 4:
-                    # Mardi Gras.
-                    self._add_carnival_tuesday(tr("Vastenavond"))
+            self._add_mardi_gras(carnival_start, spring_start)
         else:
             self._add_carnival_break()
 
