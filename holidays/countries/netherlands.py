@@ -10,7 +10,18 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import OPTIONAL, PUBLIC
+from datetime import date
+
+from holidays.calendars.gregorian import _timedelta
+from holidays.calendars.netherlands_school import (
+    AUTUMN_BREAK,
+    CHRISTMAS_BREAK,
+    SPRING_BREAK,
+    MAY_BREAK,
+    SUMMER_BREAK,
+    NETHERLANDS_SCHOOL_HOLIDAYS,
+)
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT, SUN_TO_NEXT_MON
@@ -30,11 +41,21 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         * <https://web.archive.org/save/https://wetten.overheid.nl/BWBR0002448/2010-10-10>
         * <https://web.archive.org/web/20250123145153/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
         * <https://web.archive.org/web/20251015082056/https://www.facebook.com/photo.php?fbid=5357926707591435&id=190259871024837&set=a.342400825810740>
+
+    Dutch school holidays are subdivision-specific. The subdivisions are the three regions
+    the Ministry of Education spreads the holidays over, not provinces: the official split
+    cuts through Gelderland, leaves Zeewolde out of Noord and Woudrichem out of Zuid.
+    See [`netherlands_school`][holidays.calendars.netherlands_school] for the dataset.
     """
 
     country = "NL"
     default_language = "nl"
-    supported_categories = (OPTIONAL, PUBLIC)
+    subdivisions = (
+        "Midden",  # Central region.
+        "Noord",  # Northern region.
+        "Zuid",  # Southern region.
+    )
+    supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
     supported_languages = ("en_US", "fy", "nl", "th", "uk")
     # Algemene termijnenwet (Atw) entered into force on April 1st, 1965.
     start_year = 1966
@@ -44,6 +65,21 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         InternationalHolidays.__init__(self)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
+
+    @staticmethod
+    def _get_school_holiday_names() -> dict[int, str]:
+        return {
+            # Autumn Break.
+            AUTUMN_BREAK: tr("Herfstvakantie"),
+            # Christmas Break.
+            CHRISTMAS_BREAK: tr("Kerstvakantie"),
+            # Spring Break.
+            SPRING_BREAK: tr("Voorjaarsvakantie"),
+            # May Break.
+            MAY_BREAK: tr("Meivakantie"),
+            # Summer Break.
+            SUMMER_BREAK: tr("Zomervakantie"),
+        }
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -93,6 +129,31 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         if self._year >= 1982:
             # Liberation Day.
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
+
+    def _populate_school_holidays(self):
+        if self.subdiv is None:
+            return None
+
+        school_holiday_names = self._get_school_holiday_names()
+        for (
+            start_year_offset,
+            start_month,
+            start_day,
+            end_year_offset,
+            end_month,
+            end_day,
+            holiday_id,
+        ) in NETHERLANDS_SCHOOL_HOLIDAYS.get(self._year, {}).get(self._normalized_subdiv, ()):
+            start_date = date(self._year + start_year_offset, start_month, start_day)
+            end_date = date(self._year + end_year_offset, end_month, end_day)
+            # The anchor is the day before the break, as the days are counted from the one
+            # after it. A break spanning New Year is listed under both years; the dates
+            # outside the year being populated are dropped on add.
+            self._add_multiday_holiday(
+                _timedelta(start_date, -1),
+                (end_date - start_date).days + 1,
+                name=school_holiday_names[holiday_id],
+            )
 
 
 class NL(Netherlands):
