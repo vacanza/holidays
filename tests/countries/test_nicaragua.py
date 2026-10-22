@@ -19,10 +19,11 @@ from tests.common import CommonCountryTests
 class TestNicaragua(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Nicaragua, years=range(1950, 2050))
+        cls.full_range = range(1950, 2050)
+        super().setUpClass(Nicaragua)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1950, 2050)))
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
 
     def test_maundy_thursday(self):
         name = "Jueves Santo"
@@ -38,7 +39,7 @@ class TestNicaragua(CommonCountryTests, TestCase):
             "2023-04-06",
             "2024-03-28",
         )
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_good_friday(self):
         name = "Viernes Santo"
@@ -54,38 +55,38 @@ class TestNicaragua(CommonCountryTests, TestCase):
             "2023-04-07",
             "2024-03-29",
         )
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in range(1950, 2050)))
+        self.assertHolidayName("Día del Trabajo", (f"{year}-05-01" for year in self.full_range))
 
     def test_mothers_day(self):
         name = "Día de la Madre"
-        self.assertHolidayName(name, (f"{year}-05-30" for year in range(2022, 2050)))
-        self.assertNoHolidayName(name, range(1950, 2022))
+        self.assertHolidayName(name, (f"{year}-05-30" for year in range(2022, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
 
     def test_revolution_day(self):
         name = "Día de la Revolución"
-        self.assertHolidayName(name, (f"{year}-07-19" for year in range(1979, 2050)))
-        self.assertNoHolidayName(name, range(1950, 1979))
+        self.assertHolidayName(name, (f"{year}-07-19" for year in range(1979, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1979))
 
     def test_battle_of_san_jacinto_day(self):
         self.assertHolidayName(
-            "Batalla de San Jacinto", (f"{year}-09-14" for year in range(1950, 2050))
+            "Batalla de San Jacinto", (f"{year}-09-14" for year in self.full_range)
         )
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Día de la Independencia", (f"{year}-09-15" for year in range(1950, 2050))
+            "Día de la Independencia", (f"{year}-09-15" for year in self.full_range)
         )
 
     def test_virgins_day(self):
         self.assertHolidayName(
-            "Concepción de María", (f"{year}-12-08" for year in range(1950, 2050))
+            "Concepción de María", (f"{year}-12-08" for year in self.full_range)
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in range(1950, 2050)))
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
 
     def test_2023(self):
         self.assertHolidaysInYear(

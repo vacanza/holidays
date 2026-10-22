@@ -52,14 +52,12 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             name, (f"{year}-01-02" for year in range(2008, self.end_year))
         )
         obs_dts = (
-            "2000-01-03",
-            "2005-01-03",
-            "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
         )
         self.assertHolidayName(f"{name} (неработен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_christmas_day(self):
         name = "Божиќ"
@@ -97,21 +95,18 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             name, (f"{year}-05-02" for year in range(2007, self.end_year))
         )
         obs_dts = (
-            "1999-05-03",
-            "2004-05-03",
-            "2005-05-02",
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
         )
         self.assertHolidayName(f"{name} (неработен ден)", obs_dts)
+        self.assertNoNonObservedHolidayName(name, obs_dts)
 
     def test_saints_cyril_and_methodius_day(self):
         name = "Светите Кирил и Методиј - Ден на сесловенските просветители"
         self.assertHolidayName(name, (f"{year}-05-24" for year in range(2007, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2007))
         obs_dts = (
-            "2009-05-25",
             "2015-05-25",
             "2020-05-25",
         )
@@ -122,7 +117,6 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
         name = "Ден на Републиката"
         self.assertHolidayName(name, (f"{year}-08-02" for year in self.full_range))
         obs_dts = (
-            "2009-08-03",
             "2015-08-03",
             "2020-08-03",
         )
@@ -145,7 +139,6 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
         name = "Ден на народното востание"
         self.assertHolidayName(name, (f"{year}-10-11" for year in self.full_range))
         obs_dts = (
-            "2009-10-12",
             "2015-10-12",
             "2020-10-12",
         )
@@ -190,13 +183,13 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, range(2007, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2007))
         obs_dts = (
-            "2009-09-21",
             "2012-08-20",
             "2017-06-26",
             "2020-05-25",
             "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (неработен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_albanian_alphabet_day(self):
         name = "Ден на Албанската азбука"

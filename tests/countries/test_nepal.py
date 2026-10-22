@@ -20,10 +20,10 @@ from tests.common import CommonCountryTests
 class TestNepal(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2010, 2050)
-        super().setUpClass(Nepal, years=years)
-        cls.no_estimated_holidays = Nepal(years=years, islamic_show_estimated=False)
-        cls.workday_holidays = Nepal(categories=WORKDAY, years=years)
+        cls.full_range = range(2010, 2050)
+        super().setUpClass(Nepal)
+        cls.no_estimated_holidays = Nepal(years=cls.full_range, islamic_show_estimated=False)
+        cls.workday_holidays = Nepal(categories=WORKDAY, years=cls.full_range)
 
     def test_special_holidays(self):
         name_day_of_national_mourning = "राष्ट्रिय शोक दिवस"
@@ -45,55 +45,59 @@ class TestNepal(CommonCountryTests, TestCase):
 
     def test_prithvi_jayanti(self):
         name = "पृथ्वी जयन्ती"
-        self.assertHolidayName(name, (f"{year}-01-11" for year in range(2023, 2050)))
-        self.assertNoHolidayName(name, range(2010, 2023))
+        self.assertHolidayName(name, (f"{year}-01-11" for year in range(2023, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2023))
 
     def test_martyrs_day(self):
         name = "शहीद दिवस"
-        dt = (
+        dts = (
             "2021-01-29",
             "2022-01-30",
             "2023-01-30",
             "2024-01-30",
             "2025-01-29",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2034))
-        self.assertNoHolidayName(name, range(2019, 2021), range(2034, 2050))
-        dt = (
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2034))
+        self.assertNoHolidayName(name, range(2019, 2021), range(2034, self.end_year))
+        dts = (
             "2019-01-30",
             "2020-01-30",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_national_democracy_day(self):
         name = "राष्ट्रिय प्रजातन्त्र दिवस"
-        dt = (
+        dts = (
             "2021-02-19",
             "2022-02-19",
             "2023-02-19",
             "2024-02-19",
             "2025-02-19",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2034))
-        self.assertNoHolidayName(name, range(2019, 2021), range(2034, 2050))
-        dt = (
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2034))
+        self.assertNoHolidayName(name, range(2019, 2021), range(2034, self.end_year))
+        dts = (
             "2019-02-19",
             "2020-02-19",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_womens_day(self):
         self.assertHolidayName(
-            "अन्तर्राष्ट्रिय महिला दिवस", (f"{year}-03-08" for year in range(2010, 2050))
+            "अन्तर्राष्ट्रिय महिला दिवस", (f"{year}-03-08" for year in self.full_range)
         )
 
     def test_nepali_new_year(self):
         name = "नेपाली नयाँ वर्ष"
-        dt = (
+        dts = (
             "2019-04-14",
             "2020-04-13",
             "2021-04-14",
@@ -102,36 +106,38 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-04-13",
             "2025-04-14",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_labor_day(self):
         self.assertHolidayName(
-            "अन्तर्राष्ट्रिय श्रम दिवस", (f"{year}-05-01" for year in range(2010, 2050))
+            "अन्तर्राष्ट्रिय श्रम दिवस", (f"{year}-05-01" for year in self.full_range)
         )
 
     def test_republic_day(self):
         name = "गणतन्त्र दिवस"
-        dt = (
+        dts = (
             "2021-05-29",
             "2022-05-29",
             "2023-05-29",
             "2024-05-28",
             "2025-05-28",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2033))
-        self.assertNoHolidayName(name, range(2019, 2021), range(2033, 2050))
-        dt = (
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2033))
+        self.assertNoHolidayName(name, range(2019, 2021), range(2033, self.end_year))
+        dts = (
             "2019-05-29",
             "2020-05-28",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_constitution_day(self):
         name = "संविधान दिवस"
-        dt = (
+        dts = (
             "2019-09-20",
             "2020-09-19",
             "2021-09-19",
@@ -140,15 +146,15 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-09-19",
             "2025-09-19",
         )
-        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, range(2016, 2033))
 
     def test_christmas_day(self):
-        self.assertHolidayName("क्रिसमसको दिन", (f"{year}-12-25" for year in range(2010, 2050)))
+        self.assertHolidayName("क्रिसमसको दिन", (f"{year}-12-25" for year in self.full_range))
 
     def test_maghe_sankranti(self):
         name = "माघे संक्रान्ति"
-        dt = (
+        dts = (
             "2019-01-15",
             "2020-01-15",
             "2021-01-14",
@@ -157,12 +163,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-01-15",
             "2025-01-14",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_sonam_lhochhar(self):
         name = "सोनम ल्होछार"
-        dt = (
+        dts = (
             "2019-02-05",
             "2020-01-25",
             "2021-02-12",
@@ -171,12 +177,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-02-10",
             "2025-01-30",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_gyalpo_lhosar(self):
         name = "ग्याल्पो ल्होसार"
-        dt = (
+        dts = (
             "2019-03-07",
             "2020-02-24",
             "2021-03-14",
@@ -185,12 +191,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-03-11",
             "2025-02-28",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_maha_shivaratri(self):
         name = "महाशिवरात्रि"
-        dt = (
+        dts = (
             "2019-03-04",
             "2020-02-21",
             "2021-03-11",
@@ -199,12 +205,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-03-08",
             "2025-02-26",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_holi_hilly(self):
         name = "फागुपूर्णिमा"
-        dt = (
+        dts = (
             "2019-03-20",
             "2020-03-09",
             "2021-03-28",
@@ -213,12 +219,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-03-24",
             "2025-03-13",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_holi_terai(self):
         name = "फागुपूर्णिमा (तराई)"
-        dt = (
+        dts = (
             "2019-03-21",
             "2020-03-10",
             "2021-03-29",
@@ -227,31 +233,33 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-03-25",
             "2025-03-14",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_ram_navami(self):
         name = "राम नवमी"
-        dt = (
+        dts = (
             "2021-04-21",
             "2022-04-10",
             "2023-03-30",
             "2024-04-17",
             "2025-04-06",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
-        dt = (
+        dts = (
             "2019-04-13",
             "2020-04-02",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_buddha_jayanti(self):
         name = "बुद्ध जयन्ती"
-        dt = (
+        dts = (
             "2019-05-18",
             "2020-05-07",
             "2021-05-26",
@@ -260,69 +268,75 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-05-23",
             "2025-05-12",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_janai_poornima(self):
         name = "जनै पूर्णिमा"
-        dt = (
+        dts = (
             "2021-08-22",
             "2022-08-12",
             "2023-08-31",
             "2024-08-19",
             "2025-08-09",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
-        dt = (
+        dts = (
             "2019-08-15",
             "2020-08-03",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_janmashtami(self):
         name = "श्रीकृष्ण जन्माष्टमी"
-        dt = (
+        dts = (
             "2021-08-30",
             "2022-08-19",
             "2023-09-06",
             "2024-08-26",
             "2025-08-16",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
-        dt = (
+        dts = (
             "2019-08-24",
             "2020-08-12",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_ghatasthapana(self):
         name = "घटस्थापना"
-        dt = (
+        dts = (
             "2021-10-07",
             "2022-09-26",
             "2023-10-15",
             "2024-10-03",
             "2025-09-22",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
-        dt = (
+        dts = (
             "2019-09-29",
             "2020-10-17",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_fulpati(self):
         name = "फुलपाती"
-        dt = (
+        dts = (
             "2019-10-05",
             "2020-10-23",
             "2021-10-12",
@@ -331,12 +345,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-10",
             "2025-09-29",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_maha_ashtami(self):
         name = "महा अष्टमी"
-        dt = (
+        dts = (
             "2019-10-06",
             "2020-10-24",
             "2021-10-13",
@@ -345,12 +359,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-11",
             "2025-09-30",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_maha_navami(self):
         name = "महा नवमी"
-        dt = (
+        dts = (
             "2019-10-06",
             "2020-10-25",
             "2021-10-14",
@@ -359,12 +373,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-11",
             "2025-10-01",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_vijayadashami(self):
         name = "विजया दशमी"
-        dt = (
+        dts = (
             "2019-10-08",
             "2020-10-26",
             "2021-10-15",
@@ -373,12 +387,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-12",
             "2025-10-02",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_ekadashi(self):
         name = "एकादशी (दशैं)"
-        dt = (
+        dts = (
             "2019-10-09",
             "2020-10-27",
             "2021-10-16",
@@ -387,31 +401,33 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-13",
             "2025-10-03",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_duwadashi(self):
         name = "दुवादशी (दशैं)"
-        dt = (
+        dts = (
             "2021-10-17",
             "2022-10-07",
             "2023-10-26",
             "2024-10-14",
             "2025-10-04",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2019), range(2021, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2019), range(2021, 2036))
         self.assertNoHolidayName(name, range(2019, 2021))
-        dt = (
+        dts = (
             "2019-10-10",
             "2020-10-28",
         )
-        self.assertHolidayName(name, self.workday_holidays, dt)
-        self.assertNoHolidayName(name, self.workday_holidays, range(2010, 2019), range(2021, 2050))
+        self.assertHolidayName(name, self.workday_holidays, dts)
+        self.assertNoHolidayName(
+            name, self.workday_holidays, range(self.start_year, 2019), range(2021, self.end_year)
+        )
 
     def test_laxmi_pooja(self):
         name = "लक्ष्मीपूजा"
-        dt = (
+        dts = (
             "2019-10-27",
             "2020-11-14",
             "2021-11-04",
@@ -420,12 +436,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-10-31",
             "2025-10-20",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_gai_tihar(self):
         name = "गाई तिहार"
-        dt = (
+        dts = (
             "2019-10-27",
             "2020-11-15",
             "2021-11-04",
@@ -434,12 +450,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-11-01",
             "2025-10-21",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_gobardhan_pooja(self):
         name = "गोवर्धन पूजा"
-        dt = (
+        dts = (
             "2019-10-28",
             "2020-11-16",
             "2021-11-05",
@@ -448,12 +464,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-11-02",
             "2025-10-22",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_mha_pooja(self):
         name = "म्ह पूजा"
-        dt = (
+        dts = (
             "2019-10-28",
             "2020-11-16",
             "2021-11-05",
@@ -462,12 +478,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-11-02",
             "2025-10-22",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_bhai_tika(self):
         name = "भाइटीका"
-        dt = (
+        dts = (
             "2019-10-29",
             "2020-11-17",
             "2021-11-06",
@@ -476,12 +492,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-11-03",
             "2025-10-23",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_chhath_parwa(self):
         name = "छठ पर्व"
-        dt = (
+        dts = (
             "2019-11-02",
             "2020-11-20",
             "2021-11-10",
@@ -490,12 +506,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-11-07",
             "2025-10-27",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2036))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2036))
 
     def test_tamu_lhochhar(self):
         name = "तमु ल्हाेसार"
-        dt = (
+        dts = (
             "2019-12-31",
             "2020-12-30",
             "2021-12-30",
@@ -504,12 +520,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-12-30",
             "2025-12-30",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, range(2010, 2033))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, range(self.start_year, 2033))
 
     def test_eid_al_fitr(self):
         name = "ईद (ईद उल फित्र)"
-        dt = (
+        dts = (
             "2019-06-05",
             "2020-05-25",
             "2021-05-14",
@@ -518,12 +534,12 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-04-11",
             "2025-03-31",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
 
     def test_eid_al_adha(self):
         name = "बकर ईद (ईद उल अजहा)"
-        dt = (
+        dts = (
             "2019-08-12",
             "2020-08-01",
             "2021-07-21",
@@ -532,8 +548,8 @@ class TestNepal(CommonCountryTests, TestCase):
             "2024-06-17",
             "2025-06-07",
         )
-        self.assertHolidayName(name, dt)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
+        self.assertHolidayName(name, dts)
+        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
 
     def test_2025(self):
         self.assertHolidaysInYear(

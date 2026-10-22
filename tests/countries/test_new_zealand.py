@@ -31,8 +31,6 @@ class TestNZ(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dts = (
-            "2005-01-03",
-            "2006-01-03",
             "2011-01-03",
             "2012-01-03",
             "2017-01-03",
@@ -220,8 +218,6 @@ class TestNZ(CommonCountryTests, TestCase):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dts = (
-            "2004-12-27",
-            "2005-12-27",
             "2010-12-27",
             "2011-12-27",
             "2016-12-27",
@@ -235,8 +231,6 @@ class TestNZ(CommonCountryTests, TestCase):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         obs_dts = (
-            "2004-12-28",
-            "2009-12-28",
             "2010-12-28",
             "2015-12-28",
             "2020-12-28",

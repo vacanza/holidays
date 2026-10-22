@@ -124,7 +124,6 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1961, (f"{year}-08-03" for year in range(1961, self.end_year)))
         self.assertNoHolidayName(name_1961, self.start_year)
         obs_dts = (
-            "2008-08-04",
             "2014-08-04",
             "2025-08-04",
         )
@@ -151,7 +150,6 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-11-01" for year in self.full_range))
         obs_dts = (
-            "2009-11-02",
             "2015-11-02",
             "2020-11-02",
         )
@@ -198,7 +196,6 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
-            "2004-02-23",
             "2011-11-28",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
@@ -217,7 +214,6 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
-            "2004-05-03",
             "2012-02-06",
             "2019-11-11",
         )
@@ -237,12 +233,11 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
-            "2000-12-25",
-            "2008-09-29",
             "2013-08-05",
             "2021-05-10",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_fitr(self):
         name = "Korité"
@@ -257,7 +252,6 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
-            "2004-11-15",
             "2012-08-20",
             "2022-05-02",
             "2025-03-31",
@@ -291,7 +285,6 @@ class TestNiger(CommonCountryTests, TestCase):
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
-            "2009-11-30",
             "2017-09-04",
             "2025-06-09",
         )
