@@ -17,6 +17,11 @@ repos:
       - id: trailing-whitespace
         exclude: \.md$
 
+  - repo: https://github.com/rhysd/actionlint
+    rev: 914e7df21a07ef503a81201c76d2b11c789d3fca  # v1.7.12
+    hooks:
+      - id: actionlint-docker
+
   - repo: https://github.com/asottile/pyupgrade
     rev: 75992aaa40730136014f34227e0135f63fc951b4  # v3.21.2
     hooks:
