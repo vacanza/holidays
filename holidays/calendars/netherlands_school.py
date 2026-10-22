@@ -18,24 +18,21 @@ region its premises are in. Only the Christmas, May and summer dates are binding
 autumn and spring dates are published as advice that schools may depart from, and are
 included here as published rather than as a guarantee.
 
-Dates come from the regulations in the Staatscourant, which cover every school year
-from 2013-2014 onwards. The open data feed carries the same tables but its archived
-copies of the 2014-2015, 2015-2016 and 2016-2017 school years start each period a day
-early, so the regulations are used throughout.
+Every break is a whole number of ISO weeks: one for the autumn, spring and May breaks, two
+for the Christmas break and six for the summer break. It runs from the Saturday before its
+first week through the Sunday that ends its last week. Only the week numbers vary, so those
+are all that is recorded below, which is also how the regulations stagger the regions.
+
+Dates come from the regulations in the Staatscourant, which cover every school year from
+2013-2014 onwards. The open data feed carries the same tables but its archived copies of the
+2014-2015, 2015-2016 and 2016-2017 school years start each period a day early, so the
+regulations are used throughout.
 
 The dataset starts with the 2013-2014 school year, the first one whose summer break no
-longer differs between primary and secondary education. Up to 2012-2013 the regulation
-set a separate, longer summer break for secondary schools, which three regions alone
-cannot express. The Caribbean Netherlands, a fourth summer region since 2025-2026, is
-left out as well; it is not part of this entity.
-
-Every period runs from a Saturday to a Sunday: nine days for the autumn, spring and May
-breaks, sixteen for the Christmas break and forty-four for the summer break. The only
-exception is the 2013-2014 May break, which the regulation extends to the Monday of
-Liberation Day.
-
-Ranges that run past 31 December appear under both years, since a year's holidays are
-read from its own entry and clipped to it.
+longer differs between primary and secondary education. Up to 2012-2013 the regulation set a
+separate, longer summer break for secondary schools, which three regions alone cannot
+express. The Caribbean Netherlands, a fourth summer region since 2025-2026, is left out as
+well; it is not part of this entity.
 
 Sources:
     * [Regeling vaststelling schoolvakanties 2013-2016](https://web.archive.org/web/20261022045936/https://zoek.officielebekendmakingen.nl/stcrt-2012-27185.html)
@@ -55,455 +52,42 @@ Sources:
     SUMMER_BREAK,
 ) = range(5)
 
+# Number of ISO weeks each break covers.
+NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS = {
+    AUTUMN_BREAK: 1,
+    CHRISTMAS_BREAK: 2,
+    SPRING_BREAK: 1,
+    MAY_BREAK: 1,
+    SUMMER_BREAK: 6,
+}
+
+# The Christmas break is nationwide and falls in week 52 of every school year covered here.
+NETHERLANDS_CHRISTMAS_BREAK_WEEK = 52
+
+# The 2013-2014 May break ran a day longer, through Liberation Day on May 5th, 2014.
+NETHERLANDS_EXTENDED_MAY_BREAK_SCHOOL_YEARS = {2013}
+
+# Order of the per-region week numbers below.
+NETHERLANDS_SCHOOL_HOLIDAY_REGIONS = ("Noord", "Midden", "Zuid")
+
+# School year start -> autumn, spring and summer weeks per region, then the May break week.
+# The Christmas break is the same nationwide, so it is not repeated here.
 NETHERLANDS_SCHOOL_HOLIDAYS = {
-    2013: {
-        "Noord": (
-            (0, 10, 19, 0, 10, 27, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (0, 10, 19, 0, 10, 27, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (0, 10, 12, 0, 10, 20, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-    },
-    2014: {
-        "Noord": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 22, 0, 3, 2, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 5, MAY_BREAK),
-            (0, 7, 5, 0, 8, 17, SUMMER_BREAK),
-            (0, 10, 11, 0, 10, 19, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 15, 0, 2, 23, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 5, MAY_BREAK),
-            (0, 7, 19, 0, 8, 31, SUMMER_BREAK),
-            (0, 10, 18, 0, 10, 26, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 15, 0, 2, 23, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 5, MAY_BREAK),
-            (0, 7, 12, 0, 8, 24, SUMMER_BREAK),
-            (0, 10, 18, 0, 10, 26, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-    },
-    2015: {
-        "Noord": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 21, 0, 3, 1, SPRING_BREAK),
-            (0, 5, 2, 0, 5, 10, MAY_BREAK),
-            (0, 7, 4, 0, 8, 16, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 21, 0, 3, 1, SPRING_BREAK),
-            (0, 5, 2, 0, 5, 10, MAY_BREAK),
-            (0, 7, 11, 0, 8, 23, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 14, 0, 2, 22, SPRING_BREAK),
-            (0, 5, 2, 0, 5, 10, MAY_BREAK),
-            (0, 7, 18, 0, 8, 30, SUMMER_BREAK),
-            (0, 10, 24, 0, 11, 1, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-    },
-    2016: {
-        "Noord": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 27, 0, 3, 6, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 16, 0, 8, 28, SUMMER_BREAK),
-            (0, 10, 15, 0, 10, 23, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 9, 0, 8, 21, SUMMER_BREAK),
-            (0, 10, 15, 0, 10, 23, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 23, 0, 9, 4, SUMMER_BREAK),
-            (0, 10, 22, 0, 10, 30, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-    },
-    2017: {
-        "Noord": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 18, 0, 2, 26, SPRING_BREAK),
-            (0, 4, 22, 0, 4, 30, MAY_BREAK),
-            (0, 7, 22, 0, 9, 3, SUMMER_BREAK),
-            (0, 10, 21, 0, 10, 29, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 25, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 22, 0, 4, 30, MAY_BREAK),
-            (0, 7, 8, 0, 8, 20, SUMMER_BREAK),
-            (0, 10, 14, 0, 10, 22, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 25, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 22, 0, 4, 30, MAY_BREAK),
-            (0, 7, 15, 0, 8, 27, SUMMER_BREAK),
-            (0, 10, 14, 0, 10, 22, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-    },
-    2018: {
-        "Noord": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 24, 0, 3, 4, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 21, 0, 9, 2, SUMMER_BREAK),
-            (0, 10, 20, 0, 10, 28, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 24, 0, 3, 4, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 14, 0, 8, 26, SUMMER_BREAK),
-            (0, 10, 20, 0, 10, 28, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 17, 0, 2, 25, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 7, 0, 8, 19, SUMMER_BREAK),
-            (0, 10, 13, 0, 10, 21, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-    },
-    2019: {
-        "Noord": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 16, 0, 2, 24, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 13, 0, 8, 25, SUMMER_BREAK),
-            (0, 10, 19, 0, 10, 27, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 23, 0, 3, 3, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 20, 0, 9, 1, SUMMER_BREAK),
-            (0, 10, 19, 0, 10, 27, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 23, 0, 3, 3, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 6, 0, 8, 18, SUMMER_BREAK),
-            (0, 10, 12, 0, 10, 20, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-    },
-    2020: {
-        "Noord": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 15, 0, 2, 23, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 4, 0, 8, 16, SUMMER_BREAK),
-            (0, 10, 10, 0, 10, 18, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 22, 0, 3, 1, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 18, 0, 8, 30, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 22, 0, 3, 1, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 11, 0, 8, 23, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-    },
-    2021: {
-        "Noord": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 5, 1, 0, 5, 9, MAY_BREAK),
-            (0, 7, 10, 0, 8, 22, SUMMER_BREAK),
-            (0, 10, 16, 0, 10, 24, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 5, 1, 0, 5, 9, MAY_BREAK),
-            (0, 7, 17, 0, 8, 29, SUMMER_BREAK),
-            (0, 10, 16, 0, 10, 24, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 13, 0, 2, 21, SPRING_BREAK),
-            (0, 5, 1, 0, 5, 9, MAY_BREAK),
-            (0, 7, 24, 0, 9, 5, SUMMER_BREAK),
-            (0, 10, 23, 0, 10, 31, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-    },
-    2022: {
-        "Noord": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 19, 0, 2, 27, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 16, 0, 8, 28, SUMMER_BREAK),
-            (0, 10, 15, 0, 10, 23, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 26, 0, 3, 6, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 9, 0, 8, 21, SUMMER_BREAK),
-            (0, 10, 22, 0, 10, 30, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 26, 0, 3, 6, SPRING_BREAK),
-            (0, 4, 30, 0, 5, 8, MAY_BREAK),
-            (0, 7, 23, 0, 9, 4, SUMMER_BREAK),
-            (0, 10, 22, 0, 10, 30, AUTUMN_BREAK),
-            (0, 12, 24, 1, 1, 8, CHRISTMAS_BREAK),
-        ),
-    },
-    2023: {
-        "Noord": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 25, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 22, 0, 9, 3, SUMMER_BREAK),
-            (0, 10, 21, 0, 10, 29, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 25, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 8, 0, 8, 20, SUMMER_BREAK),
-            (0, 10, 14, 0, 10, 22, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 24, 0, 1, 8, CHRISTMAS_BREAK),
-            (0, 2, 18, 0, 2, 26, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 15, 0, 8, 27, SUMMER_BREAK),
-            (0, 10, 14, 0, 10, 22, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-    },
-    2024: {
-        "Noord": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 17, 0, 2, 25, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 20, 0, 9, 1, SUMMER_BREAK),
-            (0, 10, 26, 0, 11, 3, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 17, 0, 2, 25, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 13, 0, 8, 25, SUMMER_BREAK),
-            (0, 10, 26, 0, 11, 3, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 10, 0, 2, 18, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 6, 0, 8, 18, SUMMER_BREAK),
-            (0, 10, 19, 0, 10, 27, AUTUMN_BREAK),
-            (0, 12, 21, 1, 1, 5, CHRISTMAS_BREAK),
-        ),
-    },
-    2025: {
-        "Noord": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 15, 0, 2, 23, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 4, MAY_BREAK),
-            (0, 7, 12, 0, 8, 24, SUMMER_BREAK),
-            (0, 10, 18, 0, 10, 26, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 22, 0, 3, 2, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 4, MAY_BREAK),
-            (0, 7, 19, 0, 8, 31, SUMMER_BREAK),
-            (0, 10, 18, 0, 10, 26, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 21, 0, 1, 5, CHRISTMAS_BREAK),
-            (0, 2, 22, 0, 3, 2, SPRING_BREAK),
-            (0, 4, 26, 0, 5, 4, MAY_BREAK),
-            (0, 7, 5, 0, 8, 17, SUMMER_BREAK),
-            (0, 10, 11, 0, 10, 19, AUTUMN_BREAK),
-            (0, 12, 20, 1, 1, 4, CHRISTMAS_BREAK),
-        ),
-    },
-    2026: {
-        "Noord": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 21, 0, 3, 1, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 4, 0, 8, 16, SUMMER_BREAK),
-            (0, 10, 10, 0, 10, 18, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 14, 0, 2, 22, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 18, 0, 8, 30, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 20, 0, 1, 4, CHRISTMAS_BREAK),
-            (0, 2, 14, 0, 2, 22, SPRING_BREAK),
-            (0, 4, 25, 0, 5, 3, MAY_BREAK),
-            (0, 7, 11, 0, 8, 23, SUMMER_BREAK),
-            (0, 10, 17, 0, 10, 25, AUTUMN_BREAK),
-            (0, 12, 19, 1, 1, 3, CHRISTMAS_BREAK),
-        ),
-    },
-    2027: {
-        "Noord": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 4, 24, 0, 5, 2, MAY_BREAK),
-            (0, 7, 10, 0, 8, 22, SUMMER_BREAK),
-            (0, 10, 16, 0, 10, 24, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 20, 0, 2, 28, SPRING_BREAK),
-            (0, 4, 24, 0, 5, 2, MAY_BREAK),
-            (0, 7, 17, 0, 8, 29, SUMMER_BREAK),
-            (0, 10, 16, 0, 10, 24, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 19, 0, 1, 3, CHRISTMAS_BREAK),
-            (0, 2, 13, 0, 2, 21, SPRING_BREAK),
-            (0, 4, 24, 0, 5, 2, MAY_BREAK),
-            (0, 7, 24, 0, 9, 5, SUMMER_BREAK),
-            (0, 10, 23, 0, 10, 31, AUTUMN_BREAK),
-            (0, 12, 25, 1, 1, 9, CHRISTMAS_BREAK),
-        ),
-    },
-    2028: {
-        "Noord": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 19, 0, 2, 27, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 15, 0, 8, 27, SUMMER_BREAK),
-            (0, 10, 14, 0, 10, 22, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 26, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 8, 0, 8, 20, SUMMER_BREAK),
-            (0, 10, 21, 0, 10, 29, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 25, 0, 1, 9, CHRISTMAS_BREAK),
-            (0, 2, 26, 0, 3, 5, SPRING_BREAK),
-            (0, 4, 29, 0, 5, 7, MAY_BREAK),
-            (0, 7, 22, 0, 9, 3, SUMMER_BREAK),
-            (0, 10, 21, 0, 10, 29, AUTUMN_BREAK),
-            (0, 12, 23, 1, 1, 7, CHRISTMAS_BREAK),
-        ),
-    },
-    2029: {
-        "Noord": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 17, 0, 2, 25, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 21, 0, 9, 2, SUMMER_BREAK),
-            (0, 10, 20, 0, 10, 28, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 17, 0, 2, 25, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 7, 0, 8, 19, SUMMER_BREAK),
-            (0, 10, 20, 0, 10, 28, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 23, 0, 1, 7, CHRISTMAS_BREAK),
-            (0, 2, 10, 0, 2, 18, SPRING_BREAK),
-            (0, 4, 28, 0, 5, 6, MAY_BREAK),
-            (0, 7, 14, 0, 8, 26, SUMMER_BREAK),
-            (0, 10, 13, 0, 10, 21, AUTUMN_BREAK),
-            (0, 12, 22, 1, 1, 6, CHRISTMAS_BREAK),
-        ),
-    },
-    2030: {
-        "Noord": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 16, 0, 2, 24, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 20, 0, 9, 1, SUMMER_BREAK),
-        ),
-        "Midden": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 23, 0, 3, 3, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 13, 0, 8, 25, SUMMER_BREAK),
-        ),
-        "Zuid": (
-            (-1, 12, 22, 0, 1, 6, CHRISTMAS_BREAK),
-            (0, 2, 23, 0, 3, 3, SPRING_BREAK),
-            (0, 4, 27, 0, 5, 5, MAY_BREAK),
-            (0, 7, 6, 0, 8, 18, SUMMER_BREAK),
-        ),
-    },
+    2013: ((43, 43, 42), (9, 8, 8), (28, 30, 29), 18),
+    2014: ((42, 43, 43), (9, 9, 8), (28, 29, 30), 19),
+    2015: ((43, 43, 44), (9, 8, 8), (29, 28, 30), 18),
+    2016: ((42, 42, 43), (8, 9, 9), (30, 28, 29), 17),
+    2017: ((43, 42, 42), (9, 9, 8), (30, 29, 28), 18),
+    2018: ((43, 43, 42), (8, 9, 9), (29, 30, 28), 18),
+    2019: ((43, 43, 42), (8, 9, 9), (28, 30, 29), 18),
+    2020: ((42, 43, 43), (8, 8, 7), (28, 29, 30), 18),
+    2021: ((42, 42, 43), (8, 9, 9), (29, 28, 30), 18),
+    2022: ((42, 43, 43), (9, 9, 8), (30, 28, 29), 18),
+    2023: ((43, 42, 42), (8, 8, 7), (30, 29, 28), 18),
+    2024: ((44, 44, 43), (8, 9, 9), (29, 30, 28), 18),
+    2025: ((43, 43, 42), (9, 8, 8), (28, 30, 29), 18),
+    2026: ((42, 43, 43), (8, 8, 7), (28, 29, 30), 17),
+    2027: ((42, 42, 43), (8, 9, 9), (29, 28, 30), 18),
+    2028: ((42, 43, 43), (8, 8, 7), (30, 28, 29), 18),
+    2029: ((43, 43, 42), (8, 9, 9), (30, 29, 28), 18),
 }

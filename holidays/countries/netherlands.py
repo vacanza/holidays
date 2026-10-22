@@ -19,6 +19,10 @@ from holidays.calendars.netherlands_school import (
     SPRING_BREAK,
     MAY_BREAK,
     SUMMER_BREAK,
+    NETHERLANDS_CHRISTMAS_BREAK_WEEK,
+    NETHERLANDS_EXTENDED_MAY_BREAK_SCHOOL_YEARS,
+    NETHERLANDS_SCHOOL_HOLIDAY_REGIONS,
+    NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS,
     NETHERLANDS_SCHOOL_HOLIDAYS,
 )
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
@@ -135,25 +139,34 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             return None
 
         school_holiday_names = self._get_school_holiday_names()
-        for (
-            start_year_offset,
-            start_month,
-            start_day,
-            end_year_offset,
-            end_month,
-            end_day,
-            holiday_id,
-        ) in NETHERLANDS_SCHOOL_HOLIDAYS.get(self._year, {}).get(self._normalized_subdiv, ()):
-            start_date = date(self._year + start_year_offset, start_month, start_day)
-            end_date = date(self._year + end_year_offset, end_month, end_day)
-            # The anchor is the day before the break, as the days are counted from the one
-            # after it. A break spanning New Year is listed under both years; the dates
-            # outside the year being populated are dropped on add.
-            self._add_multiday_holiday(
-                _timedelta(start_date, -1),
-                (end_date - start_date).days + 1,
-                name=school_holiday_names[holiday_id],
-            )
+        region = NETHERLANDS_SCHOOL_HOLIDAY_REGIONS.index(self._normalized_subdiv)
+        # A school year contributes to both calendar years it spans, so both are visited and
+        # the dates that fall outside the year being populated are dropped on add.
+        for school_year in (self._year - 1, self._year):
+            if not (weeks := NETHERLANDS_SCHOOL_HOLIDAYS.get(school_year)):
+                continue
+            autumn_weeks, spring_weeks, summer_weeks, may_week = weeks
+
+            for holiday_id, iso_year, iso_week in (
+                (AUTUMN_BREAK, school_year, autumn_weeks[region]),
+                (CHRISTMAS_BREAK, school_year, NETHERLANDS_CHRISTMAS_BREAK_WEEK),
+                (SPRING_BREAK, school_year + 1, spring_weeks[region]),
+                (MAY_BREAK, school_year + 1, may_week),
+                (SUMMER_BREAK, school_year + 1, summer_weeks[region]),
+            ):
+                duration_days = 7 * NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS[holiday_id] + 2
+                if (
+                    holiday_id == MAY_BREAK
+                    and school_year in NETHERLANDS_EXTENDED_MAY_BREAK_SCHOOL_YEARS
+                ):
+                    duration_days += 1
+                # The break opens on the Saturday before its first week, which is also the
+                # day after the anchor `_add_multiday_holiday` counts from.
+                self._add_multiday_holiday(
+                    _timedelta(date.fromisocalendar(iso_year, iso_week, 1), -3),
+                    duration_days,
+                    name=school_holiday_names[holiday_id],
+                )
 
 
 class NL(Netherlands):
