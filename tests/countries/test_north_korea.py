@@ -56,7 +56,10 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         name = "조선인민군창건일"
         self.assertHolidayName(
             name,
-            (f"{year}-02-08" for year in (*range(self.start_year, 1978), *range(2018, self.end_year))),
+            (
+                f"{year}-02-08"
+                for year in (*range(self.start_year, 1978), *range(2018, self.end_year))
+            ),
         )
         self.assertNoHolidayName(name, range(1978, 2018))
 
@@ -67,7 +70,9 @@ class TestNorthKorea(CommonCountryTests, TestCase):
             (f"{year}-02-16" for year in range(1975, 2012)),
             (f"{year}-02-17" for year in range(1986, 2012)),
         )
-        self.assertNoHolidayName(name_1975, range(self.start_year, 1975), range(2012, self.end_year))
+        self.assertNoHolidayName(
+            name_1975, range(self.start_year, 1975), range(2012, self.end_year)
+        )
 
         name_2012 = "광명성절"
         self.assertHolidayName(
@@ -127,7 +132,9 @@ class TestNorthKorea(CommonCountryTests, TestCase):
     def test_army_day(self):
         name_1978 = "건군절"
         self.assertHolidayName(name_1978, (f"{year}-04-25" for year in range(1978, 2018)))
-        self.assertNoHolidayName(name_1978, range(self.start_year, 1978), range(2018, self.end_year))
+        self.assertNoHolidayName(
+            name_1978, range(self.start_year, 1978), range(2018, self.end_year)
+        )
 
         name_2018 = "조선인민혁명군 창건일"
         self.assertHolidayName(name_2018, (f"{year}-04-25" for year in range(2018, self.end_year)))
