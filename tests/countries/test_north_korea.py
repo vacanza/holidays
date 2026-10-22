@@ -159,9 +159,7 @@ class TestNorthKorea(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1968, self.end_year))
 
     def test_childrens_union_day(self):
-        self.assertHolidayName(
-            "조선소년단 창립절", (f"{year}-06-06" for year in self.full_range)
-        )
+        self.assertHolidayName("조선소년단 창립절", (f"{year}-06-06" for year in self.full_range))
 
     def test_victory_day(self):
         name = "조국해방전쟁승리기념일"
