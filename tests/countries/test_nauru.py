@@ -17,9 +17,6 @@ from tests.common import CommonCountryTests
 
 
 class TestNauru(CommonCountryTests, TestCase):
-    start_year = 1969
-    end_year = 2049
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Nauru)
