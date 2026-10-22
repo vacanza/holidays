@@ -20,9 +20,6 @@ class TestWesternSahara(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(WesternSahara)
-        cls.no_estimated_holidays = WesternSahara(
-            years=cls.full_range, islamic_show_estimated=False
-        )
 
     def test_proclamation_of_the_sadr(self):
         self.assertHolidayName(
