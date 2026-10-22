@@ -50,6 +50,7 @@ class TestNauru(CommonCountryTests, TestCase):
             "2014-02-03",
             "2015-02-03",
             "2020-02-03",
+            "2025-02-03",
         )
         self.assertHolidayName(f"{name_after} (observed)", obs_dts_after)
         self.assertNoNonObservedHoliday(obs_dts, obs_dts_after)
