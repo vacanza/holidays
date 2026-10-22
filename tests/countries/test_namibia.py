@@ -17,10 +17,12 @@ from tests.common import CommonCountryTests
 
 
 class TestNamibia(CommonCountryTests, TestCase):
+    start_year = 1991
+    end_year = 2049
+
     @classmethod
     def setUpClass(cls):
-        years = range(1991, 2050)
-        super().setUpClass(Namibia, years=years, years_non_observed=years)
+        super().setUpClass(Namibia)
 
     def test_special_holidays(self):
         self.assertHoliday(
