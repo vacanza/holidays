@@ -596,6 +596,15 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             name, range(self.start_year, 2000), range(2025, self.end_year)
         )
 
+    def test_observed_dates_do_not_depend_on_language(self):
+        for year in (2020, 2037, 2048, 2054, 2065, 2076, 2082, 2093, 2099):
+            expected = Taiwan(years=year, language="en_US")
+            for language in Taiwan.supported_languages:
+                with self.subTest(year=year, language=language):
+                    actual = Taiwan(years=year, language=language)
+                    self.assertEqual(actual.keys(), expected.keys())
+                    self.assertIn(date(year, 4, 2), actual)
+
     def test_1998(self):
         self.assertHolidaysInYear(
             1998,
@@ -1287,12 +1296,3 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-11-12", "中华文化复兴节; 国父诞辰纪念日"),
             ("2022-12-25", "行宪纪念日"),
         )
-
-    def test_observed_dates_do_not_depend_on_language(self):
-        for year in (2020, 2037, 2048, 2054, 2065, 2076, 2082, 2093, 2099):
-            expected = Taiwan(years=year, language="en_US")
-            for language in Taiwan.supported_languages:
-                with self.subTest(year=year, language=language):
-                    actual = Taiwan(years=year, language=language)
-                    self.assertEqual(actual.keys(), expected.keys())
-                    self.assertIn(date(year, 4, 2), actual)
