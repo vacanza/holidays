@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.constants import GOVERNMENT, SCHOOL
@@ -21,6 +22,15 @@ class TestTaiwan(CommonCountryTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Taiwan)
+
+    def test_observed_dates_do_not_depend_on_language(self):
+        for year in (2020, 2037, 2048, 2054, 2065, 2076, 2082, 2093, 2099):
+            expected = Taiwan(years=year, language="en_US")
+            for language in Taiwan.supported_languages:
+                with self.subTest(year=year, language=language):
+                    actual = Taiwan(years=year, language=language)
+                    self.assertEqual(actual.keys(), expected.keys())
+                    self.assertIn(date(year, 4, 2), actual)
 
     def test_no_holidays(self):
         super().test_no_holidays()

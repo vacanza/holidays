@@ -22,6 +22,13 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
         cls.full_range = range(2008, 2030)
         super().setUpClass(TaiwanStockExchange)
 
+    def test_observed_dates_do_not_depend_on_language(self):
+        expected = TaiwanStockExchange(years=2020, language="en_US")
+        for language in TaiwanStockExchange.supported_languages:
+            with self.subTest(language=language):
+                actual = TaiwanStockExchange(years=2020, language=language)
+                self.assertEqual(actual.keys(), expected.keys())
+
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
