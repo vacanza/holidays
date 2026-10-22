@@ -157,7 +157,7 @@ jobs:
     name: Publish to PyPI
     needs:
       - build
-    if: needs.build.result == 'success'
+    if: always() && needs.build.result == 'success'
     environment: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
     permissions:
       id-token: write
@@ -178,7 +178,7 @@ jobs:
     name: Create SHA256 checksums and Sigstore signatures
     needs:
       - publish
-    if: github.event_name == 'release' && needs.publish.result == 'success'
+    if: always() && github.event_name == 'release' && needs.publish.result == 'success'
     permissions:
       contents: write
       id-token: write
@@ -214,7 +214,7 @@ jobs:
     name: Update GitHub release with SBOM and signed artifacts
     needs:
       - sign-artifacts
-    if: github.event_name == 'release' && needs.sign-artifacts.result == 'success'
+    if: always() && github.event_name == 'release' && needs.sign-artifacts.result == 'success'
     permissions:
       contents: write
     runs-on: ubuntu-26.04-arm
