@@ -1,23 +1,105 @@
-name: Publish release
+name: Publish to PyPI
 
 on:
   release:
     types:
       - published
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
 
 env:
   FORCE_COLOR: 1
 
 concurrency:
   cancel-in-progress: false
-  group: ${{ github.repository }}-publish-release-${{ github.event.release.tag_name }}
+  group: >-
+    ${{
+      github.event_name == 'release'
+      && format('{0}-publish-release-{1}', github.repository, github.event.release.tag_name)
+      || format('{0}-publish-pre-release-dev', github.repository)
+    }}
 
 permissions: {}
 
 jobs:
-  verify-release:
-    name: Verify release tag
+  check-pre-release:
+    name: Check pre-release
     if: |
+      github.event_name == 'workflow_run' &&
+      github.repository == 'vacanza/holidays' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'dev'
+    outputs:
+      publish: ${{ steps.decide.outputs.publish }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-26.04-arm
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      # Decide from local git commit metadata.
+      - name: Decide whether to publish
+        id: decide
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
+        with:
+          script: |
+            const { execFileSync } = require('child_process')
+            const commit = (fmt) =>
+              execFileSync('git', ['log', '-1', `--format=${fmt}`], {
+                encoding: 'utf8',
+              }).trim()
+            const isBot = (name, email) => {
+              const bots = ['dependabot[bot]', 'github-actions[bot]']
+              return bots.includes(name) || bots.some((bot) => email.includes(`${bot}@`))
+            }
+            const isBotCoAuthor = (message) =>
+              message.split('\n').some((line) => {
+                const match = line.match(/^Co-authored-by:\s*(.+?)(?:\s*<([^>]+)>)?\s*$/i)
+                return match && isBot(match[1].trim(), (match[2] || '').trim())
+              })
+            const authorEmail = commit('%ae')
+            const authorName = commit('%an')
+            const message = commit('%B')
+            const parents = commit('%P').split(/\s+/).filter(Boolean)
+            const subject = commit('%s')
+
+            let publish = true
+            let reason = 'publish: passed pre-release checks'
+
+            // Merge commits are mainly main to dev syncs.
+            if (parents.length > 1) {
+              publish = false
+              reason = `skip: merge commit (${subject})`
+            } else if (/^(Initialize|Finalize) v/.test(subject)) {
+              // Usually direct pushes to dev (no PR).
+              publish = false
+              reason = `skip: release chore commit (${subject})`
+            } else if (/\[skip publish\]/i.test(subject)) {
+              publish = false
+              reason = 'skip: commit subject contains [skip publish]'
+            } else if (isBot(authorName, authorEmail)) {
+              publish = false
+              reason = `skip: bot commit author (${authorName} <${authorEmail}>)`
+            } else if (isBotCoAuthor(message)) {
+              publish = false
+              reason = 'skip: bot co-author'
+            }
+
+            core.info(reason)
+            core.setOutput('publish', publish ? 'true' : 'false')
+
+  check-release:
+    name: Check release
+    if: |
+      github.event_name == 'release' &&
       github.repository == 'vacanza/holidays' &&
       startsWith(github.event.release.tag_name, 'v')
     outputs:
@@ -50,23 +132,33 @@ jobs:
   # Build/test are reusable; PyPI upload must stay top-level (Trusted Publishing).
   # https://docs.pypi.org/trusted-publishers/troubleshooting/#reusable-workflows-on-github
   # https://github.com/pypa/gh-action-pypi-publish/issues/166
+  # always() so the skipped entry job does not skip the build.
   build:
     name: Build and test
     needs:
-      - verify-release
+      - check-pre-release
+      - check-release
+    if: |
+      always() &&
+      !cancelled() &&
+      (
+        needs.check-pre-release.outputs.publish == 'true' ||
+        needs.check-release.result == 'success'
+      )
     permissions:
       contents: read
     uses: ./.github/workflows/run-build-tests.yml
     with:
-      environment: release
-      ref: ${{ needs.verify-release.outputs.tag_commit }}
-      release_tag: ${{ github.event.release.tag_name }}
+      environment: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
+      ref: ${{ github.event_name == 'release' && needs.check-release.outputs.***  || github.event.workflow_run.head_sha }}
+      release_tag: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
 
   publish:
     name: Publish to PyPI
     needs:
       - build
-    environment: release
+    if: needs.build.result == 'success'
+    environment: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
     permissions:
       id-token: write
     # gh-action-pypi-publish ships an amd64-only image.
@@ -86,6 +178,7 @@ jobs:
     name: Create SHA256 checksums and Sigstore signatures
     needs:
       - publish
+    if: github.event_name == 'release' && needs.publish.result == 'success'
     permissions:
       contents: write
       id-token: write
@@ -121,6 +214,7 @@ jobs:
     name: Update GitHub release with SBOM and signed artifacts
     needs:
       - sign-artifacts
+    if: github.event_name == 'release' && needs.sign-artifacts.result == 'success'
     permissions:
       contents: write
     runs-on: ubuntu-26.04-arm
