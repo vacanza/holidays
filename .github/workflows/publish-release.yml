@@ -150,7 +150,7 @@ jobs:
     uses: ./.github/workflows/run-build-tests.yml
     with:
       environment: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
-      ref: ${{ github.event_name == 'release' && needs.check-release.outputs.***  || github.event.workflow_run.head_sha }}
+      ref: ${{ github.event_name == 'release' && needs.check-release.outputs.tag_commit || github.event.workflow_run.head_sha }}
       release_tag: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
 
   publish:
