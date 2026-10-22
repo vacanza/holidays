@@ -26,7 +26,7 @@ repos:
           - --py311-plus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 2eeb5678de71a00c0902cbda7105d328432f72cb  # v0.16.8
+    rev: a56c0b927e6465d37cae3e97d35d4d18ab2b96cd  # v0.16.9
     hooks:
       - id: ruff-check
       - id: ruff-format
@@ -50,7 +50,7 @@ repos:
           - docs/file_header.txt
 
   - repo: https://github.com/pycqa/isort
-    rev: 131f4adcd5582bfc53928ab0d740eceb8b506b6c  # 9.0.1
+    rev: 9f905615631c545f5aea2516508109350d1d2f7d  # 9.0.2
     hooks:
       - id: isort
         exclude: ^(docs)
