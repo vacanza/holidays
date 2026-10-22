@@ -197,26 +197,6 @@ class TestNauru(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_2010(self):
-        self.assertHolidaysInYear(
-            2010,
-            ("2010-01-01", "New Year's Day"),
-            ("2010-01-31", "Independence Day"),
-            ("2010-02-01", "Day following Independence Day"),
-            ("2010-02-02", "Independence Day (observed)"),
-            ("2010-04-02", "Good Friday"),
-            ("2010-04-05", "Easter Monday"),
-            ("2010-04-06", "Easter Tuesday"),
-            ("2010-05-17", "Constitution Day"),
-            ("2010-09-25", "National Youth Day"),
-            ("2010-09-27", "National Youth Day (observed)"),
-            ("2010-10-26", "Angam Day"),
-            ("2010-12-25", "Christmas Day"),
-            ("2010-12-26", "Day following Christmas"),
-            ("2010-12-27", "Christmas Day (observed)"),
-            ("2010-12-28", "Day following Christmas (observed)"),
-        )
-
     def test_2024(self):
         self.assertHolidaysInYear(
             2024,

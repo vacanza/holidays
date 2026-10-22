@@ -44,6 +44,8 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dts = (
+            "1995-01-02",
+            "2006-01-02",
             "2012-01-02",
             "2017-01-02",
             "2023-01-02",
@@ -55,6 +57,9 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Independence Day"
         self.assertHolidayName(name, (f"{year}-03-21" for year in self.full_range))
         obs_dts = (
+            "1993-03-22",
+            "1999-03-22",
+            "2004-03-22",
             "2010-03-22",
             "2021-03-22",
         )
@@ -91,6 +96,8 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Workers' Day"
         self.assertHolidayName(name, (f"{year}-05-01" for year in self.full_range))
         obs_dts = (
+            "1994-05-02",
+            "2005-05-02",
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
@@ -102,6 +109,9 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Cassinga Day"
         self.assertHolidayName(name, (f"{year}-05-04" for year in self.full_range))
         obs_dts = (
+            "1997-05-05",
+            "2003-05-05",
+            "2008-05-05",
             "2014-05-05",
             "2025-05-05",
         )
@@ -112,6 +122,9 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Africa Day"
         self.assertHolidayName(name, (f"{year}-05-25" for year in self.full_range))
         obs_dts = (
+            "1997-05-26",
+            "2003-05-26",
+            "2008-05-26",
             "2014-05-26",
             "2025-05-26",
         )
@@ -140,6 +153,8 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Heroes' Day"
         self.assertHolidayName(name, (f"{year}-08-26" for year in self.full_range))
         obs_dts = (
+            "2001-08-27",
+            "2007-08-27",
             "2012-08-27",
             "2018-08-27",
         )
@@ -161,6 +176,7 @@ class TestNamibia(CommonCountryTests, TestCase):
         self.assertHolidayName(name_2, (f"{year}-09-10" for year in range(2005, self.end_year)))
         self.assertNoHolidayName(name_2, range(self.start_year, 2005))
         obs_dts = (
+            "2006-09-11",
             "2017-09-11",
             "2023-09-11",
         )
@@ -174,6 +190,9 @@ class TestNamibia(CommonCountryTests, TestCase):
         name = "Family Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         obs_dts = (
+            "1993-12-27",
+            "1999-12-27",
+            "2004-12-27",
             "2010-12-27",
             "2021-12-27",
         )
