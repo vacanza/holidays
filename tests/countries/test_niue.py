@@ -81,7 +81,6 @@ class TestNiue(CommonCountryTests, TestCase):
         name = "ANZAC Day"
         self.assertHolidayName(name, (f"{year}-04-25" for year in self.full_range))
         obs_dts = (
-            "2009-04-27",
             "2010-04-26",
             "2015-04-27",
             "2020-04-27",

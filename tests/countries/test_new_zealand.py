@@ -20,7 +20,7 @@ from tests.common import CommonCountryTests
 class TestNZ(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1894, 2053)
+        cls.full_range = range(NewZealand.start_year, 2053)
         super().setUpClass(NewZealand)
 
     def setUp(self):

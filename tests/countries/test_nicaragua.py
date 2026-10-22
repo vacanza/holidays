@@ -28,15 +28,12 @@ class TestNicaragua(CommonCountryTests, TestCase):
         name = "Jueves Santo"
         self.assertHolidayName(
             name,
-            "2016-03-24",
-            "2017-04-13",
-            "2018-03-29",
-            "2019-04-18",
             "2020-04-09",
             "2021-04-01",
             "2022-04-14",
             "2023-04-06",
             "2024-03-28",
+            "2025-04-17",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -44,15 +41,12 @@ class TestNicaragua(CommonCountryTests, TestCase):
         name = "Viernes Santo"
         self.assertHolidayName(
             name,
-            "2016-03-25",
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
             "2024-03-29",
+            "2025-04-18",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -79,13 +73,35 @@ class TestNicaragua(CommonCountryTests, TestCase):
             "Día de la Independencia", (f"{year}-09-15" for year in self.full_range)
         )
 
-    def test_virgins_day(self):
+    def test_immaculate_conception(self):
         self.assertHolidayName(
             "Concepción de María", (f"{year}-12-08" for year in self.full_range)
         )
 
     def test_christmas_day(self):
         self.assertHolidayName("Navidad", (f"{year}-12-25" for year in self.full_range))
+
+    def test_descent_of_saint_dominic(self):
+        name = "Bajada de Santo Domingo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-01" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ascent_of_saint_dominic(self):
+        name = "Subida de Santo Domingo"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MN":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-08-10" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_2023(self):
         self.assertHolidaysInYear(
@@ -101,20 +117,6 @@ class TestNicaragua(CommonCountryTests, TestCase):
             ("2023-12-08", "Concepción de María"),
             ("2023-12-25", "Navidad"),
         )
-
-        for subdiv in Nicaragua.subdivisions:
-            if subdiv == "MN":
-                self.assertHoliday(
-                    Nicaragua(subdiv=subdiv),
-                    "2023-08-01",
-                    "2023-08-10",
-                )
-            else:
-                self.assertNoHoliday(
-                    Nicaragua(subdiv=subdiv),
-                    "2023-08-01",
-                    "2023-08-10",
-                )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

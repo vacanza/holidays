@@ -65,20 +65,19 @@ class TestNorthKorea(CommonCountryTests, TestCase):
 
     def test_day_of_shining_star(self):
         name_1975 = "김정일의 생일"
+        name_2012 = "광명성절"
         self.assertHolidayName(
             name_1975,
             (f"{year}-02-16" for year in range(1975, 2012)),
             (f"{year}-02-17" for year in range(1986, 2012)),
         )
-        self.assertNoHolidayName(
-            name_1975, range(self.start_year, 1975), range(2012, self.end_year)
-        )
-
-        name_2012 = "광명성절"
         self.assertHolidayName(
             name_2012,
             (f"{year}-02-16" for year in range(2012, self.end_year)),
             (f"{year}-02-17" for year in range(2012, self.end_year)),
+        )
+        self.assertNoHolidayName(
+            name_1975, range(self.start_year, 1975), range(2012, self.end_year)
         )
         self.assertNoHolidayName(name_2012, range(self.start_year, 2012))
 
@@ -114,30 +113,28 @@ class TestNorthKorea(CommonCountryTests, TestCase):
 
     def test_day_of_sun(self):
         name_1962 = "김일성의 생일"
+        name_1998 = "태양절"
         self.assertHolidayName(
             name_1962, "1962-04-15", (f"{year}-04-15" for year in range(1968, 1998))
         )
-        self.assertNoHolidayName(
-            name_1962, range(self.start_year, 1962), range(1963, 1968), range(1998, self.end_year)
-        )
-
-        name_1998 = "태양절"
         self.assertHolidayName(
             name_1998,
             (f"{year}-04-15" for year in range(1998, self.end_year)),
             (f"{year}-04-16" for year in range(1998, self.end_year)),
         )
+        self.assertNoHolidayName(
+            name_1962, range(self.start_year, 1962), range(1963, 1968), range(1998, self.end_year)
+        )
         self.assertNoHolidayName(name_1998, range(self.start_year, 1998))
 
     def test_army_day(self):
         name_1978 = "건군절"
+        name_2018 = "조선인민혁명군 창건일"
         self.assertHolidayName(name_1978, (f"{year}-04-25" for year in range(1978, 2018)))
+        self.assertHolidayName(name_2018, (f"{year}-04-25" for year in range(2018, self.end_year)))
         self.assertNoHolidayName(
             name_1978, range(self.start_year, 1978), range(2018, self.end_year)
         )
-
-        name_2018 = "조선인민혁명군 창건일"
-        self.assertHolidayName(name_2018, (f"{year}-04-25" for year in range(2018, self.end_year)))
         self.assertNoHolidayName(name_2018, range(self.start_year, 2018))
 
     def test_workers_day(self):
