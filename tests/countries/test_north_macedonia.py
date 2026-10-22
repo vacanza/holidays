@@ -61,9 +61,7 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             "2017-01-02",
             "2023-01-02",
         )
-        self.assertHolidayName(
-            f"{name} (неработен ден)", obs_dts_historical, obs_dts
-        )
+        self.assertHolidayName(f"{name} (неработен ден)", obs_dts_historical, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_christmas_day(self):

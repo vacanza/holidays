@@ -204,6 +204,7 @@ class TestNiger(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
         self.assertNoNonObservedHolidayName(name, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+
     def test_prophets_birthday(self):
         name = "Mouloud"
         self.assertIslamicNoEstimatedHolidayName(
