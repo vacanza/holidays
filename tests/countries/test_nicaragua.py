@@ -19,7 +19,6 @@ from tests.common import CommonCountryTests
 class TestNicaragua(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.full_range = range(1950, 2050)
         super().setUpClass(Nicaragua)
 
     def test_new_years_day(self):

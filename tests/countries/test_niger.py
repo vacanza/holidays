@@ -202,8 +202,7 @@ class TestNiger(CommonCountryTests, TestCase):
             "2011-11-28",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
-        self.assertNoNonObservedHolidayName(name, obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoIslamicNoEstimatedNonObservedHolidayName(name, obs_dts)
 
     def test_prophets_birthday(self):
         name = "Mouloud"
@@ -223,7 +222,7 @@ class TestNiger(CommonCountryTests, TestCase):
             "2019-11-11",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoIslamicNoEstimatedNonObservedHolidayName(name, obs_dts)
 
     def test_laylat_al_qadr(self):
         name = "Laylat al-Qadr"
@@ -244,7 +243,7 @@ class TestNiger(CommonCountryTests, TestCase):
             "2021-05-10",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
-        self.assertNoNonObservedHolidayName(name, obs_dts)
+        self.assertNoIslamicNoEstimatedNonObservedHolidayName(name, obs_dts)
 
     def test_eid_al_fitr(self):
         name = "Korité"
@@ -265,7 +264,7 @@ class TestNiger(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoIslamicNoEstimatedNonObservedHolidayName(name, obs_dts)
 
     def test_eid_al_adha(self):
         name = "Tabaski"
@@ -298,7 +297,7 @@ class TestNiger(CommonCountryTests, TestCase):
             "2025-06-09",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertNoIslamicNoEstimatedNonObservedHolidayName(name, obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

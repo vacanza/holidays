@@ -20,7 +20,6 @@ class TestOman(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Oman)
-        cls.no_estimated_holidays = Oman(years=cls.full_range, islamic_show_estimated=False)
 
     def test_accession_day(self):
         name = "اليوم الوطني لتولي السلطان"
@@ -51,8 +50,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2023-07-20",
             "2024-07-07",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, dts)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_mawlid(self):
         name = "مولد النبي"
@@ -65,8 +64,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2023-09-28",
             "2024-09-15",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, dts)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_isra_and_miraj(self):
         name = "الإسراء والمعراج"
@@ -80,8 +79,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2024-02-08",
             "2025-01-27",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, dts)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
@@ -120,8 +119,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, dts)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -151,8 +150,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2024-06-18",
             "2024-06-19",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, self.full_range)
+        self.assertIslamicNoEstimatedHolidayName(name, dts)
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_weekend(self):
         for dt in (
