@@ -17,14 +17,16 @@ from tests.common import CommonCountryTests
 
 
 class TestNauru(CommonCountryTests, TestCase):
+    start_year = 1969
+    end_year = 2049
+
     @classmethod
     def setUpClass(cls):
-        years = range(1969, 2050)
-        super().setUpClass(Nauru, years=years, years_non_observed=years)
+        super().setUpClass(Nauru)
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         dt = (
             "2000-01-03",
             "2005-01-03",
@@ -41,8 +43,8 @@ class TestNauru(CommonCountryTests, TestCase):
     def test_independence_day(self):
         name = "Independence Day"
         name_after = f"Day following {name}"
-        self.assertHolidayName(name, (f"{year}-01-31" for year in range(1969, 2050)))
-        self.assertHolidayName(name_after, (f"{year}-02-01" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-31" for year in self.full_range))
+        self.assertHolidayName(name_after, (f"{year}-02-01" for year in self.full_range))
         dt = (
             "2004-02-02",
             "2009-02-02",
@@ -65,8 +67,8 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_international_womens_day(self):
         name = "International Women's Day"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2019, 2050)))
-        self.assertNoHolidayName(name, range(1969, 2019))
+        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2019, self.end_year + 1)))
+        self.assertNoHolidayName(name, range(self.start_year, 2019))
         dt = (
             "2020-03-09",
             "2025-03-10",
@@ -85,7 +87,7 @@ class TestNauru(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -98,7 +100,7 @@ class TestNauru(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_tuesday(self):
         name = "Easter Tuesday"
@@ -111,11 +113,11 @@ class TestNauru(CommonCountryTests, TestCase):
             "2024-04-02",
             "2025-04-22",
         )
-        self.assertHolidayName(name, range(1969, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_constitution_day(self):
         name = "Constitution Day"
-        self.assertHolidayName(name, (f"{year}-05-17" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-05-17" for year in self.full_range))
         dt = (
             "2003-05-19",
             "2008-05-19",
@@ -174,7 +176,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_angam_day(self):
         name = "Angam Day"
-        self.assertHolidayName(name, (f"{year}-10-26" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-26" for year in self.full_range))
         dt = (
             "2002-10-28",
             "2003-10-27",
@@ -190,7 +192,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         dt = (
             "2004-12-27",
             "2005-12-27",
@@ -205,7 +207,7 @@ class TestNauru(CommonCountryTests, TestCase):
 
     def test_day_following_christmas(self):
         name = "Day following Christmas"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1969, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         dt = (
             "2004-12-28",
             "2009-12-28",
