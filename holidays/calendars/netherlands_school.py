@@ -26,15 +26,16 @@ its first week through the Sunday that ends its last week, the single exception 
 also how the regulations stagger the regions.
 
 Dates come from the regulations in the Staatscourant, which cover every school year from
-2013-2014 onwards. The open data feed carries the same tables but its archived copies of the
-2014-2015, 2015-2016 and 2016-2017 school years start each period a day early, so the
-regulations are used throughout.
+2013-2014 onwards. The open data feed publishes the same tables, but only for the upcoming
+school years, and its archived copies start a period a day early in four cases: every break
+of 2014-2015 and of 2015-2016, the 2016-2017 autumn break and the 2018-2019 spring break in
+Zuid. The regulations are therefore used throughout.
 
 The dataset starts with the 2013-2014 school year, the first one whose summer break no
 longer differs between primary and secondary education. Up to 2012-2013 the regulation set a
 separate, longer summer break for secondary schools, which three regions alone cannot
 express. The Caribbean Netherlands, a fourth summer region since 2025-2026, is left out as
-well; it is not part of this entity.
+well; Bonaire, Sint Eustatius and Saba are the separate `BQ` entity.
 
 Sources:
     * [Regeling vaststelling schoolvakanties 2013-2016](https://web.archive.org/web/20261022045936/https://zoek.officielebekendmakingen.nl/stcrt-2012-27185.html)

@@ -16,14 +16,14 @@ from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.netherlands_school import (
     AUTUMN_BREAK,
     CHRISTMAS_BREAK,
-    SPRING_BREAK,
     MAY_BREAK,
-    SUMMER_BREAK,
     NETHERLANDS_CHRISTMAS_BREAK_WEEK,
     NETHERLANDS_EXTENDED_MAY_BREAK_SCHOOL_YEARS,
     NETHERLANDS_SCHOOL_HOLIDAY_REGIONS,
     NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS,
     NETHERLANDS_SCHOOL_HOLIDAYS,
+    SPRING_BREAK,
+    SUMMER_BREAK,
 )
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -46,10 +46,11 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         * <https://web.archive.org/web/20250123145153/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
         * <https://web.archive.org/web/20251015082056/https://www.facebook.com/photo.php?fbid=5357926707591435&id=190259871024837&set=a.342400825810740>
 
-    Dutch school holidays are subdivision-specific. The subdivisions are the three regions
-    the Ministry of Education spreads the holidays over, not provinces: the official split
-    cuts through Gelderland, leaves Zeewolde out of Noord and Woudrichem out of Zuid.
-    See [`netherlands_school`][holidays.calendars.netherlands_school] for the dataset.
+    !!! note "School holidays"
+        Dutch school holidays are subdivision-specific. The subdivisions are the three
+        regions the Ministry of Education spreads the holidays over rather than provinces,
+        since the official split runs through Flevoland, Gelderland, Utrecht and
+        Noord-Brabant down to individual municipalities.
     """
 
     country = "NL"

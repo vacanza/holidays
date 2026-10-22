@@ -12,6 +12,10 @@
 
 from unittest import TestCase
 
+from holidays.calendars.netherlands_school import (
+    NETHERLANDS_SCHOOL_HOLIDAY_REGIONS,
+    NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS,
+)
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.countries.netherlands import Netherlands
 from tests.common import CommonCountryTests
@@ -189,6 +193,26 @@ class TestNetherlands(CommonCountryTests, TestCase):
 
     def test_second_day_of_christmas(self):
         self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_school_holiday_regions_match_subdivisions(self):
+        self.assertEqual(set(NETHERLANDS_SCHOOL_HOLIDAY_REGIONS), set(Netherlands.subdivisions))
+
+    def test_all_school_holiday_ids_are_mapped(self):
+        self.assertEqual(
+            set(Netherlands._get_school_holiday_names()),
+            set(NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS),
+        )
+
+    def test_school_and_public_categories(self):
+        holidays = Netherlands(subdiv="Noord", years=2026, categories=(PUBLIC, SCHOOL))
+        self.assertHolidayName("Koningsdag", holidays, "2026-04-27")
+        self.assertHolidayName("Meivakantie", holidays, "2026-04-27")
+        self.assertHolidayName("Zomervakantie", holidays, "2026-07-04")
+
+    def test_public_category_excludes_school_holidays(self):
+        holidays = Netherlands(subdiv="Noord", years=2026, categories=PUBLIC)
+        self.assertNoHolidayName("Zomervakantie", holidays)
+        self.assertNoHoliday(holidays, "2026-07-04")
 
     def test_school_autumn_break(self):
         name = "Herfstvakantie"
