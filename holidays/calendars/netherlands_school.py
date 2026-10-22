@@ -18,10 +18,12 @@ region its premises are in. Only the Christmas, May and summer dates are binding
 autumn and spring dates are published as advice that schools may depart from, and are
 included here as published rather than as a guarantee.
 
-Every break is a whole number of ISO weeks: one for the autumn, spring and May breaks, two
-for the Christmas break and six for the summer break. It runs from the Saturday before its
-first week through the Sunday that ends its last week. Only the week numbers vary, so those
-are all that is recorded below, which is also how the regulations stagger the regions.
+Every break covers a whole number of ISO weeks: one for the autumn, spring and May breaks,
+two for the Christmas break and six for the summer break. It runs from the Saturday before
+its first week through the Sunday that ends its last week, the single exception being the
+2013-2014 May break, which the regulation extends by a day to Liberation Day on Monday, May
+5th, 2014. Only the week numbers vary, so those are all that is recorded below, which is
+also how the regulations stagger the regions.
 
 Dates come from the regulations in the Staatscourant, which cover every school year from
 2013-2014 onwards. The open data feed carries the same tables but its archived copies of the
