@@ -317,6 +317,14 @@ class TestThaiLunisolarCalendar(TestCase):
             result = self.calendar.buddhist_sabbath_dates(year)
             self.assertEqual(result, expected_dates)
 
+    def test_buddhist_sabbath_dates_not_shared_between_calls(self):
+        for year in (self.calendar.START_YEAR - 1, 1957, 2023):
+            buddhist_sabbath_dates = self.calendar.buddhist_sabbath_dates(year)
+            expected = set(buddhist_sabbath_dates)
+            buddhist_sabbath_dates.add(date(year - 1, DEC, 31))
+
+            self.assertEqual(self.calendar.buddhist_sabbath_dates(year), expected)
+
     def test_khao_phansa_date(self):
         # THAI_CALENDAR
         khao_phansa_year_date = {

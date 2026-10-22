@@ -209,6 +209,17 @@ class TestListLocalizedEntities(TestCase):
             list_localized_financial(), list_supported_financial(include_aliases=False)
         )
 
+    def test_localized_entities_not_shared_between_calls(self):
+        for list_localized in (list_localized_countries, list_localized_financial):
+            for include_aliases in (False, True):
+                localized_entities = list_localized(include_aliases=include_aliases)
+                expected = {code: list(values) for code, values in localized_entities.items()}
+                first_code, second_code, *_ = localized_entities
+                localized_entities[first_code].append("xx")
+                del localized_entities[second_code]
+
+                self.assertEqual(list_localized(include_aliases=include_aliases), expected)
+
 
 class TestListSupportedEntities(TestCase):
     def test_list_supported_countries(self):
@@ -239,6 +250,17 @@ class TestListSupportedEntities(TestCase):
             1 for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         )
         self.assertEqual(financial_count, len(supported_financial))
+
+    def test_supported_entities_not_shared_between_calls(self):
+        for list_supported in (list_supported_countries, list_supported_financial):
+            for include_aliases in (False, True):
+                supported_entities = list_supported(include_aliases=include_aliases)
+                expected = {code: list(values) for code, values in supported_entities.items()}
+                first_code, second_code, *_ = supported_entities
+                supported_entities[first_code].append("XX")
+                del supported_entities[second_code]
+
+                self.assertEqual(list_supported(include_aliases=include_aliases), expected)
 
 
 class CountryStub1(HolidayBase):
