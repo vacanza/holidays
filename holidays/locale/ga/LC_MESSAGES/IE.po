@@ -1,0 +1,88 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Ireland holidays ga localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-23 20:01+0530\n"
+"PO-Revision-Date: 2026-10-23 20:01+0530\n"
+"Last-Translator: shikhabhadoria <145272515+shikhabhadoria@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_IE\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Lá Caille"
+
+#. Saint Brigid's Day.
+msgid "Saint Brigid's Day"
+msgstr "Lá Fhéile Bríde"
+
+#. Saint Patrick's Day.
+msgid "Saint Patrick's Day"
+msgstr "Lá Fhéile Pádraig"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Luan Cásca"
+
+#. May Day.
+msgid "May Day"
+msgstr "Lá Saoire Bainc na Bealtaine"
+
+#. June Bank Holiday.
+msgid "June Bank Holiday"
+msgstr "Lá Saoire Bainc an Mheithimh"
+
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "Luan Cincíse"
+
+#. August Bank Holiday.
+msgid "August Bank Holiday"
+msgstr "Lá Saoire Bainc Lúnasa"
+
+#. October Bank Holiday.
+msgid "October Bank Holiday"
+msgstr "Lá Saoire Bainc Dheireadh Fómhair"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Lá Nollag"
+
+#. Saint Stephen's Day.
+msgid "Saint Stephen's Day"
+msgstr "Lá Fhéile Stiofáin"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Aoine an Chéasta"
+
+#. Millennium Celebrations.
+msgid "Millennium Celebrations"
+msgstr "Ceiliúradh na Mílaoise"
+
+#. National Day of Mourning.
+msgid "National Day of Mourning"
+msgstr "Lá Náisiúnta Mairgní"
+
+#. Day of Remembrance and Recognition.
+msgid "Day of Remembrance and Recognition"
+msgstr "Lá Cuimhneacháin agus Aitheantais"
