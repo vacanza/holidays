@@ -98,6 +98,8 @@ class TestNorfolkIsland(CommonCountryTests, TestCase):
         name_queen = "Queen's Birthday"
         self.assertHolidayName(
             name_queen,
+            "2016-06-13",
+            "2017-06-12",
             "2018-06-11",
             "2019-06-17",
             "2020-06-15",
