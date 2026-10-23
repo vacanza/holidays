@@ -25,13 +25,14 @@ import warnings
 from collections.abc import Callable, Hashable, Iterable
 from datetime import date
 from functools import cache, wraps
-from typing import TypeVar, cast
+from typing import TYPE_CHECKING, cast
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import CategoryArg, HolidayBase
 from holidays.registry import EntityLoader
 
-EntitiesLookup = TypeVar("EntitiesLookup", bound=Callable[..., dict[str, list[str]]])
+if TYPE_CHECKING:
+    from functools import _lru_cache_wrapper
 
 
 def country_holidays(
@@ -349,7 +350,9 @@ def CountryHoliday(  # noqa: N802
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
 
-def _cache_entities(func: EntitiesLookup) -> EntitiesLookup:
+def _cache_entities(
+    func: Callable[..., dict[str, list[str]]],
+) -> "_lru_cache_wrapper[dict[str, list[str]]]":
     """Cache entities lookup results and return their copies.
 
     Args:
@@ -366,7 +369,10 @@ def _cache_entities(func: EntitiesLookup) -> EntitiesLookup:
         entities = cached_func(*args, **kwargs)
         return {entity_code: list(values) for entity_code, values in entities.items()}
 
-    return cast("EntitiesLookup", wrapper)
+    for cache_method in ("cache_clear", "cache_info", "cache_parameters"):
+        setattr(wrapper, cache_method, getattr(cached_func, cache_method))
+
+    return cast("_lru_cache_wrapper[dict[str, list[str]]]", wrapper)
 
 
 def _list_localized_entities(entity_codes: Iterable[str]) -> dict[str, list[str]]:

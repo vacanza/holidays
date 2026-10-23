@@ -220,6 +220,14 @@ class TestListLocalizedEntities(TestCase):
 
                 self.assertEqual(list_localized(include_aliases=include_aliases), expected)
 
+    def test_localized_entities_cache_methods(self):
+        for list_localized in (list_localized_countries, list_localized_financial):
+            list_localized.cache_clear()
+            self.assertEqual(list_localized.cache_info().currsize, 0)
+            list_localized()
+            self.assertEqual(list_localized.cache_info().currsize, 1)
+            self.assertIsNone(list_localized.cache_parameters()["maxsize"])
+
 
 class TestListSupportedEntities(TestCase):
     def test_list_supported_countries(self):
@@ -261,6 +269,14 @@ class TestListSupportedEntities(TestCase):
                 del supported_entities[second_code]
 
                 self.assertEqual(list_supported(include_aliases=include_aliases), expected)
+
+    def test_supported_entities_cache_methods(self):
+        for list_supported in (list_supported_countries, list_supported_financial):
+            list_supported.cache_clear()
+            self.assertEqual(list_supported.cache_info().currsize, 0)
+            list_supported()
+            self.assertEqual(list_supported.cache_info().currsize, 1)
+            self.assertIsNone(list_supported.cache_parameters()["maxsize"])
 
 
 class CountryStub1(HolidayBase):
