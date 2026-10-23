@@ -50,6 +50,9 @@ class TestEuronext(CommonFinancialTests, TestCase):
         # passed as a keyword or as a positional argument.
         self.assertEqual(XOSL(subdiv="XAMS", years=2025).subdiv, "XAMS")
         self.assertEqual(XOSL(2025, True, True, "XAMS").subdiv, "XAMS")  # noqa: FBT003
+        # A null positional subdivision gets the market default, just like
+        # a keyword subdiv=None does.
+        self.assertEqual(XOSL(2025, True, True, None).subdiv, "XOSL")  # noqa: FBT003
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))

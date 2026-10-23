@@ -54,12 +54,14 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # so their market-specific holidays are included when the subclass
         # is used directly (e.g., via financial_holidays("XOSL"), which
         # passes subdiv=None).
-        if (
-            type(self) is not Euronext
-            and len(args) < 4
-            and not any(kwargs.get(key) for key in ("subdiv", "prov", "state"))
+        if type(self) is not Euronext and not any(
+            kwargs.get(key) for key in ("subdiv", "prov", "state")
         ):
-            kwargs["subdiv"] = self.market
+            if len(args) < 4:
+                kwargs["subdiv"] = self.market
+            elif args[3] is None:
+                # A null positional subdivision gets the market default too.
+                args = (*args[:3], self.market, *args[4:])
         # The observed arguments are passed to ObservedHolidayBase in its
         # own leading positions, keeping the HolidayBase positional
         # arguments (years, expand, observed, subdiv, ...) intact.
