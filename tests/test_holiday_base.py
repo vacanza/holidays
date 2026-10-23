@@ -12,6 +12,7 @@
 
 import pickle
 from datetime import date, datetime, timedelta
+from threading import Event, Thread
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
@@ -1403,6 +1404,87 @@ class TestSubstitutedHolidays(TestCase):
             substituted_date_format = "%d/%m/%Y"
 
         self.assertRaises(ValueError, lambda: self.CountryStub(SubstitutedHolidays))
+
+
+class TestThreadSafety(TestCase):
+    class BlockingEntityStub(HolidayBase):
+        def __init__(self):
+            self.blocking_year = None
+            self.paused = Event()
+            self.resume = Event()
+            super().__init__()
+
+        def _populate_public_holidays(self):
+            self._add_holiday_jan_1("New Year's Day")
+            if self._year == self.blocking_year:
+                self.paused.set()
+                self.resume.wait()
+            self._add_holiday_dec_25("Christmas Day")
+
+    def setUp(self):
+        self.hb = self.BlockingEntityStub()
+
+    def run_concurrently(self, populate, target):
+        self.hb.blocking_year = 2000
+        populating = Thread(target=populate)
+        populating.start()
+        self.hb.paused.wait()
+
+        thread = Thread(target=target)
+        thread.start()
+        thread.join(timeout=0.1)
+        self.hb.resume.set()
+        populating.join()
+        thread.join()
+
+    def assertYearsPopulated(self, *years):  # noqa: N802
+        self.assertEqual(
+            sorted(self.hb),
+            [dt for year in years for dt in (date(year, 1, 1), date(year, 12, 25))],
+        )
+
+    def test_get_closest_holiday_during_population(self):
+        self.run_concurrently(
+            lambda: self.hb.get_closest_holiday("1999-12-31"), lambda: self.hb.get("2001-01-01")
+        )
+
+        self.assertYearsPopulated(1999, 2000, 2001)
+
+    def test_holiday_sum_during_population(self):
+        holiday_sum = self.hb + HolidayBase()
+        self.run_concurrently(
+            lambda: holiday_sum.get("2000-01-01"), lambda: self.hb.get("2001-01-01")
+        )
+
+        self.assertYearsPopulated(2000, 2001)
+
+    def test_lookup_during_population(self):
+        results = []
+        self.run_concurrently(
+            lambda: self.hb.get("2000-01-01"), lambda: results.append("2000-12-25" in self.hb)
+        )
+
+        self.assertEqual(results, [True])
+
+    def test_populate_during_population(self):
+        self.run_concurrently(lambda: self.hb.get("2000-01-01"), lambda: self.hb.get("2001-01-01"))
+
+        self.assertYearsPopulated(2000, 2001)
+
+    def test_set_observed_during_population(self):
+        self.hb.get("2000-01-01")
+        self.run_concurrently(
+            lambda: setattr(self.hb, "observed", False), lambda: self.hb.get("2001-01-01")
+        )
+
+        self.assertYearsPopulated(2000, 2001)
+
+    def test_slice_during_population(self):
+        self.run_concurrently(
+            lambda: self.hb["1999-12-31":"2001-01-01"], lambda: self.hb.get("2002-01-01")
+        )
+
+        self.assertYearsPopulated(1999, 2000, 2001, 2002)
 
 
 class TestWorkdays(TestCase):

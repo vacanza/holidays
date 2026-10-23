@@ -22,6 +22,7 @@ from datetime import UTC, date, datetime, timedelta
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
+from threading import RLock
 from typing import Any, Literal, Union, cast
 
 from dateutil.parser import parse
@@ -364,6 +365,7 @@ class HolidayBase(dict[date, str]):
                 "and `substituted_date_format` attributes set."
             )
 
+        self._populate_lock = RLock()
         self.categories = categories
         self.expand = expand
         self.has_special_holidays = getattr(self, "has_special_holidays", False)
@@ -580,10 +582,11 @@ class HolidayBase(dict[date, str]):
                 step = -step
 
             if self.expand:
-                for year in range(min(start.year, stop.year), max(start.year, stop.year) + 1):
-                    if year not in self.years:
-                        self.years.add(year)
-                        self._populate(year)
+                with self._populate_lock:
+                    for year in range(min(start.year, stop.year), max(start.year, stop.year) + 1):
+                        if year not in self.years:
+                            self.years.add(year)
+                            self._populate(year)
 
             if step > 0:
                 days = [
@@ -600,6 +603,7 @@ class HolidayBase(dict[date, str]):
     def __getstate__(self) -> dict[str, Any]:
         """Return the object's state for serialization."""
         state = self.__dict__.copy()
+        state.pop("_populate_lock", None)
         state.pop("tr", None)
         return state
 
@@ -657,9 +661,11 @@ class HolidayBase(dict[date, str]):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
         # Automatically expand for `expand=True` cases.
-        if self.expand and dt.year not in self.years:
-            self.years.add(dt.year)
-            self._populate(dt.year)
+        if self.expand:
+            with self._populate_lock:
+                if dt.year not in self.years:
+                    self.years.add(dt.year)
+                    self._populate(dt.year)
 
         return dt
 
@@ -711,9 +717,10 @@ class HolidayBase(dict[date, str]):
         dict.__setattr__(self, key, value)
 
         if self and key in {"categories", "observed"}:
-            self.clear()
-            for year in self.years:  # Re-populate holidays for each year.
-                self._populate(year)
+            with self._populate_lock:
+                self.clear()
+                for year in self.years:  # Re-populate holidays for each year.
+                    self._populate(year)
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
@@ -728,6 +735,7 @@ class HolidayBase(dict[date, str]):
     def __setstate__(self, state: dict[str, Any]) -> None:
         """Restore the object's state after deserialization."""
         self.__dict__.update(state)
+        self._populate_lock = RLock()
         self._init_translation()
 
     def __str__(self) -> str:
@@ -1150,12 +1158,13 @@ class HolidayBase(dict[date, str]):
 
         dt = self.__keytransform__(target_date or datetime.now().date())
         if self.expand:
-            if direction == "forward" and (next_year := dt.year + 1) not in self.years:
-                self.years.add(next_year)
-                self._populate(next_year)
-            elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
-                self.years.add(previous_year)
-                self._populate(previous_year)
+            with self._populate_lock:
+                if direction == "forward" and (next_year := dt.year + 1) not in self.years:
+                    self.years.add(next_year)
+                    self._populate(next_year)
+                elif direction == "backward" and (previous_year := dt.year - 1) not in self.years:
+                    self.years.add(previous_year)
+                    self._populate(previous_year)
 
         sorted_dates = sorted(self.keys())
         position = (
@@ -1485,7 +1494,8 @@ class HolidaySum(HolidayBase):
 
     def _populate(self, year):
         for operand in self.holidays:
-            if year not in operand.years:
-                operand.years.add(year)
-                operand._populate(year)
+            with operand._populate_lock:
+                if year not in operand.years:
+                    operand.years.add(year)
+                    operand._populate(year)
             self.update(cast("dict[DateLike, str]", operand))
