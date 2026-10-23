@@ -12,10 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.calendars.netherlands_school import (
-    NETHERLANDS_SCHOOL_HOLIDAY_REGIONS,
-    NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS,
-)
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.countries.netherlands import Netherlands
 from tests.common import CommonCountryTests
@@ -25,7 +21,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
-            Netherlands, with_subdiv_categories=True, years_all_subdivs=range(2013, 2031)
+            Netherlands, with_subdiv_categories=True, years_all_subdivs=range(2014, 2031)
         )
 
     def test_no_holidays(self):
@@ -36,7 +32,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertNoHolidays(Netherlands(categories=SCHOOL, years=self.full_range))
         for subdiv in Netherlands.subdivisions:
             self.assertNoHolidays(
-                Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2013))
+                Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2014))
             )
 
     def test_new_years_day(self):
@@ -194,15 +190,6 @@ class TestNetherlands(CommonCountryTests, TestCase):
     def test_second_day_of_christmas(self):
         self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
 
-    def test_school_holiday_regions_match_subdivisions(self):
-        self.assertEqual(set(NETHERLANDS_SCHOOL_HOLIDAY_REGIONS), set(Netherlands.subdivisions))
-
-    def test_all_school_holiday_ids_are_mapped(self):
-        self.assertEqual(
-            set(Netherlands._get_school_holiday_names()),
-            set(NETHERLANDS_SCHOOL_HOLIDAY_WEEK_COUNTS),
-        )
-
     def test_school_and_public_categories(self):
         holidays = Netherlands(subdiv="Noord", years=2026, categories=(PUBLIC, SCHOOL))
         self.assertHolidayName("Koningsdag", holidays, "2026-04-27")
@@ -220,8 +207,6 @@ class TestNetherlands(CommonCountryTests, TestCase):
 
         self.assertSubdivNoordSchoolHolidayName(
             name,
-            "2013-10-19",
-            "2013-10-27",
             "2014-10-11",
             "2014-10-19",
             "2015-10-17",
@@ -256,19 +241,17 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "2029-10-28",
         )
         self.assertNoSubdivNoordSchoolHoliday(
-            "2013-10-18",
-            "2013-10-28",
+            "2014-10-10",
+            "2014-10-20",
             "2029-10-19",
             "2029-10-29",
         )
-        self.assertSubdivNoordSchoolHolidayName(name, range(2013, 2030))
+        self.assertSubdivNoordSchoolHolidayName(name, range(2014, 2030))
         # One week, so nine days from the Saturday before it.
-        self.assertSubdivNoordSchoolHolidayNameCount(name, 9, range(2013, 2030))
+        self.assertSubdivNoordSchoolHolidayNameCount(name, 9, range(2014, 2030))
 
         self.assertSubdivMiddenSchoolHolidayName(
             name,
-            "2013-10-19",
-            "2013-10-27",
             "2014-10-18",
             "2014-10-26",
             "2015-10-17",
@@ -303,19 +286,17 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "2029-10-28",
         )
         self.assertNoSubdivMiddenSchoolHoliday(
-            "2013-10-18",
-            "2013-10-28",
+            "2014-10-17",
+            "2014-10-27",
             "2029-10-19",
             "2029-10-29",
         )
-        self.assertSubdivMiddenSchoolHolidayName(name, range(2013, 2030))
+        self.assertSubdivMiddenSchoolHolidayName(name, range(2014, 2030))
         # One week, so nine days from the Saturday before it.
-        self.assertSubdivMiddenSchoolHolidayNameCount(name, 9, range(2013, 2030))
+        self.assertSubdivMiddenSchoolHolidayNameCount(name, 9, range(2014, 2030))
 
         self.assertSubdivZuidSchoolHolidayName(
             name,
-            "2013-10-12",
-            "2013-10-20",
             "2014-10-18",
             "2014-10-26",
             "2015-10-24",
@@ -350,14 +331,14 @@ class TestNetherlands(CommonCountryTests, TestCase):
             "2029-10-21",
         )
         self.assertNoSubdivZuidSchoolHoliday(
-            "2013-10-11",
-            "2013-10-21",
+            "2014-10-17",
+            "2014-10-27",
             "2029-10-12",
             "2029-10-22",
         )
-        self.assertSubdivZuidSchoolHolidayName(name, range(2013, 2030))
+        self.assertSubdivZuidSchoolHolidayName(name, range(2014, 2030))
         # One week, so nine days from the Saturday before it.
-        self.assertSubdivZuidSchoolHolidayNameCount(name, 9, range(2013, 2030))
+        self.assertSubdivZuidSchoolHolidayNameCount(name, 9, range(2014, 2030))
 
     def test_school_spring_break(self):
         name = "Voorjaarsvakantie"
@@ -649,16 +630,24 @@ class TestNetherlands(CommonCountryTests, TestCase):
         # Six weeks, so 44 days from the Saturday before them.
         self.assertSubdivZuidSchoolHolidayNameCount(name, 44, range(2014, 2031))
 
+        # The rotation continues after the last published regulation.
+        for subdiv, dts in (
+            ("Noord", ("2031-07-12", "2031-08-24", "2032-07-03", "2032-08-15")),
+            ("Midden", ("2031-07-19", "2031-08-31", "2032-07-17", "2032-08-29")),
+            ("Zuid", ("2031-07-05", "2031-08-17", "2032-07-10", "2032-08-22")),
+        ):
+            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=(2031, 2032))
+            self.assertHolidayName(name, holidays, *dts)
+
     def test_school_christmas_break(self):
         name = "Kerstvakantie"
         self.assertNoHolidayName(name)
         # Nationwide, so the dates are the same in every region.
         for subdiv in Netherlands.subdivisions:
-            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(2013, 2031))
+            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(2014, 2031))
             self.assertHolidayName(
                 name,
                 holidays,
-                "2013-12-21",
                 "2014-01-05",
                 "2014-12-20",
                 "2015-01-04",
@@ -695,16 +684,15 @@ class TestNetherlands(CommonCountryTests, TestCase):
             )
             self.assertNoHoliday(
                 holidays,
-                "2013-12-20",
                 "2014-01-06",
-                "2029-12-21",
+                "2014-12-19",
                 "2030-01-07",
+                "2030-12-20",
             )
-            self.assertHolidayName(name, holidays, range(2013, 2031))
+            self.assertHolidayName(name, holidays, range(2014, 2031))
             # Two weeks, split between the calendar years they span.
-            self.assertHolidayNameCount(name, 6, holidays, 2030)
             self.assertHolidayNameCount(name, 10, holidays, 2021, 2027)
-            self.assertHolidayNameCount(name, 11, holidays, 2013, 2016)
+            self.assertHolidayNameCount(name, 11, holidays, 2016)
             self.assertHolidayNameCount(
                 name,
                 17,
@@ -713,7 +701,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
                 range(2017, 2020),
                 range(2022, 2024),
                 range(2025, 2027),
-                2029,
+                range(2029, 2031),
             )
             self.assertHolidayNameCount(name, 18, holidays, 2020, 2024, 2028)
 
