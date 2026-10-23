@@ -12,7 +12,9 @@
 
 from unittest import TestCase
 
-from holidays.financial.euronext import Euronext
+from holidays import financial_holidays
+from holidays.constants import HALF_DAY
+from holidays.financial.euronext import XAMS, XBRU, XDUB, XLIS, XMIL, XOSL, XPAR, Euronext
 from tests.common import CommonFinancialTests
 
 
@@ -23,8 +25,27 @@ class TestEuronext(CommonFinancialTests, TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(
-            Euronext(subdiv="XMIL", categories="half_day", years=range(2021, 2050))
+            Euronext(subdiv="XMIL", categories=HALF_DAY, years=range(2021, 2050))
         )
+
+    def test_market_subclasses_default_subdivision(self):
+        # Each market subclass defaults to its own subdivision, so the
+        # market-specific holidays are included without an explicit subdiv.
+        self.assertEqual(XPAR(years=2025).subdiv, "XPAR")
+        self.assertEqual(XAMS(years=2025).subdiv, "XAMS")
+        self.assertEqual(XBRU(years=2025).subdiv, "XBRU")
+        self.assertEqual(XDUB(years=2025).subdiv, "XDUB")
+        self.assertEqual(XLIS(years=2025).subdiv, "XLIS")
+        self.assertEqual(XMIL(years=2025).subdiv, "XMIL")
+        self.assertEqual(XOSL(years=2025).subdiv, "XOSL")
+        # Dublin, Milan and Oslo specific holidays.
+        self.assertIn("2025-05-05", XDUB(years=2025))
+        self.assertIn("2025-08-15", XMIL(years=2025))
+        self.assertIn("2025-04-17", XOSL(years=2025))
+        self.assertIn("2025-05-17", XOSL(years=2025))
+        # The same applies when the market is requested by its code.
+        self.assertIn("2025-05-17", financial_holidays("XOSL", years=2025))
+        self.assertIn("2025-08-15", financial_holidays("XMIL", years=2025))
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))

@@ -42,6 +42,12 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        # Market subclasses (e.g., XOSL) default to their own subdivision,
+        # so their market-specific holidays are included when the subclass
+        # is used directly (e.g., via financial_holidays("XOSL"), which
+        # passes subdiv=None).
+        if type(self) is not Euronext and not kwargs.get("subdiv"):
+            kwargs["subdiv"] = self.market
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -159,28 +165,28 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
 
 
 class XPAR(Euronext):
-    pass
+    market = "XPAR"
 
 
 class XAMS(Euronext):
-    pass
+    market = "XAMS"
 
 
 class XBRU(Euronext):
-    pass
+    market = "XBRU"
 
 
 class XDUB(Euronext):
-    pass
+    market = "XDUB"
 
 
 class XLIS(Euronext):
-    pass
+    market = "XLIS"
 
 
 class XMIL(Euronext):
-    pass
+    market = "XMIL"
 
 
 class XOSL(Euronext):
-    pass
+    market = "XOSL"
