@@ -126,6 +126,14 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self._is_weekend(dt):
                 self._add_holiday(name, _timedelta(dt, -1 if dt.weekday() == 5 else -2))
 
+    def _add_eves_as_full_day_holidays(self):
+        """Add Christmas Eve and New Year's Eve as full-day holidays."""
+        # Christmas Eve.
+        self._add_christmas_eve("Christmas Eve")
+
+        # New Year's Eve.
+        self._add_new_years_eve("New Year's Eve")
+
     def _populate_subdiv_xmil_public_holidays(self):
         # Milan is included in the Euronext holiday calendars from 2023.
         if self._year < 2023:
@@ -134,11 +142,8 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day (Ferragosto).
         self._add_assumption_of_mary_day("Assumption Day")
 
-        # Christmas Eve.
-        self._add_christmas_eve("Christmas Eve")
-
-        # New Year's Eve.
-        self._add_new_years_eve("New Year's Eve")
+        # Christmas Eve and New Year's Eve are full-day closures.
+        self._add_eves_as_full_day_holidays()
 
     def _populate_subdiv_xosl_public_holidays(self):
         # Maundy Thursday.
@@ -153,11 +158,8 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Monday.
         self._add_pentecost_monday("Whit Monday")
 
-        # Christmas Eve.
-        self._add_christmas_eve("Christmas Eve")
-
-        # New Year's Eve.
-        self._add_new_years_eve("New Year's Eve")
+        # Christmas Eve and New Year's Eve are full-day closures.
+        self._add_eves_as_full_day_holidays()
 
     def _populate_subdiv_xosl_half_day_holidays(self):
         # Wednesday before Easter.
