@@ -46,6 +46,10 @@ class TestEuronext(CommonFinancialTests, TestCase):
         # The same applies when the market is requested by its code.
         self.assertIn("2025-05-17", financial_holidays("XOSL", years=2025))
         self.assertIn("2025-08-15", financial_holidays("XMIL", years=2025))
+        # An explicitly passed subdivision is respected, whether it is
+        # passed as a keyword or as a positional argument.
+        self.assertEqual(XOSL(subdiv="XAMS", years=2025).subdiv, "XAMS")
+        self.assertEqual(XOSL(2025, True, True, "XAMS").subdiv, "XAMS")
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))

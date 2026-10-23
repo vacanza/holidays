@@ -51,7 +51,11 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
         # so their market-specific holidays are included when the subclass
         # is used directly (e.g., via financial_holidays("XOSL"), which
         # passes subdiv=None).
-        if type(self) is not Euronext and not kwargs.get("subdiv"):
+        if (
+            type(self) is not Euronext
+            and len(args) < 4
+            and not any(kwargs.get(key) for key in ("subdiv", "prov", "state"))
+        ):
             kwargs["subdiv"] = self.market
         super().__init__(*args, **kwargs)
 
