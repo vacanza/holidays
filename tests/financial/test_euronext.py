@@ -49,7 +49,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         # An explicitly passed subdivision is respected, whether it is
         # passed as a keyword or as a positional argument.
         self.assertEqual(XOSL(subdiv="XAMS", years=2025).subdiv, "XAMS")
-        self.assertEqual(XOSL(2025, True, True, "XAMS").subdiv, "XAMS")
+        self.assertEqual(XOSL(2025, True, True, "XAMS").subdiv, "XAMS")  # noqa: FBT003
 
     def test_new_years_day(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
@@ -144,6 +144,13 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertSubdivXdubHolidayName("St Stephen's Day", "2021-12-28", "2026-12-28")
         # Other markets have no weekend substitutes.
         self.assertNoSubdivXparHoliday("2022-01-03", "2023-01-02", "2022-12-27")
+
+    def test_dublin_observed_flag(self):
+        # The Dublin weekend substitutes are observed holidays: they are
+        # not added when observed=False, while the actual dates remain.
+        self.assertIn("2022-01-03", XDUB(years=2022))
+        self.assertNotIn("2022-01-03", XDUB(years=2022, observed=False))
+        self.assertIn("2022-01-01", XDUB(years=2022, observed=False))
 
     def test_dublin_half_day_substitutes(self):
         # Christmas Eve half trading day observed on the preceding Friday.

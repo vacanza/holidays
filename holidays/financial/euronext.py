@@ -15,15 +15,18 @@ from datetime import date
 from holidays.calendars.gregorian import DEC, JAN, MAY, _timedelta
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_base import HolidayBase
-
+from holidays.observed_holiday_base import (
+    SAT_SUN_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_PREV_FRI,
+    ObservedHolidayBase,
+)
 
 # Holiday names shared by several Euronext markets.
 _CHRISTMAS_EVE = "Christmas Eve"
 _NEW_YEARS_EVE = "New Year's Eve"
 
 
-class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Euronext holidays.
 
     Euronext cash and derivatives markets (Amsterdam, Brussels, Dublin,
@@ -57,7 +60,15 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
             and not any(kwargs.get(key) for key in ("subdiv", "prov", "state"))
         ):
             kwargs["subdiv"] = self.market
-        super().__init__(*args, **kwargs)
+        # The observed arguments are passed to ObservedHolidayBase in its
+        # own leading positions, keeping the HolidayBase positional
+        # arguments (years, expand, observed, subdiv, ...) intact.
+        super().__init__(
+            kwargs.pop("observed_rule", None),
+            kwargs.pop("observed_since", None),
+            *args,
+            **kwargs,
+        )
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -100,40 +111,27 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_may("Irish May Bank Holiday")
 
         # When New Year's Day, Christmas Day or St Stephen's Day fall on a
-        # weekend, Euronext Dublin is closed on the following weekday
+        # weekend, Euronext Dublin is closed on the following workday
         # instead (e.g., if Christmas Day falls on a Sunday, the market is
         # closed on Tuesday, since Monday is St Stephen's Day itself).
-        fixed_dates = (
+        for dt in (
             date(self._year, JAN, 1),
             date(self._year, DEC, 25),
             date(self._year, DEC, 26),
-        )
-        observed_dates = set()
-        for dt, name in (
-            (date(self._year, JAN, 1), "New Year's Day"),
-            (date(self._year, DEC, 25), "Christmas Day"),
-            (date(self._year, DEC, 26), "St Stephen's Day"),
         ):
-            if dt.weekday() == 5:  # Saturday.
-                substitute_dt = _timedelta(dt, +2)
-            elif dt.weekday() == 6:  # Sunday.
-                substitute_dt = _timedelta(dt, +1)
-            else:
-                continue
-
-            while substitute_dt in fixed_dates or substitute_dt in observed_dates:
-                substitute_dt = _timedelta(substitute_dt, +1)
-
-            observed_dates.add(substitute_dt)
-            self._add_holiday(name, substitute_dt)
+            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_WORKDAY)
 
     def _populate_subdiv_xdub_half_day_holidays(self):
         # When Christmas Eve or New Year's Eve fall on a weekend, the half
         # trading day is observed on the preceding Friday instead.
-        for day, name in ((24, _CHRISTMAS_EVE), (31, _NEW_YEARS_EVE)):
-            dt = date(self._year, DEC, day)
-            if self._is_weekend(dt):
-                self._add_holiday(name, _timedelta(dt, -1 if dt.weekday() == 5 else -2))
+        self._move_holiday_forced(
+            self._add_christmas_eve(_CHRISTMAS_EVE),
+            rule=SAT_SUN_TO_PREV_FRI,
+        )
+        self._move_holiday_forced(
+            self._add_new_years_eve(_NEW_YEARS_EVE),
+            rule=SAT_SUN_TO_PREV_FRI,
+        )
 
     def _add_eves_as_full_day_holidays(self):
         """Add Christmas Eve and New Year's Eve as full-day holidays."""
