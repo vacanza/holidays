@@ -296,6 +296,7 @@ FINANCIAL: RegistryDict = {
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
+    "euronext": ("Euronext", "XPAR", "XAMS", "XBRU", "XDUB", "XLIS", "XMIL", "XOSL"),
     "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
