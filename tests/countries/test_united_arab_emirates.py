@@ -28,6 +28,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2021-05-11",
             "2022-04-30",
             "2024-04-08",
+            "2026-03-19",
             # Other Special Public Holidays.
             "2022-05-14",
             "2022-05-15",
@@ -42,6 +43,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-05-07",
             "2022-05-08",
             "2023-12-04",
+            "2026-05-25",
         )
 
     def test_special_optional(self):
@@ -68,6 +70,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
             "2025-03-30",
+            "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
@@ -85,7 +88,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-16",
-            "2025-06-04",
+            "2025-06-06",
+            "2026-05-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName("عطلة عيد الأضحى", self.full_range)
@@ -103,7 +107,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-07-30",
             "2023-07-21",
             "2024-07-07",
-            "2025-06-26",
+            "2025-06-27",
+            "2026-06-15",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -120,8 +125,25 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2023-09-29",
             "2024-09-15",
             "2025-09-05",
+            "2026-08-28",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+
+    def test_national_day(self):
+        name = "اليوم الوطني"
+        self.assertHolidayName(
+            name,
+            "2023-12-02",
+            "2023-12-03",
+            "2024-12-02",
+            "2024-12-03",
+            "2025-12-01",
+            "2025-12-02",
+            "2026-12-02",
+            "2026-12-03",
+        )
+        self.assertNoHoliday("2025-12-03")
+        self.assertHolidayName(name, self.full_range)
 
     def test_isra_and_miraj(self):
         name = "ليلة المعراج"
