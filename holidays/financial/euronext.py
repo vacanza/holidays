@@ -18,6 +18,11 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
 
+# Holiday names shared by several Euronext markets.
+_CHRISTMAS_EVE = "Christmas Eve"
+_NEW_YEARS_EVE = "New Year's Eve"
+
+
 class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Euronext holidays.
 
@@ -80,11 +85,11 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Christmas Eve.
         if not self._is_weekend(date(self._year, DEC, 24)):
-            self._add_christmas_eve("Christmas Eve")
+            self._add_christmas_eve(_CHRISTMAS_EVE)
 
         # New Year's Eve.
         if not self._is_weekend(date(self._year, DEC, 31)):
-            self._add_new_years_eve("New Year's Eve")
+            self._add_new_years_eve(_NEW_YEARS_EVE)
 
     def _populate_subdiv_xdub_public_holidays(self):
         # Irish May Bank Holiday.
@@ -121,7 +126,7 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_subdiv_xdub_half_day_holidays(self):
         # When Christmas Eve or New Year's Eve fall on a weekend, the half
         # trading day is observed on the preceding Friday instead.
-        for day, name in ((24, "Christmas Eve"), (31, "New Year's Eve")):
+        for day, name in ((24, _CHRISTMAS_EVE), (31, _NEW_YEARS_EVE)):
             dt = date(self._year, DEC, day)
             if self._is_weekend(dt):
                 self._add_holiday(name, _timedelta(dt, -1 if dt.weekday() == 5 else -2))
@@ -129,10 +134,10 @@ class Euronext(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_eves_as_full_day_holidays(self):
         """Add Christmas Eve and New Year's Eve as full-day holidays."""
         # Christmas Eve.
-        self._add_christmas_eve("Christmas Eve")
+        self._add_christmas_eve(_CHRISTMAS_EVE)
 
         # New Year's Eve.
-        self._add_new_years_eve("New Year's Eve")
+        self._add_new_years_eve(_NEW_YEARS_EVE)
 
     def _populate_subdiv_xmil_public_holidays(self):
         # Milan is included in the Euronext holiday calendars from 2023.
