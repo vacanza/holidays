@@ -1043,3 +1043,15 @@ msgstr "ஸ்ரீ பஞ்சமி"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ஜனமாஷ்டமி (ஸ்மார்த்த)"
+
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "அய்யன்காளி ஜெயந்தி"
+
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "கர்க்கடக வாவு"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "ஸ்ரீ நாராயண குரு ஜெயந்தி"

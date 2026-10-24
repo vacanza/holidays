@@ -62,6 +62,7 @@ MAKAR_SANKRANTI = "MAKAR_SANKRANTI"
 MATSYA_JAYANTI = "MATSYA_JAYANTI"
 NAAG_PANCHAMI = "NAAG_PANCHAMI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
+NARAYANA_GURU_JAYANTHI = "NARAYANA_GURU_JAYANTHI"
 NIRJALA_EKADASHI = "NIRJALA_EKADASHI"
 ONAM = "ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
@@ -1989,6 +1990,35 @@ class _HinduLunisolar:
         2035: (OCT, 30),
     }
 
+    NARAYANA_GURU_JAYANTHI_DATES = {
+        2001: (SEP, 2),
+        2002: (AUG, 23),
+        2003: (SEP, 10),
+        2004: (AUG, 30),
+        2005: (SEP, 17),
+        2006: (SEP, 7),
+        2007: (AUG, 28),
+        2008: (SEP, 14),
+        2009: (SEP, 4),
+        2010: (AUG, 25),
+        2011: (SEP, 11),
+        2012: (AUG, 31),
+        2013: (AUG, 22),
+        2014: (SEP, 8),
+        2015: (AUG, 30),
+        2016: (SEP, 16),
+        2017: (SEP, 6),
+        2018: (AUG, 27),
+        2019: (SEP, 13),
+        2020: (SEP, 2),
+        2021: (AUG, 23),
+        2022: (SEP, 10),
+        2023: (AUG, 31),
+        2024: (AUG, 20),
+        2025: (SEP, 7),
+        2026: (AUG, 28),
+    }
+
     # https://web.archive.org/web/20260624232336/https://www.drikpanchang.com/ekadashis/nirjala/nirjala-ekadashi-date-time.html
     NIRJALA_EKADASHI_DATES = {
         2001: (JUN, 2),
@@ -3252,6 +3282,9 @@ class _HinduLunisolar:
 
     def naraka_chaturdashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NARAKA_CHATURDASHI, year)
+
+    def narayana_guru_jayanthi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(NARAYANA_GURU_JAYANTHI, year)
 
     def nirjala_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NIRJALA_EKADASHI, year)
