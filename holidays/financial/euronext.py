@@ -10,21 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import DEC, JAN, MAY, _timedelta
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.mixins.child_entity import ChildEntity
 from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
     SAT_SUN_TO_NONE,
     SAT_SUN_TO_PREV_FRI,
     ObservedHolidayBase,
 )
-
-# Holiday names shared by several Euronext markets.
-_CHRISTMAS_EVE = "Christmas Eve"
-_NEW_YEARS_EVE = "New Year's Eve"
 
 
 class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
@@ -34,8 +28,12 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     Lisbon, Milan, Oslo and Paris) share a common holiday calendar with a
     small number of market-specific closures. Christmas Eve and New Year's
     Eve are half trading days in all markets except Milan and Oslo, where
-    they are full-day closures. Milan market holidays are included from
-    2023, the first year Milan appears in the Euronext holiday calendars.
+    they are full-day closures. On half trading days the Amsterdam,
+    Brussels, Lisbon and Paris cash markets close by 14:05 CET, while
+    Euronext Dublin equities close at 12:30 Dublin time. Euronext Dublin
+    has been closed on May Day since 2021. Milan market holidays are
+    included from 2023, the first year Milan appears in the Euronext
+    holiday calendars.
 
     References:
         * <https://www.euronext.com/en/trading-calendars-hours>
@@ -46,23 +44,15 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     market = "XPAR"
     subdivisions = ("XAMS", "XBRU", "XDUB", "XLIS", "XMIL", "XOSL", "XPAR")
     supported_categories = (HALF_DAY, PUBLIC)
-    start_year = 2021
+    start_year = 2019
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        # Market subclasses (e.g., XOSL) default to their own subdivision,
-        # so their market-specific holidays are included when the subclass
-        # is used directly (e.g., via financial_holidays("XOSL"), which
-        # passes subdiv=None).
-        if type(self) is not Euronext and not any(
-            kwargs.get(key) for key in ("subdiv", "prov", "state")
-        ):
-            if len(args) < 4:
-                kwargs["subdiv"] = self.market
-            elif args[3] is None:
-                # A null positional subdivision gets the market default too.
-                args = (*args[:3], self.market, *args[4:])
+        # A market subclass always uses its own subdivision: a positional
+        # subdivision is replaced by the ChildEntity default.
+        if len(args) >= 4 and "subdiv" in kwargs and type(self) is not Euronext:
+            args = (*args[:3], kwargs.pop("subdiv"), *args[4:])
         # The observed arguments are passed to ObservedHolidayBase in its
         # own leading positions, keeping the HolidayBase positional
         # arguments (years, expand, observed, subdiv, ...) intact.
@@ -75,7 +65,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._move_holiday_forced(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NONE)
 
         # Good Friday.
         self._add_good_friday("Good Friday")
@@ -84,13 +74,15 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # Labour Day.
-        self._add_labor_day("Labour Day")
+        self._move_holiday_forced(self._add_labor_day("Labour Day"), rule=SAT_SUN_TO_NONE)
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._move_holiday_forced(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NONE)
 
         # St Stephen's Day.
-        self._add_christmas_day_two("St Stephen's Day")
+        self._move_holiday_forced(
+            self._add_christmas_day_two("St Stephen's Day"), rule=SAT_SUN_TO_NONE
+        )
 
     def _populate_half_day_holidays(self):
         # Christmas Eve and New Year's Eve are half trading days in all
@@ -101,52 +93,73 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self.subdiv in ("XMIL", "XOSL"):
             return None
 
+        # %s (markets close at 2:05pm CET).
+        close_2_05pm_label = "%s (markets close at 2:05pm CET)"
+        # %s (markets close at 12:30pm).
+        close_12_30pm_label = "%s (markets close at 12:30pm)"
+        # On Euronext Dublin, equities close at 12:30 Dublin time.
+        close_label = close_12_30pm_label if self.subdiv == "XDUB" else close_2_05pm_label
+
         # Christmas Eve.
         self._move_holiday_forced(
-            self._add_christmas_eve(_CHRISTMAS_EVE),
+            self._add_christmas_eve(self._format_holiday_name(close_label, "Christmas Eve")),
             rule=SAT_SUN_TO_NONE,
         )
 
         # New Year's Eve.
         self._move_holiday_forced(
-            self._add_new_years_eve(_NEW_YEARS_EVE),
+            self._add_new_years_eve(self._format_holiday_name(close_label, "New Year's Eve")),
             rule=SAT_SUN_TO_NONE,
         )
 
     def _populate_subdiv_xdub_public_holidays(self):
         # Irish May Bank Holiday.
-        self._add_holiday_1st_mon_of_may("Irish May Bank Holiday")
+        # Euronext Dublin has been closed on May Day since 2021.
+        if self._year >= 2021:
+            self._add_holiday_1st_mon_of_may("Irish May Bank Holiday")
 
         # When New Year's Day, Christmas Day or St Stephen's Day fall on a
         # weekend, Euronext Dublin is closed on the following workday
         # instead (e.g., if Christmas Day falls on a Sunday, the market is
         # closed on Tuesday, since Monday is St Stephen's Day itself).
-        for dt in (
-            date(self._year, JAN, 1),
-            date(self._year, DEC, 25),
-            date(self._year, DEC, 26),
-        ):
-            self._add_observed(dt, rule=SAT_SUN_TO_NEXT_WORKDAY)
+        # New Year's Day.
+        self._move_holiday(self._add_new_years_day("New Year's Day"), rule=SAT_SUN_TO_NEXT_WORKDAY)
+
+        # Christmas Day.
+        self._move_holiday(self._add_christmas_day("Christmas Day"), rule=SAT_SUN_TO_NEXT_WORKDAY)
+
+        # St Stephen's Day.
+        self._move_holiday(
+            self._add_christmas_day_two("St Stephen's Day"),
+            rule=SAT_SUN_TO_NEXT_WORKDAY,
+        )
 
     def _populate_subdiv_xdub_half_day_holidays(self):
         # When Christmas Eve or New Year's Eve fall on a weekend, the half
         # trading day is observed on the preceding Friday instead.
+        # %s (markets close at 12:30pm).
+        close_12_30pm_label = "%s (markets close at 12:30pm)"
+
         self._move_holiday_forced(
-            self._add_christmas_eve(_CHRISTMAS_EVE),
+            self._add_christmas_eve(
+                self._format_holiday_name(close_12_30pm_label, "Christmas Eve")
+            ),
             rule=SAT_SUN_TO_PREV_FRI,
         )
         self._move_holiday_forced(
-            self._add_new_years_eve(_NEW_YEARS_EVE),
+            self._add_new_years_eve(
+                self._format_holiday_name(close_12_30pm_label, "New Year's Eve")
+            ),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
     def _add_eves_as_full_day_holidays(self):
         """Add Christmas Eve and New Year's Eve as full-day holidays."""
         # Christmas Eve.
-        self._add_christmas_eve(_CHRISTMAS_EVE)
+        self._move_holiday_forced(self._add_christmas_eve("Christmas Eve"), rule=SAT_SUN_TO_NONE)
 
         # New Year's Eve.
-        self._add_new_years_eve(_NEW_YEARS_EVE)
+        self._move_holiday_forced(self._add_new_years_eve("New Year's Eve"), rule=SAT_SUN_TO_NONE)
 
     def _populate_subdiv_xmil_public_holidays(self):
         # Milan is included in the Euronext holiday calendars from 2023.
@@ -154,7 +167,9 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Assumption Day (Ferragosto).
-        self._add_assumption_of_mary_day("Assumption Day")
+        self._move_holiday_forced(
+            self._add_assumption_of_mary_day("Assumption Day"), rule=SAT_SUN_TO_NONE
+        )
 
         # Christmas Eve and New Year's Eve are full-day closures.
         self._add_eves_as_full_day_holidays()
@@ -167,7 +182,9 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday("Ascension Day")
 
         # Constitution Day.
-        self._add_holiday("Constitution Day", MAY, 17)
+        self._move_holiday_forced(
+            self._add_holiday_may_17("Constitution Day"), rule=SAT_SUN_TO_NONE
+        )
 
         # Whit Monday.
         self._add_pentecost_monday("Whit Monday")
@@ -176,33 +193,59 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_eves_as_full_day_holidays()
 
     def _populate_subdiv_xosl_half_day_holidays(self):
+        # %s (markets close at 1:00pm CET).
+        close_1pm_label = "%s (markets close at 1:00pm CET)"
+
         # Wednesday before Easter.
-        self._add_holiday("Wednesday before Easter", _timedelta(self._easter_sunday, -4))
+        self._add_holiday_4_days_prior_easter(
+            self._format_holiday_name(close_1pm_label, "Wednesday before Easter")
+        )
 
 
-class XPAR(Euronext):
+class XPAR(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XPAR"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XPAR"
 
 
-class XAMS(Euronext):
+class XAMS(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XAMS"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XAMS"
 
 
-class XBRU(Euronext):
+class XBRU(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XBRU"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XBRU"
 
 
-class XDUB(Euronext):
+class XDUB(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XDUB"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XDUB"
 
 
-class XLIS(Euronext):
+class XLIS(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XLIS"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XLIS"
 
 
-class XMIL(Euronext):
+class XMIL(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XMIL"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XMIL"
 
 
-class XOSL(Euronext):
+class XOSL(ChildEntity, Euronext):
+    country = None  # type: ignore[assignment]
     market = "XOSL"
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XOSL"
