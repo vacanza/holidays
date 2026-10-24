@@ -17,6 +17,7 @@ from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.observed_holiday_base import (
     SAT_SUN_TO_NEXT_WORKDAY,
+    SAT_SUN_TO_NONE,
     SAT_SUN_TO_PREV_FRI,
     ObservedHolidayBase,
 )
@@ -94,19 +95,23 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_half_day_holidays(self):
         # Christmas Eve and New Year's Eve are half trading days in all
         # markets except Milan and Oslo, where they are full-day closures
-        # (see the corresponding subdivision public holidays). No half
-        # trading day is observed when they fall on a weekend (for Dublin
-        # see the subdivision half day holidays below).
+        # (see the corresponding subdivision public holidays). There is no
+        # half trading day when they fall on a weekend (for Dublin see the
+        # subdivision half day holidays below).
         if self.subdiv in ("XMIL", "XOSL"):
             return None
 
         # Christmas Eve.
-        if not self._is_weekend(date(self._year, DEC, 24)):
-            self._add_christmas_eve(_CHRISTMAS_EVE)
+        self._move_holiday_forced(
+            self._add_christmas_eve(_CHRISTMAS_EVE),
+            rule=SAT_SUN_TO_NONE,
+        )
 
         # New Year's Eve.
-        if not self._is_weekend(date(self._year, DEC, 31)):
-            self._add_new_years_eve(_NEW_YEARS_EVE)
+        self._move_holiday_forced(
+            self._add_new_years_eve(_NEW_YEARS_EVE),
+            rule=SAT_SUN_TO_NONE,
+        )
 
     def _populate_subdiv_xdub_public_holidays(self):
         # Irish May Bank Holiday.

@@ -155,6 +155,17 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNotIn("2022-01-03", XDUB(years=2022, observed=False))
         self.assertIn("2022-01-01", XDUB(years=2022, observed=False))
 
+    def test_half_day_eves_observed_flag(self):
+        # The Eve half days use forced observed moves, so weekend Eves
+        # stay suppressed and Dublin's Friday substitutes stay in place
+        # regardless of the observed flag.
+        self.assertNoSubdivXparHalfDayHolidayName("Christmas Eve", "2022-12-24")
+        self.assertNoSubdivXparHalfDayHolidayName("New Year's Eve", "2022-12-31")
+        self.assertNotIn("2022-12-24", XPAR(years=2022, observed=False, categories=HALF_DAY))
+        self.assertNotIn("2022-12-31", XPAR(years=2022, observed=False, categories=HALF_DAY))
+        self.assertSubdivXdubHalfDayHolidayName("Christmas Eve", "2022-12-23")
+        self.assertIn("2022-12-23", XDUB(years=2022, observed=False, categories=HALF_DAY))
+
     def test_dublin_half_day_substitutes(self):
         # Christmas Eve half trading day observed on the preceding Friday.
         self.assertSubdivXdubHalfDayHolidayName("Christmas Eve", "2022-12-23", "2023-12-22")
