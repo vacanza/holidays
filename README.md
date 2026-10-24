@@ -1606,7 +1606,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Somalia</td>
 <td>SO</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>so</strong></td>
 <td></td>
 </tr>
 <tr>
