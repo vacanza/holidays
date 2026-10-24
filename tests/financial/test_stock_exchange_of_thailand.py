@@ -23,6 +23,33 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "1996-03-01",
+            "1996-06-10",
+            "1998-01-02",
+            "2002-12-30",
+            "2006-04-19",
+            "2006-06-12",
+            "2006-06-13",
+            "2009-01-02",
+            "2009-07-06",
+            "2010-05-20",
+            "2010-05-21",
+            "2010-08-13",
+            "2011-05-16",
+            "2012-01-03",
+            "2012-04-09",
+            "2013-12-30",
+            "2014-08-11",
+            "2015-01-02",
+            "2015-05-04",
+            "2016-05-06",
+            "2016-07-18",
+            "2017-01-03",
+            "2017-10-26",
+            "2019-05-06",
+            "2020-12-11",
+            "2021-02-12",
+            "2021-09-24",
             "2022-07-29",
             "2022-10-14",
             "2023-05-05",
@@ -34,8 +61,32 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
             "2026-10-16",
         )
 
+    def test_special_holidays_observed(self):
+        self.assertHolidayName("ชดเชยวันมาฆบูชา", "1996-02-29")
+        self.assertHolidayName("ชดเชยวันสิ้นปี", "2004-01-02")
+        self.assertHolidayName("ชดเชยวันเลือกตั้ง", "2007-12-24")
+        self.assertHolidayName("ชดเชยวันสงกรานต์", "2020-07-27", "2020-09-04", "2020-09-07")
+        self.assertHolidayName("ชดเชยวันปิยมหาราช", "2021-10-22")
+        self.assertNoHoliday(
+            "1996-03-04",
+            "2021-10-25",
+        )
+
     def test_government_special_holidays_not_adopted(self):
         self.assertNoHoliday(
+            "2000-12-29",
+            "2006-06-09",
+            "2006-09-20",
+            "2009-04-10",
+            "2009-04-16",
+            "2009-04-17",
+            "2011-10-27",
+            "2011-10-28",
+            "2011-10-31",
+            "2016-10-14",
+            "2020-11-19",
+            "2020-11-20",
+            "2021-04-12",
             "2022-07-15",
             "2022-12-30",
             "2023-07-31",
@@ -43,7 +94,28 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
         )
 
     def test_buddhist_lent_day(self):
-        self.assertNoHolidayName("วันเข้าพรรษา")
+        name = "วันเข้าพรรษา"
+        self.assertHolidayName(
+            name,
+            "1992-07-15",
+            "1995-07-12",
+            "1996-07-30",
+            "1998-07-09",
+            "1999-07-28",
+            "2000-07-17",
+            "2001-07-06",
+            "2002-07-25",
+            "2003-07-14",
+            "2006-07-11",
+        )
+        self.assertNoHolidayName(name, range(2007, self.end_year))
+        obs_dts = (
+            "1994-07-25",
+            "1997-07-21",
+            "2004-08-02",
+        )
+        self.assertHolidayName(f"ชดเชย{name}", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
         self.assertNoHoliday(
             "2022-07-14",
             "2023-08-02",
@@ -51,26 +123,65 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
             "2026-07-30",
         )
 
+    def test_mid_year_closing_day(self):
+        name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+        self.assertHolidayName(name, (f"{year}-07-01" for year in range(self.start_year, 2019)))
+        self.assertNoHolidayName(name, range(2019, self.end_year))
+        self.assertNoHoliday("2017-07-03", "2018-07-02")
+
+    def test_coronation_day(self):
+        name = "วันฉัตรมงคล"
+        self.assertHolidayName(name, (f"{year}-05-05" for year in range(self.start_year, 2017)))
+        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2020, self.end_year)))
+        self.assertNoHolidayName(name, 2017, 2018, 2019)
+
     def test_songkran_festival(self):
         name = "วันสงกรานต์"
         self.assertHolidayName(
-            name, (f"{year}-04-{day}" for year in self.full_range for day in (13, 14, 15))
+            name,
+            (f"{year}-04-{day}" for year in range(self.start_year, 1998) for day in (12, 13, 14)),
         )
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-04-{day}"
+                for year in range(1998, self.end_year)
+                if year != 2020
+                for day in (13, 14, 15)
+            ),
+        )
+        self.assertNoHolidayName(name, 2020)
         obs_dts = (
+            "1996-04-15",
+            "1997-04-15",
+            "2001-04-16",
+            "2002-04-16",
+            "2013-04-16",
+            "2018-04-16",
             "2024-04-16",
             "2029-04-16",
         )
         self.assertHolidayName(f"ชดเชย{name}", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
         self.assertNoHoliday(
+            "2003-04-16",
+            "2006-04-17",
+            "2017-04-17",
             "2023-04-17",
             "2025-04-16",
         )
 
     def test_new_years_eve(self):
         name = "วันสิ้นปี"
-        self.assertHolidayName(name, (f"{year}-12-31" for year in self.full_range))
+        self.assertHolidayName(
+            name, (f"{year}-12-31" for year in self.full_range if year not in {1997, 2003})
+        )
+        self.assertHolidayName(name, "1998-01-02")
+        self.assertNoHoliday("1997-12-31", "2003-12-31")
         obs_dts = (
+            "1996-01-02",
+            "2001-01-02",
+            "2018-01-02",
             "2023-01-02",
             "2029-01-02",
         )
@@ -83,6 +194,7 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
 
     def test_asarnha_bucha(self):
         name = "วันอาสาฬหบูชา"
+        self.assertNoHolidayName(name, range(self.start_year, 2007))
         self.assertHolidayName(
             name,
             "2022-07-13",
@@ -93,6 +205,9 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
             "2027-07-18",
         )
         obs_dts = (
+            "2007-07-30",
+            "2017-07-10",
+            "2020-07-06",
             "2024-07-22",
             "2027-07-19",
         )
@@ -101,13 +216,78 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
         self.assertNoHoliday("2027-07-20")
 
     def test_shared_in_lieu_day(self):
-        self.assertHolidayName("ชดเชยวันขึ้นปีใหม่", "2023-01-02")
+        self.assertHolidayName("ชดเชยวันขึ้นปีใหม่", "1995-01-02", "2006-01-02", "2023-01-02")
         self.assertHolidayName("ชดเชยวันวิสาขบูชา", "2023-06-05")
         self.assertHolidayName(
             "ชดเชยวันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
             "2023-06-05",
         )
-        self.assertNoHoliday("2023-06-06")
+        self.assertNoHoliday(
+            "1995-01-03",
+            "2006-01-03",
+            "2023-01-03",
+            "2023-06-06",
+        )
+
+    def test_in_lieu_day_after_holiday(self):
+        self.assertHolidayName("ชดเชยวันฉัตรมงคล", "2001-05-08")
+        self.assertNoHolidayName("ชดเชยวันฉัตรมงคล", "2001-05-07")
+
+    def test_2017(self):
+        self.assertHolidayDatesInYear(
+            2017,
+            "2017-01-01",
+            "2017-01-02",
+            "2017-01-03",
+            "2017-02-11",
+            "2017-02-13",
+            "2017-04-06",
+            "2017-04-13",
+            "2017-04-14",
+            "2017-04-15",
+            "2017-05-01",
+            "2017-05-10",
+            "2017-07-01",
+            "2017-07-08",
+            "2017-07-10",
+            "2017-07-28",
+            "2017-08-12",
+            "2017-08-14",
+            "2017-10-13",
+            "2017-10-23",
+            "2017-10-26",
+            "2017-12-05",
+            "2017-12-10",
+            "2017-12-11",
+            "2017-12-31",
+        )
+
+    def test_2020(self):
+        self.assertHolidayDatesInYear(
+            2020,
+            "2020-01-01",
+            "2020-02-08",
+            "2020-02-10",
+            "2020-04-06",
+            "2020-05-01",
+            "2020-05-04",
+            "2020-05-06",
+            "2020-06-03",
+            "2020-07-05",
+            "2020-07-06",
+            "2020-07-27",
+            "2020-07-28",
+            "2020-08-12",
+            "2020-09-04",
+            "2020-09-07",
+            "2020-10-13",
+            "2020-10-23",
+            "2020-12-05",
+            "2020-12-07",
+            "2020-12-10",
+            "2020-12-11",
+            "2020-12-31",
+        )
 
     def test_2022(self):
         self.assertHolidayDatesInYear(

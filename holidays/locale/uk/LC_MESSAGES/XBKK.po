@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-24 16:26+0000\n"
-"PO-Revision-Date: 2026-10-24 16:26+0000\n"
+"PO-Revision-Date: 2026-10-24 22:01+0000\n"
 "Last-Translator: jiteshgulati <jiteshgulati805@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -35,6 +35,10 @@ msgstr "%s (вихідний)"
 #. New Year's Day.
 msgid "วันขึ้นปีใหม่"
 msgstr "Новий рік"
+
+#. Makha Bucha.
+msgid "วันมาฆบูชา"
+msgstr "Маха Буча"
 
 #. Chakri Memorial Day.
 msgid "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"
@@ -56,6 +60,10 @@ msgstr "День коронації"
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr "День народження Її Величності королеви Сутіди"
 
+#. Mid-Year Closing Day.
+msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+msgstr "Вихідний середини року для фінансових установ"
+
 #. HM King Maha Vajiralongkorn's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
@@ -64,6 +72,10 @@ msgstr "День народження Його Величності короля
 #. HM Queen Sirikit the Queen Mother's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 msgstr "День народження Її Величності королеви-матері Сірікіт"
+
+#. HM Queen Sirikit's Birthday.
+msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
+msgstr "День народження Її Величності королеви Сірікіт"
 
 #. National Mother's Day.
 msgid "วันแม่แห่งชาติ"
@@ -77,6 +89,10 @@ msgstr "День памʼяті Його Величності короля Пу�
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr "Річниця смерті Його Величності короля Пуміпона Адульядета Великого"
 
+#. Anniversary for the Death of King Bhumibol Adulyadej.
+msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+msgstr "Річниця смерті Його Величності короля Пуміпона Адульядета"
+
 #. HM King Chulalongkorn Memorial Day.
 msgid "วันปิยมหาราช"
 msgstr "День памʼяті Його Величності короля Чулалонгкорна"
@@ -84,6 +100,14 @@ msgstr "День памʼяті Його Величності короля Чу�
 #. HM King Bhumibol Adulyadej the Great's Birthday Anniversary.
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr "Річниця дня народження Його Величності короля Пуміпона Адульядета Великого"
+
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
+msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+msgstr "Річниця дня народження Його Величності короля Пуміпона Адульядета"
+
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
+msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+msgstr "День народження Його Величності короля Пуміпона Адульядета"
 
 #. National Day.
 msgid "วันชาติ"
@@ -101,17 +125,17 @@ msgstr "День Конституції"
 msgid "วันสิ้นปี"
 msgstr "Переддень Нового року"
 
-#. Makha Bucha.
-msgid "วันมาฆบูชา"
-msgstr "Маха Буча"
+#. Asarnha Bucha.
+msgid "วันอาสาฬหบูชา"
+msgstr "Асарна Буча"
+
+#. Buddhist Lent Day.
+msgid "วันเข้าพรรษา"
+msgstr "Початок буддистського посту"
 
 #. Visakha Bucha.
 msgid "วันวิสาขบูชา"
 msgstr "Вісака Буча"
-
-#. Asarnha Bucha.
-msgid "วันอาสาฬหบูชา"
-msgstr "Асарна Буча"
 
 #. Special In-Lieu Holiday.
 msgid "วันหยุดชดเชย"
@@ -120,3 +144,23 @@ msgstr "Додатковий вихідний"
 #. Bridge Public Holiday.
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
 msgstr "Проміжний вихідний"
+
+#. Thai Election Day.
+msgid "วันเลือกตั้ง"
+msgstr "День виборів"
+
+#. HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
+msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
+msgstr "60-та річниця сходження на престол Його Величності короля Пуміпона Адульядета"
+
+#. HM King Bhumibol Adulyadej's Golden Jubilee.
+msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
+msgstr "Золотий ювілей Його Величності короля Пуміпона Адульядета"
+
+#. HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
+msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
+msgstr "Церемонія кремації Його Величності короля Пуміпона Адульядета"
+
+#. HM King Maha Vajiralongkorn's Coronation Celebrations.
+msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
+msgstr "Коронація Його Величності короля Маха Вачіралонгкорна"

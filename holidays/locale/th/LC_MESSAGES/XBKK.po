@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-24 16:26+0000\n"
-"PO-Revision-Date: 2026-10-24 16:26+0000\n"
+"PO-Revision-Date: 2026-10-24 22:01+0000\n"
 "Last-Translator: jiteshgulati <jiteshgulati805@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -34,6 +34,10 @@ msgstr ""
 
 #. New Year's Day.
 msgid "วันขึ้นปีใหม่"
+msgstr ""
+
+#. Makha Bucha.
+msgid "วันมาฆบูชา"
 msgstr ""
 
 #. Chakri Memorial Day.
@@ -56,6 +60,10 @@ msgstr ""
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""
 
+#. Mid-Year Closing Day.
+msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+msgstr ""
+
 #. HM King Maha Vajiralongkorn's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
@@ -63,6 +71,10 @@ msgstr ""
 
 #. HM Queen Sirikit the Queen Mother's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
+msgstr ""
+
+#. HM Queen Sirikit's Birthday.
+msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
 msgstr ""
 
 #. National Mother's Day.
@@ -77,12 +89,24 @@ msgstr ""
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr ""
 
+#. Anniversary for the Death of King Bhumibol Adulyadej.
+msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+msgstr ""
+
 #. HM King Chulalongkorn Memorial Day.
 msgid "วันปิยมหาราช"
 msgstr ""
 
 #. HM King Bhumibol Adulyadej the Great's Birthday Anniversary.
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
+msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
+msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
 #. National Day.
@@ -101,16 +125,16 @@ msgstr ""
 msgid "วันสิ้นปี"
 msgstr ""
 
-#. Makha Bucha.
-msgid "วันมาฆบูชา"
+#. Asarnha Bucha.
+msgid "วันอาสาฬหบูชา"
+msgstr ""
+
+#. Buddhist Lent Day.
+msgid "วันเข้าพรรษา"
 msgstr ""
 
 #. Visakha Bucha.
 msgid "วันวิสาขบูชา"
-msgstr ""
-
-#. Asarnha Bucha.
-msgid "วันอาสาฬหบูชา"
 msgstr ""
 
 #. Special In-Lieu Holiday.
@@ -119,4 +143,24 @@ msgstr ""
 
 #. Bridge Public Holiday.
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
+msgstr ""
+
+#. Thai Election Day.
+msgid "วันเลือกตั้ง"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
+msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej's Golden Jubilee.
+msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
+msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
+msgstr ""
+
+#. HM King Maha Vajiralongkorn's Coronation Celebrations.
+msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
