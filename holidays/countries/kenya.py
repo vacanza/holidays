@@ -38,6 +38,10 @@ class Kenya(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Kenya>
         * [Public Holidays Act Cap. 110](https://web.archive.org/web/20250118013422/https://new.kenyalaw.org/akn/ke/act/1912/21/eng@2024-04-26)
         * [Constitution of Kenya (Art. 9)](https://web.archive.org/web/20250417082347/https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03)
+        * [Idd-ul-Fitr 2025](https://web.archive.org/web/20250915103001/https://new.kenyalaw.org/akn/ke/officialGazette/2025-03-28/62/eng@2025-03-28)
+        * [Idd-ul-Azha 2025](https://web.archive.org/web/20250915100136/https://new.kenyalaw.org/akn/ke/officialGazette/2025-06-04/116/eng@2025-06-04)
+        * [Idd-ul-Fitr 2026](https://web.archive.org/web/20260320020632/https://new.kenyalaw.org/akn/ke/officialGazette/2026-03-18/50/eng@2026-03-18)
+        * [Idd-ul-Azha 2026](https://new.kenyalaw.org/akn/ke/officialGazette/2026-05-25/90/eng@2026-05-25)
     """
 
     country = "KE"
@@ -173,8 +177,6 @@ class KenyaHinduHolidays(_CustomHinduHolidays):
 
 
 class KenyaIslamicHolidays(_CustomIslamicHolidays):
-    # https://web.archive.org/web/20250915100136/https://new.kenyalaw.org/akn/ke/officialGazette/2025-06-04/116/eng@2025-06-04
-    # https://new.kenyalaw.org/akn/ke/officialGazette/2026-05-25/90/eng@2026-05-25
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2026)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 6),
@@ -185,8 +187,6 @@ class KenyaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    # https://web.archive.org/web/20250915103001/https://new.kenyalaw.org/akn/ke/officialGazette/2025-03-28/62/eng@2025-03-28
-    # https://web.archive.org/web/20260320020632/https://new.kenyalaw.org/akn/ke/officialGazette/2026-03-18/50/eng@2026-03-18
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2026)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
