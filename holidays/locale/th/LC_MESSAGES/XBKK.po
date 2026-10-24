@@ -1,0 +1,122 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Stock Exchange of Thailand (SET) holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-24 16:26+0000\n"
+"PO-Revision-Date: 2026-10-24 16:26+0000\n"
+"Last-Translator: jiteshgulati <jiteshgulati805@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: th\n"
+
+#. %s (in lieu).
+#, c-format
+msgid "ชดเชย%s"
+msgstr ""
+
+#. New Year's Day.
+msgid "วันขึ้นปีใหม่"
+msgstr ""
+
+#. Chakri Memorial Day.
+msgid "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์"
+msgstr ""
+
+#. Songkran Festival.
+msgid "วันสงกรานต์"
+msgstr ""
+
+#. National Labor Day.
+msgid "วันแรงงานแห่งชาติ"
+msgstr ""
+
+#. Coronation Day.
+msgid "วันฉัตรมงคล"
+msgstr ""
+
+#. HM Queen Suthida's Birthday.
+msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
+msgstr ""
+
+#. HM King Maha Vajiralongkorn's Birthday.
+msgid ""
+"วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
+msgstr ""
+
+#. HM Queen Sirikit the Queen Mother's Birthday.
+msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
+msgstr ""
+
+#. National Mother's Day.
+msgid "วันแม่แห่งชาติ"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej Memorial Day.
+msgid "วันนวมินทรมหาราช"
+msgstr ""
+
+#. Anniversary for the Death of King Bhumibol Adulyadej the Great.
+msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+msgstr ""
+
+#. HM King Chulalongkorn Memorial Day.
+msgid "วันปิยมหาราช"
+msgstr ""
+
+#. HM King Bhumibol Adulyadej the Great's Birthday Anniversary.
+msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+msgstr ""
+
+#. National Day.
+msgid "วันชาติ"
+msgstr ""
+
+#. National Father's Day.
+msgid "วันพ่อแห่งชาติ"
+msgstr ""
+
+#. Constitution Day.
+msgid "วันรัฐธรรมนูญ"
+msgstr ""
+
+#. New Year's Eve.
+msgid "วันสิ้นปี"
+msgstr ""
+
+#. Makha Bucha.
+msgid "วันมาฆบูชา"
+msgstr ""
+
+#. Visakha Bucha.
+msgid "วันวิสาขบูชา"
+msgstr ""
+
+#. Asarnha Bucha.
+msgid "วันอาสาฬหบูชา"
+msgstr ""
+
+#. Special In-Lieu Holiday.
+msgid "วันหยุดชดเชย"
+msgstr ""
+
+#. Bridge Public Holiday.
+msgid "วันหยุดพิเศษ (เพิ่มเติม)"
+msgstr ""
