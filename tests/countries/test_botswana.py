@@ -22,8 +22,7 @@ class TestBotswana(CommonCountryTests, TestCase):
         super().setUpClass(Botswana, years_non_observed=range(2010, 2024))
 
     def test_special_holidays(self):
-        self.assertHolidayName(
-            "Public Holiday",
+        self.assertHoliday(
             "2019-07-02",
             "2024-10-30",
             "2024-10-31",
