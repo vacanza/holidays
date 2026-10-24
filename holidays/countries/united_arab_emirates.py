@@ -54,18 +54,8 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
             * <https://web.archive.org/web/20231207191645/https://www.timeoutdubai.com/news/uae-public-holidays-in-2023>
             * <https://web.archive.org/web/20250125141309/https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector>
         * [2024](https://web.archive.org/web/20241001104607/https://www.timeoutdubai.com/news/uae-public-holidays-in-2024)
-        * 2025:
-            * <https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025>
-            * <https://web.archive.org/web/20261023175144/https://gulfnews.com/uae/uae-eid-al-adha-2025-holidays-explained-what-employees-need-to-know-1.500148451>
-            * <https://web.archive.org/web/20261023175423/https://en.aletihad.ae/news/uae/4583136/june-27-declared-hijri-new-year-holiday-in-federal-governmen>
-            * <https://web.archive.org/web/20261023180607/https://gulfnews.com/uae/uae-national-day-holidays-announced-2-1.500348949>
-        * 2026:
-            * <https://web.archive.org/web/20261023175727/https://www.wam.ae/en/article/bz9l2ze-breaking-thursday-completes-ramadan-friday-marks>
-            * <https://web.archive.org/web/20260325003514/https://mohre.gov.ae/en/media-center/news/23/2/2026/eid-al-fitr-holiday-announced-for-private-sector>
-            * <https://web.archive.org/web/20261023180027/https://en.aletihad.ae/news/uae/4665235/fahr-announces-may-25-29-eid-al-adha-holiday-for-federal-ent>
-            * <https://web.archive.org/web/20261023180101/https://en.aletihad.ae/news/uae/4666606/uae-announces-paid-eid-al-adha-holiday-for-private-sector-fr>
-            * <https://web.archive.org/web/20261023180149/https://en.aletihad.ae/news/uae/4670030/uae-announces-hijri-new-year-holiday-on-june-15>
-            * <https://web.archive.org/web/20261023180253/https://gulfnews.com/uae/government/uae-declares-public-holiday-for-prophets-birthday-1.500633530>
+        * [2025](https://web.archive.org/web/20261023233425/https://www.timeoutdubai.com/news/uae-public-holidays-2025-dates)
+        * [2026](https://web.archive.org/web/20261023222503/https://www.timeoutdubai.com/news/public-holidays-2026-uae-dates-revealed)
 
     Holidays are regulated by the Article 74 of [Federal Law No.
     08](https://web.archive.org/web/20250304004437/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf)
@@ -118,9 +108,9 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
         national_day = tr("اليوم الوطني")
         if self._year == 2025:
             self._add_holiday_dec_1(national_day)
-        self._add_holiday_dec_2(national_day)
-        if self._year != 2025:
+        else:
             self._add_holiday_dec_3(national_day)
+        self._add_holiday_dec_2(national_day)
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
@@ -210,7 +200,9 @@ class UnitedArabEmiratesStaticHolidays:
         * [2023](https://web.archive.org/web/20240301231911/https://hrme.economictimes.indiatimes.com/news/industry/uae-cabinet-announces-national-day-holiday-for-federal-government-from-2-to-4-december/105455071)
         * [2024](https://web.archive.org/web/20240720085937/http://www.timeoutdubai.com/news/eid-al-fitr-2024-expected-dates-ramadan)
         * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
-        * [2026](https://web.archive.org/web/20260325003514/https://mohre.gov.ae/en/media-center/news/23/2/2026/eid-al-fitr-holiday-announced-for-private-sector)
+        * 2026:
+            * <https://web.archive.org/web/20260325003514/https://mohre.gov.ae/en/media-center/news/23/2/2026/eid-al-fitr-holiday-announced-for-private-sector>
+            * <https://web.archive.org/web/20261023180027/https://en.aletihad.ae/news/uae/4665235/fahr-announces-may-25-29-eid-al-adha-holiday-for-federal-ent>
 
     Cross-Checked With:
         * <https://web.archive.org/web/20250429081729/https://www.timeanddate.com/holidays/united-arab-emirates/2021?hol=134217729>
