@@ -13,7 +13,6 @@
 import warnings
 from unittest import TestCase
 
-from holidays.calendars.france_school import FRANCE_SCHOOL_HOLIDAYS
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.countries.france import France
 from tests.common import CommonCountryTests
@@ -23,6 +22,10 @@ class TestFrance(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(France, with_subdiv_categories=True)
+        cls.zone_school_holidays = tuple(
+            cls.subdiv_school_holidays[subdiv]
+            for subdiv in ("57", "6AE", "Zone A", "Zone B", "Zone C")
+        )
 
     def setUp(self):
         super().setUp()
@@ -396,127 +399,12 @@ class TestFrance(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
-    def test_all_zones_present_for_all_dataset_years(self):
-        for year, year_data in FRANCE_SCHOOL_HOLIDAYS.items():
-            self.assertEqual(set(year_data), {"Zone A", "Zone B", "Zone C"}, year)
-
-    def test_all_school_holiday_ids_are_mapped(self):
-        known_ids = set(France._get_school_holiday_names())
-        dataset_ids = {
-            holiday_id
-            for year_data in FRANCE_SCHOOL_HOLIDAYS.values()
-            for holidays in year_data.values()
-            for *_, holiday_id in holidays
-        }
-        self.assertEqual(dataset_ids, known_ids)
-
-    def test_school_holidays(self):
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances de la Toussaint",
-            "2025-10-18",
-            "2025-11-02",
-        )
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances de Noël",
-            "2025-12-20",
-            "2025-12-31",
-            "2026-01-01",
-            "2026-01-04",
-        )
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances d'hiver",
-            "2026-02-07",
-            "2026-02-22",
-        )
-        self.assertNoSubdivZoneASchoolHoliday("2026-02-06", "2026-02-23")
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances de printemps",
-            "2026-04-04",
-            "2026-04-19",
-        )
-        self.assertSubdivZoneASchoolHolidayName(
-            "Pont de l'Ascension",
-            "2026-05-14",
-            "2026-05-17",
-        )
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances d'été",
-            "2026-07-04",
-            "2026-08-31",
-        )
-        self.assertNoSubdivZoneASchoolHoliday("2026-07-03", "2026-09-01")
-        self.assertSubdivZoneBSchoolHolidayName(
-            "Vacances d'hiver",
-            "2026-02-14",
-            "2026-03-01",
-        )
-        self.assertSubdivZoneBSchoolHolidayName(
-            "Vacances de printemps",
-            "2026-04-11",
-            "2026-04-26",
-        )
-        self.assertSubdivZoneCSchoolHolidayName(
-            "Vacances d'hiver",
-            "2026-02-21",
-            "2026-03-08",
-        )
-        self.assertSubdivZoneCSchoolHolidayName(
-            "Vacances de printemps",
-            "2026-04-18",
-            "2026-05-03",
-        )
-        self.assertSubdivZoneCSchoolHolidayName(
-            "Vacances d'hiver",
-            "2027-02-06",
-            "2027-02-21",
-        )
-
-    def test_school_holidays_last_class_on_weekday(self):
-        # Classes ended after class on Tuesday, July 6, 2021 and Thursday, July 7, 2022.
-        self.assertNoSubdivZoneASchoolHoliday("2021-07-06", "2022-07-07")
-        self.assertSubdivZoneASchoolHolidayName("Vacances d'été", "2021-07-07", "2022-07-08")
-
-    def test_school_holidays_ascension_bridge(self):
-        for dts in (
-            # Published from the last class day (Wednesday).
-            ("2019-05-30", "2019-06-02"),
-            # Published from Ascension Thursday.
-            ("2025-05-29", "2025-06-01"),
-            # Only Friday, May 7, 2027 was set as a day without classes.
-            ("2027-05-06", "2027-05-09"),
-        ):
-            self.assertSubdivZoneBSchoolHolidayName("Pont de l'Ascension", *dts)
-        self.assertNoSubdivZoneBSchoolHoliday(
-            "2019-05-29", "2019-06-03", "2027-05-05", "2027-05-10"
-        )
-
-    def test_school_holidays_dataset_range(self):
-        self.assertNoHolidays(
-            France(subdiv="Zone A", years=range(self.start_year, 2017), categories=SCHOOL)
-        )
-        self.assertNoSubdivZoneASchoolHoliday("2017-10-20", "2028-05-29", "2028-07-04")
-        self.assertSubdivZoneASchoolHolidayName(
-            "Vacances de la Toussaint",
-            "2017-10-21",
-            "2017-11-05",
-        )
-        self.assertSubdivZoneASchoolHolidayName(
-            "Pont de l'Ascension",
-            "2028-05-25",
-            "2028-05-28",
-        )
-
-    def test_school_holidays_alsace_moselle(self):
-        zone_b_holidays = France(subdiv="Zone B", years=range(2017, 2029), categories=SCHOOL)
-        for subdiv in ("57", "6AE", "Alsace", "Moselle"):
-            self.assertEqual(
-                dict(France(subdiv=subdiv, years=range(2017, 2029), categories=SCHOOL)),
-                dict(zone_b_holidays),
-                subdiv,
+    def test_no_school_holidays(self):
+        self.assertNoHolidays(France(categories=SCHOOL, years=self.full_range))
+        for subdiv in ("57", "6AE", "Zone A", "Zone B", "Zone C"):
+            self.assertNoHolidays(
+                France(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2017))
             )
-
-    def test_school_holidays_not_supported(self):
-        self.assertNoHolidays(France(years=2026, categories=SCHOOL))
         for subdiv in (
             "971",
             "972",
@@ -531,15 +419,222 @@ class TestFrance(CommonCountryTests, TestCase):
             "TF",
             "WF",
         ):
-            self.assertNoHolidays(France(subdiv=subdiv, years=2026, categories=SCHOOL))
+            self.assertNoHolidays(France(subdiv=subdiv, categories=SCHOOL, years=self.full_range))
+
+    def test_school_all_saints_break(self):
+        name = "Vacances de la Toussaint"
+        self.assertNoHolidayName(name)
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2017-10-21",
+                "2017-11-05",
+                "2020-10-17",
+                "2020-11-01",
+                "2021-10-23",
+                "2021-11-07",
+                "2025-10-18",
+                "2025-11-02",
+                "2027-10-23",
+                "2027-11-07",
+            )
+            self.assertNoHoliday(holidays, "2020-10-16", "2020-11-02", "2021-10-22", "2021-11-08")
+            self.assertHolidayNameCount(name, 16, holidays, range(2017, self.end_year))
+
+    def test_school_christmas_break(self):
+        name = "Vacances de Noël"
+        self.assertNoHolidayName(name)
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2017-12-23",
+                "2018-01-07",
+                "2021-12-18",
+                "2022-01-02",
+                "2022-12-17",
+                "2023-01-02",
+                "2023-12-23",
+                "2024-01-07",
+                "2027-12-18",
+                "2028-01-02",
+            )
+            self.assertNoHoliday(
+                holidays,
+                "2017-01-01",
+                "2017-12-22",
+                "2018-01-08",
+                "2022-12-16",
+                "2023-01-03",
+                "2023-12-22",
+                "2024-01-08",
+            )
+
+    def test_school_winter_break(self):
+        name = "Vacances d'hiver"
+        self.assertNoHolidayName(name)
+        self.assertSubdivZoneASchoolHolidayName(
+            name,
+            "2018-02-10",
+            "2018-02-25",
+            "2022-02-12",
+            "2022-02-27",
+            "2023-02-04",
+            "2023-02-19",
+            "2026-02-07",
+            "2026-02-22",
+            "2028-02-19",
+            "2028-03-05",
+        )
+        self.assertSubdivZoneBSchoolHolidayName(
+            name,
+            "2018-02-24",
+            "2018-03-11",
+            "2022-02-05",
+            "2022-02-20",
+            "2023-02-11",
+            "2023-02-26",
+            "2026-02-14",
+            "2026-03-01",
+            "2028-02-05",
+            "2028-02-20",
+        )
+        self.assertSubdivZoneCSchoolHolidayName(
+            name,
+            "2018-02-17",
+            "2018-03-04",
+            "2022-02-19",
+            "2022-03-06",
+            "2023-02-18",
+            "2023-03-05",
+            "2026-02-21",
+            "2026-03-08",
+            "2028-02-12",
+            "2028-02-27",
+        )
+        self.assertNoSubdivZoneASchoolHoliday("2026-02-06", "2026-02-23")
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayNameCount(name, 16, holidays, range(2018, self.end_year))
+
+    def test_school_spring_break(self):
+        name = "Vacances de printemps"
+        self.assertNoHolidayName(name)
+        self.assertSubdivZoneASchoolHolidayName(
+            name,
+            "2018-04-07",
+            "2018-04-22",
+            "2023-04-08",
+            "2023-04-23",
+            "2026-04-04",
+            "2026-04-19",
+            # Victory Day on the following Monday.
+            "2028-04-22",
+            "2028-05-08",
+        )
+        self.assertSubdivZoneBSchoolHolidayName(
+            name,
+            "2018-04-21",
+            "2018-05-06",
+            # Easter Monday on the following Monday.
+            "2019-04-06",
+            "2019-04-22",
+            # Labor Day on the following Monday.
+            "2023-04-15",
+            "2023-05-01",
+            "2026-04-11",
+            "2026-04-26",
+        )
+        self.assertSubdivZoneCSchoolHolidayName(
+            name,
+            "2018-04-14",
+            "2018-04-29",
+            "2023-04-22",
+            "2023-05-08",
+            "2026-04-18",
+            "2026-05-03",
+        )
+        self.assertNoSubdivZoneASchoolHoliday("2026-04-03", "2026-04-20")
+        self.assertNoSubdivZoneCSchoolHoliday("2026-04-17", "2026-05-04")
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayName(name, holidays, "2021-04-10", "2021-04-25")
+            self.assertNoHoliday(holidays, "2021-04-09", "2021-04-26")
+            self.assertHolidayName(name, holidays, range(2018, self.end_year))
+
+    def test_school_ascension_break(self):
+        name = "Pont de l'Ascension"
+        self.assertNoHolidayName(name)
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2019-05-30",
+                "2019-06-02",
+                "2025-05-29",
+                "2025-06-01",
+                "2027-05-06",
+                "2027-05-09",
+            )
+            self.assertNoHoliday(holidays, "2019-05-29", "2019-06-03")
+            self.assertNoHolidayName(name, holidays, range(2017, 2019))
+            self.assertHolidayNameCount(name, 4, holidays, range(2019, self.end_year))
+
+    def test_school_summer_break(self):
+        name = "Vacances d'été"
+        self.assertNoHolidayName(name)
+        for holidays in self.zone_school_holidays:
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2018-07-07",
+                "2018-09-02",
+                "2020-07-04",
+                "2020-08-31",
+                # Classes ended on Tuesday.
+                "2021-07-07",
+                "2021-09-01",
+                # Classes ended on Thursday.
+                "2022-07-08",
+                "2022-08-31",
+                "2023-07-08",
+                "2023-09-03",
+                "2025-07-05",
+                "2025-08-31",
+                "2027-07-03",
+                "2027-09-01",
+                # Classes end on Tuesday.
+                "2028-07-05",
+            )
+            self.assertNoHoliday(
+                holidays,
+                "2018-07-06",
+                "2018-09-03",
+                "2021-07-06",
+                "2021-09-02",
+                "2022-07-07",
+                "2022-09-01",
+                "2023-07-07",
+                "2023-09-04",
+                "2027-07-02",
+                "2027-09-02",
+                "2028-07-04",
+            )
+            self.assertNoHolidayName(name, holidays, 2017)
+            self.assertHolidayName(name, holidays, range(2018, self.end_year))
+
+    def test_school_alsace_moselle(self):
+        zone_b_holidays = France(subdiv="Zone B", years=range(2017, 2030), categories=SCHOOL)
+        for subdiv in ("57", "6AE", "Alsace", "Moselle"):
+            self.assertEqual(
+                dict(France(subdiv=subdiv, years=range(2017, 2030), categories=SCHOOL)),
+                dict(zone_b_holidays),
+                subdiv,
+            )
 
     def test_school_and_public_categories(self):
         holidays = France(subdiv="Zone A", years=2026, categories=(PUBLIC, SCHOOL))
         self.assertHolidayName("Ascension", holidays, "2026-05-14")
         self.assertHolidayName("Pont de l'Ascension", holidays, "2026-05-14", "2026-05-17")
-
-    def test_public_category_excludes_school_holidays(self):
-        self.assertNoHolidayName("Vacances d'été", France(subdiv="Zone A", years=2026))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
