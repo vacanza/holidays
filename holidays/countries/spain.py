@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     IslamicHolidays,
@@ -50,6 +50,20 @@ class Spain(
         * [2026](https://web.archive.org/web/20251028115438/https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667)
 
     Subdivisions Holidays References:
+        * Barcelona:
+            * [2012-2014](https://web.archive.org/web/20261009073820/https://analisi.transparenciacatalunya.cat/Treball/Calendari-de-festes-locals-a-Catalunya/b4eh-r8up/about_data)
+            * [2015](https://web.archive.org/web/20261009074112/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=676282)
+            * [2016](https://web.archive.org/web/20261009074206/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=710235)
+            * [2017](https://web.archive.org/web/20261009074302/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=769997)
+            * [2018](https://web.archive.org/web/20261009074434/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=804379)
+            * [2019](https://web.archive.org/web/20261009074503/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=837669)
+            * [2020](https://web.archive.org/web/20261009074556/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=864486)
+            * [2021](https://web.archive.org/web/20250408234026/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=887990)
+            * [2022](https://web.archive.org/web/20261009074728/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=915823)
+            * [2023](https://web.archive.org/web/20230306181634/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=946309)
+            * [2024](https://web.archive.org/web/20251029111341/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=974872)
+            * [2025](https://web.archive.org/web/20250104133137/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1003280)
+            * [2026](https://web.archive.org/web/20251220145400/https://dogc.gencat.cat/ca/document-del-dogc/?documentId=1032232)
         * Ceuta:
             * Official Calendars:
                 * [2018](https://web.archive.org/web/20251029132255/https://sede.ceuta.es/controlador/controlador?modulo=info&cmd=calendario&year=2018)
@@ -100,6 +114,8 @@ class Spain(
             * [2026](https://web.archive.org/web/20251028120003/https://www.lexnavarra.navarra.es/detalle.asp?r=57937)
 
     Holidays checked with official sources for 2008-2026 only.
+
+    Barcelona city holidays checked with official sources for 2012-2026 only.
     """
 
     country = "ES"
@@ -132,6 +148,8 @@ class Spain(
         "PV",  # País Vasco.
         "RI",  # La Rioja.
         "VC",  # Valenciana.
+        # Cities.
+        "Barcelona",
     )
     subdivisions_aliases = {
         "Andalucía": "AN",
@@ -951,6 +969,26 @@ class Spain(
             # Christmas Day.
             self._move_holiday(self._add_christmas_day(tr("Natividad del Señor")))
 
+    def _populate_subdiv_barcelona_public_holidays(self):
+        self._populate_subdiv_ct_public_holidays()
+
+        if self._year <= 2011:
+            return None
+
+        # Pentecost Monday.
+        name = tr("Día de la Pascua Granada")
+        dates = {
+            2015: (JUN, 1),
+            2023: (JUN, 5),
+        }
+        if dt := dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_pentecost_monday(name)
+
+        # Our Lady of Mercy.
+        self._move_holiday(self._add_holiday_sep_24(tr("Nuestra Señora de la Merced")))
+
 
 class ES(Spain):
     pass
@@ -981,6 +1019,16 @@ class SpainIslamicHolidays(_CustomIslamicHolidays):
 
 
 class SpainStaticHolidays:
+    special_barcelona_public_holidays = {
+        # Saint Eulalia Day.
+        2016: (FEB, 12, tr("Santa Eulalia")),
+    }
+
+    special_barcelona_public_holidays_observed = {
+        # Our Lady of Mercy.
+        2022: (SEP, 26, tr("Nuestra Señora de la Merced")),
+    }
+
     special_ga_public_holidays = {
         # Day following Saint Joseph's Day.
         2015: (MAR, 20, tr("Día siguiente a San José")),
