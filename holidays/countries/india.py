@@ -1202,6 +1202,9 @@ class India(
         # May Day.
         self._add_labor_day(tr("May Day"))
 
+        # Ayyankali's Birthday.
+        self._add_holiday_aug_28(tr("Ayyankali's Jayanti"))
+
         # Shri Narayana Guru's Death Anniversary.
         self._add_holiday_sep_21(tr("Shri Narayana Guru's Death Anniversary"))
 
@@ -1209,6 +1212,16 @@ class India(
 
         # Vishu.
         self._add_vishu(tr("Vishu"))
+
+        karkadaka_vavu_dates = {
+            2024: (AUG, 3),
+        }
+        # Karkadaka Vavu.
+        name = tr("Karkadaka Vavu")
+        if dt := karkadaka_vavu_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_hariyali_amavasya(name)
 
         # Onam.
         name = tr("Onam")
@@ -1230,6 +1243,9 @@ class India(
 
             # Onam (Day 4).
             self._add_holiday(tr("Onam (Day 4)"), _timedelta(onam_dt, +3))
+
+        # Shri Narayana Guru's Birthday.
+        self._add_narayana_guru_jayanthi(tr("Shri Narayana Guru's Jayanti"))
 
         mahanavami_dates = {
             2026: (OCT, 20),
