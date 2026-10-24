@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import HINDU, ISLAMIC, PUBLIC
 from holidays.groups import (
     ChristianHolidays,
@@ -173,7 +173,9 @@ class KenyaHinduHolidays(_CustomHinduHolidays):
 
 
 class KenyaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2024)
+    # https://web.archive.org/web/20250915100136/https://new.kenyalaw.org/akn/ke/officialGazette/2025-06-04/116/eng@2025-06-04
+    # https://new.kenyalaw.org/akn/ke/officialGazette/2026-05-25/90/eng@2026-05-25
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2014, 2026)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 6),
         2015: (SEP, 24),
@@ -183,7 +185,9 @@ class KenyaIslamicHolidays(_CustomIslamicHolidays):
         2024: (JUN, 17),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2024)
+    # https://web.archive.org/web/20250915103001/https://new.kenyalaw.org/akn/ke/officialGazette/2025-03-28/62/eng@2025-03-28
+    # https://web.archive.org/web/20260320020632/https://new.kenyalaw.org/akn/ke/officialGazette/2026-03-18/50/eng@2026-03-18
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2014, 2026)
     EID_AL_FITR_DATES = {
         2014: (JUL, 29),
         2015: (JUL, 18),
@@ -193,6 +197,7 @@ class KenyaIslamicHolidays(_CustomIslamicHolidays):
         2020: (MAY, 25),
         2021: (MAY, 14),
         2022: (MAY, 3),
+        2025: (MAR, 31),
     }
 
 
@@ -210,6 +215,7 @@ class KenyaStaticHolidays:
         * <https://web.archive.org/web/20250413192209/https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2023-11-06/238/eng@2023-11-06>
         * <https://web.archive.org/web/20250413192043/https://new.kenyalaw.org/akn/ke/officialGazette/gazette/2024-05-08/61/eng@2024-05-08>
         * <https://web.archive.org/web/20250413192123/https://new.kenyalaw.org/akn/ke/officialGazette/2024-10-31/184/eng@2024-10-31>
+        * <https://web.archive.org/web/20260312102836/https://new.kenyalaw.org/akn/ke/officialGazette/2025-10-16/214/eng@2025-10-16>
     """
 
     # Election Day.
@@ -249,4 +255,6 @@ class KenyaStaticHolidays:
             (MAY, 10, national_tree_growing_day),
             (NOV, 1, inauguration_day),
         ),
+        # State Funeral for Former Prime Minister Raila Odinga.
+        2025: (OCT, 17, tr("State Funeral for Former Prime Minister Raila Odinga")),
     }
