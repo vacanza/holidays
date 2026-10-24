@@ -188,3 +188,80 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Saint Stephen's Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-02-05", "Saint Brigid's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-06-03", "June Bank Holiday"),
+            ("2024-08-05", "August Bank Holiday"),
+            ("2024-10-28", "October Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
+        )
+
+    def test_l10n_default_historical(self):
+        default_holidays = Ireland(years=(1972, 1999, 2011, 2022))
+        for dt, name in (
+            ("1972-05-22", "Whit Monday"),
+            ("1999-12-31", "Millennium Celebrations"),
+            ("2011-09-14", "National Day of Mourning"),
+            ("2022-03-18", "Day of Remembrance and Recognition"),
+        ):
+            self.assertHolidayName(name, default_holidays, dt)
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-02-05", "Saint Brigid's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Day"),
+            ("2024-06-03", "June Bank Holiday"),
+            ("2024-08-05", "August Bank Holiday"),
+            ("2024-10-28", "October Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
+        )
+
+    def test_l10n_en_us_historical(self):
+        en_us_holidays = Ireland(years=(1972, 1999, 2011, 2022), language="en_US")
+        for dt, name in (
+            ("1972-05-22", "Pentecost Monday"),
+            ("1999-12-31", "Millennium Celebrations"),
+            ("2011-09-14", "National Day of Mourning"),
+            ("2022-03-18", "Day of Remembrance and Recognition"),
+        ):
+            self.assertHolidayName(name, en_us_holidays, dt)
+
+    def test_l10n_ga(self):
+        self.assertLocalizedHolidays(
+            "ga",
+            ("2024-01-01", "Lá Caille"),
+            ("2024-02-05", "Lá Fhéile Bríde"),
+            ("2024-03-17", "Lá Fhéile Pádraig"),
+            ("2024-03-29", "Aoine an Chéasta"),
+            ("2024-04-01", "Luan Cásca"),
+            ("2024-05-06", "Lá Saoire Bainc na Bealtaine"),
+            ("2024-06-03", "Lá Saoire Bainc an Mheithimh"),
+            ("2024-08-05", "Lá Saoire Bainc Lúnasa"),
+            ("2024-10-28", "Lá Saoire Bainc Dheireadh Fómhair"),
+            ("2024-12-25", "Lá Nollag"),
+            ("2024-12-26", "Lá Fhéile Stiofáin"),
+        )
+
+    def test_l10n_ga_historical(self):
+        ga_holidays = Ireland(years=(1972, 1999, 2011, 2022), language="ga")
+        for dt, name in (
+            ("1972-05-22", "Luan Cincíse"),
+            ("1999-12-31", "Ceiliúradh na Mílaoise"),
+            ("2011-09-14", "Lá Náisiúnta Mairgní"),
+            ("2022-03-18", "Lá Cuimhneacháin agus Aitheantais"),
+        ):
+            self.assertHolidayName(name, ga_holidays, dt)
