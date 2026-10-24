@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -29,6 +30,7 @@ class FrenchPolynesia(ChildEntity, France):
     parent_entity = France
     # Pōmare V abdicated and Tahiti became a French Colony on June 29th, 1880.
     start_year = 1881
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysPF(FrenchPolynesia):

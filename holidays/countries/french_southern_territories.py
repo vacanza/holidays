@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -34,6 +35,7 @@ class FrenchSouthernTerritories(ChildEntity, France):
     parent_entity = France
     # This overseas territory was separated in 1955.
     start_year = 1956
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysTF(FrenchSouthernTerritories):
