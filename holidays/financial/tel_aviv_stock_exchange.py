@@ -61,7 +61,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         super().__init__(*args, **kwargs)
 
     def _get_weekend(self, dt) -> set[int]:
-        # TASE shifted to a Saturday/Sunday weekend in 2026
+        # TASE shifted to a Saturday/Sunday weekend in 2026.
         return {SAT, SUN} if dt >= date(2026, JAN, 5) else {FRI, SAT}
 
     def _add_observed(self, dt, name, rule):
@@ -70,7 +70,13 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
             self._add_holiday(name, dt)
 
     def _populate_public_holidays(self):
-        eve_dts = set()
+        chol_hamoed_dts = set()
+
+        passover_dt = self._hebrew_calendar.passover_date(self._year)
+        chol_hamoed_dts.update(_timedelta(passover_dt, i) for i in range(1, 5))
+
+        sukkot_dt = self._hebrew_calendar.sukkot_date(self._year)
+        chol_hamoed_dts.update(_timedelta(sukkot_dt, i) for i in range(1, 6))
 
         # Purim.
         self._add_purim(tr("פורים"))
@@ -80,13 +86,13 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
             self._add_purim(tr("שושן פורים"), +1)
 
         # Passover Eve.
-        eve_dts.update(self._add_passover(tr("ערב פסח"), -1))
+        self._add_passover(tr("ערב פסח"), -1)
 
-        # Passover
+        # Passover.
         self._add_passover(tr("פסח"))
 
         # Passover II Eve.
-        eve_dts.update(self._add_passover(tr("ערב שביעי של פסח"), +5))
+        self._add_passover(tr("ערב שביעי של פסח"), +5)
 
         # Passover II.
         self._add_passover(tr("שביעי של פסח"), +6)
@@ -106,8 +112,9 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         )
 
         shavuot_dt = self._hebrew_calendar.shavuot_date(self._year)
+
         # Shavuot Eve.
-        eve_dts.add(self._add_holiday(tr("ערב שבועות"), _timedelta(shavuot_dt, -1)))
+        self._add_holiday(tr("ערב שבועות"), _timedelta(shavuot_dt, -1))
 
         # Shavuot.
         self._add_shavuot(tr("שבועות"))
@@ -120,7 +127,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         )
 
         # Jewish New Year Eve.
-        eve_dts.update(self._add_rosh_hashanah(tr("ערב ראש השנה"), -1))
+        self._add_rosh_hashanah(tr("ערב ראש השנה"), -1)
 
         # Jewish New Year.
         self._add_rosh_hashanah(tr("ראש השנה"), range(2))
@@ -132,13 +139,13 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         self._add_yom_kippur(tr("יום כיפור"))
 
         # Sukkoth Eve.
-        eve_dts.update(self._add_sukkot(tr("ערב סוכות"), -1))
+        self._add_sukkot(tr("ערב סוכות"), -1)
 
-        # Sukkoth
+        # Sukkoth.
         self._add_sukkot(tr("סוכות"))
 
-        # Simchat Tora Eve.
-        eve_dts.update(self._add_sukkot(tr("ערב שמחת תורה"), +6))
+        # Simchat Torah Eve.
+        self._add_sukkot(tr("ערב שמחת תורה"), +6)
 
         # Simchat Torah / Shemini Atzeret.
         self._add_sukkot(tr("שמחת תורה/שמיני עצרת"), +7)
@@ -151,13 +158,12 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
                 self.pop(dt)
 
             elif dt.weekday() == SUN and self._year >= 2026:
-                if dt in eve_dts:
-                    self.pop(dt)
-                else:
-                    fri_dt = _timedelta(dt, -2)
-                    if fri_dt not in self:
-                        # Friday before a Sunday holiday.
-                        self._add_holiday(tr("שישי לפני חג"), fri_dt)
+                fri_dt = _timedelta(dt, -2)
+                self.pop(dt)
+
+                if fri_dt not in self and fri_dt not in chol_hamoed_dts:
+                    # Friday before a Sunday holiday.
+                    self._add_holiday(tr("שישי לפני חג"), fri_dt)
 
     def _populate_half_day_holidays(self):
         # %s (Half trading day).
@@ -166,7 +172,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         passover_dt = self._hebrew_calendar.passover_date(self._year)
         for i in range(1, 5):
             dt = _timedelta(passover_dt, i)
-            if not self._is_weekend(dt):
+            if not self._is_weekend(dt) and not (self._year >= 2026 and dt.weekday() == FRI):
                 self._add_holiday(
                     # Chol HaMoed Passover.
                     self._format_holiday_name(half_day_label, tr("חול המועד פסח")),
@@ -176,7 +182,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         sukkot_dt = self._hebrew_calendar.sukkot_date(self._year)
         for i in range(1, 6):
             dt = _timedelta(sukkot_dt, i)
-            if not self._is_weekend(dt):
+            if not self._is_weekend(dt) and not (self._year >= 2026 and dt.weekday() == FRI):
                 self._add_holiday(
                     # Chol HaMoed Sukkoth.
                     self._format_holiday_name(half_day_label, tr("חול המועד סוכות")),
@@ -204,8 +210,6 @@ class TelAvivStockExchangeStaticHolidays:
         2021: (MAR, 23, tr("יום בחירות")),
         # Knesset Election Day.
         2022: (NOV, 1, tr("יום בחירות")),
-        # Municipal Election Day.
-        2023: (OCT, 31, tr("יום בחירות לרשויות המקומיות")),
         # Knesset Election Day.
         2026: (OCT, 27, tr("יום בחירות")),
     }

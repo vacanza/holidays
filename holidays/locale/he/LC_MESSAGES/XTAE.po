@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.104\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-07-22 14:20+0000\n"
-"PO-Revision-Date: 2026-09-03 04:44+0000\n"
+"PO-Revision-Date: 2026-10-24 14:13+0000\n"
 "Last-Translator: Paresh Joshi <pareshjoshij@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: he\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "ערב פסח"
 msgstr ""
 
-#. Passover
+#. Passover.
 msgid "פסח"
 msgstr ""
 
@@ -91,11 +91,11 @@ msgstr ""
 msgid "ערב סוכות"
 msgstr ""
 
-#. Sukkoth
+#. Sukkoth.
 msgid "סוכות"
 msgstr ""
 
-#. Simchat Tora Eve.
+#. Simchat Torah Eve.
 msgid "ערב שמחת תורה"
 msgstr ""
 
