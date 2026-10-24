@@ -11,8 +11,9 @@
 #  License: MIT (see LICENSE file)
 
 import pickle
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
-from threading import Event, Thread
+from threading import Event
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
@@ -721,6 +722,14 @@ class TestHolidaySum(TestCase):
         self.assertNotIn("2024-05-07", hb_combined)
         self.assertNotIn("2024-05-07", jp)
 
+    def test_add_operands_expanded_later(self):
+        jp = JP()
+        us = US()
+        hb_combined = jp + us
+        jp.get("2010-01-01")
+        us.get("2020-01-01")
+        self.assertIn("2000-01-01", hb_combined)
+
     def test_args(self):
         self.hb_1 = CountryStub1(years=2014, subdiv="Subdiv 1")
         self.hb_2 = CountryStub2(years=2015, subdiv="Subdiv-3")
@@ -1426,16 +1435,17 @@ class TestThreadSafety(TestCase):
 
     def run_concurrently(self, populate, target):
         self.hb.blocking_year = 2000
-        populating = Thread(target=populate)
-        populating.start()
-        self.hb.paused.wait()
-
-        thread = Thread(target=target)
-        thread.start()
-        thread.join(timeout=0.1)
-        self.hb.resume.set()
-        populating.join()
-        thread.join()
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            populating = executor.submit(populate)
+            try:
+                self.assertTrue(self.hb.paused.wait(timeout=10))
+                waiting = executor.submit(target)
+                with self.assertRaises(TimeoutError):
+                    waiting.result(timeout=0.1)
+            finally:
+                self.hb.resume.set()
+            populating.result()
+            return waiting.result()
 
     def assertYearsPopulated(self, *years):  # noqa: N802
         self.assertEqual(
@@ -1459,12 +1469,11 @@ class TestThreadSafety(TestCase):
         self.assertYearsPopulated(2000, 2001)
 
     def test_lookup_during_population(self):
-        results = []
-        self.run_concurrently(
-            lambda: self.hb.get("2000-01-01"), lambda: results.append("2000-12-25" in self.hb)
+        is_holiday = self.run_concurrently(
+            lambda: self.hb.get("2000-01-01"), lambda: "2000-12-25" in self.hb
         )
 
-        self.assertEqual(results, [True])
+        self.assertTrue(is_holiday)
 
     def test_populate_during_population(self):
         self.run_concurrently(lambda: self.hb.get("2000-01-01"), lambda: self.hb.get("2001-01-01"))

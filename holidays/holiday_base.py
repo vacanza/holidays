@@ -581,20 +581,21 @@ class HolidayBase(dict[date, str]):
             if diff_days < 0 <= step or diff_days >= 0 > step:
                 step = -step
 
-            if self.expand:
-                with self._populate_lock:
+            with self._populate_lock:
+                if self.expand:
                     for year in range(min(start.year, stop.year), max(start.year, stop.year) + 1):
                         if year not in self.years:
                             self.years.add(year)
                             self._populate(year)
+                dts = list(self)
 
             if step > 0:
                 days = [
-                    day for day in self if start <= day < stop and (day - start).days % step == 0
+                    day for day in dts if start <= day < stop and (day - start).days % step == 0
                 ]
             else:
                 days = [
-                    day for day in self if stop < day <= start and (day - start).days % step == 0
+                    day for day in dts if stop < day <= start and (day - start).days % step == 0
                 ]
             return sorted(days, reverse=step < 0)
 
@@ -1166,7 +1167,8 @@ class HolidayBase(dict[date, str]):
                     self.years.add(previous_year)
                     self._populate(previous_year)
 
-        sorted_dates = sorted(self.keys())
+        with self._populate_lock:
+            sorted_dates = sorted(self.keys())
         position = (
             bisect_right(sorted_dates, dt)
             if direction == "forward"
@@ -1498,4 +1500,5 @@ class HolidaySum(HolidayBase):
                 if year not in operand.years:
                     operand.years.add(year)
                     operand._populate(year)
-            self.update(cast("dict[DateLike, str]", operand))
+                operand_holidays = dict(operand)
+            self.update(cast("dict[DateLike, str]", operand_holidays))
