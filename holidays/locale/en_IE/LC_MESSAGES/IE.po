@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-23 20:01+0530\n"
-"PO-Revision-Date: 2026-10-23 20:01+0530\n"
-"Last-Translator: shikhabhadoria <145272515+shikhabhadoria@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-10-25 10:39+0530\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IE\n"
 "MIME-Version: 1.0\n"
@@ -43,8 +43,8 @@ msgstr ""
 msgid "Easter Monday"
 msgstr ""
 
-#. May Day.
-msgid "May Day"
+#. May Bank Holiday.
+msgid "May Bank Holiday"
 msgstr ""
 
 #. June Bank Holiday.

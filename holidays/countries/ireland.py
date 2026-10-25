@@ -58,8 +58,8 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         self._add_easter_monday(tr("Easter Monday"))
 
         if self._year >= 1994:
-            # May Day.
-            name = tr("May Day")
+            # May Bank Holiday.
+            name = tr("May Bank Holiday")
             if self._year == 1995:
                 self._add_holiday_may_8(name)
             else:
