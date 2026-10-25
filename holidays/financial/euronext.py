@@ -225,36 +225,30 @@ class XPAR(Euronext):
 
 
 class XAMS(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XAMS"
 
 
 class XBRU(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XBRU"
 
 
 class XDUB(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XDUB"
 
 
 class XLIS(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XLIS"
 
 
 class XMIL(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XMIL"
 
 
 class XOSL(ChildEntity, Euronext):
-    country = None  # type: ignore[assignment]
     parent_entity = Euronext
     parent_entity_subdivision_code = "XOSL"
