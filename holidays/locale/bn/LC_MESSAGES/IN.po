@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-10-25 08:05+0530\n"
+"Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -652,9 +652,17 @@ msgstr "পবিত্র শনিবার"
 msgid "Mannam's Jayanti"
 msgstr "মান্নামের জন্মজয়ন্তী"
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "অয়্যঙ্কালী জয়ন্তী"
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "শ্রী নারায়ণ গুরুর মৃত্যুবার্ষিকী"
+
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "কর্কটক বাভু"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
@@ -667,6 +675,10 @@ msgstr "ওনম (তৃতীয় দিন)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ওনম (চতুর্থ দিন)"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "শ্রী নারায়ণ গুরু জয়ন্তী"
 
 #. Vijayadashami.
 msgid "Vijayadashami"
@@ -1043,15 +1055,3 @@ msgstr "শ্রী পঞ্চমী"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "জন্মাষ্টমী (স্মার্ত)"
-
-#. Ayyankali's Birthday.
-msgid "Ayyankali's Jayanti"
-msgstr "অয়্যঙ্কালী জয়ন্তী"
-
-#. Karkadaka Vavu.
-msgid "Karkadaka Vavu"
-msgstr "কর্কটক বাভু"
-
-#. Shri Narayana Guru's Birthday.
-msgid "Shri Narayana Guru's Jayanti"
-msgstr "শ্রী নারায়ণ গুরু জয়ন্তী"
