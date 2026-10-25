@@ -1,0 +1,65 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Euronext holidays pt_PT localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-25 04:05+0000\n"
+"PO-Revision-Date: 2026-10-25 04:22+0000\n"
+"Last-Translator: Shivam Agarwal <123145276+shivam0897-i@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_GB\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Ano Novo"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Sexta-feira Santa"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Segunda-feira de Páscoa"
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr "Dia do Trabalhador"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Dia de Natal"
+
+#. St Stephen's Day.
+msgid "St Stephen's Day"
+msgstr "Dia de Santo Estêvão"
+
+#. %s (markets close at 2:05pm CET).
+#, c-format
+msgid "%s (markets close at 2:05pm CET)"
+msgstr "%s (os mercados fecham às 14:05 CET)"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Véspera de Natal"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "Véspera de Ano Novo"

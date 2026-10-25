@@ -284,6 +284,11 @@ class POGenerator:
                     (
                         (path, entity_pot_mapping[path.stem], *entities_data[path.stem])
                         for path in POGenerator._locale_path.rglob("*.po")
+                        # Child entity locale files (e.g. Euronext market
+                        # codes other than the registry code) are maintained
+                        # manually: they only contain the strings the child
+                        # displays, so the generator must leave them alone.
+                        if path.stem in entity_pot_mapping
                     ),
                 )
             )

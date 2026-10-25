@@ -1,0 +1,85 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Euronext holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-25 04:05+0000\n"
+"PO-Revision-Date: 2026-10-25 04:22+0000\n"
+"Last-Translator: Shivam Agarwal <123145276+shivam0897-i@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_GB\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Jour de l'an"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Vendredi saint"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+#. Labour Day.
+msgid "Labour Day"
+msgstr "Fête du Travail"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Jour de Noël"
+
+#. St Stephen's Day.
+msgid "St Stephen's Day"
+msgstr "Saint-Étienne"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Veille de Noël"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "Saint-Sylvestre"
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr "Jeudi saint"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Ascension"
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr "Jour de la Constitution"
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr "Lundi de Pentecôte"
+
+#. %s (markets close at 1:00pm CET).
+#, c-format
+msgid "%s (markets close at 1:00pm CET)"
+msgstr "%s (fermeture des marchés à 13h00 HEC)"
+
+#. Wednesday before Easter.
+msgid "Wednesday before Easter"
+msgstr "Mercredi avant Pâques"

@@ -2011,7 +2011,7 @@ code when available. The following financial markets are available:
 <td>Euronext</td>
 <td>XPAR</td>
 <td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

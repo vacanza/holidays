@@ -49,12 +49,11 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertIn("2025-08-15", financial_holidays("XMIL", years=2025))
         self.assertIn("2022-12-27", financial_holidays("XDUB", years=2022))
         # A market subclass always uses its own subdivision, even when a
-        # different subdivision is passed explicitly.
+        # different subdivision is passed explicitly as a keyword argument.
+        # Positional construction is not supported: like the other
+        # ObservedHolidayBase entities (e.g. UnitedKingdom), Euronext is
+        # constructed with keywords or via financial_holidays().
         self.assertEqual(XOSL(subdiv="XAMS", years=2025).subdiv, "XOSL")
-        self.assertEqual(XOSL(2025, True, True, "XAMS").subdiv, "XOSL")  # noqa: FBT003
-        self.assertEqual(XOSL(2025, True, True, None).subdiv, "XOSL")  # noqa: FBT003
-        # The parent class still accepts a positional subdivision.
-        self.assertEqual(Euronext(2025, True, True, "XAMS").subdiv, "XAMS")  # noqa: FBT003
 
     def test_new_years_day(self):
         # Holidays that fall on a weekend are not included.
@@ -468,4 +467,194 @@ class TestEuronext(CommonFinancialTests, TestCase):
             "2024-12-25",
             "2024-12-26",
             "2024-12-31",
+        )
+
+    # Localization.
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2025-01-01", "New Year's Day"),
+            ("2025-04-16", "Wednesday before Easter (markets close at 1:00pm CET)"),
+            ("2025-04-17", "Maundy Thursday"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labour Day"),
+            ("2025-05-05", "Irish May Bank Holiday"),
+            ("2025-05-29", "Ascension Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-08-15", "Assumption Day"),
+            (
+                "2025-12-24",
+                "Christmas Eve; Christmas Eve (markets close at 12:30pm); "
+                "Christmas Eve (markets close at 2:05pm CET)",
+            ),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "St Stephen's Day"),
+            (
+                "2025-12-31",
+                "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
+                "New Year's Eve (markets close at 2:05pm CET)",
+            ),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2025-01-01", "New Year's Day"),
+            ("2025-04-16", "Wednesday before Easter (markets close at 1:00pm CET)"),
+            ("2025-04-17", "Maundy Thursday"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labor Day"),
+            ("2025-05-05", "Irish May Bank Holiday"),
+            ("2025-05-29", "Ascension Day"),
+            ("2025-06-09", "Whit Monday"),
+            ("2025-08-15", "Assumption Day"),
+            (
+                "2025-12-24",
+                "Christmas Eve; Christmas Eve (markets close at 12:30pm); "
+                "Christmas Eve (markets close at 2:05pm CET)",
+            ),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "St Stephen's Day"),
+            (
+                "2025-12-31",
+                "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
+                "New Year's Eve (markets close at 2:05pm CET)",
+            ),
+        )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2025-01-01", "Jour de l'an"),
+            ("2025-04-16", "Mercredi avant Pâques (fermeture des marchés à 13h00 HEC)"),
+            ("2025-04-17", "Jeudi saint"),
+            ("2025-04-18", "Vendredi saint"),
+            ("2025-04-21", "Lundi de Pâques"),
+            ("2025-05-01", "Fête du Travail"),
+            ("2025-05-05", "Jour férié de mai en Irlande"),
+            ("2025-05-29", "Ascension"),
+            ("2025-06-09", "Lundi de Pentecôte"),
+            ("2025-08-15", "Assomption"),
+            (
+                "2025-12-24",
+                "Veille de Noël; Veille de Noël (fermeture des marchés à 12h30); "
+                "Veille de Noël (fermeture des marchés à 14h05 HEC)",
+            ),
+            ("2025-12-25", "Jour de Noël"),
+            ("2025-12-26", "Saint-Étienne"),
+            (
+                "2025-12-31",
+                "Saint-Sylvestre; Saint-Sylvestre (fermeture des marchés à 12h30); "
+                "Saint-Sylvestre (fermeture des marchés à 14h05 HEC)",
+            ),
+        )
+
+    def test_l10n_it(self):
+        self.assertLocalizedHolidays(
+            "it",
+            ("2025-01-01", "Capodanno"),
+            ("2025-04-16", "Mercoledì prima di Pasqua (i mercati chiudono alle 13:00 CET)"),
+            ("2025-04-17", "Giovedì Santo"),
+            ("2025-04-18", "Venerdì santo"),
+            ("2025-04-21", "Lunedì dell'Angelo"),
+            ("2025-05-01", "Festa del Lavoro"),
+            ("2025-05-05", "Festa di maggio irlandese"),
+            ("2025-05-29", "Ascensione"),
+            ("2025-06-09", "Lunedì di Pentecoste"),
+            ("2025-08-15", "Maria Santissima Assunta"),
+            (
+                "2025-12-24",
+                "Vigilia di Natale; Vigilia di Natale (i mercati chiudono alle 12:30); "
+                "Vigilia di Natale (i mercati chiudono alle 14:05 CET)",
+            ),
+            ("2025-12-25", "Natale"),
+            ("2025-12-26", "Santo Stefano"),
+            (
+                "2025-12-31",
+                "Vigilia di Capodanno; Vigilia di Capodanno (i mercati chiudono alle 12:30); "
+                "Vigilia di Capodanno (i mercati chiudono alle 14:05 CET)",
+            ),
+        )
+
+    def test_l10n_nl(self):
+        self.assertLocalizedHolidays(
+            "nl",
+            ("2025-01-01", "Nieuwjaarsdag"),
+            ("2025-04-16", "Woensdag voor Pasen (markten sluiten om 13:00 uur CET)"),
+            ("2025-04-17", "Witte Donderdag"),
+            ("2025-04-18", "Goede vrijdag"),
+            ("2025-04-21", "Tweede paasdag"),
+            ("2025-05-01", "Dag van de Arbeid"),
+            ("2025-05-05", "Meifeestdag in Ierland"),
+            ("2025-05-29", "Hemelvaartsdag"),
+            ("2025-06-09", "Tweede pinksterdag"),
+            ("2025-08-15", "Maria-Hemelvaart"),
+            (
+                "2025-12-24",
+                "Kerstavond; Kerstavond (markten sluiten om 12:30 uur); "
+                "Kerstavond (markten sluiten om 14:05 uur CET)",
+            ),
+            ("2025-12-25", "Eerste kerstdag"),
+            ("2025-12-26", "Tweede kerstdag"),
+            (
+                "2025-12-31",
+                "Oudejaarsavond; Oudejaarsavond (markten sluiten om 12:30 uur); "
+                "Oudejaarsavond (markten sluiten om 14:05 uur CET)",
+            ),
+        )
+
+    def test_l10n_no(self):
+        self.assertLocalizedHolidays(
+            "no",
+            ("2025-01-01", "Første nyttårsdag"),
+            ("2025-04-16", "Onsdag før påske (markedene stenger kl. 13:00 CET)"),
+            ("2025-04-17", "Skjærtorsdag"),
+            ("2025-04-18", "Langfredag"),
+            ("2025-04-21", "Andre påskedag"),
+            ("2025-05-01", "Arbeidernes dag"),
+            ("2025-05-05", "Irsk mai-ferie"),
+            ("2025-05-29", "Kristi himmelfartsdag"),
+            ("2025-06-09", "Andre pinsedag"),
+            ("2025-08-15", "Marias opptakelse i himmelen"),
+            (
+                "2025-12-24",
+                "Julaften; Julaften (markedene stenger kl. 12:30); "
+                "Julaften (markedene stenger kl. 14:05 CET)",
+            ),
+            ("2025-12-25", "Første juledag"),
+            ("2025-12-26", "Andre juledag"),
+            (
+                "2025-12-31",
+                "Nyttårsaften; Nyttårsaften (markedene stenger kl. 12:30); "
+                "Nyttårsaften (markedene stenger kl. 14:05 CET)",
+            ),
+        )
+
+    def test_l10n_pt_pt(self):
+        self.assertLocalizedHolidays(
+            "pt_PT",
+            ("2025-01-01", "Ano Novo"),
+            ("2025-04-16", "Quarta-feira antes da Páscoa (os mercados fecham às 13:00 CET)"),
+            ("2025-04-17", "Quinta-feira Santa"),
+            ("2025-04-18", "Sexta-feira Santa"),
+            ("2025-04-21", "Segunda-feira de Páscoa"),
+            ("2025-05-01", "Dia do Trabalhador"),
+            ("2025-05-05", "Feriado de maio irlandês"),
+            ("2025-05-29", "Quinta-feira da Ascensão"),
+            ("2025-06-09", "Segunda-feira de Pentecoste"),
+            ("2025-08-15", "Assunção de Nossa Senhora"),
+            (
+                "2025-12-24",
+                "Véspera de Natal; Véspera de Natal (os mercados fecham às 12:30); "
+                "Véspera de Natal (os mercados fecham às 14:05 CET)",
+            ),
+            ("2025-12-25", "Dia de Natal"),
+            ("2025-12-26", "Dia de Santo Estêvão"),
+            (
+                "2025-12-31",
+                "Véspera de Ano Novo; Véspera de Ano Novo (os mercados fecham às 12:30); "
+                "Véspera de Ano Novo (os mercados fecham às 14:05 CET)",
+            ),
         )
