@@ -197,6 +197,7 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (неработен ден)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_albanian_alphabet_day(self):
         name = "Ден на Албанската азбука"

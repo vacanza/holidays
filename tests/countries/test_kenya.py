@@ -44,6 +44,7 @@ class TestKenya(CommonCountryTests, TestCase):
             "2023-11-13",
             "2024-05-10",
             "2024-11-01",
+            "2025-10-17",
         )
 
     def test_new_years_day(self):
@@ -197,7 +198,7 @@ class TestKenya(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "Idd-ul-Fitr"
-        self.assertIslamicNoEstimatedHolidayName(
+        self.assertHolidayName(
             name,
             "2019-06-05",
             "2020-05-25",
@@ -205,6 +206,8 @@ class TestKenya(CommonCountryTests, TestCase):
             "2022-05-03",
             "2023-04-21",
             "2024-04-10",
+            "2025-03-31",
+            "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
@@ -212,7 +215,6 @@ class TestKenya(CommonCountryTests, TestCase):
             "2004-11-15",
             "2009-09-21",
             "2012-08-20",
-            "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoIslamicNoEstimatedNonObservedHoliday(obs_dts)
@@ -235,7 +237,7 @@ class TestKenya(CommonCountryTests, TestCase):
     def test_eid_al_adha(self):
         name = "Idd-ul-Azha"
         self.assertNoHolidayName(name)
-        self.assertIslamicIslamicNoEstimatedHolidayName(
+        self.assertIslamicHolidayName(
             name,
             "2019-08-12",
             "2020-07-31",
@@ -243,6 +245,8 @@ class TestKenya(CommonCountryTests, TestCase):
             "2022-07-11",
             "2023-06-28",
             "2024-06-17",
+            "2025-06-06",
+            "2026-05-27",
         )
         self.assertIslamicIslamicNoEstimatedHolidayName(name, self.full_range)
 
