@@ -2009,7 +2009,7 @@ code when available. The following financial markets are available:
 </tr>
 <tr>
 <td>Euronext</td>
-<td>XPAR</td>
+<td>ENX</td>
 <td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
 <td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
 <td>HALF_DAY</td>

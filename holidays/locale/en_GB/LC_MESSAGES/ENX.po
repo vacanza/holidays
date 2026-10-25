@@ -1,0 +1,103 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Euronext holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-25 04:05+0000\n"
+"PO-Revision-Date: 2026-10-25 18:52+0000\n"
+"Last-Translator: Shivam Agarwal <123145276+shivam0897-i@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_GB\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Saint Stephen's Day.
+msgid "Saint Stephen's Day"
+msgstr ""
+
+#. %s (markets close at 12:30pm).
+#, c-format
+msgid "%s (markets close at 12:30pm)"
+msgstr ""
+
+#. %s (markets close at 2:05pm CET).
+#, c-format
+msgid "%s (markets close at 2:05pm CET)"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr ""
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr ""
+
+#. Irish May Bank Holiday.
+msgid "Irish May Bank Holiday"
+msgstr ""
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr ""
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr ""
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr ""
+
+#. Whit Monday.
+msgid "Whit Monday"
+msgstr ""
+
+#. %s (markets close at 1:00pm CET).
+#, c-format
+msgid "%s (markets close at 1:00pm CET)"
+msgstr ""
+
+#. Wednesday before Easter.
+msgid "Wednesday before Easter"
+msgstr ""

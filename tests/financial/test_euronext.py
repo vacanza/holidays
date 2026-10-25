@@ -32,7 +32,9 @@ class TestEuronext(CommonFinancialTests, TestCase):
     def test_market_subclasses_default_subdivision(self):
         # Each market subclass defaults to its own subdivision, so the
         # market-specific holidays are included without an explicit subdiv.
-        self.assertEqual(XPAR(years=2025).subdiv, "XPAR")
+        # XPAR is a plain subclass of Euronext, so it has no subdivision
+        # and uses the common calendar, like Euronext itself.
+        self.assertIsNone(XPAR(years=2025).subdiv)
         self.assertEqual(XAMS(years=2025).subdiv, "XAMS")
         self.assertEqual(XBRU(years=2025).subdiv, "XBRU")
         self.assertEqual(XDUB(years=2025).subdiv, "XDUB")
@@ -109,10 +111,10 @@ class TestEuronext(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday("2021-12-25", "2022-12-25")
 
-    def test_st_stephens_day(self):
+    def test_saint_stephens_day(self):
         # Holidays that fall on a weekend are not included.
         self.assertHolidayName(
-            "St Stephen's Day",
+            "Saint Stephen's Day",
             (f"{year}-12-26" for year in self.full_range if date(year, 12, 26).weekday() < 5),
         )
         self.assertNoHoliday("2021-12-26", "2026-12-26")
@@ -167,7 +169,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2019-04-22", "Easter Monday"),
             ("2019-05-01", "Labour Day"),
             ("2019-12-25", "Christmas Day"),
-            ("2019-12-26", "St Stephen's Day"),
+            ("2019-12-26", "Saint Stephen's Day"),
         )
 
     def test_2020(self):
@@ -188,7 +190,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2024-04-01", "Easter Monday"),
             ("2024-05-01", "Labour Day"),
             ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "St Stephen's Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
         )
 
     # Dublin (XDUB).
@@ -211,21 +213,23 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertSubdivXdubHolidayName("New Year's Day", "2022-01-03", "2023-01-02")
         # Christmas Day substitutes.
         self.assertSubdivXdubHolidayName("Christmas Day", "2021-12-27", "2022-12-27")
-        # St Stephen's Day substitutes.
+        # Saint Stephen's Day substitutes.
         self.assertSubdivXdubHolidayName(
-            "St Stephen's Day", "2020-12-28", "2021-12-28", "2026-12-28"
+            "Saint Stephen's Day", "2020-12-28", "2021-12-28", "2026-12-28"
         )
         # Other markets have no weekend substitutes.
         self.assertNoSubdivXparHoliday("2022-01-03", "2023-01-02", "2022-12-27")
 
     def test_dublin_observed_flag(self):
-        # The Dublin weekend substitutes are observed holidays: they are
-        # not added when observed=False, while the actual dates remain.
-        self.assertIn("2022-01-03", XDUB(years=2022))
-        self.assertNotIn("2022-01-03", XDUB(years=2022, observed=False))
-        self.assertIn("2022-01-01", XDUB(years=2022, observed=False))
-        self.assertIn("2022-12-25", XDUB(years=2022, observed=False))
-        self.assertNotIn("2022-12-27", XDUB(years=2022, observed=False))
+        # The Dublin weekend substitutes use forced observed moves, so
+        # they stay in place regardless of the observed flag, and the
+        # actual weekend dates are not in the calendar (the holidays
+        # were moved to the substitutes).
+        self.assertIn("2022-01-03", XDUB(years=2022, observed=False))
+        self.assertNotIn("2022-01-01", XDUB(years=2022, observed=False))
+        self.assertIn("2022-12-27", XDUB(years=2022, observed=False))
+        self.assertNotIn("2022-12-25", XDUB(years=2022, observed=False))
+        self.assertIn("2021-12-28", XDUB(years=2021, observed=False))
         # Weekend dates are excluded regardless of the observed flag for
         # other markets.
         self.assertNotIn("2022-01-01", XPAR(years=2022, observed=False))
@@ -489,7 +493,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                 "Christmas Eve (markets close at 2:05pm CET)",
             ),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "St Stephen's Day"),
+            ("2025-12-26", "Saint Stephen's Day"),
             (
                 "2025-12-31",
                 "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
@@ -516,7 +520,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                 "Christmas Eve (markets close at 2:05pm CET)",
             ),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "St Stephen's Day"),
+            ("2025-12-26", "Saint Stephen's Day"),
             (
                 "2025-12-31",
                 "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
