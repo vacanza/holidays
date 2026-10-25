@@ -64,9 +64,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_international_workers_day(self):
-        self.assertHolidayName(
-            "ዓለማዊ መዓልቲ ሰራሕተኛታት", (f"{year}-05-01" for year in self.full_range)
-        )
+        self.assertHolidayName("ዓለማዊ መዓልቲ ሰራሕተኛታት", (f"{year}-05-01" for year in self.full_range))
 
     def test_independence_day(self):
         self.assertHolidayName("መዓልቲ ናጽነት", (f"{year}-05-24" for year in self.full_range))
