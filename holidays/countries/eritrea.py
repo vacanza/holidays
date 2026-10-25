@@ -13,8 +13,8 @@
 from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR
 from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
-from holidays.holiday_base import HolidayBase
 from holidays.helpers import tr
+from holidays.holiday_base import HolidayBase
 
 
 class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
