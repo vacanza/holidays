@@ -913,7 +913,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ireland</td>
 <td>IE</td>
 <td></td>
-<td></td>
+<td><strong>en_IE</strong>, en_US, ga</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
