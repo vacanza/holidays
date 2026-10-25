@@ -19,15 +19,19 @@ from tests.common import CommonCountryTests
 class TestEritrea(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        """Configure the common country tests for Eritrea."""
         super().setUpClass(Eritrea)
 
     def test_new_years_day(self):
+        """Assert New Year's Day is listed annually in Tigrinya."""
         self.assertHolidayName("ሓዲሽ ዓመት", (f"{year}-01-01" for year in self.full_range))
 
     def test_orthodox_christmas(self):
+        """Assert Orthodox Christmas is listed annually in Tigrinya."""
         self.assertHolidayName("ልደት", (f"{year}-01-07" for year in self.full_range))
 
     def test_epiphany(self):
+        """Assert Epiphany follows the Ethiopian calendar dates."""
         self.assertHolidayName(
             "ጥምቀት",
             (f"{year}-01-19" for year in self.full_range if year % 4 != 0),
@@ -35,9 +39,11 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_womens_day(self):
+        """Assert Women's Day is listed annually in Tigrinya."""
         self.assertHolidayName("መዓልቲ ኣነስቲ", (f"{year}-03-08" for year in self.full_range))
 
     def test_good_friday(self):
+        """Check Good Friday's dates over sample years and the full supported range."""
         name = "ዓርቢ ስቅለት"
         self.assertHolidayName(
             name,
@@ -51,6 +57,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_orthodox_easter(self):
+        """Check Orthodox Easter's dates over sample years and the full supported range."""
         name = "ፋሲካ"
         self.assertHolidayName(
             name,
@@ -64,18 +71,23 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_international_workers_day(self):
+        """Assert International Workers' Day is listed annually in Tigrinya."""
         self.assertHolidayName("ዓለማዊ መዓልቲ ሰራሕተኛታት", (f"{year}-05-01" for year in self.full_range))
 
     def test_independence_day(self):
+        """Assert Independence Day is listed annually in Tigrinya."""
         self.assertHolidayName("መዓልቲ ናጽነት", (f"{year}-05-24" for year in self.full_range))
 
     def test_martyrs_day(self):
+        """Assert Martyrs' Day is listed annually in Tigrinya."""
         self.assertHolidayName("መዓልቲ ስውኣት", (f"{year}-06-20" for year in self.full_range))
 
     def test_revolution_day(self):
+        """Assert Revolution Day is listed annually in Tigrinya."""
         self.assertHolidayName("ባሕቲ መስከረም", (f"{year}-09-01" for year in self.full_range))
 
     def test_ethiopian_new_year(self):
+        """Assert Ge'ez New Year follows the Ethiopian calendar dates."""
         self.assertHolidayName(
             "ሓድሽ ዓመት ግእዝ",
             (f"{year}-09-11" for year in self.full_range if year % 4 != 3),
@@ -83,6 +95,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_finding_of_the_true_cross(self):
+        """Assert the Finding of the True Cross follows the Ethiopian calendar dates."""
         self.assertHolidayName(
             "መስቀል",
             (f"{year}-09-27" for year in self.full_range if year % 4 != 3),
@@ -90,6 +103,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_prophets_birthday(self):
+        """Check the Prophet's Birthday dates without estimated labels."""
         name = "መውሊድ"
         self.assertIslamicNoEstimatedHolidayName(
             name,
@@ -103,6 +117,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
+        """Check Eid al-Fitr dates without estimated labels."""
         name = "ዒድ ኣልፈጥር"
         self.assertIslamicNoEstimatedHolidayName(
             name,
@@ -116,6 +131,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
+        """Check Eid al-Adha dates without estimated labels."""
         name = "ዒድ ኣልኣድሓ"
         self.assertIslamicNoEstimatedHolidayName(
             name,
@@ -129,11 +145,13 @@ class TestEritrea(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_fenkil_day(self):
+        """Ensure Fenkil Day is categorized as a government holiday."""
         name = "ፈንቅል"
         self.assertNoHolidayName(name)
         self.assertGovernmentHolidayName(name, (f"{year}-02-10" for year in self.full_range))
 
     def test_2020(self):
+        """Verify Eritrea's public holiday names and dates for 2020."""
         self.assertHolidaysInYear(
             2020,
             ("2020-01-01", "ሓዲሽ ዓመት"),
@@ -153,12 +171,14 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_2020_government(self):
+        """Verify Eritrea's government holiday names and dates for 2020."""
         self.assertGovernmentHolidaysInYear(
             2020,
             ("2020-02-10", "ፈንቅል"),
         )
 
     def test_l10n_default(self):
+        """Check localized holiday names in Eritrea's default Tigrinya language."""
         self.assertLocalizedHolidays(
             ("2022-01-01", "ሓዲሽ ዓመት"),
             ("2022-01-07", "ልደት"),
@@ -179,6 +199,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_l10n_en_us(self):
+        """Check Eritrea's holiday names in US English."""
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
@@ -200,6 +221,7 @@ class TestEritrea(CommonCountryTests, TestCase):
         )
 
     def test_l10n_ar(self):
+        """Check Eritrea's holiday names in Arabic."""
         self.assertLocalizedHolidays(
             "ar",
             ("2022-01-01", "رأس السنة الميلادية"),
