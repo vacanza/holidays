@@ -604,6 +604,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2027-09-01",
                 # Classes end on Tuesday.
                 "2028-07-05",
+                "2028-09-03",
             )
             self.assertNoHoliday(
                 holidays,
@@ -618,6 +619,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2027-07-02",
                 "2027-09-02",
                 "2028-07-04",
+                "2028-09-04",
             )
             self.assertNoHolidayName(name, holidays, 2017)
             self.assertHolidayName(name, holidays, range(2018, self.end_year))
