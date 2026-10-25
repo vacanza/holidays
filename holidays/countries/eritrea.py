@@ -14,6 +14,7 @@ from holidays.calendars.ethiopian import ETHIOPIAN_CALENDAR
 from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
+from holidays.helpers import tr
 
 
 class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
@@ -24,11 +25,19 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         * <https://web.archive.org/web/20230313234629/https://explore-eritrea.com/working-hours-and-holidays/>
         * <https://web.archive.org/web/20110903130335/http://www.eritrea.be/old/eritrea-religions.htm>
         * <https://web.archive.org/web/20250820085307/https://www.mintageworld.com/media/detail/11411-fenkil-day-in-eritrea/>
+        * <https://us.embassyeritrea.org/national-dates/>
+        * <https://asmara.embassy.qa/en/eritrea/official-holidays>
+        * <https://tigrigna.voanews.com/a/2960404.html>
+        * <https://tigrigna.voanews.com/a/martrys-day-in-eritrea/7663628.html>
+        * <https://www.erinewspapers.com/hadas-eritrea/haddas_eritra_28042026.pdf>
+        * <https://www2.census.gov/programs-surveys/decennial/2020/resources/language-materials/glossaries/Tigrinya-Glossary.pdf>
     """
 
     country = "ER"
+    default_language = "ti"
+    supported_languages = ("ar", "en_US", "ti")
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (ግምት)")
     # On 28 May 1993, Eritrea was admitted into the United Nations as the 182nd member state.
     start_year = 1994
     supported_categories = (GOVERNMENT, PUBLIC)
@@ -47,53 +56,53 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("ሓዲሽ ዓመት"))
 
         # Orthodox Christmas.
-        self._add_christmas_day("Orthodox Christmas")
+        self._add_christmas_day(tr("ልደት"))
 
         # Epiphany.
-        self._add_epiphany_day("Epiphany")
+        self._add_epiphany_day(tr("ጥምቀት"))
 
         # Women's Day.
-        self._add_womens_day("Women's Day")
+        self._add_womens_day(tr("መዓልቲ ኣነስቲ"))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("ዓርቢ ስቅለት"))
 
         # Orthodox Easter.
-        self._add_easter_sunday("Orthodox Easter")
+        self._add_easter_sunday(tr("ፋሲካ"))
 
         # International Workers' Day.
-        self._add_labor_day("International Workers' Day")
+        self._add_labor_day(tr("ዓለማዊ መዓልቲ ሰራሕተኛታት"))
 
         # Independence Day.
-        self._add_holiday_may_24("Independence Day")
+        self._add_holiday_may_24(tr("መዓልቲ ናጽነት"))
 
         # Martyrs' Day.
-        self._add_holiday_jun_20("Martyrs' Day")
+        self._add_holiday_jun_20(tr("መዓልቲ ስውኣት"))
 
         # Revolution Day.
-        self._add_holiday_sep_1("Revolution Day")
+        self._add_holiday_sep_1(tr("ባሕቲ መስከረም"))
 
         # Ethiopian New Year.
-        self._add_ethiopian_new_year("Ethiopian New Year")
+        self._add_ethiopian_new_year(tr("ሓድሽ ዓመት ግእዝ"))
 
         # Finding of the True Cross.
-        self._add_finding_of_true_cross("Finding of the True Cross")
+        self._add_finding_of_true_cross(tr("መስቀል"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day("Prophet's Birthday")
+        self._add_mawlid_day(tr("መውሊድ"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("ዒድ ኣልፈጥር"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("ዒድ ኣልኣድሓ"))
 
     def _populate_government_holidays(self):
         # Fenkil Day.
-        self._add_holiday_feb_10("Fenkil Day")
+        self._add_holiday_feb_10(tr("ፈንቅል"))
 
 
 class ER(Eritrea):
