@@ -19,10 +19,10 @@ from tests.common import CommonCountryTests
 class TestSintMaarten(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SintMaarten, years=range(2011, 2050))
+        super().setUpClass(SintMaarten)
 
     def test_new_years_day(self):
-        self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in range(2011, 2050)))
+        self.assertHolidayName("Nieuwjaarsdag", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
         name = "Goede vrijdag"
@@ -35,7 +35,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_sunday(self):
         name = "Eerste paasdag"
@@ -48,7 +48,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-03-31",
             "2025-04-20",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Tweede paasdag"
@@ -61,13 +61,13 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_kings_day(self):
         name_queen = "Koninginnedag"
         name_king = "Koningsdag"
         self.assertHolidayName(name_queen, (f"{year}-04-30" for year in range(2011, 2014)))
-        self.assertNoHolidayName(name_queen, range(2014, 2050))
+        self.assertNoHolidayName(name_queen, range(2014, self.end_year))
         self.assertHolidayName(
             name_king,
             "2014-04-26",
@@ -83,7 +83,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2014-04-27",
             "2025-04-27",
         )
-        self.assertHolidayName(name_king, range(2014, 2050))
+        self.assertHolidayName(name_king, range(2014, self.end_year))
         self.assertNoHolidayName(name_king, range(2011, 2014))
 
     def test_carnival_day(self):
@@ -104,11 +104,11 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2022-04-30",
             "2023-04-30",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
         self.assertHolidayName(
-            "Dag van de Arbeid", (f"{year}-05-01" for year in range(2011, 2050))
+            "Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range)
         )
 
     def test_ascension_day(self):
@@ -122,7 +122,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_whit_sunday(self):
         name = "Eerste pinksterdag"
@@ -135,7 +135,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-05-19",
             "2025-06-08",
         )
-        self.assertHolidayName(name, range(2011, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_emancipation_day(self):
         name = "Dag van de Bevrijding"
@@ -154,7 +154,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2012-08-01",
             "2018-08-01",
         )
-        self.assertHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, range(2012, self.end_year))
         self.assertNoHolidayName(name, 2011)
 
     def test_constitution_day(self):
@@ -168,11 +168,11 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2024-10-14",
             "2025-10-13",
         )
-        self.assertHolidayName(name, range(2015, 2050))
+        self.assertHolidayName(name, range(2015, self.end_year))
         self.assertNoHolidayName(name, range(2011, 2015))
 
     def test_sint_maarten_day(self):
-        self.assertHolidayName("Sint-Maartensdag", (f"{year}-11-11" for year in range(2011, 2050)))
+        self.assertHolidayName("Sint-Maartensdag", (f"{year}-11-11" for year in self.full_range))
 
     def test_kingdom_day(self):
         name = "Koninkrijksdag"
@@ -183,11 +183,11 @@ class TestSintMaarten(CommonCountryTests, TestCase):
             "2013-12-16",
             "2014-12-15",
         )
-        self.assertNoHolidayName(name, range(2015, 2050))
+        self.assertNoHolidayName(name, range(2015, self.end_year))
 
     def test_christmas(self):
-        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in range(2011, 2050)))
-        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in range(2011, 2050)))
+        self.assertHolidayName("Eerste kerstdag", (f"{year}-12-25" for year in self.full_range))
+        self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
 
     def test_2017(self):
         self.assertHolidaysInYear(

@@ -19,7 +19,10 @@ from tests.common import CommonCountryTests
 class TestSouthAfrica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SouthAfrica, years_non_observed=range(1995, 2050))
+        super().setUpClass(SouthAfrica)
+        cls.holidays_non_observed = SouthAfrica(
+            years=range(1995, cls.end_year), observed=False
+        )
 
     def test_special_holidays(self):
         self.assertHoliday(

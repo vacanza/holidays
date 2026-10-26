@@ -21,10 +21,7 @@ from tests.common import CommonCountryTests
 class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(2012, 2050)
-        super().setUpClass(
-            SouthGeorgiaAndTheSouthSandwichIslands, years=years, years_non_observed=years
-        )
+        super().setUpClass(SouthGeorgiaAndTheSouthSandwichIslands)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -36,7 +33,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(2012, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
         obs_dt = (
             "2012-01-02",
             "2017-01-02",
@@ -48,7 +45,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_possession_day(self):
         name = "Possession Day"
-        self.assertHolidayName(name, (f"{year}-01-17" for year in range(2012, 2050)))
+        self.assertHolidayName(name, (f"{year}-01-17" for year in self.full_range))
         obs_dt = (
             "2015-01-19",
             "2016-01-18",
@@ -68,7 +65,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2012, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -83,12 +80,12 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
             "2018-04-02",
             "2019-04-22",
         )
-        self.assertNoHolidayName(name, range(2020, 2050))
+        self.assertNoHolidayName(name, range(2020, self.end_year))
 
     def test_queens_birthday(self):
         name = "The Queen's Birthday"
         self.assertHolidayName(name, (f"{year}-04-21" for year in range(2018, 2023)))
-        self.assertNoHolidayName(name, range(2012, 2018), range(2023, 2050))
+        self.assertNoHolidayName(name, range(self.start_year, 2018), range(2023, self.end_year))
         obs_dt = (
             "2018-04-23",
             "2019-04-23",
@@ -100,8 +97,8 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         name = "Liberation Day"
         self.assertHolidayName(
             name,
-            (f"{year}-04-26" for year in range(2012, 2016)),
-            (f"{year}-04-25" for year in range(2016, 2050)),
+            (f"{year}-04-26" for year in range(self.start_year, 2016)),
+            (f"{year}-04-25" for year in range(2016, self.end_year)),
         )
         obs_dt = (
             "2014-04-28",
@@ -114,8 +111,8 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_shackleton_day(self):
         name = "Shackleton Day"
-        self.assertHolidayName(name, (f"{year}-05-20" for year in range(2015, 2050)))
-        self.assertNoHolidayName(name, range(2012, 2015))
+        self.assertHolidayName(name, (f"{year}-05-20" for year in range(2015, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2015))
         obs_dt = (
             "2017-05-22",
             "2018-05-21",
@@ -126,7 +123,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_mid_winter_day(self):
         name = "Mid-winter Day"
-        self.assertHolidayName(name, (f"{year}-06-21" for year in range(2012, 2050)))
+        self.assertHolidayName(name, (f"{year}-06-21" for year in self.full_range))
         obs_dt = (
             "2014-06-23",
             "2015-06-22",
@@ -139,10 +136,10 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
     def test_toothfish_day(self):
         name_1 = "Toothfish (end of season) Day"
         name_2 = "Toothfish Day"
-        self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(2012, 2015)))
+        self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(self.start_year, 2015)))
         self.assertHolidayName(name_2, (f"{year}-09-04" for year in range(2015, 2022)))
-        self.assertNoHolidayName(name_1, range(2015, 2050))
-        self.assertNoHolidayName(name_2, range(2012, 2015), range(2022, 2050))
+        self.assertNoHolidayName(name_1, range(2015, self.end_year))
+        self.assertNoHolidayName(name_2, range(self.start_year, 2015), range(2022, self.end_year))
         obs_dt_1 = (
             "2013-09-13",
             "2014-09-15",
@@ -157,8 +154,8 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_environment_day(self):
         name = "Environment Day"
-        self.assertHolidayName(name, (f"{year}-10-30" for year in range(2020, 2050)))
-        self.assertNoHolidayName(name, range(2012, 2020))
+        self.assertHolidayName(name, (f"{year}-10-30" for year in range(2020, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2020))
         obs_dt = (
             "2021-10-29",
             "2022-10-31",
@@ -168,7 +165,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in range(2012, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
         obs_dt = (
             "2015-12-28",
             "2016-12-27",
@@ -181,7 +178,7 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(name, (f"{year}-12-25" for year in range(2012, 2050)))
+        self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dt = (
             "2016-12-26",
             "2021-12-27",

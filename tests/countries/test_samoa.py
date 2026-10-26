@@ -19,24 +19,102 @@ from tests.common import CommonCountryTests
 class TestSamoa(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Samoa, years=range(1950, 2050))
+        super().setUpClass(Samoa)
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1950, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
 
     def test_new_years_second_day(self):
         self.assertHolidayName(
-            "The Day After New Year's Day", (f"{year}-01-02" for year in range(1950, 2050))
+            "The Day After New Year's Day", (f"{year}-01-02" for year in self.full_range)
         )
 
     def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-06-01" for year in range(1950, 2050)))
+        self.assertHolidayName("Independence Day", (f"{year}-06-01" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1950, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(1950, 2050)))
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_day_after_good_friday(self):
+        name = "Day After Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            "2023-04-08",
+            "2024-03-30",
+            "2025-04-19",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_mothers_day(self):
+        name = "Mother's Day"
+        self.assertHolidayName(
+            name,
+            "2020-05-11",
+            "2021-05-10",
+            "2022-05-09",
+            "2023-05-15",
+            "2024-05-13",
+            "2025-05-12",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_fathers_day(self):
+        name = "Father's Day"
+        self.assertHolidayName(
+            name,
+            "2020-08-10",
+            "2021-08-09",
+            "2022-08-15",
+            "2023-08-14",
+            "2024-08-12",
+            "2025-08-11",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_white_sunday(self):
+        name = "White Sunday (Lotu a Tamaiti)"
+        self.assertHolidayName(
+            name,
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+            "2024-10-14",
+            "2025-10-13",
+        )
+        self.assertHolidayName(name, self.full_range)
 
     def test_2023(self):
         self.assertHolidaysInYear(
