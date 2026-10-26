@@ -112,6 +112,7 @@ LANGUAGES = {
     "tet": "Tetum",
     "tg": "Tajik",
     "th": "Thai",
+    "ti": "Tigrinya",
     "tk": "Turkmen",
     "tkl": "Tokelauan",
     "to": "Tongan",
