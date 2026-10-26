@@ -15,40 +15,27 @@ from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.mixins.child_entity import ChildEntity
 from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_SUN_TO_PREV_FRI,
     SAT_SUN_TO_NEXT_MON,
     SAT_SUN_TO_NEXT_MON_TUE,
     SAT_SUN_TO_NONE,
-    SAT_SUN_TO_PREV_FRI,
-    ObservedHolidayBase,
 )
 
 
 class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Euronext holidays.
 
-    Euronext cash and derivatives markets (Amsterdam, Brussels, Dublin,
-    Lisbon, Milan, Oslo and Paris) share a common holiday calendar with a
-    small number of market-specific closures. Christmas Eve and New Year's
-    Eve are half trading days in all markets except Milan and Oslo, where
-    they are full-day closures. On half trading days the Amsterdam,
-    Brussels, Lisbon and Paris cash markets close by 14:05 CET, while
-    Euronext Dublin equities close at 12:30 Dublin time. Euronext Dublin
-    has been closed on May Day since 2021. Milan market holidays are
-    included from 2023, the first year Milan appears in the Euronext
-    holiday calendars.
+    Euronext cash and derivatives markets (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo
+    and Paris) share a common holiday calendar with a small number of market-specific closures.
 
     References:
-        * <https://www.euronext.com/en/trading-calendars-hours>
-        * [Trading hours and holidays (archived 18 December 2019)]
-            (https://web.archive.org/web/20191218011504/https://www.euronext.com/en/trade/trading-hours-holidays)
-        * [Trading hours and holidays (archived 5 December 2020)]
-            (https://web.archive.org/web/20201205035823/https://www.euronext.com/en/trade/trading-hours-holidays)
-        * [Trading calendars and hours (archived 25 March 2019)]
-            (https://web.archive.org/web/20190325100632/https://www.euronext.com/en/trading-calendars-hours)
+        * [2019-2020](https://web.archive.org/web/20191229072655/https://www.euronext.com/en/trade/trading-hours-holidays)
+        * [Oslo 2019-2020](https://web.archive.org/web/20191214032113/https://www.oslobors.no/ob_eng/Oslo-Boers/About-Oslo-Boers/Opening-hours)
+        * [2021-2026](https://web.archive.org/web/20261014184052/https://www.euronext.com/en/trading/trading-hours-holidays)
     """
 
-    # ENX is Euronext N.V.'s own ticker, so it is the entity's own code.
-    # XPAR stays available as an alias.
+    # Euronext N.V. stock ticker.
     market = "ENX"
     default_language = "en_GB"
     supported_languages = ("en_GB", "en_US", "fr", "it", "nl", "no", "pt_PT")
@@ -71,10 +58,8 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._move_holiday_forced(
-            # New Year's Day.
-            self._add_new_years_day(tr("New Year's Day")),
-        )
+        # New Year's Day.
+        self._move_holiday_forced(self._add_new_years_day(tr("New Year's Day")))
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
@@ -85,15 +70,11 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Labor Day.
         self._move_holiday_forced(self._add_labor_day(tr("Labour Day")))
 
-        self._move_holiday_forced(
-            # Christmas Day.
-            self._add_christmas_day(tr("Christmas Day")),
-        )
+        # Christmas Day.
+        self._move_holiday_forced(self._add_christmas_day(tr("Christmas Day")))
 
-        self._move_holiday_forced(
-            # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Stephen's Day")),
-        )
+        # Saint Stephen's Day.
+        self._move_holiday_forced(self._add_christmas_day_two(tr("Saint Stephen's Day")))
 
     def _populate_half_day_holidays(self):
         if self.subdiv in {"XMIL", "XOSL"}:
@@ -160,25 +141,18 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
     def _populate_subdiv_xmil_public_holidays(self):
-        # Milan is included in the Euronext holiday calendars from 2023.
         if self._year <= 2022:
             return None
 
-        self._move_holiday_forced(
-            # Assumption Day.
-            self._add_assumption_of_mary_day(tr("Assumption Day")),
-        )
+        # Assumption Day.
+        self._move_holiday_forced(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
         # Christmas Eve and New Year's Eve are full-day closures.
-        self._move_holiday_forced(
-            # Christmas Eve.
-            self._add_christmas_eve(tr("Christmas Eve")),
-        )
+        # Christmas Eve.
+        self._move_holiday_forced(self._add_christmas_eve(tr("Christmas Eve")))
 
-        self._move_holiday_forced(
-            # New Year's Eve.
-            self._add_new_years_eve(tr("New Year's Eve")),
-        )
+        # New Year's Eve.
+        self._move_holiday_forced(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_xosl_public_holidays(self):
         # Maundy Thursday.
@@ -187,28 +161,21 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Ascension Day.
         self._add_ascension_thursday(tr("Ascension Day"))
 
-        self._move_holiday_forced(
-            # Constitution Day.
-            self._add_holiday_may_17(tr("Constitution Day")),
-        )
+        # Constitution Day.
+        self._move_holiday_forced(self._add_holiday_may_17(tr("Constitution Day")))
 
-        # Whit Monday.
+        # Pentecost Monday.
         self._add_pentecost_monday(tr("Whit Monday"))
 
-        # Christmas Eve and New Year's Eve are full-day closures.
-        self._move_holiday_forced(
-            # Christmas Eve.
-            self._add_christmas_eve(tr("Christmas Eve")),
-        )
+        # Christmas Eve.
+        self._move_holiday_forced(self._add_christmas_eve(tr("Christmas Eve")))
 
-        self._move_holiday_forced(
-            # New Year's Eve.
-            self._add_new_years_eve(tr("New Year's Eve")),
-        )
+        # New Year's Eve.
+        self._move_holiday_forced(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_xosl_half_day_holidays(self):
-        # %s (markets close at 1:00pm CET).
-        close_1pm_label = tr("%s (markets close at 1:00pm CET)")
+        # %s (markets close at 13:00 CET).
+        close_1pm_label = tr("%s (markets close at 13:00 CET)")
 
         self._add_holiday_4_days_prior_easter(
             # Wednesday before Easter.

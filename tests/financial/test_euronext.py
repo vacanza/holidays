@@ -410,7 +410,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoSubdivXoslHolidayName("New Year's Eve", "2023-12-31")
 
     def test_oslo_wednesday_before_easter(self):
-        name = "Wednesday before Easter (markets close at 1:00pm CET)"
+        name = "Wednesday before Easter (markets close at 13:00 CET)"
         self.assertSubdivXoslHalfDayHolidayName(
             name,
             "2019-04-17",
@@ -478,7 +478,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "New Year's Day"),
-            ("2025-04-16", "Wednesday before Easter (markets close at 1:00pm CET)"),
+            ("2025-04-16", "Wednesday before Easter (markets close at 13:00 CET)"),
             ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
@@ -505,7 +505,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2025-01-01", "New Year's Day"),
-            ("2025-04-16", "Wednesday before Easter (markets close at 1:00pm CET)"),
+            ("2025-04-16", "Wednesday before Easter (markets close at 13:00 CET)"),
             ("2025-04-17", "Maundy Thursday"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
