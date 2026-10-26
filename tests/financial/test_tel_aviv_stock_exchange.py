@@ -28,9 +28,9 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2018-10-30",
             "2021-03-23",
             "2022-11-01",
-            "2023-10-31",
             "2026-10-27",
         )
+        self.assertNoHoliday("2023-10-31", "2024-02-27")
 
     def test_purim(self):
         name = "פורים"
@@ -43,7 +43,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2025-03-14",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(self.start_year, 2026))
 
     def test_shushan_purim(self):
         name = "שושן פורים"
@@ -171,7 +171,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2025-06-02",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(self.start_year, 2026))
 
     def test_tisha_bav(self):
         name = "תשעה באב"
@@ -196,7 +196,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2022-08-06",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(self.start_year, 2026))
         self.assertNoHolidayName(name, non_obs_dts)
 
     def test_rosh_hashanah(self):
@@ -239,7 +239,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2025-10-01",
         )
         self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, range(self.start_year, 2026))
 
     def test_yom_kippur(self):
         name = "יום כיפור"
@@ -253,7 +253,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2024-10-11",
             "2025-10-01",
         )
-        self.assertHolidayName(eve_name, self.full_range)
+        self.assertHolidayName(eve_name, range(self.start_year, 2026))
         self.assertHolidayName(
             name,
             "2020-09-28",
@@ -315,8 +315,18 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
         )
 
     def test_friday_before_holiday(self):
-        self.assertHolidayName("שישי לפני חג", "2026-09-18")
-        self.assertNoHolidayName("שישי לפני חג", "2021-03-26")
+        self.assertHolidayName(
+            "שישי לפני חג",
+            "2026-09-18",
+            "2027-10-08",
+            "2028-03-10",
+            "2029-05-18",
+            "2029-07-20",
+            "2029-09-07",
+            "2029-09-21",
+        )
+        self.assertNoHoliday("2029-09-09", "2029-09-23")
+        self.assertNoHolidayName("שישי לפני חג", "2021-03-26", "2028-04-14")
 
     def test_chol_hamoed(self):
         passover_name = "חול המועד פסח (חצי יום מסחר)"
