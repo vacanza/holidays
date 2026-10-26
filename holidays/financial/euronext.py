@@ -38,6 +38,8 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     # Euronext N.V. stock ticker.
     market = "ENX"
     default_language = "en_GB"
+    # Substitute for %s.
+    observed_label = tr("Substitute for %s")
     supported_languages = ("en_GB", "en_US", "fr", "it", "nl", "no", "pt_PT")
     supported_categories = (HALF_DAY, PUBLIC)
     subdivisions: tuple[str, ...] = (
@@ -80,22 +82,26 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         if self.subdiv in {"XMIL", "XOSL"}:
             return None
 
+        is_xdub = self.subdiv == "XDUB"
         close_label = (
-            # %s (markets close at 12:30pm).
-            tr("%s (markets close at 12:30pm)")
-            if self.subdiv == "XDUB"
-            # %s (markets close at 2:05pm CET).
-            else tr("%s (markets close at 2:05pm CET)")
+            # %s (markets close at 14:00 CET).
+            tr("%s (markets close at 14:00 CET)")
+            if is_xdub
+            # %s (markets close at 14:05 CET).
+            else tr("%s (markets close at 14:05 CET)")
         )
+        rule = SAT_SUN_TO_PREV_FRI if is_xdub else SAT_SUN_TO_NONE
 
-        # Christmas Eve.
         self._move_holiday_forced(
+            # Christmas Eve.
             self._add_christmas_eve(self._format_holiday_name(close_label, tr("Christmas Eve"))),
+            rule=rule,
         )
 
-        # New Year's Eve.
         self._move_holiday_forced(
+            # New Year's Eve.
             self._add_new_years_eve(self._format_holiday_name(close_label, tr("New Year's Eve"))),
+            rule=rule,
         )
 
     def _populate_subdiv_xdub_public_holidays(self):
@@ -103,41 +109,28 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Irish May Bank Holiday.
             self._add_holiday_1st_mon_of_may(tr("Irish May Bank Holiday"))
 
-        self._move_holiday_forced(
+        self._move_holiday(
             # New Year's Day.
             self._add_new_years_day(tr("New Year's Day")),
             rule=SAT_SUN_TO_NEXT_MON,
+            force_observed=True,
+            show_observed_label=True,
         )
 
-        self._move_holiday_forced(
+        self._move_holiday(
             # Christmas Day.
             self._add_christmas_day(tr("Christmas Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE,
+            force_observed=True,
+            show_observed_label=True,
         )
 
-        self._move_holiday_forced(
+        self._move_holiday(
             # Saint Stephen's Day.
             self._add_christmas_day_two(tr("Saint Stephen's Day")),
             rule=SAT_SUN_TO_NEXT_MON_TUE,
-        )
-
-    def _populate_subdiv_xdub_half_day_holidays(self):
-        # %s (markets close at 12:30pm).
-        close_12_30pm_label = tr("%s (markets close at 12:30pm)")
-
-        self._move_holiday_forced(
-            self._add_christmas_eve(
-                # Christmas Eve.
-                self._format_holiday_name(close_12_30pm_label, tr("Christmas Eve"))
-            ),
-            rule=SAT_SUN_TO_PREV_FRI,
-        )
-        self._move_holiday_forced(
-            self._add_new_years_eve(
-                # New Year's Eve.
-                self._format_holiday_name(close_12_30pm_label, tr("New Year's Eve"))
-            ),
-            rule=SAT_SUN_TO_PREV_FRI,
+            force_observed=True,
+            show_observed_label=True,
         )
 
     def _populate_subdiv_xmil_public_holidays(self):

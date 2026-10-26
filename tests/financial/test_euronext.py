@@ -134,7 +134,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoSubdivXoslHoliday("2020-05-17", "2026-05-17")
 
     def test_christmas_eve(self):
-        name = "Christmas Eve (markets close at 2:05pm CET)"
+        name = "Christmas Eve (markets close at 14:05 CET)"
         self.assertNoHolidayName("Christmas Eve")
         self.assertHalfDayHolidayName(
             name,
@@ -148,7 +148,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHalfDayHolidayName(name, "2022-12-24", "2023-12-24")
 
     def test_new_years_eve(self):
-        name = "New Year's Eve (markets close at 2:05pm CET)"
+        name = "New Year's Eve (markets close at 14:05 CET)"
         self.assertNoHolidayName("New Year's Eve")
         self.assertHalfDayHolidayName(
             name,
@@ -210,21 +210,25 @@ class TestEuronext(CommonFinancialTests, TestCase):
 
     def test_dublin_weekend_substitutes(self):
         # New Year's Day substitutes.
-        self.assertSubdivXdubHolidayName("New Year's Day", "2022-01-03", "2023-01-02")
+        self.assertSubdivXdubHolidayName(
+            "Substitute for New Year's Day", "2022-01-03", "2023-01-02"
+        )
         # Christmas Day substitutes.
-        self.assertSubdivXdubHolidayName("Christmas Day", "2021-12-27", "2022-12-27")
+        self.assertSubdivXdubHolidayName(
+            "Substitute for Christmas Day", "2021-12-27", "2022-12-27"
+        )
         # Saint Stephen's Day substitutes.
         self.assertSubdivXdubHolidayName(
-            "Saint Stephen's Day", "2020-12-28", "2021-12-28", "2026-12-28"
+            "Substitute for Saint Stephen's Day", "2020-12-28", "2021-12-28", "2026-12-28"
         )
         # Other markets have no weekend substitutes.
         self.assertNoSubdivXparHoliday("2022-01-03", "2023-01-02", "2022-12-27")
 
     def test_dublin_observed_flag(self):
-        # The Dublin weekend substitutes use forced observed moves, so
-        # they stay in place regardless of the observed flag, and the
-        # actual weekend dates are not in the calendar (the holidays
-        # were moved to the substitutes).
+        # The Dublin weekend substitutes use _move_holiday with
+        # force_observed=True, so they stay in place regardless of
+        # the observed flag, and the actual weekend dates are not in
+        # the calendar (the holidays were moved to the substitutes).
         self.assertIn("2022-01-03", XDUB(years=2022, observed=False))
         self.assertNotIn("2022-01-01", XDUB(years=2022, observed=False))
         self.assertIn("2022-12-27", XDUB(years=2022, observed=False))
@@ -239,32 +243,32 @@ class TestEuronext(CommonFinancialTests, TestCase):
         # The Eve half days use forced observed moves, so weekend Eves
         # stay suppressed and Dublin's Friday substitutes stay in place
         # regardless of the observed flag.
-        name = "Christmas Eve (markets close at 2:05pm CET)"
+        name = "Christmas Eve (markets close at 14:05 CET)"
         self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-24")
         self.assertNoSubdivXparHalfDayHolidayName(
-            "New Year's Eve (markets close at 2:05pm CET)", "2022-12-31"
+            "New Year's Eve (markets close at 14:05 CET)", "2022-12-31"
         )
         self.assertNotIn("2022-12-24", XPAR(years=2022, observed=False, categories=HALF_DAY))
         self.assertNotIn("2022-12-31", XPAR(years=2022, observed=False, categories=HALF_DAY))
         self.assertSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 12:30pm)", "2022-12-23"
+            "Christmas Eve (markets close at 14:00 CET)", "2022-12-23"
         )
         self.assertIn("2022-12-23", XDUB(years=2022, observed=False, categories=HALF_DAY))
 
     def test_dublin_half_day_substitutes(self):
         # Christmas Eve half trading day observed on the preceding Friday.
         self.assertSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 12:30pm)", "2022-12-23", "2023-12-22"
+            "Christmas Eve (markets close at 14:00 CET)", "2022-12-23", "2023-12-22"
         )
         # New Year's Eve half trading day observed on the preceding Friday.
         self.assertSubdivXdubHalfDayHolidayName(
-            "New Year's Eve (markets close at 12:30pm)", "2022-12-30", "2023-12-29"
+            "New Year's Eve (markets close at 14:00 CET)", "2022-12-30", "2023-12-29"
         )
         self.assertNoSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 12:30pm)", "2022-12-24", "2023-12-24"
+            "Christmas Eve (markets close at 14:00 CET)", "2022-12-24", "2023-12-24"
         )
         self.assertNoSubdivXdubHalfDayHolidayName(
-            "New Year's Eve (markets close at 12:30pm)", "2022-12-31", "2023-12-31"
+            "New Year's Eve (markets close at 14:00 CET)", "2022-12-31", "2023-12-31"
         )
 
     def test_dublin_2019(self):
@@ -489,15 +493,15 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Assumption Day"),
             (
                 "2025-12-24",
-                "Christmas Eve; Christmas Eve (markets close at 12:30pm); "
-                "Christmas Eve (markets close at 2:05pm CET)",
+                "Christmas Eve; Christmas Eve (markets close at 14:00 CET); "
+                "Christmas Eve (markets close at 14:05 CET)",
             ),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Saint Stephen's Day"),
             (
                 "2025-12-31",
-                "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
-                "New Year's Eve (markets close at 2:05pm CET)",
+                "New Year's Eve; New Year's Eve (markets close at 14:00 CET); "
+                "New Year's Eve (markets close at 14:05 CET)",
             ),
         )
 
@@ -512,19 +516,19 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-05-01", "Labor Day"),
             ("2025-05-05", "Irish May Bank Holiday"),
             ("2025-05-29", "Ascension Day"),
-            ("2025-06-09", "Whit Monday"),
+            ("2025-06-09", "Pentecost Monday"),
             ("2025-08-15", "Assumption Day"),
             (
                 "2025-12-24",
-                "Christmas Eve; Christmas Eve (markets close at 12:30pm); "
-                "Christmas Eve (markets close at 2:05pm CET)",
+                "Christmas Eve; Christmas Eve (markets close at 14:00 CET); "
+                "Christmas Eve (markets close at 14:05 CET)",
             ),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Saint Stephen's Day"),
             (
                 "2025-12-31",
-                "New Year's Eve; New Year's Eve (markets close at 12:30pm); "
-                "New Year's Eve (markets close at 2:05pm CET)",
+                "New Year's Eve; New Year's Eve (markets close at 14:00 CET); "
+                "New Year's Eve (markets close at 14:05 CET)",
             ),
         )
 
@@ -543,14 +547,14 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Assomption"),
             (
                 "2025-12-24",
-                "Veille de Noël; Veille de Noël (fermeture des marchés à 12h30); "
+                "Veille de Noël; Veille de Noël (fermeture des marchés à 14h00 HEC); "
                 "Veille de Noël (fermeture des marchés à 14h05 HEC)",
             ),
             ("2025-12-25", "Jour de Noël"),
             ("2025-12-26", "Saint-Étienne"),
             (
                 "2025-12-31",
-                "Saint-Sylvestre; Saint-Sylvestre (fermeture des marchés à 12h30); "
+                "Saint-Sylvestre; Saint-Sylvestre (fermeture des marchés à 14h00 HEC); "
                 "Saint-Sylvestre (fermeture des marchés à 14h05 HEC)",
             ),
         )
@@ -570,14 +574,14 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Maria Santissima Assunta"),
             (
                 "2025-12-24",
-                "Vigilia di Natale; Vigilia di Natale (i mercati chiudono alle 12:30); "
+                "Vigilia di Natale; Vigilia di Natale (i mercati chiudono alle 14:00 CET); "
                 "Vigilia di Natale (i mercati chiudono alle 14:05 CET)",
             ),
             ("2025-12-25", "Natale"),
             ("2025-12-26", "Santo Stefano"),
             (
                 "2025-12-31",
-                "Vigilia di Capodanno; Vigilia di Capodanno (i mercati chiudono alle 12:30); "
+                "Vigilia di Capodanno; Vigilia di Capodanno (i mercati chiudono alle 14:00 CET); "
                 "Vigilia di Capodanno (i mercati chiudono alle 14:05 CET)",
             ),
         )
@@ -597,14 +601,14 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Maria-Hemelvaart"),
             (
                 "2025-12-24",
-                "Kerstavond; Kerstavond (markten sluiten om 12:30 uur); "
+                "Kerstavond; Kerstavond (markten sluiten om 14:00 uur CET); "
                 "Kerstavond (markten sluiten om 14:05 uur CET)",
             ),
             ("2025-12-25", "Eerste kerstdag"),
             ("2025-12-26", "Tweede kerstdag"),
             (
                 "2025-12-31",
-                "Oudejaarsavond; Oudejaarsavond (markten sluiten om 12:30 uur); "
+                "Oudejaarsavond; Oudejaarsavond (markten sluiten om 14:00 uur CET); "
                 "Oudejaarsavond (markten sluiten om 14:05 uur CET)",
             ),
         )
@@ -624,14 +628,14 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Marias opptakelse i himmelen"),
             (
                 "2025-12-24",
-                "Julaften; Julaften (markedene stenger kl. 12:30); "
+                "Julaften; Julaften (markedene stenger kl. 14:00 CET); "
                 "Julaften (markedene stenger kl. 14:05 CET)",
             ),
             ("2025-12-25", "Første juledag"),
             ("2025-12-26", "Andre juledag"),
             (
                 "2025-12-31",
-                "Nyttårsaften; Nyttårsaften (markedene stenger kl. 12:30); "
+                "Nyttårsaften; Nyttårsaften (markedene stenger kl. 14:00 CET); "
                 "Nyttårsaften (markedene stenger kl. 14:05 CET)",
             ),
         )
@@ -651,14 +655,14 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ("2025-08-15", "Assunção de Nossa Senhora"),
             (
                 "2025-12-24",
-                "Véspera de Natal; Véspera de Natal (os mercados fecham às 12:30); "
+                "Véspera de Natal; Véspera de Natal (os mercados fecham às 14:00 CET); "
                 "Véspera de Natal (os mercados fecham às 14:05 CET)",
             ),
             ("2025-12-25", "Dia de Natal"),
             ("2025-12-26", "Dia de Santo Estêvão"),
             (
                 "2025-12-31",
-                "Véspera de Ano Novo; Véspera de Ano Novo (os mercados fecham às 12:30); "
+                "Véspera de Ano Novo; Véspera de Ano Novo (os mercados fecham às 14:00 CET); "
                 "Véspera de Ano Novo (os mercados fecham às 14:05 CET)",
             ),
         )

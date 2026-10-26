@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-25 04:05+0000\n"
-"PO-Revision-Date: 2026-10-26 18:56+0000\n"
+"PO-Revision-Date: 2026-10-26 19:40+0000\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_GB\n"
@@ -26,6 +26,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.7\n"
 "X-Source-Language: en_GB\n"
+
+#. Substitute for %s.
+#, c-format
+msgid "Substitute for %s"
+msgstr ""
 
 #. New Year's Day.
 msgid "New Year's Day"
@@ -51,14 +56,14 @@ msgstr ""
 msgid "Saint Stephen's Day"
 msgstr ""
 
-#. %s (markets close at 12:30pm).
+#. %s (markets close at 14:00 CET).
 #, c-format
-msgid "%s (markets close at 12:30pm)"
+msgid "%s (markets close at 14:00 CET)"
 msgstr ""
 
-#. %s (markets close at 2:05pm CET).
+#. %s (markets close at 14:05 CET).
 #, c-format
-msgid "%s (markets close at 2:05pm CET)"
+msgid "%s (markets close at 14:05 CET)"
 msgstr ""
 
 #. Christmas Eve.
@@ -102,5 +107,3 @@ msgstr ""
 #. Wednesday before Easter.
 msgid "Wednesday before Easter"
 msgstr ""
-
-#, c-format
