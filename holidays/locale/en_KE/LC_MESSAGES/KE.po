@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.68\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-26 23:09+0200\n"
-"PO-Revision-Date: 2025-02-26 23:11+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-23 21:04-0500\n"
+"Last-Translator: JanakiRamChittineni <341781521+raams95@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_KE\n"
 "MIME-Version: 1.0\n"
@@ -137,4 +137,8 @@ msgstr ""
 
 #. State Funeral for Former President Mwai Kibaki.
 msgid "State Funeral for Former President Mwai Kibaki"
+msgstr ""
+
+#. State Funeral for Former Prime Minister Raila Odinga.
+msgid "State Funeral for Former Prime Minister Raila Odinga"
 msgstr ""
