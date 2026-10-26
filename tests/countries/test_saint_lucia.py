@@ -23,9 +23,7 @@ class TestSaintLucia(CommonCountryTests, TestCase):
 
     def test_new_years(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
-        self.assertHolidayName(
-            "New Year's Holiday", (f"{year}-01-02" for year in self.full_range)
-        )
+        self.assertHolidayName("New Year's Holiday", (f"{year}-01-02" for year in self.full_range))
 
     def test_independence_day(self):
         name = "Independence Day"

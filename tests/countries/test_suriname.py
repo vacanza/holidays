@@ -75,9 +75,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, range(1976, self.end_year))
 
     def test_labor_day(self):
-        self.assertHolidayName(
-            "Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range)
-        )
+        self.assertHolidayName("Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range))
 
     def test_day_of_freedoms(self):
         name_1 = "Dag der Vrijheden"
@@ -91,9 +89,7 @@ class TestSuriname(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name_2, (f"{year}-07-01" for year in range(2008, 2025)))
         self.assertNoHolidayName(name_1, range(2008, 2025))
-        self.assertNoHolidayName(
-            name_2, range(self.start_year, 2008), range(2025, self.end_year)
-        )
+        self.assertNoHolidayName(name_2, range(self.start_year, 2008), range(2025, self.end_year))
 
     def test_indigenous_people_day(self):
         name = "Dag der Inheemsen"

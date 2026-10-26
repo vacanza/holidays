@@ -107,9 +107,7 @@ class TestSintMaarten(CommonCountryTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_labor_day(self):
-        self.assertHolidayName(
-            "Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range)
-        )
+        self.assertHolidayName("Dag van de Arbeid", (f"{year}-05-01" for year in self.full_range))
 
     def test_ascension_day(self):
         name = "Hemelvaartsdag"
