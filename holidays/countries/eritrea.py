@@ -55,7 +55,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        """Add Eritrea's public holidays using Tigrinya source names."""
         # New Year's Day.
         self._add_new_years_day(tr("ሓዲሽ ዓመት"))
 
@@ -102,7 +101,6 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         self._add_eid_al_adha_day(tr("ዒድ ኣልኣድሓ"))
 
     def _populate_government_holidays(self):
-        """Add Eritrea's government-only holidays."""
         # Fenkil Day.
         self._add_holiday_feb_10(tr("ፈንቅል"))
 
