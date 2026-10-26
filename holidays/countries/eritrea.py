@@ -25,12 +25,12 @@ class Eritrea(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         * <https://web.archive.org/web/20230313234629/https://explore-eritrea.com/working-hours-and-holidays/>
         * <https://web.archive.org/web/20110903130335/http://www.eritrea.be/old/eritrea-religions.htm>
         * <https://web.archive.org/web/20250820085307/https://www.mintageworld.com/media/detail/11411-fenkil-day-in-eritrea/>
-        * <https://us.embassyeritrea.org/national-dates/>
-        * <https://asmara.embassy.qa/en/eritrea/official-holidays>
-        * <https://tigrigna.voanews.com/a/2960404.html>
-        * <https://tigrigna.voanews.com/a/martrys-day-in-eritrea/7663628.html>
-        * <https://www.erinewspapers.com/hadas-eritrea/haddas_eritra_28042026.pdf>
-        * <https://www2.census.gov/programs-surveys/decennial/2020/resources/language-materials/glossaries/Tigrinya-Glossary.pdf>
+        * <https://web.archive.org/web/20261026035656/https://us.embassyeritrea.org/national-dates/>
+        * <https://web.archive.org/web/20261026040637/https://asmara.embassy.qa/en/eritrea/official-holidays>
+        * <https://web.archive.org/web/20261026040816/https://tigrigna.voanews.com/a/2960404.html>
+        * <https://web.archive.org/web/20261026041041/https://tigrigna.voanews.com/a/martrys-day-in-eritrea/7663628.html>
+        * <https://web.archive.org/web/20261026041227/https://www.erinewspapers.com/hadas-eritrea/haddas_eritra_28042026.pdf>
+        * <https://web.archive.org/web/20260823000041/https://www2.census.gov/programs-surveys/decennial/2020/resources/language-materials/glossaries/Tigrinya-Glossary.pdf>
     """
 
     country = "ER"
