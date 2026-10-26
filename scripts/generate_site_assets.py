@@ -102,6 +102,7 @@ LANGUAGES = {
     "rw": "Kinyarwanda",
     "sk": "Slovak",
     "sl": "Slovenian",
+    "so": "Somali",
     "sq": "Albanian",
     "sr": "Serbian",
     "sv": "Swedish",
