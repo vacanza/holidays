@@ -47,6 +47,11 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_good_friday(self):
         name = "Good Friday"
         dts = (
+            "1999-04-02",
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -60,6 +65,11 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_easter_monday(self):
         name = "Easter Monday"
         dts = (
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -96,6 +106,8 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_corpus_christi(self):
         name = "Corpus Christi"
         dts = (
+            "2018-05-31",
+            "2019-06-20",
             "2020-06-11",
             "2021-06-03",
             "2022-06-16",
@@ -109,6 +121,31 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
         dts = (
+            "1995-10-02",
+            "1996-10-07",
+            "1997-10-06",
+            "1998-10-05",
+            "1999-10-04",
+            "2000-10-02",
+            "2001-10-01",
+            "2002-10-07",
+            "2003-10-06",
+            "2004-10-04",
+            "2005-10-03",
+            "2006-10-02",
+            "2007-10-01",
+            "2008-10-06",
+            "2009-10-05",
+            "2010-10-04",
+            "2011-10-03",
+            "2012-10-01",
+            "2013-10-07",
+            "2014-10-06",
+            "2015-10-05",
+            "2016-10-03",
+            "2017-10-02",
+            "2018-10-01",
+            "2019-10-07",
             "2020-10-05",
             "2021-10-04",
             "2022-10-03",
