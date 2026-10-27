@@ -79,7 +79,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._move_holiday_forced(self._add_christmas_day_two(tr("Saint Stephen's Day")))
 
     def _populate_half_day_holidays(self):
-        if self.subdiv in {"XMIL", "XOSL"}:
+        if self.subdiv is None or self.subdiv in {"XMIL", "XOSL"}:
             return None
 
         is_xdub = self.subdiv == "XDUB"
@@ -140,7 +140,6 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day.
         self._move_holiday_forced(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
-        # Christmas Eve and New Year's Eve are full-day closures.
         # Christmas Eve.
         self._move_holiday_forced(self._add_christmas_eve(tr("Christmas Eve")))
 

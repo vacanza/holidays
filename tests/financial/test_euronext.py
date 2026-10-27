@@ -28,6 +28,9 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHolidays(
             Euronext(subdiv="XMIL", categories=HALF_DAY, years=range(2021, 2050))
         )
+        # No half-day holidays are common to all markets, so the
+        # common (no-subdivision) half-day set is empty.
+        self.assertNoHolidays(Euronext(categories=HALF_DAY, years=2025))
 
     def test_market_subclasses_default_subdivision(self):
         # Each market subclass defaults to its own subdivision, so the
@@ -134,7 +137,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
     def test_christmas_eve(self):
         name = "Christmas Eve (markets close at 14:05 CET)"
         self.assertNoHolidayName("Christmas Eve")
-        self.assertHalfDayHolidayName(
+        self.assertSubdivXparHalfDayHolidayName(
             name,
             "2019-12-24",
             "2020-12-24",
@@ -143,12 +146,12 @@ class TestEuronext(CommonFinancialTests, TestCase):
             "2025-12-24",
             "2026-12-24",
         )
-        self.assertNoHalfDayHolidayName(name, "2022-12-24", "2023-12-24")
+        self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-24", "2023-12-24")
 
     def test_new_years_eve(self):
         name = "New Year's Eve (markets close at 14:05 CET)"
         self.assertNoHolidayName("New Year's Eve")
-        self.assertHalfDayHolidayName(
+        self.assertSubdivXparHalfDayHolidayName(
             name,
             "2019-12-31",
             "2020-12-31",
@@ -157,7 +160,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
             "2025-12-31",
             "2026-12-31",
         )
-        self.assertNoHalfDayHolidayName(name, "2022-12-31", "2023-12-31")
+        self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-31", "2023-12-31")
 
     def test_2019(self):
         self.assertHolidaysInYear(
