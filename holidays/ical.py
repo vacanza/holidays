@@ -143,6 +143,30 @@ class ICalExporter:
         # Return as-is if it doesn't exceed the limit
         return line
 
+    def _escape_text(self, text: str) -> str:
+        """Escape a TEXT property value according to
+        [RFC 5545](https://web.archive.org/web/20260815171151/https://datatracker.ietf.org/doc/html/rfc5545).
+
+        Backslash, semicolon and comma are escaped with a backslash, and line breaks
+        are replaced with `\\n`. Colon is a valid TEXT character, so it is kept as-is.
+
+        Args:
+            text:
+                The text to escape.
+
+        Returns:
+            The escaped text.
+        """
+        # Backslash goes first so that the backslashes added below are not escaped again.
+        return (
+            text.replace("\\", "\\\\")
+            .replace(";", "\\;")
+            .replace(",", "\\,")
+            .replace("\r\n", "\\n")
+            .replace("\r", "\\n")
+            .replace("\n", "\\n")
+        )
+
     def _generate_event(
         self, dt: date, holiday_name: str, holiday_length: int = 1
     ) -> Iterable[str]:
@@ -161,19 +185,13 @@ class ICalExporter:
         Returns:
             Iterable of iCalendar format event lines.
         """
-        # Escape special characters per RFC 5545.
-        # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
-        # so a name with a semicolon gets split into two separate `VEVENT`s.
-        sanitized_holiday_name = (
-            holiday_name.replace("\\", "\\\\").replace(",", "\\,").replace(":", "\\:")
-        )
         event_uid = f"{uuid.uuid4()}@{self.holidays_version}.holidays.local"
         language_tag = f";LANGUAGE={self.language}" if self.show_language else ""
 
         yield "BEGIN:VEVENT"
         yield f"DTSTAMP:{self.ical_timestamp}"
         yield f"UID:{event_uid}"
-        yield self._fold_line(f"SUMMARY{language_tag}:{sanitized_holiday_name}")
+        yield self._fold_line(f"SUMMARY{language_tag}:{self._escape_text(holiday_name)}")
         yield f"DTSTART;VALUE=DATE:{dt:%Y%m%d}"
         yield f"DURATION:P{holiday_length}D"
         if len(self.holidays.categories) == 1:
