@@ -339,15 +339,30 @@ class TestIcalExporter(TestCase):
             "Dia de Portugal\\, de Camões e das Comunidades Portuguesas",
         )
 
-        # COLON.
-        self._assert_special_char_handling("Special: Holiday Event", "Special\\: Holiday Event")
+        # COLON is allowed in TEXT values, no action taken.
+        self._assert_special_char_handling("Special: Holiday Event", "Special: Holiday Event")
 
         # BACKSLASH.
         self._assert_special_char_handling("Backslash\\Holiday", "Backslash\\\\Holiday")
 
-        # SEMICOLON is used as a delimiter in HolidayBase (HOLIDAY_NAME_DELIMITER = "; "),
-        # so a name with a semicolon gets split into two separate `VEVENT`s.
+        # SEMICOLON followed by a space is used as a delimiter in HolidayBase
+        # (HOLIDAY_NAME_DELIMITER = "; "), so such a name gets split into two `VEVENT`s.
         self._assert_special_char_handling("Christmas; Celebration", "Celebration")
+
+        # SEMICOLON without a space stays in the name.
+        self._assert_special_char_handling("Christmas;Celebration", "Christmas\\;Celebration")
+
+        # LINE BREAKS.
+        for line_break in ("\n", "\r\n", "\r"):
+            self._assert_special_char_handling(
+                f"Line One{line_break}Line Two", "Line One\\nLine Two"
+            )
+
+    def test_escape_character_localized_holiday_names(self):
+        output = ICalExporter(
+            country_holidays("FI", years=2024, categories=UNOFFICIAL, language="fi")
+        ).generate()
+        self.assertIn("SUMMARY:YK:n päivä\r\n", output)
 
     def test_localized_holiday_names(self):
         output = self.jp_exporter.generate()
