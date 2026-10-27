@@ -62,6 +62,7 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2022-04-18",
             "2023-04-10",
             "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
@@ -74,6 +75,7 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2022-05-26",
             "2023-05-18",
             "2024-05-09",
+            "2025-05-29",
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
@@ -86,6 +88,7 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2022-06-06",
             "2023-05-29",
             "2024-05-20",
+            "2025-06-09",
         )
         self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
@@ -140,13 +143,13 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-        obs_dt = (
+        obs_dts = (
             "2020-05-25",
             "2022-05-02",
             "2025-03-31",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_eid_al_adha(self):
         name = "Journée de la Tabaski"
@@ -159,13 +162,13 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-        obs_dt = (
+        obs_dts = (
             "2016-09-12",
             "2019-08-12",
             "2022-07-11",
         )
-        self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertIslamicNoEstimatedHolidayName(f"{name} (observé)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
