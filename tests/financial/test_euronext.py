@@ -32,9 +32,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
     def test_market_subclasses_default_subdivision(self):
         # Each market subclass defaults to its own subdivision, so the
         # market-specific holidays are included without an explicit subdiv.
-        # XPAR is a plain subclass of Euronext, so it has no subdivision
-        # and uses the common calendar, like Euronext itself.
-        self.assertIsNone(XPAR(years=2025).subdiv)
+        self.assertEqual(XPAR(years=2025).subdiv, "XPAR")
         self.assertEqual(XAMS(years=2025).subdiv, "XAMS")
         self.assertEqual(XBRU(years=2025).subdiv, "XBRU")
         self.assertEqual(XDUB(years=2025).subdiv, "XDUB")

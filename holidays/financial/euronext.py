@@ -84,10 +84,10 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         is_xdub = self.subdiv == "XDUB"
         close_label = (
-            # %s (markets close at 14:00 CET).
+            # %s (markets close at 2:00pm CET).
             tr("%s (markets close at 14:00 CET)")
             if is_xdub
-            # %s (markets close at 14:05 CET).
+            # %s (markets close at 2:05pm CET).
             else tr("%s (markets close at 14:05 CET)")
         )
         rule = SAT_SUN_TO_PREV_FRI if is_xdub else SAT_SUN_TO_NONE
@@ -167,7 +167,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._move_holiday_forced(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_xosl_half_day_holidays(self):
-        # %s (markets close at 13:00 CET).
+        # %s (markets close at 1:00pm CET).
         close_1pm_label = tr("%s (markets close at 13:00 CET)")
 
         self._add_holiday_4_days_prior_easter(
@@ -177,10 +177,6 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
 
 class ENX(Euronext):
-    pass
-
-
-class XPAR(Euronext):
     pass
 
 
@@ -212,3 +208,8 @@ class XMIL(ChildEntity, Euronext):
 class XOSL(ChildEntity, Euronext):
     parent_entity = Euronext
     parent_entity_subdivision_code = "XOSL"
+
+
+class XPAR(ChildEntity, Euronext):
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XPAR"

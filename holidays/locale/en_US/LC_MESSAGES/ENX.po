@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-25 04:05+0000\n"
-"PO-Revision-Date: 2026-10-26 19:40+0000\n"
+"PO-Revision-Date: 2026-10-27 02:43+0000\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -56,12 +56,12 @@ msgstr "Christmas Day"
 msgid "Saint Stephen's Day"
 msgstr "Saint Stephen's Day"
 
-#. %s (markets close at 14:00 CET).
+#. %s (markets close at 2:00pm CET).
 #, c-format
 msgid "%s (markets close at 14:00 CET)"
 msgstr "%s (markets close at 14:00 CET)"
 
-#. %s (markets close at 14:05 CET).
+#. %s (markets close at 2:05pm CET).
 #, c-format
 msgid "%s (markets close at 14:05 CET)"
 msgstr "%s (markets close at 14:05 CET)"
@@ -99,7 +99,7 @@ msgstr "Constitution Day"
 msgid "Whit Monday"
 msgstr "Pentecost Monday"
 
-#. %s (markets close at 13:00 CET).
+#. %s (markets close at 1:00pm CET).
 #, c-format
 msgid "%s (markets close at 13:00 CET)"
 msgstr "%s (markets close at 13:00 CET)"
