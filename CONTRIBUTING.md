@@ -124,6 +124,34 @@ Use pytest directly if you need `-s` option:
 pytest -s tests/countries/test_argentina.py
 ```
 
+## Performance benchmarks
+
+Use the optional `benchmark` dependency group to measure population and lookup performance:
+
+``` shell
+uv run --group benchmark python scripts/benchmark.py -o baseline.json
+```
+
+The suite uses [pyperf](https://pyperf.readthedocs.io/) to calibrate timings and run isolated
+worker processes. It covers one-year and ten-year population, a subdivision calendar, first-lookup
+population, and date, ISO-string and parsed-string membership checks. Population creates a fresh
+calendar on every iteration; membership checks use an already populated calendar with expansion
+disabled. Years and languages are fixed so results do not depend on the current date or locale.
+
+After applying an optimization, run the same suite with the same Python version on the same machine:
+
+``` shell
+uv run --group benchmark python scripts/benchmark.py -o changed.json
+uv run --group benchmark python -m pyperf compare_to baseline.json changed.json --table
+uv run --group benchmark python -m pyperf check changed.json
+```
+
+Keep the benchmark script and dependency versions unchanged between measurements. Record the Git
+revisions being compared alongside the JSON files. Run on an otherwise idle machine and investigate
+pyperf's stability warnings before interpreting small differences. `--fast` is useful for a rough
+local check; omit it for measurements used to support a performance claim. These benchmarks do not
+replace correctness tests or impose timing thresholds on CI. Keep result files out of commits.
+
 ## Localization
 
 In order to add or update existing holiday names translation you'll need to generate pygettext
