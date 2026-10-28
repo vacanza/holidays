@@ -98,6 +98,7 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
         self.assertHolidayName(
             name,
             "1992-07-15",
+            "1993-08-03",
             "1995-07-12",
             "1996-07-30",
             "1998-07-09",
@@ -232,6 +233,31 @@ class TestStockExchangeOfThailand(CommonFinancialTests, TestCase):
     def test_in_lieu_day_after_holiday(self):
         self.assertHolidayName("ชดเชยวันฉัตรมงคล", "2001-05-08")
         self.assertNoHolidayName("ชดเชยวันฉัตรมงคล", "2001-05-07")
+
+    def test_1993(self):
+        self.assertHolidayDatesInYear(
+            1993,
+            "1993-01-01",
+            "1993-03-07",
+            "1993-03-08",
+            "1993-04-06",
+            "1993-04-12",
+            "1993-04-13",
+            "1993-04-14",
+            "1993-05-01",
+            "1993-05-03",
+            "1993-05-05",
+            "1993-06-04",
+            "1993-07-01",
+            "1993-08-03",
+            "1993-08-12",
+            "1993-10-23",
+            "1993-10-25",
+            "1993-12-05",
+            "1993-12-06",
+            "1993-12-10",
+            "1993-12-31",
+        )
 
     def test_2017(self):
         self.assertHolidayDatesInYear(
