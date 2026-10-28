@@ -34,8 +34,23 @@ class TestEuronext(CommonFinancialTests, TestCase):
         return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() < 5)
 
     def test_new_years_day(self):
-        self.assertHolidayName("New Year's Day", self._no_weekend_holidays(1, 1))
+        name = "New Year's Day"
+        name_observed = f"Substitute for {name}"
+        self.assertHolidayName(name, self._no_weekend_holidays(1, 1))
         self.assertNoHoliday(self._weekend_holidays(1, 1))
+
+        obs_dts = (
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertNoHolidayName(name_observed)
+        self.assertNoHoliday(obs_dts)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XDUB":
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+            else:
+                self.assertNoHolidayName(name_observed, holidays)
+                self.assertNoHoliday(holidays, obs_dts)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -72,12 +87,43 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHoliday(self._weekend_holidays(5, 1))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", self._no_weekend_holidays(12, 25))
+        name = "Christmas Day"
+        name_observed = f"Substitute for {name}"
+        self.assertHolidayName(name, self._no_weekend_holidays(12, 25))
         self.assertNoHoliday(self._weekend_holidays(12, 25))
 
+        obs_dts = (
+            "2021-12-27",
+            "2022-12-27",
+        )
+        self.assertNoHolidayName(name_observed)
+        self.assertNoHoliday(obs_dts)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XDUB":
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+            else:
+                self.assertNoHolidayName(name_observed, holidays)
+                self.assertNoHoliday(holidays, obs_dts)
+
     def test_saint_stephens_day(self):
-        self.assertHolidayName("Saint Stephen's Day", self._no_weekend_holidays(12, 26))
+        name = "Saint Stephen's Day"
+        name_observed = f"Substitute for {name}"
+        self.assertHolidayName(name, self._no_weekend_holidays(12, 26))
         self.assertNoHoliday(self._weekend_holidays(12, 26))
+
+        obs_dts = (
+            "2020-12-28",
+            "2021-12-28",
+            "2026-12-28",
+        )
+        self.assertNoHolidayName(name_observed)
+        self.assertNoHoliday(obs_dts)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XDUB":
+                self.assertHolidayName(name_observed, holidays, obs_dts)
+            else:
+                self.assertNoHolidayName(name_observed, holidays)
+                self.assertNoHoliday(holidays, obs_dts)
 
     def test_christmas_eve(self):
         name = "Christmas Eve"
