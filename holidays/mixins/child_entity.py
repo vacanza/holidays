@@ -32,7 +32,7 @@ class ChildEntity:
     """Override parent subdivisions aliases."""
 
     def __init__(self, *args, **kwargs):
-        """Initialize the child entity using its country code.
+        """Initialize the child entity using its entity code.
 
         A child entity always has its own entity code that is different from
         the parent entity's code but (in majority of cases) is a

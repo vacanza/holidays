@@ -95,6 +95,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                         holidays,
                         (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2023),
                     )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24))
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
@@ -146,6 +147,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                         holidays,
                         (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2023),
                     )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31))
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
@@ -217,6 +219,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                     holidays,
                     (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2023),
                 )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
             else:
                 self.assertNoHolidayName(name, holidays)
 
