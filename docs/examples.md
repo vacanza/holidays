@@ -535,14 +535,14 @@ True
 Each calendar is named after its holidays object (`X-WR-CALNAME`), and every event gets a UID
 derived from the entity, subdivision, language, categories, holiday name, start date and length,
 so re-generating a calendar yields the same UIDs and subscribed clients update events in place.
-For calendars published for subscription, `refresh_interval` adds the `REFRESH-INTERVAL` and
-`X-PUBLISHED-TTL` hints, given in weeks.
+For calendars published for subscription, `refresh_interval_weeks` adds the `REFRESH-INTERVAL` and
+`X-PUBLISHED-TTL` hints.
 
 ``` python
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> be_holidays = country_holidays('BE', years=2024, language='en_US')
->>> exporter = ICalExporter(be_holidays, refresh_interval=1)
+>>> exporter = ICalExporter(be_holidays, refresh_interval_weeks=1)
 >>> exporter.calendar_name
 'Belgium Public Holidays [en-US]'
 >>> ical_content = exporter.generate()

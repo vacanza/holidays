@@ -47,7 +47,7 @@ class ICalExporter:
         instance: HolidayBase,
         show_language: bool = False,
         *,
-        refresh_interval: int | None = None,
+        refresh_interval_weeks: int | None = None,
     ) -> None:
         """Initialize iCalendar exporter.
 
@@ -67,24 +67,17 @@ class ICalExporter:
                 If neither attribute exists and `show_language=True`, an
                 exception will be raised.
 
-            refresh_interval:
-                Suggested refresh interval, in weeks, for calendar clients
+            refresh_interval_weeks:
+                Suggested refresh interval in weeks for calendar clients
                 subscribed to the published calendar. Emits the `REFRESH-INTERVAL`
                 ([RFC 7986](https://web.archive.org/web/20260611035104/https://datatracker.ietf.org/doc/html/rfc7986))
                 and `X-PUBLISHED-TTL` properties. Defaults to `None` (not emitted).
         """
         self.holidays = instance
-        self.show_language = show_language
-        if refresh_interval is not None and (
-            type(refresh_interval) is not int or refresh_interval < 1
-        ):
-            raise ValueError(
-                f"Invalid refresh interval: {refresh_interval}. "
-                "Expected a positive number of weeks."
-            )
-        self.refresh_interval = refresh_interval
-        self.ical_timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         self.holidays_version = __version__
+        self.ical_timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+        self.show_language = show_language
+
         language = getattr(self.holidays, "language", None) or getattr(
             self.holidays, "default_language", None
         )
@@ -97,6 +90,14 @@ class ICalExporter:
 
         if self.show_language and self.language is None:
             raise ValueError("LANGUAGE cannot be included because the language code is missing.")
+
+        if refresh_interval_weeks is not None and (
+            type(refresh_interval_weeks) is not int or refresh_interval_weeks < 1
+        ):
+            raise ValueError(
+                f"Invalid refresh interval: {refresh_interval_weeks}. Expected a positive integer."
+            )
+        self.refresh_interval_weeks = refresh_interval_weeks
 
     def _validate_language(self, language: str) -> str:
         """Validate the language code to ensure it complies with
@@ -132,13 +133,18 @@ class ICalExporter:
     def entity_name(self) -> str:
         """Human-readable name of the exported entity.
 
-        Taken from the entity docstring (e.g. `Belgium holidays.`), falling back to
+        Taken from the docstring of a class that defines `country` or `market`
+        (e.g. `Belgium holidays.`), ignoring holiday group mixins. Falls back to
         the entity code(s) for combined or custom holiday objects.
         """
         for cls in type(self.holidays).__mro__:
-            match = re.fullmatch(r"(.+) holidays\.", (cls.__doc__ or "").strip().split("\n")[0])
-            if match:
-                return match.group(1)
+            if not (getattr(cls, "country", None) or getattr(cls, "market", None)):
+                continue
+            if match := re.fullmatch(
+                r"(.+) holidays\.", (cls.__doc__ or "").strip().split("\n")[0]
+            ):
+                # Drop ISO 3166-style articles, e.g. "United States of America (the)".
+                return match.group(1).removesuffix(" (the)")
 
         codes = self.holidays._entity_code
         return ", ".join(codes) if isinstance(codes, list) else codes or ""
@@ -152,8 +158,8 @@ class ICalExporter:
         """
         parts = [self.entity_name] if self.entity_name else []
 
-        subdiv = self.holidays.subdiv
-        if subdiv:
+        # Skip subdiv when it duplicates the entity code (e.g. MP, VI territories).
+        if (subdiv := self.holidays.subdiv) and subdiv != self.holidays._entity_code:
             parts.append(f"({', '.join(subdiv) if isinstance(subdiv, list) else subdiv})")
 
         parts.append(
@@ -310,8 +316,8 @@ class ICalExporter:
             "CALSCALE:GREGORIAN",
             self._fold_line(f"X-WR-CALNAME:{self._escape_text(self.calendar_name)}"),
         ]
-        if self.refresh_interval:
-            duration = f"P{self.refresh_interval}W"
+        if self.refresh_interval_weeks:
+            duration = f"P{self.refresh_interval_weeks}W"
             lines.append(f"REFRESH-INTERVAL;VALUE=DURATION:{duration}")
             lines.append(f"X-PUBLISHED-TTL:{duration}")
 
