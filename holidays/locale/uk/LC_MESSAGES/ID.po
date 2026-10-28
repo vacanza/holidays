@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.105\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-07-23 14:09+0300\n"
-"PO-Revision-Date: 2026-09-17 21:27+0300\n"
+"PO-Revision-Date: 2026-10-28 23:03+0000\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -153,7 +153,7 @@ msgstr "День місцевих виборів"
 
 #. Eid al-Fitr Joint Holiday.
 msgid "Cuti Bersama Hari Raya Idul Fitri"
-msgstr "Додатковий вихідний на Курбан-байрам"
+msgstr "Додатковий вихідний на Рамазан-байрам"
 
 #. Eid al-Adha Joint Holiday.
 msgid "Cuti Bersama Hari Raya Idul Adha"
