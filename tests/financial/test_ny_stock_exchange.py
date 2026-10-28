@@ -14,8 +14,9 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, NOV, DEC, WED, THU, _timedelta
-from holidays.constants import HALF_DAY
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange
+from holidays.observed_holiday_base import SUN_TO_NEXT_TUE
 from tests.common import CommonFinancialTests
 
 
@@ -747,6 +748,20 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             "1970-02-23",
             "1970-03-27",
         )
+
+    def test_special_half_day_holidays_observed_settings(self):
+        name = "Paperwork Crisis (markets close at 3:00pm)"
+        # Washington's Birthday (Sunday) observed on Tuesday.
+        nyse = NewYorkStockExchange(
+            categories=(HALF_DAY, PUBLIC), observed_rule=SUN_TO_NEXT_TUE, years=1970
+        )
+        self.assertHolidayName(name, nyse, "1970-02-23")
+        self.assertHolidayName("Washington's Birthday (observed)", nyse, "1970-02-24")
+        self.assertNoHolidayName(name, nyse, "1970-02-24")
+
+        # Washington's Birthday (Sunday) not observed.
+        nyse = NewYorkStockExchange(categories=(HALF_DAY, PUBLIC), observed_since=1971, years=1970)
+        self.assertHolidayName(name, nyse, "1970-02-23")
 
     def test_2023(self):
         self.assertHolidaysInYear(

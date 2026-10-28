@@ -225,7 +225,13 @@ class NewYorkStockExchange(
         name_paperwork_crisis = tr("Paperwork Crisis")
         # Market closure days can't be early closing days, regardless of requested categories.
         closures = (
-            type(self)(categories=PUBLIC, observed=self.observed, years=self._year)
+            type(self)(
+                categories=PUBLIC,
+                observed=self.observed,
+                observed_rule=self._observed_rule,
+                observed_since=self._observed_since,
+                years=self._year,
+            )
             if 1968 <= self._year <= 1970
             else ()
         )
