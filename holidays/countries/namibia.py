@@ -119,6 +119,7 @@ class NamibiaStaticHolidays:
         * [February 25, 2024](https://web.archive.org/web/20241203060851/https://namiblii.org/akn/na/officialGazette/government-gazette/2024-02-20/8312/eng@2024-02-20)
         * [November 27, 2024](https://web.archive.org/web/20250514020246/https://namiblii.org/akn/na/officialGazette/government-gazette/2024-09-26/8454/eng@2024-09-26)
         * [March 1, 2025](https://web.archive.org/web/20250613172517/https://namiblii.org/akn/na/officialGazette/government-gazette/2025-02-14/8577/eng@2025-02-14)
+        * [November 26, 2025](https://namiblii.org/akn/na/officialGazette/government-gazette/2025-11-19/8789/eng@2025-11-19)
     """
 
     # Y2K changeover.
@@ -155,6 +156,9 @@ class NamibiaStaticHolidays:
             (FEB, 25, tr("Burial ceremony of Dr. Hage Gottfried Geingob")),
             (NOV, 27, general_election_day),
         ),
-        # Burial ceremony of Dr. Sam Shafiishuna Nujoma.
-        2025: (MAR, 1, tr("Burial ceremony of Dr. Sam Shafiishuna Nujoma")),
+        2025: (
+            # Burial ceremony of Dr. Sam Shafiishuna Nujoma.
+            (MAR, 1, tr("Burial ceremony of Dr. Sam Shafiishuna Nujoma")),
+            (NOV, 26, regional_election_day),
+        ),
     }
