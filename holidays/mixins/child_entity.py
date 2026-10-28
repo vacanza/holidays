@@ -39,6 +39,6 @@ class ChildEntity:
         subdivision of the parent entity. For setting specific subdivision code
         value use `parent_entity_subdivision_code`.
         """
-        kwargs["subdiv"] = self.parent_entity_subdivision_code or self.country
+        kwargs["subdiv"] = self.parent_entity_subdivision_code or self._entity_code
 
         super().__init__(*args, **kwargs)

@@ -13,9 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays import financial_holidays
-from holidays.constants import HALF_DAY
-from holidays.financial.euronext import XAMS, XBRU, XDUB, XLIS, XMIL, XOSL, XPAR, Euronext
+from holidays.financial.euronext import Euronext
 from tests.common import CommonFinancialTests
 
 
@@ -25,46 +23,19 @@ class TestEuronext(CommonFinancialTests, TestCase):
         super().setUpClass(Euronext, with_subdiv_categories=True)
 
     def test_no_holidays(self):
-        self.assertNoHolidays(
-            Euronext(subdiv="XMIL", categories=HALF_DAY, years=range(2021, 2050))
-        )
-        # No half-day holidays are common to all markets, so the
-        # common (no-subdivision) half-day set is empty.
-        self.assertNoHolidays(Euronext(categories=HALF_DAY, years=2025))
+        super().test_no_holidays()
+        self.assertNoHolidays(self.holidays_half_day)
+        self.assertNoHolidays(self.subdiv_half_day_holidays["XMIL"])
 
-    def test_market_subclasses_default_subdivision(self):
-        # Each market subclass defaults to its own subdivision, so the
-        # market-specific holidays are included without an explicit subdiv.
-        self.assertEqual(XPAR(years=2025).subdiv, "XPAR")
-        self.assertEqual(XAMS(years=2025).subdiv, "XAMS")
-        self.assertEqual(XBRU(years=2025).subdiv, "XBRU")
-        self.assertEqual(XDUB(years=2025).subdiv, "XDUB")
-        self.assertEqual(XLIS(years=2025).subdiv, "XLIS")
-        self.assertEqual(XMIL(years=2025).subdiv, "XMIL")
-        self.assertEqual(XOSL(years=2025).subdiv, "XOSL")
-        # Dublin, Milan and Oslo specific holidays.
-        self.assertIn("2025-05-05", XDUB(years=2025))
-        self.assertIn("2025-08-15", XMIL(years=2025))
-        self.assertIn("2025-04-17", XOSL(years=2025))
-        self.assertIn("2024-05-17", XOSL(years=2024))
-        # The same applies when the market is requested by its code.
-        self.assertIn("2024-05-17", financial_holidays("XOSL", years=2024))
-        self.assertIn("2025-08-15", financial_holidays("XMIL", years=2025))
-        self.assertIn("2022-12-27", financial_holidays("XDUB", years=2022))
-        # A market subclass always uses its own subdivision, even when a
-        # different subdivision is passed explicitly as a keyword argument.
-        # Positional construction is not supported: like the other
-        # ObservedHolidayBase entities (e.g. UnitedKingdom), Euronext is
-        # constructed with keywords or via financial_holidays().
-        self.assertEqual(XOSL(subdiv="XAMS", years=2025).subdiv, "XOSL")
+    def _weekend_holidays(self, month, day):
+        return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() > 4)
+
+    def _no_weekend_holidays(self, month, day):
+        return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() < 5)
 
     def test_new_years_day(self):
-        # Holidays that fall on a weekend are not included.
-        self.assertHolidayName(
-            "New Year's Day",
-            (f"{year}-01-01" for year in self.full_range if date(year, 1, 1).weekday() < 5),
-        )
-        self.assertNoHoliday("2022-01-01", "2023-01-01")
+        self.assertHolidayName("New Year's Day", self._no_weekend_holidays(1, 1))
+        self.assertNoHoliday(self._weekend_holidays(1, 1))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -97,388 +68,256 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, self.full_range)
 
     def test_labour_day(self):
-        # Holidays that fall on a weekend are not included.
-        self.assertHolidayName(
-            "Labour Day",
-            (f"{year}-05-01" for year in self.full_range if date(year, 5, 1).weekday() < 5),
-        )
-        self.assertNoHoliday("2021-05-01", "2022-05-01")
+        self.assertHolidayName("Labour Day", self._no_weekend_holidays(5, 1))
+        self.assertNoHoliday(self._weekend_holidays(5, 1))
 
     def test_christmas_day(self):
-        # Holidays that fall on a weekend are not included.
-        self.assertHolidayName(
-            "Christmas Day",
-            (f"{year}-12-25" for year in self.full_range if date(year, 12, 25).weekday() < 5),
-        )
-        self.assertNoHoliday("2021-12-25", "2022-12-25")
+        self.assertHolidayName("Christmas Day", self._no_weekend_holidays(12, 25))
+        self.assertNoHoliday(self._weekend_holidays(12, 25))
 
     def test_saint_stephens_day(self):
-        # Holidays that fall on a weekend are not included.
-        self.assertHolidayName(
-            "Saint Stephen's Day",
-            (f"{year}-12-26" for year in self.full_range if date(year, 12, 26).weekday() < 5),
-        )
-        self.assertNoHoliday("2021-12-26", "2026-12-26")
-
-    def test_weekend_holidays_are_not_trading_days(self):
-        self.assertNoHoliday(
-            "2020-12-26",
-            "2021-05-01",
-            "2021-12-25",
-            "2021-12-26",
-            "2022-01-01",
-            "2022-05-01",
-            "2022-12-25",
-            "2026-12-26",
-        )
-        self.assertNoSubdivXmilHoliday("2021-08-15", "2026-08-15")
-        self.assertNoSubdivXoslHoliday("2020-05-17", "2026-05-17")
+        self.assertHolidayName("Saint Stephen's Day", self._no_weekend_holidays(12, 26))
+        self.assertNoHoliday(self._weekend_holidays(12, 26))
 
     def test_christmas_eve(self):
-        name = "Christmas Eve (markets close at 14:05 CET)"
-        self.assertNoHolidayName("Christmas Eve")
-        self.assertSubdivXparHalfDayHolidayName(
-            name,
-            "2019-12-24",
-            "2020-12-24",
-            "2021-12-24",
-            "2024-12-24",
-            "2025-12-24",
-            "2026-12-24",
-        )
-        self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-24", "2023-12-24")
+        name = "Christmas Eve"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            match subdiv:
+                case "XMIL":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(12, 24) if dt.year >= 2023),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2023),
+                    )
+                case "XOSL":
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
+
+    def test_christmas_eve_half_day(self):
+        name_half_day_1400 = "Christmas Eve (markets close at 14:00 CET)"
+        name_half_day_1405 = "Christmas Eve (markets close at 14:05 CET)"
+        self.assertNoHolidayName(name_half_day_1400)
+        self.assertNoHolidayName(name_half_day_1405)
+
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            match subdiv:
+                case "XDUB":
+                    self.assertHolidayName(
+                        name_half_day_1400,
+                        holidays,
+                        "2022-12-23",
+                        "2023-12-22",
+                        self._no_weekend_holidays(12, 24),
+                    )
+                    self.assertHolidayName(name_half_day_1400, holidays, self.full_range)
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
+
+                case "XMIL" | "XOSL":
+                    self.assertNoHolidayName(name_half_day_1405, holidays)
+                    self.assertNoHolidayName(name_half_day_1400, holidays)
+                case _:
+                    self.assertNoHolidayName(name_half_day_1400, holidays)
+                    self.assertHolidayName(
+                        name_half_day_1405, holidays, self._no_weekend_holidays(12, 24)
+                    )
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
 
     def test_new_years_eve(self):
-        name = "New Year's Eve (markets close at 14:05 CET)"
-        self.assertNoHolidayName("New Year's Eve")
-        self.assertSubdivXparHalfDayHolidayName(
-            name,
-            "2019-12-31",
-            "2020-12-31",
-            "2021-12-31",
-            "2024-12-31",
-            "2025-12-31",
-            "2026-12-31",
-        )
-        self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-31", "2023-12-31")
+        name = "New Year's Eve"
+        self.assertNoHolidayName(name)
 
-    def test_2019(self):
-        self.assertHolidaysInYear(
-            2019,
-            ("2019-01-01", "New Year's Day"),
-            ("2019-04-19", "Good Friday"),
-            ("2019-04-22", "Easter Monday"),
-            ("2019-05-01", "Labour Day"),
-            ("2019-12-25", "Christmas Day"),
-            ("2019-12-26", "Saint Stephen's Day"),
-        )
+        for subdiv, holidays in self.subdiv_holidays.items():
+            match subdiv:
+                case "XMIL":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(12, 31) if dt.year >= 2023),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2023),
+                    )
+                case "XOSL":
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
-    def test_2020(self):
-        self.assertHolidaysInYear(
-            2020,
-            ("2020-01-01", "New Year's Day"),
-            ("2020-04-10", "Good Friday"),
-            ("2020-04-13", "Easter Monday"),
-            ("2020-05-01", "Labour Day"),
-            ("2020-12-25", "Christmas Day"),
-        )
+    def test_new_years_eve_half_day(self):
+        name_half_day_1400 = "New Year's Eve (markets close at 14:00 CET)"
+        name_half_day_1405 = "New Year's Eve (markets close at 14:05 CET)"
+        self.assertNoHolidayName(name_half_day_1400)
+        self.assertNoHolidayName(name_half_day_1405)
 
-    def test_2024(self):
-        self.assertHolidaysInYear(
-            2024,
-            ("2024-01-01", "New Year's Day"),
-            ("2024-03-29", "Good Friday"),
-            ("2024-04-01", "Easter Monday"),
-            ("2024-05-01", "Labour Day"),
-            ("2024-12-25", "Christmas Day"),
-            ("2024-12-26", "Saint Stephen's Day"),
-        )
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            match subdiv:
+                case "XDUB":
+                    self.assertHolidayName(
+                        name_half_day_1400,
+                        holidays,
+                        "2022-12-30",
+                        "2023-12-29",
+                        self._no_weekend_holidays(12, 31),
+                    )
+                    self.assertHolidayName(name_half_day_1400, holidays, self.full_range)
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
 
-    # Dublin (XDUB).
+                case "XMIL" | "XOSL":
+                    self.assertNoHolidayName(name_half_day_1405, holidays)
+                    self.assertNoHolidayName(name_half_day_1400, holidays)
+                case _:
+                    self.assertNoHolidayName(name_half_day_1400, holidays)
+                    self.assertHolidayName(
+                        name_half_day_1405, holidays, self._no_weekend_holidays(12, 31)
+                    )
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
 
-    def test_dublin_irish_may_bank_holiday(self):
-        self.assertSubdivXdubHolidayName(
-            "Irish May Bank Holiday",
-            "2021-05-03",
-            "2022-05-02",
-            "2023-05-01",
-            "2024-05-06",
-            "2025-05-05",
-            "2026-05-04",
-        )
-        # Euronext Dublin has been closed on May Day since 2021.
-        self.assertNoSubdivXdubHolidayName("Irish May Bank Holiday", 2019, 2020)
+    def test_irish_may_bank_holiday(self):
+        name = "Irish May Bank Holiday"
+        self.assertNoHolidayName(name)
 
-    def test_dublin_weekend_substitutes(self):
-        # New Year's Day substitutes.
-        self.assertSubdivXdubHolidayName(
-            "Substitute for New Year's Day", "2022-01-03", "2023-01-02"
-        )
-        # Christmas Day substitutes.
-        self.assertSubdivXdubHolidayName(
-            "Substitute for Christmas Day", "2021-12-27", "2022-12-27"
-        )
-        # Saint Stephen's Day substitutes.
-        self.assertSubdivXdubHolidayName(
-            "Substitute for Saint Stephen's Day", "2020-12-28", "2021-12-28", "2026-12-28"
-        )
-        # Other markets have no weekend substitutes.
-        self.assertNoSubdivXparHoliday("2022-01-03", "2023-01-02", "2022-12-27")
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XDUB":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2021-05-03",
+                    "2022-05-02",
+                    "2023-05-01",
+                    "2024-05-06",
+                    "2025-05-05",
+                    "2026-05-04",
+                )
+                self.assertHolidayName(name, holidays, range(2021, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2021))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_dublin_observed_flag(self):
-        # The Dublin weekend substitutes use _move_holiday with
-        # force_observed=True, so they stay in place regardless of
-        # the observed flag, and the actual weekend dates are not in
-        # the calendar (the holidays were moved to the substitutes).
-        self.assertIn("2022-01-03", XDUB(years=2022, observed=False))
-        self.assertNotIn("2022-01-01", XDUB(years=2022, observed=False))
-        self.assertIn("2022-12-27", XDUB(years=2022, observed=False))
-        self.assertNotIn("2022-12-25", XDUB(years=2022, observed=False))
-        self.assertIn("2021-12-28", XDUB(years=2021, observed=False))
-        # Weekend dates are excluded regardless of the observed flag for
-        # other markets.
-        self.assertNotIn("2022-01-01", XPAR(years=2022, observed=False))
-        self.assertNotIn("2022-12-25", XPAR(years=2022, observed=False))
-
-    def test_half_day_eves_observed_flag(self):
-        # The Eve half days use forced observed moves, so weekend Eves
-        # stay suppressed and Dublin's Friday substitutes stay in place
-        # regardless of the observed flag.
-        name = "Christmas Eve (markets close at 14:05 CET)"
-        self.assertNoSubdivXparHalfDayHolidayName(name, "2022-12-24")
-        self.assertNoSubdivXparHalfDayHolidayName(
-            "New Year's Eve (markets close at 14:05 CET)", "2022-12-31"
-        )
-        self.assertNotIn("2022-12-24", XPAR(years=2022, observed=False, categories=HALF_DAY))
-        self.assertNotIn("2022-12-31", XPAR(years=2022, observed=False, categories=HALF_DAY))
-        self.assertSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 14:00 CET)", "2022-12-23"
-        )
-        self.assertIn("2022-12-23", XDUB(years=2022, observed=False, categories=HALF_DAY))
-
-    def test_dublin_half_day_substitutes(self):
-        # Christmas Eve half trading day observed on the preceding Friday.
-        self.assertSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 14:00 CET)", "2022-12-23", "2023-12-22"
-        )
-        # New Year's Eve half trading day observed on the preceding Friday.
-        self.assertSubdivXdubHalfDayHolidayName(
-            "New Year's Eve (markets close at 14:00 CET)", "2022-12-30", "2023-12-29"
-        )
-        self.assertNoSubdivXdubHalfDayHolidayName(
-            "Christmas Eve (markets close at 14:00 CET)", "2022-12-24", "2023-12-24"
-        )
-        self.assertNoSubdivXdubHalfDayHolidayName(
-            "New Year's Eve (markets close at 14:00 CET)", "2022-12-31", "2023-12-31"
-        )
-
-    def test_dublin_2019(self):
-        self.assertSubdivXdubHolidayDatesInYear(
-            2019,
-            "2019-01-01",
-            "2019-04-19",
-            "2019-04-22",
-            "2019-05-01",
-            "2019-12-25",
-            "2019-12-26",
-        )
-
-    def test_dublin_2020(self):
-        self.assertSubdivXdubHolidayDatesInYear(
-            2020,
-            "2020-01-01",
-            "2020-04-10",
-            "2020-04-13",
-            "2020-05-01",
-            "2020-12-25",
-            "2020-12-28",
-        )
-
-    def test_dublin_2022(self):
-        self.assertSubdivXdubHolidayDatesInYear(
-            2022,
-            "2022-01-03",
-            "2022-04-15",
-            "2022-04-18",
-            "2022-05-02",
-            "2022-12-26",
-            "2022-12-27",
-        )
-
-    # Milan (XMIL).
-
-    def test_milan_assumption_day(self):
+    def test_assumption_day(self):
         name = "Assumption Day"
-        # Holidays that fall on a weekend are not included.
-        self.assertSubdivXmilHolidayName(
-            name,
-            (
-                f"{year}-08-15"
-                for year in range(2023, self.end_year)
-                if date(year, 8, 15).weekday() < 5
-            ),
-        )
-        self.assertNoSubdivXmilHolidayName(name, 2021, 2022)
-        self.assertNoSubdivXmilHolidayName(name, "2026-08-15")
+        self.assertNoHolidayName(name)
 
-    def test_milan_christmas_eve_and_new_years_eve(self):
-        # Full-day closures in Milan (not half trading days).
-        self.assertSubdivXmilHolidayName("Christmas Eve", "2024-12-24", "2025-12-24", "2026-12-24")
-        self.assertSubdivXmilHolidayName(
-            "New Year's Eve", "2024-12-31", "2025-12-31", "2026-12-31"
-        )
-        self.assertNoSubdivXmilHalfDayHolidayName("Christmas Eve", "2024-12-24")
-        self.assertNoSubdivXmilHalfDayHolidayName("New Year's Eve", "2024-12-31")
-        # Holidays that fall on a weekend are not included.
-        self.assertNoSubdivXmilHolidayName("Christmas Eve", "2023-12-24")
-        self.assertNoSubdivXmilHolidayName("New Year's Eve", "2023-12-31")
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XMIL":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2023),
+                )
+                self.assertNoHoliday(
+                    holidays,
+                    (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2023),
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_milan_2025(self):
-        self.assertSubdivXmilHolidayDatesInYear(
-            2025,
-            "2025-01-01",
-            "2025-04-18",
-            "2025-04-21",
-            "2025-05-01",
-            "2025-08-15",
-            "2025-12-24",
-            "2025-12-25",
-            "2025-12-26",
-            "2025-12-31",
-        )
-
-    # Oslo (XOSL).
-
-    def test_oslo_maundy_thursday(self):
+    def test_maundy_thursday(self):
         name = "Maundy Thursday"
-        self.assertSubdivXoslHolidayName(
-            name,
-            "2019-04-18",
-            "2020-04-09",
-            "2021-04-01",
-            "2022-04-14",
-            "2023-04-06",
-            "2024-03-28",
-            "2025-04-17",
-            "2026-04-02",
-        )
-        self.assertSubdivXoslHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
-    def test_oslo_ascension_day(self):
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XOSL":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2019-04-18",
+                    "2020-04-09",
+                    "2021-04-01",
+                    "2022-04-14",
+                    "2023-04-06",
+                    "2024-03-28",
+                    "2025-04-17",
+                    "2026-04-02",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ascension_day(self):
         name = "Ascension Day"
-        self.assertSubdivXoslHolidayName(
-            name,
-            "2019-05-30",
-            "2020-05-21",
-            "2021-05-13",
-            "2022-05-26",
-            "2023-05-18",
-            "2024-05-09",
-            "2025-05-29",
-            "2026-05-14",
-        )
-        self.assertSubdivXoslHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
-    def test_oslo_constitution_day(self):
-        # Holidays that fall on a weekend are not included.
-        self.assertSubdivXoslHolidayName(
-            "Constitution Day",
-            (f"{year}-05-17" for year in self.full_range if date(year, 5, 17).weekday() < 5),
-        )
-        self.assertNoSubdivXoslHolidayName("Constitution Day", "2020-05-17", "2026-05-17")
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XOSL":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2019-05-30",
+                    "2020-05-21",
+                    "2021-05-13",
+                    "2022-05-26",
+                    "2023-05-18",
+                    "2024-05-09",
+                    "2025-05-29",
+                    "2026-05-14",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_oslo_whit_monday(self):
+    def test_constitution_day(self):
+        name = "Constitution Day"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XOSL":
+                self.assertHolidayName(name, holidays, self._no_weekend_holidays(5, 17))
+                self.assertNoHoliday(holidays, self._weekend_holidays(5, 17))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_whit_monday(self):
         name = "Whit Monday"
-        self.assertSubdivXoslHolidayName(
-            name,
-            "2019-06-10",
-            "2020-06-01",
-            "2021-05-24",
-            "2022-06-06",
-            "2023-05-29",
-            "2024-05-20",
-            "2025-06-09",
-            "2026-05-25",
-        )
-        self.assertSubdivXoslHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
-    def test_oslo_christmas_eve_and_new_years_eve(self):
-        # Full-day closures in Oslo (not half trading days).
-        self.assertSubdivXoslHolidayName("Christmas Eve", "2024-12-24", "2025-12-24", "2026-12-24")
-        self.assertSubdivXoslHolidayName(
-            "New Year's Eve", "2024-12-31", "2025-12-31", "2026-12-31"
-        )
-        self.assertNoSubdivXoslHalfDayHolidayName("Christmas Eve", "2024-12-24")
-        self.assertNoSubdivXoslHalfDayHolidayName("New Year's Eve", "2024-12-31")
-        # Holidays that fall on a weekend are not included.
-        self.assertNoSubdivXoslHolidayName("Christmas Eve", "2023-12-24")
-        self.assertNoSubdivXoslHolidayName("New Year's Eve", "2023-12-31")
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XOSL":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2019-06-10",
+                    "2020-06-01",
+                    "2021-05-24",
+                    "2022-06-06",
+                    "2023-05-29",
+                    "2024-05-20",
+                    "2025-06-09",
+                    "2026-05-25",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
 
-    def test_oslo_wednesday_before_easter(self):
+    def test_wednesday_before_easter(self):
         name = "Wednesday before Easter (markets close at 13:00 CET)"
-        self.assertSubdivXoslHalfDayHolidayName(
-            name,
-            "2019-04-17",
-            "2020-04-08",
-            "2021-03-31",
-            "2022-04-13",
-            "2023-04-05",
-            "2024-03-27",
-            "2025-04-16",
-            "2026-04-01",
-        )
-        self.assertSubdivXoslHalfDayHolidayName(name, self.full_range)
+        self.assertNoHolidayName(name)
 
-    def test_oslo_2019(self):
-        self.assertSubdivXoslHolidayDatesInYear(
-            2019,
-            "2019-01-01",
-            "2019-04-18",
-            "2019-04-19",
-            "2019-04-22",
-            "2019-05-01",
-            "2019-05-17",
-            "2019-05-30",
-            "2019-06-10",
-            "2019-12-24",
-            "2019-12-25",
-            "2019-12-26",
-            "2019-12-31",
-        )
-
-    def test_oslo_2020(self):
-        self.assertSubdivXoslHolidayDatesInYear(
-            2020,
-            "2020-01-01",
-            "2020-04-09",
-            "2020-04-10",
-            "2020-04-13",
-            "2020-05-01",
-            "2020-05-21",
-            "2020-06-01",
-            "2020-12-24",
-            "2020-12-25",
-            "2020-12-31",
-        )
-
-    def test_oslo_2024(self):
-        self.assertSubdivXoslHolidayDatesInYear(
-            2024,
-            "2024-01-01",
-            "2024-03-28",
-            "2024-03-29",
-            "2024-04-01",
-            "2024-05-01",
-            "2024-05-09",
-            "2024-05-17",
-            "2024-05-20",
-            "2024-12-24",
-            "2024-12-25",
-            "2024-12-26",
-            "2024-12-31",
-        )
-
-    # Localization.
+        for subdiv, holidays in self.subdiv_half_day_holidays.items():
+            if subdiv == "XOSL":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2019-04-17",
+                    "2020-04-08",
+                    "2021-03-31",
+                    "2022-04-13",
+                    "2023-04-05",
+                    "2024-03-27",
+                    "2025-04-16",
+                    "2026-04-01",
+                )
+                self.assertHolidayName(name, holidays, self.full_range)
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
