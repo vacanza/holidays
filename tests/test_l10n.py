@@ -22,6 +22,23 @@ from polib import pofile as create_po_file
 import holidays
 
 
+def _words_with_letters_marks_and_digits(text):
+    words = []
+    current_word = []
+
+    for char in text:
+        if unicodedata.category(char)[0] in {"L", "M", "N"}:
+            current_word.append(char)
+        elif current_word:
+            words.append("".join(current_word))
+            current_word = []
+
+    if current_word:
+        words.append("".join(current_word))
+
+    return words
+
+
 class TestLocalization(TestCase):
     @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
     def test_language_unavailable_en_us(self):
@@ -92,19 +109,16 @@ class TestLocalization(TestCase):
             # Make sure no entries without l10n comment.
             for entry in po_file:
                 for text in (entry.msgid, entry.msgstr):
-                    for word in re.findall(r"\b[^\W\d_]+\b", text):
-                        has_latin = any(
-                            "LATIN" in unicodedata.name(char, "")
-                            for char in word
-                        )
+                    for word in _words_with_letters_marks_and_digits(text):
+                        has_latin = any("LATIN" in unicodedata.name(char, "") for char in word)
                         has_cyrillic = any(
-                        "CYRILLIC" in unicodedata.name(char, "")
-                        for char in word
+                            "CYRILLIC" in unicodedata.name(char, "") for char in word
                         )
 
                         if has_latin and has_cyrillic:
                             self.fail(
-                                f"Word mixes Latin and Cyrillic characters: {word!r}"
+                                f"{po_path} contains a word mixing Latin and Cyrillic "
+                                f"characters in line {entry.linenum}: {word!r}"
                             )
 
                 self.assertTrue(
