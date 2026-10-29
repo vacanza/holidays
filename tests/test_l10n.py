@@ -98,6 +98,18 @@ class TestLocalization(TestCase):
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
             language = po_path.parts[-3]
 
+            if po_path.name == "AR.po" and language == "uk":
+                entry = po_file.find(
+                    "Día de la Afirmación de los Derechos Argentinos sobre las "
+                    "Malvinas, Islas y Sector Antártico"
+                )
+                self.assertIsNotNone(entry)
+                self.assertEqual(
+                    entry.msgstr,
+                    "День утвердження прав Аргентини на Мальвінські острови, "
+                    "Антарктичний сектор та острови",
+                )
+
             # Make sure no obsolete entries left.
             obsolete_entries = po_file.obsolete_entries()
             self.assertFalse(
