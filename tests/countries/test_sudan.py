@@ -52,6 +52,7 @@ class TestSudan(CommonCountryTests, TestCase):
         name = "عيد الفصح القبطي"
         self.assertHolidayName(
             name,
+            "2019-04-28",
             "2020-04-19",
             "2021-05-02",
             "2022-04-24",
