@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
     FEB,
+    MAR,
     APR,
     MAY,
     JUN,
@@ -53,7 +54,8 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
             * <https://web.archive.org/web/20231207191645/https://www.timeoutdubai.com/news/uae-public-holidays-in-2023>
             * <https://web.archive.org/web/20250125141309/https://www.khaleejtimes.com/uae/islamic-new-year-2023-uae-announces-official-holiday-for-public-sector>
         * [2024](https://web.archive.org/web/20241001104607/https://www.timeoutdubai.com/news/uae-public-holidays-in-2024)
-        * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
+        * [2025](https://web.archive.org/web/20261023233425/https://www.timeoutdubai.com/news/uae-public-holidays-2025-dates)
+        * [2026](https://web.archive.org/web/20261023222503/https://www.timeoutdubai.com/news/public-holidays-2026-uae-dates-revealed)
 
     Holidays are regulated by the Article 74 of [Federal Law No.
     08](https://web.archive.org/web/20250304004437/https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf)
@@ -104,8 +106,11 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays, St
 
         # National Day.
         national_day = tr("اليوم الوطني")
+        if self._year == 2025:
+            self._add_holiday_dec_1(national_day)
+        else:
+            self._add_holiday_dec_3(national_day)
         self._add_holiday_dec_2(national_day)
-        self._add_holiday_dec_3(national_day)
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
@@ -149,20 +154,21 @@ class ARE(UnitedArabEmirates):
 
 
 class UnitedArabEmiratesIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2017, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2017, 2026)
     EID_AL_ADHA_DATES = {
         2018: (AUG, 22),
-        2025: (JUN, 4),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2017, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2017, 2026)
 
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2017, 2025)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2017, 2026)
     HIJRI_NEW_YEAR_DATES = {
         2017: (SEP, 22),
         2020: (AUG, 23),
         2021: (AUG, 12),
         2023: (JUL, 21),
+        2025: (JUN, 27),
+        2026: (JUN, 15),
     }
 
     ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2017, 2018)
@@ -171,12 +177,13 @@ class UnitedArabEmiratesIslamicHolidays(_CustomIslamicHolidays):
         2018: (APR, 14),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2017, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2017, 2026)
     MAWLID_DATES = {
         2018: (NOV, 18),
         2021: (OCT, 21),
         2023: (SEP, 29),
         2025: (SEP, 5),
+        2026: (AUG, 28),
     }
 
 
@@ -193,6 +200,9 @@ class UnitedArabEmiratesStaticHolidays:
         * [2023](https://web.archive.org/web/20240301231911/https://hrme.economictimes.indiatimes.com/news/industry/uae-cabinet-announces-national-day-holiday-for-federal-government-from-2-to-4-december/105455071)
         * [2024](https://web.archive.org/web/20240720085937/http://www.timeoutdubai.com/news/eid-al-fitr-2024-expected-dates-ramadan)
         * [2025](https://web.archive.org/web/20250415131512/https://www.timeoutdubai.com/news/uae-public-holidays-2025)
+        * 2026:
+            * <https://web.archive.org/web/20260325003514/https://mohre.gov.ae/en/media-center/news/23/2/2026/eid-al-fitr-holiday-announced-for-private-sector>
+            * <https://web.archive.org/web/20261023180027/https://en.aletihad.ae/news/uae/4665235/fahr-announces-may-25-29-eid-al-adha-holiday-for-federal-ent>
 
     Cross-Checked With:
         * <https://web.archive.org/web/20250429081729/https://www.timeanddate.com/holidays/united-arab-emirates/2021?hol=134217729>
@@ -212,6 +222,8 @@ class UnitedArabEmiratesStaticHolidays:
         ),
         # National Day.
         2023: (DEC, 4, tr("اليوم الوطني")),
+        # Eid al-Adha Holiday.
+        2026: (MAY, 25, tr("عطلة عيد الأضحى")),
     }
     special_optional_holidays = {
         # Pope Francis' Visit Day.
@@ -227,4 +239,5 @@ class UnitedArabEmiratesStaticHolidays:
             (MAY, 16, sheikh_khalifa_bin_zayed_death),
         ),
         2024: (APR, 8, eid_al_fitr_holiday),
+        2026: (MAR, 19, eid_al_fitr_holiday),
     }
