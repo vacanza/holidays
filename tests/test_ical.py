@@ -17,9 +17,15 @@ from unittest import TestCase
 from unittest.mock import patch, MagicMock
 
 from holidays import country_holidays, financial_holidays
-from holidays.constants import HALF_DAY, SCHOOL, UNOFFICIAL
+from holidays.constants import HALF_DAY, PUBLIC, SCHOOL, UNOFFICIAL
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.ical import CONTENT_LINE_DELIMITER, CONTENT_LINE_MAX_LENGTH, ICalExporter
+from holidays.ical import (
+    CONTENT_LINE_DELIMITER,
+    CONTENT_LINE_MAX_LENGTH,
+    UID_DOMAIN,
+    ICalExporter,
+)
 
 
 class MockHolidays(HolidayBase):
@@ -32,6 +38,15 @@ class MockHolidays(HolidayBase):
         super()._populate(year)
         self._add_holiday(name, dt)
         return self
+
+
+class MockGroupedHolidays(HolidayBase, ChristianHolidays, InternationalHolidays):
+    """Custom holidays object that mixes in group classes with matching docstrings."""
+
+    def __init__(self, language: str = "en"):
+        super().__init__()
+        self.language = language
+        self.supported_languages = (language,)
 
 
 class MockDatetime(datetime):
@@ -137,6 +152,9 @@ class TestIcalExporter(TestCase):
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
         self.assertIn("CALSCALE:GREGORIAN", output)
+        self.assertIn("X-WR-CALNAME:United States of America Public Holidays [en-US]", output)
+        self.assertNotIn("REFRESH-INTERVAL", output)
+        self.assertNotIn("X-PUBLISHED-TTL", output)
         self.assertIn("END:VCALENDAR", output)
 
         # iCalendar's individual `VEVENT`.
@@ -363,6 +381,7 @@ class TestIcalExporter(TestCase):
         self.assertIn("PRODID:", output)
         self.assertIn("VERSION:2.0", output)
         self.assertIn("CALSCALE:GREGORIAN", output)
+        self.assertIn("X-WR-CALNAME:Thailand Public Holidays [th]", output)
         self.assertIn("END:VCALENDAR", output)
 
         # Verify no `VEVENT`s are generated for empty holiday set.
@@ -424,23 +443,164 @@ class TestIcalExporter(TestCase):
                 line.endswith(CONTENT_LINE_DELIMITER), f"Line did not end with CRLF: {repr(line)}"
             )
 
+    def _get_uids(self, output):
+        return [line for line in output.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")]
+
     def test_unique_uid_generation(self):
-        # 1st generation should yield unique UUIDs for each VEVENT.
-        output = self.us_exporter.generate()
-        uids = [line for line in output.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")]
+        uids = self._get_uids(self.us_exporter.generate())
 
         self.assertEqual(len(uids), len(set(uids)), "Duplicate UIDs found in iCal output.")
+        for uid in uids:
+            self.assertRegex(uid, rf"^UID:[0-9a-f-]{{36}}@{UID_DOMAIN}$")
 
-        # 2nd generation should yield different UUIDs.
-        output_2 = self.us_exporter.generate()
-        uids_2 = [
-            line for line in output_2.split(CONTENT_LINE_DELIMITER) if line.startswith("UID:")
-        ]
+    def test_stable_uid_generation(self):
+        uids = self._get_uids(self.us_exporter.generate())
 
-        self.assertEqual(len(uids_2), len(set(uids_2)), "Duplicate UIDs found in 2nd iCal output.")
+        # Same exporter, 2nd generation.
+        self.assertEqual(uids, self._get_uids(self.us_exporter.generate()))
 
-        # Ensure that there is no overlap at all between UIDs from both attempt.
-        self.assertTrue(set(uids).isdisjoint(set(uids_2)), "Some UIDs are reused")
+        # New exporter and new holidays object.
+        us_holidays = country_holidays("US", years=2024, language="en_US")
+        self.assertEqual(uids, self._get_uids(ICalExporter(us_holidays).generate()))
+
+        # Adding another year keeps the UIDs of existing events.
+        self.assertEqual(
+            uids,
+            self._get_uids(
+                ICalExporter(
+                    country_holidays("US", years=(2024, 2025), language="en_US")
+                ).generate()
+            )[: len(uids)],
+        )
+
+        # Pinned value: this must never change between library versions.
+        self.assertEqual(uids[0], f"UID:ea18f7f2-b503-595d-bebf-b1b244d31eb0@{UID_DOMAIN}")
+
+    def test_uid_depends_on_identity(self):
+        def first_uid(**kwargs):
+            return self._get_uids(
+                ICalExporter(country_holidays("US", years=2024, **kwargs)).generate()
+            )[0]
+
+        new_years_day_uid = first_uid()
+        self.assertNotEqual(new_years_day_uid, first_uid(subdiv="CA"))
+        self.assertNotEqual(new_years_day_uid, first_uid(categories=(PUBLIC, UNOFFICIAL)))
+        self.assertNotEqual(new_years_day_uid, first_uid(language="th"))
+        self.assertEqual(
+            first_uid(categories=(PUBLIC, UNOFFICIAL)),
+            first_uid(categories=(UNOFFICIAL, PUBLIC)),
+        )
+
+        # A renamed or moved holiday is a different event.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        aaa_uid = self._get_uids(ICalExporter(hol).generate())[0]
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "BBB"
+        self.assertNotEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
+        hol = MockHolidays()
+        hol[date(2024, 1, 2)] = "AAA"
+        self.assertNotEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
+
+        # A holiday that gains or loses a day is a different event.
+        hol = MockHolidays()
+        hol[date(2024, 1, 1)] = "AAA"
+        hol[date(2024, 1, 2)] = "AAA"
+        self.assertNotEqual(aaa_uid, self._get_uids(ICalExporter(hol).generate())[0])
+
+    def test_calendar_name(self):
+        def calendar_name(holidays):
+            return ICalExporter(holidays).calendar_name
+
+        self.assertEqual(ICalExporter(self.us_holidays).entity_name, "United States of America")
+        self.assertEqual(
+            calendar_name(self.us_holidays),
+            "United States of America Public Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("US", years=2024, subdiv="CA")),
+            "United States of America (CA) Public Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("MP", years=2024)),
+            "Northern Mariana Islands Public Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("IL", years=2024, categories=SCHOOL)),
+            "Israel School Holidays [he]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("US", years=2024, categories=(HALF_DAY, UNOFFICIAL))),
+            "United States of America Half Day, Unofficial Holidays [en-US]",
+        )
+        # The default category comes first.
+        self.assertEqual(
+            calendar_name(country_holidays("US", years=2024, categories=(UNOFFICIAL, PUBLIC))),
+            "United States of America Public, Unofficial Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(country_holidays("BE", years=2024, language="en_US")),
+            "Belgium Public Holidays [en-US]",
+        )
+        self.assertEqual(
+            calendar_name(financial_holidays("NYSE", years=2024)),
+            "New York Stock Exchange Public Holidays [en-US]",
+        )
+        # Entities without a docstring name fall back to their codes.
+        self.assertEqual(
+            calendar_name(country_holidays("CN", years=2024) + country_holidays("JP", years=2024)),
+            "CN, JP Public Holidays",
+        )
+        self.assertEqual(calendar_name(MockHolidays()), "Public Holidays [en]")
+
+        self.assertEqual(calendar_name(MockGroupedHolidays()), "Public Holidays [en]")
+        self.assertEqual(ICalExporter(MockGroupedHolidays()).entity_name, "")
+
+    def test_calendar_name_property(self):
+        output = self.th_exporter.generate()
+        self.assertIn("X-WR-CALNAME:Thailand Public Holidays [th]\r\n", output)
+
+        # Escaped and folded like any other TEXT value.
+        east_asia_holidays = (
+            country_holidays("CN", years=2024)
+            + country_holidays("JP", years=2024)
+            + country_holidays("KR", years=2024)
+        )
+        output = ICalExporter(east_asia_holidays).generate()
+        self.assertIn("X-WR-CALNAME:CN\\, JP\\, KR Public Holidays\r\n", output)
+
+        us_holidays = country_holidays(
+            "US", years=2024, subdiv="CA", categories=(HALF_DAY, UNOFFICIAL), language="th"
+        )
+        output = ICalExporter(us_holidays).generate()
+        self.assertIn(
+            "X-WR-CALNAME:United States of America (CA) Half Day\\, Unofficial Holidays \r\n"
+            " [th]\r\n",
+            output,
+        )
+
+    def test_refresh_interval(self):
+        output = ICalExporter(self.us_holidays, refresh_interval_weeks=1).generate()
+        self.assertIn(
+            "CALSCALE:GREGORIAN\r\n"
+            "X-WR-CALNAME:United States of America Public Holidays [en-US]\r\n"
+            "REFRESH-INTERVAL;VALUE=DURATION:P1W\r\n"
+            "X-PUBLISHED-TTL:P1W\r\n"
+            "BEGIN:VEVENT\r\n",
+            output,
+        )
+
+    def test_invalid_refresh_interval(self):
+        for refresh_interval_weeks in (0, -1, 1.5, True, "P1W"):
+            with self.assertRaises(ValueError) as context:
+                ICalExporter(self.us_holidays, refresh_interval_weeks=refresh_interval_weeks)
+            self.assertEqual(
+                str(context.exception),
+                (
+                    f"Invalid refresh interval: {refresh_interval_weeks}. "
+                    "Expected a positive integer."
+                ),
+            )
 
     def test_save_ics_valid_path(self):
         with tempfile.TemporaryDirectory() as valid_path:
@@ -456,7 +616,7 @@ class TestIcalExporter(TestCase):
             content_1 = [
                 line
                 for line in file_path_1.read_text().splitlines()
-                if not line.startswith(("UID:", "DTSTAMP:"))
+                if not line.startswith("DTSTAMP:")
             ]
 
             file_path_2 = Path(valid_path) / "test_calendar_2.ics"
@@ -464,7 +624,7 @@ class TestIcalExporter(TestCase):
             content_2 = [
                 line
                 for line in file_path_2.read_text().splitlines()
-                if not line.startswith(("UID:", "DTSTAMP:"))
+                if not line.startswith("DTSTAMP:")
             ]
 
             self.assertEqual(content_1, content_2)
