@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-05-19 07:23+0530\n"
-"PO-Revision-Date: 2026-10-29 14:35+0530\n"
-"Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
+"PO-Revision-Date: 2026-10-29 20:19+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgstr "Christmas Day"
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
-#. State Funeral of Honourable Ralph T. O'Neal.
+#. State Funeral of Honorable Ralph T. O'Neal.
 msgid "State Funeral of Honourable Ralph T. O'Neal"
 msgstr "State Funeral of Honorable Ralph T. O'Neal"
 
