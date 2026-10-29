@@ -29,15 +29,6 @@ class TestSamoa(CommonCountryTests, TestCase):
             "The Day After New Year's Day", (f"{year}-01-02" for year in self.full_range)
         )
 
-    def test_independence_day(self):
-        self.assertHolidayName("Independence Day", (f"{year}-06-01" for year in self.full_range))
-
-    def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
-
-    def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))
-
     def test_good_friday(self):
         name = "Good Friday"
         self.assertHolidayName(
@@ -90,6 +81,9 @@ class TestSamoa(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_independence_day(self):
+        self.assertHolidayName("Independence Day", (f"{year}-06-01" for year in self.full_range))
+
     def test_fathers_day(self):
         name = "Father's Day"
         self.assertHolidayName(
@@ -115,6 +109,12 @@ class TestSamoa(CommonCountryTests, TestCase):
             "2025-10-13",
         )
         self.assertHolidayName(name, self.full_range)
+
+    def test_christmas_day(self):
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+
+    def test_boxing_day(self):
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))
 
     def test_2023(self):
         self.assertHolidaysInYear(

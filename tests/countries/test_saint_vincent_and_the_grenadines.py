@@ -106,6 +106,9 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         name = "Carnival Monday"
         self.assertHolidayName(
             name,
+            "2013-07-08",
+            "2018-07-09",
+            "2019-07-08",
             "2020-08-03",
             "2021-09-06",
             "2022-07-04",
@@ -119,6 +122,9 @@ class TestSaintVincentAndTheGrenadines(CommonCountryTests, TestCase):
         name = "Carnival Tuesday"
         self.assertHolidayName(
             name,
+            "2013-07-09",
+            "2018-07-10",
+            "2019-07-09",
             "2020-08-04",
             "2021-09-07",
             "2022-07-05",

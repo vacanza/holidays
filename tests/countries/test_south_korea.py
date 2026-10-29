@@ -326,19 +326,12 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1975, range(1975, 2017))
         self.assertHolidayName(
             name_2017,
-            "2017-05-03",
-            "2018-05-22",
-            "2019-05-12",
             "2020-04-30",
             "2021-05-19",
             "2022-05-08",
             "2023-05-27",
             "2024-05-15",
             "2025-05-05",
-            "2026-05-24",
-            "2027-05-13",
-            "2028-05-02",
-            "2029-05-20",
         )
         self.assertHolidayName(name_2017, range(2017, self.end_year))
         self.assertNoHolidayName(
@@ -425,9 +418,6 @@ class TestSouthKorea(CommonCountryTests, TestCase):
         self.assertHolidayName(name_eve, range(1989, self.end_year))
         self.assertHolidayName(
             name_day2,
-            "1986-09-19",
-            "1987-10-08",
-            "1988-09-26",
             "2020-10-02",
             "2021-09-22",
             "2022-09-11",

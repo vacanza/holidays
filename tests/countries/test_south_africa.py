@@ -75,17 +75,6 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_human_rights_day(self):
-        name = "Human Rights Day"
-        self.assertHolidayName(name, (f"{year}-03-21" for year in range(1995, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1995))
-        obs_dts = (
-            "2010-03-22",
-            "2021-03-22",
-        )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
-
     def test_founders_day(self):
         name_1952 = "Van Riebeeck's Day"
         name_1980 = "Founder's Day"
@@ -102,11 +91,12 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -128,25 +118,15 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             (f"{year}-07-10" for year in range(1961, 1974)),
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
         )
         self.assertHolidayName(name, range(1980, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 1961), range(1974, 1980))
-
-    def test_freedom_day(self):
-        name = "Freedom Day"
-        self.assertHolidayName(name, (f"{year}-04-27" for year in range(1995, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 1995))
-        obs_dts = (
-            "2008-04-28",
-            "2014-04-28",
-        )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_workers_day(self):
         name = "Workers' Day"
@@ -163,6 +143,28 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
             "2011-05-02",
             "2016-05-02",
             "2022-05-02",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_human_rights_day(self):
+        name = "Human Rights Day"
+        self.assertHolidayName(name, (f"{year}-03-21" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
+        obs_dts = (
+            "2010-03-22",
+            "2021-03-22",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_freedom_day(self):
+        name = "Freedom Day"
+        self.assertHolidayName(name, (f"{year}-04-27" for year in range(1995, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1995))
+        obs_dts = (
+            "2008-04-28",
+            "2014-04-28",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)

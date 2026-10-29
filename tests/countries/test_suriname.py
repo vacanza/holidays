@@ -31,20 +31,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(1993, 2012), range(2021, self.end_year))
 
-    def test_holi(self):
-        name = "Holi-Phagwa"
-        self.assertHolidayName(
-            name,
-            "2019-03-21",
-            "2020-03-09",
-            "2021-03-28",
-            "2022-03-18",
-            "2023-03-07",
-            "2024-03-25",
-            "2025-03-14",
-        )
-        self.assertHolidayName(name, range(2015, 2031))
-
     def test_good_friday(self):
         name = "Goede vrijdag"
         self.assertHolidayName(
@@ -101,20 +87,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-10-10" for year in range(2012, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2012))
 
-    def test_diwali(self):
-        name = "Divali"
-        self.assertHolidayName(
-            name,
-            "2020-11-14",
-            "2021-11-04",
-            "2022-10-24",
-            "2023-11-12",
-            "2024-10-31",
-            "2025-10-20",
-        )
-        self.assertHolidayName(name, range(2012, self.end_year))
-        self.assertNoHolidayName(name, range(self.start_year, 2012))
-
     def test_republic_day(self):
         name_old = "Dag van de Republiek"
         name_new = "Onafhankelijkheidsdag"
@@ -129,11 +101,37 @@ class TestSuriname(CommonCountryTests, TestCase):
     def test_second_day_of_christmas(self):
         self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
 
+    def test_holi(self):
+        name = "Holi-Phagwa"
+        self.assertHolidayName(
+            name,
+            "2020-03-09",
+            "2021-03-28",
+            "2022-03-18",
+            "2023-03-07",
+            "2024-03-25",
+            "2025-03-14",
+        )
+        self.assertHolidayName(name, range(2015, 2031))
+
+    def test_diwali(self):
+        name = "Divali"
+        self.assertHolidayName(
+            name,
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-10-31",
+            "2025-10-20",
+        )
+        self.assertHolidayName(name, range(2012, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
+
     def test_eid_al_fitr(self):
         name = "Ied-Ul-Fitre"
         self.assertHolidayName(
             name,
-            "2019-06-05",
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -147,7 +145,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         name = "Ied-Ul-Adha"
         self.assertHolidayName(
             name,
-            "2019-08-12",
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",

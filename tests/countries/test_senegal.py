@@ -56,7 +56,8 @@ class TestSenegal(CommonCountryTests, TestCase):
 
     def test_easter_monday(self):
         name = "Lundi de Pâques"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -64,12 +65,12 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
 
     def test_ascension_day(self):
         name = "Jeudi de l'Ascension"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-05-21",
             "2021-05-13",
             "2022-05-26",
@@ -77,12 +78,12 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2024-05-09",
             "2025-05-29",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
 
     def test_whit_monday(self):
         name = "Lundi de Pentecôte"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
@@ -90,50 +91,50 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2024-05-20",
             "2025-06-09",
         )
-        self.assertHolidayName(name, dts)
         self.assertHolidayName(name, self.full_range)
 
     def test_ashura(self):
         name = "Tamxarit"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-08-29",
             "2021-08-18",
             "2022-08-08",
             "2023-07-28",
             "2024-07-17",
         )
-        self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, range(1983, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1983))
 
     def test_grand_magal_of_touba(self):
         name = "Grand Magal de Touba"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-10-06",
             "2021-09-26",
             "2022-09-15",
             "2023-09-04",
             "2024-08-23",
         )
-        self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, range(2014, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 2014))
 
     def test_mawlid_day(self):
         name = "Journée du Maouloud"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
             "2023-09-27",
             "2024-09-15",
         )
-        self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "Journée de la Korité"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-05-24",
             "2021-05-12",
             "2022-05-01",
@@ -141,7 +142,6 @@ class TestSenegal(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
-        self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2020-05-25",
@@ -153,14 +153,14 @@ class TestSenegal(CommonCountryTests, TestCase):
 
     def test_eid_al_adha(self):
         name = "Journée de la Tabaski"
-        dts = (
+        self.assertHolidayName(
+            name,
             "2020-07-31",
             "2021-07-21",
             "2022-07-10",
             "2023-06-29",
             "2024-06-17",
         )
-        self.assertHolidayName(name, dts)
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2016-09-12",

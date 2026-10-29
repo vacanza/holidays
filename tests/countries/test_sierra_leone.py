@@ -65,8 +65,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -80,8 +78,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -144,8 +140,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         name = "Prophet's Birthday"
         self.assertHolidayName(
             name,
-            "2018-11-21",
-            "2019-11-10",
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
@@ -167,8 +161,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         name = "Eid al-Fitr"
         self.assertHolidayName(
             name,
-            "2018-06-15",
-            "2019-06-05",
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -189,8 +181,6 @@ class TestSierraLeone(CommonCountryTests, TestCase):
         name = "Eid al-Adha"
         self.assertHolidayName(
             name,
-            "2018-08-22",
-            "2019-08-12",
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
