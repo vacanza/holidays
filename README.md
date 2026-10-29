@@ -1409,9 +1409,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Poland</td>
 <td>PL</td>
-<td></td>
+<td>Voivodeships: 02 (Dolnośląskie), 04 (Kujawsko-pomorskie), 06 (Lubelskie), 08 (Lubuskie), 10 (Łódzkie), 12 (Małopolskie), 14 (Mazowieckie), 16 (Opolskie), 18 (Podkarpackie), 20 (Podlaskie), 22 (Pomorskie), 24 (Śląskie), 26 (Świętokrzyskie), 28 (Warmińsko-mazurskie), 30 (Wielkopolskie), 32 (Zachodniopomorskie)</td>
 <td>de, en_US, <strong>pl</strong>, uk</td>
-<td></td>
+<td>SCHOOL</td>
 </tr>
 <tr>
 <td>Portugal</td>
