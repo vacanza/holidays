@@ -28,6 +28,30 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: de\n"
 
+#. Autumn Break.
+msgid "Herbstferien"
+msgstr "Autumn Break"
+
+#. Christmas Break.
+msgid "Weihnachtsferien"
+msgstr "Christmas Break"
+
+#. Semester Break.
+msgid "Semesterferien"
+msgstr "Semester Break"
+
+#. Easter Break.
+msgid "Osterferien"
+msgstr "Easter Break"
+
+#. Whit Break.
+msgid "Pfingstferien"
+msgstr "Whit Break"
+
+#. Summer Break.
+msgid "Hauptferien"
+msgstr "Summer Break"
+
 #. New Year's Day.
 msgid "Neujahr"
 msgstr "New Year's Day"
