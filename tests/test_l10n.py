@@ -12,6 +12,7 @@
 
 import os
 import re
+import unicodedata
 from collections import Counter
 from pathlib import Path
 from unittest import TestCase, mock
@@ -90,15 +91,21 @@ class TestLocalization(TestCase):
 
             # Make sure no entries without l10n comment.
             for entry in po_file:
-                for word in re.findall(r"\b[^\W\d_]+\b", entry.msgstr):
-                    has_latin = re.search(r"[A-Za-z]", word)
-                    has_cyrillic = re.search(r"[\u0400-\u04FF]", word)
-
-                    if has_latin and has_cyrillic:
-                        self.fail(
-                            f"{po_path} contains a word mixing Latin and Cyrillic "
-                            f"characters in line {entry.linenum}: {word}"
+                for text in (entry.msgid, entry.msgstr):
+                    for word in re.findall(r"\b[^\W\d_]+\b", text):
+                        has_latin = any(
+                            "LATIN" in unicodedata.name(char, "")
+                            for char in word
                         )
+                        has_cyrillic = any(
+                        "CYRILLIC" in unicodedata.name(char, "")
+                        for char in word
+                        )
+
+                        if has_latin and has_cyrillic:
+                            self.fail(
+                                f"Word mixes Latin and Cyrillic characters: {word!r}"
+                            )
 
                 self.assertTrue(
                     entry.comment,
