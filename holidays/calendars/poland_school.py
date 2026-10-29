@@ -52,6 +52,7 @@ Sources:
     * [Kalendarz roku szkolnego 2024/2025](https://web.archive.org/web/20250913005131/https://www.gov.pl/attachment/a208f13d-7752-45fa-a423-79658ad01ae1)
     * [Kalendarz roku szkolnego 2025/2026](https://web.archive.org/web/20260211011152/https://www.gov.pl/attachment/7112b88a-0237-4f83-b133-0d72c4ac83dc)
     * [Kalendarz roku szkolnego 2026/2027](https://web.archive.org/web/20261023091817/https://www.gov.pl/attachment/07b00367-6dbc-48bf-a69e-eaf1da41e3b2)
+    * [Terminy ferii zimowych w roku szkolnym 2027/2028](https://www.gov.pl/web/edukacja/terminy-ferii-zimowych-w-roku-szkolnym-20272028)
 """
 
 (
@@ -96,4 +97,5 @@ POLAND_WINTER_BREAK_WEEKS = {
     2024: (6, 4, 8, 4, 8, 4, 6, 6, 8, 5, 8, 8, 4, 5, 4, 6),
     2025: (6, 6, 8, 8, 6, 6, 4, 6, 8, 4, 4, 8, 4, 4, 8, 6),
     2026: (3, 7, 5, 7, 3, 7, 5, 3, 3, 3, 5, 3, 5, 7, 7, 7),
+    2027: (7, 3, 7, 3, 5, 7, 5, 7, 5, 3, 3, 7, 3, 5, 3, 3),
 }

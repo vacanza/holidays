@@ -297,11 +297,11 @@ class TestPoland(CommonCountryTests, TestCase):
             self.assertHolidayName(name, holidays, *dts)
             # Set nationwide for the 2020-2021 school year by the COVID-19 regulation.
             self.assertHolidayName(name, holidays, "2021-01-04", "2021-01-17")
-            self.assertHolidayName(name, holidays, range(2018, 2028))
+            self.assertHolidayName(name, holidays, range(2018, 2029))
             self.assertNoHolidayName(name, holidays, range(1925, 2018))
             # Announced about two years ahead, so later years have none yet.
-            self.assertNoHolidayName(name, holidays, range(2028, 2050))
-            self.assertHolidayNameCount(name, 14, holidays, range(2018, 2028))
+            self.assertNoHolidayName(name, holidays, range(2029, 2050))
+            self.assertHolidayNameCount(name, 14, holidays, range(2018, 2029))
 
         # The three-group split introduced for the 2025-2026 school year.
         for subdiv, dts in (
@@ -310,6 +310,15 @@ class TestPoland(CommonCountryTests, TestCase):
             ("18", ("2026-02-16", "2026-03-01")),
         ):
             self.assertHolidayName(name, self.subdiv_school_holidays[subdiv], *dts)
+
+        # The 2027-2028 school year.
+        for subdivs, start, end in (
+            (("04", "08", "20", "22", "26", "30", "32"), "2028-01-17", "2028-01-30"),
+            (("10", "14", "18", "28"), "2028-01-31", "2028-02-13"),
+            (("02", "06", "12", "16", "24"), "2028-02-14", "2028-02-27"),
+        ):
+            for subdiv in subdivs:
+                self.assertHolidayName(name, self.subdiv_school_holidays[subdiv], start, end)
 
     def test_school_easter_break(self):
         name = "Wiosenna przerwa świąteczna"
