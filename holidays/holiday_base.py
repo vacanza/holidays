@@ -18,7 +18,7 @@ import warnings
 from bisect import bisect_left, bisect_right
 from calendar import isleap
 from collections.abc import Iterable
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from functools import cached_property
 from gettext import gettext, translation
 from pathlib import Path
@@ -672,7 +672,7 @@ class HolidayBase(dict[date, str]):
 
         # Key is `float` or `int` instance.
         elif isinstance(key, (float, int)):
-            dt = datetime.fromtimestamp(key, timezone.utc).date()
+            dt = datetime.fromtimestamp(key, UTC).date()
 
         # Key is not supported.
         else:
@@ -1517,5 +1517,7 @@ class HolidaySum(HolidayBase):
 
     def _populate(self, year):
         for operand in self.holidays:
-            operand._populate(year)
+            if year not in operand.years:
+                operand.years.add(year)
+                operand._populate(year)
             self.update(cast("dict[DateLike, str]", operand))

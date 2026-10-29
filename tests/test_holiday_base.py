@@ -16,7 +16,7 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import UA, US
+from holidays.countries import JP, UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -784,6 +784,16 @@ class TestHolidaySum(TestCase):
         self.assertIn("2014-01-01", hb_combined)
         self.assertIn("2015-01-01", hb_combined)
         self.assertListEqual(hb_combined.market, ["MS1", "MS2"])
+
+    def test_add_observed(self):
+        jp = JP(years=2021)
+        hb_combined = jp + US(years=2021)
+        self.assertIn("2021-08-09", hb_combined)
+        self.assertNotIn("2021-08-10", hb_combined)
+        self.assertNotIn("2021-08-10", jp)
+        self.assertSetEqual(jp.years, {2021})
+        self.assertNotIn("2024-05-07", hb_combined)
+        self.assertNotIn("2024-05-07", jp)
 
     def test_args(self):
         self.hb_1 = CountryStub1(years=2014, subdiv="Subdiv 1")
