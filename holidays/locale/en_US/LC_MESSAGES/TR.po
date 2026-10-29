@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-29 14:35+0530\n"
+"Last-Translator: yashgoyal0110 <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -48,9 +48,9 @@ msgstr "National Sovereignty Day"
 msgid "Bahar Bayramı"
 msgstr "Spring Day"
 
-#. Labour and Solidarity Day.
+#. Labor and Solidarity Day.
 msgid "Emek ve Dayanışma Günü"
-msgstr "Labour and Solidarity Day"
+msgstr "Labor and Solidarity Day"
 
 #. Commemoration of Atatürk, Youth and Sports Day.
 msgid "Atatürk'ü Anma, Gençlik ve Spor Bayramı"
