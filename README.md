@@ -1255,9 +1255,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Netherlands</td>
 <td>NL</td>
-<td></td>
+<td>Regions: Midden, Noord, Zuid</td>
 <td>en_US, fy, <strong>nl</strong>, th, uk</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, SCHOOL</td>
 </tr>
 <tr>
 <td>New Caledonia</td>
