@@ -90,6 +90,16 @@ class TestLocalization(TestCase):
 
             # Make sure no entries without l10n comment.
             for entry in po_file:
+                for word in re.findall(r"\b[^\W\d_]+\b", entry.msgstr):
+                    has_latin = re.search(r"[A-Za-z]", word)
+                    has_cyrillic = re.search(r"[\u0400-\u04FF]", word)
+
+                    if has_latin and has_cyrillic:
+                        self.fail(
+                            f"{po_path} contains a word mixing Latin and Cyrillic "
+                            f"characters in line {entry.linenum}: {word}"
+                        )
+
                 self.assertTrue(
                     entry.comment,
                     f"The {entity_code} {language} localization contains missing comment "

@@ -31,8 +31,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2018-01-07", "Нараджэнне Хрыстова (праваслаўнае Раство)"),
             ("2018-03-08", "Дзень жанчын"),
             ("2018-03-09", "Выходны (перанесены з 03.03.2018)"),
-            ("2018-04-01", "Каталiцкi Вялiкдзень"),
-            ("2018-04-08", "Праваслаўны Вялiкдзень"),
+            ("2018-04-01", "Каталіцкі Вялікдзень"),
+            ("2018-04-08", "Праваслаўны Вялікдзень"),
             ("2018-04-16", "Выходны (перанесены з 14.04.2018)"),
             ("2018-04-17", "Радаўніца"),
             ("2018-04-30", "Выходны (перанесены з 28.04.2018)"),
@@ -91,7 +91,7 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 1996))
 
     def test_catholic_easter(self):
-        name = "Каталiцкi Вялiкдзень"
+        name = "Каталіцкі Вялікдзень"
 
         # https://calendar.by/content.php?id=19
         self.assertHolidayName(
@@ -107,7 +107,7 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoHolidayName(name, 1991)
 
     def test_orthodox_easter(self):
-        name = "Праваслаўны Вялiкдзень"
+        name = "Праваслаўны Вялікдзень"
 
         # https://calendar.by/content.php?id=19
         self.assertHolidayName(
@@ -400,8 +400,8 @@ class TestBelarus(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-03-08", "Дзень жанчын"),
             ("2022-03-15", "Дзень Канстытуцыі"),
             ("2022-04-02", "Дзень яднання народаў Беларусі і Расіі"),
-            ("2022-04-17", "Каталiцкi Вялiкдзень"),
-            ("2022-04-24", "Праваслаўны Вялiкдзень"),
+            ("2022-04-17", "Каталіцкі Вялікдзень"),
+            ("2022-04-24", "Праваслаўны Вялікдзень"),
             ("2022-05-01", "Свята працы"),
             ("2022-05-02", "Выходны (перанесены з 14.05.2022)"),
             ("2022-05-03", "Радаўніца"),
