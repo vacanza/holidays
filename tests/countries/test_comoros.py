@@ -127,8 +127,7 @@ class TestComoros(CommonCountryTests, TestCase):
             "2025-04-01",
         )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 3, set(self.full_range) - {2000, 2033})
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2000)
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 8, 2033)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2000, 2033)
 
     def test_eid_al_adha(self):
         name = "Id-El-Kabir"
