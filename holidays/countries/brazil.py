@@ -31,18 +31,76 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Portaria MGI n. 11.460, de 29.12.2025](https://web.archive.org/web/20251231172054/https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-11.460-de-29-de-dezembro-de-2025-678388627)
 
     Subdivisions Holidays References:
-        * Parana:
+        * Acre:
+            * [Decreto n. 11.610, de 19.12.2024](https://web.archive.org/web/20251016154721/https://agencia.ac.gov.br/wp-content/uploads/2025/09/DECRETO-FERIADO.pdf)
+        * Alagoas:
+            * [Lei n. 7.530, de 08.08.2013](https://sapl.al.al.leg.br/norma/561)
+        * Amapá:
+            * [Lei n. 2.213, de 11.07.2017](https://web.archive.org/web/20250109135033/https://old.tjap.jus.br/portal/images/stories/documentos/CHECK-LIST/ASCOM/2020/maio/Lei_n_2213-2017_-_Feriado_Estadual_-_Dia_de_Cabralzinho.pdf)
+            * [Portaria SJAP-Diref 5/2024](https://web.archive.org/web/20250810030719/https://trf1.jus.br/sjap/conteudo/SEI_19823482_Portaria_SJAP_Diref_5.pdf)
+        * Amazonas:
+            * [Lei Promulgada n. 25, de 21.12.1977](https://web.archive.org/web/20250524030402/https://legisla.imprensaoficial.am.gov.br/diario_am/12/1977/12/8777)
+            * [Lei Promulgada n. 84, de 06.07.2010](https://web.archive.org/web/20250808180144/https://legisla.imprensaoficial.am.gov.br/diario_am/41534/2010/7/3445)
+        * Bahia:
+            * [Constituição do Estado da Bahia, art. 6](https://web.archive.org/web/20261017125949/https://www.legislabahia.ba.gov.br/documentos/constituicao-do-estado-da-bahia-de-05-de-outubro-de-1989)
+        * Ceará:
+            * [Constituição do Estado do Ceará, art. 18](https://web.archive.org/web/20250527081931/https://portal.tjce.jus.br/uploads/2022/09/Constituicao_do_Estado_do_Ceara_Atualizada_ate_emenda_94_de_17_de_dezembro_de_2018.pdf)
+            * [Portaria TJCE n. 24/2025](https://portal.tjce.jus.br/uploads/2025/01/PORTARIA-No-24_2025-FERIADOS-2025.pdf)
+        * Distrito Federal:
+            * [Lei n. 963, de 04.12.1995](https://web.archive.org/web/20260516060418/https://www.sinj.df.gov.br/sinj/Norma/48922/Lei_963_1995.html)
+        * Espírito Santo:
+            * [Lei n. 11.010, de 03.07.2019](https://web.archive.org/web/20250909170328/https://www3.al.es.gov.br/Arquivo/Documents/legislacao/html/LEI110102019.html)
+        * Goiás:
+            * [Lei n. 10.460, de 22.02.1988](https://web.archive.org/web/20240427105732/https://legisla.casacivil.go.gov.br/api/v2/pesquisa/legislacoes/83678/pdf)
+        * Maranhão:
+            * [Medida Provisória n. 313, de 08.05.2020](https://web.archive.org/web/20230416174758/https://novogerenciador.tjma.jus.br/storage/portalweb/medida_provisoria_313_08_05_2020_26052020_1240.pdf)
+        * Mato Grosso:
+            * [Lei n. 7.879, de 27.12.2002](https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2002-12-27;7879/gerar-pdf-redacao)
+        * Mato Grosso do Sul:
+            * [Lei n. 10, de 29.10.1979](https://web.archive.org/web/20240610080829/https://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/1b758e65922af3e904256b220050342a/a489a293563f506304256e450002e9f8)
+        * Minas Gerais:
+            * [Emenda à Constituição n. 22, de 03.07.1997](https://www.almg.gov.br/legislacao-mineira/texto/EMC/22/1997/)
+        * Pará:
+            * [Lei n. 37, de 29.11.1947](https://bancodeleis.alepa.pa.gov.br/arquivos/lei37_1947_31943.pdf)
+        * Paraíba:
+            * [Lei n. 10.601, de 16.12.2015](https://zeoserver.pb.gov.br/jornalauniao/auniao2/servicos/doe/2015/dezembro/diario-oficial-17-12-2015.pdf)
+        * Paraná:
             * [Lei n. 18.384, de 17.12.2014](https://web.archive.org/web/20240613145927/https://www.legislacao.pr.gov.br/legislacao/pesquisarAto.do?action=exibir&codAto=134573&codItemAto=816343)
         * Pernambuco:
             * [Lei n. 13.386, de 24.12.2007](https://web.archive.org/web/20210727183402/http://legis.alepe.pe.gov.br/texto.aspx?id=3767&tipo=TEXTOORIGINAL)
             * [Lei n. 16.059, de 08.06.2017](https://web.archive.org/web/20250420091334/https://legis.alepe.pe.gov.br/texto.aspx?id=28224&tipo=TEXTOORIGINAL)
             * [Pontos Facultativos, Feriados, Festas](https://web.archive.org/web/20200624203011/https://www.pe.gov.br/conheca/datas/)
+        * Piauí:
+            * [Decreto n. 21.814, de 09.02.2023](https://www.legisweb.com.br/legislacao/?id=442337)
         * Rio de Janeiro:
             * [Lei n. 5198, de 05.03.2008](https://web.archive.org/web/20160303175842/http://alerjln1.alerj.rj.gov.br/CONTLEI.NSF/c8aa0900025feef6032564ec0060dfff/1baf90ca125ff96f8325740a00776600)
             * [Lei n. 5243, de 14.05.2008](https://web.archive.org/web/20201106190517/http://alerjln1.alerj.rj.gov.br/contlei.nsf/351902c88b9f0cde03256bcf00607a5b/063f7c027766eab48325744a007a4ab0)
+            * [Lei n. 4.007, de 11.11.2002](https://web.archive.org/web/20090211045022/https://alerjln1.alerj.rj.gov.br/contlei.nsf/b24a2da5a077847c032564f4005d4bf2/80a541c3a5a9d63183256c7d0057bf25?OpenDocument)
+        * Rio Grande do Norte:
+            * [Lei n. 8.913, de 06.12.2006](https://web.archive.org/web/20260120043713/https://www.al.rn.leg.br/storage/legislacao/arq5064574f632ec.pdf)
+            * [Decreto n. 34.300, de 14.01.2025](https://webdisk.diariooficial.rn.gov.br/Jornal/12025-01-15.pdf)
+        * Rio Grande do Sul:
+            * [Constituição do Estado do Rio Grande do Sul, art. 6](https://web.archive.org/web/20230504203332/https://www2.al.rs.gov.br/dal/LinkClick.aspx?fileticket=WQdIfqNoXO4%3D&tabid=3683&mid=5359)
+        * Rondônia:
+            * [Lei n. 1.026, de 20.12.2001](https://sapl.al.ro.leg.br/norma/3003)
+            * [Lei n. 2.291, de 22.04.2010](https://sapl.al.ro.leg.br/norma/4958)
+            * [Decreto n. 25.709, de 05.01.2021](https://www.legisweb.com.br/legislacao/?id=407571)
+            * [Calendário de feriados de 2025 (Decreto n. 29.900)](https://web.archive.org/web/20260124161817/https://rondonia.ro.gov.br/decreto-regulamenta-calendario-de-feriados-e-pontos-facultativos-para-2025-em-rondonia/)
+        * Roraima:
+            * [Constituição do Estado de Roraima, art. 9](https://web.archive.org/web/20260520004524/https://al.rr.leg.br/wp-content/uploads/2021/08/Constituic%CC%A7a%CC%83o-Estadual-ate%CC%81-a-Emenda-Constitucional-n.-075-Redac%CC%A7a%CC%83o-Final-09.03.21.pdf)
+        * Santa Catarina:
+            * [Lei n. 11.213, de 11.11.1999](https://leis.alesc.sc.gov.br/ato-normativo/12780)
+            * [Lei n. 12.906, de 22.01.2004](https://web.archive.org/web/20220823091419/https://leis.alesc.sc.gov.br/html/2004/12906_2004_lei.html)
+        * São Paulo:
+            * [Lei n. 9.497, de 05.03.1997](https://web.archive.org/web/20261021061028/https://www.al.sp.gov.br/repositorio/legislacao/lei/1997/lei-9497-05.03.1997.html)
+            * [Lei n. 17.746, de 12.09.2023](https://web.archive.org/web/20260712125703/https://www.al.sp.gov.br/repositorio/legislacao/lei/2023/lei-17746-12.09.2023.html)
         * São Paulo Capital:
             * [Lei Municipal n. 13.707, de 07.01.2004](https://web.archive.org/web/20250519045554/http://legislacao.prefeitura.sp.gov.br/leis/lei-13707-de-7-de-janeiro-de-2004/consolidado)
             * [Anexo Único Integrante do Decreto n. 56.756, de 04.01.2016](https://web.archive.org/web/20251224031221/https://legislacao.prefeitura.sp.gov.br/leis/decreto-56756-de-04-de-janeiro-de-2016/anexo/5ec3d7a71411926001a56c56/Anexo%20Único%20do%20Decreto%20nº%2056.756_2016.pdf)
+        * Sergipe:
+            * [Constituição do Estado de Sergipe, art. 269](https://web.archive.org/web/20260521173809/https://www.emdagro.se.gov.br/wp-content/uploads/2020/05/Constitui%C3%A7%C3%A3o-do-Estado-de-Sergipe-atualizada-at%C3%A9-2019.pdf)
+        * Tocantins:
+            * [Lei n. 960, de 17.03.1998](https://www.al.to.leg.br/arquivo/15717)
     """
 
     country = "BR"
@@ -212,6 +270,11 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 else dt
             )
 
+        # Established by Lei n. 3.137.
+        if self._year >= 2017:
+            # Catholic Day.
+            self._add_holiday(tr("Dia do Católico"), get_movable_acre(JAN, 20))
+
         if self._year >= 2005:
             # Evangelical Day.
             self._add_holiday(tr("Dia do Evangélico"), get_movable_acre(JAN, 23))
@@ -223,9 +286,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Founding of Acre.
         self._add_holiday_jun_15(tr("Aniversário do Acre"))
 
-        if self._year >= 2004:
-            # Amazonia Day.
-            self._add_holiday(tr("Dia da Amazônia"), get_movable_acre(SEP, 5))
+        # Established by Lei n. 243.
+        # Amazonia Day.
+        self._add_holiday(tr("Dia da Amazônia"), get_movable_acre(SEP, 5))
 
         # Signing of the Petropolis Treaty.
         self._add_holiday(tr("Assinatura do Tratado de Petrópolis"), get_movable_acre(NOV, 17))
@@ -261,6 +324,11 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Saint Joseph's Day.
             self._add_saint_josephs_day(tr("São José"))
 
+        # Established by Lei n. 2.213.
+        if self._year >= 2018:
+            # Cabralzinho Day.
+            self._add_holiday_may_15(tr("Dia de Cabralzinho"))
+
         if self._year >= 2012:
             # Saint James' Day.
             self._add_saint_james_day(tr("São Tiago"))
@@ -277,14 +345,10 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_jul_2(tr("Independência da Bahia"))
 
     def _populate_subdiv_ce_public_holidays(self):
-        self._add_saint_josephs_day(tr("São José"))
-
-        # Abolition of slavery in Ceará.
-        self._add_holiday_mar_25(tr("Abolição da escravidão no Ceará"))
-
-        if self._year >= 2004:
-            # Our Lady of Assumption.
-            self._add_assumption_of_mary_day(tr("Nossa Senhora da Assunção"))
+        # Established by Emenda Constitucional n. 73.
+        if self._year >= 2012:
+            # Abolition of slavery in Ceará.
+            self._add_holiday_mar_25(tr("Abolição da escravidão no Ceará"))
 
     def _populate_subdiv_df_public_holidays(self):
         # Founding of Brasilia.
@@ -327,8 +391,10 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_aug_15(tr("Adesão do Grão-Pará à independência do Brasil"))
 
     def _populate_subdiv_pb_public_holidays(self):
-        # State Founding Day.
-        self._add_holiday_aug_5(tr("Fundação do Estado"))
+        # Established by Lei n. 10.601.
+        if self._year >= 2016:
+            # State Founding Day.
+            self._add_holiday_aug_5(tr("Fundação do Estado"))
 
     def _populate_subdiv_pe_public_holidays(self):
         # Established by Lei n. 13.386.
@@ -371,10 +437,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_nov_20(tr("Consciência Negra"))
 
     def _populate_subdiv_rn_public_holidays(self):
-        if self._year >= 2000:
-            # Rio Grande do Norte Day.
-            self._add_holiday_aug_7(tr("Dia do Rio Grande do Norte"))
-
+        # Established by Lei n. 8.913.
         if self._year >= 2007:
             # Uruaçu and Cunhaú Martyrs Day.
             self._add_holiday_oct_3(tr("Mártires de Cunhaú e Uruaçu"))
@@ -383,7 +446,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # State Creation Day.
         self._add_holiday_jan_4(tr("Criação do Estado"))
 
-        if self._year >= 2002:
+        # Established by Lei n. 1.026.
+        # No longer observed as a state holiday since 2021.
+        if 2002 <= self._year <= 2020:
             # Evangelical Day.
             self._add_holiday_jun_18(tr("Dia do Evangélico"))
 
@@ -413,12 +478,24 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_se_public_holidays(self):
         # Sergipe Political Emancipation Day.
-        self._add_holiday_jul_8(tr("Emancipação política de Sergipe"))
+        name = tr("Emancipação política de Sergipe")
+        self._add_holiday_jul_8(name)
+
+        # Removed by Emenda Constitucional n. 20.
+        if self._year <= 1999:
+            self._add_holiday_oct_24(name)
 
     def _populate_subdiv_sp_public_holidays(self):
+        # Established by Lei n. 9.497.
         if self._year >= 1997:
             # Constitutionalist Revolution.
             self._add_holiday_jul_9(tr("Revolução Constitucionalista"))
+
+        # Established by Lei n. 17.746.
+        # Since 2024 it's a national holiday.
+        if self._year == 2023:
+            # Black Awareness Day.
+            self._add_holiday_nov_20(tr("Consciência Negra"))
 
     def _populate_subdiv_sao_paulo_capital_public_holidays(self):
         self._populate_subdiv_sp_public_holidays()
@@ -437,7 +514,9 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_nov_20(tr("Consciência Negra"))
 
     def _populate_subdiv_to_public_holidays(self):
-        if self._year >= 1998:
+        # Established by Lei n. 960.
+        # Holiday status removed by Lei n. 2.013.
+        if 1998 <= self._year <= 2008:
             # Autonomy Day.
             self._add_holiday_mar_18(tr("Dia da Autonomia"))
 
