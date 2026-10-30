@@ -74,7 +74,7 @@ msgstr "महावीर जन्म कल्याणक"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "बुध्द पौर्णिमा"
+msgstr "बुद्ध पौर्णिमा"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -118,11 +118,11 @@ msgstr "ईस्टर रविवार"
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "ख्रिसमसच्या पूर्व संध्याकाळ"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
-msgstr "गुरु गोबिंद सिंग यांचा वाढदिवस"
+msgstr "गुरु गोबिंद सिंग जयंती"
 
 #. Lohri.
 msgid "Lohri"
@@ -230,7 +230,7 @@ msgstr "गणेश चतुर्थी"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
-msgstr "गणेश चतुर्थी"
+msgstr "विनायक चतुर्थी"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
