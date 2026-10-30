@@ -312,6 +312,81 @@ class TestCategories(TestCase):
                     self.assertIn(dt, ccc)
 
 
+class TestReassignment(TestCase):
+    class CustomClass(HolidayBase):
+        country = "RC"
+        supported_categories = (PUBLIC, SCHOOL)
+
+        def _populate_public_holidays(self):
+            self._add_holiday_jan_1("Public Holiday")
+
+        def _populate_school_holidays(self):
+            self._add_holiday_may_1("School Holiday")
+
+    def test_categories(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertSetEqual(hb.categories, {PUBLIC})
+
+        # A string is normalized to a set, as in the constructor.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.categories, {SCHOOL})
+        self.assertIn("2024-05-01", hb)
+        self.assertNotIn("2024-01-01", hb)
+
+        # An iterable is accepted, as in the constructor.
+        hb.categories = (PUBLIC, SCHOOL)
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2024-05-01", hb)
+
+        # Unsupported categories are rejected and the object is left untouched.
+        self.assertRaises(ValueError, lambda: setattr(hb, "categories", "UNSUPPORTED"))
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+
+    def test_years(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertIn("2024-01-01", hb)
+
+        # A single year is accepted, as in the constructor, and the holidays are
+        # re-populated for that year only.
+        hb.years = 2025
+        self.assertSetEqual(hb.years, {2025})
+        self.assertEqual(len(hb), 1)
+        self.assertIn("2025-01-01", hb)
+
+        # An iterable is normalized to a set.
+        hb.years = (2024, 2026)
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2026-01-01", hb)
+
+        # An int assignment does not break a later re-population.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-05-01", hb)
+        self.assertIn("2026-05-01", hb)
+
+    def test_years_on_empty_object(self):
+        # An object without holidays yet is populated when years are assigned,
+        # as the constructor would.
+        hb = TestReassignment.CustomClass()
+        self.assertEqual(len(hb), 0)
+
+        hb.years = 2024
+        self.assertSetEqual(hb.years, {2024})
+        self.assertIn("2024-01-01", hb)
+
+    def test_sum(self):
+        hs = TestReassignment.CustomClass(years=2024) + TestReassignment.CustomClass(years=2024)
+
+        # `HolidaySum._populate` re-populates from its operands, so the assigned
+        # years are added to the ones they already cover.
+        hs.years = 2025
+        self.assertIn("2024-01-01", hs)
+        self.assertIn("2025-01-01", hs)
+
+
 class TestDeprecationWarnings(TestCase):
     def test_prov_deprecation(self):
         with self.assertWarns(Warning):
