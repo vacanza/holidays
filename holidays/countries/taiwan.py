@@ -126,6 +126,10 @@ class Taiwan(ObservedHolidayBase, ChineseCalendarHolidays, InternationalHolidays
         childrens_day = self.tr("兒童節")
         for dt in sorted(dts):
             names = self.get_list(dt)
+            # Resolve Children's Day first regardless of translated name order.
+            if len(names) > 1 and childrens_day in names:
+                names.remove(childrens_day)
+                names.insert(0, childrens_day)
             for name in names:
                 self._add_observed(
                     dt,

@@ -362,6 +362,19 @@ class RussiaStaticHolidays:
             (NOV, 3, NOV, 1),
             (DEC, 31, JAN, 5),
         ),
+        # Substituted Holidays 2026
+        # src: https://web.archive.org/web/20250927144157/https://www.consultant.ru/document/cons_doc_LAW_515170/
+        2026: (
+            (JAN, 9, JAN, 3),
+            (DEC, 31, JAN, 4),
+        ),
+        # Substituted Holidays 2027
+        # src: https://web.archive.org/web/20260919183121/https://www.consultant.ru/document/cons_doc_LAW_544706/
+        2027: (
+            (FEB, 22, FEB, 20),
+            (NOV, 5, JAN, 2),
+            (DEC, 31, JAN, 3),
+        ),
     }
 
     # These are cases where additional in-lieus are given
@@ -497,4 +510,15 @@ class RussiaStaticHolidays:
             (JUN, 13, russia_day),
         ),
         2023: (NOV, 6, unity_day),
+        # src: https://web.archive.org/web/20260924105812/https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2026/
+        2026: (
+            (MAR, 9, international_womens_day),
+            (MAY, 11, victory_day),
+        ),
+        # src: https://web.archive.org/web/20260928054141/https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2027/
+        2027: (
+            (MAY, 3, labor_day),
+            (MAY, 10, victory_day),
+            (JUN, 14, russia_day),
+        ),
     }

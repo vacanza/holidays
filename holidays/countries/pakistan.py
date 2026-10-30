@@ -28,6 +28,16 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
 
     Islamic holidays exact dates:
         * Ashura:
+            * [2007](https://web.archive.org/web/20231119045121/https://www.sbp.org.pk/bprd/2007/cl2.htm)
+            * [2008](https://web.archive.org/web/20191228084056/http://www.sbp.org.pk/bprd/2008/CL1.htm)
+            * [2009 (January)](https://web.archive.org/web/20130419005536/http://www.sbp.org.pk/bprd/2009/CL1.htm)
+            * [2009 (December)](https://web.archive.org/web/20130419010531/http://www.sbp.org.pk/bprd/2009/CL40.htm)
+            * [2010](https://web.archive.org/web/20190805230624/http://www.sbp.org.pk/bprd/2010/CL30.htm)
+            * [2011](https://web.archive.org/web/20190608005606/http://www.sbp.org.pk/bprd/2011/CL25.htm)
+            * [2012](https://web.archive.org/web/20200223214918/http://www.sbp.org.pk/bprd/2012/CL26.htm)
+            * [2013](https://web.archive.org/web/20200108084144/http://www.sbp.org.pk/bprd/2013/CL28.htm)
+            * [2014](https://web.archive.org/web/20200218131658/http://www.sbp.org.pk/bprd/2014/CL32.htm)
+            * [2015](https://web.archive.org/web/20180224012335/http://www.sbp.org.pk/bprd/2015/CL30.htm)
             * [2016](https://web.archive.org/web/20260219000903/https://www.sbp.org.pk/bprd/2016/CL32.htm)
             * [2017](https://web.archive.org/web/20260207170949/https://www.sbp.org.pk/bprd/2017/CL26.htm)
             * [2019](https://web.archive.org/web/20260217233627/https://www.sbp.org.pk/bprd/2019/CL20.htm)
@@ -36,6 +46,15 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
             * [2023](https://web.archive.org/web/20260208115606/https://www.sbp.org.pk/bprd/2023/CL14.htm)
             * [2024](https://web.archive.org/web/20260207195440/https://www.sbp.org.pk/bprd/2024/CL14.htm)
             * [2026](https://web.archive.org/web/20261009165128/https://www.sbp.org.pk/assets/documents/press-release/Pr-23-Jun-2026.pdf)
+        * Eid Milad-un-Nabi:
+            * [2007](https://web.archive.org/web/20191228084641/http://www.sbp.org.pk/bprd/2007/CL12.htm)
+            * [2009](https://web.archive.org/web/20130419010552/http://www.sbp.org.pk/bprd/2009/CL6.htm)
+            * [2010](https://web.archive.org/web/20190928194525/http://www.sbp.org.pk/bprd/2010/CL4.htm)
+            * [2011](https://web.archive.org/web/20190608005339/http://www.sbp.org.pk/bprd/2011/CL2.htm)
+            * [2013](https://web.archive.org/web/20200108084024/http://www.sbp.org.pk/bprd/2013/CL1.htm)
+            * [2015](https://web.archive.org/web/20180224012356/http://www.sbp.org.pk/bprd/2015/CL35.htm)
+        * Eid-ul-Fitr:
+            * [2012](https://web.archive.org/web/20200223215054/http://www.sbp.org.pk/bprd/2012/CL20.htm)
     """
 
     country = "PK"
@@ -52,10 +71,16 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
                 if holiday date is estimated.
+
+        In Pakistan, the dates of the Islamic calendar usually fall a day later than
+        the corresponding dates in the Umm al-Qura calendar.
         """
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(
-            self, cls=PakistanIslamicHolidays, show_estimated=islamic_show_estimated
+            self,
+            cls=PakistanIslamicHolidays,
+            show_estimated=islamic_show_estimated,
+            calendar_delta_days=+1,
         )
         StaticHolidays.__init__(self, PakistanStaticHolidays)
         super().__init__(*args, **kwargs)
@@ -92,13 +117,14 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolida
         self._add_eid_al_fitr_day(name)
         if self._year != 2026:
             self._add_eid_al_fitr_day_two(name)
+        if self._year not in {2008, 2026}:
             self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
         name = tr("Eid-ul-Adha")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        if self._year not in {2018, 2021, 2026}:
+        if self._year not in {2008, 2011, 2018, 2021, 2026}:
             self._add_eid_al_adha_day_three(name)
 
         # Prophet's Birthday.
@@ -124,42 +150,20 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     ASHURA_DATES = {
         2005: (FEB, 18),
         2006: (FEB, 8),
-        2007: (JAN, 28),
-        2008: (JAN, 18),
-        2009: ((JAN, 6), (DEC, 26)),
-        2012: (NOV, 23),
-        2016: (OCT, 12),
-        2017: (OCT, 1),
-        2018: (SEP, 21),
-        2019: (SEP, 10),
-        2020: (AUG, 30),
-        2021: (AUG, 19),
-        2022: (AUG, 9),
-        2023: (JUL, 29),
-        2024: (JUL, 17),
-        2025: (JUL, 6),
-        2026: (JUN, 26),
+        2013: (NOV, 15),
     }
 
     # https://web.archive.org/web/20250724060629/https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
     # https://web.archive.org/web/20260715114627/https://cabinet.gov.pk/SiteImage/Misc/files/Holidays/2026/Eid-ul-Azha-holidays-Notification-20_05_2026.pdf
     EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_ADHA_DATES = {
-        2008: (DEC, 9),
-        2009: (NOV, 28),
-        2010: (NOV, 17),
-        2011: (NOV, 7),
+        2005: (JAN, 21),
+        2006: ((JAN, 10), (DEC, 31)),
+        2007: (DEC, 20),
+        2012: (OCT, 26),
+        2013: (OCT, 15),
         2014: (OCT, 6),
-        2015: (SEP, 24),
-        2016: (SEP, 12),
-        2017: (SEP, 2),
-        2018: (AUG, 22),
-        2019: (AUG, 12),
-        2021: (JUL, 21),
-        2022: (JUL, 10),
-        2023: (JUN, 29),
-        2024: (JUN, 17),
-        2025: (JUN, 7),
+        2020: (JUL, 31),
         2026: (MAY, 27),
     }
 
@@ -167,19 +171,14 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20260318213743/https://www.sbp.org.pk/bprd/2026/CL6.htm
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_FITR_DATES = {
-        2005: (NOV, 4),
-        2006: (OCT, 24),
-        2008: (OCT, 2),
-        2009: (SEP, 21),
-        2011: (AUG, 31),
-        2014: (JUL, 29),
-        2017: (JUN, 26),
-        2018: (JUN, 16),
-        2019: (JUN, 5),
-        2022: (MAY, 3),
-        2023: (APR, 22),
-        2025: (MAR, 31),
-        2026: (MAR, 21),
+        2007: (OCT, 13),
+        2010: (SEP, 10),
+        2013: (AUG, 8),
+        2015: (JUL, 17),
+        2016: (JUL, 6),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2024: (APR, 10),
     }
 
     # https://dps.psx.com.pk/download/attachment/268947-1.pdf
@@ -193,25 +192,9 @@ class PakistanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20261009165136/https://www.sbp.org.pk/assets/documents/press-release/PR-25-August-2026.pdf
     MAWLID_DATES_CONFIRMED_YEARS = (2005, 2026)
     MAWLID_DATES = {
-        2005: (APR, 22),
-        2006: (APR, 11),
-        2008: (MAR, 21),
-        2010: (MAR, 1),
-        2011: (FEB, 17),
-        2012: (FEB, 5),
-        2014: (JAN, 14),
-        2015: (JAN, 4),
-        2016: (DEC, 12),
-        2017: (DEC, 1),
-        2018: (NOV, 21),
-        2019: (NOV, 10),
-        2020: (OCT, 30),
-        2021: (OCT, 19),
-        2022: (OCT, 9),
         2023: (SEP, 29),
         2024: (SEP, 17),
         2025: (SEP, 6),
-        2026: (AUG, 26),
     }
 
 
@@ -219,6 +202,20 @@ class PakistanStaticHolidays:
     """Pakistan special holidays.
 
     References:
+        * [2007 Eid-ul-Fitr](https://web.archive.org/web/20191228084449/http://www.sbp.org.pk/bprd/2007/CL34.htm)
+        * [2008 General Election](https://web.archive.org/web/20191228084203/http://www.sbp.org.pk/bprd/2008/CL3.htm)
+        * [2008 Eid-ul-Fitr](https://web.archive.org/web/20191228085439/http://www.sbp.org.pk/bprd/2008/CL27.htm)
+        * [2008 Eid-ul-Adha](https://web.archive.org/web/20191228084953/http://www.sbp.org.pk/bprd/2008/CL35.htm)
+        * [2008 Benazir Bhutto's Martyrdom](https://web.archive.org/web/20191228084611/http://www.sbp.org.pk/bprd/2008/CL37.htm)
+        * [2009 Eid-ul-Adha](https://web.archive.org/web/20130419010103/http://www.sbp.org.pk/bprd/2009/CL36.htm)
+        * [2010 Eid-ul-Fitr](https://web.archive.org/web/20190909144700/http://www.sbp.org.pk/bprd/2010/CL22.htm)
+        * [2011 Eid-ul-Fitr](https://web.archive.org/web/20190608005504/http://www.sbp.org.pk/bprd/2011/CL19.htm)
+        * [2011 Eid-ul-Adha](https://web.archive.org/web/20190608005601/http://www.sbp.org.pk/bprd/2011/CL23.htm)
+        * [2012 Youm-e-Ishq-e-Rasool](https://web.archive.org/web/20200223215059/http://www.sbp.org.pk/bprd/2012/CL22.htm)
+        * [2012 Eid-ul-Adha](https://web.archive.org/web/20200223215109/http://www.sbp.org.pk/bprd/2012/CL24.htm)
+        * [2013 Eid-ul-Adha](https://web.archive.org/web/20200108083310/http://www.sbp.org.pk/bprd/2013/CL25.htm)
+        * [2014 Eid-ul-Fitr](https://web.archive.org/web/20180224025142/http://www.sbp.org.pk/bprd/2014/CL24.htm)
+        * [2015 Eid-ul-Fitr](https://web.archive.org/web/20180224012254/http://www.sbp.org.pk/bprd/2015/CL21.htm)
         * [2016 Eid-ul-Fitr](https://web.archive.org/web/20200117041303/https://www.sbp.org.pk/bprd/2016/CL23.htm)
         * [2017 Eid-ul-Adha](https://web.archive.org/web/20260208051653/https://www.sbp.org.pk/bprd/2017/CL25.htm)
         * [2018 Eid-ul-Fitr](https://web.archive.org/web/20260207194920/https://www.sbp.org.pk/bprd/2018/CL9.htm)
@@ -249,6 +246,28 @@ class PakistanStaticHolidays:
     general_election_day = tr("General Election Day")
 
     special_public_holidays = {
+        2007: (OCT, 16, eid_al_fitr),
+        2008: (
+            (FEB, 18, general_election_day),
+            (OCT, 1, eid_al_fitr),
+            (DEC, 8, eid_al_adha),
+            # Benazir Bhutto's Martyrdom Day.
+            (DEC, 27, tr("Benazir Bhutto's Martyrdom Day")),
+        ),
+        2009: (NOV, 27, eid_al_adha),
+        2010: (SEP, 13, eid_al_fitr),
+        2011: (SEP, 3, eid_al_fitr),
+        2012: (
+            # Love for the Prophet Day.
+            (SEP, 21, tr("Youm-e-Ishq-e-Rasool")),
+            (OCT, 29, eid_al_adha),
+        ),
+        2013: (OCT, 18, eid_al_adha),
+        2014: (AUG, 1, eid_al_fitr),
+        2015: (
+            (JUL, 20, eid_al_fitr),
+            (JUL, 21, eid_al_fitr),
+        ),
         2016: (JUL, 5, eid_al_fitr),
         2017: (SEP, 1, eid_al_adha),
         2018: (
