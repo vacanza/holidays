@@ -91,9 +91,13 @@ class Comoros(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHoliday
 
         # Eid al-Fitr.
         name = tr("Id-El-Fitr")
-        self._add_eid_al_fitr_day(name)
+        eid_al_fitr_dates = self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
+        for dt in eid_al_fitr_dates:
+            if self._islamic_calendar._is_long_ramadan(dt):
+                self._add_eid_al_fitr_eve(name)
+            else:
+                self._add_eid_al_fitr_day_three(name)
 
         # Eid al-Adha.
         name = tr("Id-El-Kabir")
