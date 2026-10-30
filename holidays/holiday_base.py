@@ -166,7 +166,7 @@ class HolidayBase(dict[date, str]):
                 is requested.
 
             observed:
-                Whether to include the dates when holiday are observed
+                Whether to include the dates when holidays are observed
                 (e.g. a holiday falling on a Sunday being observed the
                 following Monday). This doesn't work for all countries.
 

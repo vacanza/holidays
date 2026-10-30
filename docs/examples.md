@@ -45,8 +45,8 @@ Use `years` parameter to populate the holidays years you are interested in:
 Let's print out the holidays in 2014 specific to California, USA:
 
 ```pycon
->>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
->>>     print(date, name)
+>>> for date, name in sorted(holidays.US(subdiv="CA", years=2014).items()):
+...     print(date, name)
 2014-01-01 New Year's Day
 2014-01-20 Martin Luther King Jr. Day
 2014-02-15 Susan B. Anthony Day
@@ -131,7 +131,7 @@ To change the language translation, you can set the language explicitly.
 
 ```pycon
 >>> for dt, name in sorted(holidays.ES(years=2023, language="es").items()):
->>>     print(dt, name)
+...     print(dt, name)
 2023-01-06 Epifanía del Señor
 2023-04-07 Viernes Santo
 2023-05-01 Fiesta del Trabajo
@@ -221,7 +221,7 @@ Get only unofficial holidays (cultural celebrations).
 ```pycon
 >>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 >>> for date, name in sorted(us_unofficial.items()):
->>>     print(date, name)
+...     print(date, name)
 2024-02-14 Valentine's Day
 2024-03-17 Saint Patrick's Day
 2024-10-31 Halloween
@@ -234,8 +234,10 @@ Get both public and bank holidays for Belgium:
 
 ```pycon
 >>> from holidays.constants import BANK, PUBLIC
->>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
->>>     print(dt, name)
+>>> for dt, name in sorted(
+...     holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()
+... ):
+...     print(dt, name)
 2023-01-01 New Year's Day
 2023-04-07 Good Friday
 2023-04-09 Easter Sunday
@@ -262,7 +264,7 @@ Get Catholic holidays in Germany (Saxony subdivision):
 >>> from holidays.constants import CATHOLIC
 >>> de_sn_catholic = holidays.Germany(subdiv="SN", categories=CATHOLIC, years=2024)
 >>> for date, name in sorted(de_sn_catholic.items()):
->>>     print(date, name)
+...     print(date, name)
 2024-08-15 Mariä Himmelfahrt
 ```
 
@@ -393,9 +395,9 @@ all the initial objects:
 ```pycon
 >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
 >>> north_america.get("2014-07-01")
-"Canada Day"
+'Canada Day'
 >>> north_america.get("2014-07-04")
-"Independence Day"
+'Independence Day'
 ```
 
 If several holidays fall on the same date, their names are merged:
@@ -430,18 +432,18 @@ Sometimes we may not be able to use the official federal statutory holiday list 
 pretend we work for a company that does not include New Year's Day as a statutory holiday but does
 include "Ninja Turtle Day" on July 13th. We can create a new class that inherits the US (please
 note the base class import path) and the only method we need to override is
-`__populate_public_holidays`:
+`_populate_public_holidays`:
 
 ```pycon
 >>> from holidays.countries import US
 >>> class CorporateHolidays(US):
->>>     def _populate_public_holidays(self):
->>> # Populate the holiday list with the default US holidays.
->>>         super()._populate_public_holidays()
->>> # Remove New Year's Day.
->>>         self.pop_named("New Year's Day")
->>> # Add Ninja Turtle Day.
->>>         self._add_holiday_jul_13("Ninja Turtle Day")
+...     def _populate_public_holidays(self):
+...         # Populate the holiday list with the default US holidays.
+...         super()._populate_public_holidays()
+...         # Remove New Year's Day.
+...         self.pop_named("New Year's Day")
+...         # Add Ninja Turtle Day.
+...         self._add_holiday_jul_13("Ninja Turtle Day")
 >>> date(2014, 1, 1) in holidays.country_holidays(country="US")
 True
 >>> date(2014, 1, 1) in CorporateHolidays()
@@ -458,20 +460,21 @@ This is how we would create a holidays class for a country that is not supported
 
 ```pycon
 >>> class NewCountryHolidays(holidays.HolidayBase):
->>>     def _populate_public_holidays(self):
->>>         self[date(year, 1, 2)] = "Some Federal Holiday"
->>>         self[date(year, 2, 3)] = "Another Federal Holiday"
+...     def _populate_public_holidays(self):
+...         self[date(self._year, 1, 2)] = "Some Federal Holiday"
+...         self[date(self._year, 2, 3)] = "Another Federal Holiday"
 >>> hdays = NewCountryHolidays()
 ```
 
-We can use the `self._add_holiday_*` methods to specify holidays:
+Instead of assigning dates directly, it is better to specify holidays with
+the `self._add_holiday_*` methods:
 
 ```pycon
 >>> class MovingHolidays(holidays.HolidayBase):
->>>     def _populate_public_holidays(self):
->>>         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
->>>         self._add_holiday_last_fri_of_feb("Last Friday of February")
->>>         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
+...     def _populate_public_holidays(self):
+...         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
+...         self._add_holiday_last_fri_of_feb("Last Friday of February")
+...         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
 >>> moving = MovingHolidays(years=2025)
 ```
 
@@ -501,14 +504,16 @@ We can also include holidays for a subdivision (e.g. prov/state) in our new clas
 
 ```pycon
 >>> class NewCountryHolidays(holidays.HolidayBase):
->>>     def _populate_public_holidays(self):
->>>         self[date(year, 1, 2)] = "Some Federal Holiday"
->>>
->>>     def _populate_subdiv_xx_public_holidays(self):
->>>         self[date(year, 2, 3)] = "Special XX subdiv-only holiday"
->>>
->>>     def _populate_subdiv_yy_public_holidays(self):
->>>         self[date(year, 3, 4)] = "Special YY subdiv-only holiday"
+...     subdivisions = ("XX", "YY")
+...
+...     def _populate_public_holidays(self):
+...         self._add_holiday_jan_2("Some Federal Holiday")
+...
+...     def _populate_subdiv_xx_public_holidays(self):
+...         self._add_holiday_feb_3("Special XX subdiv-only holiday")
+...
+...     def _populate_subdiv_yy_public_holidays(self):
+...         self._add_holiday_mar_4("Special YY subdiv-only holiday")
 >>> hdays = NewCountryHolidays()
 >>> hdays = NewCountryHolidays(subdiv="XX")
 ```
@@ -548,18 +553,20 @@ the `special_public_holidays` mapping of a year to a tuple of `(month, day, name
 ```pycon
 >>> from holidays.calendars.gregorian import APR, DEC, JUL, JUN, SEP
 >>> class SpecialHolidays(holidays.HolidayBase):
->>>     special_public_holidays = {
->>>         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
->>>         1981: (JUL, 29, "Wedding of Charles and Diana"),
->>>         1999: (DEC, 31, "Millennium Celebrations"),
->>>         2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
->>>         2011: (APR, 29, "Wedding of William and Catherine"),
->>>         2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
->>>         2022: (
->>>             (JUN, 3, "Platinum Jubilee of Elizabeth II"),
->>>             (SEP, 19, "State Funeral of Queen Elizabeth II"),
->>>         ),
->>>     }
+...     # Other class attributes and methods.
+...
+...     special_public_holidays = {
+...         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
+...         1981: (JUL, 29, "Wedding of Charles and Diana"),
+...         1999: (DEC, 31, "Millennium Celebrations"),
+...         2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+...         2011: (APR, 29, "Wedding of William and Catherine"),
+...         2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
+...         2022: (
+...             (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+...             (SEP, 19, "State Funeral of Queen Elizabeth II"),
+...         ),
+...     }
 >>> special_holidays = SpecialHolidays(years=2022)
 >>> special_holidays.get("2022-09-19")
 'State Funeral of Queen Elizabeth II'
@@ -632,10 +639,10 @@ so re-generating a calendar yields the same UIDs and subscribed clients update e
 For calendars published for subscription, `refresh_interval_weeks` adds the `REFRESH-INTERVAL` and
 `X-PUBLISHED-TTL` hints.
 
-``` python
+```pycon
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
->>> be_holidays = country_holidays('BE', years=2024, language='en_US')
+>>> be_holidays = country_holidays("BE", years=2024, language="en_US")
 >>> exporter = ICalExporter(be_holidays, refresh_interval_weeks=1)
 >>> exporter.calendar_name
 'Belgium Public Holidays [en-US]'
@@ -695,14 +702,14 @@ Generate `.ics` files with categories, language, and subdivisions.
 >>> subdiv = "AP"  # Andhra Pradesh state.
 >>>
 >>> for category in IN.supported_categories:
->>>     holidays = IN(
->>>         years=years,
->>>         categories=category,
->>>         language=language,
->>>         subdiv=subdiv,
->>>     )
->>>     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
->>>     ICalExporter(holidays).save_ics(filename)
+...     holidays = IN(
+...         years=years,
+...         categories=category,
+...         language=language,
+...         subdiv=subdiv,
+...     )
+...     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
+...     ICalExporter(holidays).save_ics(filename)
 ```
 
 For advanced features and customization of the exported `.ics` output, consider using
