@@ -554,7 +554,6 @@ the `special_public_holidays` mapping of a year to a tuple of `(month, day, name
 >>> from holidays.calendars.gregorian import APR, DEC, JUL, JUN, SEP
 >>> class SpecialHolidays(holidays.HolidayBase):
 ...     # Other class attributes and methods.
-...
 ...     special_public_holidays = {
 ...         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
 ...         1981: (JUL, 29, "Wedding of Charles and Diana"),

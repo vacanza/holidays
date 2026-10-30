@@ -298,12 +298,12 @@ class HolidayBase(dict[date, str]):
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
     ) -> "HolidayBase | HolidaySum":
-        """Add another dictionary of holidays creating a
+        """Add another holidays object creating a
         [`HolidaySum`][holidays.holiday_base.HolidaySum] object.
 
         Args:
             other:
-                The dictionary of holidays to be added.
+                The `HolidayBase` or `HolidaySum` object to be added..
 
         Returns:
             A [`HolidaySum`][holidays.holiday_base.HolidaySum]
