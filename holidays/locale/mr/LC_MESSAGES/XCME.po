@@ -87,7 +87,7 @@ msgstr "थँक्सगिव्हिंग दिनानंतरचा �
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "नाताळ पूर्वसंध्या"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. Closed following Attacks on the World Trade Center.
 msgid "Closed following Attacks on the World Trade Center"
