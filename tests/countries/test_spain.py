@@ -1316,24 +1316,18 @@ class TestSpain(CommonCountryTests, TestCase):
 
     def test_barcelona_holidays(self):
         name = "Día de la Pascua Granada"
+        # 2015 uses a source-specific exception; the regular samples cover 2020-2025.
+        self.assertSubdivBarcelonaHolidayName(name, "2015-06-01")
         self.assertSubdivBarcelonaHolidayName(
             name,
-            "2012-05-28",
-            "2013-05-20",
-            "2014-06-09",
-            "2015-06-01",
-            "2016-05-16",
-            "2017-06-05",
-            "2018-05-21",
-            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
             "2023-06-05",
             "2024-05-20",
             "2025-06-09",
-            "2026-05-25",
         )
+        self.assertSubdivBarcelonaHolidayName(name, range(2012, 2027))
         self.assertNoSubdivBarcelonaHolidayName(name, "2015-05-25", "2023-05-29")
 
         name = "Santa Eulalia"
