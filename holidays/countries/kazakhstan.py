@@ -130,7 +130,7 @@ class Kazakhstan(
             )
 
         # Independence Day.
-        name = tr("Тəуелсіздік күні")
+        name = tr("Тәуелсіздік күні")
         dts_observed.add(self._add_holiday_dec_16(name))
         if 2002 <= self._year <= 2021:
             dts_observed.add(self._add_holiday_dec_17(name))

@@ -139,7 +139,7 @@ class NamibiaStaticHolidays:
         ),
         # Public Holiday.
         1995: (OCT, 24, tr("Public Holiday")),
-        # Day of Mourning for Honourable Moses Garoeb.
+        # Day of Mourning for Honorable Moses Garoeb.
         1997: (SEP, 26, tr("Day of Mourning for Honourable Moses Garoeb")),
         1998: (NOV, 30, regional_election_day),
         1999: (
