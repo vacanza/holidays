@@ -89,11 +89,11 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
 
         if self._year >= 1992:
             # Catholic Easter.
-            name_catholic = tr("Каталiцкi Вялiкдзень")
+            name_catholic = tr("Каталіцкі Вялікдзень")
             self._add_easter_sunday(name_catholic, GREGORIAN_CALENDAR)
 
             # Orthodox Easter.
-            name_orthodox = tr("Праваслаўны Вялiкдзень")
+            name_orthodox = tr("Праваслаўны Вялікдзень")
             self._add_easter_sunday(name_orthodox)
 
             if self._year <= 1997:

@@ -38,6 +38,7 @@ class TestNamibia(CommonCountryTests, TestCase):
             "2024-02-25",
             "2024-11-27",
             "2025-03-01",
+            "2025-11-26",
         )
 
     def test_new_years_day(self):
@@ -234,6 +235,7 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-29", "Ascension Day"),
             ("2025-08-26", "Heroes' Day"),
             ("2025-09-10", "Day of the Namibian Women and International Human Rights Day"),
+            ("2025-11-26", "Regional Election Day"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Family Day"),
         )
@@ -255,6 +257,7 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-29", "Ascension Day"),
             ("2025-08-26", "Heroes' Day"),
             ("2025-09-10", "Day of the Namibian Women and International Human Rights Day"),
+            ("2025-11-26", "Regional Election Day"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Family Day"),
         )
@@ -276,6 +279,7 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-29", "Вознесіння Господнє"),
             ("2025-08-26", "День Героїв"),
             ("2025-09-10", "День намібійських жінок та Міжнародний день прав людини"),
+            ("2025-11-26", "День місцевих виборів"),
             ("2025-12-25", "Різдво Христове"),
             ("2025-12-26", "День родини"),
         )
