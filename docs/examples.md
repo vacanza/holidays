@@ -366,6 +366,16 @@ the built-in `sum` function:
 ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT']
 ```
 
+To get holidays of several subdivisions in one object, pass them as a tuple:
+
+``` python
+>>> on_qc = holidays.CA(subdiv=('ON', 'QC'))
+>>> on_qc.get('2024-02-19')
+"Family Day"
+>>> on_qc.get('2024-06-24')
+"Saint Jean Baptiste Day"
+```
+
 ## Creating custom holidays (or augmenting existing ones with private ones)
 
 Sometimes we may not be able to use the official federal statutory holiday list in our code. Let's

@@ -202,8 +202,8 @@ class HolidayBase(dict[date, str]):
     is requested."""
     observed: bool
     """Whether dates when public holiday are observed are included."""
-    subdiv: str | None = None
-    """The subdiv requested as ISO 3166-2 code or one of the aliases."""
+    subdiv: str | tuple[str, ...] | None = None
+    """The subdiv(s) requested as ISO 3166-2 code or one of the aliases."""
     special_holidays: dict[int, SpecialHoliday | SubstitutedHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
@@ -263,7 +263,7 @@ class HolidayBase(dict[date, str]):
         years: YearArg | None = None,
         expand: bool = True,
         observed: bool = True,
-        subdiv: str | None = None,
+        subdiv: str | tuple[str, ...] | None = None,
         prov: str | None = None,  # Deprecated.
         state: str | None = None,  # Deprecated.
         language: str | None = None,
@@ -286,6 +286,7 @@ class HolidayBase(dict[date, str]):
             subdiv:
                 The subdivision (e.g. state or province) as a ISO 3166-2 code
                 or its alias; not implemented for all countries (see documentation).
+                Pass a tuple to get holidays of multiple subdivisions.
 
             prov:
                 *deprecated* use `subdiv` instead.
@@ -338,9 +339,9 @@ class HolidayBase(dict[date, str]):
 
         # Subdivision validation.
         if subdiv := subdiv or prov or state:
+            subdivs = subdiv if isinstance(subdiv, tuple) else (subdiv,)
             # Handle subdivisions passed as integers.
-            if isinstance(subdiv, int):
-                subdiv = str(subdiv)
+            subdivs = tuple(str(s) if isinstance(s, int) else s for s in subdivs)
 
             subdivision_aliases = tuple(self.subdivisions_aliases)
             supported_subdivisions = set(
@@ -351,9 +352,12 @@ class HolidayBase(dict[date, str]):
             )
 
             # Unsupported subdivisions.
-            if not isinstance(self, HolidaySum) and subdiv not in supported_subdivisions:
+            if not isinstance(self, HolidaySum) and (
+                unsupported_subdivisions := [s for s in subdivs if s not in supported_subdivisions]
+            ):
                 raise NotImplementedError(
-                    f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
+                    f"Entity `{self._entity_code}` does not have subdivision "
+                    f"{', '.join(unsupported_subdivisions)}"
                 )
 
             # Deprecated arguments.
@@ -364,7 +368,7 @@ class HolidayBase(dict[date, str]):
                 )
 
             # Deprecated subdivisions.
-            if subdiv in self._deprecated_subdivisions:
+            if any(s in self._deprecated_subdivisions for s in subdivs):
                 warnings.warn(
                     "This subdivision is deprecated and will be removed after "
                     "Dec, 1 2023. The list of supported subdivisions: "
@@ -373,6 +377,8 @@ class HolidayBase(dict[date, str]):
                     f"{', '.join(sorted(subdivision_aliases))}.",
                     DeprecationWarning,
                 )
+
+            subdiv = subdivs[0] if len(subdivs) == 1 else subdivs
 
         # Special holidays validation.
         if (has_substituted_holidays := getattr(self, "has_substituted_holidays", False)) and (
@@ -789,7 +795,7 @@ class HolidayBase(dict[date, str]):
                     str.maketrans({"-": "_", " ": "_"})
                 )
             )
-            if self.subdiv is not None
+            if isinstance(self.subdiv, str)
             else None
         )
 
@@ -1002,8 +1008,20 @@ class HolidayBase(dict[date, str]):
             return None
 
         self._year = year
-        self._populate_common_holidays()
-        self._populate_subdiv_holidays()
+        if isinstance(self.subdiv, tuple):
+            # Populate each subdivision separately so that their holidays don't affect each other.
+            for subdiv in self.subdiv:
+                subdiv_holidays = self.__class__.__new__(self.__class__)
+                subdiv_holidays.__dict__.update(
+                    self.__dict__, _year=year, expand=False, subdiv=subdiv
+                )
+                subdiv_holidays.__dict__.pop("_normalized_subdiv", None)
+                subdiv_holidays._populate_common_holidays()
+                subdiv_holidays._populate_subdiv_holidays()
+                self.update(cast("dict[DateLike, str]", subdiv_holidays))
+        else:
+            self._populate_common_holidays()
+            self._populate_subdiv_holidays()
 
     def _populate_common_holidays(self):
         """Populate entity common holidays."""
@@ -1492,8 +1510,8 @@ class HolidaySum(HolidayBase):
             a1 = getattr(h1, attr, None)
             a2 = getattr(h2, attr, None)
             if a1 and a2 and a1 != a2:
-                a1 = a1 if isinstance(a1, list) else [a1]
-                a2 = a2 if isinstance(a2, list) else [a2]
+                a1 = list(a1) if isinstance(a1, (list, tuple)) else [a1]
+                a2 = list(a2) if isinstance(a2, (list, tuple)) else [a2]
                 value = a1 + a2
             else:
                 value = a1 or a2
