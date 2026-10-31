@@ -28,6 +28,7 @@ class TestOman(CommonCountryTests, TestCase):
             (f"{year}-01-11" for year in (*range(2020, 2025), *range(2027, self.end_year))),
         )
         self.assertHolidayName(name, "2025-01-12", "2026-01-15")
+        self.assertNoHolidayName(name, "2025-01-11", "2026-01-11")
         self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_renaissance_day(self):
@@ -48,6 +49,7 @@ class TestOman(CommonCountryTests, TestCase):
             (f"{year}-11-21" for year in (2025, *range(2027, self.end_year))),
         )
         self.assertHolidayName(name, "2026-11-25", "2026-11-26")
+        self.assertNoHolidayName(name, "2026-11-20", "2026-11-21")
         self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_islamic_new_year(self):
