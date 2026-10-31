@@ -47,7 +47,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import date, datetime, time, timedelta, timezone
-from functools import cache
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -133,7 +132,9 @@ class _UmmAlQuraLunar:
         t0 = self.ts.utc(2077, 11, 11)  # before Hijri 1501-01 new moon.
         t1 = self.ts.utc(2102, 1, 1)
         times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(eph))
-        self.new_moons = [t for t, e in zip(times, events) if e == 0]
+        self.month_starts = [
+            self._calculate_month_start(t) for t, e in zip(times, events) if e == 0
+        ]
 
     def _calculate_month_start(self, new_moon_t: Time) -> date:
         """Calculate the first day of the Hijri month following the given new moon."""
@@ -146,14 +147,13 @@ class _UmmAlQuraLunar:
         # and the moon sets after the sun, otherwise the current month lasts 30 days.
         return new_moon_dt + timedelta(days=1 if new_moon_t.tt < sunset.tt < moonset.tt else 2)
 
-    @cache
     def get_month_start(self, h_year: int, h_month: int) -> date:
         """Get the Gregorian date of the first day of the given Hijri month."""
         if h_year <= HIJRI_RANGE[1][0]:
             return Hijri(h_year, h_month, 1).to_gregorian()
 
         month_offset = (h_year - HIJRI_RANGE[1][0] - 1) * 12 + (h_month - 1)
-        return self._calculate_month_start(self.new_moons[month_offset])
+        return self.month_starts[month_offset]
 
     def get_month_length(self, h_year: int, h_month: int) -> int:
         """Get the number of days in the given Hijri month."""
