@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.gregorian import (
@@ -74,14 +75,20 @@ class NewYorkStockExchange(
         return {SAT, SUN} if dt >= date(1952, SEP, 29) else {SUN}
 
     def _populate_ranged_holidays(
-        self, name: str, start: tuple[int, int], end: tuple[int, int], step: int = 1
+        self,
+        name: str,
+        start: tuple[int, int],
+        end: tuple[int, int],
+        step: int = 1,
+        *,
+        skip_dates: Iterable[date] = (),
     ):
         start_date = date(self._year, *start)
         end_date = date(self._year, *end)
         for dt in (
             _timedelta(start_date, n) for n in range(0, (end_date - start_date).days + 1, step)
         ):
-            if self._is_weekend(dt) or dt in self:
+            if self._is_weekend(dt) or dt in self or dt in skip_dates:
                 continue
             self._add_holiday(name, dt)
 
@@ -216,12 +223,25 @@ class NewYorkStockExchange(
         # Special holidays.
 
         name_paperwork_crisis = tr("Paperwork Crisis")
+        # Market closure days can't be early closing days, regardless of requested categories.
+        closures = (
+            type(self)(
+                categories=PUBLIC,
+                observed=self.observed,
+                observed_rule=self._observed_rule,
+                observed_since=self._observed_since,
+                years=self._year,
+            )
+            if 1968 <= self._year <= 1970
+            else ()
+        )
         if self._year == 1968:
             self._populate_ranged_holidays(
                 # Back office work load.
                 self._format_holiday_name(close_2pm_label, tr("Back office work load")),
                 (JAN, 22),
                 (MAR, 1),
+                skip_dates=closures,
             )
         elif self._year == 1969:
             # THU.
@@ -230,6 +250,7 @@ class NewYorkStockExchange(
                 (JAN, 2),
                 (JUL, 3),
                 7,
+                skip_dates=closures,
             )
 
             # MON-FRI.
@@ -237,6 +258,7 @@ class NewYorkStockExchange(
                 self._format_holiday_name(close_2_30pm_label, name_paperwork_crisis),
                 (JUL, 7),
                 (SEP, 26),
+                skip_dates=closures,
             )
 
             # MON-FRI.
@@ -244,6 +266,7 @@ class NewYorkStockExchange(
                 self._format_holiday_name(close_3pm_label, name_paperwork_crisis),
                 (SEP, 29),
                 (DEC, 31),
+                skip_dates=closures,
             )
         elif self._year == 1970:
             # MON-FRI.
@@ -251,6 +274,7 @@ class NewYorkStockExchange(
                 self._format_holiday_name(close_3pm_label, name_paperwork_crisis),
                 (JAN, 2),
                 (MAY, 1),
+                skip_dates=closures,
             )
 
         # 1990-1992 early closings are covered by special holidays.
