@@ -138,7 +138,7 @@ msgstr "थँक्सगिव्हिंग डे नंतरचा दि
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "नाताळ पूर्वसंध्या"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. %s (markets close at 11:00am).
 #, c-format
