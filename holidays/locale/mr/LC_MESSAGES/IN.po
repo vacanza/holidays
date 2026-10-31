@@ -122,7 +122,7 @@ msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
-msgstr "गुरु गोबिंद सिंग जयंती"
+msgstr "गुरू गोविंदसिंग जयंती"
 
 #. Lohri.
 msgid "Lohri"
