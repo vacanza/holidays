@@ -216,11 +216,6 @@ class StockExchangeOfThailand(
         # Constitution Day.
         dts_observed.add(self._add_holiday_dec_10(tr("วันรัฐธรรมนูญ")))
 
-        # New Year's Eve was moved to January 2 of the next year in 1997 and 2003.
-        if self._year not in {1997, 2003}:
-            # New Year's Eve.
-            self._add_new_years_eve(tr("วันสิ้นปี"))
-
         if self._year >= 2007:
             # Asarnha Bucha.
             dts_observed.add(self._add_asarnha_bucha(tr("วันอาสาฬหบูชา")))
@@ -234,13 +229,15 @@ class StockExchangeOfThailand(
         if self.observed:
             self._populate_observed(dts_observed)
 
+        # New Year's Eve.
+        name = tr("วันสิ้นปี")
+        # New Year's Eve was moved to January 2 of the next year in 1997 and 2003.
+        if self._year not in {1997, 2003}:
+            self._add_new_years_eve(name)
         # The in-lieu day for New Year's Eve 2023 was moved to December 29, 2023.
         if self._year != 2024:
             self._add_observed(
-                date(self._year - 1, DEC, 31),
-                # New Year's Eve.
-                name=tr("วันสิ้นปี"),
-                rule=SAT_TO_NEXT_MON + SUN_TO_NEXT_TUE,
+                date(self._year - 1, DEC, 31), name=name, rule=SAT_TO_NEXT_MON + SUN_TO_NEXT_TUE
             )
 
 
