@@ -44,7 +44,7 @@ def country_holidays(
 ) -> HolidayBase:
     """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
-    Include public holidays for the country matching `country` and other keyword arguments.
+    Include holidays for the country matching `country` and other keyword arguments.
 
     Args:
         country:
@@ -55,14 +55,14 @@ def country_holidays(
             or its alias; not implemented for all countries (see documentation).
 
         years:
-            The year(s) to pre-calculate public holidays for at instantiation.
+            The year(s) to pre-calculate holidays for at instantiation.
 
         expand:
             Whether the entire year is calculated when one date from that year
             is requested.
 
         observed:
-            Whether to include the dates of when public holidays are observed
+            Whether to include the dates of when holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
             Monday). `False` may not work for all countries.
 
@@ -109,109 +109,6 @@ def country_holidays(
 
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `country`.
-
-    The key of the `dict`-like [`HolidayBase`][holidays.holiday_base.HolidayBase]
-    object is the `date` of the holiday, and the value is the name of the holiday itself.
-    Dates where a key is not present are not public holidays (or, if
-    `observed` is `False`, days when a public holiday is observed).
-
-    When passing the `date` as a key, the `date` can be expressed in one of the
-    following types:
-
-    * `datetime.date`,
-    * `datetime.datetime`,
-    * a `str` of any format recognized by `dateutil.parser.parse()`,
-    * or a `float` or `int` representing a POSIX timestamp.
-
-    The key is always returned as a `datetime.date` object.
-
-    To maximize speed, the list of public holidays is built on the fly as
-    needed, one calendar year at a time. When the object is instantiated
-    without a `years` parameter, it is empty, but, unless `expand` is set
-    to `False`, as soon as a key is accessed the class will calculate that entire
-    year's list of holidays and set the keys with them.
-
-    If you need to list the holidays as opposed to querying individual dates,
-    instantiate the class with the `years` parameter.
-
-    Example usage:
-
-        >>> from holidays import country_holidays
-        >>> us_holidays = country_holidays('US')
-        # For a specific subdivision (e.g. state or province):
-        >>> calif_holidays = country_holidays('US', subdiv='CA')
-
-    The below will cause 2015 holidays to be calculated on the fly:
-
-        >>> from datetime import date
-        >>> assert date(2015, 1, 1) in us_holidays
-
-    This will be faster because 2015 holidays are already calculated:
-
-        >>> assert date(2015, 1, 2) not in us_holidays
-
-    The [`HolidayBase`][holidays.holiday_base.HolidayBase] class also recognizes
-    strings of many formats and numbers representing a POSIX timestamp:
-
-        >>> assert '2014-01-01' in us_holidays
-        >>> assert '1/1/2014' in us_holidays
-        >>> assert 1388597445 in us_holidays
-
-    Show the holiday's name:
-
-        >>> us_holidays.get('2014-01-01')
-        "New Year's Day"
-
-    Check a range:
-
-        >>> us_holidays['2014-01-01': '2014-01-03']
-        [datetime.date(2014, 1, 1)]
-
-    List all 2020 holidays:
-
-        >>> us_holidays = country_holidays('US', years=2020)
-        >>> for day in sorted(us_holidays.items()):
-        ...     print(day)
-        (datetime.date(2020, 1, 1), "New Year's Day")
-        (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
-        (datetime.date(2020, 2, 17), "Washington's Birthday")
-        (datetime.date(2020, 5, 25), 'Memorial Day')
-        (datetime.date(2020, 7, 3), 'Independence Day (observed)')
-        (datetime.date(2020, 7, 4), 'Independence Day')
-        (datetime.date(2020, 9, 7), 'Labor Day')
-        (datetime.date(2020, 10, 12), 'Columbus Day')
-        (datetime.date(2020, 11, 11), 'Veterans Day')
-        (datetime.date(2020, 11, 26), 'Thanksgiving Day')
-        (datetime.date(2020, 12, 25), 'Christmas Day')
-
-    Some holidays are only present in parts of a country:
-
-        >>> us_pr_holidays = country_holidays('US', subdiv='PR')
-        >>> assert '2018-01-06' not in us_holidays
-        >>> assert '2018-01-06' in us_pr_holidays
-
-    Append custom holiday dates by passing one of:
-
-    * a `dict` with date/name key/value pairs (e.g.
-      `{'2010-07-10': 'My birthday!'}`),
-    * a list of dates (as a `datetime.date`, `datetime.datetime`,
-      `str`, `int`, or `float`); "Holiday" will be used as a description,
-    * or a single date item (of one of the types above); "Holiday" will be
-      used as a description:
-
-    ```python
-    >>> custom_holidays = country_holidays('US', years=2015)
-    >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
-    >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
-    >>> custom_holidays.update(date(2015, 12, 25))
-    >>> assert date(2015, 1, 1) in custom_holidays
-    >>> assert date(2015, 1, 2) not in custom_holidays
-    >>> assert '12/25/2015' in custom_holidays
-    ```
-
-    For more complex logic, like 4th Monday of January, you can inherit the
-    [`HolidayBase`][holidays.holiday_base.HolidayBase] class and define your
-    own `_populate` method. See documentation for examples.
     """
     import holidays
 
@@ -241,8 +138,7 @@ def financial_holidays(
 ) -> HolidayBase:
     """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
-    Include public holidays for the financial market matching `market` and other keyword
-    arguments.
+    Include holidays for the financial market matching `market` and other keyword arguments.
 
     Args:
         market:
@@ -252,14 +148,14 @@ def financial_holidays(
             Currently not implemented for markets (see documentation).
 
         years:
-            The year(s) to pre-calculate public holidays for at instantiation.
+            The year(s) to pre-calculate holidays for at instantiation.
 
         expand:
             Whether the entire year is calculated when one date from that year
             is requested.
 
         observed:
-            Whether to include the dates of when public holidays are observed
+            Whether to include the dates of when holidays are observed
             (e.g. a holiday falling on a Sunday being observed the following
             Monday). `False` may not work for all markets.
 
@@ -300,14 +196,6 @@ def financial_holidays(
 
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `market`.
-
-    Example usage:
-
-        >>> from holidays import financial_holidays
-        >>> nyse_holidays = financial_holidays('XNYS')
-
-    See [country_holidays()][holidays.utils.country_holidays] documentation for further
-    details and examples.
     """
     import holidays
 
