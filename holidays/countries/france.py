@@ -10,6 +10,24 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    APR,
+    MAY,
+    JUL,
+    SEP,
+    NOV,
+    DEC,
+    MON,
+    SAT,
+    SUN,
+    _timedelta,
+    _get_nth_weekday_from,
+)
+from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
@@ -44,10 +62,20 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://web.archive.org/web/20190812043635/http://histoire.assemblee.pf/articles.php?id=568>
         * <https://web.archive.org/web/20250618073111/https://www.tahitipresse.pf/2025/05/polynesie-29-juin-ou-20-novembre/>
         * <https://web.archive.org/web/20250618061809/https://la1ere.franceinfo.fr/nouvellecaledonie/commemorations-differentes-24-septembre-752087.html>
+        * School holidays:
+            * [Calendrier scolaire](https://web.archive.org/web/20260206165036/https://www.education.gouv.fr/calendrier-scolaire-100148)
+            * [Le calendrier scolaire (open data)](https://web.archive.org/web/20260202011841/https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/)
+            * [Arrêté du 7 décembre 2022 (2023-2024 to 2025-2026)](https://web.archive.org/web/20250326034935/https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046704476/)
+            * [Arrêté du 22 octobre 2025 (2026-2027)](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052416058)
+            * [Arrêté du 21 juillet 2026 (2027-2028)](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054457294)
 
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,
     which makes it difficult to enumerate.
+
+    !!! note "School holidays"
+        School holidays are available for the mainland school zones A, B and C
+        (by académie) since the 2017-2018 school year. Moselle and Alsace are in zone B.
     """
 
     country = "FR"
@@ -71,6 +99,10 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "PM",   # Saint-Pierre-et-Miquelon.
         "TF",   # Terres australes françaises.
         "WF",   # Wallis-et-Futuna.
+        # School zones.
+        "Zone A",
+        "Zone B",
+        "Zone C",
     )
     # fmt: on
     subdivisions_aliases = {
@@ -97,6 +129,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Terres australes françaises": "TF",
         "Wallis-et-Futuna": "WF",
     }
+    supported_categories: tuple[str, ...] = (PUBLIC, SCHOOL)
     supported_languages = ("en_US", "fr", "th", "uk")
     _deprecated_subdivisions = (
         "Alsace-Moselle",
@@ -109,6 +142,14 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
+
+    def _add_multiday_holiday(
+        self, start_date: date, duration_days: int, *, name: str | None = None
+    ) -> set[date]:
+        """Add a multi-day holiday starting from `start_date` (inclusive)."""
+        return super()._add_multiday_holiday(
+            _timedelta(start_date, -1), duration_days=duration_days, name=name
+        )
 
     def _populate_public_holidays(self):
         # Established on March 28th, 1810.
@@ -179,6 +220,110 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._populate_subdiv_6ae_public_holidays()
             case "Saint-Barthélémy":
                 self._populate_subdiv_bl_public_holidays()
+
+    def _populate_school_zone_holidays(self, zone: int):
+        if self._year <= 2016:
+            return None
+
+        # Christmas Break.
+        name = tr("Vacances de Noël")
+
+        # Saturday on or before Dec 23 → 16 days (17 if Jan 1 is on Sunday).
+        for year in (self._year - 1, self._year):
+            if year >= 2017:
+                self._add_multiday_holiday(
+                    _get_nth_weekday_from(-1, SAT, date(year, DEC, 23)),
+                    17 if self._is_sunday(date(year + 1, JAN, 1)) else 16,
+                    name=name,
+                )
+
+        if self._year >= 2018:
+            # Zones take these breaks in consecutive weeks, each one week later every year (the
+            # third week wraps to the first); the order was A, C, B in 2018 and A, B, C in 2023.
+            week = (
+                (self._year - 2018 - zone) % 3
+                if self._year <= 2022
+                else (self._year - 2023 + zone) % 3
+            )
+
+            # Saturday on or after Feb 4 → 16 days.
+            self._add_multiday_holiday(
+                _get_nth_weekday_from(week + 1, SAT, date(self._year, FEB, 4)),
+                16,
+                # Winter Break.
+                name=tr("Vacances d'hiver"),
+            )
+
+            # Saturday on or after Apr 3 → 16 days (17 if the next Monday is a public holiday).
+            # All zones had the same spring break in 2021 because of COVID-19.
+            spring_start = (
+                date(self._year, APR, 10)
+                if self._year == 2021
+                else _get_nth_weekday_from(week + 1, SAT, date(self._year, APR, 3))
+            )
+            next_monday = _timedelta(spring_start, +16)
+            self._add_multiday_holiday(
+                spring_start,
+                17
+                if next_monday
+                in {
+                    _timedelta(self._easter_sunday, +1),
+                    date(self._year, MAY, 1),
+                    date(self._year, MAY, 8),
+                }
+                else 16,
+                # Spring Break.
+                name=tr("Vacances de printemps"),
+            )
+
+            if self._year >= 2019:
+                # Ascension Thursday → 4 days.
+                self._add_multiday_holiday(
+                    _timedelta(self._easter_sunday, +39),
+                    4,
+                    # Ascension Break.
+                    name=tr("Pont de l'Ascension"),
+                )
+
+            # Saturday on or after Jul 2, unless classes end on a weekday.
+            summer_starts = {2021: 7, 2022: 8, 2028: 5}
+            summer_start = (
+                date(self._year, JUL, summer_starts[self._year])
+                if self._year in summer_starts
+                else _get_nth_weekday_from(1, SAT, date(self._year, JUL, 2))
+            )
+
+            # Classes resume on Sep 1, on Thursday instead of Wednesday and on Monday instead of
+            # Friday to Sunday.
+            school_start = date(self._year, SEP, 1)
+            if self._is_wednesday(school_start):
+                school_start = _timedelta(school_start, +1)
+            elif self._is_friday(school_start) or self._is_weekend(school_start):
+                school_start = _get_nth_weekday_from(1, MON, school_start)
+
+            self._add_multiday_holiday(
+                summer_start,
+                (school_start - summer_start).days,
+                # Summer Break.
+                name=tr("Vacances d'été"),
+            )
+
+        # Saturday → 16 days, until the 1st Sunday on or after Nov 1.
+        self._add_multiday_holiday(
+            _timedelta(_get_nth_weekday_from(1, SUN, date(self._year, NOV, 1)), -15),
+            16,
+            # All Saints' Break.
+            name=tr("Vacances de la Toussaint"),
+        )
+
+    def _populate_subdiv_zone_a_school_holidays(self):
+        self._populate_school_zone_holidays(zone=0)
+
+    def _populate_subdiv_zone_b_school_holidays(self):
+        self._populate_school_zone_holidays(zone=1)
+
+    def _populate_subdiv_zone_c_school_holidays(self):
+        self._populate_school_zone_holidays(zone=2)
 
     # Moselle.
     def _populate_subdiv_57_public_holidays(self):
