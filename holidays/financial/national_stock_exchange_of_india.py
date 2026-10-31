@@ -265,9 +265,15 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
 
 
 class NationalStockExchangeOfIndiaStaticHolidays:
-    """National Stock Exchange of India (NSE) special holidays."""
+    """National Stock Exchange of India (NSE) special holidays.
+
+    References:
+        * [Municipal Corporation Election 2026](https://web.archive.org/web/20260521081539/https://nsearchives.nseindia.com/content/circulars/CMTR72260.pdf)
+    """
 
     special_public_holidays = {
         # New Year's Day.
         2010: (JAN, 1, tr("New Year")),
+        # Municipal Corporation Election.
+        2026: (JAN, 15, tr("Municipal Corporation Election")),
     }
