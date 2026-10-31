@@ -24,6 +24,7 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
+    NOV,
     THU,
     FRI,
     SAT,
@@ -44,6 +45,13 @@ class Oman(HolidayBase, IslamicHolidays):
         * [Decree 56/2020](https://web.archive.org/web/20240522150742/https://decree.om/2020/rd20200056/)
         * [Decree 88/2022](https://web.archive.org/web/20221207194900/https://decree.om/2022/rd20220088/)
         * [Decree 15/2025 (National day is moved)](https://web.archive.org/web/20250121132446/https://decree.om/2025/rd20250015/)
+        * National Day:
+            * [2020](https://web.archive.org/web/20211123045753/https://timesofoman.com/article/95138-oman-national-day-holidays-announced-1)
+            * [2021](https://web.archive.org/web/20251110081526/https://timesofoman.com/article/109053-official-holiday-for-51st-national-day-announced)
+            * [2022](https://web.archive.org/web/20221116155610/https://www.omanobserver.om/ampArticle/1128563)
+            * [2023](https://web.archive.org/web/20231119124812/https://timesofoman.com/article/138473-53rd-national-day-holidays-announced-in-oman)
+            * [2024](https://web.archive.org/web/20241112225931/https://timesofoman.com/article/151930-holiday-declared-in-oman-for-national-day)
+            * [2025](https://web.archive.org/web/20251215170354/https://timesofoman.com/article/164821-national-day-holidays-announced-in-oman-2)
         * 2025:
             * [Accession Day](https://web.archive.org/web/20250720023522/https://www.omanobserver.om/article/1164410/oman/his-majesty/holiday-for-hms-accession-day-announced-in-oman)
             * [Isra' and Mi'raj](https://web.archive.org/web/20250120105626/https://gulfnews.com/world/gulf/oman/isra-wal-miraj-oman-announces-holiday-for-public-private-sectors-1.500019263)
@@ -98,15 +106,18 @@ class Oman(HolidayBase, IslamicHolidays):
         if self._year >= 2020:
             # National Day.
             name = tr("يوم وطني")
-            if self._year <= 2024:
-                self._add_holiday_nov_18(name)
-                self._add_holiday_nov_19(name)
-            elif self._year == 2026:
-                self._add_holiday_nov_25(name)
-                self._add_holiday_nov_26(name)
-            else:
-                self._add_holiday_nov_20(name)
-                self._add_holiday_nov_21(name)
+            national_days = {
+                2020: (NOV, 25),
+                2021: (NOV, 28),
+                2022: (NOV, 30),
+                2023: (NOV, 22),
+                2024: (NOV, 20),
+                2025: (NOV, 26),
+                2026: (NOV, 25),
+            }
+            self._add_multiday_holiday(
+                self._add_holiday(name, national_days.get(self._year, (NOV, 20))), 1
+            )
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))

@@ -38,18 +38,26 @@ class TestOman(CommonCountryTests, TestCase):
 
     def test_national_day(self):
         name = "يوم وطني"
-        self.assertHolidayName(name, (f"{year}-11-18" for year in range(2020, 2025)))
-        self.assertHolidayName(name, (f"{year}-11-19" for year in range(2020, 2025)))
         self.assertHolidayName(
             name,
-            (f"{year}-11-20" for year in (2025, *range(2027, self.end_year))),
+            "2020-11-25",
+            "2020-11-26",
+            "2021-11-28",
+            "2021-11-29",
+            "2022-11-30",
+            "2022-12-01",
+            "2023-11-22",
+            "2023-11-23",
+            "2024-11-20",
+            "2024-11-21",
+            "2025-11-26",
+            "2025-11-27",
+            "2026-11-25",
+            "2026-11-26",
         )
-        self.assertHolidayName(
-            name,
-            (f"{year}-11-21" for year in (2025, *range(2027, self.end_year))),
-        )
-        self.assertHolidayName(name, "2026-11-25", "2026-11-26")
-        self.assertNoHolidayName(name, "2026-11-20", "2026-11-21")
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2027, self.end_year)))
+        self.assertHolidayName(name, (f"{year}-11-21" for year in range(2027, self.end_year)))
+        self.assertHolidayNameCount(name, 2, range(2020, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_islamic_new_year(self):
@@ -219,8 +227,8 @@ class TestOman(CommonCountryTests, TestCase):
             ("2021-07-22", "عيد الأضحى"),
             ("2021-08-10", "رأس السنة الهجرية"),
             ("2021-10-19", "مولد النبي"),
-            ("2021-11-18", "يوم وطني"),
-            ("2021-11-19", "يوم وطني"),
+            ("2021-11-28", "يوم وطني"),
+            ("2021-11-29", "يوم وطني"),
         )
 
     def test_l10n_default(self):
@@ -238,8 +246,8 @@ class TestOman(CommonCountryTests, TestCase):
             ("2023-06-30", "عيد الأضحى"),
             ("2023-07-20", "رأس السنة الهجرية"),
             ("2023-09-28", "مولد النبي"),
-            ("2023-11-18", "يوم وطني"),
-            ("2023-11-19", "يوم وطني"),
+            ("2023-11-22", "يوم وطني"),
+            ("2023-11-23", "يوم وطني"),
         )
 
     def test_l10n_en_us(self):
@@ -258,8 +266,8 @@ class TestOman(CommonCountryTests, TestCase):
             ("2023-06-30", "Eid al-Adha"),
             ("2023-07-20", "Islamic New Year"),
             ("2023-09-28", "Prophet's Birthday"),
-            ("2023-11-18", "National Day"),
-            ("2023-11-19", "National Day"),
+            ("2023-11-22", "National Day"),
+            ("2023-11-23", "National Day"),
         )
 
     def test_l10n_ur_pk(self):
@@ -278,6 +286,6 @@ class TestOman(CommonCountryTests, TestCase):
             ("2023-06-30", "عید الاضحی"),
             ("2023-07-20", "اسلامی نیا سال"),
             ("2023-09-28", "عید میلاد النبی"),
-            ("2023-11-18", "قومی دن"),
-            ("2023-11-19", "قومی دن"),
+            ("2023-11-22", "قومی دن"),
+            ("2023-11-23", "قومی دن"),
         )
