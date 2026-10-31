@@ -28,10 +28,9 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
             * [2022](https://web.archive.org/web/20220817092557/https://pmo.gov.bh/en/article/hrh-the-crown-prince-and-prime-minister-issues-ashura-holiday-circular-2022)
             * [2023](https://web.archive.org/web/20230720172259/https://pmo.gov.bh/en/article/hrh-the-crown-prince-and-prime-minister-issues-ashura-holiday-circular-2023)
             * [2024](https://web.archive.org/web/20250420073702/https://www.timeanddate.com/holidays/bahrain/2024)
-            * [2025](https://web.archive.org/web/20260615145004/https://gulfnews.com/world/mena/long-weekend-two-day-holiday-announced-in-bahrain-1.500184268)
-        * 2026:
-            * <https://web.archive.org/web/20260517204154/https://www.cbb.gov.bh/official-bank-holidays/>
-            * <https://web.archive.org/web/20260922162323/https://www.timeanddate.com/holidays/bahrain/2026>
+            * [2025](https://web.archive.org/web/20250705230332/https://www.cbb.gov.bh/wp-content/uploads/2025/07/Ashoora-Holiday-2025.pdf)
+            * [2026](https://www.cbb.gov.bh/wp-content/uploads/2026/06/Ashura-Holiday-2026.pdf)
+        * [2026](https://web.archive.org/web/20260922162323/https://www.timeanddate.com/holidays/bahrain/2026)
     """
 
     country = "BH"
