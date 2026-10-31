@@ -23,7 +23,11 @@ class TestOman(CommonCountryTests, TestCase):
 
     def test_accession_day(self):
         name = "اليوم الوطني لتولي السلطان"
-        self.assertHolidayName(name, (f"{year}-01-11" for year in range(2020, self.end_year)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-01-11" for year in (*range(2020, 2025), *range(2027, self.end_year))),
+        )
+        self.assertHolidayName(name, "2025-01-12", "2026-01-15")
         self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_renaissance_day(self):
@@ -35,8 +39,15 @@ class TestOman(CommonCountryTests, TestCase):
         name = "يوم وطني"
         self.assertHolidayName(name, (f"{year}-11-18" for year in range(2020, 2025)))
         self.assertHolidayName(name, (f"{year}-11-19" for year in range(2020, 2025)))
-        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2025, self.end_year)))
-        self.assertHolidayName(name, (f"{year}-11-21" for year in range(2025, self.end_year)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-11-20" for year in (2025, *range(2027, self.end_year))),
+        )
+        self.assertHolidayName(
+            name,
+            (f"{year}-11-21" for year in (2025, *range(2027, self.end_year))),
+        )
+        self.assertHolidayName(name, "2026-11-25", "2026-11-26")
         self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_islamic_new_year(self):
@@ -48,7 +59,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2022-07-30",
             "2023-07-20",
             "2024-07-07",
-            "2025-06-26",
+            "2025-06-29",
+            "2026-06-18",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -61,7 +73,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2022-10-09",
             "2023-09-28",
             "2024-09-15",
-            "2025-09-04",
+            "2025-09-07",
+            "2026-08-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -74,7 +87,8 @@ class TestOman(CommonCountryTests, TestCase):
             "2022-03-01",
             "2023-02-19",
             "2024-02-08",
-            "2025-01-27",
+            "2025-01-30",
+            "2026-01-18",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -111,6 +125,10 @@ class TestOman(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
             "2025-04-02",
+            "2026-03-19",
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -134,6 +152,14 @@ class TestOman(CommonCountryTests, TestCase):
             "2024-06-17",
             "2024-06-18",
             "2024-06-19",
+            "2025-06-05",
+            "2025-06-06",
+            "2025-06-07",
+            "2025-06-08",
+            "2026-05-26",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 4, set(self.full_range) - {1974, 2039, 2006, 2007}
