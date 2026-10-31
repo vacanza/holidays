@@ -14,6 +14,7 @@ from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
 from holidays.calendars.gregorian import (
+    JAN,
     FEB,
     MAR,
     APR,
@@ -23,6 +24,7 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
+    NOV,
     THU,
     FRI,
     SAT,
@@ -43,6 +45,23 @@ class Oman(HolidayBase, IslamicHolidays):
         * [Decree 56/2020](https://web.archive.org/web/20240522150742/https://decree.om/2020/rd20200056/)
         * [Decree 88/2022](https://web.archive.org/web/20221207194900/https://decree.om/2022/rd20220088/)
         * [Decree 15/2025 (National day is moved)](https://web.archive.org/web/20250121132446/https://decree.om/2025/rd20250015/)
+        * National Day:
+            * [2020](https://web.archive.org/web/20211123045753/https://timesofoman.com/article/95138-oman-national-day-holidays-announced-1)
+            * [2021](https://web.archive.org/web/20251110081526/https://timesofoman.com/article/109053-official-holiday-for-51st-national-day-announced)
+            * [2022](https://web.archive.org/web/20221116155610/https://www.omanobserver.om/ampArticle/1128563)
+            * [2023](https://web.archive.org/web/20231119124812/https://timesofoman.com/article/138473-53rd-national-day-holidays-announced-in-oman)
+            * [2024](https://web.archive.org/web/20241112225931/https://timesofoman.com/article/151930-holiday-declared-in-oman-for-national-day)
+            * [2025](https://web.archive.org/web/20251215170354/https://timesofoman.com/article/164821-national-day-holidays-announced-in-oman-2)
+        * 2025:
+            * [Accession Day](https://web.archive.org/web/20250720023522/https://www.omanobserver.om/article/1164410/oman/his-majesty/holiday-for-hms-accession-day-announced-in-oman)
+            * [Isra' and Mi'raj](https://web.archive.org/web/20250120105626/https://gulfnews.com/world/gulf/oman/isra-wal-miraj-oman-announces-holiday-for-public-private-sectors-1.500019263)
+            * [Eid al-Adha](https://web.archive.org/web/20260211144313/https://www.omanobserver.om/article/1171265/oman/community/oman-announces-eid-al-adha-holidays)
+            * [Islamic New Year](https://web.archive.org/web/20260312103204/https://www.omanobserver.om/article/1172199/oman/community/holiday-announced-for-hijri-new-year)
+            * [Prophet's Birthday](https://web.archive.org/web/20260112172726/https://www.omanobserver.om/article/1175844/oman/community/holiday-declared-on-occasion-of-prophets-birthday)
+        * 2026:
+            * [Holidays](https://web.archive.org/web/20260103125455/https://www.omanobserver.om/article/1181777/oman/labour/except-for-eids-oman-announces-public-holidays-for-2026)
+            * [Eid al-Fitr](https://web.archive.org/web/20260312222356/https://timesofoman.com/article/169350-eid-al-fitr-holidays-announced-in-oman-1)
+            * [Eid al-Adha](https://web.archive.org/web/20260615230939/https://www.omanobserver.om/article/1189816/oman/community/eid-al-adha-holidays-announced-in-oman)
     """
 
     country = "OM"
@@ -72,7 +91,13 @@ class Oman(HolidayBase, IslamicHolidays):
     def _populate_public_holidays(self):
         if self._year >= 2020:
             # Sultan's Accession Day.
-            self._add_holiday_jan_11(tr("اليوم الوطني لتولي السلطان"))
+            name = tr("اليوم الوطني لتولي السلطان")
+            if self._year == 2025:
+                self._add_holiday_jan_12(name)
+            elif self._year == 2026:
+                self._add_holiday_jan_15(name)
+            else:
+                self._add_holiday_jan_11(name)
 
         if self._year <= 2019:
             # Renaissance Day.
@@ -81,12 +106,18 @@ class Oman(HolidayBase, IslamicHolidays):
         if self._year >= 2020:
             # National Day.
             name = tr("يوم وطني")
-            if self._year <= 2024:
-                self._add_holiday_nov_18(name)
-                self._add_holiday_nov_19(name)
-            else:
-                self._add_holiday_nov_20(name)
-                self._add_holiday_nov_21(name)
+            national_days = {
+                2020: (NOV, 25),
+                2021: (NOV, 28),
+                2022: (NOV, 30),
+                2023: (NOV, 22),
+                2024: (NOV, 20),
+                2025: (NOV, 26),
+                2026: (NOV, 25),
+            }
+            self._add_multiday_holiday(
+                self._add_holiday(name, national_days.get(self._year, (NOV, 20))), 1
+            )
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
@@ -124,44 +155,51 @@ class OMN(Oman):
 
 class OmanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20240911084650/https://www.timeanddate.com/holidays/oman/muharram-new-year
-    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2018, 2024)
+    HIJRI_NEW_YEAR_DATES_CONFIRMED_YEARS = (2018, 2026)
     HIJRI_NEW_YEAR_DATES = {
         2019: (SEP, 1),
         2020: (AUG, 21),
         2021: (AUG, 10),
         2023: (JUL, 20),
+        2025: (JUN, 29),
+        2026: (JUN, 18),
     }
 
     # https://web.archive.org/web/20240810230306/https://www.timeanddate.com/holidays/oman/prophet-birthday
-    MAWLID_DATES_CONFIRMED_YEARS = (2018, 2024)
+    MAWLID_DATES_CONFIRMED_YEARS = (2018, 2026)
     MAWLID_DATES = {
         2021: (OCT, 19),
         2022: (OCT, 9),
         2023: (SEP, 28),
+        2025: (SEP, 7),
+        2026: (AUG, 27),
     }
 
     # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/isra-miraj
-    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2018, 2025)
+    ISRA_AND_MIRAJ_DATES_CONFIRMED_YEARS = (2018, 2026)
     ISRA_AND_MIRAJ_DATES = {
         2022: (MAR, 1),
         2023: (FEB, 19),
+        2025: (JAN, 30),
+        2026: (JAN, 18),
     }
 
     # https://web.archive.org/web/20240913230603/https://www.timeanddate.com/holidays/oman/eid-al-adha
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2019, 2024)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2019, 2026)
     EID_AL_ADHA_DATES = {
         2024: (JUN, 17),
     }
 
     # https://web.archive.org/web/20241231191036/https://www.timeanddate.com/holidays/oman/eid-al-fitr
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2019, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2019, 2026)
     EID_AL_FITR_DATES = {
         2023: (APR, 22),
         2025: (MAR, 31),
     }
 
     # https://web.archive.org/web/20240814104839/https://www.timeanddate.com/holidays/oman/ramadan-begins
-    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2023, 2025)
+    RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2023, 2026)
     RAMADAN_BEGINNING_DATES = {
         2024: (MAR, 12),
+        2026: (FEB, 19),
     }
