@@ -151,84 +151,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             _timedelta(start_date, -1), duration_days=duration_days, name=name
         )
 
-    def _add_christmas_break(self):
-        # Christmas Break.
-        name = tr("Vacances de Noël")
-
-        # Saturday on or before Dec 23 → 16 days (17 if Jan 1 is on Sunday).
-        for year in (self._year - 1, self._year):
-            if year >= 2017:
-                self._add_multiday_holiday(
-                    _get_nth_weekday_from(-1, SAT, date(year, DEC, 23)),
-                    17 if self._is_sunday(date(year + 1, JAN, 1)) else 16,
-                    name=name,
-                )
-
-    def _add_staggered_breaks(self, zone: int):
-        # Zones take these breaks in consecutive weeks, each one week later every year (the
-        # third week wraps to the first); the order was A, C, B in 2018 and A, B, C in 2023.
-        week = (
-            (self._year - 2018 - zone) % 3
-            if self._year <= 2022
-            else (self._year - 2023 + zone) % 3
-        )
-
-        # Saturday on or after Feb 4 → 16 days.
-        self._add_multiday_holiday(
-            _get_nth_weekday_from(week + 1, SAT, date(self._year, FEB, 4)),
-            16,
-            # Winter Break.
-            name=tr("Vacances d'hiver"),
-        )
-
-        # Saturday on or after Apr 3 → 16 days (17 if the next Monday is a public holiday).
-        # All zones had the same spring break in 2021 because of COVID-19.
-        spring_start = (
-            date(self._year, APR, 10)
-            if self._year == 2021
-            else _get_nth_weekday_from(week + 1, SAT, date(self._year, APR, 3))
-        )
-        next_monday = _timedelta(spring_start, +16)
-        self._add_multiday_holiday(
-            spring_start,
-            17
-            if next_monday
-            in {
-                _timedelta(self._easter_sunday, +1),
-                date(self._year, MAY, 1),
-                date(self._year, MAY, 8),
-            }
-            else 16,
-            # Spring Break.
-            name=tr("Vacances de printemps"),
-        )
-
-    def _add_summer_break(self):
-        # Saturday on or after Jul 2, unless classes end on a weekday.
-        summer_starts = {2021: 7, 2022: 8, 2028: 5}
-        summer_start = (
-            date(self._year, JUL, summer_starts[self._year])
-            if self._year in summer_starts
-            else _get_nth_weekday_from(1, SAT, date(self._year, JUL, 2))
-        )
-
-        # Classes resume on Sep 1, on Thursday instead of Wednesday and on Monday instead of
-        # Friday to Sunday.
-        sep_1 = date(self._year, SEP, 1)
-        if self._is_wednesday(sep_1):
-            school_start = _timedelta(sep_1, +1)
-        elif self._is_friday(sep_1) or self._is_weekend(sep_1):
-            school_start = _get_nth_weekday_from(1, MON, sep_1)
-        else:
-            school_start = sep_1
-
-        self._add_multiday_holiday(
-            summer_start,
-            (school_start - summer_start).days,
-            # Summer Break.
-            name=tr("Vacances d'été"),
-        )
-
     def _populate_public_holidays(self):
         # Established on March 28th, 1810.
         if self._year >= 1811:
@@ -303,10 +225,56 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year <= 2016:
             return None
 
-        self._add_christmas_break()
+        # Christmas Break.
+        name = tr("Vacances de Noël")
+
+        # Saturday on or before Dec 23 → 16 days (17 if Jan 1 is on Sunday).
+        for year in (self._year - 1, self._year):
+            if year >= 2017:
+                self._add_multiday_holiday(
+                    _get_nth_weekday_from(-1, SAT, date(year, DEC, 23)),
+                    17 if self._is_sunday(date(year + 1, JAN, 1)) else 16,
+                    name=name,
+                )
 
         if self._year >= 2018:
-            self._add_staggered_breaks(zone)
+            # Zones take these breaks in consecutive weeks, each one week later every year (the
+            # third week wraps to the first); the order was A, C, B in 2018 and A, B, C in 2023.
+            week = (
+                (self._year - 2018 - zone) % 3
+                if self._year <= 2022
+                else (self._year - 2023 + zone) % 3
+            )
+
+            # Saturday on or after Feb 4 → 16 days.
+            self._add_multiday_holiday(
+                _get_nth_weekday_from(week + 1, SAT, date(self._year, FEB, 4)),
+                16,
+                # Winter Break.
+                name=tr("Vacances d'hiver"),
+            )
+
+            # Saturday on or after Apr 3 → 16 days (17 if the next Monday is a public holiday).
+            # All zones had the same spring break in 2021 because of COVID-19.
+            spring_start = (
+                date(self._year, APR, 10)
+                if self._year == 2021
+                else _get_nth_weekday_from(week + 1, SAT, date(self._year, APR, 3))
+            )
+            next_monday = _timedelta(spring_start, +16)
+            self._add_multiday_holiday(
+                spring_start,
+                17
+                if next_monday
+                in {
+                    _timedelta(self._easter_sunday, +1),
+                    date(self._year, MAY, 1),
+                    date(self._year, MAY, 8),
+                }
+                else 16,
+                # Spring Break.
+                name=tr("Vacances de printemps"),
+            )
 
             if self._year >= 2019:
                 # Ascension Thursday → 4 days.
@@ -317,7 +285,28 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
                     name=tr("Pont de l'Ascension"),
                 )
 
-            self._add_summer_break()
+            # Saturday on or after Jul 2, unless classes end on a weekday.
+            summer_starts = {2021: 7, 2022: 8, 2028: 5}
+            summer_start = (
+                date(self._year, JUL, summer_starts[self._year])
+                if self._year in summer_starts
+                else _get_nth_weekday_from(1, SAT, date(self._year, JUL, 2))
+            )
+
+            # Classes resume on Sep 1, on Thursday instead of Wednesday and on Monday instead of
+            # Friday to Sunday.
+            school_start = date(self._year, SEP, 1)
+            if self._is_wednesday(school_start):
+                school_start = _timedelta(school_start, +1)
+            elif self._is_friday(school_start) or self._is_weekend(school_start):
+                school_start = _get_nth_weekday_from(1, MON, school_start)
+
+            self._add_multiday_holiday(
+                summer_start,
+                (school_start - summer_start).days,
+                # Summer Break.
+                name=tr("Vacances d'été"),
+            )
 
         # Saturday → 16 days, until the 1st Sunday on or after Nov 1.
         self._add_multiday_holiday(
@@ -348,10 +337,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Saint Stephen's Day.
             self._add_christmas_day_two(tr("Saint-Étienne"))
 
-    def _populate_subdiv_57_school_holidays(self):
-        # Académie de Nancy-Metz.
-        self._populate_subdiv_zone_b_school_holidays()
-
     # Alsace.
     def _populate_subdiv_6ae_public_holidays(self):
         # Established on August 16th, 1892.
@@ -363,10 +348,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1892:
             # Saint Stephen's Day.
             self._add_christmas_day_two(tr("Saint-Étienne"))
-
-    def _populate_subdiv_6ae_school_holidays(self):
-        # Académie de Strasbourg.
-        self._populate_subdiv_zone_b_school_holidays()
 
     # Guadeloupe.
     def _populate_subdiv_971_public_holidays(self):

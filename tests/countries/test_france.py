@@ -23,8 +23,7 @@ class TestFrance(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(France, with_subdiv_categories=True)
         cls.zone_school_holidays = tuple(
-            cls.subdiv_school_holidays[subdiv]
-            for subdiv in ("57", "6AE", "Zone A", "Zone B", "Zone C")
+            cls.subdiv_school_holidays[subdiv] for subdiv in ("Zone A", "Zone B", "Zone C")
         )
 
     def setUp(self):
@@ -401,11 +400,13 @@ class TestFrance(CommonCountryTests, TestCase):
 
     def test_no_school_holidays(self):
         self.assertNoHolidays(France(categories=SCHOOL, years=self.full_range))
-        for subdiv in ("57", "6AE", "Zone A", "Zone B", "Zone C"):
+        for subdiv in ("Zone A", "Zone B", "Zone C"):
             self.assertNoHolidays(
                 France(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2017))
             )
         for subdiv in (
+            "57",
+            "6AE",
             "971",
             "972",
             "973",
@@ -623,15 +624,6 @@ class TestFrance(CommonCountryTests, TestCase):
             )
             self.assertNoHolidayName(name, holidays, 2017)
             self.assertHolidayName(name, holidays, range(2018, self.end_year))
-
-    def test_school_alsace_moselle(self):
-        zone_b_holidays = France(subdiv="Zone B", years=range(2017, 2030), categories=SCHOOL)
-        for subdiv in ("57", "6AE", "Alsace", "Moselle"):
-            self.assertEqual(
-                dict(France(subdiv=subdiv, years=range(2017, 2030), categories=SCHOOL)),
-                dict(zone_b_holidays),
-                subdiv,
-            )
 
     def test_school_and_public_categories(self):
         holidays = France(subdiv="Zone A", years=2026, categories=(PUBLIC, SCHOOL))

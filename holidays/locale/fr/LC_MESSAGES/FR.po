@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2026-10-24 10:53+0500\n"
+"PO-Revision-Date: 2026-10-31 21:33+0500\n"
 "Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -27,22 +27,6 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: fr\n"
-
-#. Christmas Break.
-msgid "Vacances de Noël"
-msgstr ""
-
-#. Winter Break.
-msgid "Vacances d'hiver"
-msgstr ""
-
-#. Spring Break.
-msgid "Vacances de printemps"
-msgstr ""
-
-#. Summer Break.
-msgid "Vacances d'été"
-msgstr ""
 
 #. New Year's Day.
 msgid "Jour de l'an"
@@ -96,8 +80,24 @@ msgstr ""
 msgid "Noël"
 msgstr ""
 
+#. Christmas Break.
+msgid "Vacances de Noël"
+msgstr ""
+
+#. Winter Break.
+msgid "Vacances d'hiver"
+msgstr ""
+
+#. Spring Break.
+msgid "Vacances de printemps"
+msgstr ""
+
 #. Ascension Break.
 msgid "Pont de l'Ascension"
+msgstr ""
+
+#. Summer Break.
+msgid "Vacances d'été"
 msgstr ""
 
 #. All Saints' Break.
