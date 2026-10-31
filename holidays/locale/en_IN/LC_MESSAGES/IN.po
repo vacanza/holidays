@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-10-25 08:05+0530\n"
+"Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
 "MIME-Version: 1.0\n"
@@ -653,8 +653,16 @@ msgstr ""
 msgid "Mannam's Jayanti"
 msgstr ""
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr ""
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
+msgstr ""
+
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
 msgstr ""
 
 #. Onam (Day 2).
@@ -667,6 +675,10 @@ msgstr ""
 
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
+msgstr ""
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
 msgstr ""
 
 #. Vijayadashami.
