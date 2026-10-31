@@ -63,6 +63,9 @@ docs = [
   "properdocs>=1.6.6,<2",
   "properdocs-theme-readthedocs>=1.6.5,<2",
 ]
+benchmark = [
+  "pyperf>=2.10,<3",
+]
 build = [
   "polib>=1.2,<2",
 ]
