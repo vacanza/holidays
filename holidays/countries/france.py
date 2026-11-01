@@ -75,7 +75,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     !!! note "School holidays"
         School holidays are available for the mainland school zones A, B and C
-        (by académie) since the 2017-2018 school year. Moselle and Alsace are in zone B.
+        (by académie) since the 2017-2018 school year.
     """
 
     country = "FR"

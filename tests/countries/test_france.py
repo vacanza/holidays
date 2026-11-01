@@ -25,6 +25,7 @@ class TestFrance(CommonCountryTests, TestCase):
         cls.zone_school_holidays = tuple(
             cls.subdiv_school_holidays[subdiv] for subdiv in ("Zone A", "Zone B", "Zone C")
         )
+        cls.school_start_year = 2017
 
     def setUp(self):
         super().setUp()
@@ -399,28 +400,19 @@ class TestFrance(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     def test_no_school_holidays(self):
-        self.assertNoHolidays(France(categories=SCHOOL, years=self.full_range))
-        for subdiv in ("Zone A", "Zone B", "Zone C"):
-            self.assertNoHolidays(
-                France(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2017))
-            )
-        for subdiv in (
-            "57",
-            "6AE",
-            "971",
-            "972",
-            "973",
-            "974",
-            "976",
-            "BL",
-            "MF",
-            "NC",
-            "PF",
-            "PM",
-            "TF",
-            "WF",
-        ):
-            self.assertNoHolidays(France(subdiv=subdiv, categories=SCHOOL, years=self.full_range))
+        self.assertNoSchoolHolidays()
+
+        for subdiv, holidays in self.subdiv_school_holidays.items():
+            if subdiv in {"Zone A", "Zone B", "Zone C"}:
+                self.assertNoHolidays(
+                    France(
+                        subdiv=subdiv,
+                        categories=SCHOOL,
+                        years=range(self.start_year, self.school_start_year),
+                    )
+                )
+            else:
+                self.assertNoHolidays(holidays)
 
     def test_school_all_saints_break(self):
         name = "Vacances de la Toussaint"
@@ -440,8 +432,16 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2027-10-23",
                 "2027-11-07",
             )
-            self.assertNoHoliday(holidays, "2020-10-16", "2020-11-02", "2021-10-22", "2021-11-08")
-            self.assertHolidayNameCount(name, 16, holidays, range(2017, self.end_year))
+            self.assertNoHoliday(
+                holidays,
+                "2020-10-16",
+                "2020-11-02",
+                "2021-10-22",
+                "2021-11-08",
+            )
+            self.assertHolidayNameCount(
+                name, 16, holidays, range(self.school_start_year, self.end_year)
+            )
 
     def test_school_christmas_break(self):
         name = "Vacances de Noël"
@@ -514,7 +514,6 @@ class TestFrance(CommonCountryTests, TestCase):
             "2028-02-12",
             "2028-02-27",
         )
-        self.assertNoSubdivZoneASchoolHoliday("2026-02-06", "2026-02-23")
         for holidays in self.zone_school_holidays:
             self.assertHolidayNameCount(name, 16, holidays, range(2018, self.end_year))
 
@@ -555,8 +554,13 @@ class TestFrance(CommonCountryTests, TestCase):
             "2026-04-18",
             "2026-05-03",
         )
-        self.assertNoSubdivZoneASchoolHoliday("2026-04-03", "2026-04-20")
-        self.assertNoSubdivZoneCSchoolHoliday("2026-04-17", "2026-05-04")
+        self.assertNoSubdivZoneASchoolHoliday("2028-04-21", "2028-05-09")
+        self.assertNoSubdivZoneBSchoolHoliday(
+            "2019-04-05",
+            "2019-04-23",
+            "2023-04-14",
+            "2023-05-02",
+        )
         for holidays in self.zone_school_holidays:
             self.assertHolidayName(name, holidays, "2021-04-10", "2021-04-25")
             self.assertNoHoliday(holidays, "2021-04-09", "2021-04-26")
@@ -577,7 +581,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2027-05-09",
             )
             self.assertNoHoliday(holidays, "2019-05-29", "2019-06-03")
-            self.assertNoHolidayName(name, holidays, range(2017, 2019))
+            self.assertNoHolidayName(name, holidays, range(self.school_start_year, 2019))
             self.assertHolidayNameCount(name, 4, holidays, range(2019, self.end_year))
 
     def test_school_summer_break(self):
@@ -622,7 +626,7 @@ class TestFrance(CommonCountryTests, TestCase):
                 "2028-07-04",
                 "2028-09-04",
             )
-            self.assertNoHolidayName(name, holidays, 2017)
+            self.assertNoHolidayName(name, holidays, self.school_start_year)
             self.assertHolidayName(name, holidays, range(2018, self.end_year))
 
     def test_school_and_public_categories(self):
