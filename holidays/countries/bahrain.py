@@ -29,8 +29,12 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
             * [2023](https://web.archive.org/web/20230720172259/https://pmo.gov.bh/en/article/hrh-the-crown-prince-and-prime-minister-issues-ashura-holiday-circular-2023)
             * [2024](https://web.archive.org/web/20250420073702/https://www.timeanddate.com/holidays/bahrain/2024)
             * [2025](https://web.archive.org/web/20250705230332/https://www.cbb.gov.bh/wp-content/uploads/2025/07/Ashoora-Holiday-2025.pdf)
-            * [2026](https://www.cbb.gov.bh/wp-content/uploads/2026/06/Ashura-Holiday-2026.pdf)
-        * [2026](https://web.archive.org/web/20260517204154/https://www.cbb.gov.bh/official-bank-holidays/)
+            * [2026](https://web.archive.org/web/20261101110613/https://www.crownprince.bh/en/news/100053/)
+        * 2026:
+            * [Eid al-Fitr](https://web.archive.org/web/20261101111008/https://www.moroccoworldnews.com/2026/03/283178/bahrain-announces-march-20-as-eid-al-fitr-2026/)
+            * [Eid al-Adha](https://web.archive.org/web/20261101110839/https://www.pmo.gov.bh/en/article/hrh-the-crown-prince-and-prime-minister-issues-circular-on-the-eid-al-adha-holiday-2026)
+            * [Islamic New Year](https://web.archive.org/web/20261101110717/https://www.crownprince.bh/en/news/99992/)
+            * [Prophet's Birthday](https://web.archive.org/web/20261101110756/https://www.crownprince.bh/en/news/100779/)
     """
 
     country = "BH"
