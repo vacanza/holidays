@@ -116,7 +116,7 @@ class Oman(HolidayBase, IslamicHolidays):
                 2026: (NOV, 25),
             }
             self._add_multiday_holiday(
-                self._add_holiday(name, national_days.get(self._year, (NOV, 20))), 1
+                self._add_holiday(name, national_days.get(self._year, (NOV, 20))), 1, name=name
             )
 
         # Islamic New Year.
