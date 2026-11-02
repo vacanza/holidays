@@ -1,3 +1,29 @@
+## Version 0.108
+
+Released November 2, 2026
+
+- Add Securities Industry and Financial Markets Association (SIFMA) holidays (#3931 by @ahmershahdev)
+- Fix British spellings in en_US translations (#3994 by @yashgoyal0110)
+- Fix `HolidaySum` repopulating years its operands already have (#3917 by @ahmershahdev)
+- Fix mixed-script characters in holiday names (#3995 by @nayansharma8123-gif, @KJhellico)
+- Fix some holidays Marathi translations (#4001 by @nayansharma8123-gif)
+- Update Belgium holidays: add school holidays (#3874 by @yashgoyal0110, @KJhellico)
+- Update Botswana holidays: add 2024 and 2026 special holidays (#3963 by @raams95)
+- Update CI/CD workflow: add actionlint GitHub Action (#3954 by @KJhellico)
+- Update Eritrea holidays: add l10n support (#3976 by @nishokcodes)
+- Update Ireland holidays: add l10n support (#3960 by @shikhabhadoria)
+- Update Kenya holidays: add 2025 special holiday, 2025-2026 Islamic holidays dates (#3967 by @raams95)
+- Update Namibia holidays: add 2025 Regional Election Day (#3966 by @raams95)
+- Update Somalia holidays: add l10n support (#3972 by @ahmershahdev)
+- Update Taiwan holidays: keep observed dates language-independent (#3946 by @guocn, @KJhellico)
+- Update Thai calendar: fix incorrect intercalation years (#3973 by @PPsyrius)
+- Update United Arab Emirates holidays: fix 2025 and add 2026 dates (#3962 by @ahmershahdev)
+- Update `HolidayBase::__setattr__` method to validate reassignments (#3895 by @paoValle, @KJhellico)
+- Update iCal exporter: make calendars subscription-safe (#3882 by @yashgoyal0110, @arkid15r)
+- Drop Python 3.10 support (#3937 by @KJhellico)
+- Migrate N-O countries and Western Sahara tests to new test case standards (#3945 by @nishokcodes, @KJhellico)
+- Migrate Tokelau tests to new test case standards (#3951 by @The-Tallest-Stack)
+
 ## Version 0.107
 
 Released October 19, 2026
