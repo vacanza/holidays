@@ -1239,6 +1239,7 @@ class India(
             2013: (AUG, 22),
             2014: (SEP, 8),
             2024: (AUG, 20),
+            2027: (SEP, 15),
         }
         # Shri Narayana Guru's Birthday.
         name = tr("Shri Narayana Guru's Jayanti")

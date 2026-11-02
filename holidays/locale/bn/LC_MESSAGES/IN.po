@@ -666,7 +666,7 @@ msgstr "কর্কটক বাভু"
 
 #. Onam (Day 1).
 msgid "Onam (Day 1)"
-msgstr "ওনাম (প্রথম দিন)"
+msgstr "ওনম (প্রথম দিন)"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
