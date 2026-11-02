@@ -85,6 +85,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2023-05-15",
             "2024-05-13",
             "2025-05-12",
+            "2026-05-15",
         )
         self.assertHolidayName(name, range(2023, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2023))
@@ -144,9 +145,13 @@ class TestFiji(CommonCountryTests, TestCase):
             "2023-11-13",
             "2024-11-01",
             "2025-10-21",
+            "2026-11-08",
         )
 
-        dt_obs = ("2020-11-16",)
+        dt_obs = (
+            "2020-11-16",
+            "2026-11-09",
+        )
         self.assertHolidayName(f"{name} (observed)", dt_obs)
         self.assertNoNonObservedHoliday(dt_obs)
 
@@ -185,6 +190,7 @@ class TestFiji(CommonCountryTests, TestCase):
             "2023-09-30",
             "2024-09-16",
             "2025-09-06",
+            "2026-08-24",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -322,4 +328,23 @@ class TestFiji(CommonCountryTests, TestCase):
             ("2025-10-21", "Diwali"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Boxing Day"),
+        )
+
+    def test_2026(self):
+        # https://web.archive.org/web/20260411180504/https://www.fiji.gov.fj/About-Fiji/Public-Holidays
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-04", "Easter Saturday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-15", "Girmit Day"),
+            ("2026-05-29", "Ratu Sir Lala Sukuna Day"),
+            ("2026-08-24", "Prophet Mohammed's Birthday"),
+            ("2026-10-10", "Fiji Day"),
+            ("2026-11-08", "Diwali"),
+            ("2026-11-09", "Diwali (observed)"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+            ("2026-12-28", "Boxing Day (observed)"),
         )
