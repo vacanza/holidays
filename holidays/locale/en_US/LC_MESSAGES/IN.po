@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-10-25 08:05+0530\n"
+"PO-Revision-Date: 2026-11-02 22:13+0530\n"
 "Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -287,8 +287,7 @@ msgstr "Jumu'atul-Wida"
 
 #. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
 msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
-msgstr ""
-"First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
+msgstr "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
 
 #. Babu Jagjivan Ram's Birthday.
 msgid "Babu Jagjivan Ram's Jayanti"
@@ -666,13 +665,13 @@ msgstr "Shri Narayana Guru's Death Anniversary"
 msgid "Karkadaka Vavu"
 msgstr "Karkadaka Vavu"
 
-#. Onam (Day 1).
-msgid "Onam (Day 1)"
-msgstr "Onam (Day 1)"
-
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "Onam (Day 2)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "Onam (Day 1)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"

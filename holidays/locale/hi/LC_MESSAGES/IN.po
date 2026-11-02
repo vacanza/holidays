@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-10-25 08:05+0530\n"
+"PO-Revision-Date: 2026-11-02 22:13+0530\n"
 "Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -665,13 +665,13 @@ msgstr "श्री नारायण गुरु की पुण्यत�
 msgid "Karkadaka Vavu"
 msgstr "कर्कटक वावु"
 
-#. Onam (Day 1).
-msgid "Onam (Day 1)"
-msgstr "ओणम (पहला दिन)"
-
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ओणम (दूसरा दिन)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ओणम (पहला दिन)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
