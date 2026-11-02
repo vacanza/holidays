@@ -664,6 +664,10 @@ msgstr "శ్రీ నారాయణ గురు వర్ధంతి"
 msgid "Karkadaka Vavu"
 msgstr "కర్కటక వావు"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ఓణం (మొదటి రోజు)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ఓణం (రెండవ రోజు)"

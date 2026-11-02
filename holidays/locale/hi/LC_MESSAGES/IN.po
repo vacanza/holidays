@@ -665,6 +665,10 @@ msgstr "श्री नारायण गुरु की पुण्यत�
 msgid "Karkadaka Vavu"
 msgstr "कर्कटक वावु"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ओणम (पहला दिन)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ओणम (दूसरा दिन)"

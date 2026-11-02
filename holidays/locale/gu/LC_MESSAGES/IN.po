@@ -665,6 +665,10 @@ msgstr "શ્રી નારાયણ ગુરુની પુણ્યતિ
 msgid "Karkadaka Vavu"
 msgstr "કર્કટક વાવુ"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ઓણમ (પહેલો દિવસ)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ઓણમ (બીજો દિવસ)"

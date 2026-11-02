@@ -828,18 +828,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.naraka_chaturdashi_date(self._year)
         )
 
-    def _add_narayana_guru_jayanthi(self, name) -> date | None:
-        """
-        Add Sree Narayana Guru Jayanthi.
-
-        Sree Narayana Guru Jayanthi commemorates the birth of the philosopher and
-        social reformer. It is celebrated in Kerala on the Chathayam star in Chingam.
-        https://en.wikipedia.org/wiki/Sri_Narayana_Jayanthi
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.narayana_guru_jayanthi_date(self._year)
-        )
-
     def _add_onam(self, name) -> date | None:
         """
         Add Onam.
@@ -849,14 +837,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         https://en.wikipedia.org/wiki/Onam
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
-
-    def _add_onam_day_two(self, name) -> date | None:
-        """
-        Add Onam Day Two which is celebrated the day after Onam.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.onam_date(self._year), days_delta=+1
-        )
 
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """

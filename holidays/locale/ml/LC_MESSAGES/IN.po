@@ -664,6 +664,10 @@ msgstr "ശ്രീ നാരായണ ഗുരുവിന്റെ സമാ
 msgid "Karkadaka Vavu"
 msgstr "കർക്കിടക വാവ്"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ഓണം (ഒന്നാം ദിവസം)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ഓണം (രണ്ടാം ദിവസം)"

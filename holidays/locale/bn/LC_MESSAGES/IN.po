@@ -664,6 +664,10 @@ msgstr "শ্রী নারায়ণ গুরুর মৃত্যুব
 msgid "Karkadaka Vavu"
 msgstr "কর্কটক বাভু"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ওনাম (প্রথম দিন)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ওনম (দ্বিতীয় দিন)"

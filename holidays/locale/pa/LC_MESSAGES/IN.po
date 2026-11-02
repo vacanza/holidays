@@ -664,6 +664,10 @@ msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਦੀ ਬਰਸੀ"
 msgid "Karkadaka Vavu"
 msgstr "ਕਰਕਟਕ ਵਾਵੂ"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ਓਣਮ (ਪਹਿਲਾ ਦਿਨ)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ਓਣਮ (ਦੂਜਾ ਦਿਨ)"

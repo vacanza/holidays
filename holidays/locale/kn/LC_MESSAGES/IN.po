@@ -664,6 +664,10 @@ msgstr "ಶ್ರೀ ನಾರಾಯಣ ಗುರುಗಳ ಪುಣ್ಯತಿ
 msgid "Karkadaka Vavu"
 msgstr "ಕರ್ಕಟಕ ವಾವು"
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ಓಣಂ (ಮೊದಲನೇ ದಿನ)"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ಓಣಂ (ಎರಡನೇ ದಿನ)"

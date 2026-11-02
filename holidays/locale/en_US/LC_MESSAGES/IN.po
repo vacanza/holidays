@@ -287,7 +287,8 @@ msgstr "Jumu'atul-Wida"
 
 #. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
 msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
-msgstr "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
+msgstr ""
+"First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
 
 #. Babu Jagjivan Ram's Birthday.
 msgid "Babu Jagjivan Ram's Jayanti"
@@ -664,6 +665,10 @@ msgstr "Shri Narayana Guru's Death Anniversary"
 #. Karkadaka Vavu.
 msgid "Karkadaka Vavu"
 msgstr "Karkadaka Vavu"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "Onam (Day 1)"
 
 #. Onam (Day 2).
 msgid "Onam (Day 2)"

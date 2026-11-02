@@ -665,6 +665,10 @@ msgstr ""
 msgid "Karkadaka Vavu"
 msgstr ""
 
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr ""
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr ""
