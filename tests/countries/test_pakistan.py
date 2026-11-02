@@ -23,7 +23,7 @@ class TestPakistan(CommonCountryTests, TestCase):
         super().setUpClass(Pakistan, years=years)
         cls.no_estimated_holidays = Pakistan(years=years, islamic_show_estimated=False)
 
-    def test_special_holidays(self):
+    def test_eid_ul_fitr_special_dates(self):
         self.assertHolidayName(
             "Eid-ul-Fitr",
             "2007-10-16",
@@ -47,6 +47,8 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2023-04-25",
             "2026-03-20",
         )
+
+    def test_eid_ul_adha_special_dates(self):
         self.assertHolidayName(
             "Eid-ul-Adha",
             "2008-12-08",
@@ -63,15 +65,20 @@ class TestPakistan(CommonCountryTests, TestCase):
             "2025-06-06",
             "2026-05-26",
         )
+
+    def test_general_election_day(self):
         self.assertHolidayName(
             "General Election Day",
             "2008-02-18",
             "2018-07-25",
             "2024-02-08",
         )
-        self.assertHolidayName("Benazir Bhutto's Martyrdom Day", "2008-12-27")
-        self.assertHolidayName("Youm-e-Ishq-e-Rasool", "2012-09-21")
 
+    def test_benazir_bhutto_martyrdom_day(self):
+        self.assertHolidayName("Benazir Bhutto's Martyrdom Day", "2008-12-27")
+
+    def test_youm_e_ishq_e_rasool(self):
+        self.assertHolidayName("Youm-e-Ishq-e-Rasool", "2012-09-21")
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
         self.assertHolidayName(name, (f"{year}-02-05" for year in range(1990, 2050)))
