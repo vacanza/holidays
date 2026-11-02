@@ -146,10 +146,8 @@ class TestEntityLoader(TestCase):
 
     def test_inheritance(self):
         def create_instance(parent):
-            class SubClass(parent):
-                pass
-
-            return SubClass()
+            subclass = type("SubClass", (parent,), {})
+            return subclass()
 
         for cls in (holidays.UnitedStates, holidays.US, holidays.USA):
             self.assertIsInstance(cls, holidays.registry.EntityLoader)
