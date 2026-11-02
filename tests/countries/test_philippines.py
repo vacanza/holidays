@@ -61,6 +61,25 @@ SPECIAL_HOLIDAY_DATES = (
     "2027-12-24",
 )
 
+INDEPENDENCE_DAY_DATES = (
+    "2007-06-11",
+    "2008-06-09",
+    "2009-06-12",
+    "2010-06-14",
+)
+
+def independence_day_dates():
+    return (
+        "1950-06-12",
+        "1951-06-12",
+        # demais datas serão definidas aqui
+    )
+
+def independence_day_dates(start_year, end_year):
+    return tuple(
+        f"{year}-06-12"
+        for year in (*range(start_year, 2007), *range(2011, end_year))
+    )
 
 class TestPhilippines(CommonCountryTests, TestCase):
     @classmethod
@@ -171,16 +190,10 @@ class TestPhilippines(CommonCountryTests, TestCase):
 
     def test_independence_day(self):
         self.assertHolidayName(
-            "Independence Day",
-            (
-                f"{year}-06-12"
-                for year in (*range(self.start_year, 2007), *range(2011, self.end_year))
-            ),
-            "2007-06-11",
-            "2008-06-09",
-            "2009-06-12",
-            "2010-06-14",
-        )
+        "Independence Day",
+        *independence_day_dates(self.start_year, self.end_year),
+        *INDEPENDENCE_DAY_DATES,
+    )
 
     def test_iglesia_ni_cristo(self):
         # 2025 special non-working day is marked as an additional entry for now,
