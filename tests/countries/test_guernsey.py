@@ -15,6 +15,41 @@ from unittest import TestCase
 from holidays.countries.guernsey import Guernsey
 from tests.common import CommonCountryTests
 
+HIS_MAJESTYS_BIRTHDAY_DATES = (
+    "1909-06-25",
+    "1910-06-24",
+    "1911-05-27",
+    "1912-06-14",
+    "1913-06-03",
+    "1914-06-24",
+    "1919-06-03",
+    "1920-06-05",
+    "1921-06-04",
+    "1922-06-03",
+    "1923-06-02",
+    "1924-06-03",
+    "1925-06-03",
+    "1926-06-05",
+    "1927-06-03",
+    "1928-06-04",
+    "1929-06-03",
+    "1930-06-03",
+    "1931-06-03",
+    "1932-06-03",
+    "1933-06-03",
+    "1934-06-04",
+    "1935-06-03",
+    "1936-06-23",
+    "1937-06-09",
+    "1938-06-09",
+    "1939-06-08",
+    "1942-06-11",
+    "1943-06-02",
+    "1944-06-08",
+    "1945-06-14",
+    "1946-06-13",
+)
+
 
 class TestGG(CommonCountryTests, TestCase):
     @classmethod
@@ -157,47 +192,7 @@ class TestGG(CommonCountryTests, TestCase):
 
     def test_his_majestys_birthday(self):
         name = "His Majesty's Birthday"
-        self.assertHolidayName(
-            name,
-            # Edward VII (MAY/JUN observance).
-            "1909-06-25",
-            # George V.
-            "1910-06-24",
-            "1911-05-27",
-            "1912-06-14",
-            "1913-06-03",
-            "1914-06-24",
-            # Not observed in 1915-1918 due to WW1.
-            "1919-06-03",
-            "1920-06-05",
-            "1921-06-04",
-            "1922-06-03",
-            "1923-06-02",
-            "1924-06-03",
-            "1925-06-03",
-            "1926-06-05",
-            "1927-06-03",
-            "1928-06-04",
-            "1929-06-03",
-            "1930-06-03",
-            "1931-06-03",
-            "1932-06-03",
-            "1933-06-03",
-            "1934-06-04",
-            "1935-06-03",
-            # Edward VIII.
-            "1936-06-23",
-            # George VI.
-            "1937-06-09",
-            "1938-06-09",
-            "1939-06-08",
-            # Not observed in 1940-1941 due to WW2.
-            "1942-06-11",
-            "1943-06-02",
-            "1944-06-08",
-            "1945-06-14",
-            "1946-06-13",
-        )
+        self.assertHolidayName(name, *HIS_MAJESTYS_BIRTHDAY_DATES)
         self.assertNoHolidayName(
             name, range(1915, 1919), range(1940, 1942), range(1947, self.end_year)
         )
