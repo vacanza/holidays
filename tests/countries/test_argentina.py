@@ -38,7 +38,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertNoHolidays(Argentina(categories=HEBREW, years=range(self.start_year, 1996)))
         self.assertNoHolidays(Argentina(categories=ISLAMIC, years=range(self.start_year, 1997)))
 
-    def test_special_holidays(self):
+   
+    def test_special_holidays_2010_to_2015(self):
         self.assertHoliday(
             "2010-05-24",
             "2010-10-27",
@@ -56,6 +57,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2014-12-26",
             "2015-03-23",
             "2015-12-07",
+        )
+
+    def test_special_holidays_2016_to_2020(self):
+        self.assertHoliday(
             "2016-07-08",
             "2016-12-09",
             "2018-04-30",
@@ -67,6 +72,10 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2020-03-23",
             "2020-07-10",
             "2020-12-07",
+        )
+
+    def test_special_holidays_2021_to_2026(self):
+        self.assertHoliday(
             "2021-05-24",
             "2021-10-08",
             "2021-11-22",
