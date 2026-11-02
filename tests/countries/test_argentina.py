@@ -399,15 +399,17 @@ class TestArgentina(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(self.start_year, 1976)))
         self.assertNoHolidayName(name, range(1976, self.end_year))
 
-    def test_cultural_diversity_day(self):
-        name_1917 = "Día de la Raza"
-        name_2010 = "Día del Respeto a la Diversidad Cultural"
+    def test_cultural_diversity_day_old_name_regular_dates(self):
+        name = "Día de la Raza"
         self.assertHolidayName(
-            name_1917,
+            name,
             (f"{year}-10-12" for year in (*range(self.start_year, 1976), *range(1982, 1988))),
         )
+
+    def test_cultural_diversity_day_old_name_shifted_dates(self):
+        name = "Día de la Raza"
         self.assertHolidayName(
-            name_1917,
+            name,
             "1988-10-10",
             "1989-10-16",
             "1990-10-15",
@@ -431,8 +433,13 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2008-10-13",
             "2009-10-12",
         )
+
+    def test_cultural_diversity_day_new_name(self):
+        name_old = "Día de la Raza"
+        name_new = "Día del Respeto a la Diversidad Cultural"
+
         self.assertHolidayName(
-            name_2010,
+            name_new,
             "2010-10-11",
             "2011-10-10",
             "2012-10-08",
