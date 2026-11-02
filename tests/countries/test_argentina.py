@@ -1125,8 +1125,8 @@ class TestArgentina(CommonCountryTests, TestCase):
         )
         self.assertHebrewHolidayName(name, range(1996, self.end_year))
         self.assertNoHebrewHolidayName(name, range(self.start_year, 1996))
-
-    def test_pesach(self):
+        
+    def test_pesach_holiday_dates_2007_2008(self):
         name = "Pascua Judía (Pésaj)"
         self.assertNoHolidayName(name)
         self.assertHebrewHolidayName(
@@ -1139,6 +1139,12 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2008-04-21",
             "2008-04-26",
             "2008-04-27",
+        )
+
+    def test_pesach_holiday_dates_2018_2025(self):
+        name = "Pascua Judía (Pésaj)"
+        self.assertHebrewHolidayName(
+            name,
             "2018-03-31",
             "2018-04-01",
             "2018-04-06",
@@ -1172,6 +1178,9 @@ class TestArgentina(CommonCountryTests, TestCase):
             "2025-04-19",
             "2025-04-20",
         )
+        
+    def test_pesach_holiday_count(self):
+        name = "Pascua Judía (Pésaj)"
         self.assertHebrewHolidayNameCount(name, 4, range(2007, self.end_year))
         self.assertNoHebrewHolidayName(name, range(self.start_year, 2007))
 
