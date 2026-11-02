@@ -18,6 +18,7 @@ class BombayStockExchange(NationalStockExchangeOfIndia):
 
     References:
         * <https://web.archive.org/web/20251226065205/https://www.bseindia.com/static/markets/marketinfo/listholi.aspx>
+        * [2026](https://web.archive.org/web/20260308055957/https://nsearchives.nseindia.com/content/circulars/CMTR71775.pdf)
     """
 
     market = "XBOM"
