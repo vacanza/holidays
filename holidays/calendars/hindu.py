@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from collections.abc import Iterable
-from datetime import date
+from datetime import date, timedelta
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -64,6 +64,10 @@ NAAG_PANCHAMI = "NAAG_PANCHAMI"
 NARAKA_CHATURDASHI = "NARAKA_CHATURDASHI"
 NIRJALA_EKADASHI = "NIRJALA_EKADASHI"
 ONAM = "ONAM"
+FIRST_ONAM = "FIRST_ONAM"
+SECOND_ONAM = "SECOND_ONAM"
+THIRD_ONAM = "THIRD_ONAM"
+FOURTH_ONAM = "FOURTH_ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PARIVARTINI_EKADASHI = "PARIVARTINI_EKADASHI"
 PITRA_MOKSH_AMAVASYA = "PITRA_MOKSH_AMAVASYA"
@@ -87,6 +91,16 @@ VARALAKSHMI_VRATAM = "VARALAKSHMI_VRATAM"
 VIKRAM_SAMVAT_NEW_YEAR = "VIKRAM_SAMVAT_NEW_YEAR"
 VISHU = "VISHU"
 VISHWAKARMA_PUJA = "VISHWAKARMA_PUJA"
+
+
+def _offset_date_mapping(
+    dates: dict[int, tuple[int, int]], days: int
+) -> dict[int, tuple[int, int]]:
+    offset_dates = {}
+    for year, month_day in dates.items():
+        dt = date(year, *month_day) + timedelta(days=days)
+        offset_dates[year] = (dt.month, dt.day)
+    return offset_dates
 
 
 class _HinduLunisolar:
@@ -2029,7 +2043,7 @@ class _HinduLunisolar:
     }
 
     # https://web.archive.org/web/20241205101551/https://www.timeanddate.com/holidays/india/onam
-    ONAM_DATES = {
+    SECOND_ONAM_DATES = {
         2001: (AUG, 31),
         2002: (AUG, 21),
         2003: (SEP, 8),
@@ -2066,6 +2080,10 @@ class _HinduLunisolar:
         2034: (AUG, 28),
         2035: (SEP, 14),
     }
+    ONAM_DATES = SECOND_ONAM_DATES
+    FIRST_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, -1)
+    THIRD_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, +1)
+    FOURTH_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, +2)
 
     # http://web.archive.org/web/20260312200240/https://www.drikpanchang.com/dashavatara/parashurama/parashurama-jayanti-date-time.html
     PARSHURAM_JAYANTI_DATES = {
@@ -3256,8 +3274,20 @@ class _HinduLunisolar:
     def nirjala_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NIRJALA_EKADASHI, year)
 
+    def first_onam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(FIRST_ONAM, year)
+
+    def second_onam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(SECOND_ONAM, year)
+
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
+
+    def third_onam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(THIRD_ONAM, year)
+
+    def fourth_onam_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(FOURTH_ONAM, year)
 
     def parshuram_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARSHURAM_JAYANTI, year)
