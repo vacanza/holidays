@@ -277,28 +277,53 @@ class TestRussia(CommonCountryTests, WorkingDayTests, TestCase):
         )
 
     def test_new_year(self):
-        name_1 = "Новый год"
-        name_2 = "Новогодние каникулы"
-        self.assertHolidayName(name_1, (f"{year}-01-01" for year in range(1991, 2005)))
-        self.assertHolidayName(name_1, (f"{year}-01-02" for year in range(1993, 2005)))
-        self.assertNoHoliday(f"{year}-01-02" for year in range(1991, 1992))
+        name = "Новый год"
+        self.assertHolidayName(
+            name, (f"{year}-01-01" for year in range(1991, 2005))
+        )
+        self.assertHolidayName(
+            name, (f"{year}-01-02" for year in range(1993, 2005))
+        )
+        self.assertNoHoliday(
+            f"{year}-01-02" for year in range(1991, 1992)
+        )
+
+
+    def test_new_year_holidays_2005_onwards(self):
+        name = "Новогодние каникулы"
+
         for year in range(2005, 2025):
             self.assertHolidayName(
-                name_2,
+                name,
                 f"{year}-01-01",
                 f"{year}-01-02",
                 f"{year}-01-03",
                 f"{year}-01-04",
                 f"{year}-01-05",
             )
+
         for year in range(2013, 2025):
-            self.assertHolidayName(name_2, f"{year}-01-06", f"{year}-01-08")
+            self.assertHolidayName(
+                name, f"{year}-01-06", f"{year}-01-08"
+            )
+
+
+    def test_new_year_non_holidays(self):
+        name_1 = "Новый год"
+        name_2 = "Новогодние каникулы"
+
         for year in range(1991, 2005):
-            self.assertNoHolidayName(name_1, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05"))
-            self.assertNoHolidayName(name_2, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05"))
+            self.assertNoHolidayName(
+            name_1, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05")
+            )
+            self.assertNoHolidayName(
+            name_2, (f"{year}-01-03", f"{year}-01-04", f"{year}-01-05")
+        )
+
         for year in range(1991, 2013):
             self.assertNoHolidayName(name_1, (f"{year}-01-06", f"{year}-01-08"))
             self.assertNoHolidayName(name_2, (f"{year}-01-06", f"{year}-01-08"))
+
         self.assertNoHolidayName(name_1, range(2005, 2025))
         self.assertNoHolidayName(name_2, range(1991, 2005))
 
