@@ -52,7 +52,8 @@ jobs:
           echo "  • Outdated files found: ${{ steps.check-financial-updates.outputs.outdated_files_count }}"
           echo "  • Issues created: ${{ steps.check-financial-updates.outputs.issues_created_count }}"
 
-          if [ "${{ steps.check-financial-updates.outputs.outdated_files_count }}" -gt "0" ]; then
+          outdated_files_count="${{ steps.check-financial-updates.outputs.outdated_files_count }}"
+          if [ "$outdated_files_count" -gt 0 ]; then
             echo "⚠️  Some holiday files may need updating!"
           else
             echo "✅ All holiday files are up to date!"
