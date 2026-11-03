@@ -76,6 +76,13 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, dts)
         self.assertGovernmentHolidayName(name, dts)
+        as_public_holidays = self.subdiv_holidays["AS"]
+        self.assertHolidayName(
+            name, as_public_holidays, (f"{year}-05-30" for year in range(1971, self.end_year))
+        )
+        self.assertNoHolidayName(
+            name, as_public_holidays, ("1971-05-31", "1972-05-29", "2023-05-29", "2025-05-26")
+        )
         self.assertHolidayName(name, self.subdiv_government_holidays["AS"], dts)
         self.assertNoHoliday("1971-05-30", "1972-05-30")
         self.assertNoGovernmentHoliday("1971-05-30", "1972-05-30")
@@ -522,6 +529,9 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             name, as_holidays, (f"{year}-02-22" for year in range(1879, self.end_year))
         )
         self.assertNoHolidayName(name, as_holidays, dts)
+        as_government_holidays = self.subdiv_government_holidays["AS"]
+        self.assertHolidayName(name, as_government_holidays, dts)
+        self.assertNoHolidayName(name, as_government_holidays, ("2022-02-22",))
 
     def test_washingtons_birthday_states(self):
         common_name = "Washington's Birthday"
