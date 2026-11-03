@@ -146,6 +146,18 @@ class TestZimbabwe(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_munhumutapa_day(self):
+        name = "Munhumutapa Day"
+        self.assertHolidayName(name, (f"{year}-09-15" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+        obs_dts = (
+            "2030-09-16",
+            "2041-09-16",
+            "2047-09-16",
+        )
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
     def test_unity_day(self):
         name = "Unity Day"
         self.assertHolidayName(name, (f"{year}-12-22" for year in self.full_range))
@@ -198,4 +210,23 @@ class TestZimbabwe(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
+        )
+
+    def test_2026(self):
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-02-21", "Robert Gabriel Mugabe National Youth Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-04", "Easter Saturday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-04-18", "Independence Day"),
+            ("2026-05-01", "Workers' Day"),
+            ("2026-05-25", "Africa Day"),
+            ("2026-08-10", "Zimbabwe Heroes' Day"),
+            ("2026-08-11", "Defense Forces Day"),
+            ("2026-09-15", "Munhumutapa Day"),
+            ("2026-12-22", "Unity Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
         )
