@@ -483,7 +483,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, holidays, range(self.start_year, 1879))
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv not in {"AK", "AL", "AR", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}:
+            if subdiv not in {"AK", "AL", "AR", "AS", "DE", "FL", "GA", "IN", "NM", "PR", "VI"}:
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-22" for year in range(1879, 1971))
                 )
@@ -2318,6 +2318,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "Washington and Lincoln Day; Washington's Birthday; "
                 "Washington's and Lincoln's Birthday; Washington-Lincoln Day",
             ),
+            ("2022-02-22", "Washington's Birthday"),
             ("2022-03-01", "Mardi Gras; Town Meeting Day"),
             ("2022-03-02", "American Citizenship Day; Texas Independence Day"),
             ("2022-03-07", "Casimir Pulaski Day; Guam Discovery Day"),
@@ -2424,6 +2425,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 "วันวอชิงตันและลิงคอล์น; วันเกิดจอร์จ วอชิงตัน และทอมัส เจฟเฟอร์สัน; "
                 "วันเกิดจอร์จ วอชิงตันและวันเดซี่ แกตสัน เบตส์; วันเกิดวอชิงตัน; วันเกิดวอชิงตันและลิงคอล์น",
             ),
+            ("2022-02-22", "วันเกิดวอชิงตัน"),
             ("2022-03-01", "วันประชาคมท้องถิ่น; วันมาร์ดิกราส์"),
             ("2022-03-02", "วันประกาศอิสรภาพเท็กซัส; วันแห่งความเป็นพลเมืองอเมริกัน"),
             ("2022-03-07", "วันคาซิเมียร์ พูลาสกี้; วันค้นพบกวม"),
