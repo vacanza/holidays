@@ -19,6 +19,7 @@ from tests.common import CommonCountryTests
 class TestSriLanka(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.full_range = range(2003, 2027)
         super().setUpClass(SriLanka)
 
     def test_special(self):
@@ -215,6 +216,7 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2023-02-05",
             "2024-02-23",
             "2025-02-12",
+            "2027-02-21",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -254,6 +256,8 @@ class TestSriLanka(CommonCountryTests, TestCase):
             "2023-05-05",
             "2024-05-23",
             "2025-05-12",
+            "2027-05-20",
+            "2030-05-24",
         )
         self.assertHolidayName(name, self.full_range)
         # Day Following Vesak Full Moon Poya Day.
@@ -540,4 +544,120 @@ class TestSriLanka(CommonCountryTests, TestCase):
             ("2022-12-07", "உந்துவப் முழு நோன்மதி தினம்"),
             ("2022-12-25", "நத்தார் பண்டிகை"),
             ("2022-12-26", "விசேட வங்கி விடுமுறை"),
+        )
+
+    def test_2027_all(self):
+        self.assertHolidays(
+            SriLanka(
+                years=2027,
+                islamic_show_estimated=False,
+                sinhala_show_estimated=False,
+            ),
+            ("2027-01-15", "දෙමළ තෛපොංැලල් දිනය"),
+            ("2027-01-22", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
+            ("2027-02-04", "නිදහස් සමරු දිනය"),
+            ("2027-02-21", "නවම් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-03-10", "ඊදුල් ෆීතර්"),
+            ("2027-03-22", "මැදින් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-03-26", "මහ සිකුරාදා දිනය"),
+            ("2027-04-13", "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"),
+            ("2027-04-14", "සිංහල හා දෙමළ අලුත් අවුරුදු දිනය"),
+            ("2027-04-21", "බක් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-05-01", "ලොක කම්කරු දිනය"),
+            ("2027-05-17", "ඊදුල් අල්හා"),
+            ("2027-05-20", "වෙසක් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-05-21", "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"),
+            ("2027-06-19", "පොසොන් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-07-18", "ඇසල පුර පසළොස්වක පෝය දිනය"),
+            ("2027-08-15", "නබි නායකතුමාගේ උපන් දිනය"),
+            ("2027-08-17", "නිකිණි පුර පසළොස්වක පෝය දිනය"),
+            ("2027-09-16", "බිනර පුර පසළොස්වක පෝය දිනය"),
+            ("2027-10-15", "වප් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-10-28", "දීපවාලි උත්සව දිනය"),
+            ("2027-11-14", "ඉල් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-12-13", "උඳුවප් පුර පසළොස්වක පෝය දිනය"),
+            ("2027-12-25", "නත්තල් උත්සව දිනය"),
+        )
+
+    def test_sinhala_show_estimated(self):
+        # In 2027:
+        # Confirmed dates (such as Navam and Vesak) have NO estimation label.
+        h_2027 = SriLanka(years=2027, sinhala_show_estimated=True)
+        self.assertIn("2027-02-21", h_2027)
+        self.assertEqual(h_2027["2027-02-21"], "නවම් පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2027-05-20", h_2027)
+        self.assertEqual(h_2027["2027-05-20"], "වෙසක් පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2027-05-21", h_2027)
+        self.assertEqual(h_2027["2027-05-21"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
+
+        # Unconfirmed / estimated dates in 2027 carry estimation label when
+        # sinhala_show_estimated=True.
+        self.assertIn("2027-06-19", h_2027)
+        self.assertEqual(h_2027["2027-06-19"], "පොසොන් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
+
+        # sinhala_show_estimated=False suppresses the estimation label for estimated dates.
+        h_no_est = SriLanka(years=2027, sinhala_show_estimated=False)
+        self.assertIn("2027-06-19", h_no_est)
+        self.assertEqual(h_no_est["2027-06-19"], "පොසොන් පුර පසළොස්වක පෝය දිනය")
+
+        # English localization: confirmed dates have no estimation label, estimated dates do.
+        h_en = SriLanka(years=2027, language="en_US", sinhala_show_estimated=True)
+        self.assertIn("2027-05-20", h_en)
+        self.assertEqual(h_en["2027-05-20"], "Vesak Full Moon Poya Day")
+        self.assertIn("2027-05-21", h_en)
+        self.assertEqual(h_en["2027-05-21"], "Day Following Vesak Full Moon Poya Day")
+        self.assertIn("2027-06-19", h_en)
+        self.assertEqual(h_en["2027-06-19"], "Poson Full Moon Poya Day (estimated)")
+
+        # In 2028: estimated Vesak date carries estimation label.
+        h_2028 = SriLanka(years=2028, sinhala_show_estimated=True)
+        self.assertIn("2028-05-09", h_2028)
+        self.assertEqual(h_2028["2028-05-09"], "වෙසක් පුර පසළොස්වක පෝය දිනය (අනුමානිත)")
+
+        # Confirmed historical year (2026) has NO estimation label even if
+        # sinhala_show_estimated=True.
+        h_2026 = SriLanka(years=2026, sinhala_show_estimated=True)
+        self.assertIn("2026-01-03", h_2026)
+        self.assertEqual(h_2026["2026-01-03"], "දුරුතු පුර පසළොස්වක පෝය දිනය")
+        self.assertIn("2026-05-02", h_2026)
+        self.assertEqual(h_2026["2026-05-02"], "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය")
+
+    def test_2028_duruthu_poya_estimations(self):
+        # 2028 has 13 full moons with the 13th occurring on December 31.
+        # Duruthu Poya is observed only on January 12; December 31 is not Duruthu Poya.
+        h = SriLanka(years=2028, sinhala_show_estimated=False)
+        self.assertIn("2028-01-12", h)
+        self.assertEqual(h["2028-01-12"], "දුරුතු පුර පසළොස්වක පෝය දිනය")
+        self.assertNotIn("2028-12-31", h)
+
+    def test_2028_all(self):
+        self.assertHolidays(
+            SriLanka(
+                years=2028,
+                islamic_show_estimated=False,
+                sinhala_show_estimated=False,
+            ),
+            ("2028-01-12", "දුරුතු පුර පසළොස්වක පෝය දිනය"),
+            ("2028-01-15", "දෙමළ තෛපොංැලල් දිනය"),
+            ("2028-02-04", "නිදහස් සමරු දිනය"),
+            ("2028-02-10", "නවම් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-02-27", "ඊදුල් ෆීතර්"),
+            ("2028-03-11", "මැදින් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-04-09", "බක් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-04-13", "සිංහල හා දෙමළ අලුත් අවුරුදු දිනට පෙර දිනය"),
+            ("2028-04-14", "මහ සිකුරාදා දිනය; සිංහල හා දෙමළ අලුත් අවුරුදු දිනය"),
+            ("2028-05-01", "ලොක කම්කරු දිනය"),
+            ("2028-05-06", "ඊදුල් අල්හා"),
+            ("2028-05-09", "වෙසක් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-05-10", "වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"),
+            ("2028-06-07", "පොසොන් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-07-06", "ඇසල පුර පසළොස්වක පෝය දිනය"),
+            ("2028-08-04", "නබි නායකතුමාගේ උපන් දිනය"),
+            ("2028-08-05", "නිකිණි පුර පසළොස්වක පෝය දිනය"),
+            ("2028-09-04", "බිනර පුර පසළොස්වක පෝය දිනය"),
+            ("2028-10-03", "වප් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-11-02", "ඉල් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-11-15", "දීපවාලි උත්සව දිනය"),
+            ("2028-12-02", "උඳුවප් පුර පසළොස්වක පෝය දිනය"),
+            ("2028-12-25", "නත්තල් උත්සව දිනය"),
         )

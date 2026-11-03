@@ -24,19 +24,19 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
     Sinhala Buddhist Uposatha day calculation method is different from Thai LuniSolar
     and Buddhist (Mahayana) used in East Asia.
 
-    Due to the fact that Poya (Uposatha) days are calculated astronomically
-    based on how close a particular day is closest to full moon at noon, and that
-    an extra month is added every 33 months interval, this is hardcoded for now.
+    Poya (Uposatha) days are based on official government gazettes where available,
+    and estimated using astronomical Full Moon calculations in Sri Lanka Standard
+    Time (UTC+5:30) for subsequent unconfirmed years.
 
     Adhi month dates are instead hardcoded in Sri Lanka country implementation.
     """
 
-    def __init__(self, cls=None, *, show_estimated=False) -> None:
+    def __init__(self, cls=None, *, show_estimated=True) -> None:
         self._sinhala_calendar = cls() if cls else _SinhalaLunar()
         self._sinhala_calendar_show_estimated = show_estimated
 
     def _add_sinhala_calendar_holiday(
-        self, name: str, dt_estimated: tuple[date | None, bool]
+        self, name: str, dt_estimated: tuple[date | None, bool], days_delta: int = 0
     ) -> date | None:
         """
         Add Sinhala calendar holiday.
@@ -45,7 +45,10 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         is an estimation.
         """
         return self._add_eastern_calendar_holiday(
-            name, dt_estimated, show_estimated=self._sinhala_calendar_show_estimated
+            name,
+            dt_estimated,
+            show_estimated=self._sinhala_calendar_show_estimated,
+            days_delta=days_delta,
         )
 
     def _add_sinhala_calendar_holiday_set(
@@ -186,4 +189,12 @@ class SinhalaCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_sinhala_calendar_holiday(
             name, self._sinhala_calendar.vesak_poya_date(self._year)
+        )
+
+    def _add_day_following_vesak_poya(self, name) -> date | None:
+        """
+        Add Day Following Vesak Full Moon Poya Day.
+        """
+        return self._add_sinhala_calendar_holiday(
+            name, self._sinhala_calendar.vesak_poya_date(self._year), days_delta=+1
         )

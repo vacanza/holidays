@@ -10,8 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import math
 from collections.abc import Iterable
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
+from functools import cache
 
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -31,22 +33,158 @@ VAP_POYA = "VAP_POYA"
 VESAK_POYA = "VESAK_POYA"
 
 
+def _full_moon_jde(k: float) -> float:
+    """Calculate the Julian Ephemeris Day (JDE) of a Full Moon phase (Meeus Chapter 49)."""
+    t = k / 1236.85
+    t2 = t * t
+    t3 = t2 * t
+    t4 = t3 * t
+
+    jde = (
+        2451550.09766 + 29.530588861 * k + 0.00015437 * t2 - 0.000000150 * t3 + 0.00000000073 * t4
+    )
+
+    e = 1.0 - 0.002516 * t - 0.0000074 * t2
+
+    m = math.radians(2.5534 + 29.10535670 * k - 0.0000014 * t2 - 0.00000011 * t3)
+    mprime = math.radians(
+        201.5643 + 385.81693528 * k + 0.0107538 * t2 + 0.00001238 * t3 - 0.000000058 * t4
+    )
+    f = math.radians(
+        160.7108 + 390.67050284 * k - 0.0016118 * t2 - 0.00000227 * t3 + 0.0000011 * t4
+    )
+    omega = math.radians(124.97 - 1.9337 * k + 0.00206 * t2 + 0.00000215 * t3)
+
+    # Periodic corrections for Full Moon (Meeus Table 49.B)
+    corr = (
+        -0.40614 * math.sin(mprime)
+        + 0.17302 * e * math.sin(m)
+        + 0.01614 * math.sin(2 * mprime)
+        + 0.01043 * math.sin(2 * f)
+        - 0.00734 * e * math.sin(mprime - m)
+        - 0.00515 * e * math.sin(mprime + m)
+        + 0.00209 * e * e * math.sin(2 * m)
+        - 0.00111 * math.sin(mprime - 2 * f)
+        - 0.00057 * math.sin(mprime + 2 * f)
+        + 0.00056 * e * math.sin(2 * mprime + m)
+        - 0.00042 * math.sin(3 * mprime)
+        + 0.00042 * e * math.sin(m + 2 * f)
+        + 0.00038 * e * math.sin(m - 2 * f)
+        - 0.00024 * e * math.sin(2 * mprime - m)
+        - 0.00017 * math.sin(omega)
+        - 0.00007 * math.sin(mprime + 2 * m)
+        + 0.00004 * math.sin(2 * mprime - 2 * f)
+        + 0.00004 * math.sin(3 * m)
+        + 0.00003 * math.sin(mprime + m - 2 * f)
+        + 0.00003 * math.sin(2 * mprime + 2 * f)
+        - 0.00003 * math.sin(mprime + m + 2 * f)
+        + 0.00003 * math.sin(mprime - m + 2 * f)
+        - 0.00002 * math.sin(mprime - m - 2 * f)
+        - 0.00002 * math.sin(3 * mprime + m)
+        + 0.00002 * math.sin(4 * mprime)
+    )
+
+    # Planetary corrections
+    a1 = math.radians(299.77 + 0.107408 * k - 0.009173 * t2)
+    a2 = math.radians(251.88 + 0.016321 * k)
+    a3 = math.radians(251.83 + 26.651886 * k)
+    a4 = math.radians(349.42 + 36.412478 * k)
+    a5 = math.radians(84.66 + 18.206239 * k)
+    a6 = math.radians(141.74 + 53.303771 * k)
+    a7 = math.radians(207.14 + 2.453732 * k)
+    a8 = math.radians(154.84 + 7.306860 * k)
+    a9 = math.radians(34.52 + 27.261239 * k)
+    a10 = math.radians(207.19 + 0.121824 * k)
+    a11 = math.radians(291.34 + 1.844379 * k)
+    a12 = math.radians(161.72 + 24.198154 * k)
+    a13 = math.radians(239.56 + 25.513099 * k)
+    a14 = math.radians(331.55 + 3.592518 * k)
+
+    planetary_corr = (
+        0.000325 * math.sin(a1)
+        + 0.000165 * math.sin(a2)
+        + 0.000164 * math.sin(a3)
+        + 0.000126 * math.sin(a4)
+        + 0.000110 * math.sin(a5)
+        + 0.000062 * math.sin(a6)
+        + 0.000060 * math.sin(a7)
+        + 0.000056 * math.sin(a8)
+        + 0.000047 * math.sin(a9)
+        + 0.000042 * math.sin(a10)
+        + 0.000040 * math.sin(a11)
+        + 0.000037 * math.sin(a12)
+        + 0.000035 * math.sin(a13)
+        + 0.000023 * math.sin(a14)
+    )
+
+    t_poly = (jde - 2451545.0) / 365.25
+    delta_t = 62.92 + 0.32217 * t_poly + 0.005589 * t_poly * t_poly
+    return jde + corr + planetary_corr - (delta_t / 86400.0)
+
+
+@cache
+def _get_slst_full_moons(year: int) -> tuple[date, ...]:
+    """Calculate all Full Moon calendar dates for a year in Sri Lanka Standard Time (UTC+5:30)."""
+    dt_base = datetime(2000, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+    slst_tz = timezone(timedelta(hours=5, minutes=30))
+    k_start = int((year - 2000) * 12.3685) - 2
+    fms = []
+    for k_int in range(k_start, k_start + 18):
+        k = k_int + 0.5
+        jde_utc = _full_moon_jde(k)
+        dt_utc = dt_base + timedelta(days=(jde_utc - 2451545.0))
+        dt_slst = dt_utc.astimezone(slst_tz)
+        if dt_slst.year == year:
+            fms.append(dt_slst.date())
+    return tuple(sorted(set(fms)))
+
+
+POYA_NAMES = (
+    DURUTHU_POYA,
+    NAWAM_POYA,
+    MEDIN_POYA,
+    BAK_POYA,
+    VESAK_POYA,
+    POSON_POYA,
+    ESALA_POYA,
+    NIKINI_POYA,
+    BINARA_POYA,
+    VAP_POYA,
+    IL_POYA,
+    UNDUVAP_POYA,
+)
+
+
+@cache
+def _calculate_poya_dates(year: int) -> dict[str, date]:
+    """Map Full Moons to the 12 traditional Sinhala Poya days for a future year."""
+    fms = list(_get_slst_full_moons(year))
+    if len(fms) == 13:
+        feb_has_fm = any(d.month == 2 for d in fms)
+        extra_idx = None
+        for i in range(len(fms) - 1):
+            if fms[i].month == fms[i + 1].month:
+                if fms[i].month == 1 and not feb_has_fm:
+                    continue
+                extra_idx = i + 1
+                break
+        if extra_idx is None:
+            extra_idx = len(fms) - 1
+        fms.pop(extra_idx)
+
+    return dict(zip(POYA_NAMES, fms))
+
+
 class _SinhalaLunar:
-    """
-    Sinhala Lunar calendar for 2003-2025 years.
+    """Sinhala Lunar calendar.
 
-    Their Buddhist Uposatha day calculation method is different from Thai LuniSolar
-    and Buddhist (Mahayana) used in East Asia.
-
-    Due to the fact that Poya (Uposatha) days are calculated astronomically
-    based on how close a particular day is closest to full moon at noon, and that
-    an extra month is added every 33 months interval, this is hardcoded for now.
-
-    Adhi month dates are instead hardcoded in Sri Lanka country implementation.
+    Confirmed Poya dates are based on official government gazettes.
+    Dates for unconfirmed years are calculated astronomically based on Full Moon
+    instants converted to Sri Lanka Standard Time (UTC+5:30).
     """
 
     START_YEAR = 2003
-    END_YEAR = 2026
+    END_YEAR = 2100
 
     BAK_POYA_DATES = {
         2003: (APR, 16),
@@ -234,6 +372,7 @@ class _SinhalaLunar:
         2024: (FEB, 23),
         2025: (FEB, 12),
         2026: (FEB, 1),
+        2027: (FEB, 21),
     }
 
     NIKINI_POYA_DATES = {
@@ -369,56 +508,163 @@ class _SinhalaLunar:
         2024: (MAY, 23),
         2025: (MAY, 12),
         2026: (MAY, 1),
+        2027: (MAY, 20),
+        2030: (MAY, 24),
     }
 
+    def __init__(
+        self,
+        year: int | None = None,
+        year_range: tuple[int, int] | None = None,
+    ) -> None:
+        self.year = year
+        self.year_range = year_range
+
+    def __iter__(self) -> Iterable[tuple[str, date, bool]]:
+        """Yield (poya_name, date, is_estimated) tuples."""
+        if self.year_range is not None:
+            yield from self.generate_poya_dates(*self.year_range)
+        elif self.year is not None:
+            yield from self.poya_dates(self.year)
+        else:
+            yield from self.generate_poya_dates(self.START_YEAR, self.END_YEAR)
+
+    def poya_dates(self, year: int) -> Iterable[tuple[str, date, bool]]:
+        """Generate all Poya (Full Moon) dates for a given year.
+
+        Yields:
+            Tuple of (poya_name, date, is_estimated) in chronological order.
+        """
+        results: list[tuple[str, date, bool]] = []
+        for holiday in POYA_NAMES:
+            for dt, is_est in self._get_holiday_set(holiday, year):
+                results.append((holiday, dt, is_est))
+        results.sort(key=lambda item: item[1])
+        yield from results
+
+    def generate_poya_dates(
+        self, start_year: int, end_year: int
+    ) -> Iterable[tuple[str, date, bool]]:
+        """Generate Poya dates across the specified year range [start_year, end_year].
+
+        Yields:
+            Tuple of (poya_name, date, is_estimated) in chronological order.
+        """
+        for year in range(start_year, end_year + 1):
+            yield from self.poya_dates(year)
+
+    def poya_days(self, year: int) -> set[date]:
+        """Return the set of all Poya calendar dates for a given year."""
+        return {dt for _, dt, _ in self.poya_dates(year)}
+
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        dt = exact_dates.get(year, estimated_dates.get(year, ()))
-        return date(year, *dt) if dt else None, year not in exact_dates
+        if year in exact_dates:
+            dt = exact_dates[year]
+            return date(year, *dt), False
+
+        confirmed_dates = getattr(self, f"{holiday}_DATES", {})
+        if year in confirmed_dates:
+            dt = confirmed_dates[year]
+            return date(year, *dt), False
+
+        if year <= 2026:
+            return None, False
+
+        calc_date = _calculate_poya_dates(year).get(holiday)
+        return (calc_date if isinstance(calc_date, date) else None, True)
 
     def _get_holiday_set(self, holiday: str, year: int) -> Iterable[tuple[date, bool]]:
-        estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
-        for year in (year - 1, year):
-            for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
-                yield date(year, *dt), year not in exact_dates
+        if year in exact_dates:
+            for dt in _normalize_tuple(exact_dates[year]):
+                yield date(year, *dt), False
+            return
+
+        confirmed_dates = getattr(self, f"{holiday}_DATES", {})
+        if year in confirmed_dates:
+            for dt in _normalize_tuple(confirmed_dates[year]):
+                yield date(year, *dt), False
+            return
+
+        if year <= 2026:
+            return
+
+        calc_date = _calculate_poya_dates(year).get(holiday)
+        if calc_date:
+            yield calc_date, True
 
     def bak_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BAK_POYA, year)
 
+    def bak_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(BAK_POYA, year)
+
     def binara_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BINARA_POYA, year)
 
+    def binara_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(BINARA_POYA, year)
+
     def duruthu_poya_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(DURUTHU_POYA, year)
+
+    def duruthu_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
         return self._get_holiday_set(DURUTHU_POYA, year)
 
     def esala_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ESALA_POYA, year)
 
+    def esala_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(ESALA_POYA, year)
+
     def il_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(IL_POYA, year)
+
+    def il_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(IL_POYA, year)
 
     def medin_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(MEDIN_POYA, year)
 
+    def medin_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(MEDIN_POYA, year)
+
     def nawam_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NAWAM_POYA, year)
+
+    def nawam_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(NAWAM_POYA, year)
 
     def nikini_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NIKINI_POYA, year)
 
+    def nikini_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(NIKINI_POYA, year)
+
     def poson_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(POSON_POYA, year)
+
+    def poson_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(POSON_POYA, year)
 
     def unduvap_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(UNDUVAP_POYA, year)
 
+    def unduvap_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(UNDUVAP_POYA, year)
+
     def vap_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VAP_POYA, year)
 
+    def vap_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(VAP_POYA, year)
+
     def vesak_poya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(VESAK_POYA, year)
+
+    def vesak_poya_dates(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(VESAK_POYA, year)
 
 
 class _CustomSinhalaHolidays(_CustomCalendar, _SinhalaLunar):
