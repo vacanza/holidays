@@ -363,7 +363,9 @@ class UnitedStates(
                 else:
                     self._add_observed(self._add_remembrance_day(name))
 
-        if self._year >= 1971 and self._normalized_subdiv != "AS":
+        if self._year >= 1971 and (
+            self._normalized_subdiv != "AS" or GOVERNMENT in self.categories
+        ):
             # Memorial Day.
             self._add_holiday_last_mon_of_may(tr("Memorial Day"))
 

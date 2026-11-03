@@ -88,8 +88,29 @@ class TestAmericanSamoa(CommonCountryTests, TestCase):
         holidays = AmericanSamoa(years=range(1938, 1954))
         self.assertHolidayName("Armistice Day", holidays, range(1938, 1954))
         self.assertNoHolidayName("Veterans Day", holidays, range(1938, 1954))
-        self.assertHolidayName("Veterans Day", range(1954, self.end_year))
+        self.assertHolidayName(
+            "Veterans Day", (f"{year}-11-11" for year in range(1954, self.end_year))
+        )
         self.assertNoHolidayName("Armistice Day", range(1954, self.end_year))
+
+        holidays = AmericanSamoa(years=range(1971, 1978))
+        self.assertHolidayName(
+            "Veterans Day", holidays, (f"{year}-11-11" for year in range(1971, 1978))
+        )
+        self.assertNoHolidayName(
+            "Veterans Day",
+            holidays,
+            (
+                "1971-10-25",
+                "1972-10-23",
+                "1973-10-22",
+                "1974-10-28",
+                "1975-10-27",
+                "1976-10-25",
+                "1977-10-24",
+            ),
+        )
+        self.assertHolidayName("Veterans Day (observed)", "2023-11-10", "2029-11-12")
 
     def test_other_statutory_holidays(self):
         self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
