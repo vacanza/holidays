@@ -223,7 +223,13 @@ class HongKong(
 
         if self._year >= 2024:
             # The first weekday after Christmas Day.
-            self._add_observed(self._add_christmas_day_two(tr("聖誕節後第一個周日")))
+            name = tr("聖誕節後第一個周日")
+            # 26 December is a Sunday when Christmas Day falls on a Saturday,
+            # so the first weekday after Christmas Day is 27 December.
+            if self._is_saturday(self._christmas_day):
+                self._add_christmas_day_three(name)
+            else:
+                self._add_christmas_day_two(name)
 
         if CHRISTMAS in self.preferred_discretionary_holidays:
             # Christmas Day.
