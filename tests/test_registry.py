@@ -27,36 +27,41 @@ class TestEntityLoader(TestCase):
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
     )
-    def test_countries_imports(self):
-        warnings.simplefilter("ignore")
 
+    def _assert_entities_importable(
+        self, registry_entities, entity_namespace, namespace
+    ):
         loader_entities = set()
-        for module, entities in registry.COUNTRIES.items():
-            module = importlib.import_module(f"holidays.countries.{module}")
+        for module, entities in registry_entities.items():
+            module = importlib.import_module(f"holidays.{namespace}.{module}")
             for entity in entities:
-                countries_cls = getattr(countries, entity)
+                entity_cls = getattr(entity_namespace, entity)
                 loader_cls = getattr(holidays, entity)
                 module_cls = getattr(module, entity)
 
-                self.assertIsNotNone(countries_cls, entity)
+                self.assertIsNotNone(entity_cls, entity)
                 self.assertIsNotNone(loader_cls, entity)
                 self.assertIsNotNone(module_cls, entity)
-                self.assertEqual(countries_cls, module_cls)
+                self.assertEqual(entity_cls, module_cls)
                 self.assertIsInstance(loader_cls, registry.EntityLoader)
-                self.assertIsInstance(loader_cls(), countries_cls)
+                self.assertIsInstance(loader_cls(), entity_cls)
                 self.assertIsInstance(loader_cls(), module_cls)
 
                 loader_entities.add(loader_cls.__name__)
 
-        countries_entities = {
-            entity[0] for entity in inspect.getmembers(countries, inspect.isclass)
+        entities = {
+            entity[0]
+            for entity in inspect.getmembers(entity_namespace, inspect.isclass)
         }
         self.assertEqual(
-            countries_entities,
+            entities,
             loader_entities,
-            "Registry entities and countries entities don't match: "
-            f"{countries_entities.difference(loader_entities)}",
+            f"Registry entities and {namespace} entities don't match: "
+            f"{entities.difference(loader_entities)}",
         )
+    def test_countries_imports(self):
+        warnings.simplefilter("ignore")
+        self._assert_entities_importable(registry.COUNTRIES, countries, "countries")
 
     def test_country_str(self):
         self.assertEqual(
@@ -71,33 +76,7 @@ class TestEntityLoader(TestCase):
         reason="Run once on the latest Python version only",
     )
     def test_financial_imports(self):
-        loader_entities = set()
-        for module, entities in registry.FINANCIAL.items():
-            module = importlib.import_module(f"holidays.financial.{module}")
-            for entity in entities:
-                financial_cls = getattr(financial, entity)
-                loader_cls = getattr(holidays, entity)
-                module_cls = getattr(module, entity)
-
-                self.assertIsNotNone(financial_cls, entity)
-                self.assertIsNotNone(loader_cls, entity)
-                self.assertIsNotNone(module_cls, entity)
-                self.assertEqual(financial_cls, module_cls)
-                self.assertIsInstance(loader_cls, registry.EntityLoader)
-                self.assertIsInstance(loader_cls(), financial_cls)
-                self.assertIsInstance(loader_cls(), module_cls)
-
-                loader_entities.add(loader_cls.__name__)
-
-        financial_entities = {
-            entity[0] for entity in inspect.getmembers(financial, inspect.isclass)
-        }
-        self.assertEqual(
-            financial_entities,
-            loader_entities,
-            "Registry entities and financial entities don't match: "
-            f"{financial_entities.difference(loader_entities)}",
-        )
+        self._assert_entities_importable(registry.FINANCIAL, financial, "financial")
 
     def test_financial_str(self):
         self.assertEqual(
