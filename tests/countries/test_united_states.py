@@ -531,6 +531,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name, as_holidays, dts)
         as_government_holidays = self.subdiv_government_holidays["AS"]
         self.assertHolidayName(name, as_government_holidays, dts)
+        self.assertHolidayName(name, as_government_holidays, range(1971, self.end_year))
         self.assertNoHolidayName(name, as_government_holidays, ("2022-02-22",))
 
     def test_washingtons_birthday_states(self):
