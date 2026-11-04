@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.46\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-22 21:58+0200\n"
-"PO-Revision-Date: 2024-03-20 21:12+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-11 02:26+0300\n"
+"Last-Translator: Victor Chartin <victorchartin@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgid "Nașterea lui Iisus Hristos (Crăciunul)"
 msgstr "Різдво Христове"
 
 #. International Women's Day.
-msgid "Ziua internatională a femeii"
+msgid "Ziua internațională a femeii"
 msgstr "Міжнародний жіночий день"
 
 #. Easter.
@@ -53,11 +53,11 @@ msgid "Paștele blajinilor"
 msgstr "Проводи"
 
 #. International Workers' Solidarity Day.
-msgid "Ziua internaţională a solidarităţii oamenilor muncii"
+msgid "Ziua internațională a solidarității oamenilor muncii"
 msgstr "День міжнародної солідарності трудящих"
 
 #. Victory Day and Commemoration of the heroes fallen for Independence of Fatherland.
-msgid "Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"
+msgid "Ziua Victoriei și a comemorării eroilor căzuți pentru Independența Patriei"
 msgstr "День Перемоги та вшанування памʼяті героїв, полеглих за незалежність Батьківщини"
 
 #. Europe Day.
@@ -69,7 +69,7 @@ msgid "Ziua Ocrotirii Copilului"
 msgstr "День захисту дітей"
 
 #. Republic of Moldova Independence Day.
-msgid "Ziua independenţei Republicii Moldova"
+msgid "Ziua independenței Republicii Moldova"
 msgstr "День незалежності Республіки Молдова"
 
 #. National Language Day.

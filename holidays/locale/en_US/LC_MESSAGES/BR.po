@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.96\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2026-04-29 22:48+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-11 21:41-0300\n"
+"Last-Translator: Luiz Felipe Fonseca <fonseca@me.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgid "Carnaval"
 msgstr "Carnival"
 
 #. Ash Wednesday.
-msgid "Início da Quaresma"
+msgid "Quarta-feira de Cinzas"
 msgstr "Ash Wednesday"
 
 #. Corpus Christi.
