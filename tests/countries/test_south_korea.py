@@ -153,6 +153,8 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2035-03-28",
             "2040-03-28",
             "2045-03-29",
+            "2050-03-30",
+            "2055-03-31",
             "2065-03-25",
         )
 
