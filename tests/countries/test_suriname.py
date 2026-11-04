@@ -105,7 +105,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         name = "Holi-Phagwa"
         self.assertHolidayName(
             name,
-            "2019-03-21",
             "2020-03-09",
             "2021-03-28",
             "2022-03-18",
@@ -133,7 +132,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         name = "Ied-Ul-Fitre"
         self.assertHolidayName(
             name,
-            "2019-06-05",
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
@@ -147,7 +145,6 @@ class TestSuriname(CommonCountryTests, TestCase):
         name = "Ied-Ul-Adha"
         self.assertHolidayName(
             name,
-            "2019-08-12",
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",

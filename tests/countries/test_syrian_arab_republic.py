@@ -135,7 +135,8 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 3, set(self.full_range) - {2033})
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2033)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
@@ -166,7 +167,11 @@ class TestSyrianArabRepublic(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 4, set(self.full_range) - {2006, 2007, 2039}
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2006, 2007)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 8, 2039)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

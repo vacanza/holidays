@@ -80,7 +80,7 @@ class TestSenegal(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_whit_monday(self):
+    def test_pentecost_monday(self):
         name = "Lundi de Pentecôte"
         self.assertHolidayName(
             name,

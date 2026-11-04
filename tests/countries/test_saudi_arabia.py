@@ -85,7 +85,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_arafat_day(self):
+    def test_arafah_day(self):
         name = "يوم عرفة"
         self.assertHolidayName(
             name,

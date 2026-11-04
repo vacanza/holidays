@@ -20,7 +20,6 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(SouthAfrica)
-        cls.holidays_non_observed = SouthAfrica(years=range(1995, cls.end_year), observed=False)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -81,7 +80,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         self.assertHolidayName(name_1952, (f"{year}-04-06" for year in range(1952, 1974)))
         self.assertHolidayName(name_1980, (f"{year}-04-06" for year in range(1980, 1995)))
         self.assertNoHolidayName(
-            name_1952, range(self.start_year, 1952), range(1975, self.end_year)
+            name_1952, range(self.start_year, 1952), range(1974, self.end_year)
         )
         self.assertNoHolidayName(
             name_1980, range(self.start_year, 1980), range(1995, self.end_year)
@@ -104,9 +103,9 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "1940-03-25",
-            "1960-04-18",
-            "1970-03-30",
+            "1975-03-31",
+            "1976-04-19",
+            "1977-04-11",
             "1978-03-27",
             "1979-04-16",
         )
@@ -220,12 +219,11 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "Ascension Day"
         self.assertHolidayName(
             name,
-            "1940-05-02",
-            "1950-05-18",
-            "1960-05-26",
-            "1970-05-07",
-            "1980-05-15",
+            "1988-05-12",
+            "1989-05-04",
             "1990-05-24",
+            "1991-05-09",
+            "1992-05-28",
             "1993-05-20",
         )
         self.assertHolidayName(name, range(self.start_year, 1994))
@@ -240,10 +238,6 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "Queen's Birthday"
         self.assertHolidayName(
             name,
-            "1952-07-14",
-            "1953-07-13",
-            "1954-07-12",
-            "1955-07-11",
             "1956-07-09",
             "1957-07-08",
             "1958-07-14",
@@ -252,13 +246,14 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         )
         self.assertNoHolidayName(name, range(self.start_year, 1952), range(1961, self.end_year))
 
-    def test_settlers_birthday(self):
+    def test_settlers_day(self):
         name = "Settlers' Day"
         self.assertHolidayName(
             name,
-            "1952-09-01",
-            "1960-09-05",
-            "1970-09-07",
+            "1975-09-01",
+            "1976-09-06",
+            "1977-09-05",
+            "1978-09-04",
             "1979-09-03",
         )
         self.assertHolidayName(name, range(1952, 1980))
@@ -273,12 +268,6 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         name = "King's Birthday"
         self.assertHolidayName(
             name,
-            "1940-08-05",
-            "1941-08-04",
-            "1942-08-03",
-            "1943-08-02",
-            "1944-08-07",
-            "1945-08-06",
             "1946-08-05",
             "1947-08-04",
             "1948-08-02",

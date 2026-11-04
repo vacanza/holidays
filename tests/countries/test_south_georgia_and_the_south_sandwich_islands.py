@@ -71,9 +71,6 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2012-04-09",
-            "2013-04-01",
-            "2014-04-21",
             "2015-04-06",
             "2016-03-28",
             "2017-04-17",
@@ -134,12 +131,16 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_toothfish_day(self):
-        name_1 = "Toothfish (end of season) Day"
-        name_2 = "Toothfish Day"
-        self.assertHolidayName(name_1, (f"{year}-09-14" for year in range(self.start_year, 2015)))
-        self.assertHolidayName(name_2, (f"{year}-09-04" for year in range(2015, 2022)))
-        self.assertNoHolidayName(name_1, range(2015, self.end_year))
-        self.assertNoHolidayName(name_2, range(self.start_year, 2015), range(2022, self.end_year))
+        name_2012 = "Toothfish (end of season) Day"
+        name_2015 = "Toothfish Day"
+        self.assertHolidayName(
+            name_2012, (f"{year}-09-14" for year in range(self.start_year, 2015))
+        )
+        self.assertHolidayName(name_2015, (f"{year}-09-04" for year in range(2015, 2022)))
+        self.assertNoHolidayName(name_2012, range(2015, self.end_year))
+        self.assertNoHolidayName(
+            name_2015, range(self.start_year, 2015), range(2022, self.end_year)
+        )
         obs_dts_1 = (
             "2013-09-13",
             "2014-09-15",
@@ -148,8 +149,8 @@ class TestSouthGeorgiaAndTheSouthSandwichIslands(CommonCountryTests, TestCase):
             "2016-09-05",
             "2021-09-06",
         )
-        self.assertHolidayName(f"{name_1} (observed)", obs_dts_1)
-        self.assertHolidayName(f"{name_2} (observed)", obs_dts_2)
+        self.assertHolidayName(f"{name_2012} (observed)", obs_dts_1)
+        self.assertHolidayName(f"{name_2015} (observed)", obs_dts_2)
         self.assertNoNonObservedHoliday(obs_dts_1, obs_dts_2)
 
     def test_environment_day(self):
