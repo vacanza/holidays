@@ -26,7 +26,7 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
     December 31 falls on a weekend, the closure moves to the preceding Friday.
 
     References:
-        * [Días no hábiles bursátiles](https://www.bvc.com.co/dias-no-habiles-bursatiles)
+        * [Días no hábiles bursátiles](http://archive.today/2026.10.03-082131/https://www.bvc.com.co/dias-no-habiles-bursatiles)
 
     Historical data:
         * [2009](https://web.archive.org/web/20091228031820/http://www.bvc.com.co/pps/tibco/portalbvc/Home/Mercados/dianobursatil)

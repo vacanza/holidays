@@ -39,8 +39,8 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [Bank Holidays 2025](https://web.archive.org/web/20250811112642/https://www.riksbank.se/sv/press-och-publicerat/kalender/helgdagar-2025/)
         * [Swedish Annual Leave Law (SFS 1977:480)](https://web.archive.org/web/20260106114757/https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/)
 
-    In Sweden, ALL sundays are considered a holiday.
-    Initialize this class with `include_sundays=False` to not include sundays as a holiday.
+    In Sweden, all Sundays are considered holidays.
+    Initialize this class with `include_sundays=True` to include Sundays as holidays.
 
     Supported holiday categories:
 
@@ -73,11 +73,11 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (BANK, DE_FACTO, OPTIONAL, PUBLIC)
     supported_languages = ("en_US", "sv", "th", "uk")
 
-    def __init__(self, *args, include_sundays: bool = True, **kwargs):
+    def __init__(self, *args, include_sundays: bool = False, **kwargs):
         """
         Args:
             include_sundays:
-                Whether to consider sundays as a holiday (which they are in Sweden)
+                Whether to include Sundays as holidays.
         """
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)

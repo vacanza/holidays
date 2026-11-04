@@ -77,20 +77,27 @@ def _load_lazily(
     package = scope["__name__"]
     name_modules = {name: module for module, names in modules.items() for name in names}
 
-    def getattr_(name: str) -> Any:
-        if name in modules:
-            with lock:
-                return importlib.import_module(f"{package}.{name}")
-        if name not in name_modules:
-            raise AttributeError(f"module {package!r} has no attribute {name!r}")
-        with lock:
-            module = importlib.import_module(f"{package}.{name_modules[name]}")
-        scope[name] = getattr(module, name)
-        return scope[name]
-
-    def dir_() -> list[str]:
+    def list_attributes() -> list[str]:
+        """Return sorted package attribute names."""
         return sorted({*scope, *modules, *name_modules})
 
+    def load_attribute(name: str) -> Any:
+        """Return a lazily imported package attribute."""
+        if (module_name := name if name in modules else name_modules.get(name)) is None:
+            raise AttributeError(f"module {package!r} has no attribute {name!r}")
+
+        with lock:
+            if name in scope:
+                return scope[name]
+
+            module = importlib.import_module(f"{package}.{module_name}")
+            if name in modules:
+                scope[name] = module
+                return module
+
+            scope[name] = getattr(module, name)
+            return scope[name]
+
     scope["__all__"] = [name for name in (*modules, *name_modules) if not name.startswith("_")]
-    scope["__dir__"] = dir_
-    scope["__getattr__"] = getattr_
+    scope["__dir__"] = list_attributes
+    scope["__getattr__"] = load_attribute

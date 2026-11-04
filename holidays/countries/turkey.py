@@ -48,7 +48,9 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         IslamicHolidays.__init__(
             self, cls=TurkeyIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        StaticHolidays.__init__(self, TurkeyStaticHolidays)
+        StaticHolidays.__init__(
+            self, (TurkeyStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -67,7 +69,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
             # Spring Day.
             self._add_labor_day(tr("Bahar Bayramı"))
         elif self._year >= 2009:
-            # Labour and Solidarity Day.
+            # Labor and Solidarity Day.
             self._add_labor_day(tr("Emek ve Dayanışma Günü"))
 
         self._add_holiday_may_19(

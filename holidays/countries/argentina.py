@@ -809,6 +809,7 @@ class ArgentinaStaticHolidays:
         * [Law 26840](https://web.archive.org/web/20240109181218/https://www.argentina.gob.ar/normativa/nacional/ley-26840-207258/texto)
         * [Decree 42/2022](https://web.archive.org/web/20241208143041/https://www.argentina.gob.ar/normativa/nacional/decreto-42-2022-360018/texto)
         * [Decree 842/2022](https://web.archive.org/web/20240114151710/https://www.argentina.gob.ar/normativa/nacional/decreto-842-2022-376857/texto)
+        * [Decree 1103/2026 (Papal Visit Holidays)](https://web.archive.org/web/20261003211655/https://www.argentina.gob.ar/normativa/nacional/decreto-1103-2026-430580/texto)
 
     Special Bank Holidays References:
         * [Release P50962 (2019)](https://web.archive.org/web/20250219192339/https://www.bcra.gob.ar/Pdfs/comytexord/P50962.pdf)
@@ -816,12 +817,10 @@ class ArgentinaStaticHolidays:
         * [Release P51020 (2021)](https://web.archive.org/web/20240616000609/http://www.bcra.gob.ar/Pdfs/comytexord/P51020.pdf)
         * [Release P51155 (2024)](https://web.archive.org/web/20250427172945/https://bcra.gob.ar/Pdfs/comytexord/P51155.pdf)
         * [Release P51199 (2025)](https://web.archive.org/web/20251221165343/https://www.bcra.gob.ar/archivos/Pdfs/comytexord/P51199.pdf)
+        * [Communication A8487](https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8487.pdf)
 
     Special Subdivision-level Holidays References:
-        * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
-
-    Special Subdivision-level Holidays References:
-        * [2018 G20 Leader Summit Special Holidays for Buenos Aires](https://web.archive.org/web/20220305033755/https://www.perfil.com/noticias/sociedad/30-de-noviembre-feriado-ciudad-de-buenos-aires-cumbre-g20.phtml)
+        * [2018 G20 Leader Summit Special Holidays for Autonomous City of Buenos Aires](https://web.archive.org/web/20231210161446/https://www.argentina.gob.ar/normativa/nacional/decreto-967-2018-315818/texto)
 
     Special Bridge Holidays are given upto 3 days a year as long as it's declared
     50 days before calendar year's end.
@@ -873,6 +872,9 @@ class ArgentinaStaticHolidays:
 
     # FIFA World Cup 2022 Victory Day.
     fifa_world_cup_2022_victory_day = tr("Día de la Victoria de la Copa Mundial de la FIFA 2022")
+
+    # Visit of His Holiness Pope Leo XIV.
+    papal_visit = tr("Visita de Su Santidad el Papa León XIV")
 
     # Bank Holiday.
     bank_holiday = tr("Asueto bancario")
@@ -963,6 +965,7 @@ class ArgentinaStaticHolidays:
         2026: (
             (MAR, 23, bridge_public_holiday),
             (JUL, 10, bridge_public_holiday),
+            (NOV, 9, papal_visit),
             (DEC, 7, bridge_public_holiday),
         ),
     }
@@ -993,8 +996,21 @@ class ArgentinaStaticHolidays:
             (DEC, 24, bank_holiday),
             (DEC, 31, bank_holiday),
         ),
+        2026: (NOV, 10, papal_visit),
     }
 
+    # Buenos Aires.
     special_b_public_holidays = {
+        2026: (NOV, 11, papal_visit),
+    }
+
+    # Ciudad Autónoma de Buenos Aires.
+    special_c_public_holidays = {
         2018: (NOV, 30, g20_leaders_summit_holiday),
+        2026: (NOV, 10, papal_visit),
+    }
+
+    # Córdoba.
+    special_x_public_holidays = {
+        2026: (NOV, 10, papal_visit),
     }

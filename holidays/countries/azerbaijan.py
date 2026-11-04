@@ -229,17 +229,22 @@ class AzerbaijanStaticHolidays:
     """Azerbaijan special holidays.
 
     Substituted holidays references:
-        * <https://web.archive.org/web/20240616014651/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423>
-        * <https://web.archive.org/web/20250427175631/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982>
-        * <https://web.archive.org/web/20250427175637/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488>
-        * <https://web.archive.org/web/20240814143858/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047>
-        * <https://web.archive.org/web/20250427175636/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466>
-        * <https://web.archive.org/web/20240814142341/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576>
-        * <https://web.archive.org/web/20250215005539/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843>
-        * <https://web.archive.org/web/20241015224204/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332>
-        * <https://web.archive.org/web/20250410132503/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449>
-        * <https://web.archive.org/web/20250216200846/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623>
-        * <https://web.archive.org/web/20250711211545/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8864>
+        * [2007-2020](https://archive.org/details/azerbaijan_holidays_resolutions_2007-2020)
+        * [2021](https://web.archive.org/web/20240616014651/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-5423)
+        * 2022:
+            * [1](https://web.archive.org/web/20250427175631/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin--dayisdirilmasi-haqqinda-5982)
+            * [2](https://web.archive.org/web/20250427175637/https://nk.gov.az/az/senedler/qerarlar/is-va-istirahat-gunlarinin-yerlarinin-dayisdirilmasi-haqqinda-6488)
+        * 2023:
+            * [1](https://web.archive.org/web/20240814143858/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7047)
+            * [2](https://web.archive.org/web/20250427175636/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7466)
+        * 2024:
+            * [1](https://web.archive.org/web/20240814142341/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7576)
+            * [2](https://web.archive.org/web/20250215005539/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-7843)
+            * [3](https://web.archive.org/web/20241015224204/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8332)
+            * [2024-2025](https://web.archive.org/web/20250410132503/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8449)
+        * 2025:
+            * [1](https://web.archive.org/web/20250216200846/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8623)
+            * [2](https://web.archive.org/web/20250711211545/https://nk.gov.az/az/senedler/qerarlar/is-ve-istirahet-gunlerinin-yerlerinin-deyisdirilme-8864)
 
     Special holidays references:
         * <https://web.archive.org/web/20250421013220/https://www.msk.gov.az/en/elections/pages/municipal-elections/belediyye-29-01-2025>
@@ -259,6 +264,18 @@ class AzerbaijanStaticHolidays:
     municipal_elections = tr("Bələdiyyə seçkiləri")
 
     special_public_holidays = {
+        2008: (
+            (JAN, 3, DEC, 29, 2007),
+            (JAN, 4, DEC, 30, 2007),
+            (MAR, 27, MAR, 29),
+            (MAR, 28, MAR, 30),
+            (SEP, 29, SEP, 27),
+        ),
+        2009: (MAR, 27, MAR, 29),
+        2010: (
+            (JUN, 14, JUN, 12),
+            (NOV, 15, NOV, 13),
+        ),
         2011: (AUG, 29, AUG, 27),
         2013: (
             (JAN, 3, DEC, 29, 2012),
@@ -268,13 +285,14 @@ class AzerbaijanStaticHolidays:
             (JAN, 3, DEC, 28, 2013),
             (JAN, 6, DEC, 29, 2013),
         ),
+        2015: (MAR, 27, MAR, 29),
         2018: (APR, 11, presidential_elections),
         2019: (DEC, 27, municipal_elections),
         2020: (
             (JAN, 3, DEC, 28, 2019),
             (JAN, 6, DEC, 29, 2019),
             (MAR, 27, MAR, 29),
-            (MAY, 27, MAY, 30),
+            (MAY, 27, MAY, 31),
         ),
         2021: (
             (MAY, 11, MAY, 8),
@@ -309,6 +327,9 @@ class AzerbaijanStaticHolidays:
     }
 
     special_public_holidays_observed = {
-        2007: (JAN, 3, eid_al_adha),
+        2007: (
+            (JAN, 3, eid_al_adha),
+            (JAN, 5, eid_al_adha),
+        ),
         2072: (JAN, 5, eid_al_adha),
     }

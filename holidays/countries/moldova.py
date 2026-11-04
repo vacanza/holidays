@@ -50,7 +50,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day_two(name)
 
         # International Women's Day.
-        self._add_womens_day(tr("Ziua internatională a femeii"))
+        self._add_womens_day(tr("Ziua internațională a femeii"))
 
         # Easter.
         name = tr("Paștele")
@@ -61,12 +61,12 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_8_days_past_easter(tr("Paștele blajinilor"))
 
         # International Workers' Solidarity Day.
-        self._add_labor_day(tr("Ziua internaţională a solidarităţii oamenilor muncii"))
+        self._add_labor_day(tr("Ziua internațională a solidarității oamenilor muncii"))
 
         self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for
             # Independence of Fatherland.
-            tr("Ziua Victoriei și a comemorării eroilor căzuţi pentru Independenţa Patriei"),
+            tr("Ziua Victoriei și a comemorării eroilor căzuți pentru Independența Patriei"),
             is_western=False,
         )
 
@@ -79,7 +79,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_childrens_day(tr("Ziua Ocrotirii Copilului"))
 
         # Republic of Moldova Independence Day.
-        self._add_holiday_aug_27(tr("Ziua independenţei Republicii Moldova"))
+        self._add_holiday_aug_27(tr("Ziua independenței Republicii Moldova"))
 
         # National Language Day.
         self._add_holiday_aug_31(tr("Limba noastră"))

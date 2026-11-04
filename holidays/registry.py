@@ -293,6 +293,7 @@ FINANCIAL: RegistryDict = {
     "bolsas_y_mercados_argentinos": ("BolsasYMercadosArgentinos", "XBUE", "BYMA"),
     "bolsas_y_mercados_espanoles": ("BolsasYMercadosEspanoles", "XMAD", "BME"),
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
+    "borsa_istanbul": ("BorsaIstanbul", "XIST", "BIST"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
@@ -307,8 +308,11 @@ FINANCIAL: RegistryDict = {
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
+    "pakistan_stock_exchange": ("PakistanStockExchange", "XKAR", "PSX"),
+    "saudi_exchange": ("SaudiExchange", "XSAU"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
+    "sifma": ("SIFMA", "XSIF", "USGS"),
     "singapore_exchange": ("SingaporeExchange", "XSES", "SGX"),
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
@@ -427,5 +431,9 @@ class EntityLoader:
 
     @staticmethod
     def load_package(prefix: str, scope: dict) -> None:
-        """Set up lazy loading of country or financial package entities."""
+        """Set up lazy loading (PEP 562) for a country or financial package.
+
+        An entity module is imported on first access only, so loading a single
+        country or market doesn't import all of them.
+        """
         _load_lazily(scope, COUNTRIES if prefix == "countries" else FINANCIAL, IMPORT_LOCK)
