@@ -10,6 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
+from contextlib import AbstractContextManager, nullcontext
+from typing import Any
+
 
 def _normalize_arguments(cls, value):
     """Normalize arguments.
@@ -52,3 +56,48 @@ def _normalize_tuple(value):
 def tr(message: str) -> str:
     """Mark a string for translation while returning it unchanged at runtime."""
     return message
+
+
+def _load_lazily(
+    scope: dict[str, Any],
+    modules: dict[str, tuple[str, ...]],
+    lock: AbstractContextManager = nullcontext(),
+) -> None:
+    """Set up lazy (PEP 562) loading of a package's names from its submodules.
+
+    :param scope:
+        The package `globals()`.
+
+    :param modules:
+        A mapping of submodule names to the names they provide.
+
+    :param lock:
+        An optional lock to hold while importing a submodule.
+    """
+    package = scope["__name__"]
+    name_modules = {name: module for module, names in modules.items() for name in names}
+
+    def list_attributes() -> list[str]:
+        """Return sorted package attribute names."""
+        return sorted({*scope, *modules, *name_modules})
+
+    def load_attribute(name: str) -> Any:
+        """Return a lazily imported package attribute."""
+        if (module_name := name if name in modules else name_modules.get(name)) is None:
+            raise AttributeError(f"module {package!r} has no attribute {name!r}")
+
+        with lock:
+            if name in scope:
+                return scope[name]
+
+            module = importlib.import_module(f"{package}.{module_name}")
+            if name in modules:
+                scope[name] = module
+                return module
+
+            scope[name] = getattr(module, name)
+            return scope[name]
+
+    scope["__all__"] = [name for name in (*modules, *name_modules) if not name.startswith("_")]
+    scope["__dir__"] = list_attributes
+    scope["__getattr__"] = load_attribute
