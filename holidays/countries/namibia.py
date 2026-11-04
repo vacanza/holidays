@@ -77,7 +77,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_holiday_aug_26(tr("Heroes' Day")))
 
         self._add_observed(
-            self._add_holiday_sep_10(
+            self._add_holiday_dec_10(
                 # Day of the Namibian Women and International Human Rights Day.
                 tr("Day of the Namibian Women and International Human Rights Day")
                 if self._year >= 2005
