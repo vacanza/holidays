@@ -128,6 +128,11 @@ class TestBrazil(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(
                     name_black, holidays, range(1996, start_year), range(2024, self.end_year)
                 )
+            elif subdiv == "SP":
+                self.assertHolidayName(name_black, holidays, "2023-11-20")
+                self.assertNoHolidayName(
+                    name_black, holidays, range(1996, 2023), range(2024, self.end_year)
+                )
             else:
                 self.assertNoHolidayName(name_black, holidays)
 
@@ -225,6 +230,26 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
+    def test_catholic_day(self):
+        name = "Dia do Católico"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AC":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2017-01-20",
+                    "2020-01-20",
+                    "2021-01-22",
+                    "2022-01-21",
+                    "2023-01-20",
+                    "2025-01-20",
+                )
+                self.assertHolidayName(name, holidays, range(2017, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(1996, 2017))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
     def test_evangelical_day(self):
         name = "Dia do Evangélico"
         self.assertNoHolidayName(name)
@@ -254,9 +279,11 @@ class TestBrazil(CommonCountryTests, TestCase):
                     )
                 case "RO":
                     self.assertHolidayName(
-                        name, holidays, (f"{year}-06-18" for year in range(2002, self.end_year))
+                        name, holidays, (f"{year}-06-18" for year in range(2002, 2021))
                     )
-                    self.assertNoHolidayName(name, holidays, range(1996, 2002))
+                    self.assertNoHolidayName(
+                        name, holidays, range(1996, 2002), range(2021, self.end_year)
+                    )
                 case _:
                     self.assertNoHolidayName(name, holidays)
 
@@ -301,7 +328,7 @@ class TestBrazil(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-09-05" for year in range(2004, 2009)),
+                    (f"{year}-09-05" for year in range(1996, 2009)),
                     "2012-09-07",
                     "2013-09-06",
                     "2017-09-08",
@@ -309,7 +336,6 @@ class TestBrazil(CommonCountryTests, TestCase):
                     "2019-09-06",
                 )
                 self.assertHolidayName(name, holidays, range(2009, self.end_year))
-                self.assertNoHolidayName(name, holidays, range(1996, 2004))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -389,12 +415,20 @@ class TestBrazil(CommonCountryTests, TestCase):
                         name, holidays, (f"{year}-03-19" for year in range(2003, self.end_year))
                     )
                     self.assertNoHolidayName(name, holidays, range(1996, 2003))
-                case "CE":
-                    self.assertHolidayName(
-                        name, holidays, (f"{year}-03-19" for year in range(1996, self.end_year))
-                    )
                 case _:
                     self.assertNoHolidayName(name, holidays)
+
+    def test_cabralzinho_day(self):
+        name = "Dia de Cabralzinho"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "AP":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-05-15" for year in range(2018, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(1996, 2018))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_saint_james_day(self):
         name = "São Tiago"
@@ -436,20 +470,9 @@ class TestBrazil(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "CE":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-25" for year in range(1996, self.end_year))
+                    name, holidays, (f"{year}-03-25" for year in range(2012, self.end_year))
                 )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_our_lady_of_assumption(self):
-        name = "Nossa Senhora da Assunção"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "CE":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-08-15" for year in range(2004, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(1996, 2004))
+                self.assertNoHolidayName(name, holidays, range(1996, 2012))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -564,8 +587,9 @@ class TestBrazil(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "PB":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-08-05" for year in range(1996, self.end_year))
+                    name, holidays, (f"{year}-08-05" for year in range(2016, self.end_year))
                 )
+                self.assertNoHolidayName(name, holidays, range(1996, 2016))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -639,18 +663,6 @@ class TestBrazil(CommonCountryTests, TestCase):
                     name, holidays, (f"{year}-04-23" for year in range(2008, self.end_year))
                 )
                 self.assertNoHolidayName(name, holidays, range(1996, 2008))
-            else:
-                self.assertNoHolidayName(name, holidays)
-
-    def test_rio_grande_de_norte_day(self):
-        name = "Dia do Rio Grande do Norte"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "RN":
-                self.assertHolidayName(
-                    name, holidays, (f"{year}-08-07" for year in range(2000, self.end_year))
-                )
-                self.assertNoHolidayName(name, holidays, range(1996, 2000))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -737,6 +749,12 @@ class TestBrazil(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-07-08" for year in range(1996, self.end_year))
                 )
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-10-24" for year in range(1996, 2000))
+                )
+                self.assertNoHoliday(
+                    holidays, (f"{year}-10-24" for year in range(2000, self.end_year))
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -770,9 +788,11 @@ class TestBrazil(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "TO":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-03-18" for year in range(1998, self.end_year))
+                    name, holidays, (f"{year}-03-18" for year in range(1998, 2009))
                 )
-                self.assertNoHolidayName(name, holidays, range(1996, 1998))
+                self.assertNoHolidayName(
+                    name, holidays, range(1996, 1998), range(2009, self.end_year)
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -791,6 +811,7 @@ class TestBrazil(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             ("2023-01-01", "Confraternização Universal"),
             ("2023-01-04", "Criação do Estado"),
+            ("2023-01-20", "Dia do Católico"),
             ("2023-01-23", "Dia do Evangélico"),
             ("2023-01-25", "Aniversário da Cidade de São Paulo"),
             ("2023-02-20", "Carnaval"),
@@ -798,7 +819,6 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-02-22", "Quarta-feira de Cinzas"),
             ("2023-03-06", "Revolução Pernambucana de 1817"),
             ("2023-03-10", "Dia Internacional da Mulher"),
-            ("2023-03-18", "Dia da Autonomia"),
             ("2023-03-19", "São José"),
             ("2023-03-25", "Abolição da escravidão no Ceará"),
             ("2023-04-07", "Sexta-feira Santa"),
@@ -806,9 +826,9 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-04-21", "Execução de Tiradentes; Fundação de Brasília; Tiradentes"),
             ("2023-04-23", "São Jorge"),
             ("2023-05-01", "Dia do Trabalhador"),
+            ("2023-05-15", "Dia de Cabralzinho"),
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-15", "Aniversário do Acre"),
-            ("2023-06-18", "Dia do Evangélico"),
             ("2023-06-24", "São João"),
             ("2023-06-29", "São Pedro"),
             ("2023-07-02", "Independência da Bahia"),
@@ -818,12 +838,8 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-07-26", "Fundação da cidade de Goiás"),
             ("2023-07-28", "Adesão do Maranhão à independência do Brasil"),
             ("2023-08-05", "Fundação do Estado"),
-            ("2023-08-07", "Dia do Rio Grande do Norte"),
             ("2023-08-13", "Dia do Estado de Santa Catarina"),
-            (
-                "2023-08-15",
-                "Adesão do Grão-Pará à independência do Brasil; Nossa Senhora da Assunção",
-            ),
+            ("2023-08-15", "Adesão do Grão-Pará à independência do Brasil"),
             ("2023-09-05", "Elevação do Amazonas à categoria de província"),
             ("2023-09-07", "Independência do Brasil"),
             ("2023-09-08", "Dia da Amazônia; Nossa Senhora da Natividade"),
@@ -853,6 +869,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             "en_US",
             ("2023-01-01", "Universal Fraternization Day"),
             ("2023-01-04", "State Creation Day"),
+            ("2023-01-20", "Catholic Day"),
             ("2023-01-23", "Evangelical Day"),
             ("2023-01-25", "São Paulo City Anniversary"),
             ("2023-02-20", "Carnival"),
@@ -860,7 +877,6 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-02-22", "Ash Wednesday"),
             ("2023-03-06", "Pernambuco Revolution of 1817"),
             ("2023-03-10", "International Women's Day"),
-            ("2023-03-18", "Autonomy Day"),
             ("2023-03-19", "Saint Joseph's Day"),
             ("2023-03-25", "Abolition of slavery in Ceará"),
             ("2023-04-07", "Good Friday"),
@@ -868,9 +884,9 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-04-21", "Founding of Brasilia; Tiradentes' Day; Tiradentes' Execution"),
             ("2023-04-23", "Saint George's Day"),
             ("2023-05-01", "Worker's Day"),
+            ("2023-05-15", "Cabralzinho Day"),
             ("2023-06-08", "Corpus Christi"),
             ("2023-06-15", "Founding of Acre"),
-            ("2023-06-18", "Evangelical Day"),
             ("2023-06-24", "Saint John's Day"),
             ("2023-06-29", "Saint Peter's Day"),
             ("2023-07-02", "Bahia Independence Day"),
@@ -880,9 +896,8 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-07-26", "Foundation of Goiás city"),
             ("2023-07-28", "Maranhão joining to independence of Brazil"),
             ("2023-08-05", "State Founding Day"),
-            ("2023-08-07", "Rio Grande do Norte Day"),
             ("2023-08-13", "Santa Catarina State Day"),
-            ("2023-08-15", "Grão-Pará joining to independence of Brazil; Our Lady of Assumption"),
+            ("2023-08-15", "Grão-Pará joining to independence of Brazil"),
             ("2023-09-05", "Elevation of Amazonas to province"),
             ("2023-09-07", "Independence Day"),
             ("2023-09-08", "Amazonia Day; Our Lady of Nativity"),
@@ -912,6 +927,7 @@ class TestBrazil(CommonCountryTests, TestCase):
             "uk",
             ("2023-01-01", "День всесвітнього братання"),
             ("2023-01-04", "День створення штату"),
+            ("2023-01-20", "Католицький день"),
             ("2023-01-23", "Євангельський день"),
             ("2023-01-25", "Річниця міста Сан-Паулу"),
             ("2023-02-20", "Карнавал"),
@@ -919,7 +935,6 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-02-22", "Попільна середа"),
             ("2023-03-06", "День Пернамбуканської революції 1817 року"),
             ("2023-03-10", "Міжнародний жіночий день"),
-            ("2023-03-18", "День автономії"),
             ("2023-03-19", "День Святого Йосипа"),
             ("2023-03-25", "День скасування рабства в Сеарі"),
             ("2023-04-07", "Страсна пʼятниця"),
@@ -927,9 +942,9 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-04-21", "День Тирадентіса; День заснування Бразиліа; День страти Тирадентіса"),
             ("2023-04-23", "День Святого Георгія"),
             ("2023-05-01", "День трудящих"),
+            ("2023-05-15", "День Кабралзіньо"),
             ("2023-06-08", "Свято Тіла і Крові Христових"),
             ("2023-06-15", "День заснування Акрі"),
-            ("2023-06-18", "Євангельський день"),
             ("2023-06-24", "День Святого Івана"),
             ("2023-06-29", "День Святого Петра"),
             ("2023-07-02", "День незалежності Баїї"),
@@ -939,12 +954,8 @@ class TestBrazil(CommonCountryTests, TestCase):
             ("2023-07-26", "День заснування міста Гояс"),
             ("2023-07-28", "День приєдання Мараньяна до незалежності Бразилії"),
             ("2023-08-05", "День заснування штату"),
-            ("2023-08-07", "День Ріо-Гранді-ду-Норті"),
             ("2023-08-13", "День штату Санта-Катарина"),
-            (
-                "2023-08-15",
-                "День Богоматері Внебовзяття; День приєдання Гран-Пара до незалежності Бразилії",
-            ),
+            ("2023-08-15", "День приєдання Гран-Пара до незалежності Бразилії"),
             ("2023-09-05", "День піднесення Амазонас до категорії провінцій"),
             ("2023-09-07", "День незалежності Бразилії"),
             ("2023-09-08", "День Амазонії; День Богоматері Різдва"),

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2026-10-11 21:41-0300\n"
-"Last-Translator: Luiz Felipe Fonseca <fonseca@me.com>\n"
+"PO-Revision-Date: 2026-10-30 16:06-0300\n"
+"Last-Translator: PaulooBarros <paulogustavobarros90@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -112,6 +112,10 @@ msgstr "Christmas Eve"
 msgid "Véspera de Ano-Novo"
 msgstr "New Year's Eve"
 
+#. Catholic Day.
+msgid "Dia do Católico"
+msgstr "Catholic Day"
+
 #. Evangelical Day.
 msgid "Dia do Evangélico"
 msgstr "Evangelical Day"
@@ -124,7 +128,7 @@ msgstr "International Women's Day"
 msgid "Aniversário do Acre"
 msgstr "Founding of Acre"
 
-#. Amazonia Day.
+#. Established by Lei n. 243. Amazonia Day.
 msgid "Dia da Amazônia"
 msgstr "Amazonia Day"
 
@@ -156,6 +160,10 @@ msgstr "Elevation of Amazonas to province"
 msgid "São José"
 msgstr "Saint Joseph's Day"
 
+#. Cabralzinho Day.
+msgid "Dia de Cabralzinho"
+msgstr "Cabralzinho Day"
+
 #. Saint James' Day.
 msgid "São Tiago"
 msgstr "Saint James' Day"
@@ -171,10 +179,6 @@ msgstr "Bahia Independence Day"
 #. Abolition of slavery in Ceará.
 msgid "Abolição da escravidão no Ceará"
 msgstr "Abolition of slavery in Ceará"
-
-#. Our Lady of Assumption.
-msgid "Nossa Senhora da Assunção"
-msgstr "Our Lady of Assumption"
 
 #. Founding of Brasilia.
 msgid "Fundação de Brasília"
@@ -231,10 +235,6 @@ msgstr "Political Emancipation of Paraná"
 #. Saint George's Day.
 msgid "São Jorge"
 msgstr "Saint George's Day"
-
-#. Rio Grande do Norte Day.
-msgid "Dia do Rio Grande do Norte"
-msgstr "Rio Grande do Norte Day"
 
 #. Uruaçu and Cunhaú Martyrs Day.
 msgid "Mártires de Cunhaú e Uruaçu"
