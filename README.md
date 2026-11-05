@@ -2036,6 +2036,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Indonesia Stock Exchange</td>
+<td>XIDX</td>
+<td>Indonesia Stock Exchange (IDX) market holidays</td>
+<td>en_US, <strong>id</strong>, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Japan Exchange</td>
 <td>XJPX</td>
 <td>Japan Exchange Group (JPX) market holidays</td>
