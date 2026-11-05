@@ -2043,7 +2043,7 @@ class _HinduLunisolar:
     }
 
     # https://web.archive.org/web/20241205101551/https://www.timeanddate.com/holidays/india/onam
-    SECOND_ONAM_DATES = {
+    ONAM_DATES = {
         2001: (AUG, 31),
         2002: (AUG, 21),
         2003: (SEP, 8),
@@ -2080,7 +2080,7 @@ class _HinduLunisolar:
         2034: (AUG, 28),
         2035: (SEP, 14),
     }
-    ONAM_DATES = SECOND_ONAM_DATES
+    SECOND_ONAM_DATES = _offset_date_mapping(ONAM_DATES, +1)
     FIRST_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, -1)
     THIRD_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, +1)
     FOURTH_ONAM_DATES = _offset_date_mapping(SECOND_ONAM_DATES, +2)
@@ -3274,20 +3274,35 @@ class _HinduLunisolar:
     def nirjala_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(NIRJALA_EKADASHI, year)
 
+    def _onam_day_date(
+        self, holiday: str, year: int, days_delta: int
+    ) -> tuple[date | None, bool]:
+        dt, is_estimated = self._get_holiday(holiday, year)
+        if not is_estimated:
+            return dt, is_estimated
+
+        onam_dt, onam_is_estimated = self.onam_date(year)
+        if onam_dt and (
+            not onam_is_estimated or type(self).ONAM_DATES is not _HinduLunisolar.ONAM_DATES
+        ):
+            return onam_dt + timedelta(days=days_delta), onam_is_estimated
+
+        return dt, is_estimated
+
     def first_onam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(FIRST_ONAM, year)
+        return self._onam_day_date(FIRST_ONAM, year, 0)
 
     def second_onam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(SECOND_ONAM, year)
+        return self._onam_day_date(SECOND_ONAM, year, 1)
 
     def onam_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(ONAM, year)
 
     def third_onam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(THIRD_ONAM, year)
+        return self._onam_day_date(THIRD_ONAM, year, 2)
 
     def fourth_onam_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(FOURTH_ONAM, year)
+        return self._onam_day_date(FOURTH_ONAM, year, 3)
 
     def parshuram_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARSHURAM_JAYANTI, year)

@@ -132,7 +132,7 @@ class Fiji(
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"), rule=SAT_SUN_TO_NEXT_MON_TUE)
-
+        
         # Prophet Mohammed's Birthday.
         for dt in self._add_mawlid_day("Prophet Mohammed's Birthday"):
             self._add_observed(dt)
