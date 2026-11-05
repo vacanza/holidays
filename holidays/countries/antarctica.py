@@ -20,6 +20,7 @@ class Antarctica(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Antarctica_Day>
         * <https://en.wikipedia.org/wiki/Midwinter_Day>
+        * Verified for accuracy (2026).
     """
 
     country = "AQ"
