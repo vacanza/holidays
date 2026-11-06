@@ -155,6 +155,13 @@ class HongKong(
             if self._year >= day_three_start_year:
                 self._add_chinese_new_years_day_three(third_day_lunar)
 
+    def _add_first_weekday_after_christmas(self, name: str) -> date:
+        # 26 December is a Sunday when Christmas Day falls on a Saturday,
+        # so the first weekday after Christmas Day is 27 December.
+        if self._is_saturday(self._christmas_day):
+            return self._add_christmas_day_three(name)
+        return self._add_christmas_day_two(name)
+
     def _populate_public_holidays(self):
         # Statutory Holidays.
 
@@ -223,7 +230,7 @@ class HongKong(
 
         if self._year >= 2024:
             # The first weekday after Christmas Day.
-            self._add_observed(self._add_christmas_day_two(tr("聖誕節後第一個周日")))
+            self._add_observed(self._add_first_weekday_after_christmas(tr("聖誕節後第一個周日")))
 
         if CHRISTMAS in self.preferred_discretionary_holidays:
             # Christmas Day.
