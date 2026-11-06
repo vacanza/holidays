@@ -24,6 +24,7 @@ from holidays.financial.borsa_istanbul import BorsaIstanbul, XIST, BIST
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
 from holidays.financial.european_central_bank import EuropeanCentralBank, XECB, ECB, TAR
+from holidays.financial.federal_reserve import FederalReserve, XFED, FED, USNY
 from holidays.financial.germany_exchange import GermanyStockExchange, XETR, XFRA
 from holidays.financial.hong_kong_stock_exchange import HongKongStockExchange, XHKG, HKEX, SEHK
 from holidays.financial.ice_futures_europe import IceFuturesEurope, ICEFuturesEurope, IFEU
