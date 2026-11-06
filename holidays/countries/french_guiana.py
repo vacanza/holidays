@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -30,6 +31,7 @@ class FrenchGuiana(ChildEntity, France):
     parent_entity_subdivision_code = "973"
     # Cession from Portugal on May 30th, 1814.
     start_year = 1815
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysGF(FrenchGuiana):
