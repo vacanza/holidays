@@ -90,14 +90,15 @@ class Oman(HolidayBase, IslamicHolidays):
 
     def _populate_public_holidays(self):
         if self._year >= 2020:
-            # Sultan's Accession Day.
-            name = tr("اليوم الوطني لتولي السلطان")
-            if self._year == 2025:
-                self._add_holiday_jan_12(name)
-            elif self._year == 2026:
-                self._add_holiday_jan_15(name)
-            else:
-                self._add_holiday_jan_11(name)
+            dates_obs = {
+                2025: (JAN, 12),
+                2026: (JAN, 15),
+            }
+            self._add_holiday(
+                # Sultan's Accession Day.
+                tr("اليوم الوطني لتولي السلطان"),
+                dates_obs.get(self._year, (JAN, 11)),
+            )
 
         if self._year <= 2019:
             # Renaissance Day.
@@ -106,18 +107,16 @@ class Oman(HolidayBase, IslamicHolidays):
         if self._year >= 2020:
             # National Day.
             name = tr("يوم وطني")
-            national_days = {
+            dates_obs = {
                 2020: (NOV, 25),
                 2021: (NOV, 28),
                 2022: (NOV, 30),
                 2023: (NOV, 22),
-                2024: (NOV, 20),
                 2025: (NOV, 26),
                 2026: (NOV, 25),
             }
-            self._add_multiday_holiday(
-                self._add_holiday(name, national_days.get(self._year, (NOV, 20))), 1, name=name
-            )
+            dt = self._add_holiday(name, dates_obs.get(self._year, (NOV, 20)))
+            self._add_holiday(name, _timedelta(dt, +1))
 
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
