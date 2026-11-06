@@ -146,6 +146,19 @@ class TestZimbabwe(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_munhumutapa_day(self):
+        name = "Munhumutapa Day"
+        self.assertHolidayName(name, (f"{year}-09-15" for year in range(2026, self.end_year)))
+        obs_dts = (
+            "2030-09-16",
+            "2041-09-16",
+            "2052-09-16",
+            "2058-09-16",
+        )
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
+
     def test_unity_day(self):
         name = "Unity Day"
         self.assertHolidayName(name, (f"{year}-12-22" for year in self.full_range))
