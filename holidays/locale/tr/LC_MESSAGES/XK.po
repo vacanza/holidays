@@ -12,8 +12,6 @@
 #
 # Kosovo holidays tr localization.
 #
-# Kosovo holidays Turkish localization.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
