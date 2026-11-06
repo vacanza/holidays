@@ -64,6 +64,8 @@ class SouthKorea(
         * [Public Holidays Act (2026 Amendment)](http://archive.today/2026.02.20-080801/https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283311&ancYd=20260210%230000)
         * [National Day Act (2014 Amendment)](http://archive.today/2026.02.20-081906/https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=165523&ancYd=20141230%230000)
         * [Labor Day and Constitution Day substitute holidays](https://web.archive.org/web/20260727135256/https://www.mpm.go.kr/mpm/comm/newsPress/newsPressRelease/?boardId=bbs_0000000000000029&category&cntId=4250&mode=view&pageIdx)
+        * [Public Official Election Act, Article 14(1): Commencement of the President's Term of Office](https://archive.ph/2026.11.04-112517/https://www.law.go.kr/법령/공직선거법/제14조)
+        * [Public Official Election Act, Article 34(1)1: Presidential Election Day at Term Expiration](https://archive.ph/2026.11.04-112916/https://www.law.go.kr/법령/공직선거법/제34조)
         * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
@@ -271,7 +273,8 @@ class SouthKorea(
                     # Independence Movement Day (MAR, 1).
                     self._add_holiday_2nd_wed_of_mar(name)
             elif self._year >= 2030 and (self._year - 2030) % 5 == 0:
-                self._add_holiday_1st_wed_of_apr(name)
+                # Term ends on JUN 3 since the 2025 special election; 70 days before is MAR 25.
+                self._add_holiday_1st_wed_from_mar_25(name)
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
             # Local Election Day.
