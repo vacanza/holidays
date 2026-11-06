@@ -2,7 +2,7 @@
 
 ## Simplest example possible
 
-``` python
+```pycon
 >>> from datetime import date
 >>> import holidays
 >>> date(2014, 1, 1) in holidays.US()
@@ -18,7 +18,7 @@ False
 
 It is more efficient to create the object only once:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US()
 >>> date(2014, 1, 1) in us_holidays
 True
@@ -30,23 +30,23 @@ You can use the [`country_holidays`](https://github.com/vacanza/holidays/blob/de
 or [`financial_holidays`](https://github.com/vacanza/holidays/blob/dev/holidays/utils.py) functions
 to create the object using a string with the country code:
 
-``` python
->>> us_holidays = holidays.country_holidays('US')
->>> nyse_holidays = holidays.financial_holidays('NYSE')
+```pycon
+>>> us_holidays = holidays.country_holidays("US")
+>>> nyse_holidays = holidays.financial_holidays("NYSE")
 ```
 
 Use `years` parameter to populate the holidays years you are interested in:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2020)  # US 2020 holidays
 >>> us_holidays = holidays.US(years=range(2020, 2026))  # US 2020-2025 holidays
 ```
 
 Let's print out the holidays in 2014 specific to California, USA:
 
-``` python
->>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
->>>     print(date, name)
+```pycon
+>>> for date, name in sorted(holidays.US(subdiv="CA", years=2014).items()):
+...     print(date, name)
 2014-01-01 New Year's Day
 2014-01-20 Martin Luther King Jr. Day
 2014-02-15 Susan B. Anthony Day
@@ -64,7 +64,7 @@ Let's print out the holidays in 2014 specific to California, USA:
 So far we've only checked holidays in 2014, so that's the only year the Holidays object has
 generated:
 
-``` python
+```pycon
 >>> us_holidays.years
 set([2014])
 >>> len(us_holidays)
@@ -76,7 +76,7 @@ set([2014])
 Because, by default, the `expand` parameter is `True`, the Holiday object will calculate and add
 holidays for other years when they are required:
 
-``` python
+```pycon
 >>> date(2013, 1, 1) in us_holidays
 True
 >>> us_holidays.years
@@ -88,7 +88,7 @@ set([2013, 2014])
 If we change the `expand` parameter to `False` the Holiday object will no longer add holidays from
 new years:
 
-``` python
+```pycon
 >>> us_holidays.expand = False
 >>> date(2012, 1, 1) in us_holidays
 False
@@ -102,21 +102,21 @@ True
 January 1st, 2012 fell on a Sunday, so the statutory holiday was observed on the 2nd. By default,
 the `observed` param is `True`, so the holiday list will include January 2nd, 2012 as a holiday:
 
-``` python
+```pycon
 >>> date(2012, 1, 1) in us_holidays
 True
 >>> us_holidays[date(2012, 1, 1)]
 "New Year's Day"
 >>> date(2012, 1, 2) in us_holidays
 True
->>> us_holidays.get(date(2012 ,1, 2))
+>>> us_holidays.get(date(2012, 1, 2))
 "New Year's Day (observed)"
 ```
 
 The values of `observed` and `expand` can be changed on the fly and the holiday list will be
 adjusted accordingly:
 
-``` python
+```pycon
 >>> us_holidays.observed = False
 >>> date(2012, 1, 2) in us_holidays
 False
@@ -129,9 +129,9 @@ True
 
 To change the language translation, you can set the language explicitly.
 
-``` python
+```pycon
 >>> for dt, name in sorted(holidays.ES(years=2023, language="es").items()):
->>>     print(dt, name)
+...     print(dt, name)
 2023-01-06 Epifanía del Señor
 2023-04-07 Viernes Santo
 2023-05-01 Fiesta del Trabajo
@@ -143,24 +143,74 @@ To change the language translation, you can set the language explicitly.
 2023-12-25 Natividad del Señor
 ```
 
+## Subdivision support
+
+Some holidays are only present in parts of a country. Use the `subdiv` parameter to include
+the holidays specific to a subdivision (e.g. a state or province):
+
+```pycon
+>>> us_holidays = holidays.US(years=2018)
+>>> us_pr_holidays = holidays.US(subdiv="PR", years=2018)
+>>> "2018-01-06" in us_holidays
+False
+>>> "2018-01-06" in us_pr_holidays
+True
+```
+
+## Date formats
+
+Holiday objects accept dates as `datetime.date`, `datetime.datetime`, a Unix timestamp
+(`int` or `float`), or a `str` in any format recognized by `dateutil.parser.parse()`.
+Keys are always returned as `datetime.date` objects:
+
+```pycon
+>>> us_holidays = holidays.US(years=2014)
+>>> "2014-01-01" in us_holidays
+True
+>>> "1/1/2014" in us_holidays
+True
+>>> 1388597445 in us_holidays  # Unix timestamp.
+True
+```
+
+Show the holiday's name:
+
+```pycon
+>>> us_holidays.get("2014-01-01")
+"New Year's Day"
+```
+
+## Date ranges
+
+Slicing a holiday object returns the holiday dates within a range. The start date is included,
+the stop date is not:
+
+```pycon
+>>> us_holidays["2014-01-01":"2014-01-03"]
+[datetime.date(2014, 1, 1)]
+```
+
 ## Holiday categories support
 
-The framework provides multiple holiday categories, enabling you to filter results by official status, religious significance, or institutional relevance.
+The framework provides multiple holiday categories, enabling you to filter results by official
+status, religious significance, or institutional relevance.
 
 ### Basic Category Usage
 
-Categories can be provided as a single string (e.g., 'public') or an iterable of strings. For better maintainability, it's recommended to use the predefined constants in `holidays.constants`. Note that category matching is case-sensitive.
+Categories can be provided as a single string (e.g., 'public') or an iterable of strings.
+For better maintainability, it's recommended to use the predefined constants
+in `holidays.constants`. Note that category matching is case-sensitive.
 
 To get holidays from specific categories:
 
-``` python
+```pycon
 >>> import holidays
 >>> from holidays.constants import PUBLIC, UNOFFICIAL
 ```
 
 Get only public holidays.
 
-``` python
+```pycon
 >>> us_public = holidays.UnitedStates(categories=PUBLIC, years=2024)
 >>> len(us_public)
 11
@@ -168,24 +218,26 @@ Get only public holidays.
 
 Get only unofficial holidays (cultural celebrations).
 
-``` python
+```pycon
 >>> us_unofficial = holidays.UnitedStates(categories=UNOFFICIAL, years=2024)
 >>> for date, name in sorted(us_unofficial.items()):
->>>     print(date, name)
+...     print(date, name)
 2024-02-14 Valentine's Day
 2024-03-17 Saint Patrick's Day
 2024-10-31 Halloween
 ```
 
-### Multiple Categories
+### Multiple categories
 
 You can specify multiple categories to get a combined set of holidays.
 Get both public and bank holidays for Belgium:
 
-``` python
+```pycon
 >>> from holidays.constants import BANK, PUBLIC
->>> for dt, name in sorted(holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()):
->>>     print(dt, name)
+>>> for dt, name in sorted(
+...     holidays.BE(years=2023, language="en_US", categories=(BANK, PUBLIC)).items()
+... ):
+...     print(dt, name)
 2023-01-01 New Year's Day
 2023-04-07 Good Friday
 2023-04-09 Easter Sunday
@@ -203,24 +255,24 @@ Get both public and bank holidays for Belgium:
 2023-12-26 Bank Holiday
 ```
 
-### Religious Categories
+### Religious categories
 
 Many countries support religious categories for holidays specific to certain communities.
 Get Catholic holidays in Germany (Saxony subdivision):
 
-``` python
+```pycon
 >>> from holidays.constants import CATHOLIC
->>> de_sn_catholic = holidays.Germany(subdiv='SN', categories=CATHOLIC, years=2024)
+>>> de_sn_catholic = holidays.Germany(subdiv="SN", categories=CATHOLIC, years=2024)
 >>> for date, name in sorted(de_sn_catholic.items()):
->>>     print(date, name)
+...     print(date, name)
 2024-08-15 Mariä Himmelfahrt
 ```
 
-### Checking Supported Categories
+### Checking supported categories
 
 Each country defines which categories it supports:
 
-``` python
+```pycon
 >>> print("US categories:", holidays.UnitedStates.supported_categories)
 US categories: ('government', 'public', 'unofficial')
 
@@ -228,21 +280,22 @@ US categories: ('government', 'public', 'unofficial')
 Germany categories: ('catholic', 'public', 'school')
 
 >>> from holidays.constants import SCHOOL
->>> de_by_school = holidays.Germany(subdiv='BY', categories=SCHOOL, years=2025)
->>> print(de_by_school['2025-08-01'])
+>>> de_by_school = holidays.Germany(subdiv="BY", categories=SCHOOL, years=2025)
+>>> print(de_by_school["2025-08-01"])
 Sommerferien
 
 >>> print("Argentina categories:", holidays.Argentina.supported_categories)
 Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'public')
 ```
 
-For a comprehensive list of all available categories and their descriptions, see the [Holiday Categories](holiday_categories.md) documentation.
+For a comprehensive list of all available categories and their descriptions,
+see the [Holiday Categories](holiday_categories.md) documentation.
 
 ## Working day-related calculations
 
 To check if the specified date is a working day:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2024)  # Weekends in the US are Saturday and Sunday.
 >>> us_holidays.is_working_day("2024-01-01")  # Monday, New Year's Day.
 False
@@ -256,7 +309,7 @@ False
 
 To find the nth working day after the specified date:
 
-``` python
+```pycon
 >>> us_holidays.get_nth_working_day("2024-12-20", 5)
 datetime.date(2024, 12, 30)
 ```
@@ -266,7 +319,7 @@ Here we calculate the 5th working day after December 20, 2024. Working days are 
 
 To calculate the number of working days between two specified dates:
 
-``` python
+```pycon
 >>> us_holidays.get_working_days_count("2024-04-01", "2024-06-30")
 63
 ```
@@ -280,7 +333,7 @@ returns found holiday's date and name excluding the target date.
 
 Get the next holiday for the current date:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2025)
 >>> us_holidays.get_closest_holiday()
 (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
@@ -288,7 +341,7 @@ Get the next holiday for the current date:
 
 Get the previous holiday for the current date:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2025)
 >>> us_holidays.get_closest_holiday(direction="backward")
 (datetime.date(2025, 1, 1), "New Year's Day")
@@ -296,7 +349,7 @@ Get the previous holiday for the current date:
 
 Get the next holiday for a specific target date:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2025)
 >>> us_holidays.get_closest_holiday("2025-02-01")
 (datetime.date(2025, 2, 17), "Washington's Birthday")
@@ -304,7 +357,7 @@ Get the next holiday for a specific target date:
 
 Get the previous holiday for a specific target date:
 
-``` python
+```pycon
 >>> us_holidays = holidays.US(years=2025)
 >>> us_holidays.get_closest_holiday("2025-02-01", direction="backward")
 (datetime.date(2025, 1, 20), 'Martin Luther King Jr. Day')
@@ -312,7 +365,7 @@ Get the previous holiday for a specific target date:
 
 If the closest holiday cannot be found, `None` is returned.
 
-``` python
+```pycon
 >>> print(us_holidays.get_closest_holiday("2100-12-31"))
 None
 >>> print(us_holidays.get_closest_holiday("1777-01-01", direction="backward"))
@@ -324,9 +377,9 @@ None
 Holidays can be retrieved using their name too. `get_named` receives a string and returns a list
 of holidays matching it (even partially, with case-insensitive check):
 
-``` python
+```pycon
 >>> us_holidays = holidays.UnitedStates(years=2020)
->>> sorted(us_holidays.get_named('day'))
+>>> sorted(us_holidays.get_named("day"))
 [datetime.date(2020, 1, 1), datetime.date(2020, 1, 20),
 datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
 datetime.date(2020, 7, 3), datetime.date(2020, 7, 4),
@@ -339,17 +392,24 @@ datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
 Holiday objects can be added together, and the resulting object will generate the holidays from
 all the initial objects:
 
-``` python
+```pycon
 >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
->>> north_america.get('2014-07-01')
-"Canada Day"
->>> north_america.get('2014-07-04')
-"Independence Day"
+>>> north_america.get("2014-07-01")
+'Canada Day'
+>>> north_america.get("2014-07-04")
+'Independence Day'
+```
+
+If several holidays fall on the same date, their names are merged:
+
+```pycon
+>>> north_america.get("2014-01-01")
+"Año Nuevo; New Year's Day"
 ```
 
 The other form of addition is also available:
 
-``` python
+```pycon
 >>> north_america = holidays.CA()
 >>> north_america += holidays.US()
 >>> north_america += holidays.MX()
@@ -360,7 +420,7 @@ The other form of addition is also available:
 We can even get a set of holidays that include all the subdivision-specific holidays using
 the built-in `sum` function:
 
-``` python
+```pycon
 >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
 >>> a.subdiv
 ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT']
@@ -371,18 +431,19 @@ the built-in `sum` function:
 Sometimes we may not be able to use the official federal statutory holiday list in our code. Let's
 pretend we work for a company that does not include New Year's Day as a statutory holiday but does
 include "Ninja Turtle Day" on July 13th. We can create a new class that inherits the US (please
-note the base class import path) and the only method we need to override is `_populate`:
+note the base class import path) and the only method we need to override is
+`_populate_public_holidays`:
 
-``` python
+```pycon
 >>> from holidays.countries import US
 >>> class CorporateHolidays(US):
->>>     def _populate(self, year):
->>>         # Populate the holiday list with the default US holidays.
->>>         super()._populate(year)
->>>         # Remove New Year's Day.
->>>         self.pop_named("New Year's Day")
->>>         # Add Ninja Turtle Day.
->>>         self._add_holiday_jul_13("Ninja Turtle Day")
+...     def _populate_public_holidays(self):
+...         # Populate the holiday list with the default US holidays.
+...         super()._populate_public_holidays()
+...         # Remove New Year's Day.
+...         self.pop_named("New Year's Day")
+...         # Add Ninja Turtle Day.
+...         self._add_holiday_jul_13("Ninja Turtle Day")
 >>> date(2014, 1, 1) in holidays.country_holidays(country="US")
 True
 >>> date(2014, 1, 1) in CorporateHolidays()
@@ -394,27 +455,26 @@ True
 ```
 
 We can also inherit from the [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py)
-class which has an empty `_populate` method so we start with no holidays and must define them all ourselves.
+class which doesn't have any holidays defined, so we must define them all ourselves.
 This is how we would create a holidays class for a country that is not supported yet:
 
-``` python
+```pycon
 >>> class NewCountryHolidays(holidays.HolidayBase):
->>>     def _populate(self, year):
->>>         self[date(year, 1, 2)] = "Some Federal Holiday"
->>>         self[date(year, 2, 3)] = "Another Federal Holiday"
+...     def _populate_public_holidays(self):
+...         self[date(self._year, 1, 2)] = "Some Federal Holiday"
+...         self[date(self._year, 2, 3)] = "Another Federal Holiday"
 >>> hdays = NewCountryHolidays()
 ```
 
-We can use the `self._add_holiday_*` methods to specify holidays:
+Instead of assigning dates directly, it is better to specify holidays with
+the `self._add_holiday_*` methods:
 
-``` python
+```pycon
 >>> class MovingHolidays(holidays.HolidayBase):
->>>     def _populate(self, year):
->>>         super()._populate(year)
->>>
->>>         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
->>>         self._add_holiday_last_fri_of_feb("Last Friday of February")
->>>         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
+...     def _populate_public_holidays(self):
+...         self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")
+...         self._add_holiday_last_fri_of_feb("Last Friday of February")
+...         self._add_holiday_1st_mon_before_dec_25("Monday before Christmas")
 >>> moving = MovingHolidays(years=2025)
 ```
 
@@ -442,19 +502,20 @@ You can find the implementation details at `HolidayBase.__getattr__` method.
 
 We can also include holidays for a subdivision (e.g. prov/state) in our new class:
 
-``` python
+```pycon
 >>> class NewCountryHolidays(holidays.HolidayBase):
->>>     def _populate(self, year):
->>>         # Set default subdiv if not provided
->>>         if self.subdiv == None:
->>>             self.subdiv = 'XX'
->>>         self[date(year, 1, 2)] = "Some Federal Holiday"
->>>         if self.subdiv == 'XX':
->>>             self[date(year, 2, 3)] = "Special XX subdiv-only holiday"
->>>         if self.subdiv == 'YY':
->>>             self[date(year, 3, 4)] = "Special YY subdiv-only holiday"
+...     subdivisions = ("XX", "YY")
+...
+...     def _populate_public_holidays(self):
+...         self._add_holiday_jan_2("Some Federal Holiday")
+...
+...     def _populate_subdiv_xx_public_holidays(self):
+...         self._add_holiday_feb_3("Special XX subdiv-only holiday")
+...
+...     def _populate_subdiv_yy_public_holidays(self):
+...         self._add_holiday_mar_4("Special YY subdiv-only holiday")
 >>> hdays = NewCountryHolidays()
->>> hdays = NewCountryHolidays(subdiv='XX')
+>>> hdays = NewCountryHolidays(subdiv="XX")
 ```
 
 If you write the code necessary to create a holiday class for a country not currently supported,
@@ -463,12 +524,51 @@ please contribute your code to the project!
 Perhaps you just have a list of dates that are holidays and want to turn them into a Holiday class
 to access all the useful functionality. You can use the `append()` method which accepts a
 dictionary of `{date: name}` pairs, a list of dates, or even singular date/string/timestamp
-objects:
+objects. Dates passed without a name are added as "Holiday":
 
-``` python
+```pycon
 >>> custom_holidays = holidays.HolidayBase()
->>> custom_holidays.append(['2015-01-01', '07/04/2015'])
+>>> custom_holidays.append(["2015-01-01", "07/04/2015"])
 >>> custom_holidays.append(date(2015, 12, 25))
+>>> custom_holidays.get("2015-01-01")
+'Holiday'
+```
+
+The `append()` method is an alias for `update()`. Either of them can also be used to add custom
+holidays to an existing country object:
+
+```pycon
+>>> us_holidays = holidays.US(years=2015)
+>>> us_holidays.update({"2015-07-10": "My birthday!"})
+>>> us_holidays.get("2015-07-10")
+'My birthday!'
+```
+
+## Special holidays
+
+Special (one-off) country-wide holidays, such as a royal jubilee, can be defined with
+the `special_public_holidays` mapping of a year to a tuple of `(month, day, name)` entries
+(for other holiday categories use `special_<category>_holidays`):
+
+```pycon
+>>> from holidays.calendars.gregorian import APR, DEC, JUL, JUN, SEP
+>>> class SpecialHolidays(holidays.HolidayBase):
+...     # Other class attributes and methods.
+...     special_public_holidays = {
+...         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
+...         1981: (JUL, 29, "Wedding of Charles and Diana"),
+...         1999: (DEC, 31, "Millennium Celebrations"),
+...         2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+...         2011: (APR, 29, "Wedding of William and Catherine"),
+...         2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
+...         2022: (
+...             (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+...             (SEP, 19, "State Funeral of Queen Elizabeth II"),
+...         ),
+...     }
+>>> special_holidays = SpecialHolidays(years=2022)
+>>> special_holidays.get("2022-09-19")
+'State Funeral of Queen Elizabeth II'
 ```
 
 ## Add years to an existing Holiday object
@@ -477,11 +577,11 @@ Because the Holiday class is a subclass of dictionary, we use the
 [update()](https://docs.python.org/3/library/stdtypes.html?highlight=update#dict.update)
 method to add years to an existing holiday object:
 
-``` python
+```pycon
 >>> from holidays import country_holidays
->>> us_holidays = country_holidays('US', years=2020)
+>>> us_holidays = country_holidays("US", years=2020)
 # to add new years of holidays to the object:
->>> us_holidays.update(country_holidays('US', years=2021))
+>>> us_holidays.update(country_holidays("US", years=2021))
 ```
 
 ## Other ways to specify the country
@@ -489,7 +589,7 @@ method to add years to an existing holiday object:
 Each country has two class names that can be called in addition to the alpha-2 ISO code: its
 3-digit ISO code and an internal class name.
 
-``` python
+```pycon
 >>> holidays.USA() == holidays.US()
 True
 >>> holidays.UnitedStates() == holidays.US()
@@ -502,10 +602,10 @@ True
 the creation and export of iCalendar files
 in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 
-``` python
+```pycon
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
->>> us_holidays = country_holidays('US', years=2020)
+>>> us_holidays = country_holidays("US", years=2020)
 # Initializes the iCalendar exporter.
 >>> exporter = ICalExporter(us_holidays)
 ```
@@ -513,10 +613,10 @@ in compliance with [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545).
 To create iCalendar content, use
 [`generate`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
-``` python
+```pycon
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
->>> th_holidays = country_holidays('TH', years=2024)
+>>> th_holidays = country_holidays("TH", years=2024)
 >>> exporter = ICalExporter(th_holidays)
 >>> ical_content = exporter.generate()
 # Thailand's Songkran Festival (April 13th-15th) should be counted as a single
@@ -538,10 +638,10 @@ so re-generating a calendar yields the same UIDs and subscribed clients update e
 For calendars published for subscription, `refresh_interval_weeks` adds the `REFRESH-INTERVAL` and
 `X-PUBLISHED-TTL` hints.
 
-``` python
+```pycon
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
->>> be_holidays = country_holidays('BE', years=2024, language='en_US')
+>>> be_holidays = country_holidays("BE", years=2024, language="en_US")
 >>> exporter = ICalExporter(be_holidays, refresh_interval_weeks=1)
 >>> exporter.calendar_name
 'Belgium Public Holidays [en-US]'
@@ -561,7 +661,7 @@ True
 > such as `en` or `pap-AW`. Additionally, if no `language` is specified for a holiday, but a
 > `default_language` is set for the Holiday object, the default language will be used instead.
 
-``` python
+```pycon
 >>> from holidays import country_holidays
 >>> from holidays.ical import ICalExporter
 >>> cn_holidays = country_holidays("CN", years=2024, language="en_US")
@@ -578,7 +678,7 @@ True
 To export to `.ics` format, use
 [`save_ics`](https://github.com/vacanza/holidays/blob/main/holidays/ical.py).
 
-``` python
+```pycon
 >>> from pathlib import Path
 >>> from holidays import financial_holidays
 >>> from holidays.ical import ICalExporter
@@ -592,7 +692,7 @@ To export to `.ics` format, use
 
 Generate `.ics` files with categories, language, and subdivisions.
 
-```python
+```pycon
 >>> from holidays.countries.india import IN
 >>> from holidays.ical import ICalExporter
 >>>
@@ -601,14 +701,14 @@ Generate `.ics` files with categories, language, and subdivisions.
 >>> subdiv = "AP"  # Andhra Pradesh state.
 >>>
 >>> for category in IN.supported_categories:
->>>     holidays = IN(
->>>         years=years,
->>>         categories=category,
->>>         language=language,
->>>         subdiv=subdiv,
->>>     )
->>>     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
->>>     ICalExporter(holidays).save_ics(filename)
+...     holidays = IN(
+...         years=years,
+...         categories=category,
+...         language=language,
+...         subdiv=subdiv,
+...     )
+...     filename = f"IN_{subdiv}_{language}_{category.upper()}.ics"
+...     ICalExporter(holidays).save_ics(filename)
 ```
 
 For advanced features and customization of the exported `.ics` output, consider using

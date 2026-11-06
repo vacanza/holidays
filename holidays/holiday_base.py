@@ -78,68 +78,13 @@ class HolidayBase(dict[date, str]):
     To maximize performance, the holiday list is lazily populated one year at a time.
     On instantiation, the object is empty. Once a date is accessed, the full calendar
     year for that date is generated, unless `expand` is set to `False`. To pre-populate
-    holidays, instantiate the class with the `years` argument:
-
-        us_holidays = holidays.US(years=2020)
+    holidays, instantiate the class with the `years` argument.
 
     It is recommended to use the
     [country_holidays()][holidays.utils.country_holidays] function for instantiation.
 
-    Example usage:
-
-        >>> from holidays import country_holidays
-        >>> us_holidays = country_holidays('US')
-        # For a specific subdivisions (e.g. state or province):
-        >>> california_holidays = country_holidays('US', subdiv='CA')
-
-    The below will cause 2015 holidays to be calculated on the fly:
-
-        >>> from datetime import date
-        >>> assert date(2015, 1, 1) in us_holidays
-
-    This will be faster because 2015 holidays are already calculated:
-
-        >>> assert date(2015, 1, 2) not in us_holidays
-
     The [`HolidayBase`][holidays.holiday_base.HolidayBase] class also recognizes strings
-    of many formats and numbers representing a POSIX timestamp:
-
-        >>> assert '2014-01-01' in us_holidays
-        >>> assert '1/1/2014' in us_holidays
-        >>> assert 1388597445 in us_holidays
-
-    Show the holiday's name:
-
-        >>> us_holidays.get('2014-01-01')
-        "New Year's Day"
-
-    Check a range:
-
-        >>> us_holidays['2014-01-01': '2014-01-03']
-        [datetime.date(2014, 1, 1)]
-
-    List all 2020 holidays:
-
-        >>> us_holidays = country_holidays('US', years=2020)
-        >>> for day in sorted(us_holidays.items()):
-        ...     print(day)
-        (datetime.date(2020, 1, 1), "New Year's Day")
-        (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
-        (datetime.date(2020, 2, 17), "Washington's Birthday")
-        (datetime.date(2020, 5, 25), 'Memorial Day')
-        (datetime.date(2020, 7, 3), 'Independence Day (observed)')
-        (datetime.date(2020, 7, 4), 'Independence Day')
-        (datetime.date(2020, 9, 7), 'Labor Day')
-        (datetime.date(2020, 10, 12), 'Columbus Day')
-        (datetime.date(2020, 11, 11), 'Veterans Day')
-        (datetime.date(2020, 11, 26), 'Thanksgiving Day')
-        (datetime.date(2020, 12, 25), 'Christmas Day')
-
-    Some holidays are only present in parts of a country:
-
-        >>> us_pr_holidays = country_holidays('US', subdiv='PR')
-        >>> assert '2018-01-06' not in us_holidays
-        >>> assert '2018-01-06' in us_pr_holidays
+    of many formats and numbers representing a POSIX timestamp.
 
     Append custom holiday dates by passing one of the following:
 
@@ -149,41 +94,10 @@ class HolidayBase(dict[date, str]):
     * A single date value of any of the supported types above; 'Holiday' will be used as
       the default name.
 
-    ```python
-    >>> custom_holidays = country_holidays('US', years=2015)
-    >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
-    >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
-    >>> custom_holidays.update(date(2015, 12, 25))
-    >>> assert date(2015, 1, 1) in custom_holidays
-    >>> assert date(2015, 1, 2) not in custom_holidays
-    >>> assert '12/25/2015' in custom_holidays
-    ```
-
-    For special (one-off) country-wide holidays handling use
-    `special_public_holidays`:
-
-        special_public_holidays = {
-            1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
-            1981: ((JUL, 29, "Wedding of Charles and Diana"),),
-            1999: ((DEC, 31, "Millennium Celebrations"),),
-            2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
-            2011: ((APR, 29, "Wedding of William and Catherine"),),
-            2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
-            2022: (
-                (JUN, 3, "Platinum Jubilee of Elizabeth II"),
-                (SEP, 19, "State Funeral of Queen Elizabeth II"),
-            ),
-        }
-
-        def _populate(self, year):
-            super()._populate(year)
-
-            ...
-
     For more complex logic, like 4th Monday of January, you can inherit the
-    [`HolidayBase`][holidays.holiday_base.HolidayBase] class and define your own `_populate()`
-    method.
-    See documentation for examples.
+    [`HolidayBase`][holidays.holiday_base.HolidayBase] class and define your own
+    `_populate_public_holidays()` method.
+    See [documentation](examples.md) for examples.
     """
 
     country: str
@@ -272,14 +186,14 @@ class HolidayBase(dict[date, str]):
         """
         Args:
             years:
-                The year(s) to pre-calculate public holidays for at instantiation.
+                The year(s) to pre-calculate holidays for at instantiation.
 
             expand:
                 Whether the entire year is calculated when one date from that year
                 is requested.
 
             observed:
-                Whether to include the dates when public holiday are observed
+                Whether to include the dates when holidays are observed
                 (e.g. a holiday falling on a Sunday being observed the
                 following Monday). This doesn't work for all countries.
 
@@ -406,12 +320,12 @@ class HolidayBase(dict[date, str]):
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
     ) -> "HolidayBase | HolidaySum":
-        """Add another dictionary of public holidays creating a
+        """Add another holidays object creating a
         [`HolidaySum`][holidays.holiday_base.HolidaySum] object.
 
         Args:
             other:
-                The dictionary of public holiday to be added.
+                The `HolidayBase` or `HolidaySum` object to be added..
 
         Returns:
             A [`HolidaySum`][holidays.holiday_base.HolidaySum]
@@ -1445,25 +1359,6 @@ class HolidaySum(HolidayBase):
 
             h2:
                 The other HolidayBase object to add.
-
-        Example:
-
-            >>> from holidays import country_holidays
-            >>> nafta_holidays = country_holidays('US', years=2020) + \
-    country_holidays('CA') + country_holidays('MX')
-            >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
-            >>> from pprint import pprint
-            >>> pprint(dates[:10], width=72)
-            [(datetime.date(2020, 1, 1), "Año Nuevo; New Year's Day"),
-             (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day'),
-             (datetime.date(2020, 2, 3), 'Día de la Constitución'),
-             (datetime.date(2020, 2, 17), "Washington's Birthday"),
-             (datetime.date(2020, 3, 16), 'Natalicio de Benito Juárez'),
-             (datetime.date(2020, 4, 10), 'Good Friday'),
-             (datetime.date(2020, 5, 1), 'Día del Trabajo'),
-             (datetime.date(2020, 5, 25), 'Memorial Day'),
-             (datetime.date(2020, 7, 1), 'Canada Day'),
-             (datetime.date(2020, 7, 3), 'Independence Day (observed)')]
         """
         # Store originals in the holidays attribute.
         self.holidays = []

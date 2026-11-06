@@ -22,13 +22,13 @@ on your `PATH` (used only to bootstrap), then run:
 <!-- markdownlint-disable MD046 -->
 === "macOS and Linux"
 
-    ``` shell
+    ```shell
     make setup
     ```
 
 === "Windows"
 
-    ``` shell
+    ```shell
     .\make setup
     ```
 
@@ -45,13 +45,13 @@ system `uv` version no longer matters after bootstrap.
 >
 > **Step 1**: Edit the WSL configuration file:
 >
-> ``` shell
+> ```shell
 > sudo nano /etc/wsl.conf
 > ```
 >
 > **Step 2**: Add the following section at the bottom of `wsl.conf`, then save (Ctrl+O, Enter) and exit (Ctrl+X):
 >
-> ``` ini
+> ```ini
 > [automount]
 > enabled = true
 > options = "metadata,umask=22,fmask=11"
@@ -59,14 +59,14 @@ system `uv` version no longer matters after bootstrap.
 >
 > **Step 3**: Close your WSL session, open PowerShell, then restart WSL:
 >
-> ``` powershell
+> ```powershell
 > wsl --shutdown
 > wsl ~
 > ```
 >
 > After this, running `ls -l` on your local `holidays` installation should show:
 >
-> ``` console
+> ```console
 > drwxr-xr-x 1 username username ...
 > ```
 >
@@ -76,13 +76,13 @@ The project provides automated style, tests and coverage checks:
 
 === "macOS and Linux"
 
-    ``` shell
+    ```shell
     make check
     ```
 
 === "Windows"
 
-    ``` shell
+    ```shell
     .\make check
     ```
 
@@ -90,14 +90,14 @@ You can run them separately:
 
 === "macOS and Linux"
 
-    ``` shell
+    ```shell
     make pre-commit
     make test
     ```
 
 === "Windows"
 
-    ``` shell
+    ```shell
     .\make pre-commit
     .\make test
     ```
@@ -106,13 +106,13 @@ It'll retrieve uncovered lines too.
 
 You can run specific tests using the `pytest` command:
 
-``` shell
+```shell
 pytest tests/countries/test_argentina.py
 ```
 
 Or even more granular:
 
-``` shell
+```shell
 pytest tests/countries/test_argentina.py::TestArgentina::test_country_aliases
 ```
 
@@ -120,7 +120,7 @@ Due to how pytest-xdist is implemented, the -s/--capture=no option [doesn't
 work](https://pytest-xdist.readthedocs.io/en/latest/known-limitations.html#output-stdout-and-stderr-from-workers).
 Use pytest directly if you need `-s` option:
 
-``` shell
+```shell
 pytest -s tests/countries/test_argentina.py
 ```
 
@@ -131,13 +131,13 @@ In order to add or update existing holiday names translation you'll need to gene
 
 === "macOS and Linux"
 
-    ``` shell
+    ```shell
     make l10n
     ```
 
 === "Windows"
 
-    ``` shell
+    ```shell
     .\make l10n
     ```
 
@@ -169,13 +169,13 @@ Please also add tests (see already translated countries tests for examples). The
 generated automatically for the tests and the holidays package, so you shouldn't worry about it.
 Just don't forget to initialize the `setUpClass` properly:
 
-``` python
+```python
 @classmethod
 def setUpClass(cls):
     super().setUpClass(Argentina)
 ```
 
-## Build ProperDocs Documentation
+## Build ProperDocs documentation
 
 The project provides ProperDocs documentation under `./docs`, published online on
 [readthedocs.io](https://holidays.readthedocs.io/).
