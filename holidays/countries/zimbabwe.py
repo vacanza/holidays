@@ -20,6 +20,7 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe>
         * <https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day>
+        * [SI 148 of 2026](https://allafrica.com/stories/202609100091.html)
     """
 
     country = "ZW"
@@ -68,6 +69,10 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Defense Forces Day.
         self._add_holiday_1_day_past_2nd_mon_of_aug("Defense Forces Day")
+
+        if self._year >= 2026:
+            # Munhumutapa Day.
+            self._add_observed(self._add_holiday_sep_15("Munhumutapa Day"))
 
         # Unity Day.
         self._add_observed(self._add_holiday_dec_22("Unity Day"))
