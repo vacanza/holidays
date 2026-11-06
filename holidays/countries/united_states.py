@@ -1471,6 +1471,14 @@ class UnitedStates(
                 else tr("Columbus Day")
             )
 
+        if self._year >= 2020:
+            # Election Day.
+            self._add_holiday_1_day_past_1st_mon_of_nov(tr("Election Day"))
+
+        if self._year >= 1975:
+            # Day After Thanksgiving.
+            self._add_holiday_1_day_past_4th_thu_of_nov(tr("Day After Thanksgiving"))
+
     def _populate_subdiv_vi_public_holidays(self):
         # Three Kings Day.
         self._add_epiphany_day(tr("Three Kings Day"))
