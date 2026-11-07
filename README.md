@@ -270,7 +270,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AT</td>
 <td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
 <td><strong>de</strong>, en_US, th, uk</td>
-<td>BANK, PROTESTANT</td>
+<td>BANK, PROTESTANT, SCHOOL</td>
 </tr>
 <tr>
 <td>Azerbaijan</td>
