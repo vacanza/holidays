@@ -75,8 +75,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_spiritual_baptist_liberation_day(self):
         name = "Spiritual Baptist Liberation Day"
-        self.assertHolidayName(name, (f"{year}-03-30" for year in range(1996, 2050)))
-        self.assertNoHolidayName(name, range(1963, 1996))
+        self.assertHolidayName(name, (f"{year}-03-30" for year in range(1996, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
         obs_dts = (
             "2003-03-31",
             "2008-03-31",
@@ -89,8 +89,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_indian_arrival_day(self):
         name = "Indian Arrival Day"
-        self.assertHolidayName(name, (f"{year}-05-30" for year in range(1996, 2050)))
-        self.assertNoHolidayName(name, range(1963, 1996))
+        self.assertHolidayName(name, (f"{year}-05-30" for year in range(1996, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1996))
         obs_dts = (
             "2004-05-31",
             "2010-05-31",
@@ -124,8 +124,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_labor_day(self):
         name = "Labour Day"
-        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1973, 2050)))
-        self.assertNoHolidayName(name, range(1963, 1973))
+        self.assertHolidayName(name, (f"{year}-06-19" for year in range(1973, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1973))
         obs_dts = (
             "2005-06-20",
             "2011-06-20",
@@ -139,8 +139,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_african_emancipation_day(self):
         name = "African Emancipation Day"
-        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1985, 2050)))
-        self.assertNoHolidayName(name, range(1963, 1985))
+        self.assertHolidayName(name, (f"{year}-08-01" for year in range(1985, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1985))
         obs_dts = (
             "2004-08-02",
             "2010-08-02",
@@ -163,8 +163,8 @@ class TestTrinidadAndTobago(CommonCountryTests, TestCase):
 
     def test_republic_day(self):
         name = "Republic Day"
-        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1976, 2050)))
-        self.assertNoHolidayName(name, range(1963, 1976))
+        self.assertHolidayName(name, (f"{year}-09-24" for year in range(1976, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 1976))
         obs_dts = (
             "2000-09-25",
             "2006-09-25",
