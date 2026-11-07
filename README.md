@@ -2141,6 +2141,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Stock Exchange of Thailand</td>
+<td>XBKK</td>
+<td>Stock Exchange of Thailand (SET) market holidays</td>
+<td>en_US, <strong>th</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Taiwan Stock Exchange</td>
 <td>XTAI</td>
 <td>Taiwan Stock Exchange market holidays</td>
