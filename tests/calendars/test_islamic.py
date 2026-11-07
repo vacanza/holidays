@@ -13,8 +13,8 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, SEP, DEC
-from holidays.calendars.islamic import _CustomIslamicMabimsHolidays
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.islamic import _CustomIslamicMabimsHolidays, _IslamicLunar
 
 
 class _MockMabimsCalendar(_CustomIslamicMabimsHolidays):
@@ -86,3 +86,52 @@ class TestIslamicMabimsLunar(TestCase):
         dates_2025 = self._get_dates(self.calendar.mawlid_dates, 2025)
         self.assertIn(date(2025, SEP, 5), dates_2025)
         self.assertEqual(len(dates_2025), 1)
+
+    def test_dates_after_confirmed_years(self):
+        """Dates after 2077 should exist but marked as estimated."""
+        for holiday_func in (
+            self.calendar.eid_al_adha_dates,
+            self.calendar.eid_al_fitr_dates,
+            self.calendar.hijri_new_year_dates,
+            self.calendar.isra_and_miraj_dates,
+            self.calendar.mawlid_dates,
+            self.calendar.nuzul_al_quran_dates,
+            self.calendar.ramadan_beginning_dates,
+        ):
+            for year in range(2078, 2101):
+                dates = self._get_dates(holiday_func, year)
+                self.assertTrue(dates, f"{holiday_func.__name__} has no dates in {year}")
+                for is_estimated in dates.values():
+                    self.assertTrue(is_estimated, "Dates after 2077 should be estimated")
+
+
+class TestIslamicLunar(TestCase):
+    def setUp(self) -> None:
+        super().setUp()
+        self.calendar = _IslamicLunar()
+
+    def test_dates_coverage(self):
+        """Every holiday should occur at least once in each Gregorian year up to 2100."""
+        holiday_funcs = [
+            getattr(self.calendar, name)
+            for name in dir(self.calendar)
+            if name.endswith("_dates") and not name.startswith("_")
+        ]
+        for holiday_func in holiday_funcs:
+            for year in range(1925, 2101):
+                self.assertTrue(
+                    any(dt.year == year for dt, _ in holiday_func(year)),
+                    f"{holiday_func.__name__} has no dates in {year}",
+                )
+
+    def test_calculated_dates(self):
+        """Dates beyond the Umm al-Qura calendar data (after 2077-11-16)."""
+        for holiday_func, dt in (
+            (self.calendar.hijri_new_year_dates, date(2077, NOV, 17)),
+            (self.calendar.ramadan_beginning_dates, date(2078, JUL, 10)),
+            (self.calendar.eid_al_fitr_dates, date(2078, AUG, 9)),
+            (self.calendar.eid_al_adha_dates, date(2078, OCT, 16)),
+            (self.calendar.eid_al_adha_dates, date(2100, FEB, 19)),
+            (self.calendar.eid_al_fitr_dates, date(2100, DEC, 3)),
+        ):
+            self.assertIn((dt, True), list(holiday_func(dt.year)))
