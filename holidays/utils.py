@@ -112,7 +112,7 @@ def country_holidays(
         **options:
             Country-specific options (e.g. `include_sundays` for Sweden), see
             [get_supported_options()][holidays.holiday_base.HolidayBase.get_supported_options].
-            Unsupported options raise `TypeError`.
+            Unsupported options raise `ValueError`.
 
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `country`.
@@ -225,7 +225,7 @@ def country_holidays(
     try:
         entity = getattr(holidays, country)
         if options and (unknown_options := options.keys() - entity.get_supported_options().keys()):
-            raise TypeError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
+            raise ValueError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
 
         return entity(
             years=years,
@@ -314,7 +314,7 @@ def financial_holidays(
         **options:
             Market-specific options (e.g. `islamic_show_estimated` for XSAU), see
             [get_supported_options()][holidays.holiday_base.HolidayBase.get_supported_options].
-            Unsupported options raise `TypeError`.
+            Unsupported options raise `ValueError`.
 
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `market`.
@@ -332,7 +332,7 @@ def financial_holidays(
     try:
         entity = getattr(holidays, market)
         if options and (unknown_options := options.keys() - entity.get_supported_options().keys()):
-            raise TypeError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
+            raise ValueError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
 
         return entity(
             years=years,

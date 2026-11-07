@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.gregorian import (
@@ -83,7 +82,7 @@ class HongKong(
     start_year = 1946
 
     def __init__(
-        self, *args, preferred_discretionary_holidays: Iterable[str] | None = None, **kwargs
+        self, *args, preferred_discretionary_holidays: tuple[str, ...] | None = None, **kwargs
     ):
         """
         Args:

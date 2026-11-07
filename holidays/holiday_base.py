@@ -827,15 +827,10 @@ class HolidayBase(dict[date, str]):
         Returns:
             A dictionary mapping option names to their default values.
         """
-        from inspect import Parameter, signature
-
         options: dict[str, Any] = {}
-        # Group mixins (e.g. `IslamicHolidays`) are skipped, their arguments are internal.
         for entity_cls in reversed(cls.__mro__):
-            if issubclass(entity_cls, HolidayBase) and "__init__" in vars(entity_cls):
-                for param in signature(entity_cls.__init__).parameters.values():
-                    if param.kind is Parameter.KEYWORD_ONLY:
-                        options[param.name] = param.default
+            if issubclass(entity_cls, HolidayBase) and (init := vars(entity_cls).get("__init__")):
+                options.update(init.__kwdefaults__ or {})
 
         return options
 
