@@ -80,6 +80,9 @@ class TestQatar(CommonCountryTests, TestCase):
             "2025-03-30",
             "2025-03-31",
             "2025-04-01",
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -105,6 +108,9 @@ class TestQatar(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
             "2025-06-08",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
