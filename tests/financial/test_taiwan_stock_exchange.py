@@ -13,10 +13,10 @@
 from unittest import TestCase
 
 from holidays.financial.taiwan_stock_exchange import TaiwanStockExchange
-from tests.common import CommonFinancialTests
+from tests.common import CommonFinancialTests, WorkingDayTests
 
 
-class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
+class TestTaiwanStockExchange(CommonFinancialTests, WorkingDayTests, TestCase):
     @classmethod
     def setUpClass(cls):
         cls.full_range = range(2008, 2030)
@@ -25,6 +25,49 @@ class TestTaiwanStockExchange(CommonFinancialTests, TestCase):
     def test_code(self):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
+
+    def test_workdays(self):
+        self.assertWorkingDay(
+            "2009-01-10",
+            "2009-01-17",
+            "2009-06-06",
+            "2010-02-06",
+            "2012-02-04",
+            "2012-03-03",
+            "2012-12-22",
+            "2013-02-23",
+            "2013-09-14",
+            "2014-12-27",
+            "2016-01-30",
+            "2016-06-04",
+            "2016-09-10",
+            "2017-02-18",
+            "2017-06-03",
+            "2017-09-30",
+            "2018-03-31",
+            "2018-12-22",
+        )
+        for dt in (
+            "2019-01-19",
+            "2019-02-23",
+            "2019-10-05",
+            "2020-02-15",
+            "2020-06-20",
+            "2020-09-26",
+            "2021-02-20",
+            "2021-09-11",
+            "2022-01-22",
+            "2023-01-07",
+            "2023-02-04",
+            "2023-02-18",
+            "2023-03-25",
+            "2023-06-17",
+            "2023-09-23",
+            "2024-02-17",
+            "2025-02-08",
+        ):
+            self.assertNoHoliday(dt)
+            self.assertFalse(self.holidays.is_working_day(dt))
 
     def test_labor_day(self):
         name = "勞動節"
