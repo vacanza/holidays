@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import JUL
+from holidays.calendars.gregorian import MAY, JUL, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -86,6 +86,21 @@ class BWA(Botswana):
 
 
 class BotswanaStaticHolidays:
+    """Botswana special holidays.
+
+    References:
+        * [October 30-31, 2024](https://web.archive.org/web/20241031094627/https://dailynews.gov.bw/news-detail/81878)
+        * [May 15, 2026](https://web.archive.org/web/20260608013004/https://www.bse.co.bw/wp-content/uploads/2026/05/120526-PUBLIC-NOTICE_FRIDAY-15-MAY-2026-DECLARED-PUBLIC-HOLIDAY-AND-NON-TRADING-DAY-ON-THE-BSE.pdf)
+    """
+
+    # Public Holiday.
+    public_holiday = "Public Holiday"
+
     special_public_holidays = {
-        2019: (JUL, 2, "Public Holiday"),
+        2019: (JUL, 2, public_holiday),
+        2024: (
+            (OCT, 30, public_holiday),
+            (OCT, 31, public_holiday),
+        ),
+        2026: (MAY, 15, public_holiday),
     }

@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-11-02 22:13+0530\n"
+"Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
@@ -652,13 +652,25 @@ msgstr "ਪਵਿੱਤਰ ਸ਼ਨੀਚਰਵਾਰ"
 msgid "Mannam's Jayanti"
 msgstr "ਮੰਨਮ ਜਯੰਤੀ"
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "ਅਯੰਕਾਲੀ ਜਯੰਤੀ"
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਦੀ ਬਰਸੀ"
 
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "ਕਰਕਟਕ ਵਾਵੂ"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ਓਣਮ (ਦੂਜਾ ਦਿਨ)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ਓਣਮ (ਪਹਿਲਾ ਦਿਨ)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
@@ -667,6 +679,10 @@ msgstr "ਓਣਮ (ਤੀਜਾ ਦਿਨ)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ਓਣਮ (ਚੌਥਾ ਦਿਨ)"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਜਯੰਤੀ"
 
 #. Vijayadashami.
 msgid "Vijayadashami"
