@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-15 13:18+0700\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-22 10:37+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,26 @@ msgstr ""
 "Generated-By: Lingva 5.0.6\n"
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: nl\n"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "ปิดเทอมฤดูใบไม้ร่วง"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "ปิดเทอมคริสต์มาส"
+
+#. Spring Break.
+msgid "Voorjaarsvakantie"
+msgstr "ปิดเทอมฤดูใบไม้ผลิ"
+
+#. May Break.
+msgid "Meivakantie"
+msgstr "ปิดเทอมเดือนพฤษภาคม"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "ปิดเทอมฤดูร้อน"
 
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
