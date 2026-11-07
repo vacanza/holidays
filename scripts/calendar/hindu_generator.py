@@ -205,7 +205,7 @@ class _Lunisolar(_Astronomy):
         If sign_boundary_guard=False (default): skipped Amavasya (29->1) is
             accepted regardless of where the sun was the previous day.
         If sign_boundary_guard=True: skipped Amavasya is only accepted if the
-            previous day's sunset was also in zodiac_s zign. This prevents a
+            previous day's sunset was also in zodiac_sign. This prevents a
             new moon straddling a sign boundary from being misattributed to
             the wrong lunar month.
         """
