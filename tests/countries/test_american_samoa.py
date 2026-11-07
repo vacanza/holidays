@@ -59,12 +59,103 @@ class TestAmericanSamoa(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_washingtons_birthday(self):
+        name = "Washington's Birthday"
+        self.assertHolidayName(name, (f"{year}-02-22" for year in self.full_range))
+        self.assertNoHolidayName(
+            name,
+            "2020-02-17",
+            "2021-02-15",
+            "2022-02-21",
+            "2023-02-20",
+            "2024-02-19",
+            "2025-02-17",
+        )
+
+    def test_memorial_day(self):
+        name = "Memorial Day"
+        self.assertHolidayName(name, (f"{year}-05-30" for year in self.full_range))
+        self.assertNoHolidayName(
+            name,
+            "2020-05-25",
+            "2021-05-31",
+            "2023-05-29",
+            "2024-05-27",
+            "2025-05-26",
+        )
+
+    def test_veterans_day(self):
+        holidays = AmericanSamoa(years=range(1938, 1954))
+        self.assertHolidayName("Armistice Day", holidays, range(1938, 1954))
+        self.assertNoHolidayName("Veterans Day", holidays, range(1938, 1954))
+        self.assertHolidayName(
+            "Veterans Day", (f"{year}-11-11" for year in range(1954, self.end_year))
+        )
+        self.assertNoHolidayName("Armistice Day", range(1954, self.end_year))
+
+        holidays = AmericanSamoa(years=range(1971, 1978))
+        self.assertHolidayName(
+            "Veterans Day", holidays, (f"{year}-11-11" for year in range(1971, 1978))
+        )
+        self.assertNoHolidayName(
+            "Veterans Day",
+            holidays,
+            (
+                "1971-10-25",
+                "1972-10-23",
+                "1973-10-22",
+                "1974-10-28",
+                "1975-10-27",
+                "1976-10-25",
+                "1977-10-24",
+            ),
+        )
+        self.assertHolidayName("Veterans Day (observed)", "2023-11-10", "2029-11-12")
+
+    def test_other_statutory_holidays(self):
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName("Independence Day", (f"{year}-07-04" for year in self.full_range))
+        self.assertHolidayName(
+            "Labor Day",
+            "2020-09-07",
+            "2021-09-06",
+            "2022-09-05",
+            "2023-09-04",
+            "2024-09-02",
+            "2025-09-01",
+        )
+        self.assertHolidayName("Labor Day", self.full_range)
+        self.assertHolidayName(
+            "Thanksgiving Day",
+            "2020-11-26",
+            "2021-11-25",
+            "2022-11-24",
+            "2023-11-23",
+            "2024-11-28",
+            "2025-11-27",
+        )
+        self.assertHolidayName("Thanksgiving Day", self.full_range)
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-17", "Martin Luther King Jr. Day"),
             ("2022-02-14", "Valentine's Day"),
-            ("2022-02-21", "Washington's Birthday"),
+            ("2022-02-22", "Washington's Birthday"),
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-17", "American Samoa Flag Day; Easter Sunday"),
@@ -94,7 +185,7 @@ class TestAmericanSamoa(CommonCountryTests, TestCase):
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-17", "วันมาร์ติน ลูเทอร์ คิง จูเนียร์"),
             ("2022-02-14", "วันวาเลนไทน์"),
-            ("2022-02-21", "วันเกิดวอชิงตัน"),
+            ("2022-02-22", "วันเกิดวอชิงตัน"),
             ("2022-03-17", "วันนักบุญแพทริก"),
             ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-17", "วันธงชาติอเมริกันซามัว; วันอาทิตย์อีสเตอร์"),
