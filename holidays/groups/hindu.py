@@ -838,14 +838,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
-    def _add_onam_day_two(self, name) -> date | None:
-        """
-        Add Onam Day Two which is celebrated the day after Onam.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.onam_date(self._year), days_delta=+1
-        )
-
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.

@@ -1,0 +1,73 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Somalia holidays ar localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.108\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-10-25 00:49+0500\n"
+"PO-Revision-Date: 2026-10-25 00:49+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: so\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (la qiyaasay)"
+msgstr "%s (تقديري)"
+
+#. New Year's Day.
+msgid "Maalinta Sannadka Cusub"
+msgstr "رأس السنة الميلادية"
+
+#. Labor Day.
+msgid "Maalinta Shaqaalaha"
+msgstr "عيد العمال"
+
+#. Independence Day.
+msgid "Maalinta Xorriyadda"
+msgstr "عيد الاستقلال"
+
+#. Republic Day.
+msgid "Maalinta Jamhuuriyadda"
+msgstr "يوم الجمهورية"
+
+#. Islamic New Year.
+msgid "Sannadka Cusub ee Hijriga"
+msgstr "رأس السنة الهجرية"
+
+#. Ashura.
+msgid "Caashuuraa"
+msgstr "عاشوراء"
+
+#. Prophet's Birthday.
+msgid "Mowliidka Nebiga"
+msgstr "المولد النبوي الشريف"
+
+#. Isra' and Mi'raj.
+msgid "Isra iyo Micraaj"
+msgstr "الإسراء والمعراج"
+
+#. Eid al-Fitr.
+msgid "Ciidul Fitri"
+msgstr "عيد الفطر"
+
+#. Eid al-Adha.
+msgid "Ciidul Adxa"
+msgstr "عيد الأضحى"
