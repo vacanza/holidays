@@ -40,18 +40,12 @@ This generates the file `holidays/calendars/islamic_dates.py`,
 whose data can then be copied to `holidays/calendars/islamic.py`.
 
 References:
-    * <https://webspace.science.uu.nl/~gent0113/islam/ummalqura_rules.htm>
+    * <https://web.archive.org/web/20260428215627/https://webspace.science.uu.nl/~gent0113/islam/ummalqura_rules.htm>
 """
 
-from __future__ import annotations
-
 from collections import defaultdict
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, timedelta
 from pathlib import Path
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from skyfield.timelib import Time
 
 from hijridate.convert import Hijri
 from hijridate.ummalqura import HIJRI_RANGE
@@ -64,10 +58,12 @@ from .generator import CalendarGenerator
 MECCA_LAT = 21.4225
 MECCA_LON = 39.8262
 MECCA_ELEV = 277.0  # meters
-MECCA_TZ = timezone(timedelta(hours=3))
+MECCA_UTC_OFFSET = timedelta(hours=3)
 
-# Last Hijri year of the generated data (≈2101 CE).
-HIJRI_END_YEAR = 1524
+HIJRI_START_YEAR = 1343
+HIJRI_END_YEAR = 1524  # ≈2101 CE.
+HIJRIDATE_END_YEAR = HIJRI_RANGE[1][0]
+END_YEAR = 2100
 
 # holiday_name: (month, day)
 #     Fixed Hijri date, e.g. "EID_AL_FITR": (10, 1).
@@ -119,74 +115,58 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
     )
 
 
-class _UmmAlQuraLunar:
-    def __init__(self) -> None:
-        loader = Loader(Path(__file__).parent)
-        eph = loader("de440s.bsp")
-        self.moon = eph["moon"]
-        self.sun = eph["sun"]
-        observer = wgs84.latlon(MECCA_LAT * N, MECCA_LON * E, elevation_m=MECCA_ELEV)
-        self.obs = eph["earth"] + observer
+def get_month_starts() -> list[date]:
+    loader = Loader(Path(__file__).parent)
+    eph = loader("de440s.bsp")
+    moon = eph["moon"]
+    sun = eph["sun"]
+    obs = eph["earth"] + wgs84.latlon(MECCA_LAT * N, MECCA_LON * E, elevation_m=MECCA_ELEV)
 
-        self.ts = loader.timescale()
-        t0 = self.ts.utc(2077, 11, 11)  # before Hijri 1501-01 new moon.
-        t1 = self.ts.utc(2102, 1, 1)
-        times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(eph))
-        self.month_starts = [
-            self._calculate_month_start(t) for t, e in zip(times, events) if e == 0
-        ]
+    # HijriDate dates.
+    result = [
+        Hijri(year, month, 1).to_gregorian()
+        for year in range(HIJRI_START_YEAR, HIJRIDATE_END_YEAR + 1)
+        for month in range(1, 13)
+    ]
 
-    def _calculate_month_start(self, new_moon_t: Time) -> date:
-        """Calculate the first day of the Hijri month following the given new moon."""
-        new_moon_dt = new_moon_t.utc_datetime().astimezone(MECCA_TZ).date()
-        noon = self.ts.from_datetime(datetime.combine(new_moon_dt, time(12), MECCA_TZ))
-        sunset = almanac.find_settings(self.obs, self.sun, noon, noon + 1)[0][0]
-        moonset = almanac.find_settings(self.obs, self.moon, noon, noon + 1)[0][0]
+    ts = loader.timescale()
+    t0 = ts.utc(2077, 11, 11)  # before Hijri 1501-01 new moon.
+    t1 = ts.utc(END_YEAR + 2, 1, 1)
+    times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(eph))
 
-        # The new month starts the next day if the conjunction occurs before sunset
-        # and the moon sets after the sun, otherwise the current month lasts 30 days.
-        return new_moon_dt + timedelta(days=1 if new_moon_t.tt < sunset.tt < moonset.tt else 2)
-
-    def get_month_start(self, h_year: int, h_month: int) -> date:
-        """Get the Gregorian date of the first day of the given Hijri month."""
-        if h_year <= HIJRI_RANGE[1][0]:
-            return Hijri(h_year, h_month, 1).to_gregorian()
-
-        month_offset = (h_year - HIJRI_RANGE[1][0] - 1) * 12 + (h_month - 1)
-        return self.month_starts[month_offset]
-
-    def get_month_length(self, h_year: int, h_month: int) -> int:
-        """Get the number of days in the given Hijri month."""
-        if h_year <= HIJRI_RANGE[1][0]:
-            return Hijri(h_year, h_month, 1).month_length()
-
-        next_year, next_month = (h_year + 1, 1) if h_month == 12 else (h_year, h_month + 1)
-        return (
-            self.get_month_start(next_year, next_month) - self.get_month_start(h_year, h_month)
-        ).days
+    # Calculated dates.
+    for new_moon_t in times[events == 0]:
+        new_moon_local = new_moon_t.utc_datetime() + MECCA_UTC_OFFSET
+        # Local noon in Mecca is 09:00 UTC.
+        noon = ts.from_datetime(new_moon_local.replace(hour=9, minute=0, second=0, microsecond=0))
+        sunset = almanac.find_settings(obs, sun, noon, noon + 1)[0][0]
+        moonset = almanac.find_settings(obs, moon, noon, noon + 1)[0][0]
+        result.append(
+            new_moon_local.date() + timedelta(days=1 if new_moon_t < sunset < moonset else 2)
+        )
+    return result
 
 
 def generate_data() -> None:
-    cal = _UmmAlQuraLunar()
-    h_years = range(HIJRI_RANGE[0][0], HIJRI_END_YEAR + 1)
-
+    month_starts = get_month_starts()
     dates: dict[str, dict[int, list[date]]] = defaultdict(lambda: defaultdict(list))
     for name, (holiday_month, *items) in ISLAMIC_HOLIDAYS.items():
-        for year in h_years:
-            g_date = cal.get_month_start(year, holiday_month)
+        for year in range(HIJRI_START_YEAR, HIJRI_END_YEAR + 1):
+            index = (year - HIJRI_START_YEAR) * 12 + holiday_month - 1
+            g_date = month_starts[index]
 
             match items:
                 case (holiday_num, holiday_weekday):
                     if holiday_num < 0:
-                        g_date += timedelta(days=cal.get_month_length(year, holiday_month) - 1)
+                        g_date = month_starts[index + 1] - timedelta(days=1)
                     g_date = _get_nth_weekday_from(holiday_num, holiday_weekday, g_date)
-
                 case (holiday_day,):
                     if holiday_day < 0:
-                        g_date += timedelta(days=cal.get_month_length(year, holiday_month) + 1)
+                        g_date = month_starts[index + 1] + timedelta(days=1)
                     g_date += timedelta(days=holiday_day - 1)
 
-            dates[name][g_date.year].append(g_date)
+            if g_date.year <= END_YEAR:
+                dates[name][g_date.year].append(g_date)
 
     cal_gen = CalendarGenerator("islamic", "_IslamicLunar")
     cal_gen.generate(dates)

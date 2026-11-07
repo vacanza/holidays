@@ -72,6 +72,7 @@ NEW_MIN_ELONGATION = 6.4  # degrees
 # at 2101 CE alongside the main Umm al-Qura calendar.
 HIJRI_START_YEAR = 1342
 HIJRI_END_YEAR = 1524
+END_YEAR = 2100
 
 # Islamic holidays: (hijri_month, hijri_day).
 MABIMS_HOLIDAYS = {
@@ -100,8 +101,7 @@ class _MabimsLunar:
         t1 = ts.utc(2102, 1, 1)
         times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
 
-        # Store full Time objects to calculate moon age later.
-        self.new_moons = [t for t, e in zip(times, events) if e == 0]
+        self.new_moons = times[events == 0]
 
     def get_new_moon_time(self, h_year: int, h_month: int) -> Time:
         """Get the exact precalculated new moon (conjunction) for a given Hijri month."""
@@ -152,7 +152,8 @@ def generate_data() -> None:
                 print(f"Processing Hijri year {h_year}...")
 
             holiday_date = cal.get_hijri_month_start(h_year, h_month) + timedelta(days=h_day - 1)
-            dates[name][holiday_date.year].append(holiday_date)
+            if holiday_date.year <= END_YEAR:
+                dates[name][holiday_date.year].append(holiday_date)
 
     cal_gen = CalendarGenerator("islamic_mabims", "_IslamicMabimsLunar")
     cal_gen.generate(dates)

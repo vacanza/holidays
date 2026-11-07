@@ -1135,7 +1135,6 @@ class _IslamicLunar:
         2098: (MAR, 13),
         2099: (MAR, 2),
         2100: (FEB, 19),
-        2101: (FEB, 8),
     }
 
     EID_AL_FITR_DATES = {
@@ -1494,7 +1493,6 @@ class _IslamicLunar:
         2098: (MAR, 21),
         2099: (MAR, 10),
         2100: (FEB, 27),
-        2101: (FEB, 16),
     }
 
     FATIMA_DEATH_DATES = {
@@ -5097,7 +5095,6 @@ class _IslamicMabimsLunar(_IslamicLunar):
         2098: (MAR, 14),
         2099: (MAR, 3),
         2100: (FEB, 20),
-        2101: (FEB, 9),
     }
 
     EID_AL_FITR_DATES = {

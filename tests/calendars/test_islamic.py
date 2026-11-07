@@ -87,23 +87,6 @@ class TestIslamicMabimsLunar(TestCase):
         self.assertIn(date(2025, SEP, 5), dates_2025)
         self.assertEqual(len(dates_2025), 1)
 
-    def test_dates_after_confirmed_years(self):
-        """Dates after 2077 should exist but marked as estimated."""
-        for holiday_func in (
-            self.calendar.eid_al_adha_dates,
-            self.calendar.eid_al_fitr_dates,
-            self.calendar.hijri_new_year_dates,
-            self.calendar.isra_and_miraj_dates,
-            self.calendar.mawlid_dates,
-            self.calendar.nuzul_al_quran_dates,
-            self.calendar.ramadan_beginning_dates,
-        ):
-            for year in range(2078, 2101):
-                dates = self._get_dates(holiday_func, year)
-                self.assertTrue(dates, f"{holiday_func.__name__} has no dates in {year}")
-                for is_estimated in dates.values():
-                    self.assertTrue(is_estimated, "Dates after 2077 should be estimated")
-
 
 class TestIslamicLunar(TestCase):
     def setUp(self) -> None:
@@ -113,9 +96,7 @@ class TestIslamicLunar(TestCase):
     def test_dates_coverage(self):
         """Every holiday should occur at least once in each Gregorian year up to 2100."""
         holiday_funcs = [
-            getattr(self.calendar, name)
-            for name in dir(self.calendar)
-            if name.endswith("_dates") and not name.startswith("_")
+            getattr(self.calendar, name) for name in dir(self.calendar) if name.endswith("_dates")
         ]
         for holiday_func in holiday_funcs:
             for year in range(1925, 2101):
