@@ -377,6 +377,44 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.years, {2024})
         self.assertIn("2024-01-01", hb)
 
+    def test_subdiv(self):
+        hb = CountryStub1(years=2024)
+        self.assertNotIn("2024-08-10", hb)
+
+        # A valid subdivision is accepted and the holidays are populated.
+        hb.subdiv = "Subdiv 1"
+        self.assertEqual(hb.subdiv, "Subdiv 1")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 1 Custom Holiday")
+
+        # An integer subdivision is normalized to string.
+        hb.subdiv = 3
+        self.assertEqual(hb.subdiv, "3")
+        self.assertNotIn("2024-08-10", hb)
+
+        # Changing to another subdivision re-populates correctly.
+        hb.subdiv = "Subdiv 2"
+        self.assertEqual(hb.subdiv, "Subdiv 2")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 2 Custom Holiday")
+
+        # Subdivisions aliases are accepted.
+        hb.subdiv = "S1"
+        self.assertEqual(hb.subdiv, "S1")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 1 Custom Holiday")
+
+        # Setting subdiv to None removes subdivision holidays.
+        hb.subdiv = None
+        self.assertIsNone(hb.subdiv)
+        self.assertNotIn("2024-08-10", hb)
+
+        # Lazy population for a new year works without AttributeError.
+        hb.subdiv = "Subdiv 1"
+        self.assertEqual(hb["2025-08-10"], "Subdiv 1 Custom Holiday")
+
+        # Unsupported subdivisions are rejected and the object is left untouched.
+        self.assertRaises(NotImplementedError, lambda: setattr(hb, "subdiv", "INVALID"))
+        self.assertEqual(hb.subdiv, "Subdiv 1")
+        self.assertEqual(hb["2025-08-10"], "Subdiv 1 Custom Holiday")
+
     def test_sum(self):
         hs = TestReassignment.CustomClass(years=2024) + TestReassignment.CustomClass(years=2024)
 
@@ -385,6 +423,9 @@ class TestReassignment(TestCase):
         hs.years = 2025
         self.assertIn("2024-01-01", hs)
         self.assertIn("2025-01-01", hs)
+
+        # Subdivision reassignment is not supported for `HolidaySum`.
+        self.assertRaises(NotImplementedError, lambda: setattr(hs, "subdiv", "Subdiv 1"))
 
 
 class TestDeprecationWarnings(TestCase):
