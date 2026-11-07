@@ -21,7 +21,7 @@ from unittest import TestCase, mock
 import pytest
 
 import holidays
-from holidays.calendars.gregorian import FRI, SAT
+from holidays.calendars.gregorian import FRI, SAT, WINTER_SOLSTICE
 from holidays.holiday_base import HolidayBase
 from holidays.utils import (
     country_holidays,
@@ -67,6 +67,48 @@ class TestCountryHolidays(TestCase):
         with self.assertRaises(NotImplementedError):
             country_holidays("US", subdiv="XXXX")
 
+    def test_country_options(self):
+        test_holidays = country_holidays("NO", years=2026, include_sundays=True)
+        self.assertEqual(test_holidays, holidays.NO(years=2026, include_sundays=True))
+        self.assertIn("2026-01-04", test_holidays)
+        self.assertNotIn("2026-01-04", country_holidays("NO", years=2026))
+
+        # Child entity inherits its parent entity options.
+        test_holidays = country_holidays("SJ", years=2026, include_sundays=True)
+        self.assertEqual(test_holidays, holidays.SJ(years=2026, include_sundays=True))
+        self.assertIn("2026-01-04", test_holidays)
+
+        test_holidays = country_holidays(
+            "HK", years=2024, preferred_discretionary_holidays=(WINTER_SOLSTICE,)
+        )
+        self.assertEqual(
+            test_holidays,
+            holidays.HK(years=2024, preferred_discretionary_holidays=(WINTER_SOLSTICE,)),
+        )
+        self.assertIn("2024-12-21", test_holidays)
+        self.assertNotIn("2024-12-25", test_holidays)
+
+    def test_country_default_options(self):
+        for country in list_supported_countries(include_aliases=False):
+            if options := country_holidays(country).get_supported_options():
+                self.assertEqual(
+                    country_holidays(country, years=2026, **options),
+                    country_holidays(country, years=2026),
+                    country,
+                )
+
+    def test_invalid_country_option_raises_type_error(self):
+        with self.assertRaises(TypeError) as context:
+            country_holidays("US", include_sundays=True)
+        self.assertEqual(str(context.exception), "Option is not supported: include_sundays.")
+
+        # Arguments used internally by entities are not options.
+        with self.assertRaises(TypeError) as context:
+            country_holidays("NO", observed_rule=None, observed_since=None)
+        self.assertEqual(
+            str(context.exception), "Option is not supported: observed_rule, observed_since."
+        )
+
     def test_country_holiday_class_deprecation(self):
         with self.assertWarns(DeprecationWarning) as ctx:
             CountryHoliday("IT")
@@ -99,6 +141,25 @@ class TestFinancialHolidays(TestCase):
     def test_invalid_market_subdivision_raises_not_implemented(self):
         with self.assertRaises(NotImplementedError):
             financial_holidays("XNYS", subdiv="XXXX")
+
+    def test_market_options(self):
+        test_holidays = financial_holidays("XSAU", years=2026, islamic_show_estimated=True)
+        self.assertEqual(test_holidays, holidays.XSAU(years=2026, islamic_show_estimated=True))
+        self.assertNotEqual(test_holidays, financial_holidays("XSAU", years=2026))
+
+    def test_market_default_options(self):
+        for market in list_supported_financial(include_aliases=False):
+            if options := financial_holidays(market).get_supported_options():
+                self.assertEqual(
+                    financial_holidays(market, years=2026, **options),
+                    financial_holidays(market, years=2026),
+                    market,
+                )
+
+    def test_invalid_market_option_raises_type_error(self):
+        with self.assertRaises(TypeError) as context:
+            financial_holidays("XNYS", include_sundays=True)
+        self.assertEqual(str(context.exception), "Option is not supported: include_sundays.")
 
 
 class TestAllInSameYear(TestCase):

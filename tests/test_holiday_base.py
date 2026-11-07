@@ -16,7 +16,8 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import JP, UA, US
+from holidays.countries import HK, JP, NO, SA, SJ, UA, US
+from holidays.financial import XSAU
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -225,6 +226,17 @@ class TestArgs(TestCase):
                 "3": ["S3", "S_3"],
             },
         )
+
+    def test_supported_options(self):
+        self.assertEqual(HolidayBase.get_supported_options(), {})
+        self.assertEqual(CountryStub1.get_supported_options(), {})
+        self.assertEqual(NO.get_supported_options(), {"include_sundays": False})
+        # Inherited from the parent entity.
+        self.assertEqual(SJ.get_supported_options(), {"include_sundays": False})
+        # Internal `IslamicHolidays` arguments are not included.
+        self.assertEqual(SA.get_supported_options(), {"islamic_show_estimated": False})
+        self.assertEqual(XSAU.get_supported_options(), {"islamic_show_estimated": False})
+        self.assertEqual(HK.get_supported_options(), {"preferred_discretionary_holidays": None})
 
     def test_years(self):
         hb = HolidayBase()

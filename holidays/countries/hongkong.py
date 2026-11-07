@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from collections.abc import Iterable
 from datetime import date
 
 from holidays.calendars.gregorian import (
@@ -81,13 +82,19 @@ class HongKong(
     # Current set of holidays actually valid since 1946
     start_year = 1946
 
-    def __init__(self, *args, **kwargs):
+    def __init__(
+        self, *args, preferred_discretionary_holidays: Iterable[str] | None = None, **kwargs
+    ):
+        """
+        Args:
+            preferred_discretionary_holidays:
+                Discretionary holidays to include: `CHRISTMAS` (default) and/or
+                `WINTER_SOLSTICE`.
+        """
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        PreferredDiscretionaryHolidays.__init__(
-            self, kwargs.pop("preferred_discretionary_holidays", None)
-        )
+        PreferredDiscretionaryHolidays.__init__(self, preferred_discretionary_holidays)
         StaticHolidays.__init__(self, HongKongStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_WORKDAY)
         super().__init__(*args, **kwargs)
