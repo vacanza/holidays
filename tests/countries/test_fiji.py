@@ -131,6 +131,7 @@ class TestFiji(CommonCountryTests, TestCase):
     def test_fiji_day(self):
         self.assertHolidayName("Fiji Day", (f"{year}-10-10" for year in self.full_range))
         self.assertHolidayName("Fiji Day (observed)", "2026-10-12")
+        self.assertNoNonObservedHoliday("2026-10-12")
 
     def test_diwali(self):
         name = "Diwali"

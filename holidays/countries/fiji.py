@@ -192,7 +192,7 @@ class FijiStaticHolidays:
     """Fiji special holidays.
 
     References:
-        * [Gazette Notice No. 95 of 2026](https://www.parliament.gov.fj/wp-content/uploads/2026/10/GN-95-Declaration-of-Public-Holidays-for-2026-.pdf)
+        * [Gazette Notice No. 95 of 2026](https://web.archive.org/web/20261108131146/https://www.parliament.gov.fj/wp-content/uploads/2026/10/GN-95-Declaration-of-Public-Holidays-for-2026-.pdf)
     """
 
     special_public_holidays_observed = {
