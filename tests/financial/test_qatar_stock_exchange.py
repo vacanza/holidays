@@ -29,6 +29,11 @@ class TestQatarStockExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName("عطلة رسمية", "2013-06-25")
         self.assertHolidayName("حداد رسمي", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16")
 
+    def test_l10n_official_mourning(self):
+        dts = ("2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16")
+        for language, name in (("en_US", "Official Mourning"), ("ur_PK", "سرکاری سوگ")):
+            self.assertHolidayName(name, QatarStockExchange(years=2026, language=language), dts)
+
     def test_weekend_holidays_are_not_trading_days(self):
         self.assertNoHoliday(
             "2016-01-01",
