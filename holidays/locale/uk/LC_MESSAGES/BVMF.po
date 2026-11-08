@@ -81,9 +81,9 @@ msgid "Natal"
 msgstr "Різдво Христове"
 
 #. Christmas Eve.
-msgid "Christmas Eve"
+msgid "Véspera de Natal"
 msgstr "Святвечір"
 
 #. New Year's Eve.
-msgid "New Year's Eve"
+msgid "Véspera de Ano-Novo"
 msgstr "Переддень Нового року"

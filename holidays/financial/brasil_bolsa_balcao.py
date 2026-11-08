@@ -101,10 +101,10 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2018:
             # Christmas Eve.
-            self._add_holiday_dec_24(tr("Christmas Eve"))
+            self._add_holiday_dec_24(tr("Véspera de Natal"))
 
             # New Year's Eve.
-            self._add_holiday_dec_31(tr("New Year's Eve"))
+            self._add_holiday_dec_31(tr("Véspera de Ano-Novo"))
 
 
 class BVMF(BrasilBolsaBalcao):
