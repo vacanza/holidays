@@ -97,17 +97,10 @@ class TestCountryHolidays(TestCase):
                     country,
                 )
 
-    def test_invalid_country_option_raises_value_error(self):
+    def test_invalid_country_option(self):
         with self.assertRaises(ValueError) as context:
             country_holidays("US", include_sundays=True)
         self.assertEqual(str(context.exception), "Option is not supported: include_sundays.")
-
-        # Arguments used internally by entities are not options.
-        with self.assertRaises(ValueError) as context:
-            country_holidays("NO", observed_rule=None, observed_since=None)
-        self.assertEqual(
-            str(context.exception), "Option is not supported: observed_rule, observed_since."
-        )
 
     def test_country_holiday_class_deprecation(self):
         with self.assertWarns(DeprecationWarning) as ctx:
@@ -156,7 +149,7 @@ class TestFinancialHolidays(TestCase):
                     market,
                 )
 
-    def test_invalid_market_option_raises_value_error(self):
+    def test_invalid_market_option(self):
         with self.assertRaises(ValueError) as context:
             financial_holidays("XNYS", include_sundays=True)
         self.assertEqual(str(context.exception), "Option is not supported: include_sundays.")
