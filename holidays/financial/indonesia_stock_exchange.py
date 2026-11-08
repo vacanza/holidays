@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import DEC
 from holidays.constants import PUBLIC
 from holidays.countries.indonesia import Indonesia
 from holidays.helpers import tr
@@ -20,20 +19,18 @@ class IndonesiaStockExchange(Indonesia):
     """Indonesia Stock Exchange (IDX) holidays.
 
     IDX is closed on Indonesia public holidays and joint holidays (Cuti Bersama), and
-    on December 31 for the year-end exchange holiday (Libur Bursa).
+    on December 31 for the year-end exchange holiday (Libur Bursa). Holidays falling on
+    weekends are excluded.
 
     References:
-        * [2022 Holiday Calendar](https://investasi.kontan.co.id/news/tahun-depan-ada-250-hari-bursa-catat-tanggal-liburnya)
-        * [2022 Eid al-Fitr changes](https://market.bisnis.com/read/20220428/7/1528502/besok-bursa-efek-indonesia-bei-libur-lebaran-buka-lagi-9-mei)
-        * [2023 Holiday Calendar](https://www.cnbcindonesia.com/market/20221227082159-17-400351/simak-ada-242-hari-transaksi-ini-kalender-bursa-tahun-depan)
-        * [2023 Eid al-Fitr changes](https://market.bisnis.com/read/20230330/7/1642150/update-jadwal-bursa-terkait-cuti-bersama-lebaran-cek-detailnya)
-        * [2023 Eid al-Adha changes](https://economy.okezone.com/read/2023/06/27/278/2837678/perdagangan-bei-dan-layanan-bank-indonesia-besok-libur-berikut-jadwal-lengkapnya)
-        * [2024 Election Day](https://www.kompas.tv/ekonomi/483031/bei-tetapkan-hari-pencoblosan-pemilu-14-februari-sebagai-libur-perdagangan-bursa)
-        * [2024 Local Election Day](https://market.bisnis.com/read/20241127/7/1819336/pilkada-serentak-hari-ini-perdagangan-bursa-efek-indonesia-diliburkan)
-        * [2025 Holiday Calendar](https://www.cnbcindonesia.com/market/20241017113149-17-580475/investor-wajib-tahu-ini-jadwal-libur-bursa-tahun-2025)
-        * [2025 Independence Day Joint Holiday](https://market.bisnis.com/read/20250818/7/1903258/bei-tutup-perdagangan-18-agustus-2025-libur-cuti-bersama-kemerdekaan-ri)
-        * [2026 Holiday Calendar](https://market.bisnis.com/read/20250923/7/1913812/catat-bei-umumkan-kalender-libur-bursa-pada-2026)
-        * [2027 Holiday Calendar](https://www.idxchannel.com/market-news/dear-investor-ini-kalender-libur-bursa-efek-indonesia-2027/all)
+        * [2022](https://web.archive.org/web/20261107155552/https://www.idx.co.id/StaticData/Annoder/Announcement/2022/4/11/241191/1.%20pengumuman-perubahan-kalender-libur-bursa-tahun-2022.pdf)
+        * [2023](https://web.archive.org/web/20230531203020/https://utrade.co.id/ViewImportantNotice.aspx?idNotice=1091)
+        * [2023 Eid al-Adha changes](https://web.archive.org/web/20230628132610/https://economy.okezone.com/read/2023/06/27/278/2837678/perdagangan-bei-dan-layanan-bank-indonesia-besok-libur-berikut-jadwal-lengkapnya)
+        * [2024](https://web.archive.org/web/20261107154003/https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/Exchange/Peng-00233-No.%20Peng-00233BEI.POP11-2024.pdf)
+        * [2025](https://web.archive.org/web/20261107154527/https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/Exchange/Peng-00213-No.%20Peng-00213BEI.POP10-2024.pdf)
+        * [2025 Independence Day Joint Holiday](https://web.archive.org/web/20251204205405/https://www.idxcarbon.co.id/document/share/143/cf878b0d-87c1-45e2-98a5-4c54d6efc8c2)
+        * [2026](https://web.archive.org/web/20261107155341/https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/Exchange/Peng-00171%20Libur%20Bursa%202026-No.%20Peng-00171BEI.POP09-2025.pdf)
+        * [2027](https://web.archive.org/web/20261107161932/https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/Exchange/Libur%20Bursa%20Peng-00169%20ID-No.%20Peng-00169BEI.POP09-2026.pdf)
     """
 
     country = None  # type: ignore[assignment]
@@ -42,15 +39,21 @@ class IndonesiaStockExchange(Indonesia):
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2022
 
+    def _populate_common_holidays(self):
+        super()._populate_common_holidays()
+
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
+
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
         # Joint Holidays.
         self._add_special_holidays(("special_government_holidays",))
 
-        if self._is_weekday(DEC, 31):
-            # Exchange Holiday.
-            self._add_holiday_dec_31(tr("Libur Bursa"))
+        # Exchange Holiday.
+        self._add_holiday_dec_31(tr("Libur Bursa"))
 
 
 class XIDX(IndonesiaStockExchange):
