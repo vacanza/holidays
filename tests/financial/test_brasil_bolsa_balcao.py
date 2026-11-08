@@ -13,7 +13,7 @@
 from datetime import date
 from unittest import TestCase
 
-from holidays.financial.brasil_bolsa_balcao import B3, BrasilBolsaBalcao
+from holidays.financial.brasil_bolsa_balcao import B3, BVMF, BrasilBolsaBalcao
 from tests.common import CommonFinancialTests
 
 
@@ -134,7 +134,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2022-10-12", "Nossa Senhora Aparecida"),
             ("2022-11-02", "Finados"),
             ("2022-11-15", "Proclamação da República"),
+            ("2022-12-24", "Véspera de Natal"),
             ("2022-12-25", "Natal"),
+            ("2022-12-31", "Véspera de Ano-Novo"),
         )
 
     def test_l10n_default(self):
@@ -150,7 +152,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Nossa Senhora Aparecida"),
             ("2023-11-02", "Finados"),
             ("2023-11-15", "Proclamação da República"),
+            ("2023-12-24", "Véspera de Natal"),
             ("2023-12-25", "Natal"),
+            ("2023-12-31", "Véspera de Ano-Novo"),
         )
 
     def test_l10n_en_us(self):
@@ -167,7 +171,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Our Lady of Aparecida"),
             ("2023-11-02", "All Souls' Day"),
             ("2023-11-15", "Republic Proclamation Day"),
+            ("2023-12-24", "Christmas Eve"),
             ("2023-12-25", "Christmas Day"),
+            ("2023-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
@@ -184,19 +190,22 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "День Богоматері Апаресіди"),
             ("2023-11-02", "День усіх померлих"),
             ("2023-11-15", "День проголошення республіки"),
+            ("2023-12-24", "Святвечір"),
             ("2023-12-25", "Різдво Христове"),
+            ("2023-12-31", "Переддень Нового року"),
         )
 
 
 class TestB3(TestCase):
     def test_christmas_eve_and_new_years_eve(self):
-        b3 = B3(years=2026)
+        for calendar in (B3, BVMF, BrasilBolsaBalcao):
+            holidays = calendar(years=2018)
 
-        self.assertIn("2026-12-24", b3)
-        self.assertIn("2026-12-31", b3)
+            self.assertIn("2018-12-24", holidays)
+            self.assertIn("2018-12-31", holidays)
 
-        self.assertFalse(b3.is_working_day("2026-12-24"))
-        self.assertFalse(b3.is_working_day("2026-12-31"))
+            self.assertFalse(holidays.is_working_day("2018-12-24"))
+            self.assertFalse(holidays.is_working_day("2018-12-31"))
 
     def test_working_day_calculations(self):
         b3 = B3(years=2026)
@@ -204,8 +213,9 @@ class TestB3(TestCase):
         self.assertEqual(b3.get_nth_working_day("2026-12-23", 1), date(2026, 12, 28))
         self.assertEqual(b3.get_working_days_count("2026-12-21", "2026-12-31"), 6)
 
-    def test_before_2019(self):
-        b3 = B3(years=2018)
+    def test_before_2018(self):
+        for calendar in (B3, BVMF, BrasilBolsaBalcao):
+            holidays = calendar(years=2017)
 
-        self.assertNotIn("2018-12-24", b3)
-        self.assertNotIn("2018-12-31", b3)
+            self.assertNotIn("2017-12-24", holidays)
+            self.assertNotIn("2017-12-31", holidays)

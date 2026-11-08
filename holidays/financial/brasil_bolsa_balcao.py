@@ -99,18 +99,17 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Christmas Day.
             self._add_christmas_day(tr("Natal"))
 
+        if self._year >= 2018:
+            # Christmas Eve.
+            self._add_holiday_dec_24(tr("Christmas Eve"))
+
+            # New Year's Eve.
+            self._add_holiday_dec_31(tr("New Year's Eve"))
+
 
 class BVMF(BrasilBolsaBalcao):
     pass
 
 
 class B3(BrasilBolsaBalcao):
-    def _populate_public_holidays(self):
-        super()._populate_public_holidays()
-
-        if self._year >= 2019:
-            # Christmas Eve.
-            self._add_holiday_dec_24(tr("Christmas Eve"))
-
-            # New Year's Eve.
-            self._add_holiday_dec_31(tr("New Year's Eve"))
+    pass
