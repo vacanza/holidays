@@ -2099,6 +2099,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Qatar Stock Exchange</td>
+<td>DSMD</td>
+<td>Qatar Stock Exchange (QSE) holidays</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
 <td>Saudi Exchange</td>
 <td>XSAU</td>
 <td>Saudi Exchange (Tadawul) market holidays</td>
