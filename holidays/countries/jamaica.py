@@ -20,29 +20,11 @@ from holidays.observed_holiday_base import (
 )
 
 
-class JamaicaStaticHolidays:
-    """Jamaica special public holidays."""
-
-    special_public_holidays = {
-        # Special public holidays declared when Christmas Day fell on Saturday.
-        2010: (DEC, 27, "Boxing Day (observed)"),
-        2021: (DEC, 27, "Boxing Day (observed)"),
-    }
-
-
-class Jamaica(
-    ObservedHolidayBase,
-    ChristianHolidays,
-    InternationalHolidays,
-    StaticHolidays,
-):
+class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Jamaica holidays.
 
     References:
-    * <https://laws.moj.gov.jm/library/statute/the-holidays-public-general-act/download>
-    * <https://lmis.gov.jm/sites/default/files/2024-06/MLSS%20Annual%20Report%202019-20.pdf>
-    * <https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
-    * <https://jis.gov.jm/calendar/category/public-holidays/list/?tribe-bar-date=2021-03-01>
+        * <https://laws.moj.gov.jm/library/statute/the-holidays-public-general-act/download>
     """
 
     country = "JM"
@@ -88,6 +70,23 @@ class Jamaica(
 
         # Boxing Day
         self._add_christmas_day_two("Boxing Day")
+
+
+class JamaicaStaticHolidays:
+    """Jamaica special holidays.
+
+    References:
+        * <https://lmis.gov.jm/sites/default/files/2024-06/MLSS%20Annual%20Report%202019-20.pdf>
+        * <https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
+        * <https://jis.gov.jm/calendar/category/public-holidays/list/?tribe-bar-date=2021-03-01>
+    """
+
+    boxing_day = "Boxing Day"
+
+    special_public_holidays_observed = {
+        2010: (DEC, 27, boxing_day),
+        2021: (DEC, 27, boxing_day),
+    }
 
 
 class JM(Jamaica):
