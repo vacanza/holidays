@@ -83,16 +83,24 @@ class SriLanka(
     estimated_label = tr("%s (අනුමානිත)")
     supported_languages = ("en_US", "si_LK", "ta_LK")
     # Sri Lanka's Holidays Act (No. 29 of 1971) was first proclaimed on September 2nd, 1971
-    # but the earliest citable online calendar reference is from 2003. As Poya dates are
-    # approved on a yearly basis by the Poya committee, the end year is capped at 2026.
+    # but the earliest citable online calendar reference is from 2003. Future Poya dates
+    # beyond confirmed governmental gazette releases are estimated astronomically.
     start_year = 2003
-    end_year = 2026
 
-    def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
+    def __init__(
+        self,
+        *args,
+        islamic_show_estimated: bool = True,
+        sinhala_show_estimated: bool = True,
+        **kwargs,
+    ):
         """
         Args:
             islamic_show_estimated:
                 Whether to add "estimated" label to Islamic holidays name
+                if holiday date is estimated.
+            sinhala_show_estimated:
+                Whether to add "estimated" label to Sinhala holidays name
                 if holiday date is estimated.
 
         In Sri Lanka, the dates of the Islamic calendar usually fall a day later than
@@ -107,7 +115,7 @@ class SriLanka(
             show_estimated=islamic_show_estimated,
             calendar_delta_days=+1,
         )
-        SinhalaCalendarHolidays.__init__(self)
+        SinhalaCalendarHolidays.__init__(self, show_estimated=sinhala_show_estimated)
         StaticHolidays.__init__(self, cls=SriLankaStaticHolidays)
         super().__init__(*args, **kwargs)
 
@@ -194,7 +202,8 @@ class SriLanka(
             2026: (FEB, 15),
         }
         # Maha Sivarathri Day.
-        self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_dates.get(self._year))
+        if self._year in maha_sivarathri_dates:
+            self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_dates[self._year])
 
         # Diwali was a working day in 2003.
         if self._year >= 2004:
@@ -217,10 +226,10 @@ class SriLanka(
         self._add_bak_poya(tr("බක් පුර පසළොස්වක පෝය දිනය"))
 
         # Vesak Full Moon Poya Day.
-        vesak_poya = self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
+        self._add_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනය"))
 
         # Day Following Vesak Full Moon Poya Day.
-        self._add_holiday(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"), _timedelta(vesak_poya, +1))
+        self._add_day_following_vesak_poya(tr("වෙසක් පුර පසළොස්වක පෝය දිනට පසු දිනය"))
 
         # Poson Full Moon Poya Day.
         self._add_poson_poya(tr("පොසොන් පුර පසළොස්වක පෝය දිනය"))
