@@ -18,6 +18,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -33,6 +34,7 @@ class Fiji(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     """Fiji holidays.
 
@@ -84,6 +86,7 @@ class Fiji(
         IslamicHolidays.__init__(
             self, cls=FijiIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, cls=FijiStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -182,4 +185,16 @@ class FijiIslamicHolidays(_CustomIslamicHolidays):
         2024: (SEP, 16),
         2025: (SEP, 6),
         2026: (AUG, 24),
+    }
+
+
+class FijiStaticHolidays:
+    """Fiji special holidays.
+
+    References:
+        * [Gazette Notice No. 95 of 2026](https://www.parliament.gov.fj/wp-content/uploads/2026/10/GN-95-Declaration-of-Public-Holidays-for-2026-.pdf)
+    """
+
+    special_public_holidays_observed = {
+        2026: (OCT, 12, "Fiji Day"),
     }
