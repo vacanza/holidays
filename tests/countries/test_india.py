@@ -147,24 +147,6 @@ class TestIndia(CommonCountryTests, TestCase):
             "Mahatma Gandhi's Jayanti", (f"{year}-10-02" for year in self.full_range)
         )
 
-    def test_karnataka_rajyotsava(self):
-        name = "Karnataka Rajyotsava"
-        self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "KA":
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    (f"{year}-11-01" for year in range(1956, self.end_year)),
-                )
-                self.assertNoHolidayName(
-                    name,
-                    holidays,
-                    (f"{year}-11-01" for year in range(1950, 1956)),
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
-
     # Hindu holidays.
 
     def test_maha_shivaratri(self):
@@ -1254,6 +1236,17 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
 
     # SUBDIV PUBLIC HOLIDAYS.
+    def test_karnataka_rajyotsava(self):
+        name = "Karnataka Rajyotsava"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "KA":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-11-01" for year in range(1956, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1956))
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     def test_post_new_year(self):
         name = "Post New Year"
