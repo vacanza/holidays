@@ -385,12 +385,14 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2023-04-22",
             "2024-04-11",
             "2025-03-31",
+            "2026-03-21",
         )
         self.assertIslamicNoEstimatedNonObservedHolidayName(name, self.full_range)
         self.assertNoHoliday(
             "2015-07-18",
             "2018-06-16",
             "2023-04-22",
+            "2026-03-21",
         )
 
     def test_eid_al_adha(self):
