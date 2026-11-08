@@ -142,6 +142,11 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_independence_day(self):
         self.assertHolidayName("Independence Day", (f"{year}-08-15" for year in self.full_range))
 
+    def test_gandhi_jayanti(self):
+        self.assertHolidayName(
+            "Mahatma Gandhi's Jayanti", (f"{year}-10-02" for year in self.full_range)
+        )
+
     def test_karnataka_rajyotsava(self):
         name = "Karnataka Rajyotsava"
         self.assertNoHolidayName(name)
@@ -150,7 +155,12 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (f"{year}-11-01" for year in range(2023, self.end_year)),
+                    (f"{year}-11-01" for year in range(1956, self.end_year)),
+                )
+                self.assertNoHolidayName(
+                    name,
+                    holidays,
+                    (f"{year}-11-01" for year in range(1950, 1956)),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -2796,7 +2806,11 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-27", "Karaka Chaturthi (Karwa Chouth); Karwa Chouth"),
             ("2018-10-30", "Chehlum (estimated)"),
             ("2018-10-31", "Acharya Narendra Dev's Jayanti; Sardar Vallabhbhai Patel's Jayanti"),
-            ("2018-11-01", "Haryana Day; Karnataka Rajyotsava; Kut; New Punjab Day; Puducherry Liberation Day"),
+            (
+                "2018-11-01",
+                "Haryana Day; Karnataka Rajyotsava; Kut; New Punjab Day; "
+                "Puducherry Liberation Day",
+            ),
             ("2018-11-02", "All Souls' Day"),
             ("2018-11-06", "Deepavali (South India); Kali Puja; Naraka Chaturdashi"),
             ("2018-11-07", "Diwali (Deepavali)"),
@@ -3171,7 +3185,11 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-27", "Karaka Chaturthi (Karwa Chouth); Karwa Chouth"),
             ("2018-10-30", "Arbaeen (estimated)"),
             ("2018-10-31", "Acharya Narendra Dev's Birthday; Sardar Vallabhbhai Patel's Birthday"),
-            ("2018-11-01", "Haryana Day; Karnataka Rajyotsava; Kut; New Punjab Day; Puducherry Liberation Day"),
+            (
+                "2018-11-01",
+                "Haryana Day; Karnataka Rajyotsava; Kut; New Punjab Day; "
+                "Puducherry Liberation Day",
+            ),
             ("2018-11-02", "All Souls' Day"),
             ("2018-11-06", "Diwali (South India); Kali Puja; Naraka Chaturdashi"),
             ("2018-11-07", "Diwali"),
@@ -4547,7 +4565,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-10-27", "కరక చతుర్థి (కర్వా చౌత్); కర్వా చౌత్"),
             ("2018-10-30", "చెహ్లుం (అంచనా)"),
             ("2018-10-31", "ఆచార్య నరేంద్ర దేవ్ జయంతి; సర్దార్ వల్లభ్భాయ్ పటేల్ జయంతి"),
-            ("2018-11-01", "కర్ణాటక రాజ్యోత్సవ; కుట్; కొత్త పంజాబ్ దినోత్సవం; పుదుచ్చేరి విమోచన దినోత్సవం; హర్యానా దినోత్సవం"),
+            (
+                "2018-11-01",
+                "కర్ణాటక రాజ్యోత్సవం; కుట్; కొత్త పంజాబ్ దినోత్సవం; పుదుచ్చేరి విమోచన దినోత్సవం; హర్యానా దినోత్సవం",
+            ),
             ("2018-11-02", "సర్వాత్ముల దినోత్సవం"),
             ("2018-11-06", "కాళీ పూజ; దీపావళి (దక్షిణ భారతదేశం); నరక చతుర్దశి"),
             ("2018-11-07", "దీపావళి"),
