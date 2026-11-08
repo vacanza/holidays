@@ -10,7 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_MON,
@@ -19,12 +20,29 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class JamaicaStaticHolidays:
+    """Jamaica special public holidays."""
+
+    special_public_holidays = {
+        # Special public holidays declared when Christmas Day fell on Saturday.
+        2010: (DEC, 27, "Boxing Day (observed)"),
+        2021: (DEC, 27, "Boxing Day (observed)"),
+    }
+
+
+class Jamaica(
+    ObservedHolidayBase,
+    ChristianHolidays,
+    InternationalHolidays,
+    StaticHolidays,
+):
     """Jamaica holidays.
 
     References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
-        * <https://web.archive.org/web/20241110125301/https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
+    * <https://laws.moj.gov.jm/library/statute/the-holidays-public-general-act/download>
+    * <https://lmis.gov.jm/sites/default/files/2024-06/MLSS%20Annual%20Report%202019-20.pdf>
+    * <https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
+    * <https://jis.gov.jm/calendar/category/public-holidays/list/?tribe-bar-date=2021-03-01>
     """
 
     country = "JM"
@@ -33,6 +51,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, JamaicaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -68,7 +87,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day
-        self._add_observed(self._add_christmas_day_two("Boxing Day"))
+        self._add_christmas_day_two("Boxing Day")
 
 
 class JM(Jamaica):
