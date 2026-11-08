@@ -79,3 +79,11 @@ msgstr "Національний день Зумбі та свідомості �
 #. Christmas Day.
 msgid "Natal"
 msgstr "Різдво Христове"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Святвечір"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "Переддень Нового року"

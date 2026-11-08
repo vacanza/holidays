@@ -79,3 +79,11 @@ msgstr ""
 #. Christmas Day.
 msgid "Natal"
 msgstr ""
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Véspera de Natal"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "Véspera de Ano-Novo"

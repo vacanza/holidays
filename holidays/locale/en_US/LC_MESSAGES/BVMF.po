@@ -79,3 +79,11 @@ msgstr "National Day of Zumbi and Black Awareness"
 #. Christmas Day.
 msgid "Natal"
 msgstr "Christmas Day"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Christmas Eve"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "New Year's Eve"

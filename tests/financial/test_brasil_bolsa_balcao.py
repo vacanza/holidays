@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
-from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao
+from holidays.financial.brasil_bolsa_balcao import B3, BrasilBolsaBalcao
 from tests.common import CommonFinancialTests
 
 
@@ -185,3 +186,26 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-11-15", "День проголошення республіки"),
             ("2023-12-25", "Різдво Христове"),
         )
+
+
+class TestB3(TestCase):
+    def test_christmas_eve_and_new_years_eve(self):
+        b3 = B3(years=2026)
+
+        self.assertIn("2026-12-24", b3)
+        self.assertIn("2026-12-31", b3)
+
+        self.assertFalse(b3.is_working_day("2026-12-24"))
+        self.assertFalse(b3.is_working_day("2026-12-31"))
+
+    def test_working_day_calculations(self):
+        b3 = B3(years=2026)
+
+        self.assertEqual(b3.get_nth_working_day("2026-12-23", 1), date(2026, 12, 28))
+        self.assertEqual(b3.get_working_days_count("2026-12-21", "2026-12-31"), 6)
+
+    def test_before_2019(self):
+        b3 = B3(years=2018)
+
+        self.assertNotIn("2018-12-24", b3)
+        self.assertNotIn("2018-12-31", b3)
