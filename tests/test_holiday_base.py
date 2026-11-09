@@ -600,6 +600,24 @@ class TestGetNamed(TestCase):
         )
         self.assertSetEqual(hb.years, {2022})
 
+    def test_istartswith_unicode_lowercase_expansion(self):
+        hb = HolidayBase()
+        hb[date(2026, 5, 1)] = "İşçi ve Emekçiler Bayramı"
+        for name in ("i", "i\u0307", "i\u0307ş", "İş"):
+            with self.subTest(name=name):
+                self.assertListEqual(hb.get_named(name, lookup="istartswith"), [date(2026, 5, 1)])
+        self.assertListEqual(hb.get_named("ix", lookup="istartswith"), [])
+        self.assertListEqual(hb.get_named("i", lookup="startswith"), [])
+
+    def test_istartswith_contextual_lowercase(self):
+        hb = HolidayBase()
+        dt = date(2026, 1, 1)
+        for name, prefix in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name):
+                hb[dt] = name
+                self.assertListEqual(hb.get_named(prefix, lookup="istartswith"), [dt])
+                del hb[dt]
+
     def test_startswith(self):
         hb = CountryStub1(years=2022)
         for name in ("New Year's", "New Year"):

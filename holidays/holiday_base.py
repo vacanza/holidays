@@ -1150,7 +1150,7 @@ class HolidayBase(dict[date, str]):
             return [
                 dt
                 for dt, name in holiday_name_dates
-                if holiday_name_lower == name[: len(holiday_name)].lower()
+                if name[: len(holiday_name)].lower().startswith(holiday_name_lower)
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
