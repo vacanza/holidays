@@ -687,7 +687,7 @@ class CommonTests(TestCase):
             # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
             # `observed_estimated_label` is not required.
             and any(
-                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
+                rule is not None for rule in getattr(self.holidays, "_observed_rule", {}).values()
             )
         ):
             self.assertTrue(
@@ -695,7 +695,7 @@ class CommonTests(TestCase):
                 "The `observed_estimated_label` attribute is required for entities containing "
                 "both `observed_label` and `estimated_label`.",
             )
-            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+            self.assertIn(estimated_label.strip("%s ()（）"), observed_estimated_label)
 
     def test_observed_label(self):
         if getattr(self.holidays, "observed_label", None):
