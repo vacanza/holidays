@@ -1200,14 +1200,6 @@ class India(
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
 
-        kerala_assembly_election_dates = {
-            2026: (APR, 9),
-        }
-        # Kerala Assembly Election Day.
-        name = tr("Kerala Assembly Election Day")
-        if dt := kerala_assembly_election_dates.get(self._year):
-            self._add_holiday(name, dt)
-
         # May Day.
         self._add_labor_day(tr("May Day"))
 
@@ -2297,6 +2289,11 @@ class IndiaStaticHolidays:
 
     special_dh_public_holidays = {
         2023: (JAN, 14, name_magh_bihu),
+    }
+
+    special_kl_public_holidays = {
+        # Kerala Assembly Election Day.
+        2026: (APR, 9, tr("Kerala Assembly Election Day")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-09 19:53+0530\n"
-"Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
+"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -653,10 +653,6 @@ msgstr "पवित्र शनिवार"
 msgid "Mannam's Jayanti"
 msgstr "मन्नम जयंती"
 
-#. Kerala Assembly Election Day.
-msgid "Kerala Assembly Election Day"
-msgstr "केरल विधानसभा चुनाव दिवस"
-
 #. Ayyankali's Birthday.
 msgid "Ayyankali's Jayanti"
 msgstr "अय्यंकाली जयंती"
@@ -1064,3 +1060,7 @@ msgstr "श्री पंचमी"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "जन्माष्टमी (स्मार्त)"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "केरल विधानसभा चुनाव दिवस"
