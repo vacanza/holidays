@@ -23,6 +23,7 @@ class IndonesiaStockExchange(Indonesia):
     weekends are excluded.
 
     References:
+        * [2021](https://market.bisnis.com/read/20210622/7/1408503/update-kalender-bursa-2021-tanggal-24-desember-jadi-hari-bursa)
         * [2022](https://web.archive.org/web/20261107155552/https://www.idx.co.id/StaticData/Annoder/Announcement/2022/4/11/241191/1.%20pengumuman-perubahan-kalender-libur-bursa-tahun-2022.pdf)
         * [2023](https://web.archive.org/web/20230531203020/https://utrade.co.id/ViewImportantNotice.aspx?idNotice=1091)
         * [2023 Eid al-Adha changes](https://web.archive.org/web/20230628132610/https://economy.okezone.com/read/2023/06/27/278/2837678/perdagangan-bei-dan-layanan-bank-indonesia-besok-libur-berikut-jadwal-lengkapnya)
@@ -37,7 +38,7 @@ class IndonesiaStockExchange(Indonesia):
     market = "XIDX"
     parent_entity = Indonesia
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
-    start_year = 2022
+    start_year = 2021
 
     def _populate_public_holidays(self):
         super()._populate_public_holidays()

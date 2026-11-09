@@ -27,6 +27,7 @@ class TestIndonesiaStockExchange(CommonFinancialTests, TestCase):
 
     def test_joint_holidays(self):
         self.assertHoliday(
+            "2021-05-12",
             "2022-04-29",
             "2022-05-04",
             "2022-05-05",
@@ -49,6 +50,25 @@ class TestIndonesiaStockExchange(CommonFinancialTests, TestCase):
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
         self.assertNoHolidayName(name, years_absent)
+
+    def test_2021(self):
+        self.assertHolidaysInYear(
+            2021,
+            ("2021-01-01", "Tahun Baru Masehi"),
+            ("2021-02-12", "Tahun Baru Imlek"),
+            ("2021-03-11", "Isra Mikraj Nabi Muhammad"),
+            ("2021-04-02", "Wafat Yesus Kristus"),
+            ("2021-05-12", "Cuti Bersama Hari Raya Idul Fitri"),
+            ("2021-05-13", "Hari Raya Idul Fitri; Kenaikan Yesus Kristus"),
+            ("2021-05-14", "Hari kedua dari Hari Raya Idul Fitri"),
+            ("2021-05-26", "Hari Raya Waisak"),
+            ("2021-06-01", "Hari Lahir Pancasila"),
+            ("2021-07-20", "Hari Raya Idul Adha"),
+            ("2021-08-11", "Tahun Baru Islam"),
+            ("2021-08-17", "Hari Kemerdekaan Republik Indonesia"),
+            ("2021-10-20", "Maulid Nabi Muhammad"),
+            ("2021-12-31", "Libur Bursa"),
+        )
 
     def test_2022(self):
         self.assertHolidaysInYear(
