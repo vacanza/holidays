@@ -39,13 +39,6 @@ class IndonesiaStockExchange(Indonesia):
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2022
 
-    def _populate_common_holidays(self):
-        super()._populate_common_holidays()
-
-        for dt in tuple(self.keys()):
-            if self._is_weekend(dt):
-                self.pop(dt)
-
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
 
@@ -54,6 +47,10 @@ class IndonesiaStockExchange(Indonesia):
 
         # Exchange Holiday.
         self._add_holiday_dec_31(tr("Libur Bursa"))
+
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
 
 
 class XIDX(IndonesiaStockExchange):
