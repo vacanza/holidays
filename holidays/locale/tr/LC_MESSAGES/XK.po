@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-12 12:00+0000\n"
 "PO-Revision-Date: 2026-11-07 01:38+0300\n"
-"Last-Translator: serhataydilek <serhat.aydilek.dev@gmail.com>\n"
+"Last-Translator: Serhat Aydilek <serhat.aydilek.dev@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -34,12 +34,12 @@ msgstr "%s (tahmini)"
 #. %s (observed).
 #, c-format
 msgid "%s (ditë pushimi e shtyrë)"
-msgstr "%s (telafi tatili)"
+msgstr "%s (ertelenen tatil günü)"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (ditë pushimi e shtyrë, e vlerësuar)"
-msgstr "%s (telafi tatili, tahmini)"
+msgstr "%s (ertelenen tatil günü, tahmini)"
 
 #. New Year's Day.
 msgid "Viti i Ri"
@@ -47,7 +47,7 @@ msgstr "Yılbaşı"
 
 #. Orthodox Christmas Day.
 msgid "Krishtlindjet Ortodokse"
-msgstr "Ortodoks Noel Günü"
+msgstr "Ortodoks Noeli"
 
 #. Independence Day.
 msgid "Dita e Pavarësisë së Republikës së Kosovës"
@@ -67,7 +67,7 @@ msgstr "Kosova Cumhuriyeti Anayasa Günü"
 
 #. International Labor Day.
 msgid "Dita Ndërkombëtare e Punës"
-msgstr "Uluslararası İşçi Bayramı"
+msgstr "Uluslararası Emekçiler Günü"
 
 #. Europe Day.
 msgid "Dita e Evropës"
@@ -79,8 +79,8 @@ msgstr "Katolik Noel Günü"
 
 #. Eid al-Fitr.
 msgid "Bajrami i Madh, dita e parë"
-msgstr "Ramazan Bayramı'nın İlk Günü"
+msgstr "Ramazan Bayramı'nın ilk günü"
 
 #. Eid al-Adha.
 msgid "Bajrami i Vogël, dita e parë"
-msgstr "Kurban Bayramı'nın İlk Günü"
+msgstr "Kurban Bayramı'nın ilk günü"
