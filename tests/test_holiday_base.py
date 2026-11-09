@@ -1125,6 +1125,22 @@ class TestPopNamed(TestCase):
                 self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
                 self.assertNotIn(dt, hb)
 
+    def test_multiple_matching_names(self):
+        dt = date(2026, 5, 1)
+        for names, query in ((("İşçi", "İzin"), "i"), (("Holiday A", "Holiday B"), "h")):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(names=names, remaining=remaining):
+                    hb = HolidayBase()
+                    for name in names:
+                        hb[dt] = name
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
+
 
 class TestRepr(TestCase):
     def test_base(self):

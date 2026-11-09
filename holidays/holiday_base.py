@@ -1342,7 +1342,7 @@ class HolidayBase(dict[date, str]):
             raise KeyError(holiday_name)
 
         popped = []
-        for dt in dts:
+        for dt in dict.fromkeys(dts):
             holiday_names = self[dt].split(HOLIDAY_NAME_DELIMITER)
             self.pop(dt)
             popped.append(dt)
