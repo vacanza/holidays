@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, DEC, SAT, _timedelta, _get_nth_weekday_from
+from holidays.calendars.gregorian import JAN, SAT, _timedelta, _get_nth_weekday_from
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
@@ -111,16 +111,9 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         2027: 17,
     }
 
-    # Summer Break week per region: the regions take turns starting in weeks 28, 29 and 30,
-    # each being the first or the last two years in a row, in a 6-year cycle (from 2015).
-    summer_break_weeks = (
-        (28, 29, 30),
-        (29, 28, 30),
-        (30, 28, 29),
-        (30, 29, 28),
-        (29, 30, 28),
-        (28, 30, 29),
-    )
+    # Summer Break start week: a triangle wave over a 6-year cycle (from 2015),
+    # shifted by 2 years per region.
+    summer_break_weeks = (28, 29, 30, 30, 29, 28)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -139,7 +132,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
     def _add_school_break(self, name: str, week: int, weeks: int = 1) -> None:
         """Add a school break of `weeks` ISO weeks starting the Saturday before `week`."""
         self._add_multiday_holiday(
-            _timedelta(date.fromisocalendar(self._year, week, 1), -2), 7 * weeks + 2, name=name
+            date.fromisocalendar(self._year, week - 1, 6), 7 * weeks + 2, name=name
         )
 
     def _populate_public_holidays(self):
@@ -192,7 +185,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
 
     def _populate_school_holidays(self):
-        if self.subdiv is None or self._year <= 2013:
+        if self.subdiv is None or not 2014 <= self._year <= 2030:
             return None
 
         region = self.school_regions.index(self._normalized_subdiv)
@@ -204,14 +197,12 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             _get_nth_weekday_from(-1, SAT, self._christmas_day), 16, name=name
         )
         # January part of the previous year's break.
-        previous_start = _get_nth_weekday_from(-1, SAT, date(self._year - 1, DEC, 25))
-        self._add_multiday_holiday(
-            date(self._year, JAN, 1), _timedelta(previous_start, +15).day, name=name
-        )
+        new_year = date(self._year, JAN, 1)
+        self._add_multiday_holiday(new_year, (4 - new_year.weekday()) % 7 + 3, name=name)
 
-        if weeks := self.spring_break_weeks.get(self._year):
-            # Spring Break.
-            self._add_school_break(tr("Voorjaarsvakantie"), weeks[region])
+        weeks = self.spring_break_weeks.get(self._year)
+        # Spring Break.
+        self._add_school_break(tr("Voorjaarsvakantie"), weeks[region])
 
         # May Break.
         name = tr("Meivakantie")
@@ -220,9 +211,12 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             # Extended through Liberation Day.
             self._add_holiday_may_5(name)
 
-        # Summer Break.
-        name = tr("Zomervakantie")
-        self._add_school_break(name, self.summer_break_weeks[(self._year - 2015) % 6][region], 6)
+        self._add_school_break(
+            # Summer Break.
+            tr("Zomervakantie"),
+            self.summer_break_weeks[(self._year - 2015 - 2 * region) % 6],
+            6,
+        )
 
         if weeks := self.autumn_break_weeks.get(self._year):
             # Autumn Break.

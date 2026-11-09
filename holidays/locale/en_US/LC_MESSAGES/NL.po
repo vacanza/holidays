@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.108\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-09 18:11+0300\n"
-"PO-Revision-Date: 2026-10-22 10:37+0530\n"
+"PO-Revision-Date: 2026-11-09 22:24+0530\n"
 "Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -27,26 +27,6 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
-
-#. Autumn Break.
-msgid "Herfstvakantie"
-msgstr "Autumn Break"
-
-#. Christmas Break.
-msgid "Kerstvakantie"
-msgstr "Christmas Break"
-
-#. Spring Break.
-msgid "Voorjaarsvakantie"
-msgstr "Spring Break"
-
-#. May Break.
-msgid "Meivakantie"
-msgstr "May Break"
-
-#. Summer Break.
-msgid "Zomervakantie"
-msgstr "Summer Break"
 
 #. New Year's Day.
 msgid "Nieuwjaarsdag"
@@ -95,3 +75,23 @@ msgstr "Christmas Day"
 #. Second Day of Christmas.
 msgid "Tweede kerstdag"
 msgstr "Second Day of Christmas"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Christmas Break"
+
+#. Spring Break.
+msgid "Voorjaarsvakantie"
+msgstr "Spring Break"
+
+#. May Break.
+msgid "Meivakantie"
+msgstr "May Break"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Summer Break"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Autumn Break"

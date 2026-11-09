@@ -32,7 +32,11 @@ class TestNetherlands(CommonCountryTests, TestCase):
         self.assertNoHolidays(Netherlands(categories=SCHOOL, years=self.full_range))
         for subdiv in Netherlands.subdivisions:
             self.assertNoHolidays(
-                Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2014))
+                Netherlands(
+                    subdiv=subdiv,
+                    categories=SCHOOL,
+                    years=(*range(self.start_year, 2014), *range(2031, self.end_year)),
+                )
             )
 
     def test_new_years_day(self):
@@ -630,21 +634,11 @@ class TestNetherlands(CommonCountryTests, TestCase):
         # Six weeks, so 44 days from the Saturday before them.
         self.assertSubdivZuidSchoolHolidayNameCount(name, 44, range(2014, 2031))
 
-        # The rotation continues after the last published regulation.
-        for subdiv, dts in (
-            ("Noord", ("2031-07-12", "2031-08-24", "2032-07-03", "2032-08-15")),
-            ("Midden", ("2031-07-19", "2031-08-31", "2032-07-17", "2032-08-29")),
-            ("Zuid", ("2031-07-05", "2031-08-17", "2032-07-10", "2032-08-22")),
-        ):
-            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=(2031, 2032))
-            self.assertHolidayName(name, holidays, *dts)
-
     def test_school_christmas_break(self):
         name = "Kerstvakantie"
         self.assertNoHolidayName(name)
         # Nationwide, so the dates are the same in every region.
-        for subdiv in Netherlands.subdivisions:
-            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(2014, 2031))
+        for holidays in self.subdiv_school_holidays.values():
             self.assertHolidayName(
                 name,
                 holidays,
@@ -709,8 +703,7 @@ class TestNetherlands(CommonCountryTests, TestCase):
         name = "Meivakantie"
         self.assertNoHolidayName(name)
         # Nationwide, so the dates are the same in every region.
-        for subdiv in Netherlands.subdivisions:
-            holidays = Netherlands(subdiv=subdiv, categories=SCHOOL, years=range(2014, 2031))
+        for holidays in self.subdiv_school_holidays.values():
             self.assertHolidayName(
                 name,
                 holidays,
