@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-02 22:13+0530\n"
+"PO-Revision-Date: 2026-11-09 19:53+0530\n"
 "Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -652,6 +652,10 @@ msgstr "પવિત્ર શનિવાર"
 #. Mannam's Birthday.
 msgid "Mannam's Jayanti"
 msgstr "મન્નમ જયંતી"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "કેરળ વિધાનસભા ચૂંટણી દિવસ"
 
 #. Ayyankali's Birthday.
 msgid "Ayyankali's Jayanti"

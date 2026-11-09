@@ -100,6 +100,7 @@ class India(
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
             * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://www.ceo.kerala.gov.in/ceokerala/pdf/govt_orders/legislative-assembly-2026/government-orders/paid-holiday.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Lakshadweep:
@@ -1198,6 +1199,14 @@ class India(
 
         # Easter Sunday.
         self._add_easter_sunday(tr("Easter Sunday"))
+
+        kerala_assembly_election_dates = {
+            2026: (APR, 9),
+        }
+        # Kerala Assembly Election Day.
+        name = tr("Kerala Assembly Election Day")
+        if dt := kerala_assembly_election_dates.get(self._year):
+            self._add_holiday(name, dt)
 
         # May Day.
         self._add_labor_day(tr("May Day"))
