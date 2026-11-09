@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, SAT, _timedelta, _get_nth_weekday_from
+from holidays.calendars.gregorian import JAN, SAT, _get_nth_weekday_from, _timedelta
 from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
@@ -39,7 +39,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
             * [Regeling vaststelling schoolvakanties 2019-2022](https://web.archive.org/web/20261022050408/https://zoek.officielebekendmakingen.nl/stcrt-2018-11687.html)
             * [Regeling vaststelling schoolvakanties 2022-2025](https://web.archive.org/web/20261022050433/https://zoek.officielebekendmakingen.nl/stcrt-2021-25317.html)
             * [Regeling vaststelling schoolvakanties 2025-2030](https://web.archive.org/web/20261022050453/https://zoek.officielebekendmakingen.nl/stcrt-2024-19237.html)
-            * [Vaststellen data schoolvakanties](https://www.rijksoverheid.nl/themas/onderwijs/schoolvakanties/vaststellen-data-schoolvakanties)
+            * [Vaststellen data schoolvakanties](https://web.archive.org/web/20260913180011/https://www.rijksoverheid.nl/themas/onderwijs/schoolvakanties/vaststellen-data-schoolvakanties)
             * [Regio-indeling](https://web.archive.org/web/20261012093116/https://www.rijksoverheid.nl/themas/onderwijs/schoolvakanties/regios-schoolvakantie)
 
     Subdivisions are the three regions the Ministry of Education spreads the `SCHOOL` holidays
