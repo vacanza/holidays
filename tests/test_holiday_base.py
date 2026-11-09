@@ -1101,6 +1101,30 @@ class TestPopNamed(TestCase):
         self.assertNotIn("2022-12-25", self.hb)
         self.assertNotIn("2022-12-26", self.hb)
 
+    def test_istartswith_unicode_lowercase_expansion(self):
+        dt = date(2026, 5, 1)
+        for query in ("i", "i\u0307", "i\u0307ş", "İş"):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(query=query, remaining=remaining):
+                    hb = HolidayBase()
+                    hb[dt] = "İşçi"
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
+
+    def test_istartswith_contextual_lowercase(self):
+        dt = date(2026, 5, 1)
+        for name, query in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name, query=query):
+                hb = HolidayBase()
+                hb[dt] = name
+                self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                self.assertNotIn(dt, hb)
+
 
 class TestRepr(TestCase):
     def test_base(self):

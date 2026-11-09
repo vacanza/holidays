@@ -1365,7 +1365,7 @@ class HolidayBase(dict[date, str]):
                 holiday_names = [
                     name
                     for name in holiday_names
-                    if holiday_name_lower != name[: len(holiday_name)].lower()
+                    if not name[: len(holiday_name)].lower().startswith(holiday_name_lower)
                 ]
             elif lookup == "contains":
                 holiday_names = [name for name in holiday_names if holiday_name not in name]
