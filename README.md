@@ -997,7 +997,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kosovo</td>
 <td>XK</td>
 <td></td>
-<td>en_US, <strong>sq</strong>, sr</td>
+<td>en_US, <strong>sq</strong>, sr, tr</td>
 <td></td>
 </tr>
 <tr>
