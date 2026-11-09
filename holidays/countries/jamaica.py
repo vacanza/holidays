@@ -24,7 +24,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     """Jamaica holidays.
 
     References:
-        * <https://laws.moj.gov.jm/library/statute/the-holidays-public-general-act/download>
+        * [The Holidays (Public General) Act](https://web.archive.org/web/20261109211742/https://lipj.gov.jm/cms/uploads/The_Holidays_Public_General_Act_5bc73f5ff4.pdf))
     """
 
     country = "JM"
@@ -72,13 +72,20 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_christmas_day_two("Boxing Day")
 
 
+class JM(Jamaica):
+    pass
+
+
+class JAM(Jamaica):
+    pass
+
+
 class JamaicaStaticHolidays:
     """Jamaica special holidays.
 
     References:
-        * <https://lmis.gov.jm/sites/default/files/2024-06/MLSS%20Annual%20Report%202019-20.pdf>
-        * <https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
-        * <https://jis.gov.jm/calendar/category/public-holidays/list/?tribe-bar-date=2021-03-01>
+        * <https://web.archive.org/web/20250916013746/https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
+        * <https://web.archive.org/web/20220529082149/https://jis.gov.jm/calendar/boxing-day-observed-on-december-27/>
     """
 
     boxing_day = "Boxing Day"
@@ -87,11 +94,3 @@ class JamaicaStaticHolidays:
         2010: (DEC, 27, boxing_day),
         2021: (DEC, 27, boxing_day),
     }
-
-
-class JM(Jamaica):
-    pass
-
-
-class JAM(Jamaica):
-    pass
