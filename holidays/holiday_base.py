@@ -1521,3 +1521,37 @@ class HolidaySum(HolidayBase):
                 operand.years.add(year)
                 operand._populate(year)
             self.update(cast("dict[DateLike, str]", operand))
+
+    def _populate_operands_for_year(self, year: int) -> None:
+        """Ensure every operand has holidays generated for ``year``.
+
+        A sum only pre-calculates the years of its operands at construction;
+        working-day queries for any other year are populated lazily here so
+        that each operand can answer for its own calendar.
+        """
+        for operand in self.holidays:
+            if year not in operand.years:
+                operand.years.add(year)
+                operand._populate(year)
+
+    def is_weekend(self, key: DateLike) -> bool:
+        """Check if the given date's week day is a weekend day.
+
+        A day is a weekend day in the sum if any operand treats it as one,
+        so countries with a non-Saturday/Sunday weekend (e.g. IL, AE, SA, QA)
+        keep their weekend when added together.
+        """
+        dt = self.__keytransform__(key)
+        self._populate_operands_for_year(dt.year)
+        return any(operand.is_weekend(dt) for operand in self.holidays)
+
+    def is_working_day(self, key: DateLike) -> bool:
+        """Check if the given date is considered a working day.
+
+        A day is a working day in the sum only if every operand considers it
+        a working day, so make-up working days (e.g. CN) are not dropped and
+        weekends are respected when holiday objects are added together.
+        """
+        dt = self.__keytransform__(key)
+        self._populate_operands_for_year(dt.year)
+        return all(operand.is_working_day(dt) for operand in self.holidays)

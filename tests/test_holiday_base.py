@@ -16,7 +16,7 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import JP, UA, US
+from holidays.countries import CN, IL, JP, UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -810,6 +810,45 @@ class TestHolidaySum(TestCase):
         self.hb_combined = sum(CountryStub1(subdiv=subdiv) for subdiv in CountryStub1.subdivisions)
         self.assertEqual(self.hb_combined.country, CountryStub1.country)
         self.assertEqual(self.hb_combined.subdiv, list(CountryStub1.subdivisions))
+
+
+class TestHolidaySumWorkdays(TestCase):
+    """Working-day queries on a sum must match every operand (issue #3979).
+
+    A day is a working day in the sum only if every operand considers it one,
+    so countries with a non-Saturday/Sunday weekend (IL) keep their weekend and
+    countries with make-up working days (CN) do not lose them when added.
+    """
+
+    def test_same_country_sum_matches_operand(self):
+        cn = CN(years=2024)
+        both = cn + CN(years=2025)
+
+        # Make-up working days in February 2024 must not be dropped.
+        self.assertEqual(
+            both.get_working_days_count("2024-02-01", "2024-02-29"),
+            cn.get_working_days_count("2024-02-01", "2024-02-29"),
+        )
+        self.assertEqual(both.get_working_days_count("2024-02-01", "2024-02-29"), 18)
+
+        # The original calendar is not mutated.
+        self.assertEqual(cn.get_working_days_count("2024-02-01", "2024-02-29"), 18)
+
+        il = IL(years=2024)
+        both_il = il + IL(years=2025)
+
+        # Friday is the weekend in Israel; the sum must agree.
+        self.assertTrue(il.is_weekend("2024-01-05"))
+        self.assertFalse(il.is_working_day("2024-01-05"))
+        self.assertTrue(both_il.is_weekend("2024-01-05"))
+        self.assertFalse(both_il.is_working_day("2024-01-05"))
+
+        # Nested sums still agree with a single calendar.
+        three = both + CN(years=2026)
+        self.assertEqual(
+            three.get_working_days_count("2024-02-01", "2024-02-29"),
+            cn.get_working_days_count("2024-02-01", "2024-02-29"),
+        )
 
 
 class TestInheritance(TestCase):
