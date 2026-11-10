@@ -22,18 +22,7 @@ class TestMartinique(CommonCountryTests, TestCase):
         super().setUpClass(Martinique)
 
     def test_good_friday(self):
-        name = "Vendredi saint"
-        self.assertHolidayName(
-            name,
-            "2019-04-19",
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
-            "2024-03-29",
-            "2025-04-18",
-        )
-        self.assertHolidayName(name, self.full_range)
+        self.assertNoHolidayName("Vendredi saint")
 
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
@@ -49,7 +38,6 @@ class TestMartinique(CommonCountryTests, TestCase):
         self.assertHolidaysInYear(
             2024,
             ("2024-01-01", "Jour de l'an"),
-            ("2024-03-29", "Vendredi saint"),
             ("2024-04-01", "Lundi de Pâques"),
             ("2024-05-01", "Fête du Travail"),
             ("2024-05-08", "Fête de la Victoire"),
@@ -67,7 +55,6 @@ class TestMartinique(CommonCountryTests, TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Jour de l'an"),
-            ("2022-04-15", "Vendredi saint"),
             ("2022-04-18", "Lundi de Pâques"),
             ("2022-05-01", "Fête du Travail"),
             ("2022-05-08", "Fête de la Victoire"),
@@ -86,7 +73,6 @@ class TestMartinique(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-08", "Victory Day"),
@@ -105,7 +91,6 @@ class TestMartinique(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "th",
             ("2022-01-01", "วันขึ้นปีใหม่"),
-            ("2022-04-15", "วันศุกร์ประเสริฐ"),
             ("2022-04-18", "วันจันทร์อีสเตอร์"),
             ("2022-05-01", "วันแรงงาน"),
             ("2022-05-08", "วันแห่งชัยชนะ"),
@@ -124,7 +109,6 @@ class TestMartinique(CommonCountryTests, TestCase):
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "Новий рік"),
-            ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "День праці"),
             ("2022-05-08", "День Перемоги"),

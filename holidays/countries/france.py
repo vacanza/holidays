@@ -224,9 +224,6 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     # Martinique.
     def _populate_subdiv_972_public_holidays(self):
-        # Good Friday.
-        self._add_good_friday(tr("Vendredi saint"))
-
         # Provision for Public Holidays decreed on June 30th, 1983.
         # Date for each DOM declared on November 23rd, 1983.
         # Victor Schoelcher Day is based on June 30th, 1983 provision.
