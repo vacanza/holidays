@@ -2008,6 +2008,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Euronext</td>
+<td>ENX</td>
+<td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
+<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
