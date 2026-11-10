@@ -213,7 +213,7 @@ class TestAlbania(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "Dita e Bajramit të Madh"
-        self.assertIslamicNoEstimatedHolidayName(
+        self.assertHolidayName(
             name,
             "2018-06-15",
             "2019-06-04",
@@ -222,8 +222,9 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2022-05-02",
             "2023-04-21",
             "2024-04-10",
+            "2025-03-30",
+            "2026-03-20",
         )
-        self.assertHolidayName(name, "2026-03-20")
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2012-08-20",
@@ -235,10 +236,9 @@ class TestAlbania(CommonCountryTests, TestCase):
 
     def test_eid_al_adha(self):
         name = "Dita e Kurban Bajramit"
-        self.assertIslamicNoEstimatedHolidayName(
+        self.assertIslamicNoEstimatedHolidayName(name, "2006-01-10", "2006-12-31")
+        self.assertHolidayName(
             name,
-            "2006-01-10",
-            "2006-12-31",
             "2018-08-21",
             "2019-08-11",
             "2020-07-31",
@@ -246,8 +246,9 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-16",
+            "2025-06-06",
+            "2026-05-27",
         )
-        self.assertHolidayName(name, "2026-05-27")
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2007-01-03",
