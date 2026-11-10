@@ -28,6 +28,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [Decreto n. 19.488, de 15.12.1930](https://web.archive.org/web/20241006041503/http://camara.leg.br/legin/fed/decret/1930-1939/decreto-19488-15-dezembro-1930-508040-republicacao-85201-pe.html)
         * [Lei n. 662, de 6.04.1949](https://web.archive.org/web/20240913060643/https://www2.camara.leg.br/legin/fed/lei/1940-1949/lei-662-6-abril-1949-347136-publicacaooriginal-1-pl.html)
         * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
+        * [Portaria MGI n. 11.460, de 29.12.2025](https://web.archive.org/web/20251231172054/https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-11.460-de-29-de-dezembro-de-2025-678388627)
 
     Subdivisions Holidays References:
         * Parana:
@@ -181,7 +182,7 @@ class Brazil(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_carnival_tuesday(name)
 
         # Ash Wednesday.
-        self._add_ash_wednesday(tr("Início da Quaresma"))
+        self._add_ash_wednesday(tr("Quarta-feira de Cinzas"))
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))

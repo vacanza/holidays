@@ -532,6 +532,26 @@ True
 1
 ```
 
+Each calendar is named after its holidays object (`X-WR-CALNAME`), and every event gets a UID
+derived from the entity, subdivision, language, categories, holiday name, start date and length,
+so re-generating a calendar yields the same UIDs and subscribed clients update events in place.
+For calendars published for subscription, `refresh_interval_weeks` adds the `REFRESH-INTERVAL` and
+`X-PUBLISHED-TTL` hints.
+
+``` python
+>>> from holidays import country_holidays
+>>> from holidays.ical import ICalExporter
+>>> be_holidays = country_holidays('BE', years=2024, language='en_US')
+>>> exporter = ICalExporter(be_holidays, refresh_interval_weeks=1)
+>>> exporter.calendar_name
+'Belgium Public Holidays [en-US]'
+>>> ical_content = exporter.generate()
+>>> "X-WR-CALNAME:Belgium Public Holidays [en-US]\r\n" in ical_content
+True
+>>> "REFRESH-INTERVAL;VALUE=DURATION:P1W\r\nX-PUBLISHED-TTL:P1W\r\n" in ical_content
+True
+```
+
 > [!tip]
 >
 > Although the iCalendar specification supports a wide range of language formats as outlined
@@ -663,12 +683,6 @@ Save calendar to a custom file:
 holidays-ics US --output test.ics
 ```
 
-Calendar for specific year:
-
-```shell
-holidays-ics US --years 2035
-```
-
 Calendar for the current and next 10 years:
 
 ```shell
@@ -679,6 +693,18 @@ Calendar for the current year and the previous 5 years:
 
 ```shell
 holidays-ics US --years -5
+```
+
+Calendar for specific year:
+
+```shell
+holidays-ics US --years 2035
+```
+
+Calendar for an explicit year range:
+
+```shell
+holidays-ics US --years 2021-2030
 ```
 
 Calendar containing unofficial holidays only:
@@ -693,40 +719,46 @@ Calendar containing public and optional holidays:
 holidays-ics CA --categories public,optional
 ```
 
-Switzerland calendar in German:
-
-```shell
-holidays-ics CH --language de
-```
-
-Canton of Zurich calendar:
-
-```shell
-holidays-ics CH --subdiv ZH
-```
-
 Financial market holiday calendar:
 
 ```shell
 holidays-ics XNYS
 ```
 
-Spanning the next 10 years, unofficial holidays, saved to a custom file:
+Calendar for Switzerland, specific to the Canton of Zurich:
 
 ```shell
-holidays-ics US --years +10 --categories unofficial --output-template "HOLIDAYS_{code}_{start_year}_{end_year}_{categories}.ics"
+holidays-ics CH --subdiv ZH
 ```
 
-Calendar for Switzerland, specific to the Canton of Zurich, localized in German, and saved to a custom file:
+Calendar for Switzerland, localized in German:
 
 ```shell
-holidays-ics CH --subdiv ZH --language de --output-template "{code}_{subdiv}_{language}_{today}.ics"
+holidays-ics CH --language de
 ```
 
-Use the default file name as part of a custom file name:
+Calendar for Switzerland, specific to the Canton of Zurich, localized in German:
 
 ```shell
-holidays-ics US --years 2021-2030 --subdiv TX --output-template "HOLIDAYS_{all}.ics"
+holidays-ics CH --subdiv ZH --language de
+```
+
+Calendar for Switzerland, localized in German, saved to a file named from the language and country codes:
+
+```shell
+holidays-ics CH --language de --output-template "{language}_{code}.ics"
+```
+
+Save calendar to a file named after the country code:
+
+```shell
+holidays-ics US --output-template "{code}.ics"
+```
+
+Prepend "HOLIDAYS_" to the default file name:
+
+```shell
+holidays-ics US --years 2021-2030 --categories unofficial --subdiv TX --language th --output-template "HOLIDAYS_{all}.ics"
 ```
 
 The tool can also display the supported subdivisions, categories, and languages for a selected

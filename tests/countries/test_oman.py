@@ -19,61 +19,56 @@ from tests.common import CommonCountryTests
 class TestOman(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1970, 2050)
-        super().setUpClass(Oman, years=years)
-        cls.no_estimated_holidays = Oman(years=years, islamic_show_estimated=False)
+        super().setUpClass(Oman)
 
     def test_accession_day(self):
         name = "اليوم الوطني لتولي السلطان"
-        self.assertHolidayName(name, (f"{year}-01-11" for year in range(2020, 2050)))
-        self.assertNoHolidayName(name, range(1970, 2020))
+        self.assertHolidayName(name, (f"{year}-01-11" for year in range(2020, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_renaissance_day(self):
         name = "يوم النهضة"
-        self.assertHolidayName(name, (f"{year}-07-23" for year in range(1970, 2020)))
-        self.assertNoHolidayName(name, range(2020, 2050))
+        self.assertHolidayName(name, (f"{year}-07-23" for year in range(self.start_year, 2020)))
+        self.assertNoHolidayName(name, range(2020, self.end_year))
 
     def test_national_day(self):
         name = "يوم وطني"
         self.assertHolidayName(name, (f"{year}-11-18" for year in range(2020, 2025)))
         self.assertHolidayName(name, (f"{year}-11-19" for year in range(2020, 2025)))
-        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2025, 2050)))
-        self.assertHolidayName(name, (f"{year}-11-21" for year in range(2025, 2050)))
-        self.assertNoHolidayName(name, range(1970, 2020))
+        self.assertHolidayName(name, (f"{year}-11-20" for year in range(2025, self.end_year)))
+        self.assertHolidayName(name, (f"{year}-11-21" for year in range(2025, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2020))
 
     def test_islamic_new_year(self):
         name = "رأس السنة الهجرية"
-        dts = (
-            "2018-09-11",
-            "2019-09-01",
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
             "2020-08-21",
             "2021-08-10",
             "2022-07-30",
             "2023-07-20",
             "2024-07-07",
+            "2025-06-26",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_mawlid(self):
         name = "مولد النبي"
-        dts = (
-            "2018-11-20",
-            "2019-11-09",
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
             "2020-10-29",
             "2021-10-19",
             "2022-10-09",
             "2023-09-28",
             "2024-09-15",
+            "2025-09-04",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_isra_and_miraj(self):
         name = "الإسراء والمعراج"
-        dts = (
-            "2018-04-13",
-            "2019-04-03",
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
             "2020-03-22",
             "2021-03-11",
             "2022-03-01",
@@ -81,16 +76,12 @@ class TestOman(CommonCountryTests, TestCase):
             "2024-02-08",
             "2025-01-27",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
-        dts = (
-            "2019-06-03",
-            "2019-06-04",
-            "2019-06-05",
-            "2019-06-06",
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
             "2020-05-22",
             "2020-05-23",
             "2020-05-24",
@@ -121,20 +112,12 @@ class TestOman(CommonCountryTests, TestCase):
             "2025-04-01",
             "2025-04-02",
         )
-        self.assertHolidayName(name, self.no_estimated_holidays, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
+        self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
-        dts = (
-            "2019-08-10",
-            "2019-08-11",
-            "2019-08-12",
-            "2019-08-13",
-            "2020-07-30",
-            "2020-07-31",
-            "2020-08-01",
-            "2020-08-02",
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
             "2021-07-19",
             "2021-07-20",
             "2021-07-21",
@@ -152,8 +135,11 @@ class TestOman(CommonCountryTests, TestCase):
             "2024-06-18",
             "2024-06-19",
         )
-        self.assertHolidayName(name, dts)
-        self.assertHolidayName(name, self.no_estimated_holidays, range(1970, 2050))
+        self.assertIslamicNoEstimatedHolidayNameCount(
+            name, 4, set(self.full_range) - {1974, 2039, 2006, 2007}
+        )
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 6, 2006, 2007)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 8, 1974, 2039)
 
     def test_weekend(self):
         for dt in (

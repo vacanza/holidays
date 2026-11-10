@@ -25,6 +25,12 @@ concurrency:
 permissions: {}
 
 jobs:
+  run-action-lint:
+    name: GitHub Action linter
+    permissions:
+      contents: read
+    uses: ./.github/workflows/run-action-lint.yml
+
   run-code-checks:
     name: Code checks
     permissions:
@@ -44,6 +50,8 @@ jobs:
       - run-code-checks
     permissions:
       contents: read
+    uses: ./.github/workflows/run-code-tests.yml
+    with:
+      full: ${{ github.event_name != 'pull_request' }}
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    uses: ./.github/workflows/run-code-tests.yml
