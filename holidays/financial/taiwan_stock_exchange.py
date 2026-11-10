@@ -55,18 +55,20 @@ class TaiwanStockExchange(Taiwan):
         # them into plain days off to keep lazily populated years from adding them back.
         date_format = self.tr(self.substituted_date_format)
         for year, year_holidays in self.special_public_holidays.items():
-            if year >= 2019:
-                self.special_public_holidays[year] = tuple(
-                    (
+            if year <= 2018:
+                continue
+            holidays = []
+            for holiday in _normalize_tuple(year_holidays):
+                if len(holiday) > 3:  # Substituted holiday.
+                    to_month, to_day, from_month, from_day, *optional = holiday
+                    from_date = date(optional[0] if optional else year, from_month, from_day)
+                    holiday = (
                         to_month,
                         to_day,
-                        (
-                            self.substituted_label,
-                            date(year, from_month, from_day).strftime(date_format),
-                        ),
+                        (self.substituted_label, from_date.strftime(date_format)),
                     )
-                    for to_month, to_day, from_month, from_day in _normalize_tuple(year_holidays)
-                )
+                holidays.append(holiday)
+            self.special_public_holidays[year] = tuple(holidays)
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
