@@ -126,8 +126,10 @@ class TestLuxembourg(CommonCountryTests, TestCase):
     def test_no_school_holidays(self):
         # School holidays are available from the 1980/81 school year.
         self.assertNoHolidays(
-            Luxembourg(categories=SCHOOL, years=range(self.start_year, 1980)),
-            Luxembourg(categories=SCHOOL, years=2030),
+            Luxembourg(
+                categories=SCHOOL,
+                years=(*range(self.start_year, 1980), *range(2030, self.end_year)),
+            )
         )
         self.assertNoSchoolHoliday("1980-10-25", "1980-11-03")
 
