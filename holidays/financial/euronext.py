@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
@@ -119,17 +118,16 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # National Holiday.
         self._move_holiday_forced(self._add_holiday_mar_25(tr("National Holiday")))
 
-        # Orthodox Easter Sunday.
         # Used only to derive the movable Orthodox holidays below. Easter
         # Sunday is not a market holiday, so remove it right after adding.
         orthodox_easter = self._add_easter_sunday("Easter Sunday", JULIAN_CALENDAR)
         self.pop(orthodox_easter, None)
 
         # Ash Monday.
-        self._add_holiday(tr("Ash Monday"), _timedelta(orthodox_easter, -48))
+        self._add_ash_monday(tr("Ash Monday"), calendar=JULIAN_CALENDAR)
 
-        # Good Friday (Orthodox) and Easter Monday (Orthodox), unless they
-        # coincide with the Catholic ones.
+        # Good Friday (Orthodox) and Easter Monday (Orthodox), unless Orthodox
+        # Easter coincides with Catholic Easter.
         if orthodox_easter != self._easter_sunday:
             # Good Friday (Orthodox).
             self._add_good_friday(tr("Good Friday (Orthodox)"), calendar=JULIAN_CALENDAR)
@@ -138,7 +136,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_easter_monday(tr("Easter Monday (Orthodox)"), calendar=JULIAN_CALENDAR)
 
         # Pentecost Monday.
-        self._add_holiday(tr("Whit Monday"), _timedelta(orthodox_easter, +50))
+        self._add_pentecost_monday(tr("Whit Monday"), calendar=JULIAN_CALENDAR)
 
         # Assumption Day.
         self._move_holiday_forced(self._add_assumption_of_mary_day(tr("Assumption Day")))

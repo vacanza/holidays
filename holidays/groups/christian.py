@@ -140,7 +140,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +39))
 
-    def _add_ash_monday(self, name) -> date:
+    def _add_ash_monday(self, name, calendar=None) -> date:
         """
         Add Ash Monday (48 days before Easter Sunday).
 
@@ -148,7 +148,7 @@ class ChristianHolidays:
         or Green Monday. The first day of Great Lent.
         https://en.wikipedia.org/wiki/Clean_Monday
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, -48))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), -48))
 
     def _add_ash_wednesday(self, name) -> date:
         """
@@ -495,7 +495,7 @@ class ChristianHolidays:
         """
         return self._add_holiday_jun_29(name)
 
-    def _add_pentecost_monday(self, name) -> date:
+    def _add_pentecost_monday(self, name, calendar=None) -> date:
         """
         Add Pentecost Monday (50 days after Easter Sunday).
 
@@ -503,7 +503,7 @@ class ChristianHolidays:
         Holy Spirit, is the holiday celebrated the day after Pentecost.
         https://en.wikipedia.org/wiki/Whit_Monday
         """
-        return self._add_holiday(name, _timedelta(self._easter_sunday, +50))
+        return self._add_holiday(name, _timedelta(self.__get_easter_sunday(calendar), +50))
 
     def _add_pentecost(self, name, calendar=None) -> date:
         """
