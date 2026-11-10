@@ -51,6 +51,8 @@ class TaiwanStockExchange(Taiwan):
         # Starting in 2019, TWSE no longer holds trading or settlement on
         # national Saturday make-up workdays.
         self.weekend_workdays = {dt for dt in self.weekend_workdays if dt.year <= 2018}
+        # Substituted holidays add their workdays whenever a year is populated, so turn
+        # them into plain days off to keep lazily populated years from adding them back.
         date_format = self.tr(self.substituted_date_format)
         for year, year_holidays in self.special_public_holidays.items():
             if year >= 2019:
