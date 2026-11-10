@@ -10,10 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
 from holidays.calendars.gregorian import _timedelta
 from holidays.constants import PUBLIC
 from holidays.countries.taiwan import Taiwan
-from holidays.helpers import tr
+from holidays.helpers import _normalize_tuple, tr
 from holidays.observed_holiday_base import SAT_TO_PREV_WORKDAY, SUN_TO_NEXT_WORKDAY
 
 
@@ -49,6 +51,22 @@ class TaiwanStockExchange(Taiwan):
         # Starting in 2019, TWSE no longer holds trading or settlement on
         # national Saturday make-up workdays.
         self.weekend_workdays = {dt for dt in self.weekend_workdays if dt.year <= 2018}
+        # Substituted holidays add their workdays whenever a year is populated, so turn
+        # them into plain days off to keep lazily populated years from adding them back.
+        date_format = self.tr(self.substituted_date_format)
+        for year, year_holidays in self.special_public_holidays.items():
+            if year >= 2019:
+                self.special_public_holidays[year] = tuple(
+                    (
+                        to_month,
+                        to_day,
+                        (
+                            self.substituted_label,
+                            date(year, from_month, from_day).strftime(date_format),
+                        ),
+                    )
+                    for to_month, to_day, from_month, from_day in _normalize_tuple(year_holidays)
+                )
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
