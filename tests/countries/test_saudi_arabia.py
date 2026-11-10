@@ -151,10 +151,11 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         self.assertHolidayName(
             eid_al_fitr, holidays, "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"
         )
+        self.assertHolidayName(f"{eid_al_fitr} (يوم تعويضي)", holidays, "2026-03-23", "2026-03-24")
         self.assertHolidayName("يوم عرفة", holidays, "2026-05-26")
-        self.assertHolidayName(
-            "عطلة عيد الأضحى", holidays, "2026-05-27", "2026-05-28", "2026-05-29"
-        )
+        eid_al_adha = "عطلة عيد الأضحى"
+        self.assertHolidayName(eid_al_adha, holidays, "2026-05-27", "2026-05-28", "2026-05-29")
+        self.assertHolidayName(f"{eid_al_adha} (يوم تعويضي)", holidays, "2026-05-31")
 
         # All four days of an estimated Eid al-Fitr Holiday are labeled as estimated.
         self.assertHolidayName(
