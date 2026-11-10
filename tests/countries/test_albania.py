@@ -223,7 +223,6 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
         )
-        self.assertHolidayName(name, "2026-03-20")
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2012-08-20",
@@ -247,7 +246,6 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2023-06-28",
             "2024-06-16",
         )
-        self.assertHolidayName(name, "2026-05-27")
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2007-01-03",

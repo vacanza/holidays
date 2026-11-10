@@ -32,7 +32,6 @@ class Albania(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Albania>
         * [Law No. 7651](https://web.archive.org/web/20250119183539/http://kqk.gov.al/sites/default/files/publikime/ligj_7651_-_per_festat_zyrtare_e_ditet_perkujtimore.pdf)
         * [Holidays for 2018-2024](https://web.archive.org/web/20250119183537/https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2024/)
-        * [Holidays for 2026](https://web.archive.org/web/20251114070504/https://www.bankofalbania.org/Shtypi/Kalendari_i_festave_zyrtare_2026/)
     """
 
     country = "AL"
@@ -133,8 +132,8 @@ class ALB(Albania):
 
 
 class AlbaniaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2026)
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2018, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2018, 2025)
 
 
 class AlbaniaStaticHolidays:
