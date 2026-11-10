@@ -26,6 +26,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
         super().test_no_holidays()
         self.assertNoHolidays(self.holidays_half_day)
         self.assertNoHolidays(self.subdiv_half_day_holidays["XMIL"])
+        self.assertNoHolidays(self.subdiv_half_day_holidays["XATH"])
 
     def _weekend_holidays(self, month, day):
         return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() > 4)
@@ -142,6 +143,17 @@ class TestEuronext(CommonFinancialTests, TestCase):
                         (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2023),
                     )
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
+                case "XATH":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(12, 24) if dt.year >= 2026),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2026),
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24))
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
@@ -167,7 +179,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                     self.assertHolidayName(name_half_day_1400, holidays, self.full_range)
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 24))
 
-                case "XMIL" | "XOSL":
+                case "XMIL" | "XOSL" | "XATH":
                     self.assertNoHolidayName(name_half_day_1405, holidays)
                     self.assertNoHolidayName(name_half_day_1400, holidays)
                 case _:
@@ -194,6 +206,17 @@ class TestEuronext(CommonFinancialTests, TestCase):
                         (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2023),
                     )
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
+                case "XATH":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(12, 31) if dt.year >= 2027),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2027),
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2027))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31))
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
@@ -219,7 +242,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
                     self.assertHolidayName(name_half_day_1400, holidays, self.full_range)
                     self.assertNoHoliday(holidays, self._weekend_holidays(12, 31))
 
-                case "XMIL" | "XOSL":
+                case "XMIL" | "XOSL" | "XATH":
                     self.assertNoHolidayName(name_half_day_1405, holidays)
                     self.assertNoHolidayName(name_half_day_1400, holidays)
                 case _:
@@ -255,19 +278,31 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "XMIL":
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2023),
-                )
-                self.assertNoHoliday(
-                    holidays,
-                    (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2023),
-                )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
-            else:
-                self.assertNoHolidayName(name, holidays)
+            match subdiv:
+                case "XMIL":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2023),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2023),
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
+                case "XATH":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2026),
+                    )
+                    self.assertNoHoliday(
+                        holidays,
+                        (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2026),
+                    )
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
 
     def test_maundy_thursday(self):
         name = "Maundy Thursday"
@@ -329,20 +364,165 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "XOSL":
+            match subdiv:
+                case "XOSL":
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        "2019-06-10",
+                        "2020-06-01",
+                        "2021-05-24",
+                        "2022-06-06",
+                        "2023-05-29",
+                        "2024-05-20",
+                        "2025-06-09",
+                        "2026-05-25",
+                    )
+                    self.assertHolidayName(name, holidays, self.full_range)
+                case "XATH":
+                    # Orthodox Whit Monday (Orthodox Easter + 50 days).
+                    self.assertHolidayName(
+                        name,
+                        holidays,
+                        "2026-06-01",
+                        "2027-06-21",
+                        "2028-06-05",
+                        "2029-05-28",
+                        "2030-06-17",
+                        "2032-06-21",
+                    )
+                    self.assertHolidayName(name, holidays, range(2026, self.end_year))
+                    self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+                case _:
+                    self.assertNoHolidayName(name, holidays)
+
+    def test_epiphany(self):
+        name = "Epiphany"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XATH":
                 self.assertHolidayName(
                     name,
                     holidays,
-                    "2019-06-10",
-                    "2020-06-01",
-                    "2021-05-24",
-                    "2022-06-06",
-                    "2023-05-29",
-                    "2024-05-20",
-                    "2025-06-09",
-                    "2026-05-25",
+                    (dt for dt in self._no_weekend_holidays(1, 6) if dt.year >= 2026),
                 )
-                self.assertHolidayName(name, holidays, self.full_range)
+                self.assertNoHoliday(
+                    holidays,
+                    (dt for dt in self._weekend_holidays(1, 6) if dt.year >= 2026),
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_ash_monday(self):
+        name = "Ash Monday"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XATH":
+                # Orthodox Ash Monday (Orthodox Easter - 48 days).
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2026-02-23",
+                    "2027-03-15",
+                    "2028-02-28",
+                    "2029-02-19",
+                    "2030-03-11",
+                    "2032-03-15",
+                )
+                self.assertHolidayName(name, holidays, range(2026, self.end_year))
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_national_holiday(self):
+        name = "National Holiday"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XATH":
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    (dt for dt in self._no_weekend_holidays(3, 25) if dt.year >= 2026),
+                    (dt for dt in self._no_weekend_holidays(10, 28) if dt.year >= 2026),
+                )
+                self.assertNoHoliday(
+                    holidays,
+                    (dt for dt in self._weekend_holidays(3, 25) if dt.year >= 2026),
+                    (dt for dt in self._weekend_holidays(10, 28) if dt.year >= 2026),
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_good_friday_orthodox(self):
+        name = "Good Friday (Orthodox)"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XATH":
+                # Divergence years only; in coincidence years Orthodox Good Friday
+                # is the same date as Catholic Good Friday and gets no separate entry.
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2026-04-10",
+                    "2027-04-30",
+                    "2029-04-06",
+                    "2030-04-26",
+                    "2032-04-30",
+                    # Shared with Labour Day (not a coincidence year).
+                    "2043-05-01",
+                )
+                self.assertNoHolidayName(
+                    name,
+                    holidays,
+                    "2028-04-14",
+                    "2031-04-11",
+                    "2034-04-07",
+                    "2037-04-03",
+                    "2038-04-23",
+                    "2041-04-19",
+                    "2045-04-07",
+                    "2048-04-03",
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_easter_monday_orthodox(self):
+        name = "Easter Monday (Orthodox)"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "XATH":
+                # Divergence years only; in coincidence years Orthodox Easter Monday
+                # is the same date as Catholic Easter Monday and gets no separate entry.
+                self.assertHolidayName(
+                    name,
+                    holidays,
+                    "2026-04-13",
+                    "2027-05-03",
+                    "2029-04-09",
+                    "2030-04-29",
+                    "2032-05-03",
+                )
+                self.assertNoHolidayName(
+                    name,
+                    holidays,
+                    "2028-04-17",
+                    "2031-04-14",
+                    "2034-04-10",
+                    "2037-04-06",
+                    "2038-04-26",
+                    "2041-04-22",
+                    "2045-04-10",
+                    "2048-04-06",
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -555,3 +735,82 @@ class TestEuronext(CommonFinancialTests, TestCase):
                 "Véspera de Ano Novo (os mercados fecham às 14:05 CET)",
             ),
         )
+
+    def test_l10n_xath(self):
+        # Athens-specific holidays only (2026, the first XATH year).
+        expected = {
+            "en_GB": (
+                ("2026-01-06", "Epiphany"),
+                ("2026-02-23", "Ash Monday"),
+                ("2026-03-25", "National Holiday"),
+                ("2026-04-10", "Good Friday (Orthodox)"),
+                ("2026-04-13", "Easter Monday (Orthodox)"),
+                ("2026-06-01", "Whit Monday"),
+                ("2026-10-28", "National Holiday"),
+                ("2026-12-24", "Christmas Eve"),
+            ),
+            "en_US": (
+                ("2026-01-06", "Epiphany"),
+                ("2026-02-23", "Ash Monday"),
+                ("2026-03-25", "National Holiday"),
+                ("2026-04-10", "Good Friday (Orthodox)"),
+                ("2026-04-13", "Easter Monday (Orthodox)"),
+                ("2026-06-01", "Pentecost Monday"),
+                ("2026-10-28", "National Holiday"),
+                ("2026-12-24", "Christmas Eve"),
+            ),
+            "fr": (
+                ("2026-01-06", "Épiphanie"),
+                ("2026-02-23", "Lundi pur"),
+                ("2026-03-25", "Fête nationale"),
+                ("2026-04-10", "Vendredi saint (orthodoxe)"),
+                ("2026-04-13", "Lundi de Pâques (orthodoxe)"),
+                ("2026-06-01", "Lundi de Pentecôte"),
+                ("2026-10-28", "Fête nationale"),
+                ("2026-12-24", "Veille de Noël"),
+            ),
+            "it": (
+                ("2026-01-06", "Epifania"),
+                ("2026-02-23", "Lunedì pulito"),
+                ("2026-03-25", "Festa nazionale"),
+                ("2026-04-10", "Venerdì santo (ortodosso)"),
+                ("2026-04-13", "Lunedì di Pasqua (ortodosso)"),
+                ("2026-06-01", "Lunedì di Pentecoste"),
+                ("2026-10-28", "Festa nazionale"),
+                ("2026-12-24", "Vigilia di Natale"),
+            ),
+            "nl": (
+                ("2026-01-06", "Driekoningen"),
+                ("2026-02-23", "Schone Maandag"),
+                ("2026-03-25", "Nationale feestdag"),
+                ("2026-04-10", "Goede Vrijdag (orthodox)"),
+                ("2026-04-13", "Paasmaandag (orthodox)"),
+                ("2026-06-01", "Tweede pinksterdag"),
+                ("2026-10-28", "Nationale feestdag"),
+                ("2026-12-24", "Kerstavond"),
+            ),
+            "no": (
+                ("2026-01-06", "Helligtrekongersdag"),
+                ("2026-02-23", "Rene mandag"),
+                ("2026-03-25", "Nasjonaldag"),
+                ("2026-04-10", "Langfredag (ortodoks)"),
+                ("2026-04-13", "Andre påskedag (ortodoks)"),
+                ("2026-06-01", "Andre pinsedag"),
+                ("2026-10-28", "Nasjonaldag"),
+                ("2026-12-24", "Julaften"),
+            ),
+            "pt_PT": (
+                ("2026-01-06", "Epifania"),
+                ("2026-02-23", "Segunda-feira Limpa"),
+                ("2026-03-25", "Feriado nacional"),
+                ("2026-04-10", "Sexta-feira Santa (ortodoxa)"),
+                ("2026-04-13", "Segunda-feira de Páscoa (ortodoxa)"),
+                ("2026-06-01", "Segunda-feira de Pentecoste"),
+                ("2026-10-28", "Feriado nacional"),
+                ("2026-12-24", "Véspera de Natal"),
+            ),
+        }
+        for language, holidays in expected.items():
+            instance = Euronext(subdiv="XATH", years=2026, language=language)
+            for dt, name in holidays:
+                self.assertEqual(name, instance.get(dt), (language, dt))

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-25 04:05+0000\n"
-"PO-Revision-Date: 2026-10-27 02:43+0000\n"
+"PO-Revision-Date: 2026-10-29 12:47+0000\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: no\n"
@@ -74,13 +74,38 @@ msgstr "Julaften"
 msgid "New Year's Eve"
 msgstr "Nyttårsaften"
 
-#. Irish May Bank Holiday.
-msgid "Irish May Bank Holiday"
-msgstr "Irsk mai-ferie"
+#. Epiphany.
+msgid "Epiphany"
+msgstr "Helligtrekongersdag"
+
+#. National Holiday.
+msgid "National Holiday"
+msgstr "Nasjonaldag"
+
+#. Ash Monday.
+msgid "Ash Monday"
+msgstr "Rene mandag"
+
+#. Good Friday (Orthodox).
+msgid "Good Friday (Orthodox)"
+msgstr "Langfredag (ortodoks)"
+
+#. Easter Monday (Orthodox).
+msgid "Easter Monday (Orthodox)"
+msgstr "Andre påskedag (ortodoks)"
+
+#. Whit Monday.
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "Andre pinsedag"
 
 #. Assumption Day.
 msgid "Assumption Day"
 msgstr "Marias opptakelse i himmelen"
+
+#. Irish May Bank Holiday.
+msgid "Irish May Bank Holiday"
+msgstr "Irsk mai-ferie"
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
@@ -93,10 +118,6 @@ msgstr "Kristi himmelfartsdag"
 #. Constitution Day.
 msgid "Constitution Day"
 msgstr "Grunnlovsdag"
-
-#. Pentecost Monday.
-msgid "Whit Monday"
-msgstr "Andre pinsedag"
 
 #. %s (markets close at 1:00pm CET).
 #, c-format
