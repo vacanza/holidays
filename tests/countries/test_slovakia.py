@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import WORKDAY
+from holidays.constants import PUBLIC, SCHOOL, WORKDAY
 from holidays.countries.slovakia import Slovakia
 from tests.common import CommonCountryTests
 
@@ -20,12 +20,20 @@ from tests.common import CommonCountryTests
 class TestSlovakia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Slovakia)
+        super().setUpClass(
+            Slovakia, with_subdiv_categories=True, years_all_subdivs=range(2014, 2050)
+        )
 
     def test_no_holidays(self):
         super().test_no_holidays()
 
         self.assertNoHolidays(Slovakia(categories=WORKDAY, years=range(self.start_year, 2021)))
+
+        self.assertNoHolidays(Slovakia(categories=SCHOOL, years=self.full_range))
+        for subdiv in Slovakia.subdivisions:
+            self.assertNoHolidays(
+                Slovakia(subdiv=subdiv, categories=SCHOOL, years=range(self.start_year, 2014))
+            )
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -187,6 +195,270 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 
+    def test_school_christmas_break(self):
+        name = "Vianočné prázdniny"
+        self.assertNoHolidayName(name)
+        for holidays in self.subdiv_school_holidays.values():
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2014-01-01",
+                "2014-01-07",
+                # Dec 22 is part of the break when Dec 23 falls on a Tuesday.
+                "2014-12-22",
+                "2014-12-31",
+                "2023-12-23",
+                "2023-12-31",
+                "2025-12-22",
+                "2025-12-31",
+                "2026-01-01",
+                "2026-01-07",
+                "2026-12-23",
+                "2026-12-31",
+            )
+            self.assertNoHoliday(
+                holidays,
+                "2014-01-08",
+                "2014-12-21",
+                "2023-12-22",
+                "2025-12-21",
+                "2026-01-08",
+                "2026-12-22",
+            )
+            self.assertHolidayName(name, holidays, range(2014, self.end_year))
+            for year in range(2014, self.end_year):
+                self.assertHolidayNameCount(
+                    name, 17 if year in {2014, 2025, 2031, 2036, 2042} else 16, holidays, year
+                )
+
+    def test_school_half_year_break(self):
+        name = "Polročné prázdniny"
+        self.assertNoHolidayName(name)
+        for holidays in self.subdiv_school_holidays.values():
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2014-02-03",
+                "2015-02-02",
+                "2016-02-01",
+                "2017-02-03",
+                "2018-02-02",
+                "2019-02-01",
+                "2020-02-03",
+                "2021-02-01",
+                "2022-02-04",
+                "2026-02-02",
+                "2027-02-01",
+            )
+            self.assertHolidayName(name, holidays, range(2014, 2023), range(2026, self.end_year))
+            self.assertNoHolidayName(name, holidays, range(2023, 2026))
+            self.assertHolidayNameCount(
+                name, 1, holidays, range(2014, 2023), range(2026, self.end_year)
+            )
+
+    def test_school_spring_break(self):
+        name = "Jarné prázdniny"
+        self.assertNoHolidayName(name)
+        for subdivs, dts, no_dts in (
+            (
+                # Central Slovakia: Banskobystrický, Trenčiansky, Žilinský kraj.
+                ("BC", "TC", "ZI"),
+                (
+                    "2014-02-17",
+                    "2014-02-21",
+                    "2015-02-16",
+                    "2015-02-20",
+                    "2016-02-29",
+                    "2016-03-04",
+                    "2017-02-27",
+                    "2017-03-03",
+                    "2018-02-19",
+                    "2018-02-23",
+                    "2019-03-04",
+                    "2019-03-08",
+                    "2020-02-24",
+                    "2020-02-28",
+                    "2021-02-15",
+                    "2021-02-19",
+                    "2022-03-07",
+                    "2022-03-11",
+                    "2023-02-27",
+                    "2023-03-03",
+                    "2024-02-19",
+                    "2024-02-23",
+                    "2025-03-03",
+                    "2025-03-07",
+                    "2026-02-23",
+                    "2026-02-27",
+                    "2027-02-15",
+                    "2027-02-19",
+                ),
+                ("2014-02-16", "2014-02-22", "2026-02-22", "2026-02-28"),
+            ),
+            (
+                # Eastern Slovakia: Košický, Prešovský kraj.
+                ("KI", "PV"),
+                (
+                    "2014-03-03",
+                    "2014-03-07",
+                    "2015-02-23",
+                    "2015-02-27",
+                    "2016-02-15",
+                    "2016-02-19",
+                    "2017-03-06",
+                    "2017-03-10",
+                    "2018-02-26",
+                    "2018-03-02",
+                    "2019-02-18",
+                    "2019-02-22",
+                    "2020-03-02",
+                    "2020-03-06",
+                    "2021-02-22",
+                    "2021-02-26",
+                    "2022-02-21",
+                    "2022-02-25",
+                    "2023-03-06",
+                    "2023-03-10",
+                    "2024-02-26",
+                    "2024-03-01",
+                    "2025-02-17",
+                    "2025-02-21",
+                    "2026-03-02",
+                    "2026-03-06",
+                    "2027-02-22",
+                    "2027-02-26",
+                ),
+                ("2014-03-02", "2014-03-08", "2026-03-01", "2026-03-07"),
+            ),
+            (
+                # Western Slovakia: Bratislavský, Nitriansky, Trnavský kraj.
+                ("BL", "NI", "TA"),
+                (
+                    "2014-02-24",
+                    "2014-02-28",
+                    "2015-03-02",
+                    "2015-03-06",
+                    "2016-02-22",
+                    "2016-02-26",
+                    "2017-02-20",
+                    "2017-02-24",
+                    "2018-03-05",
+                    "2018-03-09",
+                    "2019-02-25",
+                    "2019-03-01",
+                    "2020-02-17",
+                    "2020-02-21",
+                    "2021-03-01",
+                    "2021-03-05",
+                    "2022-02-28",
+                    "2022-03-04",
+                    "2023-02-20",
+                    "2023-02-24",
+                    "2024-03-04",
+                    "2024-03-08",
+                    "2025-02-24",
+                    "2025-02-28",
+                    "2026-02-16",
+                    "2026-02-20",
+                    "2027-03-01",
+                    "2027-03-05",
+                ),
+                ("2014-02-23", "2014-03-01", "2026-02-15", "2026-02-21"),
+            ),
+        ):
+            for subdiv in subdivs:
+                holidays = self.subdiv_school_holidays[subdiv]
+                self.assertHolidayName(name, holidays, *dts)
+                self.assertNoHoliday(holidays, *no_dts)
+                self.assertHolidayName(name, holidays, range(2014, self.end_year))
+                self.assertHolidayNameCount(name, 5, holidays, range(2014, self.end_year))
+
+    def test_school_easter_break(self):
+        name = "Veľkonočné prázdniny"
+        self.assertNoHolidayName(name)
+        for holidays in self.subdiv_school_holidays.values():
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2014-04-17",
+                "2014-04-22",
+                "2024-03-28",
+                "2024-04-02",
+                "2025-04-17",
+                "2025-04-22",
+                "2026-04-02",
+                "2026-04-07",
+                "2027-03-25",
+                "2027-03-30",
+            )
+            self.assertNoHoliday(holidays, "2026-04-01", "2026-04-08")
+            self.assertHolidayName(name, holidays, range(2014, self.end_year))
+            self.assertHolidayNameCount(name, 6, holidays, range(2014, self.end_year))
+
+    def test_school_summer_break(self):
+        name = "Letné prázdniny"
+        self.assertNoHolidayName(name)
+        for holidays in self.subdiv_school_holidays.values():
+            self.assertHolidayName(
+                name,
+                holidays,
+                # Jun 30 is part of the break when it falls on a Monday.
+                "2014-06-30",
+                "2014-08-31",
+                "2024-07-01",
+                "2024-08-31",
+                "2025-06-30",
+                "2025-08-31",
+                "2026-07-01",
+                "2026-08-31",
+            )
+            self.assertNoHoliday(holidays, "2014-06-29", "2024-06-30", "2025-06-29", "2026-06-30")
+            self.assertHolidayName(name, holidays, range(2014, self.end_year))
+            for year in range(2014, self.end_year):
+                self.assertHolidayNameCount(
+                    name, 63 if year in {2014, 2025, 2031, 2036, 2042} else 62, holidays, year
+                )
+
+    def test_school_autumn_break(self):
+        name = "Jesenné prázdniny"
+        self.assertNoHolidayName(name)
+        for holidays in self.subdiv_school_holidays.values():
+            self.assertHolidayName(
+                name,
+                holidays,
+                "2014-10-30",
+                "2014-10-31",
+                "2015-10-29",
+                "2015-10-30",
+                "2016-10-28",
+                "2016-10-31",
+                "2018-10-31",
+                "2018-11-02",
+                # Ministerial Decision 2020/17949:1-A1810 of Oct 23, 2020.
+                "2020-10-30",
+                "2020-11-02",
+                "2020-11-06",
+                "2020-11-09",
+                "2021-10-28",
+                "2021-10-29",
+                "2022-10-28",
+                "2022-10-31",
+                "2025-10-30",
+                "2025-10-31",
+                "2026-10-29",
+                "2026-10-30",
+            )
+            self.assertNoHoliday(
+                holidays,
+                "2014-10-29",
+                "2015-10-31",
+                "2020-10-29",
+                "2021-10-30",
+                "2026-10-28",
+                "2026-10-31",
+            )
+            self.assertHolidayName(name, holidays, range(2014, self.end_year))
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Deň vzniku Slovenskej republiky"),
@@ -208,6 +480,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-12-24", "Štedrý deň"),
             ("2022-12-25", "Prvý sviatok vianočný"),
             ("2022-12-26", "Druhý sviatok vianočný"),
+            categories=(PUBLIC, WORKDAY),
         )
 
     def test_l10n_en_us(self):
@@ -229,6 +502,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
+            categories=(PUBLIC, WORKDAY),
         )
 
     def test_l10n_uk(self):
@@ -250,4 +524,52 @@ class TestSlovakia(CommonCountryTests, TestCase):
             ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
+            categories=(PUBLIC, WORKDAY),
+        )
+
+    def _assert_school_l10n(self, language, *expected):
+        for subdiv, dt, name in expected:
+            self.assertHolidayName(
+                name,
+                Slovakia(subdiv=subdiv, years=2026, language=language, categories=SCHOOL),
+                dt,
+            )
+
+    def test_l10n_default_school(self):
+        self._assert_school_l10n(
+            None,
+            ("BL", "2026-01-01", "Vianočné prázdniny"),
+            ("BL", "2026-02-02", "Polročné prázdniny"),
+            ("BL", "2026-02-16", "Jarné prázdniny"),
+            ("BC", "2026-02-23", "Jarné prázdniny"),
+            ("KI", "2026-03-02", "Jarné prázdniny"),
+            ("BL", "2026-04-02", "Veľkonočné prázdniny"),
+            ("BL", "2026-07-01", "Letné prázdniny"),
+            ("BL", "2026-10-29", "Jesenné prázdniny"),
+        )
+
+    def test_l10n_en_us_school(self):
+        self._assert_school_l10n(
+            "en_US",
+            ("BL", "2026-01-01", "Christmas Break"),
+            ("BL", "2026-02-02", "Half-Year Break"),
+            ("BL", "2026-02-16", "Spring Break"),
+            ("BC", "2026-02-23", "Spring Break"),
+            ("KI", "2026-03-02", "Spring Break"),
+            ("BL", "2026-04-02", "Easter Break"),
+            ("BL", "2026-07-01", "Summer Break"),
+            ("BL", "2026-10-29", "Autumn Break"),
+        )
+
+    def test_l10n_uk_school(self):
+        self._assert_school_l10n(
+            "uk",
+            ("BL", "2026-01-01", "Різдвяні канікули"),
+            ("BL", "2026-02-02", "Піврічні канікули"),
+            ("BL", "2026-02-16", "Весняні канікули"),
+            ("BC", "2026-02-23", "Весняні канікули"),
+            ("KI", "2026-03-02", "Весняні канікули"),
+            ("BL", "2026-04-02", "Великодні канікули"),
+            ("BL", "2026-07-01", "Літні канікули"),
+            ("BL", "2026-10-29", "Осінні канікули"),
         )
