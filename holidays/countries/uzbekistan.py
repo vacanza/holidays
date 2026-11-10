@@ -113,7 +113,7 @@ class UZB(Uzbekistan):
 
 
 class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2006, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2006, 2026)
     EID_AL_ADHA_DATES = {
         2006: ((JAN, 10), (DEC, 30)),
         2007: (DEC, 19),
@@ -121,7 +121,7 @@ class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
         2016: (SEP, 12),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2006, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2006, 2026)
     EID_AL_FITR_DATES = {
         2009: (SEP, 21),
         2011: (AUG, 31),
