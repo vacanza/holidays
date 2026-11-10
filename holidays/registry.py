@@ -317,6 +317,7 @@ FINANCIAL: RegistryDict = {
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
+    "vienna_stock_exchange": ("ViennaStockExchange", "XWBO", "WBAG"),
     "warsaw_stock_exchange": ("WarsawStockExchange", "XWAR", "GPW"),
 }
 
