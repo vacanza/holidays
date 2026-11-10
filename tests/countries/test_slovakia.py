@@ -432,8 +432,12 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2015-10-30",
                 "2016-10-28",
                 "2016-10-31",
+                "2017-10-30",
+                "2017-10-31",
                 "2018-10-31",
                 "2018-11-02",
+                "2019-10-30",
+                "2019-10-31",
                 # Ministerial Decision 2020/17949:1-A1810 of Oct 23, 2020.
                 "2020-10-30",
                 "2020-11-02",
@@ -443,10 +447,16 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2021-10-29",
                 "2022-10-28",
                 "2022-10-31",
+                "2023-10-30",
+                "2023-10-31",
+                "2024-10-30",
+                "2024-10-31",
                 "2025-10-30",
                 "2025-10-31",
                 "2026-10-29",
                 "2026-10-30",
+                "2027-10-28",
+                "2027-10-29",
             )
             self.assertNoHoliday(
                 holidays,
@@ -458,6 +468,17 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2026-10-31",
             )
             self.assertHolidayName(name, holidays, range(2014, self.end_year))
+            for year in range(2014, self.end_year):
+                self.assertHolidayNameCount(
+                    name,
+                    4
+                    if year in {2016, 2020, 2022, 2033, 2039, 2044}
+                    else 3
+                    if year in {2018, 2029, 2035, 2040, 2046}
+                    else 2,
+                    holidays,
+                    year,
+                )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

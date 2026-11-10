@@ -21,7 +21,10 @@ from holidays.calendars.gregorian import (
     NOV,
     DEC,
     MON,
+    TUE,
+    THU,
     FRI,
+    SUN,
     _get_nth_weekday_of_month,
     _timedelta,
 )
@@ -249,10 +252,8 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
 
         # § 2(1)-(2) & § 3(7): Jul 1 (Jun 30 when that is a Monday) → Aug 31.
         jun_30 = date(self._year, JUN, 30)
-        is_jun_30_monday = self._is_monday(jun_30)
         self._add_multiday_holiday(
-            jun_30 if is_jun_30_monday else date(self._year, JUL, 1),
-            63 if is_jun_30_monday else 62,
+            *((jun_30, 63) if self._is_monday(jun_30) else (date(self._year, JUL, 1), 62)),
             # Summer Break.
             name=tr("Letné prázdniny"),
         )
@@ -266,25 +267,20 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             self._add_holiday_nov_6(autumn_break_name)
             self._add_holiday_nov_9(autumn_break_name)
         else:
-            nov_1 = date(self._year, NOV, 1)
-            if self._is_monday(nov_1):
-                autumn_start, autumn_days = date(self._year, OCT, 28), 2
-            elif self._is_tuesday(nov_1):
-                autumn_start, autumn_days = date(self._year, OCT, 28), 4
-            elif self._is_thursday(nov_1):
-                autumn_start, autumn_days = date(self._year, OCT, 31), 3
-            elif self._is_sunday(nov_1):
-                autumn_start, autumn_days = date(self._year, OCT, 29), 2
-            else:
-                autumn_start, autumn_days = date(self._year, OCT, 30), 2
-            self._add_multiday_holiday(autumn_start, autumn_days, name=autumn_break_name)
+            autumn_start_day, autumn_days = {
+                MON: (28, 2),
+                TUE: (28, 4),
+                THU: (31, 3),
+                SUN: (29, 2),
+            }.get(date(self._year, NOV, 1).weekday(), (30, 2))
+            self._add_multiday_holiday(
+                date(self._year, OCT, autumn_start_day), autumn_days, name=autumn_break_name
+            )
 
         # § 3(3): Dec 23 (Dec 22 when Dec 23 is a Tuesday) → Dec 31.
         dec_22 = date(self._year, DEC, 22)
-        is_dec_22_monday = self._is_monday(dec_22)
         self._add_multiday_holiday(
-            dec_22 if is_dec_22_monday else date(self._year, DEC, 23),
-            10 if is_dec_22_monday else 9,
+            *((dec_22, 10) if self._is_monday(dec_22) else (date(self._year, DEC, 23), 9)),
             name=christmas_break_name,
         )
 
