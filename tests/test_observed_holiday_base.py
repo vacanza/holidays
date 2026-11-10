@@ -54,3 +54,36 @@ class TestObservedHolidayBase(TestCase):
             },
             self.ohb,
         )
+
+    def test_add_observed_estimated_label(self):
+        # ASCII parentheses
+        ohb_ascii = ObservedHolidayBase(observed_rule=self.MON_TO_TUE)
+        ohb_ascii.estimated_label = "%s (estimated)"
+        ohb_ascii.observed_label = "%s (observed)"
+        ohb_ascii.observed_estimated_label = "%s (observed, estimated)"
+        ohb_ascii._populate(2024)
+
+        ohb_ascii._add_observed(
+            ohb_ascii._add_holiday("Test Holiday (estimated)", self.MONDAY),
+            rule=self.MON_TO_TUE,
+        )
+        self.assertEqual(
+            ohb_ascii[date(2024, 5, 14)],
+            "Test Holiday (observed, estimated)",
+        )
+
+        # Full-width parentheses
+        ohb_fullwidth = ObservedHolidayBase(observed_rule=self.MON_TO_TUE)
+        ohb_fullwidth.estimated_label = "%s（推定）"
+        ohb_fullwidth.observed_label = "%s（补假）"
+        ohb_fullwidth.observed_estimated_label = "%s（补假，推定）"
+        ohb_fullwidth._populate(2024)
+
+        ohb_fullwidth._add_observed(
+            ohb_fullwidth._add_holiday("测试（推定）", self.MONDAY),
+            rule=self.MON_TO_TUE,
+        )
+        self.assertEqual(
+            ohb_fullwidth[date(2024, 5, 14)],
+            "测试（补假，推定）",
+        )

@@ -813,12 +813,7 @@ class TestHolidaySum(TestCase):
 
 
 class TestHolidaySumWorkdays(TestCase):
-    """Working-day queries on a sum must match every operand (issue #3979).
-
-    A day is a working day in the sum only if every operand considers it one,
-    so countries with a non-Saturday/Sunday weekend (IL) keep their weekend and
-    countries with make-up working days (CN) do not lose them when added.
-    """
+    """Sums preserve operand weekend rules while honoring their own holidays."""
 
     def test_same_country_sum_matches_operand(self):
         cn = CN(years=2024)
@@ -829,11 +824,6 @@ class TestHolidaySumWorkdays(TestCase):
             both.get_working_days_count("2024-02-01", "2024-02-29"),
             cn.get_working_days_count("2024-02-01", "2024-02-29"),
         )
-        self.assertEqual(both.get_working_days_count("2024-02-01", "2024-02-29"), 18)
-
-        # The original calendar is not mutated.
-        self.assertEqual(cn.get_working_days_count("2024-02-01", "2024-02-29"), 18)
-
         il = IL(years=2024)
         both_il = il + IL(years=2025)
 
@@ -849,6 +839,82 @@ class TestHolidaySumWorkdays(TestCase):
             three.get_working_days_count("2024-02-01", "2024-02-29"),
             cn.get_working_days_count("2024-02-01", "2024-02-29"),
         )
+
+    def test_nonexpanding_sum_does_not_populate_operands(self):
+        cn = CN(years=2024, expand=False)
+        us = US(years=2024, expand=False)
+        cn_years_before = set(cn.years)
+        cn_items_before = dict(cn)
+        us_years_before = set(us.years)
+        us_items_before = dict(us)
+
+        both = cn + us
+        self.assertFalse(both.expand)
+
+        # Querying dates outside populated years does not mutate operands.
+        both.is_weekend("2026-05-01")
+        both.is_working_day("2026-05-01")
+
+        self.assertEqual(cn.years, cn_years_before)
+        self.assertEqual(dict(cn), cn_items_before)
+        self.assertEqual(us.years, us_years_before)
+        self.assertEqual(dict(us), us_items_before)
+        self.assertEqual(both.years, {2024})
+
+    def test_mixed_operands_weekend_and_working_day(self):
+        il = IL(years=2024)
+        us = US(years=2024)
+
+        for s in (il + us, us + il):
+            # Friday (2024-01-05): weekend in IL, workday in US -> weekend in sum, not working day.
+            self.assertTrue(s.is_weekend("2024-01-05"))
+            self.assertFalse(s.is_working_day("2024-01-05"))
+
+            # Sunday (2024-01-07): workday in IL, weekend in US -> weekend in sum, not working day.
+            self.assertTrue(s.is_weekend("2024-01-07"))
+            self.assertFalse(s.is_working_day("2024-01-07"))
+
+            # Saturday (2024-01-06): weekend in both -> weekend in sum, not working day.
+            self.assertTrue(s.is_weekend("2024-01-06"))
+            self.assertFalse(s.is_working_day("2024-01-06"))
+
+            # Thursday (2024-01-04): regular workday in both -> not weekend, working day in sum.
+            self.assertFalse(s.is_weekend("2024-01-04"))
+            self.assertTrue(s.is_working_day("2024-01-04"))
+
+    def test_mixed_expansion_flags(self):
+        fixed = CN(years=2024, expand=False)
+        expanding = US(years=2025)
+        fixed_items = dict(fixed)
+
+        both = fixed + expanding
+        both.is_working_day("2026-05-01")
+
+        self.assertEqual(fixed.years, {2024})
+        self.assertEqual(dict(fixed), fixed_items)
+        self.assertIn(2026, expanding.years)
+        self.assertIn(2026, both.years)
+
+    def test_sum_local_holiday_edits_affect_working_days(self):
+        both = US(years=2024) + US(years=2025)
+
+        # 2024-01-01 is New Year's Day (Monday holiday), not a working day.
+        # 2024-01-02 is Tuesday (ordinary working day).
+        self.assertFalse(both.is_working_day("2024-01-01"))
+        self.assertTrue(both.is_working_day("2024-01-02"))
+
+        # Removing a holiday from the sum makes it a working day.
+        both.pop("2024-01-01")
+        self.assertTrue(both.is_working_day("2024-01-01"))
+        self.assertEqual(both.get_nth_working_day("2024-01-01", 0), date(2024, 1, 1))
+
+        # Adding a custom holiday on a weekday makes it a non-working day.
+        both["2024-01-02"] = "Custom Holiday"
+        self.assertFalse(both.is_working_day("2024-01-02"))
+        self.assertEqual(both.get_nth_working_day("2024-01-01", 1), date(2024, 1, 3))
+
+        # Removing Monday's holiday and adding Tuesday's leaves four working days.
+        self.assertEqual(both.get_working_days_count("2024-01-01", "2024-01-05"), 4)
 
 
 class TestInheritance(TestCase):

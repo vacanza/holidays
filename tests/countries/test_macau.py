@@ -28,6 +28,15 @@ class TestMacau(CommonCountryTests, TestCase):
         self.assertNoHolidays(Macau(years=range(self.start_year, 1985)))
         self.assertNoHolidays(Macau(categories=GOVERNMENT, years=range(self.start_year, 2005)))
 
+    def test_observed_since_threshold(self):
+        # 2022-01-01 falls on Saturday; in-lieu observed holiday on Monday 2022-01-03.
+        mo_default = Macau(categories=GOVERNMENT, years=2022)
+        self.assertIn("2022-01-03", mo_default)
+
+        # Custom observed_since threshold must be preserved rather than overwritten by 2011.
+        mo_custom = Macau(categories=GOVERNMENT, years=2022, observed_since=2030)
+        self.assertNotIn("2022-01-03", mo_custom)
+
     def test_special_holidays(self):
         dt_optional_full = (
             # https://www.io.gov.mo/pt/legis/rec/111020

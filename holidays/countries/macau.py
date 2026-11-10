@@ -87,6 +87,7 @@ class Macau(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, MacauStaticHolidays)
+        kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
 
     def _populate_common(self):
@@ -358,7 +359,6 @@ class Macau(
 
         if self.observed:
             self._observed_rule = SAT_SUN_TO_NEXT_WORKDAY
-            self._observed_since = 2011
             self.observed_label = (
                 # Compensatory rest day for %s.
                 tr("%s的補假")
