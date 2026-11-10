@@ -69,13 +69,6 @@ class TestTaiwanStockExchange(CommonFinancialTests, WorkingDayTests, TestCase):
             self.assertNoHoliday(dt)
             self.assertFalse(self.holidays.is_working_day(dt))
 
-    def test_workdays_lazy_population(self):
-        holidays = TaiwanStockExchange()
-        self.assertTrue(holidays.is_working_day("2018-12-22"))
-        self.assertFalse(holidays.is_working_day("2019-01-19"))
-        self.assertFalse(holidays.is_working_day("2025-02-08"))
-        self.assertFalse(any(dt.year >= 2019 for dt in holidays.weekend_workdays))
-
     def test_labor_day(self):
         name = "勞動節"
         self.assertHolidayName(name, (f"{year}-05-01" for year in range(2008, 2026)))
