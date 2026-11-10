@@ -38,7 +38,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         * [2019-2020](https://web.archive.org/web/20191229072655/https://www.euronext.com/en/trade/trading-hours-holidays)
         * [Oslo 2019-2020](https://web.archive.org/web/20191214032113/https://www.oslobors.no/ob_eng/Oslo-Boers/About-Oslo-Boers/Opening-hours)
         * [2021-2026](https://web.archive.org/web/20261014184052/https://www.euronext.com/en/trading/trading-hours-holidays)
-        * [Athens](https://athens.euronext.com/en/trade/trading-model/calendar)
+        * [Athens](https://web.archive.org/web/20260529145754/https://athens.euronext.com/en/trade/trading-model/calendar)
     """
 
     # Euronext N.V. stock ticker.
