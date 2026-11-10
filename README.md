@@ -317,9 +317,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Belgium</td>
 <td>BE</td>
-<td></td>
+<td>Communities: Flemish, French, German</td>
 <td>de, en_US, fr, <strong>nl</strong>, uk</td>
-<td>BANK</td>
+<td>BANK, SCHOOL</td>
 </tr>
 <tr>
 <td>Belize</td>
@@ -647,7 +647,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Eritrea</td>
 <td>ER</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>ti</strong></td>
 <td>GOVERNMENT</td>
 </tr>
 <tr>
@@ -913,7 +913,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ireland</td>
 <td>IE</td>
 <td></td>
-<td></td>
+<td><strong>en_IE</strong>, en_US, ga</td>
 <td>OPTIONAL</td>
 </tr>
 <tr>
@@ -997,7 +997,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kosovo</td>
 <td>XK</td>
 <td></td>
-<td>en_US, <strong>sq</strong>, sr</td>
+<td>en_US, <strong>sq</strong>, sr, tr</td>
 <td></td>
 </tr>
 <tr>
@@ -1255,9 +1255,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Netherlands</td>
 <td>NL</td>
-<td></td>
+<td>Regions: Midden, Noord, Zuid</td>
 <td>en_US, fy, <strong>nl</strong>, th, uk</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, SCHOOL</td>
 </tr>
 <tr>
 <td>New Caledonia</td>
@@ -1606,7 +1606,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Somalia</td>
 <td>SO</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>so</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -2008,6 +2008,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Euronext</td>
+<td>ENX</td>
+<td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
+<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
@@ -2118,6 +2125,13 @@ code when available. The following financial markets are available:
 <td>Shenzhen Stock Exchange (SZSE) market holidays</td>
 <td>en_US, th, <strong>zh_CN</strong>, zh_TW</td>
 <td></td>
+</tr>
+<tr>
+<td>SIFMA</td>
+<td>XSIF</td>
+<td>Securities Industry and Financial Markets Association (SIFMA) holidays</td>
+<td><strong>en_US</strong></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Singapore Exchange</td>

@@ -226,7 +226,7 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
 
 
 class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
-    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    ASHURA_DATES_CONFIRMED_YEARS = (2001, 2026)
     ASHURA_DATES = {
         2003: (MAR, 15),
         2006: (FEB, 9),
@@ -235,7 +235,7 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2018: (SEP, 20),
     }
 
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2003: (FEB, 13),
         2005: (JAN, 21),
@@ -248,7 +248,7 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2023: (JUN, 28),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 7),
         2005: (NOV, 5),

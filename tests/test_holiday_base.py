@@ -16,7 +16,7 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import UA, US
+from holidays.countries import JP, UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -310,6 +310,81 @@ class TestCategories(TestCase):
                 self.assertEqual(ccc.categories, set(categories), category)
                 for dt in categories[category]:
                     self.assertIn(dt, ccc)
+
+
+class TestReassignment(TestCase):
+    class CustomClass(HolidayBase):
+        country = "RC"
+        supported_categories = (PUBLIC, SCHOOL)
+
+        def _populate_public_holidays(self):
+            self._add_holiday_jan_1("Public Holiday")
+
+        def _populate_school_holidays(self):
+            self._add_holiday_may_1("School Holiday")
+
+    def test_categories(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertSetEqual(hb.categories, {PUBLIC})
+
+        # A string is normalized to a set, as in the constructor.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.categories, {SCHOOL})
+        self.assertIn("2024-05-01", hb)
+        self.assertNotIn("2024-01-01", hb)
+
+        # An iterable is accepted, as in the constructor.
+        hb.categories = (PUBLIC, SCHOOL)
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2024-05-01", hb)
+
+        # Unsupported categories are rejected and the object is left untouched.
+        self.assertRaises(ValueError, lambda: setattr(hb, "categories", "UNSUPPORTED"))
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+
+    def test_years(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertIn("2024-01-01", hb)
+
+        # A single year is accepted, as in the constructor, and the holidays are
+        # re-populated for that year only.
+        hb.years = 2025
+        self.assertSetEqual(hb.years, {2025})
+        self.assertEqual(len(hb), 1)
+        self.assertIn("2025-01-01", hb)
+
+        # An iterable is normalized to a set.
+        hb.years = (2024, 2026)
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2026-01-01", hb)
+
+        # An int assignment does not break a later re-population.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-05-01", hb)
+        self.assertIn("2026-05-01", hb)
+
+    def test_years_on_empty_object(self):
+        # An object without holidays yet is populated when years are assigned,
+        # as the constructor would.
+        hb = TestReassignment.CustomClass()
+        self.assertEqual(len(hb), 0)
+
+        hb.years = 2024
+        self.assertSetEqual(hb.years, {2024})
+        self.assertIn("2024-01-01", hb)
+
+    def test_sum(self):
+        hs = TestReassignment.CustomClass(years=2024) + TestReassignment.CustomClass(years=2024)
+
+        # `HolidaySum._populate` re-populates from its operands, so the assigned
+        # years are added to the ones they already cover.
+        hs.years = 2025
+        self.assertIn("2024-01-01", hs)
+        self.assertIn("2025-01-01", hs)
 
 
 class TestDeprecationWarnings(TestCase):
@@ -709,6 +784,16 @@ class TestHolidaySum(TestCase):
         self.assertIn("2014-01-01", hb_combined)
         self.assertIn("2015-01-01", hb_combined)
         self.assertListEqual(hb_combined.market, ["MS1", "MS2"])
+
+    def test_add_observed(self):
+        jp = JP(years=2021)
+        hb_combined = jp + US(years=2021)
+        self.assertIn("2021-08-09", hb_combined)
+        self.assertNotIn("2021-08-10", hb_combined)
+        self.assertNotIn("2021-08-10", jp)
+        self.assertSetEqual(jp.years, {2021})
+        self.assertNotIn("2024-05-07", hb_combined)
+        self.assertNotIn("2024-05-07", jp)
 
     def test_args(self):
         self.hb_1 = CountryStub1(years=2014, subdiv="Subdiv 1")
