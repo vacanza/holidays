@@ -21,15 +21,6 @@ from holidays.calendars.gregorian import (
     _timedelta,
     _get_nth_weekday_from,
 )
-from holidays.calendars.poland_school import (
-    CHRISTMAS_BREAK,
-    EASTER_BREAK,
-    POLAND_SCHOOL_HOLIDAY_SUBDIVS,
-    POLAND_SCHOOL_HOLIDAYS_START_YEAR,
-    POLAND_WINTER_BREAK_WEEKS,
-    SUMMER_BREAK,
-    WINTER_BREAK,
-)
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
@@ -43,11 +34,25 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Poland>
         * <https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce>
         * <https://web.archive.org/web/20250402103635/https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20240001965>
+        * School holidays:
+            * [Dz.U. 2023 poz. 1211, consolidated text of the 2017 regulation](https://web.archive.org/web/20260109101730/https://api.sejm.gov.pl/eli/acts/DU/2023/1211/text.pdf)
+            * [Dz.U. 2020 poz. 2111, § 11gd](https://web.archive.org/web/20260118090726/https://api.sejm.gov.pl/eli/acts/DU/2020/2111/text.pdf)
+            * [Kalendarz roku szkolnego 2017/2018](https://web.archive.org/web/20250531154227/https://www.gov.pl/attachment/793fe87a-fa9e-426c-bcc0-27a8529f51c3)
+            * [Ferie zimowe 2019](https://web.archive.org/web/20250526113519/https://www.gov.pl/web/edukacja/ferie-zimowe-2019)
+            * [Kalendarz roku szkolnego 2019/2020](https://web.archive.org/web/20260316182418/https://www.gov.pl/attachment/44e42d57-5ee7-4f7f-ac5d-2406b6a49bcc)
+            * [Kalendarz roku szkolnego 2021/2022](https://web.archive.org/web/20260202143701/https://www.gov.pl/web/edukacja/kalendarz-roku-szkolnego-20212022)
+            * [Kalendarz roku szkolnego 2022/2023](https://web.archive.org/web/20260217122839/https://www.gov.pl/web/edukacja/kalendarz-roku-szkolnego-20222023)
+            * [Terminy ferii zimowych w roku szkolnym 2023/2024](https://web.archive.org/web/20260616222728/https://www.gov.pl/web/edukacja/terminy-ferii-zimowych-w-roku-szkolnym-20232024)
+            * [Kalendarz roku szkolnego 2024/2025](https://web.archive.org/web/20250913005131/https://www.gov.pl/attachment/a208f13d-7752-45fa-a423-79658ad01ae1)
+            * [Kalendarz roku szkolnego 2025/2026](https://web.archive.org/web/20260211011152/https://www.gov.pl/attachment/7112b88a-0237-4f83-b133-0d72c4ac83dc)
+            * [Kalendarz roku szkolnego 2026/2027](https://web.archive.org/web/20261023091817/https://www.gov.pl/attachment/07b00367-6dbc-48bf-a69e-eaf1da41e3b2)
+            * [Terminy ferii zimowych w roku szkolnym 2027/2028](https://www.gov.pl/web/edukacja/terminy-ferii-zimowych-w-roku-szkolnym-20272028)
 
     !!! note "School holidays"
-        Public holidays are nationwide; the subdivisions exist for `SCHOOL` holidays, since
-        the minister assigns each voivodeship its own two-week winter break. The other three
-        breaks are the same across the country. See `holidays.calendars.poland_school`.
+        Public holidays are nationwide; the subdivisions exist for `SCHOOL` holidays, which
+        are supported from 2018 (the first full calendar year under the 2017 regulation).
+        The Christmas, Easter, and summer breaks are fixed by regulation across the country,
+        while the minister assigns each voivodeship its own two-week winter break per year.
     """
 
     country = "PL"
@@ -93,6 +98,21 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
     supported_languages = ("de", "en_US", "pl", "uk")
     start_year = 1925
 
+    # ISO week each voivodeship's two-week winter break opens in, ordered by `subdivisions`.
+    winter_break_weeks = {
+        2018: (3, 7, 5, 7, 5, 7, 3, 3, 5, 4, 5, 5, 7, 4, 7, 3),
+        2019: (5, 3, 7, 3, 7, 3, 5, 5, 7, 4, 7, 7, 3, 4, 3, 5),
+        2020: (7, 5, 3, 5, 3, 5, 7, 7, 3, 4, 3, 3, 5, 4, 5, 7),
+        2021: (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+        2022: (5, 3, 7, 3, 7, 3, 5, 5, 7, 4, 7, 7, 3, 4, 3, 5),
+        2023: (7, 5, 3, 5, 3, 5, 7, 7, 3, 4, 3, 3, 5, 4, 5, 7),
+        2024: (3, 7, 5, 7, 5, 7, 3, 3, 5, 4, 5, 5, 7, 4, 7, 3),
+        2025: (6, 4, 8, 4, 8, 4, 6, 6, 8, 5, 8, 8, 4, 5, 4, 6),
+        2026: (6, 6, 8, 8, 6, 6, 4, 6, 8, 4, 4, 8, 4, 4, 8, 6),
+        2027: (3, 7, 5, 7, 3, 7, 5, 3, 3, 3, 5, 3, 5, 7, 7, 7),
+        2028: (7, 3, 7, 3, 5, 7, 5, 7, 5, 3, 3, 7, 3, 5, 3, 3),
+    }
+
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -108,19 +128,6 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         return super()._add_multiday_holiday(
             _timedelta(start_date, -1), duration_days=duration_days, name=name
         )
-
-    @staticmethod
-    def _get_school_holiday_names() -> dict[int, str]:
-        return {
-            # Christmas Break.
-            CHRISTMAS_BREAK: tr("Zimowa przerwa świąteczna"),
-            # Winter Break.
-            WINTER_BREAK: tr("Ferie zimowe"),
-            # Easter Break.
-            EASTER_BREAK: tr("Wiosenna przerwa świąteczna"),
-            # Summer Break.
-            SUMMER_BREAK: tr("Ferie letnie"),
-        }
 
     @property
     def _classes_end_date(self) -> date:
@@ -218,29 +225,30 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         self._add_christmas_day_two(tr("Boże Narodzenie (drugi dzień)"))
 
     def _populate_school_holidays(self):
-        if self.subdiv is None or self._year < POLAND_SCHOOL_HOLIDAYS_START_YEAR:
+        # 2018 is the first calendar year covered in full by the 2017 regulation.
+        if self.subdiv is None or self._year < 2018:
             return None
-
-        school_holiday_names = self._get_school_holiday_names()
 
         # Two weeks from the Monday of the week assigned to the voivodeship. Announced only
         # about two years ahead, so later years have no winter break until the table grows.
-        if winter_break_weeks := POLAND_WINTER_BREAK_WEEKS.get(self._year - 1):
+        if winter_break_weeks := self.winter_break_weeks.get(self._year):
             self._add_multiday_holiday(
                 date.fromisocalendar(
                     self._year,
-                    winter_break_weeks[
-                        POLAND_SCHOOL_HOLIDAY_SUBDIVS.index(self._normalized_subdiv)
-                    ],
+                    winter_break_weeks[self.subdivisions.index(self._normalized_subdiv)],
                     1,
                 ),
                 14,
-                name=school_holiday_names[WINTER_BREAK],
+                # Winter Break.
+                name=tr("Ferie zimowe"),
             )
 
         # Thursday before Easter → the Tuesday after it.
         self._add_multiday_holiday(
-            _timedelta(self._easter_sunday, -3), 6, name=school_holiday_names[EASTER_BREAK]
+            _timedelta(self._easter_sunday, -3),
+            6,
+            # Easter Break.
+            name=tr("Wiosenna przerwa świąteczna"),
         )
 
         # Day after classes end → Aug 31.
@@ -248,7 +256,8 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         self._add_multiday_holiday(
             summer_break_start,
             (date(self._year, AUG, 31) - summer_break_start).days + 1,
-            name=school_holiday_names[SUMMER_BREAK],
+            # Summer Break.
+            name=tr("Ferie letnie"),
         )
 
         # Dec 23 (Dec 22 if that is a Monday) → Dec 31.
@@ -258,7 +267,8 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         self._add_multiday_holiday(
             christmas_break_start,
             (date(self._year, DEC, 31) - christmas_break_start).days + 1,
-            name=school_holiday_names[CHRISTMAS_BREAK],
+            # Christmas Break.
+            name=tr("Zimowa przerwa świąteczna"),
         )
 
 

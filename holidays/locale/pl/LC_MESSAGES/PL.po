@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.64\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2025-01-03 19:31+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-10 22:43+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -27,22 +27,6 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.5\n"
 "X-Source-Language: pl\n"
-
-#. Christmas Break.
-msgid "Zimowa przerwa świąteczna"
-msgstr ""
-
-#. Winter Break.
-msgid "Ferie zimowe"
-msgstr ""
-
-#. Easter Break.
-msgid "Wiosenna przerwa świąteczna"
-msgstr ""
-
-#. Summer Break.
-msgid "Ferie letnie"
-msgstr ""
 
 #. New Year's Day.
 msgid "Nowy Rok"
@@ -126,6 +110,22 @@ msgstr ""
 
 #. Second Day of Christmas.
 msgid "Boże Narodzenie (drugi dzień)"
+msgstr ""
+
+#. Winter Break.
+msgid "Ferie zimowe"
+msgstr ""
+
+#. Easter Break.
+msgid "Wiosenna przerwa świąteczna"
+msgstr ""
+
+#. Summer Break.
+msgid "Ferie letnie"
+msgstr ""
+
+#. Christmas Break.
+msgid "Zimowa przerwa świąteczna"
 msgstr ""
 
 #. National Independence Day - 100th anniversary.
