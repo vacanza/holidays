@@ -36,13 +36,15 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_womens_day(self):
         name = "International Women's Day"
-        self.assertHolidayName(name, (f"{year}-03-08" for year in range(2003, self.end_year)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-03-08" for year in (*range(2003, 2025), *range(2027, self.end_year))),
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2003))
         obs_dts = (
             "2014-03-10",
             "2015-03-09",
             "2020-03-09",
-            "2025-03-10",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
@@ -87,13 +89,14 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_national_health_day(self):
         name = "National Health Day"
-        self.assertHolidayName(name, (f"{year}-04-19" for year in range(2003, self.end_year)))
+        self.assertHolidayName(
+            name, (f"{year}-04-19" for year in (*range(2003, 2025), *range(2027, self.end_year)))
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2003))
         obs_dts = (
             "2014-04-21",
             "2015-04-20",
             "2020-04-20",
-            "2025-04-21",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
 
@@ -117,30 +120,37 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_gospel_day(self):
         name = "Gospel Day"
-        self.assertHolidayName(name, (f"{year}-07-11" for year in range(2002, self.end_year)))
+        self.assertHolidayName(
+            name, (f"{year}-07-11" for year in (*range(2002, 2025), *range(2027, self.end_year)))
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2002))
 
     def test_national_day_anniversary(self):
         name = "National Day - Independence Anniversary"
-        self.assertHolidayName(name, (f"{year}-07-12" for year in range(1993, self.end_year)))
+        self.assertHolidayName(
+            name, (f"{year}-07-12" for year in (*range(1993, 2025), *range(2027, self.end_year)))
+        )
         self.assertNoHolidayName(name, range(self.start_year, 1993))
         obs_dts = (
             "2014-07-14",
             "2015-07-13",
             "2020-07-13",
-            "2025-07-14",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_day_unimwane(self):
         name = "National Day (in honor of Unimwane)"
-        self.assertHolidayName(name, (f"{year}-07-15" for year in range(2002, self.end_year)))
+        self.assertHolidayName(
+            name, (f"{year}-07-15" for year in (*range(2002, 2025), *range(2027, self.end_year)))
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2002))
 
     def test_national_day_unaine(self):
         name = "National Day (in honor of Unaine)"
-        self.assertHolidayName(name, (f"{year}-07-16" for year in range(2002, self.end_year)))
+        self.assertHolidayName(
+            name, (f"{year}-07-16" for year in (*range(2002, 2025), *range(2027, self.end_year)))
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2002))
         obs_dts = (
             "2011-07-18",
@@ -166,7 +176,10 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_youth_day(self):
         name = "Youth Day"
-        self.assertHolidayName(name, (f"{year}-08-05" for year in range(2003, self.end_year)))
+        self.assertHolidayName(
+            name,
+            (f"{year}-08-05" for year in (*range(2003, 2025), *range(2027, self.end_year))),
+        )
         self.assertNoHolidayName(name, range(self.start_year, 2003))
         obs_dts = (
             "2012-08-06",
@@ -194,7 +207,7 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertHolidayName(
             name,
             (f"{year}-12-10" for year in range(1993, 2003)),
-            (f"{year}-12-09" for year in range(2003, self.end_year)),
+            (f"{year}-12-09" for year in (*range(2003, 2025), *range(2027, self.end_year))),
         )
         self.assertNoHolidayName(name, range(self.start_year, 1993))
         obs_dts = (
@@ -225,7 +238,13 @@ class TestKiribati(CommonCountryTests, TestCase):
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            (
+                f"{year}-12-26"
+                for year in (*range(self.start_year, 2025), *range(2027, self.end_year))
+            ),
+        )
         obs_dts = (
             "2010-12-28",
             "2015-12-28",
@@ -239,18 +258,49 @@ class TestKiribati(CommonCountryTests, TestCase):
         self.assertHolidaysInYear(
             2025,
             ("2025-01-01", "New Year's Day"),
-            ("2025-03-08", "International Women's Day"),
-            ("2025-03-10", "International Women's Day (observed)"),
+            ("2025-03-07", "In Honour of International Women's Day"),
+            ("2025-04-07", "National Health Day"),
             ("2025-04-18", "Good Friday"),
-            ("2025-04-19", "National Health Day"),
-            ("2025-04-21", "Easter Monday; National Health Day (observed)"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-04-25", "Special Day in Honour of Pope Francis"),
+            ("2025-05-02", "In Honour of International Labour Day"),
+            ("2025-06-23", "In Honour of National Police Day"),
             ("2025-07-11", "Gospel Day"),
-            ("2025-07-12", "National Day - Independence Anniversary"),
-            ("2025-07-14", "National Day - Independence Anniversary (observed)"),
-            ("2025-07-15", "National Day (in honor of Unimwane)"),
-            ("2025-07-16", "National Day (in honor of Unaine)"),
-            ("2025-08-05", "Youth Day"),
-            ("2025-12-09", "Human Rights and Peace Day"),
+            ("2025-07-12", "National Day"),
+            ("2025-07-14", "In Honour of National Day"),
+            ("2025-07-15", "National Culture and Senior Citizens Day"),
+            ("2025-07-16", "Kiribati Special Day"),
+            ("2025-08-01", "In honor of National Youth & Children's Day"),
+            ("2025-10-06", "In Honour of World Teachers Day"),
+            ("2025-12-12", "In Honour of Human Rights Day"),
             ("2025-12-25", "Christmas Day"),
-            ("2025-12-26", "Boxing Day"),
+            ("2025-12-26", "Boxing Day (Gift Day)"),
+            ("2025-12-29", "Kiribati Holiday"),
+            ("2025-12-30", "Kiribati Holiday"),
+            ("2025-12-31", "Kiribati Holiday"),
+        )
+
+    def test_2026(self):
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-02", "Kiribati Holiday"),
+            ("2026-03-09", "In Honour of International Women's Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-04-07", "National Health Day"),
+            ("2026-05-01", "International Labour Day"),
+            ("2026-06-22", "In Honour of National Police Day"),
+            ("2026-07-10", "Gospel Day"),
+            ("2026-07-13", "In Honour of National Day"),
+            ("2026-07-14", "Kiribati Culture and Senior Citizens Day"),
+            ("2026-07-15", "Kiribati Special Day"),
+            ("2026-08-03", "National Youth & Children's Day"),
+            ("2026-10-05", "World Teachers Day"),
+            ("2026-12-11", "In Honour of Human Rights Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-28", "In Honour of Boxing Day (Gift Day)"),
+            ("2026-12-29", "Kiribati Holiday"),
+            ("2026-12-30", "Kiribati Holiday"),
+            ("2026-12-31", "Kiribati Holiday"),
         )
