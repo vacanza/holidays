@@ -12,18 +12,6 @@
 
 from datetime import date
 
-from holidays.calendars.austria_school import (
-    AUSTRIA_EARLY_SUMMER_BREAK_SUBDIVS,
-    AUSTRIA_SCHOOL_HOLIDAYS_START_YEAR,
-    AUSTRIA_SEMESTER_BREAK_WEEK_OVERRIDES,
-    AUSTRIA_SEMESTER_BREAK_WEEKS,
-    AUTUMN_BREAK,
-    CHRISTMAS_BREAK,
-    EASTER_BREAK,
-    SEMESTER_BREAK,
-    SUMMER_BREAK,
-    WHIT_BREAK,
-)
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
@@ -65,12 +53,23 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [BGBl. I Nr. 113/2006](https://web.archive.org/web/20260408114618/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2006_I_113/BGBLA_2006_I_113.pdf)
         * [BGBl. I Nr. 22/2019](https://web.archive.org/web/20260408111719/https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_I_22/BGBLA_2019_I_22.pdf)
         * <https://web.archive.org/web/20260408155524/https://www.nachrichten.at/archivierte-artikel/serien/wir-oberoesterreicher/Vom-Maertyrer-zum-Patron;art11547,68941>
+        * School holidays:
+            * [Schulzeitgesetz 1985, § 2](https://web.archive.org/web/20261022132837/https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10009575)
+            * [BGBl. I Nr. 49/2019, Ausschussbericht](https://web.archive.org/web/20250708135051/https://www.parlament.gv.at/dokument/XXVI/I/613/fname_751628.pdf)
+            * [Schulferien 2021/2022](https://web.archive.org/web/20260313141155/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_21_22.html)
+            * [Schulferien 2022/2023](https://web.archive.org/web/20260614032957/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_22_23.html)
+            * [Schulferien 2023/2024](https://web.archive.org/web/20260607023018/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_23_24.html)
+            * [Schulferien 2024/2025](https://web.archive.org/web/20260607020451/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_24_25.html)
+            * [Schulferien 2025/2026](https://web.archive.org/web/20260710225417/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_25_26.html)
+            * [Schulferien 2026/2027](https://web.archive.org/web/20260618083703/https://www.bmb.gv.at/Themen/schule/schulpraxis/termine/ferientermine_26_27.html)
 
     !!! note "School holidays"
         Austrian school holidays are set by federal law rather than published per year, so
-        they are computed from § 2 Schulzeitgesetz 1985. They are subdivision-specific
-        because the Semesterferien and the Hauptferien are staggered across the
-        Bundesländer. See `holidays.calendars.austria_school` for the details.
+        they are computed from § 2 Schulzeitgesetz 1985 starting in 2021 (the first calendar
+        year that falls entirely under § 2 Abs. 4 as in effect since September 1st, 2020).
+        They are subdivision-specific because the Semesterferien and the Hauptferien are
+        staggered across the Bundesländer. Only the centrally set breaks are covered;
+        school-specific autonomous days (`schulautonome Tage`) and opt-outs are not included.
     """
 
     country = "AT"
@@ -118,6 +117,35 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (BANK, PROTESTANT, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "th", "uk")
 
+    # § 2 Abs. 1: the Bundesländer whose school year starts on the 1st Monday of September, so
+    # that their Hauptferien both start and end a week before the other six (§ 2 Abs. 2 Z 2).
+    early_summer_break_subdivs = {
+        "1",  # Burgenland.
+        "3",  # Niederösterreich.
+        "9",  # Wien.
+    }
+
+    # § 2 Abs. 2 Z 1 lit. b: the February week each Bundesland's Semesterferien starts in.
+    semester_break_weeks = {
+        "1": 2,  # Burgenland.
+        "2": 2,  # Kärnten.
+        "3": 1,  # Niederösterreich.
+        "4": 3,  # Oberösterreich.
+        "5": 2,  # Salzburg.
+        "6": 3,  # Steiermark.
+        "7": 2,  # Tirol.
+        "8": 2,  # Vorarlberg.
+        "9": 1,  # Wien.
+    }
+
+    # § 2 Abs. 2a moves, keyed by the calendar year the Semesterferien fall in.
+    semester_break_week_overrides = {
+        # BGBl. II Nr. 487/2022: Vorarlberg.
+        2024: {"8": 1},
+        # BGBl. II Nr. 297/2025, Nr. 322/2025 and Nr. 343/2025: Vorarlberg, Tirol and Salzburg.
+        2027: {"5": 3, "7": 3, "8": 3},
+    }
+
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -130,23 +158,6 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         return super()._add_multiday_holiday(
             _timedelta(start_date, -1), duration_days=duration_days, name=name
         )
-
-    @staticmethod
-    def _get_school_holiday_names() -> dict[int, str]:
-        return {
-            # Autumn Break.
-            AUTUMN_BREAK: tr("Herbstferien"),
-            # Christmas Break.
-            CHRISTMAS_BREAK: tr("Weihnachtsferien"),
-            # Semester Break.
-            SEMESTER_BREAK: tr("Semesterferien"),
-            # Easter Break.
-            EASTER_BREAK: tr("Osterferien"),
-            # Whit Break.
-            WHIT_BREAK: tr("Pfingstferien"),
-            # Summer Break.
-            SUMMER_BREAK: tr("Hauptferien"),
-        }
 
     def _populate_public_holidays(self):
         # New Year's Day.
@@ -222,40 +233,49 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_good_friday(tr("Karfreitag"))
 
     def _populate_school_holidays(self):
-        if self.subdiv is None or self._year < AUSTRIA_SCHOOL_HOLIDAYS_START_YEAR:
+        # 2021 is the first calendar year covered entirely by § 2 Abs. 4
+        # as in effect since September 1st, 2020.
+        if self.subdiv is None or self._year < 2021:
             return None
 
         subdiv = self._normalized_subdiv
-        school_holiday_names = self._get_school_holiday_names()
-        christmas_break_name = school_holiday_names[CHRISTMAS_BREAK]
+
+        # Christmas Break.
+        christmas_break_name = tr("Weihnachtsferien")
 
         # Jan 1 → Jan 6: the tail of the break that started in the previous year.
         self._add_multiday_holiday(date(self._year, JAN, 1), 6, name=christmas_break_name)
 
         # Monday through Saturday of the Bundesland's February week.
-        semester_break_week = AUSTRIA_SEMESTER_BREAK_WEEK_OVERRIDES.get(self._year, {}).get(
-            subdiv, AUSTRIA_SEMESTER_BREAK_WEEKS[subdiv]
+        semester_break_week = self.semester_break_week_overrides.get(self._year, {}).get(
+            subdiv, self.semester_break_weeks[subdiv]
         )
         self._add_multiday_holiday(
             _get_nth_weekday_of_month(semester_break_week, MON, FEB, self._year),
             6,
-            name=school_holiday_names[SEMESTER_BREAK],
+            # Semester Break.
+            name=tr("Semesterferien"),
         )
 
         # Saturday before Palm Sunday → Easter Monday.
-        easter_sunday = self._easter_sunday
         self._add_multiday_holiday(
-            _timedelta(easter_sunday, -8), 10, name=school_holiday_names[EASTER_BREAK]
+            _timedelta(self._easter_sunday, -8),
+            10,
+            # Easter Break.
+            name=tr("Osterferien"),
         )
 
         # Saturday before Pentecost → Pentecost Monday.
         self._add_multiday_holiday(
-            _timedelta(easter_sunday, +48), 3, name=school_holiday_names[WHIT_BREAK]
+            _timedelta(self._easter_sunday, +48),
+            3,
+            # Whit Break.
+            name=tr("Pfingstferien"),
         )
 
         # The 1st Saturday on or after Jun 28 (Jul 5 for the Bundesländer whose school year
         # starts a week later) → the day before the next school year starts, so 65 days.
-        is_early = subdiv in AUSTRIA_EARLY_SUMMER_BREAK_SUBDIVS
+        is_early = subdiv in self.early_summer_break_subdivs
         summer_break_start = _get_nth_weekday_from(
             1, SAT, date(self._year, JUN, 28) if is_early else date(self._year, JUL, 5)
         )
@@ -265,12 +285,16 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
                 _get_nth_weekday_of_month(1 if is_early else 2, MON, SEP, self._year)
                 - summer_break_start
             ).days,
-            name=school_holiday_names[SUMMER_BREAK],
+            # Summer Break.
+            name=tr("Hauptferien"),
         )
 
         # Oct 27 → Oct 31.
         self._add_multiday_holiday(
-            date(self._year, OCT, 27), 5, name=school_holiday_names[AUTUMN_BREAK]
+            date(self._year, OCT, 27),
+            5,
+            # Autumn Break.
+            name=tr("Herbstferien"),
         )
 
         # Dec 24 (Dec 23 if that is a Monday) → Dec 31, with Jan 1 → Jan 6 added above as

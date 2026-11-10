@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-10 22:35+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -27,30 +27,6 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: de\n"
-
-#. Autumn Break.
-msgid "Herbstferien"
-msgstr "Autumn Break"
-
-#. Christmas Break.
-msgid "Weihnachtsferien"
-msgstr "Christmas Break"
-
-#. Semester Break.
-msgid "Semesterferien"
-msgstr "Semester Break"
-
-#. Easter Break.
-msgid "Osterferien"
-msgstr "Easter Break"
-
-#. Whit Break.
-msgid "Pfingstferien"
-msgstr "Whit Break"
-
-#. Summer Break.
-msgid "Hauptferien"
-msgstr "Summer Break"
 
 #. New Year's Day.
 msgid "Neujahr"
@@ -119,6 +95,30 @@ msgstr "Christmas Eve"
 #. New Year's Eve.
 msgid "Silvester"
 msgstr "New Year's Eve"
+
+#. Christmas Break.
+msgid "Weihnachtsferien"
+msgstr "Christmas Break"
+
+#. Semester Break.
+msgid "Semesterferien"
+msgstr "Semester Break"
+
+#. Easter Break.
+msgid "Osterferien"
+msgstr "Easter Break"
+
+#. Whit Break.
+msgid "Pfingstferien"
+msgstr "Whit Break"
+
+#. Summer Break.
+msgid "Hauptferien"
+msgstr "Summer Break"
+
+#. Autumn Break.
+msgid "Herbstferien"
+msgstr "Autumn Break"
 
 #. Saint Martin's Day.
 msgid "Hl. Martin"

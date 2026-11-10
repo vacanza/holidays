@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.95\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-04-08 22:19+0700\n"
-"PO-Revision-Date: 2026-04-08 22:19+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-11-10 22:35+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -26,30 +26,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.6\n"
 "X-Source-Language: de\n"
-
-#. Autumn Break.
-msgid "Herbstferien"
-msgstr "ปิดเทอมฤดูใบไม้ร่วง"
-
-#. Christmas Break.
-msgid "Weihnachtsferien"
-msgstr "ปิดเทอมคริสต์มาส"
-
-#. Semester Break.
-msgid "Semesterferien"
-msgstr "ปิดเทอมภาคเรียน"
-
-#. Easter Break.
-msgid "Osterferien"
-msgstr "ปิดเทอมอีสเตอร์"
-
-#. Whit Break.
-msgid "Pfingstferien"
-msgstr "ปิดเทอมเพ็นเทคอสต์"
-
-#. Summer Break.
-msgid "Hauptferien"
-msgstr "ปิดเทอมฤดูร้อน"
 
 #. New Year's Day.
 msgid "Neujahr"
@@ -118,6 +94,30 @@ msgstr "วันคริสต์มาสอีฟ"
 #. New Year's Eve.
 msgid "Silvester"
 msgstr "วันสิ้นปี"
+
+#. Christmas Break.
+msgid "Weihnachtsferien"
+msgstr "ปิดเทอมคริสต์มาส"
+
+#. Semester Break.
+msgid "Semesterferien"
+msgstr "ปิดเทอมภาคเรียน"
+
+#. Easter Break.
+msgid "Osterferien"
+msgstr "ปิดเทอมอีสเตอร์"
+
+#. Whit Break.
+msgid "Pfingstferien"
+msgstr "ปิดเทอมเพ็นเทคอสต์"
+
+#. Summer Break.
+msgid "Hauptferien"
+msgstr "ปิดเทอมฤดูร้อน"
+
+#. Autumn Break.
+msgid "Herbstferien"
+msgstr "ปิดเทอมฤดูใบไม้ร่วง"
 
 #. Saint Martin's Day.
 msgid "Hl. Martin"
