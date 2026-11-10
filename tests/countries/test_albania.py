@@ -230,6 +230,7 @@ class TestAlbania(CommonCountryTests, TestCase):
             "2012-08-20",
             "2017-06-26",
             "2020-05-25",
+            "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(f"{name} (ditë pushimi e shtyrë)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
