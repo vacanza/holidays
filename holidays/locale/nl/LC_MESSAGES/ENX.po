@@ -94,7 +94,6 @@ msgstr "Goede Vrijdag (orthodox)"
 msgid "Easter Monday (Orthodox)"
 msgstr "Paasmaandag (orthodox)"
 
-#. Whit Monday.
 #. Pentecost Monday.
 msgid "Whit Monday"
 msgstr "Tweede pinksterdag"

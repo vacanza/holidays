@@ -84,7 +84,7 @@ msgstr "Nasjonaldag"
 
 #. Ash Monday.
 msgid "Ash Monday"
-msgstr "Rene mandag"
+msgstr "Ren mandag"
 
 #. Good Friday (Orthodox).
 msgid "Good Friday (Orthodox)"
@@ -94,7 +94,6 @@ msgstr "Langfredag (ortodoks)"
 msgid "Easter Monday (Orthodox)"
 msgstr "Andre påskedag (ortodoks)"
 
-#. Whit Monday.
 #. Pentecost Monday.
 msgid "Whit Monday"
 msgstr "Andre pinsedag"

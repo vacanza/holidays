@@ -138,7 +138,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Easter Monday (Orthodox).
             self._add_holiday(tr("Easter Monday (Orthodox)"), orthodox_easter_monday)
 
-        # Whit Monday.
+        # Pentecost Monday.
         self._add_holiday(tr("Whit Monday"), orthodox_easter + timedelta(days=50))
 
         # Assumption Day.

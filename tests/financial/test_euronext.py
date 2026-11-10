@@ -474,8 +474,18 @@ class TestEuronext(CommonFinancialTests, TestCase):
                     "2029-04-06",
                     "2030-04-26",
                     "2032-04-30",
+                    "2033-04-22",
+                    "2035-04-27",
+                    "2036-04-18",
+                    "2039-04-15",
+                    "2040-05-04",
+                    "2042-04-11",
                     # Shared with Labour Day (not a coincidence year).
                     "2043-05-01",
+                    "2044-04-22",
+                    "2046-04-27",
+                    "2047-04-19",
+                    "2049-04-23",
                 )
                 self.assertNoHolidayName(
                     name,
@@ -509,6 +519,16 @@ class TestEuronext(CommonFinancialTests, TestCase):
                     "2029-04-09",
                     "2030-04-29",
                     "2032-05-03",
+                    "2033-04-25",
+                    "2035-04-30",
+                    "2036-04-21",
+                    "2039-04-18",
+                    "2040-05-07",
+                    "2042-04-14",
+                    "2044-04-25",
+                    "2046-04-30",
+                    "2047-04-22",
+                    "2049-04-26",
                 )
                 self.assertNoHolidayName(
                     name,
@@ -791,7 +811,7 @@ class TestEuronext(CommonFinancialTests, TestCase):
             ),
             "no": (
                 ("2026-01-06", "Helligtrekongersdag"),
-                ("2026-02-23", "Rene mandag"),
+                ("2026-02-23", "Ren mandag"),
                 ("2026-03-25", "Nasjonaldag"),
                 ("2026-04-10", "Langfredag (ortodoks)"),
                 ("2026-04-13", "Andre påskedag (ortodoks)"),

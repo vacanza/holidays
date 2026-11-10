@@ -94,7 +94,6 @@ msgstr ""
 msgid "Easter Monday (Orthodox)"
 msgstr ""
 
-#. Whit Monday.
 #. Pentecost Monday.
 msgid "Whit Monday"
 msgstr ""
