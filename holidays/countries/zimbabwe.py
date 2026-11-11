@@ -20,7 +20,7 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe>
         * <https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day>
-        * [SI 148 of 2026](https://allafrica.com/stories/202609100091.html)
+        * [SI 148 of 2026](https://www.veritaszim.net/sites/veritas_d/files/SI%202026-148%20Public%20Holidays%20and%20Prohibition%20of%20Business%20%28Declaration%20of%20Public%20Holiday%29%20Notice%2C%202026.pdf)
     """
 
     country = "ZW"
