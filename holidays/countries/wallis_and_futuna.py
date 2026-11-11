@@ -23,8 +23,6 @@ class WallisAndFutuna(ChildEntity, France):
     References:
         * <https://en.wikipedia.org/wiki/Wallis_and_Futuna>
         * <https://en.wikipedia.org/wiki/Public_holidays_in_France>
-        * [Accord interprofessionnel territorial](https://www.wallis-et-futuna.gouv.fr/contenu/telechargement/14506/119308/file/AIT%20avec%20signature%20-%20MAJ%20DU%2020%20-03-2025.pdf)
-        * [2025](https://www.wallis-et-futuna.gouv.fr/contenu/telechargement/14313/117620/file/Arrêté%20jours%20fériés%202025.pdf)
     """
 
     country = "WF"

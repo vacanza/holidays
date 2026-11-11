@@ -45,6 +45,10 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://web.archive.org/web/20250618073111/https://www.tahitipresse.pf/2025/05/polynesie-29-juin-ou-20-novembre/>
         * <https://web.archive.org/web/20250618061809/https://la1ere.franceinfo.fr/nouvellecaledonie/commemorations-differentes-24-septembre-752087.html>
 
+    Wallis and Futuna:
+            * [Accord interprofessionnel territorial](https://www.wallis-et-futuna.gouv.fr/contenu/telechargement/14506/119308/file/AIT%20avec%20signature%20-%20MAJ%20DU%2020%20-03-2025.pdf)
+            * [2025](https://www.wallis-et-futuna.gouv.fr/index.php/contenu/telechargement/14313/117620/file/Arrêté%20jours%20fériés%202025.pdf)
+
     Some provinces have specific holidays, only those are included in the
     PROVINCES, because these provinces have different administrative status,
     which makes it difficult to enumerate.
