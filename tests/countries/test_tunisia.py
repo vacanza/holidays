@@ -47,9 +47,38 @@ class TestTunisia(CommonCountryTests, TestCase):
     def test_evacuation_day(self):
         self.assertHolidayName("عيد الجلاء", (f"{year}-10-15" for year in self.full_range))
 
+    def test_islamic_new_year(self):
+        name = "رأس السنة الهجرية"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-08-20",
+            "2021-08-09",
+            "2022-07-30",
+            "2023-07-19",
+            "2024-07-07",
+            "2025-06-26",
+        )
+        years_twice = {1976, 2008, 2041}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, years_twice)
+
+    def test_prophets_birthday(self):
+        name = "عيد المولد النبوي"
+        self.assertIslamicNoEstimatedHolidayName(
+            name,
+            "2020-10-29",
+            "2021-10-18",
+            "2022-10-08",
+            "2023-09-27",
+            "2024-09-15",
+            "2025-09-04",
+        )
+        years_twice = {1950, 1982, 2015, 2047}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, years_twice)
+
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
-        name_holiday = "عطلة عيد الفطر"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-05-24",
@@ -59,8 +88,14 @@ class TestTunisia(CommonCountryTests, TestCase):
             "2024-04-10",
             "2025-03-30",
         )
+        years_twice = {1968, 2000, 2033}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, years_twice)
+
+    def test_eid_al_fitr_holiday(self):
+        name = "عطلة عيد الفطر"
         self.assertIslamicNoEstimatedHolidayName(
-            name_holiday,
+            name,
             "2020-05-25",
             "2020-05-26",
             "2021-05-14",
@@ -74,16 +109,9 @@ class TestTunisia(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
         )
-        years_single = (
-            range(self.start_year, 1968),
-            range(1969, 2000),
-            range(2001, 2033),
-            range(2034, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, *years_single)
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, 1968, 2000, 2033)
-        self.assertIslamicNoEstimatedHolidayNameCount(name_holiday, 2, *years_single)
-        self.assertIslamicNoEstimatedHolidayNameCount(name_holiday, 4, 1968, 2000, 2033)
+        years_twice = {1968, 2000, 2033}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, years_twice)
 
     def test_day_of_arafah(self):
         name = "يوم عرفة"
@@ -96,19 +124,12 @@ class TestTunisia(CommonCountryTests, TestCase):
             "2024-06-15",
             "2025-06-05",
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            1,
-            range(self.start_year, 1974),
-            range(1975, 2006),
-            range(2007, 2039),
-            range(2040, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, 1974, 2006, 2039)
+        years_twice = {1974, 2006, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, years_twice)
 
     def test_eid_al_adha(self):
         name = "عيد الأضحى"
-        name_holiday = "عطلة عيد الأضحى"
         self.assertIslamicNoEstimatedHolidayName(
             name,
             "2020-07-31",
@@ -118,8 +139,14 @@ class TestTunisia(CommonCountryTests, TestCase):
             "2024-06-16",
             "2025-06-06",
         )
+        years_twice = {1974, 2006, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 1, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, years_twice)
+
+    def test_eid_al_adha_holiday(self):
+        name = "عطلة عيد الأضحى"
         self.assertIslamicNoEstimatedHolidayName(
-            name_holiday,
+            name,
             "2020-08-01",
             "2020-08-02",
             "2021-07-21",
@@ -133,66 +160,9 @@ class TestTunisia(CommonCountryTests, TestCase):
             "2025-06-07",
             "2025-06-08",
         )
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            1,
-            range(self.start_year, 1974),
-            range(1975, 2006),
-            range(2007, 2039),
-            range(2040, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, 1974, 2006, 2039)
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name_holiday,
-            2,
-            range(self.start_year, 1974),
-            range(1975, 2007),
-            range(2008, 2039),
-            range(2040, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name_holiday, 4, 1974, 2007, 2039)
-
-    def test_islamic_new_year(self):
-        name = "رأس السنة الهجرية"
-        self.assertIslamicNoEstimatedHolidayName(
-            name,
-            "2020-08-20",
-            "2021-08-09",
-            "2022-07-30",
-            "2023-07-19",
-            "2024-07-07",
-            "2025-06-26",
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            1,
-            range(self.start_year, 1976),
-            range(1977, 2008),
-            range(2009, 2041),
-            range(2042, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, 1976, 2008, 2041)
-
-    def test_prophets_birthday(self):
-        name = "عيد المولد النبوي"
-        self.assertIslamicNoEstimatedHolidayName(
-            name,
-            "2020-10-29",
-            "2021-10-18",
-            "2022-10-08",
-            "2023-09-27",
-            "2024-09-15",
-            "2025-09-04",
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(
-            name,
-            1,
-            range(1951, 1982),
-            range(1983, 2015),
-            range(2016, 2047),
-            range(2048, self.end_year),
-        )
-        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, 1950, 1982, 2015, 2047)
+        years_twice = {1974, 2007, 2039}
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 2, set(self.full_range) - years_twice)
+        self.assertIslamicNoEstimatedHolidayNameCount(name, 4, years_twice)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
