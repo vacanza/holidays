@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.france import France
-from holidays.helpers import tr
 from holidays.mixins.child_entity import ChildEntity
 
 
@@ -31,11 +30,6 @@ class Martinique(ChildEntity, France):
     parent_entity_subdivision_code = "972"
     # Cession from the UK on May 30th, 1814.
     start_year = 1815
-
-    def _populate_subdiv_972_public_holidays(self):
-        if self._year >= 1984:
-            self._add_holiday_may_22(tr("Abolition de l'esclavage"))
-            self._add_holiday_jul_21(tr("Fête de Victor Schoelcher"))
 
 
 class HolidaysMQ(Martinique):
