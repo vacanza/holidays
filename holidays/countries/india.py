@@ -1174,6 +1174,25 @@ class India(
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
+        # Basava Jayanthi.
+        self._add_basava_jayanti(tr("Basava Jayanthi"))
+
+        # Akshay Tritiya.
+        self._add_basava_jayanti(tr("Akshay Tritiya"))
+
+        # Mahalaya Amavasye.
+        self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        # Maharshi Valmiki's Jayanti.
+        self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+
+        # Naraka Chaturdashi.
+        self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
+
+        if self._year >= 2008:
+            # Kanakadasa Jayanthi.
+            self._add_kanakadasa_jayanthi(tr("Kanakadasa Jayanthi"))
+
     def _populate_subdiv_ka_optional_holidays(self):
         # Holy Saturday.
         self._add_holy_saturday(tr("Holy Saturday"))

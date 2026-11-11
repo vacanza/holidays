@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-11-08 20:33+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-11 18:47+0530\n"
+"Last-Translator: NAYAN SHARMA <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -245,6 +245,7 @@ msgid "Dussehra (Mahanavami)"
 msgstr "দশেরা (মহানবমী)"
 
 #. Maharishi Valmiki's Birthday.
+#. Maharshi Valmiki's Jayanti.
 msgid "Maharshi Valmiki's Jayanti"
 msgstr "মহার্ষি বাল্মীকি জয়ন্তী"
 
@@ -648,6 +649,19 @@ msgstr "শ্রমিক দিবস"
 msgid "Karnataka Rajyotsava"
 msgstr "কর্ণাটক রাজ্যোৎসব"
 
+#. Basava Jayanthi.
+msgid "Basava Jayanthi"
+msgstr "বাসব জয়ন্তী"
+
+#. Mahalaya Amavasye.
+#. Mahalaya.
+msgid "Mahalaya"
+msgstr "মহালয়া"
+
+#. Kanakadasa Jayanthi.
+msgid "Kanakadasa Jayanthi"
+msgstr "কনকদাস জয়ন্তী"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "পবিত্র শনিবার"
@@ -839,10 +853,6 @@ msgstr "উৎকল দিবস"
 #. Maha Visuva Sankranti.
 msgid "Maha Visuva Sankranti"
 msgstr "মহা বিষুব সংক্রান্তি"
-
-#. Mahalaya.
-msgid "Mahalaya"
-msgstr "মহালয়া"
 
 #. Puducherry De Jure Transfer Day.
 msgid "Puducherry De Jure Transfer Day"

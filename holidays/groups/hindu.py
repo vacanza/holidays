@@ -115,6 +115,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.basant_panchami_date(self._year)
         )
 
+    def _add_basava_jayanti(self, name) -> date | None:
+        """
+        Add Basava Jayanthi.
+
+        Basava Jayanthi commemorates the birth anniversary of Basavanna,
+        a 12th-century philosopher, poet, and social reformer. It is
+        celebrated in Karnataka according to the Kannada calendar.
+
+        https://hinducalculator.com/kannada/{year}/
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.basava_jayanti_date(self._year)
+        )
+
     def _add_bathukamma(self, name) -> date | None:
         """
         Add Bathukamma Festival.
@@ -583,6 +597,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.kabir_jayanti_date(self._year)
+        )
+
+    def _add_kanakadasa_jayanthi(self, name) -> date | None:
+        """
+        Add Kanakadasa Jayanthi.
+
+        Kanakadasa Jayanthi commemorates the birth anniversary of
+        Kanakadasa, a 15th-century poet and saint from Karnataka.
+
+        https://en.wikipedia.org/wiki/Kanaka_Dasa
+        """
+        return self._add_hindu_calendar_holiday(
+            name,
+            self._hindu_calendar.kanakadasa_jayanthi_date(self._year),
         )
 
     def _add_kali_puja(self, name) -> date | None:
