@@ -234,6 +234,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
     def test_school_half_year_break(self):
         name = "Polročné prázdniny"
         self.assertNoHolidayName(name)
+        active_years = (*range(2014, 2021), 2022, *range(2026, self.end_year))
         for holidays in self.subdiv_school_holidays.values():
             self.assertHolidayName(
                 name,
@@ -245,16 +246,13 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2018-02-02",
                 "2019-02-01",
                 "2020-02-03",
-                "2021-02-01",
                 "2022-02-04",
                 "2026-02-02",
                 "2027-02-01",
             )
-            self.assertHolidayName(name, holidays, range(2014, 2023), range(2026, self.end_year))
-            self.assertNoHolidayName(name, holidays, range(2023, 2026))
-            self.assertHolidayNameCount(
-                name, 1, holidays, range(2014, 2023), range(2026, self.end_year)
-            )
+            self.assertHolidayName(name, holidays, active_years)
+            self.assertNoHolidayName(name, holidays, 2021, range(2023, 2026))
+            self.assertHolidayNameCount(name, 1, holidays, active_years)
 
     def test_school_spring_break(self):
         name = "Jarné prázdniny"

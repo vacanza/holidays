@@ -218,9 +218,10 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         self._add_multiday_holiday(date(self._year, JAN, 1), 7, name=christmas_break_name)
 
         # § 3(4): Half-Year Break on the closest Friday or Monday after Jan 31.
+        # Cancelled in 2021 by Ministerial Decision 2020/18259:4-A1810 of Dec 11, 2020.
         # Abolished for 2022/2023-2024/2025 via Decree 163/2022 Z. z.
         # Reinstated from 2025/2026 via Decree 56/2025 Z. z.
-        if self._year <= 2022 or self._year >= 2026:
+        if self._year not in {2021, 2023, 2024, 2025}:
             self._add_holiday(
                 # Half-Year Break.
                 tr("Polročné prázdniny"),
