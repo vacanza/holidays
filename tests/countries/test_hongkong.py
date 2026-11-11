@@ -14,7 +14,6 @@ from unittest import TestCase
 
 from holidays.constants import OPTIONAL
 from holidays.countries.hongkong import HongKong, CHRISTMAS, WINTER_SOLSTICE
-from holidays.observed_holiday_base import SAT_TO_NEXT_MON
 from tests.common import CommonCountryTests
 
 
@@ -1265,13 +1264,6 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2025-12-25", "聖誕節"),
             ("2025-12-26", "聖誕節後第一個周日"),
         )
-
-    def test_first_weekday_after_christmas_custom_observed_rule(self):
-        name = "聖誕節後第一個周日"
-        holidays = HongKong(observed_rule=SAT_TO_NEXT_MON, years=(2026, 2027))
-        self.assertHolidayName(name, holidays, "2026-12-26", "2027-12-27")
-        self.assertHolidayName(f"{name}（補假）", holidays, "2026-12-28")
-        self.assertNoHoliday(holidays, "2027-12-26")
 
     def test_2027(self):
         # https://www.labour.gov.hk/eng/news/latest_holidays2027.htm
