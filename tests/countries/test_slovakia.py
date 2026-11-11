@@ -407,6 +407,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2014-08-31",
                 "2024-07-01",
                 "2024-08-31",
+                "2024-09-01",
                 "2025-06-30",
                 "2025-08-31",
                 "2026-07-01",
@@ -418,6 +419,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 holidays,
                 "2014-06-29",
                 "2024-06-30",
+                "2024-09-02",
                 "2025-06-29",
                 "2026-06-30",
                 "2028-06-30",
@@ -427,7 +429,7 @@ class TestSlovakia(CommonCountryTests, TestCase):
             for year in range(2014, self.end_year):
                 self.assertHolidayNameCount(
                     name,
-                    63 if year in {2014, 2025, 2028, 2031, 2036, 2042} else 62,
+                    63 if year in {2014, 2024, 2025, 2028, 2031, 2036, 2042} else 62,
                     holidays,
                     year,
                 )

@@ -24,6 +24,7 @@ from holidays.calendars.gregorian import (
     TUE,
     THU,
     FRI,
+    SAT,
     SUN,
     _get_nth_weekday_of_month,
     _timedelta,
@@ -220,13 +221,12 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         # Abolished for 2022/2023-2024/2025 via Decree 163/2022 Z. z.
         # Reinstated from 2025/2026 via Decree 56/2025 Z. z.
         if self._year <= 2022 or self._year >= 2026:
-            feb_1 = date(self._year, FEB, 1)
             self._add_holiday(
                 # Half-Year Break.
                 tr("Polročné prázdniny"),
                 _get_nth_weekday_of_month(
                     1,
-                    MON if self._is_monday(feb_1) or self._is_weekend(feb_1) else FRI,
+                    MON if date(self._year, FEB, 1).weekday() in {MON, SAT, SUN} else FRI,
                     FEB,
                     self._year,
                 ),
@@ -252,14 +252,12 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         )
 
         # § 2(1)-(2) & § 3(7): Jul 1 (Jun 30 when that is a Monday) → Aug 31.
-        # The Ministry's 2027/2028 schedule also includes Sep 1, 2028.
+        # The Ministry's 2023/2024 and 2027/2028 schedules also include Sep 1 in 2024 and 2028.
         jun_30 = date(self._year, JUN, 30)
+        is_jun_30_monday = self._is_monday(jun_30)
         self._add_multiday_holiday(
-            *(
-                (jun_30, 63)
-                if self._is_monday(jun_30)
-                else (date(self._year, JUL, 1), 63 if self._year == 2028 else 62)
-            ),
+            jun_30 if is_jun_30_monday else date(self._year, JUL, 1),
+            63 if is_jun_30_monday or self._year in {2024, 2028} else 62,
             # Summer Break.
             name=tr("Letné prázdniny"),
         )
