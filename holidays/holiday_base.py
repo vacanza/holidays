@@ -410,7 +410,8 @@ class HolidayBase(dict[date, str]):
         self.language = language
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = getattr(self, "weekend_workdays", set())
+        self.weekend_workdays = set(getattr(self, "weekend_workdays", ()))
+        self._base_weekend_workdays = frozenset(self.weekend_workdays)
         self.years = _normalize_arguments(int, years)
 
         # Configure l10n related attributes.
@@ -771,6 +772,7 @@ class HolidayBase(dict[date, str]):
             "years",
         }:
             self.clear()
+            self.weekend_workdays = set(self._base_weekend_workdays)
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
 
