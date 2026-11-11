@@ -53,6 +53,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             * [Termíny prázdnin 2023/2024-2025/2026](https://www.minedu.sk/data/att/79d/30348.9978ac.pdf)
             * [Termíny prázdnin 2024/2025-2026/2027](https://www.minedu.sk/data/att/698/31010.60eac0.pdf)
             * [Termíny prázdnin 2026/2027](https://www.minedu.sk/data/att/2da/36701.feb2b6.docx)
+            * [Termíny prázdnin 2026/2027-2027/2028](https://www.minedu.sk/data/att/c3e/35639.e4736d.pdf)
 
     !!! note "School holidays"
         Slovak school holidays are regulated by Decree 231/2009 Z. z. (§ 2 and § 3) and
@@ -251,9 +252,14 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         )
 
         # § 2(1)-(2) & § 3(7): Jul 1 (Jun 30 when that is a Monday) → Aug 31.
+        # The Ministry's 2027/2028 schedule also includes Sep 1, 2028.
         jun_30 = date(self._year, JUN, 30)
         self._add_multiday_holiday(
-            *((jun_30, 63) if self._is_monday(jun_30) else (date(self._year, JUL, 1), 62)),
+            *(
+                (jun_30, 63)
+                if self._is_monday(jun_30)
+                else (date(self._year, JUL, 1), 63 if self._year == 2028 else 62)
+            ),
             # Summer Break.
             name=tr("Letné prázdniny"),
         )

@@ -411,12 +411,25 @@ class TestSlovakia(CommonCountryTests, TestCase):
                 "2025-08-31",
                 "2026-07-01",
                 "2026-08-31",
+                "2028-07-01",
+                "2028-09-01",
             )
-            self.assertNoHoliday(holidays, "2014-06-29", "2024-06-30", "2025-06-29", "2026-06-30")
+            self.assertNoHoliday(
+                holidays,
+                "2014-06-29",
+                "2024-06-30",
+                "2025-06-29",
+                "2026-06-30",
+                "2028-06-30",
+                "2028-09-02",
+            )
             self.assertHolidayName(name, holidays, range(2014, self.end_year))
             for year in range(2014, self.end_year):
                 self.assertHolidayNameCount(
-                    name, 63 if year in {2014, 2025, 2031, 2036, 2042} else 62, holidays, year
+                    name,
+                    63 if year in {2014, 2025, 2028, 2031, 2036, 2042} else 62,
+                    holidays,
+                    year,
                 )
 
     def test_school_autumn_break(self):
