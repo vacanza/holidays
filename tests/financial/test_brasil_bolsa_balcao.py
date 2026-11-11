@@ -117,18 +117,33 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
 
     def test_christmas_eve(self):
         name = "Véspera de Natal"
-        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2019, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2019))
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2018, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2018))
 
     def test_christmas_day(self):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1922))
 
-    def test_new_years_eve(self):
-        name = "Véspera de Ano-Novo"
-        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2019, self.end_year)))
-        self.assertNoHolidayName(name, range(self.start_year, 2019))
+    def test_last_business_day_of_year(self):
+        name = "Último dia útil do ano"
+        self.assertHolidayName(
+            name,
+            "2018-12-31",
+            "2019-12-31",
+            "2020-12-31",
+            "2021-12-31",
+            "2022-12-30",
+            "2023-12-29",
+            "2024-12-31",
+            "2025-12-31",
+            "2026-12-31",
+            "2027-12-31",
+            "2028-12-29",
+        )
+        self.assertNoHoliday("2022-12-31", "2023-12-31", "2028-12-31")
+        self.assertHolidayNameCount(name, 1, range(2018, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2018))
 
     def test_2022(self):
         self.assertHolidays(
@@ -146,7 +161,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2022-11-15", "Proclamação da República"),
             ("2022-12-24", "Véspera de Natal"),
             ("2022-12-25", "Natal"),
-            ("2022-12-31", "Véspera de Ano-Novo"),
+            ("2022-12-30", "Último dia útil do ano"),
         )
 
     def test_2026(self):
@@ -167,7 +182,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2026-11-20", "Dia Nacional de Zumbi e da Consciência Negra"),
             ("2026-12-24", "Véspera de Natal"),
             ("2026-12-25", "Natal"),
-            ("2026-12-31", "Véspera de Ano-Novo"),
+            ("2026-12-31", "Último dia útil do ano"),
         )
 
     def test_working_days_around_new_year(self):
@@ -190,7 +205,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-11-15", "Proclamação da República"),
             ("2023-12-24", "Véspera de Natal"),
             ("2023-12-25", "Natal"),
-            ("2023-12-31", "Véspera de Ano-Novo"),
+            ("2023-12-29", "Último dia útil do ano"),
         )
 
     def test_l10n_en_us(self):
@@ -209,7 +224,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-11-15", "Republic Proclamation Day"),
             ("2023-12-24", "Christmas Eve"),
             ("2023-12-25", "Christmas Day"),
-            ("2023-12-31", "New Year's Eve"),
+            ("2023-12-29", "Last Business Day of the Year"),
         )
 
     def test_l10n_uk(self):
@@ -228,5 +243,5 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-11-15", "День проголошення республіки"),
             ("2023-12-24", "Святий вечір"),
             ("2023-12-25", "Різдво Христове"),
-            ("2023-12-31", "Переддень Нового року"),
+            ("2023-12-29", "Останній робочий день року"),
         )

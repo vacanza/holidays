@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2026-11-11 11:41+0530\n"
+"PO-Revision-Date: 2026-11-11 12:13+0530\n"
 "Last-Translator: Ananya Patel <229134218+ananya-patel81@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -84,6 +84,6 @@ msgstr "Christmas Eve"
 msgid "Natal"
 msgstr "Christmas Day"
 
-#. New Year's Eve.
-msgid "Véspera de Ano-Novo"
-msgstr "New Year's Eve"
+#. Last Business Day of the Year.
+msgid "Último dia útil do ano"
+msgstr "Last Business Day of the Year"
