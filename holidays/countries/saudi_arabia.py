@@ -85,19 +85,15 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         )
 
         # Eid al-Fitr Holiday.
-        eid_al_fitr_name = tr("عطلة عيد الفطر")
-        eid_al_fitr_dates = self._add_eid_al_fitr_day(eid_al_fitr_name)
-        self._add_eid_al_fitr_day_two(eid_al_fitr_name)
-        self._add_eid_al_fitr_day_three(eid_al_fitr_name)
-
-        for dt in eid_al_fitr_dates:
-            if self._islamic_calendar._is_long_ramadan(dt):
-                # Add 30 Ramadan.
-                self._add_holiday(self[dt], _timedelta(dt, -1))
-                self._add_islamic_observed(_timedelta(dt, +2))
-            else:
+        name = tr("عطلة عيد الفطر")
+        self._add_holiday_30_ramadan(name)
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+        for dt in self._add_eid_al_fitr_day_three(name):
+            if not self._islamic_calendar._is_long_ramadan(_timedelta(dt, -2)):
                 # Add 4 Shawwal.
-                self._add_islamic_observed(self._add_holiday(self[dt], _timedelta(dt, +3)))
+                dt = self._add_holiday(self[dt], _timedelta(dt, +1))
+            self._add_islamic_observed(dt)
 
         # Day of Arafah.
         self._add_arafah_day(tr("يوم عرفة"))

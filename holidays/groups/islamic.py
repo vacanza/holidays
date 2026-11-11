@@ -269,6 +269,22 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+28
         )
 
+    def _add_holiday_30_ramadan(self, name) -> set[date]:
+        """
+        Add 30th Ramadan holiday (30th day of 9th month).
+
+        Only added in years when Ramadan lasts 30 days.
+        """
+        return self._add_islamic_calendar_holiday_set(
+            name,
+            (
+                dt_estimated
+                for dt_estimated in self._islamic_calendar.eid_al_fitr_dates(self._year)
+                if self._islamic_calendar._is_long_ramadan(dt_estimated[0])
+            ),
+            days_delta=-1,
+        )
+
     def _add_imam_mahdi_birthday_day(self, name) -> set[date]:
         """
         Add birthday of Muhammad al-Mahdi day (15th day of 8th month).
