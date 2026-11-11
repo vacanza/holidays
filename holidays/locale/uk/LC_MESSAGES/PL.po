@@ -116,9 +116,9 @@ msgstr "Другий день Різдва"
 msgid "Ferie zimowe"
 msgstr "Зимові канікули"
 
-#. Easter Break.
+#. Spring Break.
 msgid "Wiosenna przerwa świąteczna"
-msgstr "Великодні канікули"
+msgstr "Весняні канікули"
 
 #. Summer Break.
 msgid "Ferie letnie"

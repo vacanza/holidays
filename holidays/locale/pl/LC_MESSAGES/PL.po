@@ -116,7 +116,7 @@ msgstr ""
 msgid "Ferie zimowe"
 msgstr ""
 
-#. Easter Break.
+#. Spring Break.
 msgid "Wiosenna przerwa świąteczna"
 msgstr ""
 

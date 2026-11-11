@@ -116,9 +116,9 @@ msgstr "Zweiter Weihnachtstag"
 msgid "Ferie zimowe"
 msgstr "Winterferien"
 
-#. Easter Break.
+#. Spring Break.
 msgid "Wiosenna przerwa świąteczna"
-msgstr "Osterferien"
+msgstr "Frühlingsferien"
 
 #. Summer Break.
 msgid "Ferie letnie"

@@ -320,7 +320,7 @@ class TestPoland(CommonCountryTests, TestCase):
             for subdiv in subdivs:
                 self.assertHolidayName(name, self.subdiv_school_holidays[subdiv], start, end)
 
-    def test_school_easter_break(self):
+    def test_school_spring_break(self):
         name = "Wiosenna przerwa świąteczna"
         self.assertNoHolidayName(name)
         for holidays in self.subdiv_school_holidays.values():
@@ -347,13 +347,33 @@ class TestPoland(CommonCountryTests, TestCase):
                 name,
                 holidays,
                 "2018-06-23",
-                "2018-08-31",
+                "2018-09-02",
                 # Classes end on the Wednesday when Corpus Christi takes the Thursday.
                 "2019-06-20",
+                "2019-09-01",
                 "2020-06-27",
+                "2020-08-31",
+                "2023-06-24",
+                "2023-09-03",
+                "2024-06-22",
+                "2024-09-01",
+                "2025-06-28",
+                "2025-08-31",
                 "2026-06-27",
+                "2026-08-31",
             )
-            self.assertNoHoliday(holidays, "2018-06-22", "2019-06-19")
+            self.assertNoHoliday(
+                holidays,
+                "2018-06-22",
+                "2018-09-03",
+                "2019-06-19",
+                "2019-09-02",
+                "2020-09-01",
+                "2023-09-04",
+                "2024-09-02",
+                "2025-09-01",
+                "2026-09-01",
+            )
             self.assertHolidayName(name, holidays, range(2018, 2050))
             self.assertNoHolidayName(name, holidays, range(1925, 2018))
 
@@ -372,13 +392,13 @@ class TestPoland(CommonCountryTests, TestCase):
                     "Zimowa przerwa świąteczna",
                 ),
             ),
-            ("de", ("Winterferien", "Osterferien", "Sommerferien", "Weihnachtsferien")),
-            ("en_US", ("Winter Break", "Easter Break", "Summer Break", "Christmas Break")),
+            ("de", ("Winterferien", "Frühlingsferien", "Sommerferien", "Weihnachtsferien")),
+            ("en_US", ("Winter Break", "Spring Break", "Summer Break", "Christmas Break")),
             (
                 "uk",
                 (
                     "Зимові канікули",
-                    "Великодні канікули",
+                    "Весняні канікули",
                     "Літні канікули",
                     "Різдвяні канікули",
                 ),
