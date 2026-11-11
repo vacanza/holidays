@@ -49,6 +49,10 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Saturday.
         self._add_holy_saturday("Easter Saturday")
 
+        if self._year >= 2024:
+            # Easter Sunday.
+            self._add_easter_sunday("Easter Sunday")
+
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 

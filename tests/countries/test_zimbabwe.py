@@ -70,6 +70,17 @@ class TestZimbabwe(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
+    def test_easter_sunday(self):
+        name = "Easter Sunday"
+        self.assertHolidayName(
+            name,
+            "2024-03-31",
+            "2025-04-20",
+            "2026-04-05",
+        )
+        self.assertHolidayName(name, range(2024, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2024))
+
     def test_easter_monday(self):
         name = "Easter Monday"
         self.assertHolidayName(
@@ -219,6 +230,7 @@ class TestZimbabwe(CommonCountryTests, TestCase):
             ("2026-02-21", "Robert Gabriel Mugabe National Youth Day"),
             ("2026-04-03", "Good Friday"),
             ("2026-04-04", "Easter Saturday"),
+            ("2026-04-05", "Easter Sunday"),
             ("2026-04-06", "Easter Monday"),
             ("2026-04-18", "Independence Day"),
             ("2026-05-01", "Workers' Day"),
