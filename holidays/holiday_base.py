@@ -789,8 +789,12 @@ class HolidayBase(dict[date, str]):
     def __setstate__(self, state: dict[str, Any]) -> None:
         """Restore the object's state after deserialization."""
         self.__dict__.update(state)
-        # States serialized before the attribute existed are already populated.
+        # States serialized before these attributes existed are already populated.
         self._initialized = True
+        self.__dict__.setdefault(
+            "_base_weekend_workdays",
+            frozenset(getattr(type(self), "weekend_workdays", ())),
+        )
         self._init_translation()
 
     def __str__(self) -> str:

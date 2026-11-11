@@ -1210,6 +1210,20 @@ class TestSerialization(TestCase):
             self.assertEqual(loaded_ua, ua)
             self.assertIn(dt, loaded_ua)
 
+    def test_pickle_legacy_state_reassignment(self):
+        am = AM(years=2018, subdiv="LO", expand=False)
+        state = am.__getstate__()
+        state.pop("_base_weekend_workdays")
+        state.pop("_initialized")
+
+        loaded = AM.__new__(AM)
+        loaded.__setstate__(state)
+        dict.update(loaded, am)
+
+        self.assertTrue(loaded.is_working_day("2018-12-15"))
+        loaded.subdiv = None
+        self.assertFalse(loaded.is_working_day("2018-12-15"))
+
 
 class TestSpecialHolidays(TestCase):
     def setUp(self):
