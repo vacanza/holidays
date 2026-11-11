@@ -195,7 +195,7 @@ class BritishVirginIslandsStaticHolidays:
     """
 
     special_public_holidays = {
-        # State Funeral of Honourable Ralph T. O'Neal.
+        # State Funeral of Honorable Ralph T. O'Neal.
         2019: (DEC, 11, tr("State Funeral of Honourable Ralph T. O'Neal")),
         # Platinum Jubilee of Elizabeth II.
         2022: (JUN, 3, tr("Queen Elizabeth II's Platinum Jubilee")),
