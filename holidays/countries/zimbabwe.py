@@ -56,9 +56,11 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
+        # Independence Day.
+        name = "Independence Day"
         self._add_observed(
-            # Independence Day.
-            apr_18 := self._add_holiday_apr_18("Independence Day"),
+            apr_18 := self._add_holiday_apr_18(name),
+            name=name,
             rule=SUN_TO_NEXT_TUE if apr_18 == self._easter_sunday else SUN_TO_NEXT_MON,
         )
 

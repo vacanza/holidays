@@ -80,6 +80,7 @@ class TestZimbabwe(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, range(2024, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
+        self.assertNoHolidayName(f"{name} (observed)")
 
     def test_easter_monday(self):
         name = "Easter Monday"
