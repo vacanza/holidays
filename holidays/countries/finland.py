@@ -306,7 +306,6 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Become a Flag Day in 1942, on Marshal C.G.E. Mannerheim's birthday.
         # Got its current name in 1950.
-        # Decree 383/1978 sets the date as 4 June.
         if self._year >= 1942:
             self._add_holiday_jun_4(
                 # Flag Day of the Finnish Defense Forces.
