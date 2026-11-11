@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao
@@ -114,10 +115,20 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
 
+    def test_christmas_eve(self):
+        name = "Véspera de Natal"
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2019, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2019))
+
     def test_christmas_day(self):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1922))
+
+    def test_new_years_eve(self):
+        name = "Véspera de Ano-Novo"
+        self.assertHolidayName(name, (f"{year}-12-31" for year in range(2019, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2019))
 
     def test_2022(self):
         self.assertHolidays(
@@ -133,8 +144,36 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2022-10-12", "Nossa Senhora Aparecida"),
             ("2022-11-02", "Finados"),
             ("2022-11-15", "Proclamação da República"),
+            ("2022-12-24", "Véspera de Natal"),
             ("2022-12-25", "Natal"),
+            ("2022-12-31", "Véspera de Ano-Novo"),
         )
+
+    def test_2026(self):
+        # https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm
+        self.assertHolidays(
+            BrasilBolsaBalcao(years=2026),
+            ("2026-01-01", "Confraternização Universal"),
+            ("2026-02-16", "Carnaval"),
+            ("2026-02-17", "Carnaval"),
+            ("2026-04-03", "Sexta-feira Santa"),
+            ("2026-04-21", "Tiradentes"),
+            ("2026-05-01", "Dia do Trabalhador"),
+            ("2026-06-04", "Corpus Christi"),
+            ("2026-09-07", "Independência do Brasil"),
+            ("2026-10-12", "Nossa Senhora Aparecida"),
+            ("2026-11-02", "Finados"),
+            ("2026-11-15", "Proclamação da República"),
+            ("2026-11-20", "Dia Nacional de Zumbi e da Consciência Negra"),
+            ("2026-12-24", "Véspera de Natal"),
+            ("2026-12-25", "Natal"),
+            ("2026-12-31", "Véspera de Ano-Novo"),
+        )
+
+    def test_working_days_around_new_year(self):
+        holidays = BrasilBolsaBalcao(years=2026)
+        self.assertEqual(holidays.get_nth_working_day("2026-12-23", 1), date(2026, 12, 28))
+        self.assertEqual(holidays.get_working_days_count("2026-12-21", "2026-12-31"), 6)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -149,7 +188,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Nossa Senhora Aparecida"),
             ("2023-11-02", "Finados"),
             ("2023-11-15", "Proclamação da República"),
+            ("2023-12-24", "Véspera de Natal"),
             ("2023-12-25", "Natal"),
+            ("2023-12-31", "Véspera de Ano-Novo"),
         )
 
     def test_l10n_en_us(self):
@@ -166,7 +207,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Our Lady of Aparecida"),
             ("2023-11-02", "All Souls' Day"),
             ("2023-11-15", "Republic Proclamation Day"),
+            ("2023-12-24", "Christmas Eve"),
             ("2023-12-25", "Christmas Day"),
+            ("2023-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
@@ -183,5 +226,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "День Богоматері Апаресіди"),
             ("2023-11-02", "День усіх померлих"),
             ("2023-11-15", "День проголошення республіки"),
+            ("2023-12-24", "Святий вечір"),
             ("2023-12-25", "Різдво Христове"),
+            ("2023-12-31", "Переддень Нового року"),
         )
