@@ -1460,6 +1460,15 @@ class _HinduLunisolar:
         2024: (NOV, 18),
         2025: (NOV, 8),
         2026: (NOV, 27),
+        2027: (NOV, 16),
+        2028: (NOV, 5),
+        2029: (NOV, 24),
+        2030: (NOV, 13),
+        2031: (DEC, 2),
+        2032: (NOV, 20),
+        2033: (NOV, 9),
+        2034: (NOV, 28),
+        2035: (NOV, 18),
     }
 
     # https://web.archive.org/web/20250911083610/https://www.drikpanchang.com/diwali/kali-puja/bengal-kalipuja-date-time.html
