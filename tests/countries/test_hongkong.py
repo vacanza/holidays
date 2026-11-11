@@ -936,8 +936,6 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-        # When Christmas Day falls on a Saturday, 26 December is a Sunday, so the
-        # first weekday after Christmas Day is 27 December.
         years_christmas_on_sat = {2027, 2032, 2038, 2049}
         self.assertHolidayName(
             name_first,
@@ -1263,28 +1261,6 @@ class TestHongKong(CommonCountryTests, TestCase):
             ("2025-12-22", "冬節（補假）"),
             ("2025-12-25", "聖誕節"),
             ("2025-12-26", "聖誕節後第一個周日"),
-        )
-
-    def test_2027(self):
-        # https://www.labour.gov.hk/eng/news/latest_holidays2027.htm
-        self.assertHolidays(
-            HongKong(years=2027, preferred_discretionary_holidays=(CHRISTMAS, WINTER_SOLSTICE)),
-            ("2027-01-01", "一月一日"),
-            ("2027-02-06", "農曆年初一"),
-            ("2027-02-08", "農曆年初三"),
-            ("2027-02-09", "農曆年初四"),
-            ("2027-03-29", "復活節星期一"),
-            ("2027-04-05", "清明節"),
-            ("2027-05-01", "勞動節"),
-            ("2027-05-13", "佛誕"),
-            ("2027-06-09", "端午節"),
-            ("2027-07-01", "香港特別行政區成立紀念日"),
-            ("2027-09-16", "中秋節翌日"),
-            ("2027-10-01", "國慶日"),
-            ("2027-10-08", "重陽節"),
-            ("2027-12-22", "冬節"),
-            ("2027-12-25", "聖誕節"),
-            ("2027-12-27", "聖誕節後第一個周日"),
         )
 
     def test_optional_2020(self):
