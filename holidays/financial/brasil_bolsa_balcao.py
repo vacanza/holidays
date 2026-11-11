@@ -10,15 +10,12 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import DEC, _timedelta
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
-from holidays.holiday_base import HolidayBase
+from holidays.observed_holiday_base import ObservedHolidayBase
 
 
-class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
+class BrasilBolsaBalcao(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Brasil, Bolsa, Balcão holidays.
 
     References:
@@ -29,9 +26,10 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
         * [Lei n. 6.802, de 30.06.1980](https://web.archive.org/web/20250206215621/http://www.planalto.gov.br/ccivil_03/leis/L6802.htm)
         * [Resolução n. 2.516, de 29.06.1998](https://web.archive.org/web/20250428203302/https://www.bcb.gov.br/pre/normativos/res/1998/pdf/res_2516_v2_P.pdf)
         * [Lei n. 14.759, de 21.12.2023](https://web.archive.org/web/20250402234552/https://www2.camara.leg.br/legin/fed/lei/2023/lei-14759-21-dezembro-2023-795091-publicacaooriginal-170522-pl.html)
-        * [Ofício Circular 021/2017-DO, de 22.11.2017](https://www.b3.com.br/data/files/78/01/95/E5/33AEF5103EE99DF5790D8AA8/OC%20021-2017-DO_Feriados%202018_v6_R2.pdf)
+        * [Ofício Circular 021/2017-DO, de 22.11.2017](https://web.archive.org/web/20261111115804/https://www.b3.com.br/data/files/78/01/95/E5/33AEF5103EE99DF5790D8AA8/OC%20021-2017-DO_Feriados%202018_v6_R2.pdf)
         * [Ofício Circular 049/2018-VOP, de 11.12.2018](https://web.archive.org/web/20181222173329/http://www.b3.com.br/data/files/AF/A3/17/B1/13E97610F157B776AC094EA8/OC%20049-2018-VOP%20Feriados%202019_v7%20R_2.pdf)
-        * [Ofício Circular 150/2020-PRE](https://www.b3.com.br/data/files/EB/27/C1/88/D28D5710700BFA57AC094EA8/OC%20150-2020%20PRE%20Calend%C3%A1rios%20de%20Feriados%202021_2022.pdf)
+        * [Ofício Circular 150/2020-PRE](https://web.archive.org/web/20201118140824/http://www.b3.com.br/data/files/EB/27/C1/88/D28D5710700BFA57AC094EA8/OC%20150-2020%20PRE%20Calendários%20de%20Feriados%202021_2022.pdf)
+        * [Calendário de negociação da B3 2026](https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm)
 
     Historical data:
         * [Feriados ANBIMA 2001-2099](https://web.archive.org/web/20241209033536/https://www.anbima.com.br/feriados/)
@@ -112,14 +110,11 @@ class BrasilBolsaBalcao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Ofício Circular 021/2017-DO, de 22.11.2017
         if self._year >= 2018:
-            # Banks work internally on the last business day of the year, with no
-            # trading session on B3. When December 31 falls on a weekend, this is
-            # the preceding Friday (December 30, 2022).
-            dt = date(self._year, DEC, 31)
-            while self._is_weekend(dt):
-                dt = _timedelta(dt, -1)
-            # Last Business Day of the Year.
-            self._add_holiday(tr("Último dia útil do ano"), dt)
+            self._add_holiday(
+                # Last Business Day of the Year.
+                tr("Último dia útil do ano"),
+                self._get_next_workday(self._next_year_new_years_day, -1),
+            )
 
 
 class BVMF(BrasilBolsaBalcao):

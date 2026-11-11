@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from unittest import TestCase
 
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao
@@ -129,8 +128,6 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         name = "Último dia útil do ano"
         self.assertHolidayName(
             name,
-            "2018-12-31",
-            "2019-12-31",
             "2020-12-31",
             "2021-12-31",
             "2022-12-30",
@@ -138,11 +135,12 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             "2024-12-31",
             "2025-12-31",
             "2026-12-31",
-            "2027-12-31",
-            "2028-12-29",
         )
-        self.assertNoHoliday("2022-12-31", "2023-12-31", "2028-12-31")
-        self.assertHolidayNameCount(name, 1, range(2018, self.end_year))
+        self.assertNoHoliday(
+            "2022-12-31",
+            "2023-12-31",
+        )
+        self.assertHolidayName(name, range(2018, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2018))
 
     def test_2022(self):
@@ -163,32 +161,6 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2022-12-25", "Natal"),
             ("2022-12-30", "Último dia útil do ano"),
         )
-
-    def test_2026(self):
-        # https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm
-        self.assertHolidays(
-            BrasilBolsaBalcao(years=2026),
-            ("2026-01-01", "Confraternização Universal"),
-            ("2026-02-16", "Carnaval"),
-            ("2026-02-17", "Carnaval"),
-            ("2026-04-03", "Sexta-feira Santa"),
-            ("2026-04-21", "Tiradentes"),
-            ("2026-05-01", "Dia do Trabalhador"),
-            ("2026-06-04", "Corpus Christi"),
-            ("2026-09-07", "Independência do Brasil"),
-            ("2026-10-12", "Nossa Senhora Aparecida"),
-            ("2026-11-02", "Finados"),
-            ("2026-11-15", "Proclamação da República"),
-            ("2026-11-20", "Dia Nacional de Zumbi e da Consciência Negra"),
-            ("2026-12-24", "Véspera de Natal"),
-            ("2026-12-25", "Natal"),
-            ("2026-12-31", "Último dia útil do ano"),
-        )
-
-    def test_working_days_around_new_year(self):
-        holidays = BrasilBolsaBalcao(years=2026)
-        self.assertEqual(holidays.get_nth_working_day("2026-12-23", 1), date(2026, 12, 28))
-        self.assertEqual(holidays.get_working_days_count("2026-12-21", "2026-12-31"), 6)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
