@@ -1178,7 +1178,7 @@ class India(
         self._add_basava_jayanti(tr("Basava Jayanthi"))
 
         # Akshay Tritiya.
-        self._add_parshuram_jayanti(tr("Akshay Tritiya"))
+        self._add_basava_jayanti(tr("Akshay Tritiya"))
 
         if self._year == 2014:
             # Mahalaya Amavasye.
@@ -1188,10 +1188,16 @@ class India(
 
         if self._year >= 2010:
             # Maharshi Valmiki's Jayanti.
-            self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+            if self._year == 2016:
+                self._add_holiday_oct_15(tr("Maharshi Valmiki's Jayanti"))
+            else:
+                self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
 
-        # Naraka Chaturdashi.
-        self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
+        if self._year == 2021:
+            # Naraka Chaturdashi.
+            self._add_holiday_nov_3(tr("Naraka Chaturdashi"))
+        else:
+            self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
 
         if self._year >= 2008:
             # Kanakadasa Jayanthi.
