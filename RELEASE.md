@@ -36,7 +36,7 @@
   - preview the release on <https://github.com/vacanza/holidays/releases>
   - after making sure everything looks right click 'Edit' and then 'Publish release'
 - Verify the new release:
-  - make sure the Publish release workflow has been completed successfully
+  - make sure the `Publish to PyPI` workflow has been completed successfully
   - check <https://pypi.org/project/holidays/> package page -- it should have the current
     version and the released date updated
 - Finish the process with the following post-release actions:

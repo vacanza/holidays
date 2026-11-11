@@ -28,6 +28,9 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
         * [National Sports Day](https://web.archive.org/web/20250417141518/https://hukoomi.gov.qa/en/national-sport-day)
         * [Qatar National Day](https://web.archive.org/web/20240522081644/https://www.qatar.qa/en/qatar/history-of-qatar-qatar-national-day-committee/)
         * [Weekend](https://web.archive.org/web/20240930093123/https://www.arabnews.com/node/234601)
+        * 2026:
+            * [Eid al-Fitr](https://web.archive.org/web/20260318160632/https://thepeninsulaqatar.com/article/18/03/2026/qatar-confirms-march-20-as-first-day-of-eid-al-fitr)
+            * [Eid al-Adha](https://web.archive.org/web/20260524230736/https://www.gulf-times.com/article/726127/qatar/amiri-diwan-announces-eid-holiday)
     """
 
     country = "QA"
@@ -97,7 +100,7 @@ class QAT(Qatar):
 
 class QatarIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20260107122007/https://www.timeanddate.com/holidays/qatar/eid-al-adha
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_ADHA_DATES = {
         2008: (DEC, 9),
         2009: (NOV, 28),
@@ -108,7 +111,7 @@ class QatarIslamicHolidays(_CustomIslamicHolidays):
     }
 
     # https://web.archive.org/web/20241207022523/https://www.timeanddate.com/holidays/qatar/eid-al-fitr
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2005, 2026)
     EID_AL_FITR_DATES = {
         2005: (NOV, 4),
         2006: (OCT, 24),
