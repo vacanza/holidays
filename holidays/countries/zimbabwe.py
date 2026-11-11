@@ -43,26 +43,25 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday_feb_21("Robert Gabriel Mugabe National Youth Day")
             )
 
+        self._add_observed(
+            # Independence Day.
+            apr_18 := self._add_holiday_apr_18("Independence Day"),
+            rule=SUN_TO_NEXT_TUE if apr_18 == self._easter_sunday else SUN_TO_NEXT_MON,
+        )
+
         # Good Friday.
         self._add_good_friday("Good Friday")
 
         # Easter Saturday.
         self._add_holy_saturday("Easter Saturday")
 
-        if self._year >= 2024:
+        # General Notice 86 of 2009.
+        if self._year >= 2010:
             # Easter Sunday.
             self._add_easter_sunday("Easter Sunday")
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
-
-        # Independence Day.
-        name = "Independence Day"
-        self._add_observed(
-            apr_18 := self._add_holiday_apr_18(name),
-            name=name,
-            rule=SUN_TO_NEXT_TUE if apr_18 == self._easter_sunday else SUN_TO_NEXT_MON,
-        )
 
         # Workers' Day.
         self._add_observed(self._add_labor_day("Workers' Day"))
