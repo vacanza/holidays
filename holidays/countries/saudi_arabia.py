@@ -65,13 +65,17 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, dts: set[date], name: str) -> None:
+    def _add_islamic_observed(self, dts: set[date]) -> None:
         # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None
         observed_rule = THU_FRI_TO_NEXT_WORKDAY if self._year <= 2012 else FRI_SAT_TO_NEXT_WORKDAY
-        for dt in sorted(dts):
+        next_dt = name = None
+        for dt in sorted(dts, reverse=True):
+            if next_dt is None or (next_dt - dt).days != 1:
+                name = self[dt]
             self._add_observed(dt, name=name, rule=observed_rule)
+            next_dt = dt
 
     def _get_weekend(self, dt: date) -> set[int]:
         # Weekend used to be THU, FRI before June 28th, 2013.
@@ -85,17 +89,14 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         )
 
         # Eid al-Fitr Holiday.
-        name = tr("عطلة عيد الفطر")
-        self._add_islamic_observed(self._add_eid_al_fitr_multiday(name), name)
+        self._add_islamic_observed(self._add_eid_al_fitr_multiday(tr("عطلة عيد الفطر")))
 
         self._add_islamic_observed(
-            # Day of Arafah.
             self._add_arafah_day(tr("يوم عرفة"))
             # Eid al-Adha Holiday.
             | self._add_eid_al_adha_day(name := tr("عطلة عيد الأضحى"))
             | self._add_eid_al_adha_day_two(name)
-            | self._add_eid_al_adha_day_three(name),
-            name,
+            | self._add_eid_al_adha_day_three(name)
         )
 
         if self._year >= 2022:
