@@ -748,8 +748,6 @@ class HolidayBase(dict[date, str]):
         }:
             if key == "language":
                 self._init_translation()
-                for operand in getattr(self, "holidays", ()):
-                    operand.language = value
             self.clear()
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
@@ -827,7 +825,7 @@ class HolidayBase(dict[date, str]):
     def _init_translation(self) -> None:
         """Initialize translation function based on language settings."""
         supported_languages = set(self.supported_languages)
-        if isinstance(self._entity_code, str) and not hasattr(self, "holidays"):
+        if isinstance(self._entity_code, str) and not isinstance(self, HolidaySum):
             fallback = self.language not in supported_languages
             languages = [self.language] if self.language in supported_languages else None
             locale_directory = str(Path(__file__).with_name("locale"))
@@ -1523,6 +1521,15 @@ class HolidaySum(HolidayBase):
 
         # supported_languages is used for iCalExporter language check as well.
         self.supported_languages = (h1_language,) if h1_language else ()
+
+    def __setattr__(self, key: str, value: Any) -> None:
+        if getattr(self, "_initialized", False) and key == "language":
+            self.supported_languages = (value,) if value else ()
+            self.holidays = [copy.deepcopy(operand) for operand in self.holidays]
+            for operand in self.holidays:
+                operand.language = value
+
+        super().__setattr__(key, value)
 
     def _populate(self, year):
         for operand in self.holidays:

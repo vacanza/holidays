@@ -408,12 +408,21 @@ class TestReassignment(TestCase):
         self.assertIn("2024-01-01", hs)
         self.assertIn("2025-01-01", hs)
 
-        hs_l10n = UA(years=2020, language="en_US") + US(years=2020, language="en_US")
-        self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day")
-        hs_l10n.language = "uk"
+        ua = UA(years=2020, language="uk")
+        us = US(years=2020, language="en_US")
+        hs_l10n = ua + us
+        hs_shared = ua + us
         self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day; Новий рік")
+
         hs_l10n.language = "en_US"
+        self.assertEqual(hs_l10n.supported_languages, ("en_US",))
         self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day")
+        self.assertEqual(ua.language, "uk")
+        self.assertEqual(hs_shared["2021-01-01"], "New Year's Day; Новий рік")
+
+        hs_l10n.language = "uk"
+        self.assertEqual(hs_l10n.supported_languages, ("uk",))
+        self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day; Новий рік")
 
 
 class TestDeprecationWarnings(TestCase):
