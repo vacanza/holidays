@@ -425,13 +425,14 @@ class TestReassignment(TestCase):
         self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day; Новий рік")
 
         hb_custom = HolidayBase()
+        hb_custom["2020-01-01"] = "Custom New Year"
         hb_custom["2020-02-03"] = "Custom Holiday"
         hs_custom = UA(years=2020, language="uk") + hb_custom
-        self.assertEqual(hs_custom["2020-01-01"], "Новий рік")
+        self.assertEqual(hs_custom["2020-01-01"], "Custom New Year; Новий рік")
         self.assertEqual(hs_custom["2020-02-03"], "Custom Holiday")
 
         hs_custom.language = "en_US"
-        self.assertEqual(hs_custom["2020-01-01"], "New Year's Day")
+        self.assertEqual(hs_custom["2020-01-01"], "Custom New Year; New Year's Day")
         self.assertEqual(hs_custom["2020-02-03"], "Custom Holiday")
 
 
