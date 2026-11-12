@@ -916,7 +916,6 @@ class TestHongKong(CommonCountryTests, TestCase):
         name = "聖誕節"
         name_observed = f"{name}（補假）"
         name_first = "聖誕節後第一個周日"
-        name_first_observed = f"{name_first}（補假）"
         name_second = "聖誕節後第二個周日"
 
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
@@ -937,18 +936,18 @@ class TestHongKong(CommonCountryTests, TestCase):
         self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+        years_christmas_on_sat = {2027, 2032, 2038, 2049}
         self.assertHolidayName(
-            name_first, (f"{year}-12-26" for year in range(2024, self.end_year))
+            name_first,
+            (
+                f"{year}-12-26"
+                for year in range(2024, self.end_year)
+                if year not in years_christmas_on_sat
+            ),
         )
+        self.assertHolidayName(name_first, (f"{year}-12-27" for year in years_christmas_on_sat))
+        self.assertNoHoliday(f"{year}-12-26" for year in years_christmas_on_sat)
         self.assertNoHolidayName(name_first, range(self.start_year, 2024))
-        obs_dts = (
-            "2027-12-27",
-            "2032-12-27",
-            "2038-12-27",
-            "2049-12-27",
-        )
-        self.assertHolidayName(name_first_observed, obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
 
         years_special = {
             1949,
