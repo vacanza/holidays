@@ -258,6 +258,54 @@ class HolidayBase(dict[date, str]):
 
         return normalized
 
+    def _normalize_subdiv(self, subdiv: Any) -> str | None:
+        """Normalize and validate the given holiday subdivision.
+
+        Args:
+            subdiv:
+                Requested holiday subdivision.
+
+        Returns:
+            The normalized subdivision.
+
+        Raises:
+            NotImplementedError:
+                If the subdivision is not supported by this entity.
+        """
+        if subdiv is None:
+            return None
+
+        # Handle subdivisions passed as integers.
+        if isinstance(subdiv, int):
+            subdiv = str(subdiv)
+
+        subdivision_aliases = tuple(self.subdivisions_aliases)
+        supported_subdivisions = set(
+            self.subdivisions
+            + subdivision_aliases
+            + self._deprecated_subdivisions
+            + (self.parent_entity.subdivisions if self.parent_entity else ())
+        )
+
+        # Unsupported subdivisions.
+        if not isinstance(self, HolidaySum) and subdiv not in supported_subdivisions:
+            raise NotImplementedError(
+                f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
+            )
+
+        # Deprecated subdivisions.
+        if subdiv in self._deprecated_subdivisions:
+            warnings.warn(
+                "This subdivision is deprecated and will be removed after "
+                "Dec, 1 2023. The list of supported subdivisions: "
+                f"{', '.join(sorted(self.subdivisions))}; "
+                "the list of supported subdivisions aliases: "
+                f"{', '.join(sorted(subdivision_aliases))}.",
+                DeprecationWarning,
+            )
+
+        return subdiv
+
     def __init__(
         self,
         years: YearArg | None = None,
@@ -337,42 +385,13 @@ class HolidayBase(dict[date, str]):
         categories = self._normalize_categories(categories)
 
         # Subdivision validation.
-        if subdiv := subdiv or prov or state:
-            # Handle subdivisions passed as integers.
-            if isinstance(subdiv, int):
-                subdiv = str(subdiv)
-
-            subdivision_aliases = tuple(self.subdivisions_aliases)
-            supported_subdivisions = set(
-                self.subdivisions
-                + subdivision_aliases
-                + self._deprecated_subdivisions
-                + (self.parent_entity.subdivisions if self.parent_entity else ())
+        if prov_state := prov or state:
+            warnings.warn(
+                f"Arguments prov and state are deprecated, use subdiv='{prov_state}' instead.",
+                DeprecationWarning,
             )
 
-            # Unsupported subdivisions.
-            if not isinstance(self, HolidaySum) and subdiv not in supported_subdivisions:
-                raise NotImplementedError(
-                    f"Entity `{self._entity_code}` does not have subdivision {subdiv}"
-                )
-
-            # Deprecated arguments.
-            if prov_state := prov or state:
-                warnings.warn(
-                    f"Arguments prov and state are deprecated, use subdiv='{prov_state}' instead.",
-                    DeprecationWarning,
-                )
-
-            # Deprecated subdivisions.
-            if subdiv in self._deprecated_subdivisions:
-                warnings.warn(
-                    "This subdivision is deprecated and will be removed after "
-                    "Dec, 1 2023. The list of supported subdivisions: "
-                    f"{', '.join(sorted(self.subdivisions))}; "
-                    "the list of supported subdivisions aliases: "
-                    f"{', '.join(sorted(subdivision_aliases))}.",
-                    DeprecationWarning,
-                )
+        subdiv = self._normalize_subdiv(subdiv or prov or state)
 
         # Special holidays validation.
         if (has_substituted_holidays := getattr(self, "has_substituted_holidays", False)) and (
@@ -391,7 +410,8 @@ class HolidayBase(dict[date, str]):
         self.language = language
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = getattr(self, "weekend_workdays", set())
+        self.weekend_workdays = set(getattr(self, "weekend_workdays", ()))
+        self._base_weekend_workdays = frozenset(self.weekend_workdays)
         self.years = _normalize_arguments(int, years)
 
         # Configure l10n related attributes.
@@ -732,6 +752,11 @@ class HolidayBase(dict[date, str]):
     def __setattr__(self, key: str, value: Any) -> None:
         if key == "categories":
             value = self._normalize_categories(value)
+        elif key == "subdiv":
+            value = (
+                self._normalize_subdiv(value) if getattr(self, "_initialized", False) else value
+            )
+            self.__dict__.pop("_normalized_subdiv", None)
         elif key == "years":
             value = _normalize_arguments(int, value)
 
@@ -740,8 +765,14 @@ class HolidayBase(dict[date, str]):
         # Re-populate the holidays for the attributes the constructor accepts,
         # as if they had been given to it. Skipped while the object is still
         # being built, where __init__ populates them itself.
-        if getattr(self, "_initialized", False) and key in {"categories", "observed", "years"}:
+        if getattr(self, "_initialized", False) and key in {
+            "categories",
+            "observed",
+            "subdiv",
+            "years",
+        }:
             self.clear()
+            self.weekend_workdays = set(self._base_weekend_workdays)
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
 
@@ -758,8 +789,12 @@ class HolidayBase(dict[date, str]):
     def __setstate__(self, state: dict[str, Any]) -> None:
         """Restore the object's state after deserialization."""
         self.__dict__.update(state)
-        # States serialized before the attribute existed are already populated.
+        # States serialized before these attributes existed are already populated.
         self._initialized = True
+        self.__dict__.setdefault(
+            "_base_weekend_workdays",
+            frozenset(getattr(type(self), "weekend_workdays", ())),
+        )
         self._init_translation()
 
     def __str__(self) -> str:
@@ -1514,6 +1549,14 @@ class HolidaySum(HolidayBase):
 
         # supported_languages is used for iCalExporter language check as well.
         self.supported_languages = (h1_language,) if h1_language else ()
+
+    def __setattr__(self, key: str, value: Any) -> None:
+        if getattr(self, "_initialized", False) and key == "subdiv":
+            raise NotImplementedError(
+                "Subdivision reassignment is not supported for `HolidaySum`."
+            )
+
+        super().__setattr__(key, value)
 
     def _populate(self, year):
         for operand in self.holidays:

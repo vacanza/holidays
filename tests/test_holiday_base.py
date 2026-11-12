@@ -16,7 +16,7 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import JP, UA, US
+from holidays.countries import AM, JP, UA, US
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -367,6 +367,31 @@ class TestReassignment(TestCase):
         self.assertIn("2024-05-01", hb)
         self.assertIn("2026-05-01", hb)
 
+    def test_weekend_workdays(self):
+        am = AM(years=2018, subdiv="LO", expand=False)
+        self.assertTrue(am.is_working_day("2018-12-15"))
+        self.assertTrue(am.is_working_day("2014-12-20"))
+
+        # Clearing subdiv removes subdiv overrides while keeping national cross-year ones.
+        am.subdiv = None
+        self.assertFalse(am.is_working_day("2018-12-15"))
+        self.assertTrue(am.is_working_day("2014-12-20"))
+        self.assertSetEqual(am.weekend_workdays, AM(years=2018, expand=False).weekend_workdays)
+
+        # Switching subdivisions rebuilds the corresponding overrides.
+        am.subdiv = "LO"
+        self.assertTrue(am.is_working_day("2018-12-15"))
+        am.subdiv = "AR"
+        self.assertFalse(am.is_working_day("2018-12-15"))
+
+        # Changing years drops old year-specific overrides while keeping cross-year ones.
+        am = AM(years=2018, expand=False)
+        self.assertTrue(am.is_working_day("2018-03-17"))
+        am.years = 2019
+        self.assertFalse(am.is_working_day("2018-03-17"))
+        self.assertTrue(am.is_working_day("2014-12-20"))
+        self.assertSetEqual(am.weekend_workdays, AM(years=2019, expand=False).weekend_workdays)
+
     def test_years_on_empty_object(self):
         # An object without holidays yet is populated when years are assigned,
         # as the constructor would.
@@ -377,6 +402,44 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.years, {2024})
         self.assertIn("2024-01-01", hb)
 
+    def test_subdiv(self):
+        hb = CountryStub1(years=2024)
+        self.assertNotIn("2024-08-10", hb)
+
+        # A valid subdivision is accepted and the holidays are populated.
+        hb.subdiv = "Subdiv 1"
+        self.assertEqual(hb.subdiv, "Subdiv 1")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 1 Custom Holiday")
+
+        # An integer subdivision is normalized to string.
+        hb.subdiv = 3
+        self.assertEqual(hb.subdiv, "3")
+        self.assertNotIn("2024-08-10", hb)
+
+        # Changing to another subdivision re-populates correctly.
+        hb.subdiv = "Subdiv 2"
+        self.assertEqual(hb.subdiv, "Subdiv 2")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 2 Custom Holiday")
+
+        # Subdivisions aliases are accepted.
+        hb.subdiv = "S1"
+        self.assertEqual(hb.subdiv, "S1")
+        self.assertEqual(hb["2024-08-10"], "Subdiv 1 Custom Holiday")
+
+        # Setting subdiv to None removes subdivision holidays.
+        hb.subdiv = None
+        self.assertIsNone(hb.subdiv)
+        self.assertNotIn("2024-08-10", hb)
+
+        # Lazy population for a new year works without AttributeError.
+        hb.subdiv = "Subdiv 1"
+        self.assertEqual(hb["2025-08-10"], "Subdiv 1 Custom Holiday")
+
+        # Unsupported subdivisions are rejected and the object is left untouched.
+        self.assertRaises(NotImplementedError, lambda: setattr(hb, "subdiv", "INVALID"))
+        self.assertEqual(hb.subdiv, "Subdiv 1")
+        self.assertEqual(hb["2025-08-10"], "Subdiv 1 Custom Holiday")
+
     def test_sum(self):
         hs = TestReassignment.CustomClass(years=2024) + TestReassignment.CustomClass(years=2024)
 
@@ -385,6 +448,9 @@ class TestReassignment(TestCase):
         hs.years = 2025
         self.assertIn("2024-01-01", hs)
         self.assertIn("2025-01-01", hs)
+
+        # Subdivision reassignment is not supported for `HolidaySum`.
+        self.assertRaises(NotImplementedError, lambda: setattr(hs, "subdiv", "Subdiv 1"))
 
 
 class TestDeprecationWarnings(TestCase):
@@ -1143,6 +1209,20 @@ class TestSerialization(TestCase):
             loaded_ua = pickle.loads(pickle.dumps(ua))
             self.assertEqual(loaded_ua, ua)
             self.assertIn(dt, loaded_ua)
+
+    def test_pickle_legacy_state_reassignment(self):
+        am = AM(years=2018, subdiv="LO", expand=False)
+        state = am.__getstate__()
+        state.pop("_base_weekend_workdays")
+        state.pop("_initialized")
+
+        loaded = AM.__new__(AM)
+        loaded.__setstate__(state)
+        dict.update(loaded, am)
+
+        self.assertTrue(loaded.is_working_day("2018-12-15"))
+        loaded.subdiv = None
+        self.assertFalse(loaded.is_working_day("2018-12-15"))
 
 
 class TestSpecialHolidays(TestCase):
