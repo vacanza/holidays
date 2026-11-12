@@ -328,7 +328,7 @@ class _ThaiLunisolar:
     # `self` would be part of the key, which retains instances and grows the cache unboundedly.
     @staticmethod
     @cache
-    def buddhist_sabbath_dates(year: int) -> set[date]:
+    def _get_buddhist_sabbath_dates(year: int) -> set[date]:
         """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
 
         This function works independently of the calendar system in use,
@@ -370,6 +370,20 @@ class _ThaiLunisolar:
             day_cursor = _timedelta(day_cursor, month_days)
 
         return buddhist_sabbaths
+
+    @staticmethod
+    def buddhist_sabbath_dates(year: int) -> set[date]:
+        """Return all Buddhist Sabbath (Uposatha) days in a given Gregorian year.
+
+        Args:
+            year:
+                The Gregorian year.
+
+        Returns:
+            A set of `date` objects representing all Buddhist Sabbath days in the specified
+            Gregorian year. Returns an empty set if the year is outside the supported range.
+        """
+        return set(_ThaiLunisolar._get_buddhist_sabbath_dates(year))
 
     def makha_bucha_date(self, year: int, calendar=None) -> date | None:
         """Calculate the estimated Gregorian date of Makha Bucha.
