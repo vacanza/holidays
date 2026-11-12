@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-03-23 14:44+0200\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-13 04:04+0530\n"
+"Last-Translator: Ronnie <sarakularonnieezekiel@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -28,19 +28,28 @@ msgstr ""
 "X-Generator: Poedit 3.6\n"
 "X-Source-Language: fr\n"
 
-#. New Year's Day.
+#. New Year's Day:
 msgid "Jour de l'an"
 msgstr "New Year's Day"
 
+#. Easter as public holiday in france including overseas terriotroies: https://www.service-
+#. public.gouv.fr/particuliers/vosdroits/F24496 Article for Easter as public holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 #. Easter Monday.
 msgid "Lundi de Pâques"
 msgstr "Easter Monday"
 
-#. Pentecost Monday.
+#. Pentecost Monday. Pentecost Monday as public holiday in france and its overseas territories:
+#. https://www.service-public.gouv.fr/particuliers/vosdroits/F24496 Article for Pentecost monday as
+#. public holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 msgid "Lundi de Pentecôte"
 msgstr "Pentecost Monday"
 
-#. Labor Day.
+#. Labor Day. Labor day as public holiday in france including its oversesas territories:
+#. https://www.service-public.gouv.fr/particuliers/vosdroits/F24496 Article for labor day as public
+#. holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 msgid "Fête du Travail"
 msgstr "Labor Day"
 
@@ -52,18 +61,29 @@ msgstr "Labor and Social Concord Day"
 msgid "1er mai"
 msgstr "May Day"
 
-#. Victory Day.
+#. Victory Day. Victory day as public holiday in france and overseas territories:
+#. https://www.service-public.gouv.fr/particuliers/vosdroits/F24496 article for victory day as
+#. public holiday: https://www.defense.gouv.fr/terre/memoire/commemoration-du-8-mai-1945
 msgid "Fête de la Victoire"
 msgstr "Victory Day"
 
+#. Ascension days as public holiday of france and its overseas territories: https://www.service-
+#. public.gouv.fr/particuliers/vosdroits/F24496 Article of Ascension day as public holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 #. Ascension Day.
 msgid "Ascension"
 msgstr "Ascension Day"
 
+#. National day as public holiday in france and its overseas territories: https://www.service-
+#. public.gouv.fr/particuliers/vosdroits/F24496 Article for National day as public holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 #. National Day.
 msgid "Fête nationale"
 msgstr "National Day"
 
+#. Assumption Day as a public holiday in france and its overseas territories: https://www.service-
+#. public.gouv.fr/particuliers/vosdroits/F24496 Article for assumption Day as public holiday:
+#. https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 #. Assumption Day.
 msgid "Assomption"
 msgstr "Assumption Day"
@@ -93,6 +113,9 @@ msgid "Mi-Carême"
 msgstr "Mi-Careme"
 
 #. Abolition of Slavery.
+#. Abolition of Slavery. Law of 30 June 1983:
+#. https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000692257. Decree of 23 November 1983:
+#. https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000336997.
 msgid "Abolition de l'esclavage"
 msgstr "Abolition of Slavery"
 

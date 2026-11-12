@@ -113,22 +113,21 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_public_holidays(self):
         # Established on March 28th, 1810.
         if self._year >= 1811:
-            # New Year's Day:
             #January 1 as public holiday in france including overseas territories:
             #https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
             #establishment of january 1 as a public holiday:
             #https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033019902
 
+            # New Year's Day:
             self._add_new_years_day(tr("Jour de l'an"))
 
         # Established on March 8th, 1886.
         if self._year >= 1886:
-            # Easter Monday.
             # Easter as public holiday in france including overseas terriotroies:
             #https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
             #Article for Easter as public holiday:
             #https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
-
+            # Easter Monday.
             self._add_easter_monday(tr("Lundi de Pâques"))
 
             # Removed on June 30th, 2004.
@@ -174,54 +173,52 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             #https://www.defense.gouv.fr/terre/memoire/commemoration-du-8-mai-1945
             self._add_world_war_two_victory_day(tr("Fête de la Victoire"))
 
-        # Ascension Day.
         # Ascension days as public holiday of france and its overseas territories:
         #https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
         # Article of Ascension day as public holiday:
         #https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
-
+        # Ascension Day.
         self._add_ascension_thursday(tr("Ascension"))
 
         # Established on July 6th, 1880.
         if self._year >= 1880:
-            # National Day.
             # National day as public holiday in france and its overseas territories:
             # https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
             # Article for National day as public holiday:
             # https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
-
+            # National Day.
             self._add_holiday_jul_14(tr("Fête nationale"))
-
-        # Assumption Day.
         # Assumption Day as a public holiday in france and its overseas territories:
         # https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
         # Article for assumption Day as public holiday:
         # https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
-
+        # Assumption Day.
         self._add_assumption_of_mary_day(tr("Assomption"))
 
-        # All Saints' Day.
         # All Saints day as public holiday in france and its overseas territories:
         # https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
         # Article for All saints day as public holiday:
         # https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
 
+        # All Saints' Day.
         self._add_all_saints_day(tr("Toussaint"))
 
         # Established on October 24th, 1922.
         if self._year >= 1922:
-            # Armistice Day.
             # Armistice day as a public holiday in france and its overseas territories:
             # https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
             # Article for Armistice Day as public holiday
             # https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
+
+            # Armistice Day.
             self._add_remembrance_day(tr("Armistice"))
 
-        # Christmas Day.
         # Christmas Day as public holiday of france and its overseas territories:
         # https://www.service-public.gouv.fr/particuliers/vosdroits/F24496
         # Article for christmas as public holiday:
         # https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000033008126/2026-01-01
+
+        # Christmas Day.
         self._add_christmas_day(tr("Noël"))
 
         match self.subdiv:
