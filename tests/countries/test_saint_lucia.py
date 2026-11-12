@@ -34,14 +34,15 @@ class TestSaintLucia(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_new_years_holiday(self):
-        self.assertHolidayName("New Year's Holiday", (f"{year}-01-02" for year in self.full_range))
+        name = "New Year's Holiday"
+        self.assertHolidayName(name, (f"{year}-01-02" for year in self.full_range))
         obs_dts = (
             "2000-01-03",
             "2005-01-03",
             "2011-01-03",
             "2022-01-03",
         )
-        self.assertHolidayName("New Year's Holiday (observed)", obs_dts)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
@@ -146,7 +147,6 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_christmas_day(self):
         name = "Christmas Day"
         self.assertHolidayName(name, (f"{year}-12-25" for year in self.full_range))
-
         obs_dts = (
             "2005-12-27",
             "2011-12-27",
@@ -159,7 +159,6 @@ class TestSaintLucia(CommonCountryTests, TestCase):
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-
         obs_dts = (
             "2004-12-27",
             "2010-12-27",

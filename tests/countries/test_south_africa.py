@@ -164,6 +164,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         obs_dts = (
             "2008-04-28",
             "2014-04-28",
+            "2025-04-28",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
@@ -175,6 +176,7 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         obs_dts = (
             "2013-06-17",
             "2019-06-17",
+            "2024-06-17",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
