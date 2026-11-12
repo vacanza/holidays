@@ -10,8 +10,9 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars.gregorian import MAY
 from holidays.constants import PUBLIC
-from holidays.countries.indonesia import Indonesia
+from holidays.countries.indonesia import Indonesia, IndonesiaStaticHolidays
 from holidays.helpers import tr
 
 
@@ -23,6 +24,8 @@ class IndonesiaStockExchange(Indonesia):
     weekends are excluded.
 
     References:
+        * [2020](http://vintra.co.id/news_file/Pengumuman_Perubahan_Libur_Bursa_2020.pdf)
+        * [2020 December changes](https://vibiznews.com/index.php/2020/12/03/bei-ubah-kalender-libur-hari-bursa-desember-menjadi-19-hari/)
         * [2021](https://market.bisnis.com/read/20210622/7/1408503/update-kalender-bursa-2021-tanggal-24-desember-jadi-hari-bursa)
         * [2022](https://web.archive.org/web/20261107155552/https://www.idx.co.id/StaticData/Annoder/Announcement/2022/4/11/241191/1.%20pengumuman-perubahan-kalender-libur-bursa-tahun-2022.pdf)
         * [2023](https://web.archive.org/web/20230531203020/https://utrade.co.id/ViewImportantNotice.aspx?idNotice=1091)
@@ -38,7 +41,12 @@ class IndonesiaStockExchange(Indonesia):
     market = "XIDX"
     parent_entity = Indonesia
     supported_categories: tuple[str, ...] = (PUBLIC,)  # type: ignore[assignment]
-    start_year = 2021
+    start_year = 2020
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            *args, static_holidays_classes=(IndonesiaStockExchangeStaticHolidays,), **kwargs
+        )
 
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
@@ -60,3 +68,16 @@ class XIDX(IndonesiaStockExchange):
 
 class IDX(IndonesiaStockExchange):
     pass
+
+
+class IndonesiaStockExchangeStaticHolidays:
+    """Indonesia Stock Exchange (IDX) special holidays.
+
+    References:
+        * [2020-05-22](https://www.cnbcindonesia.com/news/20200521104119-4-160033/bi-dan-bursa-besok-libur-pns-dan-bumn-tetap-masuk)
+    """
+
+    special_public_holidays = {
+        # The joint holiday was cancelled, but IDX and Bank Indonesia stayed closed.
+        2020: (MAY, 22, IndonesiaStaticHolidays.eid_al_fitr_joint_holiday),
+    }

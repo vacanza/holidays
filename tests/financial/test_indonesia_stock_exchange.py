@@ -27,6 +27,10 @@ class TestIndonesiaStockExchange(CommonFinancialTests, TestCase):
 
     def test_joint_holidays(self):
         self.assertHoliday(
+            "2020-08-21",
+            "2020-10-28",
+            "2020-10-30",
+            "2020-12-24",
             "2021-05-12",
             "2022-04-29",
             "2022-05-04",
@@ -43,6 +47,9 @@ class TestIndonesiaStockExchange(CommonFinancialTests, TestCase):
             "2027-03-25",
         )
 
+    def test_special_holidays(self):
+        self.assertHolidayName("Cuti Bersama Hari Raya Idul Fitri", "2020-05-22")
+
     def test_exchange_holiday(self):
         name = "Libur Bursa"
         years_absent = {2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
@@ -50,6 +57,31 @@ class TestIndonesiaStockExchange(CommonFinancialTests, TestCase):
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
         self.assertNoHolidayName(name, years_absent)
+
+    def test_2020(self):
+        self.assertHolidaysInYear(
+            2020,
+            ("2020-01-01", "Tahun Baru Masehi"),
+            ("2020-03-25", "Hari Suci Nyepi"),
+            ("2020-04-10", "Wafat Yesus Kristus"),
+            ("2020-05-01", "Hari Buruh Internasional"),
+            ("2020-05-07", "Hari Raya Waisak"),
+            ("2020-05-21", "Kenaikan Yesus Kristus"),
+            ("2020-05-22", "Cuti Bersama Hari Raya Idul Fitri"),
+            ("2020-05-25", "Hari kedua dari Hari Raya Idul Fitri"),
+            ("2020-06-01", "Hari Lahir Pancasila"),
+            ("2020-07-31", "Hari Raya Idul Adha"),
+            ("2020-08-17", "Hari Kemerdekaan Republik Indonesia"),
+            ("2020-08-20", "Tahun Baru Islam"),
+            ("2020-08-21", "Cuti Bersama Tahun Baru Islam"),
+            ("2020-10-28", "Cuti Bersama Maulid Nabi Muhammad"),
+            ("2020-10-29", "Maulid Nabi Muhammad"),
+            ("2020-10-30", "Cuti Bersama Maulid Nabi Muhammad"),
+            ("2020-12-09", "Hari Pemilihan Kepala Daerah"),
+            ("2020-12-24", "Cuti Bersama Hari Raya Natal"),
+            ("2020-12-25", "Hari Raya Natal"),
+            ("2020-12-31", "Libur Bursa"),
+        )
 
     def test_2021(self):
         self.assertHolidaysInYear(
