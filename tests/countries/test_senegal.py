@@ -38,7 +38,7 @@ class TestSenegal(CommonCountryTests, TestCase):
     def test_independence_day(self):
         self.assertHolidayName(
             "Fête de l'Indépendance",
-            (f"{year}-07-14" for year in range(1964, 1975)),
+            (f"{year}-07-14" for year in range(self.start_year, 1975)),
             (f"{year}-04-04" for year in range(1975, self.end_year)),
         )
 
