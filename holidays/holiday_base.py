@@ -1527,7 +1527,11 @@ class HolidaySum(HolidayBase):
             self.supported_languages = (value,) if value else ()
             self.holidays = [copy.deepcopy(operand) for operand in self.holidays]
             for operand in self.holidays:
+                previous_holidays = dict(operand)
                 operand.language = value
+                for dt, name in previous_holidays.items():
+                    if dt not in operand:
+                        operand[dt] = name
 
         super().__setattr__(key, value)
 

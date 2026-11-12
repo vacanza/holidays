@@ -424,6 +424,16 @@ class TestReassignment(TestCase):
         self.assertEqual(hs_l10n.supported_languages, ("uk",))
         self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day; Новий рік")
 
+        hb_custom = HolidayBase()
+        hb_custom["2020-02-03"] = "Custom Holiday"
+        hs_custom = UA(years=2020, language="uk") + hb_custom
+        self.assertEqual(hs_custom["2020-01-01"], "Новий рік")
+        self.assertEqual(hs_custom["2020-02-03"], "Custom Holiday")
+
+        hs_custom.language = "en_US"
+        self.assertEqual(hs_custom["2020-01-01"], "New Year's Day")
+        self.assertEqual(hs_custom["2020-02-03"], "Custom Holiday")
+
 
 class TestDeprecationWarnings(TestCase):
     def test_prov_deprecation(self):
