@@ -26,6 +26,8 @@ class Uzbekistan(ObservedHolidayBase, InternationalHolidays, IslamicHolidays, St
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Uzbekistan>
         * [Labor Code 21.12.1995](https://web.archive.org/web/20250422170827/https://lex.uz/docs/-142859)
         * [Labor Code 28.10.2022](https://web.archive.org/web/20250424164306/https://lex.uz/docs/-6257288)
+        * [Presidential Resolution PQ-106 of 17.03.2026](https://web.archive.org/web/20261111171325/https://lex.uz/uz/docs/-8090629)
+        * [Presidential Resolution PQ-194 of 20.05.2026](https://web.archive.org/web/20261111171348/https://lex.uz/uz/docs/-8212928)
     """
 
     country = "UZ"
@@ -113,7 +115,7 @@ class UZB(Uzbekistan):
 
 
 class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2006, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2006, 2026)
     EID_AL_ADHA_DATES = {
         2006: ((JAN, 10), (DEC, 30)),
         2007: (DEC, 19),
@@ -121,7 +123,7 @@ class UzbekistanIslamicHolidays(_CustomIslamicHolidays):
         2016: (SEP, 12),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2006, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2006, 2026)
     EID_AL_FITR_DATES = {
         2009: (SEP, 21),
         2011: (AUG, 31),
