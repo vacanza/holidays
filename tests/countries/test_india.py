@@ -982,9 +982,7 @@ class TestIndia(CommonCountryTests, TestCase):
                 )
                 self.assertHolidayName(name, holidays, dts)
                 self.assertHolidayName(name, holidays, subdiv_range)
-                self.assertNoHolidayName(
-                    name, holidays, set(self.full_range) - set(subdiv_range)
-                )
+                self.assertNoHolidayName(name, holidays, set(self.full_range) - set(subdiv_range))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -1058,9 +1056,7 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name, dts_ka, subdivs={"KA"})
         self.assertHolidayName(name, self.subdiv_holidays["KA"], "2021-11-03")
         self.assertNoHolidayName(name, self.subdiv_holidays["KA"], "2021-11-04")
-        self.assertHolidayName(
-            "Diwali (Deepavali)", self.subdiv_holidays["KA"], "2021-11-04"
-        )
+        self.assertHolidayName("Diwali (Deepavali)", self.subdiv_holidays["KA"], "2021-11-04")
 
     def test_govardhan_puja(self):
         name = "Govardhan Puja"
