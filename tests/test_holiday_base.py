@@ -344,6 +344,26 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
         self.assertIn("2024-01-01", hb)
 
+    def test_language(self):
+        ua = UA(years=2020)
+        self.assertIsNone(ua.language)
+        self.assertEqual(ua["2020-01-01"], "Новий рік")
+
+        ua.language = "en_US"
+        self.assertEqual(ua.language, "en_US")
+        self.assertEqual(ua["2020-01-01"], "New Year's Day")
+        self.assertEqual(ua["2021-01-01"], "New Year's Day")
+        self.assertEqual(ua, UA(years=(2020, 2021), language="en_US"))
+
+        ua.language = None
+        self.assertIsNone(ua.language)
+        self.assertEqual(ua["2020-01-01"], "Новий рік")
+        self.assertEqual(ua["2021-01-01"], "Новий рік")
+
+        ua_empty = UA()
+        ua_empty.language = "en_US"
+        self.assertEqual(ua_empty["2020-01-01"], "New Year's Day")
+
     def test_years(self):
         hb = TestReassignment.CustomClass(years=2024)
         self.assertIn("2024-01-01", hb)

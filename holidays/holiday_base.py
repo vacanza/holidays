@@ -740,7 +740,14 @@ class HolidayBase(dict[date, str]):
         # Re-populate the holidays for the attributes the constructor accepts,
         # as if they had been given to it. Skipped while the object is still
         # being built, where __init__ populates them itself.
-        if getattr(self, "_initialized", False) and key in {"categories", "observed", "years"}:
+        if getattr(self, "_initialized", False) and key in {
+            "categories",
+            "language",
+            "observed",
+            "years",
+        }:
+            if key == "language":
+                self._init_translation()
             self.clear()
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
