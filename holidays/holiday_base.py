@@ -748,6 +748,8 @@ class HolidayBase(dict[date, str]):
         }:
             if key == "language":
                 self._init_translation()
+                for operand in getattr(self, "holidays", ()):
+                    operand.language = value
             self.clear()
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
@@ -825,7 +827,7 @@ class HolidayBase(dict[date, str]):
     def _init_translation(self) -> None:
         """Initialize translation function based on language settings."""
         supported_languages = set(self.supported_languages)
-        if self._entity_code is not None:
+        if isinstance(self._entity_code, str) and not hasattr(self, "holidays"):
             fallback = self.language not in supported_languages
             languages = [self.language] if self.language in supported_languages else None
             locale_directory = str(Path(__file__).with_name("locale"))

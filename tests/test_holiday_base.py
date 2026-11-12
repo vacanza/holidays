@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import os
 import pickle
 from datetime import date, datetime, timedelta
-from unittest import TestCase
+from unittest import TestCase, mock
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
@@ -344,6 +345,7 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
         self.assertIn("2024-01-01", hb)
 
+    @mock.patch.dict(os.environ, {"LANG": "", "LANGUAGE": "", "LC_ALL": "", "LC_MESSAGES": ""})
     def test_language(self):
         ua = UA(years=2020)
         self.assertIsNone(ua.language)
@@ -405,6 +407,13 @@ class TestReassignment(TestCase):
         hs.years = 2025
         self.assertIn("2024-01-01", hs)
         self.assertIn("2025-01-01", hs)
+
+        hs_l10n = UA(years=2020, language="en_US") + US(years=2020, language="en_US")
+        self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day")
+        hs_l10n.language = "uk"
+        self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day; Новий рік")
+        hs_l10n.language = "en_US"
+        self.assertEqual(hs_l10n["2020-01-01"], "New Year's Day")
 
 
 class TestDeprecationWarnings(TestCase):
