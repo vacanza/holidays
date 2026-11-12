@@ -83,6 +83,7 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
 
     def test_juneteenth_national_independence_day(self):
         name = "Juneteenth National Independence Day"
+        name_observed = f"{name} (observed)"
         self.assertNonObservedHolidayName(
             name, (f"{year}-06-19" for year in range(2021, self.end_year))
         )
@@ -91,12 +92,18 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
             "2022-06-20",
             "2033-06-20",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-        self.assertNoHoliday("2021-06-18", "2027-06-18")
+        no_obs_dts = (
+            "2021-06-18",
+            "2027-06-18",
+        )
+        self.assertNoHolidayName(name_observed, no_obs_dts)
+        self.assertNoHoliday(no_obs_dts)
 
     def test_independence_day(self):
         name = "Independence Day"
+        name_observed = f"{name} (observed)"
         self.assertNonObservedHolidayName(name, (f"{year}-07-04" for year in self.full_range))
         obs_dts = (
             "2004-07-05",
@@ -104,9 +111,16 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
             "2021-07-05",
             "2027-07-05",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-        self.assertNoHoliday("2009-07-03", "2015-07-03", "2020-07-03", "2026-07-03")
+        no_obs_dts = (
+            "2009-07-03",
+            "2015-07-03",
+            "2020-07-03",
+            "2026-07-03",
+        )
+        self.assertNoHolidayName(name_observed, no_obs_dts)
+        self.assertNoHoliday(no_obs_dts)
 
     def test_labor_day(self):
         name = "Labor Day"
@@ -170,6 +184,7 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
+        name_observed = f"{name} (observed)"
         self.assertNonObservedHolidayName(name, (f"{year}-12-25" for year in self.full_range))
         obs_dts = (
             "2005-12-26",
@@ -177,9 +192,16 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
             "2016-12-26",
             "2022-12-26",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertHolidayName(name_observed, obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
-        self.assertNoHoliday("2004-12-24", "2010-12-24", "2021-12-24", "2027-12-24")
+        no_obs_dts = (
+            "2004-12-24",
+            "2010-12-24",
+            "2021-12-24",
+            "2027-12-24",
+        )
+        self.assertNoHolidayName(name_observed, no_obs_dts)
+        self.assertNoHoliday(no_obs_dts)
 
     def test_2025(self):
         self.assertHolidaysInYear(
