@@ -14,7 +14,12 @@ from holidays.calendars.gregorian import JAN, JUN, JUL, SEP, OCT, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NONE,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
 class ChicagoMercantileExchange(
@@ -63,13 +68,15 @@ class ChicagoMercantileExchange(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day(tr("New Year's Day")), rule=SUN_TO_NEXT_MON)
+        self._move_holiday(
+            self._add_new_years_day(tr("New Year's Day")), rule=SAT_TO_NONE + SUN_TO_NEXT_MON
+        )
 
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
         # Independence Day.
-        self._move_holiday(self._add_holiday_jul_4(tr("Independence Day")), rule=SUN_TO_NEXT_MON)
+        self._move_holiday(self._add_holiday_jul_4(tr("Independence Day")))
 
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
@@ -107,7 +114,7 @@ class ChicagoMercantileExchange(
                 )
             )
 
-        if self._is_weekday(JUL, 3):
+        if self._is_weekday(JUL, 3) and self._is_weekday(JUL, 4):
             self._add_holiday_jul_3(
                 # Day before Independence Day.
                 self._format_holiday_name(minor_pause_label, tr("Day before Independence Day"))

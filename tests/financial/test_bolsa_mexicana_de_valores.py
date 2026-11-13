@@ -25,7 +25,19 @@ class TestBolsaMexicanaDeValores(CommonFinancialTests, TestCase):
         self.assertHoliday("2010-09-17")
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in self.full_range))
+        name = "Año Nuevo"
+        self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        self.assertHolidayName(
+            name,
+            "2020-01-01",
+            "2021-01-01",
+            "2024-01-01",
+            "2025-01-01",
+        )
+        self.assertNoHoliday(
+            "2022-01-01",
+            "2023-01-01",
+        )
 
     def test_constitution_day(self):
         name = "Día de la Constitución"

@@ -37,8 +37,10 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
 
     def test_new_years_day(self):
         name = "New Year's Day"
+        years_sat = {2000, 2005, 2011, 2022, 2028, 2033, 2039, 2050}
         self.assertNonObservedHolidayName(name, (f"{year}-01-01" for year in self.full_range))
-        self.assertHolidayName(name, self.full_range)
+        self.assertHolidayName(name, (year for year in self.full_range if year not in years_sat))
+        self.assertNoHolidayName(name, years_sat)
         self.assertHolidayName(
             name,
             "2012-01-02",
@@ -47,8 +49,11 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         )
         self.assertNoHoliday(
             "2004-12-31",
+            "2005-01-01",
             "2010-12-31",
+            "2011-01-01",
             "2021-12-31",
+            "2022-01-01",
         )
 
     def test_dr_martin_luther_king_jr_day(self):
@@ -173,14 +178,12 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
         self.assertHolidayName(
             name,
             "2004-07-05",
+            "2009-07-03",
             "2010-07-05",
+            "2015-07-03",
+            "2020-07-03",
             "2021-07-05",
-        )
-        self.assertNoHolidayName(
-            name,
-            "2008-07-03",
-            "2014-07-03",
-            "2025-07-03",
+            "2026-07-03",
         )
 
     def test_day_before_independence_day(self):
@@ -193,21 +196,19 @@ class TestChicagoMercantileExchange(CommonFinancialTests, TestCase):
             "2001-07-03",
             "2002-07-03",
             "2007-07-03",
-            "2009-07-03",
+            "2012-07-03",
         )
-        self.assertNoHalfDayHolidayName(name_1030, range(2015, self.end_year))
+        self.assertNoHalfDayHolidayName(name_1030, 2009, range(2015, self.end_year))
         self.assertHalfDayHolidayName(
             name_1200,
-            "2015-07-03",
             "2017-07-03",
             "2018-07-03",
             "2019-07-03",
-            "2020-07-03",
             "2023-07-03",
             "2024-07-03",
             "2025-07-03",
         )
-        self.assertNoHalfDayHolidayName(name_1200, range(self.start_year, 2015))
+        self.assertNoHalfDayHolidayName(name_1200, range(self.start_year, 2015), 2015, 2020, 2026)
 
     def test_labor_day(self):
         name_1030 = "Labor Day (markets pause at 10:30am CT)"

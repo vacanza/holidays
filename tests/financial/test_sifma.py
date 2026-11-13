@@ -55,9 +55,13 @@ class TestSIFMA(CommonFinancialTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
         no_obs_dts = (
             "1999-12-31",
+            "2000-01-01",
             "2004-12-31",
+            "2005-01-01",
             "2010-12-31",
+            "2011-01-01",
             "2021-12-31",
+            "2022-01-01",
         )
         self.assertNoHolidayName(name_observed, no_obs_dts)
         self.assertNoHoliday(no_obs_dts)
@@ -184,9 +188,13 @@ class TestSIFMA(CommonFinancialTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
         no_obs_dts = (
             "2000-11-10",
+            "2000-11-11",
             "2006-11-10",
+            "2006-11-11",
             "2017-11-10",
+            "2017-11-11",
             "2023-11-10",
+            "2023-11-11",
         )
         self.assertNoHolidayName(name_observed, no_obs_dts)
         self.assertNoHoliday(no_obs_dts)

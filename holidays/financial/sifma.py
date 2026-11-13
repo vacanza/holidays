@@ -16,7 +16,12 @@ from holidays.calendars.gregorian import JAN, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
-from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_PREV_FRI, SUN_TO_NEXT_MON
+from holidays.observed_holiday_base import (
+    ObservedHolidayBase,
+    SAT_TO_NONE,
+    SAT_TO_PREV_FRI,
+    SUN_TO_NEXT_MON,
+)
 
 
 class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
@@ -61,7 +66,9 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._move_holiday(self._add_new_years_day(tr("New Year's Day")), rule=SUN_TO_NEXT_MON)
+        self._move_holiday(
+            self._add_new_years_day(tr("New Year's Day")), rule=SAT_TO_NONE + SUN_TO_NEXT_MON
+        )
 
         # Martin Luther King Jr. Day.
         self._add_holiday_3rd_mon_of_jan(tr("Martin Luther King Jr. Day"))
@@ -92,7 +99,9 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._add_holiday_2nd_mon_of_oct(tr("Columbus Day"))
 
         # Veterans Day.
-        self._move_holiday(self._add_remembrance_day(tr("Veterans Day")), rule=SUN_TO_NEXT_MON)
+        self._move_holiday(
+            self._add_remembrance_day(tr("Veterans Day")), rule=SAT_TO_NONE + SUN_TO_NEXT_MON
+        )
 
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov(tr("Thanksgiving Day"))
