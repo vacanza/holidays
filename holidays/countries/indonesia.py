@@ -77,7 +77,9 @@ class Indonesia(
         IslamicHolidays.__init__(
             self, cls=IndonesiaIslamicHolidays, show_estimated=islamic_show_estimated
         )
-        StaticHolidays.__init__(self, cls=IndonesiaStaticHolidays)
+        StaticHolidays.__init__(
+            self, (IndonesiaStaticHolidays, *kwargs.pop("static_holidays_classes", ()))
+        )
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
