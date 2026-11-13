@@ -131,9 +131,10 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday (Orthodox).
             self._add_good_friday(tr("Good Friday (Orthodox)"), calendar=JULIAN_REVISED_CALENDAR)
 
-            # Easter Monday (Orthodox).
             self._add_easter_monday(
-                tr("Easter Monday (Orthodox)"), calendar=JULIAN_REVISED_CALENDAR
+                # Easter Monday (Orthodox).
+                tr("Easter Monday (Orthodox)"),
+                calendar=JULIAN_REVISED_CALENDAR,
             )
 
         # Pentecost Monday.
