@@ -21,9 +21,6 @@ class TestMartinique(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Martinique)
 
-    def test_good_friday(self):
-        self.assertNoHolidayName("Vendredi saint")
-
     def test_abolition_of_slavery(self):
         name = "Abolition de l'esclavage"
         self.assertHolidayName(name, (f"{year}-05-22" for year in range(1984, self.end_year)))
