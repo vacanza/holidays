@@ -247,6 +247,25 @@ class TestArgs(TestCase):
         self.assertSetEqual(HolidayBase(years=2015.0).years, {2015})
 
 
+class TestCopy(TestCase):
+    def test_copy_years_are_independent(self):
+        original = US()
+        copied = original.copy()
+
+        self.assertIsNot(original.years, copied.years)
+
+        self.assertEqual(original.get("2024-07-04"), "Independence Day")
+        self.assertNotIn(2024, copied.years)
+        self.assertEqual(copied.get("2024-07-04"), "Independence Day")
+
+    def test_copy_mutable_configuration_is_independent(self):
+        original = US()
+        copied = original.copy()
+
+        self.assertIsNot(original.categories, copied.categories)
+        self.assertIsNot(original.weekend_workdays, copied.weekend_workdays)
+
+
 class TestCategories(TestCase):
     class CustomCategoryClass(HolidayBase):
         country = "CCC"
