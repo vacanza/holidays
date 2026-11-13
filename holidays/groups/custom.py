@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from collections.abc import Iterable
-from datetime import date
 
 from holidays.helpers import _normalize_tuple
 
@@ -25,7 +24,6 @@ class StaticHolidays:
     When multiple classes are provided, `special_*` dictionaries are merged by
     year (entries are appended). Each dictionary is shallow-copied onto the
     instance so the source class attributes are never mutated.
-    `weekend_workdays` is derived once after all sources have been loaded.
     """
 
     def __init__(self, cls: type | Iterable[type]) -> None:
@@ -60,19 +58,8 @@ class StaticHolidays:
                 ):
                     setattr(self, attribute_name, value)
 
-        # Populate substituted holidays from adjacent years.
-        # Always rebuild from special_public_holidays (full scan below); prior
-        # values are not preserved because they are fully reconstructible here.
-        self.weekend_workdays: set[date] = set()
         for special_public_holidays in getattr(self, "special_public_holidays", {}).values():
             for special_public_holiday in _normalize_tuple(special_public_holidays):
                 # Normally, special holiday is a 3 item tuple: (month, day, name).
-                if len(special_public_holiday) < 4:  # Skip non-substituted holidays.
-                    continue
-
-                # Handle cross-year substituted holidays.
-                if len(special_public_holiday) == 5:  # The fifth element is the year.
-                    _, _, from_month, from_day, from_year = special_public_holiday
-                    self.weekend_workdays.add(date(from_year, from_month, from_day))
-
-                self.has_substituted_holidays = True
+                if len(special_public_holiday) >= 4:
+                    self.has_substituted_holidays = True

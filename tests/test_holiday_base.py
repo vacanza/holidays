@@ -33,6 +33,7 @@ class EntityStubStaticHolidays:
             (JAN, 7, JAN, 12),
             (JAN, 8, JAN, 13, 1991),
         ),
+        1992: (JAN, 2, DEC, 28, 1991),
         2024: (
             (FEB, 19, FEB, 24),
             (OCT, 7, OCT, 12),
@@ -349,6 +350,11 @@ class TestReassignment(TestCase):
         hb.categories = (PUBLIC, SCHOOL)
         self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
         self.assertIn("2024-01-01", hb)
+
+        hb_subst = CountryStub1(years=2024, expand=False)
+        self.assertTrue(hb_subst.is_working_day("2024-02-24"))
+        hb_subst.categories = SCHOOL
+        self.assertFalse(hb_subst.is_working_day("2024-02-24"))
         self.assertIn("2024-05-01", hb)
 
         # Unsupported categories are rejected and the object is left untouched.
@@ -378,6 +384,11 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.years, {2024, 2026})
         self.assertIn("2024-05-01", hb)
         self.assertIn("2026-05-01", hb)
+
+        hb_subst = CountryStub1(years=2024, expand=False)
+        self.assertTrue(hb_subst.is_working_day("2024-02-24"))
+        hb_subst.years = 2025
+        self.assertFalse(hb_subst.is_working_day("2024-02-24"))
 
     def test_years_on_empty_object(self):
         # An object without holidays yet is populated when years are assigned,
@@ -1509,6 +1520,12 @@ class TestWorkdays(TestCase):
 
         self.assertFalse(self.hb.is_working_day("2024-10-07"))  # substituted from Oct 12 (SAT).
         self.assertFalse(self.hb.is_working_day("2024-10-12"))  # Columbus Day holiday.
+
+        hb_1991 = CountryStub1(years=1991, expand=False)
+        self.assertTrue(hb_1991.is_working_day("1991-12-28"))
+
+        hb_1991_school = CountryStub1(years=1991, categories=SCHOOL, expand=False)
+        self.assertFalse(hb_1991_school.is_working_day("1991-12-28"))
 
     def test_get_nth_working_day(self):
         self.assertEqual(self.hb.get_nth_working_day("2024-01-04", 0), date(2024, 1, 4))
