@@ -297,7 +297,7 @@ Some countries and markets accept additional options, e.g. whether Sundays are i
 holidays in Norway and Sweden, or whether estimated Islamic holiday dates are labeled as such.
 To check which options an entity supports and their default values:
 
-``` python
+```pycon
 >>> holidays.Sweden.get_supported_options()
 {'include_sundays': False}
 >>> holidays.SaudiArabia.get_supported_options()
@@ -309,9 +309,9 @@ To check which options an entity supports and their default values:
 These options can be passed to `country_holidays()` and `financial_holidays()` as keyword
 arguments:
 
-``` python
->>> se_holidays = holidays.country_holidays('SE', years=2026, include_sundays=True)
->>> se_holidays.get('2026-01-04')
+```pycon
+>>> se_holidays = holidays.country_holidays("SE", years=2026, include_sundays=True)
+>>> se_holidays.get("2026-01-04")
 'Söndag'
 ```
 
