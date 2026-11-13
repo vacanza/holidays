@@ -60,6 +60,11 @@ class TaiwanStockExchange(Taiwan):
             dt = self._get_next_workday(dt, -1)
             self._add_holiday(name, dt)
 
+        # Starting in 2019, TWSE no longer holds trading or settlement on
+        # national Saturday make-up workdays.
+        if self._year >= 2019:
+            self.weekend_workdays = {dt for dt in self.weekend_workdays if dt.year <= 2018}
+
 
 class XTAI(TaiwanStockExchange):
     pass
