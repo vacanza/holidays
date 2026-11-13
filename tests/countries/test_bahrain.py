@@ -39,6 +39,7 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2023-07-19",
             "2024-07-07",
             "2025-06-26",
+            "2026-06-16",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -46,18 +47,20 @@ class TestBahrain(CommonCountryTests, TestCase):
         name = "عاشوراء"
         self.assertHolidayName(
             name,
-            "2020-08-28",
             "2020-08-29",
-            "2021-08-17",
+            "2020-08-30",
             "2021-08-18",
-            "2022-08-07",
+            "2021-08-19",
             "2022-08-08",
+            "2022-08-09",
             "2023-07-28",
             "2023-07-29",
-            "2024-07-15",
             "2024-07-16",
-            "2025-07-04",
+            "2024-07-17",
             "2025-07-05",
+            "2025-07-06",
+            "2026-06-25",
+            "2026-06-26",
         )
         years_ashura_twice_all = {1976, 2009, 2042}
         self.assertIslamicNoEstimatedHolidayNameCount(
@@ -75,6 +78,7 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2023-09-27",
             "2024-09-15",
             "2025-09-04",
+            "2026-08-25",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -100,6 +104,9 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2025-03-30",
             "2025-03-31",
             "2025-04-01",
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
         )
         years_eid_al_fitr_twice_all = {2000, 2033}
         self.assertIslamicNoEstimatedHolidayNameCount(
@@ -129,6 +136,9 @@ class TestBahrain(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
             "2025-06-08",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
         years_eid_al_adha_twice_all = {1974, 2039}
         self.assertIslamicNoEstimatedHolidayNameCount(
@@ -150,8 +160,8 @@ class TestBahrain(CommonCountryTests, TestCase):
             ("2022-07-10", "عيد الأضحى"),
             ("2022-07-11", "عيد الأضحى"),
             ("2022-07-30", "رأس السنة الهجرية"),
-            ("2022-08-07", "عاشوراء"),
             ("2022-08-08", "عاشوراء"),
+            ("2022-08-09", "عاشوراء"),
             ("2022-10-08", "المولد النبوي الشريف"),
             ("2022-12-16", "العيد الوطني"),
             ("2022-12-17", "العيد الوطني"),
