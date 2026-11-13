@@ -43,7 +43,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "de"
     # BGBl. Nr. 31/1933 became in effect on June 1st, 1933.
     start_year = 1934
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         "1",  # Burgenland.
         "2",  # Kärnten.
         "3",  # Niederösterreich.
@@ -81,7 +81,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wien": "9",
         "W": "9",
     }
-    supported_categories = (BANK, PROTESTANT, PUBLIC)
+    supported_categories: tuple[str, ...] = (BANK, PROTESTANT, PUBLIC)
     supported_languages = ("de", "en_US", "th", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
