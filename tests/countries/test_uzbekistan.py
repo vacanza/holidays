@@ -162,6 +162,7 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-04-21",
             "2024-04-10",
             "2025-03-30",
+            "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -177,6 +178,7 @@ class TestUzbekistan(CommonCountryTests, WorkingDayTests, TestCase):
             "2023-06-28",
             "2024-06-16",
             "2025-06-06",
+            "2026-05-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 

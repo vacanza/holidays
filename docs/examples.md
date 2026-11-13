@@ -291,6 +291,30 @@ Argentina categories: ('armenian', 'bank', 'government', 'hebrew', 'islamic', 'p
 For a comprehensive list of all available categories and their descriptions,
 see the [Holiday Categories](holiday_categories.md) documentation.
 
+## Entity-specific options
+
+Some countries and markets accept additional options, e.g. whether Sundays are included as
+holidays in Norway and Sweden, or whether estimated Islamic holiday dates are labeled as such.
+To check which options an entity supports and their default values:
+
+``` python
+>>> holidays.Sweden.get_supported_options()
+{'include_sundays': False}
+>>> holidays.SaudiArabia.get_supported_options()
+{'islamic_show_estimated': False}
+>>> holidays.UnitedStates.get_supported_options()
+{}
+```
+
+These options can be passed to `country_holidays()` and `financial_holidays()` as keyword
+arguments:
+
+``` python
+>>> se_holidays = holidays.country_holidays('SE', years=2026, include_sundays=True)
+>>> se_holidays.get('2026-01-04')
+'Söndag'
+```
+
 ## Working day-related calculations
 
 To check if the specified date is a working day:

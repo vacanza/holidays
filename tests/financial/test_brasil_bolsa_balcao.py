@@ -114,10 +114,34 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-20" for year in range(2024, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 2024))
 
+    def test_christmas_eve(self):
+        name = "Véspera de Natal"
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2018, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2018))
+
     def test_christmas_day(self):
         name = "Natal"
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(1922, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1922))
+
+    def test_last_business_day_of_year(self):
+        name = "Último dia útil do ano"
+        self.assertHolidayName(
+            name,
+            "2020-12-31",
+            "2021-12-31",
+            "2022-12-30",
+            "2023-12-29",
+            "2024-12-31",
+            "2025-12-31",
+            "2026-12-31",
+        )
+        self.assertNoHoliday(
+            "2022-12-31",
+            "2023-12-31",
+        )
+        self.assertHolidayName(name, range(2018, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2018))
 
     def test_2022(self):
         self.assertHolidays(
@@ -133,7 +157,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2022-10-12", "Nossa Senhora Aparecida"),
             ("2022-11-02", "Finados"),
             ("2022-11-15", "Proclamação da República"),
+            ("2022-12-24", "Véspera de Natal"),
             ("2022-12-25", "Natal"),
+            ("2022-12-30", "Último dia útil do ano"),
         )
 
     def test_l10n_default(self):
@@ -149,7 +175,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Nossa Senhora Aparecida"),
             ("2023-11-02", "Finados"),
             ("2023-11-15", "Proclamação da República"),
+            ("2023-12-24", "Véspera de Natal"),
             ("2023-12-25", "Natal"),
+            ("2023-12-29", "Último dia útil do ano"),
         )
 
     def test_l10n_en_us(self):
@@ -166,7 +194,9 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "Our Lady of Aparecida"),
             ("2023-11-02", "All Souls' Day"),
             ("2023-11-15", "Republic Proclamation Day"),
+            ("2023-12-24", "Christmas Eve"),
             ("2023-12-25", "Christmas Day"),
+            ("2023-12-29", "Last Business Day of the Year"),
         )
 
     def test_l10n_uk(self):
@@ -183,5 +213,7 @@ class TestBrasilBolsaBalcao(CommonFinancialTests, TestCase):
             ("2023-10-12", "День Богоматері Апаресіди"),
             ("2023-11-02", "День усіх померлих"),
             ("2023-11-15", "День проголошення республіки"),
+            ("2023-12-24", "Святий вечір"),
             ("2023-12-25", "Різдво Христове"),
+            ("2023-12-29", "Останній робочий день року"),
         )

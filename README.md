@@ -999,7 +999,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kosovo</td>
 <td>XK</td>
 <td></td>
-<td>en_US, <strong>sq</strong>, sr</td>
+<td>en_US, <strong>sq</strong>, sr, tr</td>
 <td></td>
 </tr>
 <tr>
@@ -1257,9 +1257,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Netherlands</td>
 <td>NL</td>
-<td></td>
+<td>Regions: Midden, Noord, Zuid</td>
 <td>en_US, fy, <strong>nl</strong>, th, uk</td>
-<td>OPTIONAL</td>
+<td>OPTIONAL, SCHOOL</td>
 </tr>
 <tr>
 <td>New Caledonia</td>
@@ -2007,6 +2007,13 @@ code when available. The following financial markets are available:
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
 <td><strong>en_US</strong>, gu, hi, mr</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Euronext</td>
+<td>ENX</td>
+<td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
+<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

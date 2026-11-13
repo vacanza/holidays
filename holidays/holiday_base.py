@@ -145,6 +145,33 @@ class HolidayBase(dict[date, str]):
     parent_entity: type["HolidayBase"] | None = None
     """Optional parent entity to reference as a base."""
 
+    def _normalize_categories(self, categories: CategoryArg | None) -> set[str]:
+        """Normalize and validate the given holiday categories.
+
+        Args:
+            categories:
+                Requested holiday categories.
+
+        Returns:
+            The normalized categories.
+
+        Raises:
+            ValueError:
+                If no category is given while `default_category` is not set, or if
+                one of the given categories is not supported by this entity.
+        """
+        normalized = _normalize_arguments(str, categories)
+        if not normalized:
+            if not self.default_category:
+                raise ValueError("Categories cannot be empty if `default_category` is not set.")
+
+            normalized = {self.default_category}
+
+        if unknown_categories := normalized.difference(self.supported_categories):
+            raise ValueError(f"Category is not supported: {', '.join(unknown_categories)}.")
+
+        return normalized
+
     def __init__(
         self,
         years: YearArg | None = None,
@@ -221,14 +248,7 @@ class HolidayBase(dict[date, str]):
         if self.default_category and self.default_category not in self.supported_categories:
             raise ValueError("The default category must be listed in supported categories.")
 
-        if not self.default_category and not categories:
-            raise ValueError("Categories cannot be empty if `default_category` is not set.")
-
-        categories = _normalize_arguments(str, categories) or {self.default_category}
-        if unknown_categories := categories.difference(  # type: ignore[union-attr]
-            self.supported_categories
-        ):
-            raise ValueError(f"Category is not supported: {', '.join(unknown_categories)}.")
+        categories = self._normalize_categories(categories)
 
         # Subdivision validation.
         if subdiv := subdiv or prov or state:
@@ -294,6 +314,8 @@ class HolidayBase(dict[date, str]):
         # Populate holidays.
         for year in self.years:
             self._populate(year)
+
+        self._initialized = True
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -622,11 +644,19 @@ class HolidayBase(dict[date, str]):
         return "holidays.HolidayBase()"
 
     def __setattr__(self, key: str, value: Any) -> None:
+        if key == "categories":
+            value = self._normalize_categories(value)
+        elif key == "years":
+            value = _normalize_arguments(int, value)
+
         dict.__setattr__(self, key, value)
 
-        if self and key in {"categories", "observed"}:
+        # Re-populate the holidays for the attributes the constructor accepts,
+        # as if they had been given to it. Skipped while the object is still
+        # being built, where __init__ populates them itself.
+        if getattr(self, "_initialized", False) and key in {"categories", "observed", "years"}:
             self.clear()
-            for year in self.years:  # Re-populate holidays for each year.
+            for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
 
     def __setitem__(self, key: DateLike, value: str) -> None:
@@ -642,6 +672,8 @@ class HolidayBase(dict[date, str]):
     def __setstate__(self, state: dict[str, Any]) -> None:
         """Restore the object's state after deserialization."""
         self.__dict__.update(state)
+        # States serialized before the attribute existed are already populated.
+        self._initialized = True
         self._init_translation()
 
     def __str__(self) -> str:
@@ -696,6 +728,25 @@ class HolidayBase(dict[date, str]):
             subdivision_aliases[subdivision].append(alias)
 
         return subdivision_aliases
+
+    @classmethod
+    def get_supported_options(cls) -> dict[str, Any]:
+        """Get entity-specific options.
+
+        These are the keyword-only arguments an entity accepts in addition to the
+        common ones (e.g. `include_sundays` for Sweden). They can also be passed to
+        [country_holidays()][holidays.utils.country_holidays] and
+        [financial_holidays()][holidays.utils.financial_holidays].
+
+        Returns:
+            A dictionary mapping option names to their default values.
+        """
+        options: dict[str, Any] = {}
+        for entity_cls in reversed(cls.__mro__):
+            if issubclass(entity_cls, HolidayBase) and (init := vars(entity_cls).get("__init__")):
+                options.update(init.__kwdefaults__ or {})
+
+        return options
 
     def _init_translation(self) -> None:
         """Initialize translation function based on language settings."""

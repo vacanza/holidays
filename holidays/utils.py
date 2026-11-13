@@ -25,6 +25,7 @@ import warnings
 from collections.abc import Iterable
 from datetime import date
 from functools import cache
+from typing import Any
 
 from holidays.calendars.gregorian import _timedelta
 from holidays.holiday_base import CategoryArg, HolidayBase
@@ -41,6 +42,7 @@ def country_holidays(
     state: str | None = None,
     language: str | None = None,
     categories: CategoryArg | None = None,
+    **options: Any,
 ) -> HolidayBase:
     """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
@@ -107,13 +109,22 @@ def country_holidays(
         categories:
             Requested holiday categories.
 
+        **options:
+            Country-specific options (e.g. `include_sundays` for Sweden), see
+            [get_supported_options()][holidays.holiday_base.HolidayBase.get_supported_options].
+            Unsupported options raise `ValueError`.
+
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `country`.
     """
     import holidays
 
     try:
-        return getattr(holidays, country)(
+        entity = getattr(holidays, country)
+        if options and (unknown_options := options.keys() - entity.get_supported_options().keys()):
+            raise ValueError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
+
+        return entity(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -122,6 +133,7 @@ def country_holidays(
             state=state,
             language=language,
             categories=categories,
+            **options,
         )
     except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
@@ -135,6 +147,7 @@ def financial_holidays(
     observed: bool = True,
     language: str | None = None,
     categories: CategoryArg | None = None,
+    **options: Any,
 ) -> HolidayBase:
     """Return a new dictionary-like [`HolidayBase`][holidays.holiday_base.HolidayBase] object.
 
@@ -194,19 +207,29 @@ def financial_holidays(
         categories:
             Requested holiday categories.
 
+        **options:
+            Market-specific options (e.g. `islamic_show_estimated` for XSAU), see
+            [get_supported_options()][holidays.holiday_base.HolidayBase.get_supported_options].
+            Unsupported options raise `ValueError`.
+
     Returns:
         A [`HolidayBase`][holidays.holiday_base.HolidayBase] object matching the `market`.
     """
     import holidays
 
     try:
-        return getattr(holidays, market)(
+        entity = getattr(holidays, market)
+        if options and (unknown_options := options.keys() - entity.get_supported_options().keys()):
+            raise ValueError(f"Option is not supported: {', '.join(sorted(unknown_options))}.")
+
+        return entity(
             years=years,
             subdiv=subdiv,
             expand=expand,
             observed=observed,
             language=language,
             categories=categories,
+            **options,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
