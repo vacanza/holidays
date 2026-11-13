@@ -12,7 +12,16 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JUN, AUG, NOV, DEC, FRI, _get_nth_weekday_from, _timedelta
+from holidays.calendars.gregorian import (
+    JUN,
+    SEP,
+    NOV,
+    DEC,
+    MON,
+    FRI,
+    _get_nth_weekday_from,
+    _timedelta,
+)
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.helpers import tr
@@ -205,7 +214,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
 
     def _populate_school_holidays(self):
         # 2018 is the first calendar year covered in full by the 2017 regulation.
-        if self.subdiv is None or self._year < 2018:
+        if self.subdiv is None or self._year <= 2017:
             return None
 
         # Two weeks from the Monday of the week assigned to the voivodeship. Announced only
@@ -233,31 +242,27 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolida
         # § 2 ust. 1 & 1a: classes end on the 1st Friday after Jun 20, moved back to the
         # Wednesday when the Thursday in between is a public holiday (Corpus Christi, since 2019).
         classes_end = _get_nth_weekday_from(1, FRI, date(self._year, JUN, 21))
-        if self._year >= 2019 and _timedelta(classes_end, -1) == _timedelta(
-            self._easter_sunday, +60
-        ):
+        if self._year >= 2019 and classes_end == _timedelta(self._easter_sunday, +61):
             classes_end = _timedelta(classes_end, -2)
         summer_break_start = _timedelta(classes_end, +1)
 
         # § 2 ust. 1 & § 3 ust. 1 pkt 4: ends on Aug 31, or the 1st Sunday of September when
         # Sep 1 falls on a Friday, Saturday, or Sunday (so classes start on the following Monday).
-        aug_31 = date(self._year, AUG, 31)
-        summer_break_end = (
-            _timedelta(aug_31, 6 - aug_31.weekday())
-            if self._is_thursday(aug_31) or self._is_friday(aug_31) or self._is_saturday(aug_31)
-            else aug_31
-        )
+        classes_start = date(self._year, SEP, 1)
+        if self._is_friday(classes_start) or self._is_weekend(classes_start):
+            classes_start = _get_nth_weekday_from(1, MON, classes_start)
+
         self._add_multiday_holiday(
             summer_break_start,
-            (summer_break_end - summer_break_start).days + 1,
+            (classes_start - summer_break_start).days,
             # Summer Break.
             name=tr("Ferie letnie"),
         )
 
         # Dec 23 (Dec 22 if that is a Monday) → Dec 31.
-        christmas_break_start = date(self._year, DEC, 22)
-        if not self._is_monday(christmas_break_start):
-            christmas_break_start = _timedelta(christmas_break_start, +1)
+        christmas_break_start = date(self._year, DEC, 23)
+        if self._is_tuesday(christmas_break_start):
+            christmas_break_start = _timedelta(christmas_break_start, -1)
         self._add_multiday_holiday(
             christmas_break_start,
             (date(self._year, DEC, 31) - christmas_break_start).days + 1,

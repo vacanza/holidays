@@ -394,15 +394,7 @@ class TestPoland(CommonCountryTests, TestCase):
             ),
             ("de", ("Winterferien", "Frühlingsferien", "Sommerferien", "Weihnachtsferien")),
             ("en_US", ("Winter Break", "Spring Break", "Summer Break", "Christmas Break")),
-            (
-                "uk",
-                (
-                    "Зимові канікули",
-                    "Весняні канікули",
-                    "Літні канікули",
-                    "Різдвяні канікули",
-                ),
-            ),
+            ("uk", ("Зимові канікули", "Весняні канікули", "Літні канікули", "Різдвяні канікули")),
         ):
             holidays = self.test_class(
                 subdiv="02", categories=SCHOOL, years=2026, language=language
