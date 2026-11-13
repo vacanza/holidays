@@ -1350,6 +1350,25 @@ class TestIndia(CommonCountryTests, TestCase):
         )
         self._assertHinduHolidayHelper(name, dts, subdivs={"TN"})
 
+    def test_tamil_nadu_pongal_holidays_2026(self):
+        holidays = self.subdiv_holidays["TN"]
+        expected_holidays = (
+            ("Pongal", "2026-01-15"),
+            ("Thiruvalluvar Day", "2026-01-16"),
+            ("Uzhavar Thirunal", "2026-01-17"),
+        )
+
+        for name, dt in expected_holidays:
+            self.assertHolidayName(name, holidays, dt)
+
+        old_dates = (
+            ("Pongal", "2026-01-14"),
+            ("Thiruvalluvar Day", "2026-01-15"),
+            ("Uzhavar Thirunal", "2026-01-16"),
+        )
+        for name, dt in old_dates:
+            self.assertNoHolidayName(name, holidays, dt)
+
     def test_gend_singh_shaheedi_diwas(self):
         name = "Gend Singh's Shaheedi Diwas"
         self.assertNoHolidayName(name)
@@ -4322,7 +4341,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "ஸ்ரீ வல்லபாச்சாரியார் ஜெயந்தி"),
             (
                 "2018-04-14",
-                "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி; பஹாக் பிஹு; புத்தாண்டு; மகா விஷுவ "
+                "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி; தமிழ்ப் புத்தாண்டு; பஹாக் பிஹு; மகா விஷுவ "
                 "சங்கராந்தி; மேஷாடி (தமிழ் புத்தாண்டு தினம்); விசு; வைசாகி; ஷப்-இ-மிராஜ் "
                 "(மதிப்பிடப்பட்டது)",
             ),
@@ -4415,7 +4434,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "குரு நானக் ஜெயந்தி; செங் குட் ஸ்னெம்; புட்டபர்த்தி சத்ய சாய் பாபா ஜெயந்தி"),
             ("2018-11-24", "குரு தேக் பகதூர் தியாகி தினம்"),
             ("2018-12-01", "பூர்வீக நம்பிக்கை நாள்; ஷஹீத் வீர் நாராயண் சிங்கின் ஷஹீதி தினம்"),
-            ("2018-12-03", "புனித பிரான்சிஸ் சவேரியார் திருநாள்; ராஜேந்திர பிரசாத் ஜெயந்தி; விஷ்வ திவ்யாங் திவஸ்"),
+            (
+                "2018-12-03",
+                "சர்வதேச மாற்றுத்திறனாளிகள் தினம்; புனித பிரான்சிஸ் சவேரியார் திருநாள்; ராஜேந்திர பிரசாத் ஜெயந்தி",
+            ),
             ("2018-12-08", "அன்னை மரியாவின் அமல உற்பவ திருவிழா"),
             ("2018-12-10", "தியாகிகள் தினம்"),
             ("2018-12-12", "பா டோகன் நெங்மின்ஜா சங்கமாவின் நினைவு நாள்"),

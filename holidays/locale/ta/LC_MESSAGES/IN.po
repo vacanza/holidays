@@ -774,7 +774,7 @@ msgstr "துர்காதாஸ் ரத்தோர் ஜெயந்த�
 
 #. International Day of Persons with Disabilities.
 msgid "Vishva Divyang Divas"
-msgstr "விஷ்வ திவ்யாங் திவஸ்"
+msgstr "சர்வதேச மாற்றுத்திறனாளிகள் தினம்"
 
 #. Maharishi Guru Gokuldas's Birthday.
 msgid "Maharshi Guru Gokuldas's Jayanti"
@@ -862,7 +862,7 @@ msgstr "விஷு (நாள் 2)"
 
 #. Tamil New Year.
 msgid "Puthandu"
-msgstr "புத்தாண்டு"
+msgstr "தமிழ்ப் புத்தாண்டு"
 
 #. Ayudha Puja.
 msgid "Ayudha Puja"
