@@ -313,9 +313,11 @@ class ObservedHolidayBase(HolidayBase):
                 holiday_name = self.tr(name)
                 observed_estimated_label = None
                 if estimated_label_text and estimated_label_text in holiday_name:
-                    holiday_name = holiday_name.replace(f"({estimated_label_text})", "").replace(
-                        f"（{estimated_label_text}）", ""
-                    ).strip()
+                    holiday_name = (
+                        holiday_name.replace(f"({estimated_label_text})", "")
+                        .replace(f"（{estimated_label_text}）", "")
+                        .strip()
+                    )
                     observed_estimated_label = self.tr(self.observed_estimated_label)
 
                 super()._add_holiday(

@@ -87,6 +87,7 @@ class Macau(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, MacauStaticHolidays)
+        # Systemic in-lieus starts in 2011.
         kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
 
