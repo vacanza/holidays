@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.61\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2024-10-15 20:48+0300\n"
-"PO-Revision-Date: 2024-11-08 12:07+0700\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-11 12:13+0530\n"
+"Last-Translator: Ananya Patel <ananya.patel@iitgn.ac.in>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -76,6 +76,14 @@ msgstr ""
 msgid "Dia Nacional de Zumbi e da Consciência Negra"
 msgstr ""
 
+#. Christmas Eve.
+msgid "Véspera de Natal"
+msgstr ""
+
 #. Christmas Day.
 msgid "Natal"
+msgstr ""
+
+#. Last Business Day of the Year.
+msgid "Último dia útil do ano"
 msgstr ""
