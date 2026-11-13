@@ -1056,6 +1056,10 @@ class HolidayBase(dict[date, str]):
 
         if isinstance(self, HolidaySum):
             object.__setattr__(copied, "holidays", [holiday.copy() for holiday in self.holidays])
+            for attribute in ("country", "market", "subdiv"):
+                value = getattr(self, attribute, None)
+                if isinstance(value, list):
+                    object.__setattr__(copied, attribute, value.copy())
 
         return copied
 
