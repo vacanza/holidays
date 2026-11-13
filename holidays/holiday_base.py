@@ -1002,8 +1002,41 @@ class HolidayBase(dict[date, str]):
             return None
 
         self._year = year
-        self._populate_common_holidays()
-        self._populate_subdiv_holidays()
+        if len(self.categories) == 1:
+            self._populate_common_holidays()
+            self._populate_subdiv_holidays()
+            return None
+
+        # Populate each category in isolation and merge the results afterwards,
+        # so that observed-day logic of one category can't see or modify the holidays
+        # of another one (e.g., observing or moving them).
+        categories = self.categories
+        categories_holidays = []
+        try:
+            for category in self._sorted_categories:
+                # Bypass `__setattr__` to avoid holidays re-population.
+                dict.__setattr__(self, "categories", {category})
+                self._populate_common_holidays()
+                self._populate_subdiv_holidays()
+
+                # Move the category holidays out, so the next category starts from scratch.
+                # `_add_holiday()` only adds dates of the populated year, so these are
+                # the most recently inserted keys.
+                year_dates = []
+                for dt in reversed(dict.keys(self)):
+                    if dt.year != year:
+                        break
+                    year_dates.append(dt)
+                categories_holidays.append({dt: dict.pop(self, dt) for dt in reversed(year_dates)})
+        finally:
+            dict.__setattr__(self, "categories", categories)
+
+        for category_holidays in categories_holidays:
+            for dt, name in category_holidays.items():
+                if dict.__contains__(self, dt):
+                    self[dt] = name  # Merge names of the same date holidays.
+                else:
+                    dict.__setitem__(self, dt, name)
 
     def _populate_common_holidays(self):
         """Populate entity common holidays."""
