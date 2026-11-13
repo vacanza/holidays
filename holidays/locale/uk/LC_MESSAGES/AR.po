@@ -94,7 +94,7 @@ msgstr "Свято Тіла і Крові Христових"
 #. Day of Affirmation of Argentine Rights over the Malvinas, Islands and Antarctic Sector.
 msgid ""
 "Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico"
-msgstr "День утвердження прав Аргентини на Мальвінські острови, Aнтарктичний сектор та острови"
+msgstr "День утвердження прав Аргентини на Мальвінські острови, Антарктичний сектор та острови"
 
 #. Pass to the Immortality of General Don Martín Miguel de Güemes.
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"

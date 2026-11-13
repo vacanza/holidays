@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-11-08 10:44+0530\n"
+"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "महावीर जन्म कल्याणक"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
-msgstr "बुध्द पौर्णिमा"
+msgstr "बुद्ध पौर्णिमा"
 
 #. Janmashtami (Vaishnava).
 msgid "Janmashtami (Vaishnava)"
@@ -118,11 +118,11 @@ msgstr "ईस्टर रविवार"
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "ख्रिसमसच्या पूर्व संध्याकाळ"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
-msgstr "गुरु गोबिंद सिंग यांचा वाढदिवस"
+msgstr "गुरू गोविंदसिंग जयंती"
 
 #. Lohri.
 msgid "Lohri"
@@ -230,7 +230,7 @@ msgstr "गणेश चतुर्थी"
 
 #. Vinayak Chaturthi.
 msgid "Vinayak Chaturthi"
-msgstr "गणेश चतुर्थी"
+msgstr "विनायक चतुर्थी"
 
 #. Dussehra (Saptami).
 msgid "Dussehra (Saptami)"
@@ -644,6 +644,10 @@ msgstr "करमा पूजा"
 msgid "Majdoor Diwas"
 msgstr "कामगार दिन"
 
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "कर्नाटक राज्योत्सव"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "पवित्र शनिवार"
@@ -652,13 +656,25 @@ msgstr "पवित्र शनिवार"
 msgid "Mannam's Jayanti"
 msgstr "मन्नम जयंती"
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "अय्यंकाळी जयंती"
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "श्री नारायण गुरु पुण्यतिथी"
 
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "कर्कटक वावु"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ओणम (दुसरा दिवस)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ओणम (पहिला दिवस)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
@@ -667,6 +683,10 @@ msgstr "ओणम (तिसरा दिवस)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ओणम (चौथा दिवस)"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "श्री नारायण गुरु जयंती"
 
 #. Vijayadashami.
 msgid "Vijayadashami"
@@ -702,7 +722,7 @@ msgstr "यू सोसो थामा यांची पुण्यति�
 
 #. Christmas Festival.
 msgid "Christmas Festival"
-msgstr "क्रिसमस सण"
+msgstr "ख्रिसमस सण"
 
 #. U Kiang Nongbah's Death Anniversary.
 msgid "U Kiang Nongbah's Death Anniversary"
