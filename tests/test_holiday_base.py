@@ -308,6 +308,8 @@ class TestCopy(TestCase):
         original = US() + JP()
         original.country = ["US", "JP"]
         original.market = ["US", "JP"]
+        # __add__ may have populated this cached property before metadata is reassigned.
+        original.__dict__.pop("_entity_code", None)
         original_entity_code = original._entity_code
 
         copied = original.copy()
