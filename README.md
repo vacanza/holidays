@@ -1584,9 +1584,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Slovakia</td>
 <td>SK</td>
-<td></td>
+<td>Regions: BC (Banskobystrický kraj, BB), BL (Bratislavský kraj, BA), KI (Košický kraj, KE), NI (Nitriansky kraj, NR), PV (Prešovský kraj, PO), TA (Trnavský kraj, TT), TC (Trenčiansky kraj, TN), ZI (Žilinský kraj, ZA)</td>
 <td>en_US, <strong>sk</strong>, uk</td>
-<td>WORKDAY</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Slovenia</td>

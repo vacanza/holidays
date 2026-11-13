@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.25\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-05-10 17:13+0300\n"
-"PO-Revision-Date: 2023-11-10 15:16+0100\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-10 23:21+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -90,6 +90,30 @@ msgstr ""
 
 #. Day of the Establishment of the Independent Czech-Slovak State.
 msgid "Deň vzniku samostatného česko-slovenského štátu"
+msgstr ""
+
+#. Christmas Break.
+msgid "Vianočné prázdniny"
+msgstr ""
+
+#. Half-Year Break.
+msgid "Polročné prázdniny"
+msgstr ""
+
+#. Spring Break.
+msgid "Jarné prázdniny"
+msgstr ""
+
+#. Easter Break.
+msgid "Veľkonočné prázdniny"
+msgstr ""
+
+#. Summer Break.
+msgid "Letné prázdniny"
+msgstr ""
+
+#. Autumn Break.
+msgid "Jesenné prázdniny"
 msgstr ""
 
 #. 100th anniversary of the adoption of the Declaration of the Slovak Nation.
