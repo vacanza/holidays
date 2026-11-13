@@ -28,11 +28,13 @@ class TestEuronext(CommonFinancialTests, TestCase):
         self.assertNoHolidays(self.subdiv_half_day_holidays["XATH"])
         self.assertNoHolidays(self.subdiv_half_day_holidays["XMIL"])
 
-    def _weekend_holidays(self, month, day):
-        return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() > 4)
+    def _weekend_holidays(self, month, day, since=None):
+        years = range(since, self.end_year) if since else self.full_range
+        return (dt for year in years if (dt := date(year, month, day)).weekday() > 4)
 
-    def _no_weekend_holidays(self, month, day):
-        return (dt for year in self.full_range if (dt := date(year, month, day)).weekday() < 5)
+    def _no_weekend_holidays(self, month, day, since=None):
+        years = range(since, self.end_year) if since else self.full_range
+        return (dt for year in years if (dt := date(year, month, day)).weekday() < 5)
 
     def test_new_years_day(self):
         name = "New Year's Day"
@@ -133,26 +135,12 @@ class TestEuronext(CommonFinancialTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             match subdiv:
                 case "XATH":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(12, 24) if dt.year >= 2026),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2026),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24, 2026))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 24, 2026))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
                 case "XMIL":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(12, 24) if dt.year >= 2023),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(12, 24) if dt.year >= 2023),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24, 2023))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 24, 2023))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 24))
@@ -196,26 +184,12 @@ class TestEuronext(CommonFinancialTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             match subdiv:
                 case "XATH":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(12, 31) if dt.year >= 2027),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2027),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31, 2027))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 31, 2027))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2027))
                 case "XMIL":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(12, 31) if dt.year >= 2023),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(12, 31) if dt.year >= 2023),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31, 2023))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(12, 31, 2023))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
                 case "XOSL":
                     self.assertHolidayName(name, holidays, self._no_weekend_holidays(12, 31))
@@ -280,26 +254,12 @@ class TestEuronext(CommonFinancialTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             match subdiv:
                 case "XATH":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2026),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2026),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(8, 15, 2026))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(8, 15, 2026))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
                 case "XMIL":
-                    self.assertHolidayName(
-                        name,
-                        holidays,
-                        (dt for dt in self._no_weekend_holidays(8, 15) if dt.year >= 2023),
-                    )
-                    self.assertNoHoliday(
-                        holidays,
-                        (dt for dt in self._weekend_holidays(8, 15) if dt.year >= 2023),
-                    )
+                    self.assertHolidayName(name, holidays, self._no_weekend_holidays(8, 15, 2023))
+                    self.assertNoHoliday(holidays, self._weekend_holidays(8, 15, 2023))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 2023))
                 case _:
                     self.assertNoHolidayName(name, holidays)
@@ -401,15 +361,8 @@ class TestEuronext(CommonFinancialTests, TestCase):
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "XATH":
-                self.assertHolidayName(
-                    name,
-                    holidays,
-                    (dt for dt in self._no_weekend_holidays(1, 6) if dt.year >= 2026),
-                )
-                self.assertNoHoliday(
-                    holidays,
-                    (dt for dt in self._weekend_holidays(1, 6) if dt.year >= 2026),
-                )
+                self.assertHolidayName(name, holidays, self._no_weekend_holidays(1, 6, 2026))
+                self.assertNoHoliday(holidays, self._weekend_holidays(1, 6, 2026))
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -444,13 +397,13 @@ class TestEuronext(CommonFinancialTests, TestCase):
                 self.assertHolidayName(
                     name,
                     holidays,
-                    (dt for dt in self._no_weekend_holidays(3, 25) if dt.year >= 2026),
-                    (dt for dt in self._no_weekend_holidays(10, 28) if dt.year >= 2026),
+                    self._no_weekend_holidays(3, 25, 2026),
+                    self._no_weekend_holidays(10, 28, 2026),
                 )
                 self.assertNoHoliday(
                     holidays,
-                    (dt for dt in self._weekend_holidays(3, 25) if dt.year >= 2026),
-                    (dt for dt in self._weekend_holidays(10, 28) if dt.year >= 2026),
+                    self._weekend_holidays(3, 25, 2026),
+                    self._weekend_holidays(10, 28, 2026),
                 )
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 2026))
             else:
