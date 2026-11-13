@@ -15,15 +15,11 @@ from datetime import date
 from holidays.calendars.gregorian import (
     JAN,
     FEB,
-    JUN,
-    JUL,
     SEP,
     OCT,
     DEC,
     MON,
-    SAT,
     _timedelta,
-    _get_nth_weekday_from,
     _get_nth_weekday_of_month,
 )
 from holidays.constants import BANK, PROTESTANT, PUBLIC, SCHOOL
@@ -116,14 +112,6 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     }
     supported_categories = (BANK, PROTESTANT, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "th", "uk")
-
-    # § 2 Abs. 1: the Bundesländer whose school year starts on the 1st Monday of September, so
-    # that their Hauptferien both start and end a week before the other six (§ 2 Abs. 2 Z 2).
-    early_summer_break_subdivs = {
-        "1",  # Burgenland.
-        "3",  # Niederösterreich.
-        "9",  # Wien.
-    }
 
     # § 2 Abs. 2 Z 1 lit. b: the February week each Bundesland's Semesterferien starts in.
     semester_break_weeks = {
@@ -248,6 +236,16 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Jan 1 → Jan 6: the tail of the break that started in the previous year.
         self._add_multiday_holiday(date(self._year, JAN, 1), 6, name=christmas_break_name)
 
+        # Dec 24 (Dec 23 if that is a Monday) → Dec 31.
+        christmas_break_start = date(self._year, DEC, 24)
+        if self._is_tuesday(christmas_break_start):
+            christmas_break_start = _timedelta(christmas_break_start, -1)
+        self._add_multiday_holiday(
+            christmas_break_start,
+            (date(self._year, DEC, 31) - christmas_break_start).days + 1,
+            name=christmas_break_name,
+        )
+
         # Monday through Saturday of the Bundesland's February week.
         semester_break_week = self.semester_break_week_overrides.get(self._year, {}).get(
             subdiv, self.semester_break_weeks[subdiv]
@@ -260,12 +258,9 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         # Saturday before Palm Sunday → Easter Monday.
-        self._add_multiday_holiday(
-            _timedelta(self._easter_sunday, -8),
-            10,
-            # Easter Break.
-            name=tr("Osterferien"),
-        )
+
+        # Easter Break.
+        self._add_multiday_holiday(_timedelta(self._easter_sunday, -8), 10, name=tr("Osterferien"))
 
         # Saturday before Pentecost → Pentecost Monday.
         self._add_multiday_holiday(
@@ -275,40 +270,20 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
             name=tr("Pfingstferien"),
         )
 
-        # The 1st Saturday on or after Jun 28 (Jul 5 for the Bundesländer whose school year
-        # starts a week later) → the day before the next school year starts, so 65 days.
-        is_early = subdiv in self.early_summer_break_subdivs
-        summer_break_start = _get_nth_weekday_from(
-            1, SAT, date(self._year, JUN, 28) if is_early else date(self._year, JUL, 5)
+        # The 1st Saturday on or after Jul 5 → the day before the next school year starts,
+        # so 65 days.
+        # § 2 Abs. 1: the Bundesländer whose school year starts on the 1st Monday of September, so
+        # that their Hauptferien both start and end a week before the other six (§ 2 Abs. 2 Z 2).
+        classes_start = _get_nth_weekday_of_month(
+            1 if subdiv in {"1", "3", "9"} else 2, MON, SEP, self._year
         )
-        self._add_multiday_holiday(
-            summer_break_start,
-            (
-                _get_nth_weekday_of_month(1 if is_early else 2, MON, SEP, self._year)
-                - summer_break_start
-            ).days,
-            # Summer Break.
-            name=tr("Hauptferien"),
-        )
+        # Summer Break.
+        self._add_multiday_holiday(_timedelta(classes_start, -65), 65, name=tr("Hauptferien"))
 
         # Oct 27 → Oct 31.
-        self._add_multiday_holiday(
-            date(self._year, OCT, 27),
-            5,
-            # Autumn Break.
-            name=tr("Herbstferien"),
-        )
 
-        # Dec 24 (Dec 23 if that is a Monday) → Dec 31, with Jan 1 → Jan 6 added above as
-        # part of the next year.
-        christmas_break_start = date(self._year, DEC, 23)
-        if not self._is_monday(christmas_break_start):
-            christmas_break_start = _timedelta(christmas_break_start, +1)
-        self._add_multiday_holiday(
-            christmas_break_start,
-            (date(self._year, DEC, 31) - christmas_break_start).days + 1,
-            name=christmas_break_name,
-        )
+        # Autumn Break.
+        self._add_multiday_holiday(date(self._year, OCT, 27), 5, name=tr("Herbstferien"))
 
     def _populate_subdiv_1_bank_holidays(self):
         # Saint Martin's Day.
