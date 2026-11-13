@@ -289,6 +289,21 @@ class TestCopy(TestCase):
         copied.holidays.pop()
         self.assertEqual(len(original.holidays), 2)
 
+    def test_copy_holiday_sum_list_metadata_is_independent(self):
+        original = US() + JP()
+        original.country = ["US", "JP"]
+        original.market = ["US", "JP"]
+        original.subdiv = ["CA", "NY"]
+        copied = original.copy()
+
+        for attribute in ("country", "market", "subdiv"):
+            original_value = getattr(original, attribute)
+            copied_value = getattr(copied, attribute)
+            self.assertIsNot(original_value, copied_value)
+
+            copied_value.append("COPY")
+            self.assertNotIn("COPY", original_value)
+
 
 class TestCategories(TestCase):
     class CustomCategoryClass(HolidayBase):
