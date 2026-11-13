@@ -297,6 +297,7 @@ FINANCIAL: RegistryDict = {
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
     "euronext": ("Euronext", "ENX", "XAMS", "XBRU", "XDUB", "XLIS", "XMIL", "XOSL", "XPAR"),
     "european_central_bank": ("EuropeanCentralBank", "XECB", "ECB", "TAR"),
+    "federal_reserve": ("FederalReserve", "XFED", "FED", "USNY"),
     "germany_exchange": ("GermanyStockExchange", "XETR", "XFRA"),
     "hong_kong_stock_exchange": ("HongKongStockExchange", "XHKG", "HKEX", "SEHK"),
     "ice_futures_europe": ("IceFuturesEurope", "IFEU", "ICEFuturesEurope"),
