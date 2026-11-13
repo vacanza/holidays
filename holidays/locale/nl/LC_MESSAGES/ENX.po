@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-25 04:05+0000\n"
-"PO-Revision-Date: 2026-10-27 02:43+0000\n"
+"PO-Revision-Date: 2026-10-29 12:47+0000\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: nl\n"
@@ -74,13 +74,37 @@ msgstr "Kerstavond"
 msgid "New Year's Eve"
 msgstr "Oudejaarsavond"
 
-#. Irish May Bank Holiday.
-msgid "Irish May Bank Holiday"
-msgstr "Meifeestdag in Ierland"
+#. Epiphany.
+msgid "Epiphany"
+msgstr "Driekoningen"
+
+#. National Holiday.
+msgid "National Holiday"
+msgstr "Nationale feestdag"
+
+#. Ash Monday.
+msgid "Ash Monday"
+msgstr "Schone Maandag"
+
+#. Good Friday (Orthodox).
+msgid "Good Friday (Orthodox)"
+msgstr "Goede Vrijdag (orthodox)"
+
+#. Easter Monday (Orthodox).
+msgid "Easter Monday (Orthodox)"
+msgstr "Paasmaandag (orthodox)"
+
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "Tweede pinksterdag"
 
 #. Assumption Day.
 msgid "Assumption Day"
 msgstr "Maria-Hemelvaart"
+
+#. Irish May Bank Holiday.
+msgid "Irish May Bank Holiday"
+msgstr "Meifeestdag in Ierland"
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
@@ -93,10 +117,6 @@ msgstr "Hemelvaartsdag"
 #. Constitution Day.
 msgid "Constitution Day"
 msgstr "Grondwetsdag"
-
-#. Pentecost Monday.
-msgid "Whit Monday"
-msgstr "Tweede pinksterdag"
 
 #. %s (markets close at 1:00pm CET).
 #, c-format

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-25 04:05+0000\n"
-"PO-Revision-Date: 2026-10-27 02:43+0000\n"
+"PO-Revision-Date: 2026-10-29 12:47+0000\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pt_PT\n"
@@ -74,13 +74,37 @@ msgstr "Véspera de Natal"
 msgid "New Year's Eve"
 msgstr "Véspera de Ano Novo"
 
-#. Irish May Bank Holiday.
-msgid "Irish May Bank Holiday"
-msgstr "Feriado de maio irlandês"
+#. Epiphany.
+msgid "Epiphany"
+msgstr "Epifania"
+
+#. National Holiday.
+msgid "National Holiday"
+msgstr "Feriado nacional"
+
+#. Ash Monday.
+msgid "Ash Monday"
+msgstr "Segunda-feira Limpa"
+
+#. Good Friday (Orthodox).
+msgid "Good Friday (Orthodox)"
+msgstr "Sexta-feira Santa (ortodoxa)"
+
+#. Easter Monday (Orthodox).
+msgid "Easter Monday (Orthodox)"
+msgstr "Segunda-feira de Páscoa (ortodoxa)"
+
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "Segunda-feira de Pentecoste"
 
 #. Assumption Day.
 msgid "Assumption Day"
 msgstr "Assunção de Nossa Senhora"
+
+#. Irish May Bank Holiday.
+msgid "Irish May Bank Holiday"
+msgstr "Feriado de maio irlandês"
 
 #. Maundy Thursday.
 msgid "Maundy Thursday"
@@ -93,10 +117,6 @@ msgstr "Quinta-feira da Ascensão"
 #. Constitution Day.
 msgid "Constitution Day"
 msgstr "Dia da Constituição"
-
-#. Pentecost Monday.
-msgid "Whit Monday"
-msgstr "Segunda-feira de Pentecoste"
 
 #. %s (markets close at 1:00pm CET).
 #, c-format

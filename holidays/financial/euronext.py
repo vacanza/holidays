@@ -10,6 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars.gregorian import _timedelta
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
@@ -26,13 +28,15 @@ from holidays.observed_holiday_base import (
 class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """Euronext holidays.
 
-    Euronext cash and derivatives markets (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo
-    and Paris) share a common holiday calendar with a small number of market-specific closures.
+    Euronext cash and derivatives markets (Amsterdam, Athens, Brussels, Dublin, Lisbon,
+    Milan, Oslo and Paris) share a common holiday calendar with a small number of
+    market-specific closures.
 
     References:
         * [2019-2020](https://web.archive.org/web/20191229072655/https://www.euronext.com/en/trade/trading-hours-holidays)
         * [Oslo 2019-2020](https://web.archive.org/web/20191214032113/https://www.oslobors.no/ob_eng/Oslo-Boers/About-Oslo-Boers/Opening-hours)
         * [2021-2026](https://web.archive.org/web/20261014184052/https://www.euronext.com/en/trading/trading-hours-holidays)
+        * [Athens](https://web.archive.org/web/20260529145754/https://athens.euronext.com/en/trade/trading-model/calendar)
     """
 
     # Euronext N.V. stock ticker.
@@ -44,6 +48,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     supported_categories = (HALF_DAY, PUBLIC)
     subdivisions: tuple[str, ...] = (
         "XAMS",  # Amsterdam.
+        "XATH",  # Athens.
         "XBRU",  # Brussels.
         "XDUB",  # Dublin.
         "XLIS",  # Lisbon.
@@ -79,7 +84,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._move_holiday_forced(self._add_christmas_day_two(tr("Saint Stephen's Day")))
 
     def _populate_half_day_holidays(self):
-        if self.subdiv is None or self.subdiv in {"XMIL", "XOSL"}:
+        if self.subdiv is None or self.subdiv in {"XMIL", "XOSL", "XATH"}:
             return None
 
         is_xdub = self.subdiv == "XDUB"
@@ -103,6 +108,50 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_eve(self._format_holiday_name(close_label, tr("New Year's Eve"))),
             rule=rule,
         )
+
+    def _populate_subdiv_xath_public_holidays(self):
+        if self._year <= 2025:
+            return None
+
+        # Epiphany.
+        self._move_holiday_forced(self._add_epiphany_day(tr("Epiphany")))
+
+        # National Holiday.
+        self._move_holiday_forced(self._add_holiday_mar_25(tr("National Holiday")))
+
+        # Ash Monday.
+        ash_monday = self._add_ash_monday(tr("Ash Monday"), calendar=JULIAN_REVISED_CALENDAR)
+
+        # Orthodox Easter (Ash Monday + 48 days), for the coincidence check below.
+        orthodox_easter = _timedelta(ash_monday, +48)
+
+        # Good Friday (Orthodox) and Easter Monday (Orthodox), unless Orthodox
+        # Easter coincides with Catholic Easter.
+        if orthodox_easter != self._easter_sunday:
+            # Good Friday (Orthodox).
+            self._add_good_friday(tr("Good Friday (Orthodox)"), calendar=JULIAN_REVISED_CALENDAR)
+
+            self._add_easter_monday(
+                # Easter Monday (Orthodox).
+                tr("Easter Monday (Orthodox)"),
+                calendar=JULIAN_REVISED_CALENDAR,
+            )
+
+        # Pentecost Monday.
+        self._add_pentecost_monday(tr("Whit Monday"), calendar=JULIAN_REVISED_CALENDAR)
+
+        # Assumption Day.
+        self._move_holiday_forced(self._add_assumption_of_mary_day(tr("Assumption Day")))
+
+        # National Holiday.
+        self._move_holiday_forced(self._add_holiday_oct_28(tr("National Holiday")))
+
+        # Christmas Eve.
+        self._move_holiday_forced(self._add_christmas_eve(tr("Christmas Eve")))
+
+        if self._year >= 2027:
+            # New Year's Eve.
+            self._move_holiday_forced(self._add_new_years_eve(tr("New Year's Eve")))
 
     def _populate_subdiv_xdub_public_holidays(self):
         if self._year >= 2021:
@@ -182,6 +231,11 @@ class ENX(Euronext):
 class XAMS(ChildEntity, Euronext):
     parent_entity = Euronext
     parent_entity_subdivision_code = "XAMS"
+
+
+class XATH(ChildEntity, Euronext):
+    parent_entity = Euronext
+    parent_entity_subdivision_code = "XATH"
 
 
 class XBRU(ChildEntity, Euronext):
