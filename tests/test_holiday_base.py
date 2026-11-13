@@ -304,6 +304,21 @@ class TestCopy(TestCase):
             copied_value.append("COPY")
             self.assertNotIn("COPY", original_value)
 
+    def test_copy_holiday_sum_entity_code_cache_is_independent(self):
+        original = US() + JP()
+        original.country = ["US", "JP"]
+        original.market = ["US", "JP"]
+        original_entity_code = original._entity_code
+
+        copied = original.copy()
+
+        self.assertIs(original_entity_code, original.country)
+        self.assertIs(copied._entity_code, copied.country)
+        self.assertIsNot(copied._entity_code, original_entity_code)
+
+        copied.country.append("CA")
+        self.assertEqual(original._entity_code, ["US", "JP"])
+
 
 class TestCategories(TestCase):
     class CustomCategoryClass(HolidayBase):
