@@ -309,6 +309,7 @@ FINANCIAL: RegistryDict = {
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "pakistan_stock_exchange": ("PakistanStockExchange", "XKAR", "PSX"),
+    "qatar_stock_exchange": ("QatarStockExchange", "DSMD", "QSE"),
     "saudi_exchange": ("SaudiExchange", "XSAU"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
