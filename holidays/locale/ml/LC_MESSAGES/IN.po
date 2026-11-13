@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-11-08 10:44+0530\n"
+"PO-Revision-Date: 2026-11-09 23:04+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -1063,3 +1063,7 @@ msgstr "ശ്രീ പഞ്ചമി"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ജന്മാഷ്ടമി (സ്മാർത്ത)"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "കേരള നിയമസഭാ തിരഞ്ഞെടുപ്പ് ദിനം"

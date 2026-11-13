@@ -1567,6 +1567,16 @@ class TestIndia(CommonCountryTests, TestCase):
             else:
                 self.assertNoHolidayName(name, holidays)
 
+    def test_kerala_assembly_election_day(self):
+        name = "Kerala Assembly Election Day"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "KL":
+                self.assertHolidayName(name, holidays, "2026-04-09")
+            else:
+                self.assertNoHolidayName(name, holidays)
+
     def test_jyotiba_phule_birthday(self):
         name = "Mahatma Jyotiba Phule's Jayanti"
         self.assertNoHolidayName(name)
