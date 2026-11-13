@@ -124,6 +124,43 @@ Use pytest directly if you need `-s` option:
 pytest -s tests/countries/test_argentina.py
 ```
 
+## Performance benchmarks
+
+Run the benchmarks from a development checkout after setting up the environment:
+
+``` shell
+uv run --group benchmarks python scripts/benchmark.py -o baseline.json
+```
+
+The suite uses [pyperf](https://pyperf.readthedocs.io/) to measure calendar creation for one
+year and ten years, membership checks with `date` and ISO date strings, and lazy year
+population. It covers the United States, India, and Japan with fixed years and an explicit
+language. Imports and translation caches are warmed before timing. Membership checks use an
+already populated calendar. January 1, 2025 is a hit for the US and Japan and a miss for
+India. Compare each benchmark against the same case from the baseline. Lazy population uses
+a fresh empty calendar on every iteration,
+with construction outside the timed interval. Creation benchmarks include construction and
+population. These benchmarks do not measure cold imports or first-time translation loading.
+
+For a quick smoke test of the benchmark suite:
+
+``` shell
+uv run --group benchmarks python scripts/benchmark.py --debug-single-value
+```
+
+To assess a change, save a baseline before editing, run the same suite afterward, and compare:
+
+``` shell
+uv run --group benchmarks python scripts/benchmark.py -o candidate.json
+uv run --group benchmarks python -m pyperf compare_to baseline.json candidate.json --table
+```
+
+Use the same machine, Python version, dependencies, and benchmark script for both runs. Keep
+other workloads to a minimum and investigate pyperf's stability warnings before drawing
+conclusions. Quick runs are for checking the runner, not for reporting performance gains.
+Keep result files outside commits; include the relevant comparison and commit IDs in your PR.
+Benchmarks are separate from the test suite and do not impose timing thresholds on CI.
+
 ## Localization
 
 In order to add or update existing holiday names translation you'll need to generate pygettext
