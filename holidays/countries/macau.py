@@ -87,7 +87,6 @@ class Macau(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, MacauStaticHolidays)
-        kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_WORKDAY)
         # Systemic in-lieus starts in 2011.
         kwargs.setdefault("observed_since", 2011)
         super().__init__(*args, **kwargs)
@@ -360,6 +359,7 @@ class Macau(
             )
 
         if self.observed:
+            self._observed_rule = SAT_SUN_TO_NEXT_WORKDAY
             self.observed_label = (
                 # Compensatory rest day for %s.
                 tr("%s的補假")
