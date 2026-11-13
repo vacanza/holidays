@@ -1051,8 +1051,12 @@ class HolidayBase(dict[date, str]):
     def copy(self):
         """Return an independent copy of the object."""
         copied = copy.copy(self)
-        for attribute in ("years", "weekend_workdays", "categories"):
+        for attribute in ("years", "weekend", "weekend_workdays", "categories"):
             object.__setattr__(copied, attribute, getattr(self, attribute).copy())
+
+        if isinstance(self, HolidaySum):
+            object.__setattr__(copied, "holidays", [holiday.copy() for holiday in self.holidays])
+
         return copied
 
     def get(self, key: DateLike, default: str | Any = None) -> str | Any:
