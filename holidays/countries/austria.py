@@ -140,6 +140,8 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     # § 2 Abs. 2a moves, keyed by the calendar year the Semesterferien fall in.
     semester_break_week_overrides = {
+        # BGBl. II Nr. 25/2021, § 8: Oberösterreich and Steiermark.
+        2021: {"4": 2, "6": 2},
         # BGBl. II Nr. 487/2022: Vorarlberg.
         2024: {"8": 1},
         # BGBl. II Nr. 297/2025, Nr. 322/2025 and Nr. 343/2025: Vorarlberg, Tirol and Salzburg.

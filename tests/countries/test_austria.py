@@ -304,14 +304,35 @@ class TestAustria(CommonCountryTests, TestCase):
         name = "Semesterferien"
         self.assertNoHolidayName(name)
         # The week assigned to each Bundesland by § 2 Abs. 2 Z 1 lit. b, including the
+        # BGBl. II Nr. 25/2021 move of 2021 (Oberösterreich, Steiermark) and the
         # § 2 Abs. 2a moves of 2024 (Vorarlberg) and 2027 (Salzburg, Tirol, Vorarlberg).
         for subdiv, dts in (
             ("1", ("2024-02-12", "2024-02-17", "2026-02-09", "2026-02-14")),
             ("2", ("2024-02-12", "2024-02-17", "2026-02-09", "2026-02-14")),
             ("3", ("2024-02-05", "2024-02-10", "2026-02-02", "2026-02-07")),
-            ("4", ("2024-02-19", "2024-02-24", "2026-02-16", "2026-02-21")),
+            (
+                "4",
+                (
+                    "2021-02-08",
+                    "2021-02-13",
+                    "2024-02-19",
+                    "2024-02-24",
+                    "2026-02-16",
+                    "2026-02-21",
+                ),
+            ),
             ("5", ("2024-02-12", "2024-02-17", "2026-02-09", "2026-02-14")),
-            ("6", ("2024-02-19", "2024-02-24", "2026-02-16", "2026-02-21")),
+            (
+                "6",
+                (
+                    "2021-02-08",
+                    "2021-02-13",
+                    "2024-02-19",
+                    "2024-02-24",
+                    "2026-02-16",
+                    "2026-02-21",
+                ),
+            ),
             ("7", ("2024-02-12", "2024-02-17", "2026-02-09", "2026-02-14")),
             ("8", ("2024-02-05", "2024-02-10", "2026-02-09", "2026-02-14")),
             ("9", ("2024-02-05", "2024-02-10", "2026-02-02", "2026-02-07")),
@@ -321,6 +342,9 @@ class TestAustria(CommonCountryTests, TestCase):
             self.assertHolidayName(name, holidays, range(2021, self.end_year))
             self.assertNoHolidayName(name, holidays, range(self.start_year, 2021))
             self.assertHolidayNameCount(name, 6, holidays, range(2021, self.end_year))
+
+        for subdiv in ("4", "6"):
+            self.assertNoHoliday(self.subdiv_school_holidays[subdiv], "2021-02-15")
 
         for subdiv, dts in (
             ("1", ("2027-02-08", "2027-02-13")),
