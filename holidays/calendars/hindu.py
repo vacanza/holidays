@@ -1440,8 +1440,10 @@ class _HinduLunisolar:
     }
 
     # Karnataka Government holiday notifications and archived holiday lists
+    # 2008: Karnataka Cabinet decision and contemporary reports.
+    # https://www.dnaindia.com/bangalore/report-nov-15-kanaka-jayanti-to-be-public-holiday-1193460
     KANAKADASA_JAYANTHI_DATES = {
-        2008: (NOV, 18),
+        2008: (NOV, 15),
         2009: (NOV, 5),
         2010: (NOV, 24),
         2011: (NOV, 14),

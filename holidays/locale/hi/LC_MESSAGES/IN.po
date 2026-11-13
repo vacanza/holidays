@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-11 18:47+0530\n"
-"Last-Translator: NAYAN SHARMA <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-13 11:58+0530\n"
+"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -246,7 +246,6 @@ msgid "Dussehra (Mahanavami)"
 msgstr "दशहरा (महानवमी)"
 
 #. Maharishi Valmiki's Birthday.
-#. Maharshi Valmiki's Jayanti.
 msgid "Maharshi Valmiki's Jayanti"
 msgstr "महर्षि वाल्मीकि जयंती"
 
@@ -650,7 +649,7 @@ msgstr "मजदूर दिवस"
 msgid "Karnataka Rajyotsava"
 msgstr "कर्नाटक राज्योत्सव"
 
-#. Basava Jayanthi.
+#. Basava's Birthday.
 msgid "Basava Jayanthi"
 msgstr "बसव जयंती"
 
@@ -659,7 +658,7 @@ msgstr "बसव जयंती"
 msgid "Mahalaya"
 msgstr "महालया"
 
-#. Kanakadasa Jayanthi.
+#. Kanakadasa's Birthday.
 msgid "Kanakadasa Jayanthi"
 msgstr "कनकदास जयंती"
 

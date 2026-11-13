@@ -2329,93 +2329,39 @@ class TestIndia(CommonCountryTests, TestCase):
         name = "Basava Jayanthi"
         name_akshay_tritiya = "Akshay Tritiya"
         dts = (
-            "2001-04-26",
-            "2002-05-15",
-            "2003-05-04",
-            "2004-04-22",
-            "2005-05-11",
-            "2006-04-30",
-            "2007-04-20",
-            "2008-05-08",
-            "2009-04-27",
-            "2010-05-16",
-            "2011-05-06",
-            "2012-04-24",
-            "2013-05-13",
-            "2014-05-02",
-            "2015-04-21",
-            "2016-05-09",
-            "2017-04-29",
-            "2018-04-18",
-            "2019-05-07",
             "2020-04-26",
             "2021-05-14",
             "2022-05-03",
             "2023-04-23",
             "2024-05-10",
             "2025-04-30",
-            "2026-04-20",
-            "2027-05-09",
-            "2028-04-27",
-            "2029-05-16",
-            "2030-05-05",
-            "2031-04-24",
-            "2032-05-12",
-            "2033-05-01",
-            "2034-04-21",
-            "2035-05-10",
         )
         self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "KA":
-                self.assertHolidayName(name, holidays, dts)
-                self.assertHolidayName(name_akshay_tritiya, holidays, dts)
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2001))
-                self.assertNoHolidayName(
-                    name_akshay_tritiya, holidays, range(self.start_year, 2001)
-                )
-            else:
-                self.assertNoHolidayName(name, holidays)
+        self._assertHinduHolidayHelper(name, dts, subdivs={"KA"})
+
+        self.assertHolidayName(name_akshay_tritiya, self.subdiv_holidays["KA"], dts)
+        self.assertHolidayName(
+            name_akshay_tritiya, self.subdiv_holidays["KA"], self.hindu_full_range
+        )
+        self.assertNoHolidayName(
+            name_akshay_tritiya,
+            self.subdiv_holidays["KA"],
+            set(self.full_range) - set(self.hindu_full_range),
+        )
 
     def test_kanakadasa_jayanthi(self):
         name = "Kanakadasa Jayanthi"
         dts = (
-            "2008-11-18",
-            "2009-11-05",
-            "2010-11-24",
-            "2011-11-14",
-            "2012-12-01",
-            "2013-11-20",
-            "2014-11-08",
-            "2015-11-28",
-            "2016-11-17",
-            "2017-11-06",
-            "2018-11-26",
-            "2019-11-15",
             "2020-12-03",
             "2021-11-22",
             "2022-11-11",
             "2023-11-30",
             "2024-11-18",
             "2025-11-08",
-            "2026-11-27",
-            "2027-11-16",
-            "2028-11-05",
-            "2029-11-24",
-            "2030-11-13",
-            "2031-12-02",
-            "2032-11-20",
-            "2033-11-09",
-            "2034-11-28",
-            "2035-11-18",
         )
         self.assertNoHolidayName(name)
-        for subdiv, holidays in self.subdiv_holidays.items():
-            if subdiv == "KA":
-                self.assertHolidayName(name, holidays, dts)
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2008))
-            else:
-                self.assertNoHolidayName(name, holidays)
+        years = range(2008, self.hindu_end_year + 1)
+        self._assertHinduHolidayHelper(name, dts, hindu_range=years, subdivs={"KA"})
 
     def test_puducherry_liberation_day(self):
         name = "Puducherry Liberation Day"
