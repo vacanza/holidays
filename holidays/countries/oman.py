@@ -13,21 +13,7 @@
 from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import (
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    THU,
-    FRI,
-    SAT,
-    _timedelta,
-)
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, THU, FRI, SAT
 from holidays.groups import IslamicHolidays
 from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
@@ -98,13 +84,7 @@ class Oman(HolidayBase, IslamicHolidays):
         self._add_isra_and_miraj_day(tr("الإسراء والمعراج"))
 
         # Eid al-Fitr.
-        name = tr("عيد الفطر")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
-        for dt in self._add_holiday_29_ramadan(name):
-            if _timedelta(dt, +1) not in self:
-                self._add_eid_al_fitr_eve(name)
+        self._add_eid_al_fitr_multiday(tr("عيد الفطر"), start_29_ramadan=True, fixed_end=True)
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")

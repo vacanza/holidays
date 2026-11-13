@@ -13,7 +13,7 @@
 from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import AUG, THU, FRI, SAT, _timedelta
+from holidays.calendars.gregorian import AUG, THU, FRI, SAT
 from holidays.constants import PUBLIC, SCHOOL, WORKDAY
 from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.helpers import tr
@@ -76,16 +76,10 @@ class Yemen(ObservedHolidayBase, InternationalHolidays, IslamicHolidays):
             # Prophet's Birthday.
             dts_observed.update(self._add_mawlid_day(tr("المولد النبوي")))
 
-        # Eid al-Fitr.
-        name = tr("عيد الفطر")
-        dts_observed.update(self._add_eid_al_fitr_day(name))
-        dts_observed.update(self._add_eid_al_fitr_day_two(name))
-        dts_observed.update(self._add_eid_al_fitr_day_three(name))
-        ramadan_29_holidays = self._add_holiday_29_ramadan(name)
-        dts_observed.update(ramadan_29_holidays)
-        for dt in ramadan_29_holidays:
-            if _timedelta(dt, +1) not in self:
-                dts_observed.update(self._add_eid_al_fitr_eve(name))
+        dts_observed.update(
+            # Eid al-Fitr.
+            self._add_eid_al_fitr_multiday(tr("عيد الفطر"), start_29_ramadan=True, fixed_end=True)
+        )
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")
