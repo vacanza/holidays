@@ -49,11 +49,11 @@ msgstr "इस्लामी नव वर्ष"
 
 #. Ashura.
 msgid "عاشوراء"
-msgstr "आशूरा"
+msgstr "मुहर्रम"
 
 #. Prophet's Birthday.
 msgid "المولد النبوي الشريف"
-msgstr "पैगंबर का जन्मदिन"
+msgstr "मिलाद-उन-नबी"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
