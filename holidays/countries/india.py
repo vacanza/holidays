@@ -1944,7 +1944,6 @@ class India(
         )
 
         if self._year == 2026 and pongal_dt:
-            # The Tamil Nadu holiday list sets the Pongal holidays to January 15-17.
             self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
             self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
         else:
