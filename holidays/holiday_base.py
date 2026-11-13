@@ -1061,6 +1061,9 @@ class HolidayBase(dict[date, str]):
                 if isinstance(value, list):
                     object.__setattr__(copied, attribute, value.copy())
 
+            # The cached entity code may still reference the original metadata lists.
+            copied.__dict__.pop("_entity_code", None)
+
         return copied
 
     def get(self, key: DateLike, default: str | Any = None) -> str | Any:
