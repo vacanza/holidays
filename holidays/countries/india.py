@@ -1160,6 +1160,10 @@ class India(
         # May Day.
         self._add_labor_day(tr("May Day"))
 
+        if self._year >= 1956:
+            # Karnataka Rajyotsava.
+            self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
+
         # Hindu holidays.
 
         # Makar Sankranti.

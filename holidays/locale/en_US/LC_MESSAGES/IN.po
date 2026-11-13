@@ -645,6 +645,10 @@ msgstr "Karma Puja"
 msgid "Majdoor Diwas"
 msgstr "Labor Day"
 
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "Karnataka Rajyotsava"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "Holy Saturday"

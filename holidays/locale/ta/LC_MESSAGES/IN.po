@@ -644,6 +644,10 @@ msgstr "கர்மா பூஜை"
 msgid "Majdoor Diwas"
 msgstr "தொழிலாளர் தினம்"
 
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "கர்நாடக ராஜ்யோத்சவா"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "புனித சனி"
