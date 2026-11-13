@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-11-08 10:44+0530\n"
+"PO-Revision-Date: 2026-11-13 11:58+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -649,6 +649,19 @@ msgstr "Labor Day"
 msgid "Karnataka Rajyotsava"
 msgstr "Karnataka Rajyotsava"
 
+#. Basava's Birthday.
+msgid "Basava Jayanthi"
+msgstr "Basava Jayanthi"
+
+#. Mahalaya Amavasye.
+#. Mahalaya.
+msgid "Mahalaya"
+msgstr "Mahalaya"
+
+#. Kanakadasa's Birthday.
+msgid "Kanakadasa Jayanthi"
+msgstr "Kanakadasa Jayanthi"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "Holy Saturday"
@@ -840,10 +853,6 @@ msgstr "Utkal Day"
 #. Maha Visuva Sankranti.
 msgid "Maha Visuva Sankranti"
 msgstr "Maha Visuva Sankranti"
-
-#. Mahalaya.
-msgid "Mahalaya"
-msgstr "Mahalaya"
 
 #. Puducherry De Jure Transfer Day.
 msgid "Puducherry De Jure Transfer Day"

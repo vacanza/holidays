@@ -1174,6 +1174,28 @@ class India(
         # Ganesh Chaturthi.
         self._add_ganesh_chaturthi(tr("Ganesh Chaturthi"))
 
+        # Basava's Birthday.
+        self._add_basava_jayanti(tr("Basava Jayanthi"))
+
+        # Akshay Tritiya.
+        self._add_basava_jayanti(tr("Akshay Tritiya"))
+
+        if self._year != 2014:
+            # Mahalaya Amavasye.
+            self._add_pitra_moksh_amavasya(tr("Mahalaya"))
+
+        if self._year >= 2010 and self._year != 2016:
+            # Maharshi Valmiki's Birthday.
+            self._add_maharshi_valmiki_jayanti(tr("Maharshi Valmiki's Jayanti"))
+
+        if self._year != 2021:
+            # Naraka Chaturdashi.
+            self._add_naraka_chaturdashi(tr("Naraka Chaturdashi"))
+
+        if self._year >= 2008:
+            # Kanakadasa's Birthday.
+            self._add_kanakadasa_jayanthi(tr("Kanakadasa Jayanthi"))
+
     def _populate_subdiv_ka_optional_holidays(self):
         # Holy Saturday.
         self._add_holy_saturday(tr("Holy Saturday"))
@@ -2292,6 +2314,15 @@ class IndiaStaticHolidays:
 
     special_dh_public_holidays = {
         2023: (JAN, 14, name_magh_bihu),
+    }
+
+    special_ka_public_holidays = {
+        # Mahalaya Amavasye.
+        2014: (SEP, 24, tr("Mahalaya")),
+        # Maharshi Valmiki's Birthday.
+        2016: (OCT, 15, tr("Maharshi Valmiki's Jayanti")),
+        # Naraka Chaturdashi.
+        2021: (NOV, 3, tr("Naraka Chaturdashi")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

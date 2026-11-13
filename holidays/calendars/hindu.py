@@ -20,6 +20,7 @@ from holidays.helpers import _normalize_tuple
 ADI_SHANKARACHARYA_JAYANTI = "ADI_SHANKARACHARYA_JAYANTI"
 ANANT_CHATURDASHI = "ANANT_CHATURDASHI"
 BASANT_PANCHAMI = "BASANT_PANCHAMI"
+BASAVA_JAYANTI = "BASAVA_JAYANTI"
 BATHUKAMMA = "BATHUKAMMA"
 BONALU = "BONALU"
 BUDDHA_PURNIMA = "BUDDHA_PURNIMA"
@@ -47,6 +48,7 @@ HOLA_MOHOLLA = "HOLA_MOHOLLA"
 HOLI = "HOLI"
 JANMASHTAMI = "JANMASHTAMI"
 KABIR_JAYANTI = "KABIR_JAYANTI"
+KANAKADASA_JAYANTHI = "KANAKADASA_JAYANTHI"
 KALI_PUJA = "KALI_PUJA"
 KARWA_CHAUTH = "KARWA_CHAUTH"
 KER_PUJA = "KER_PUJA"
@@ -205,6 +207,45 @@ class _HinduLunisolar:
         2033: (FEB, 4),
         2034: (JAN, 24),
         2035: (FEB, 12),
+    }
+
+    # https://hinducalculator.com/kannada/{year}/
+    BASAVA_JAYANTI_DATES = {
+        2001: (APR, 26),
+        2002: (MAY, 15),
+        2003: (MAY, 4),
+        2004: (APR, 22),
+        2005: (MAY, 11),
+        2006: (APR, 30),
+        2007: (APR, 20),
+        2008: (MAY, 8),
+        2009: (APR, 27),
+        2010: (MAY, 16),
+        2011: (MAY, 6),
+        2012: (APR, 24),
+        2013: (MAY, 13),
+        2014: (MAY, 2),
+        2015: (APR, 21),
+        2016: (MAY, 9),
+        2017: (APR, 29),
+        2018: (APR, 18),
+        2019: (MAY, 7),
+        2020: (APR, 26),
+        2021: (MAY, 14),
+        2022: (MAY, 3),
+        2023: (APR, 23),
+        2024: (MAY, 10),
+        2025: (APR, 30),
+        2026: (APR, 20),
+        2027: (MAY, 9),
+        2028: (APR, 27),
+        2029: (MAY, 16),
+        2030: (MAY, 5),
+        2031: (APR, 24),
+        2032: (MAY, 12),
+        2033: (MAY, 1),
+        2034: (APR, 21),
+        2035: (MAY, 10),
     }
 
     # Dates for Bathukamma (Mahalaya Amavasya/amavasya shraddha)
@@ -1396,6 +1437,40 @@ class _HinduLunisolar:
         2033: (JUN, 12),
         2034: (JUN, 2),
         2035: (JUN, 20),
+    }
+
+    # Karnataka Government holiday notifications and archived holiday lists
+    # 2008: Karnataka Cabinet decision and contemporary reports.
+    # https://www.dnaindia.com/bangalore/report-nov-15-kanaka-jayanti-to-be-public-holiday-1193460
+    KANAKADASA_JAYANTHI_DATES = {
+        2008: (NOV, 15),
+        2009: (NOV, 5),
+        2010: (NOV, 24),
+        2011: (NOV, 14),
+        2012: (DEC, 1),
+        2013: (NOV, 20),
+        2014: (NOV, 8),
+        2015: (NOV, 28),
+        2016: (NOV, 17),
+        2017: (NOV, 6),
+        2018: (NOV, 26),
+        2019: (NOV, 15),
+        2020: (DEC, 3),
+        2021: (NOV, 22),
+        2022: (NOV, 11),
+        2023: (NOV, 30),
+        2024: (NOV, 18),
+        2025: (NOV, 8),
+        2026: (NOV, 27),
+        2027: (NOV, 16),
+        2028: (NOV, 5),
+        2029: (NOV, 24),
+        2030: (NOV, 13),
+        2031: (DEC, 2),
+        2032: (NOV, 20),
+        2033: (NOV, 9),
+        2034: (NOV, 28),
+        2035: (NOV, 18),
     }
 
     # https://web.archive.org/web/20250911083610/https://www.drikpanchang.com/diwali/kali-puja/bengal-kalipuja-date-time.html
@@ -3127,6 +3202,9 @@ class _HinduLunisolar:
     def basant_panchami_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BASANT_PANCHAMI, year)
 
+    def basava_jayanti_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(BASAVA_JAYANTI, year)
+
     def bathukamma_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(BATHUKAMMA, year)
 
@@ -3207,6 +3285,9 @@ class _HinduLunisolar:
 
     def kabir_jayanti_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KABIR_JAYANTI, year)
+
+    def kanakadasa_jayanthi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(KANAKADASA_JAYANTHI, year)
 
     def kali_puja_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(KALI_PUJA, year)
