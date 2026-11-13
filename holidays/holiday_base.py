@@ -391,7 +391,7 @@ class HolidayBase(dict[date, str]):
         self.language = language
         self.observed = observed
         self.subdiv = subdiv
-        self.weekend_workdays = getattr(self, "weekend_workdays", set())
+        self.weekend_workdays = set()
         self.years = _normalize_arguments(int, years)
 
         # Configure l10n related attributes.
@@ -742,6 +742,7 @@ class HolidayBase(dict[date, str]):
         # being built, where __init__ populates them itself.
         if getattr(self, "_initialized", False) and key in {"categories", "observed", "years"}:
             self.clear()
+            self.weekend_workdays.clear()
             for year in tuple(self.years):  # Re-populate holidays for each year.
                 self._populate(year)
 
@@ -760,6 +761,7 @@ class HolidayBase(dict[date, str]):
         self.__dict__.update(state)
         # States serialized before the attribute existed are already populated.
         self._initialized = True
+        self.weekend_workdays = set(getattr(self, "weekend_workdays", ()))
         self._init_translation()
 
     def __str__(self) -> str:
@@ -916,7 +918,9 @@ class HolidayBase(dict[date, str]):
     def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
         for mapping_name in mapping_names:
-            for data in _normalize_tuple(getattr(self, mapping_name, {}).get(self._year, ())):
+            special_holidays = getattr(self, mapping_name, {})
+            substituted_dates = []
+            for data in _normalize_tuple(special_holidays.get(self._year, ())):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
                     if isinstance(name, tuple):  # Composite label (fmt, inner).
@@ -938,14 +942,22 @@ class HolidayBase(dict[date, str]):
                         to_month,
                         to_day,
                     )
-                    # when non-working day is transferred not from weekend, but from
-                    # another transferred holiday (observed).
-                    if self._is_weekend(from_date):
-                        if from_date.year != self._year or from_date not in self:
-                            self.weekend_workdays.add(from_date)
-                    else:
-                        if from_date.year == self._year and from_date in self:
-                            self.pop(from_date)
+                    if from_date.year == self._year:
+                        substituted_dates.append(from_date)
+
+            for adjacent_year in (self._year - 1, self._year + 1):
+                for data in _normalize_tuple(special_holidays.get(adjacent_year, ())):
+                    if len(data) == 5 and data[4] == self._year:
+                        substituted_dates.append(date(self._year, data[2], data[3]))
+
+            for from_date in substituted_dates:
+                # when non-working day is transferred not from weekend, but from
+                # another transferred holiday (observed).
+                if self._is_weekend(from_date):
+                    if from_date not in self:
+                        self.weekend_workdays.add(from_date)
+                elif from_date in self:
+                    self.pop(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
