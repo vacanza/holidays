@@ -46,6 +46,7 @@ scripts.holidays-ics = "holidays.generate_ics:main"
 
 [dependency-groups]
 dev = [
+  "ephem>=4.2.1,<5",
   "gitpython>=3.1.50,<4",
   "hijridate>=2.5,<3",
   "lingva>=5.0.6,<6",
