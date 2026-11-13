@@ -74,6 +74,7 @@ class UnitedStates(
         * [Public Law 89-554](https://web.archive.org/web/20250512204449/https://www.govinfo.gov/content/pkg/STATUTE-80/pdf/STATUTE-80-Pg378.pdf)
         * [E.O. 11582 of February 11th, 1971](https://web.archive.org/web/20250326234305/https://www.archives.gov/federal-register/codification/executive-order/11582.html)
         * [CA Diwali state holiday (AB 268, 2025-2026)](https://web.archive.org/web/20251223175415if_/https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB268)
+        * [VA legal holidays (Va. Code § 2.2-3300)](https://web.archive.org/web/20250309075526/https://law.lis.virginia.gov/vacode/title2.2/chapter33/section2.2-3300/)
         * Washington's Birthday:
             * [AK](https://web.archive.org/web/20250306070343/https://doa.alaska.gov/calendar/)
             * [AL](https://web.archive.org/web/20250125202410/https://admincode.legislature.state.al.us/administrative-code/670-X-12-.01)
@@ -101,7 +102,6 @@ class UnitedStates(
             * [TN](https://web.archive.org/web/20250404130210/https://www.tn.gov/about-tn/state-holidays.html)
             * [TX](https://web.archive.org/web/20250314100137/http://www.tsl.texas.gov/ref/abouttx/holidays)
             * [UT](https://web.archive.org/web/20250312095206/https://le.utah.gov/xcode/Title63G/Chapter1/63G-1-S301.html)
-            * [VA](https://web.archive.org/web/20250309075526/https://law.lis.virginia.gov/vacode/title2.2/chapter33/section2.2-3300/)
             * [VT](https://web.archive.org/web/20250415013508/https://legislature.vermont.gov/statutes/section/01/007/00371)
             * [WA](https://web.archive.org/web/20250414010238/https://app.leg.wa.gov/RCW/default.aspx?cite=1.16.050)
             * [WV](https://web.archive.org/web/20250328050144/http://code.wvlegislature.gov/2-2-1/)
