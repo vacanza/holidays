@@ -264,6 +264,30 @@ class TestCopy(TestCase):
 
         self.assertIsNot(original.categories, copied.categories)
         self.assertIsNot(original.weekend_workdays, copied.weekend_workdays)
+        self.assertIsNot(original.weekend, copied.weekend)
+
+        copied.weekend.add(MON)
+        self.assertNotIn(MON, original.weekend)
+
+    def test_copy_holiday_sum_operands_are_independent(self):
+        original = US() + JP()
+        copied = original.copy()
+
+        self.assertIsNot(original.holidays, copied.holidays)
+        self.assertEqual(len(original.holidays), len(copied.holidays))
+
+        for original_operand, copied_operand in zip(original.holidays, copied.holidays):
+            self.assertIsNot(original_operand, copied_operand)
+
+        self.assertEqual(copied.get("2024-07-04"), "Independence Day")
+        self.assertIn(2024, copied.holidays[0].years)
+        self.assertNotIn(2024, original.holidays[0].years)
+
+        self.assertEqual(original.get("2024-07-04"), "Independence Day")
+        self.assertIn(2024, original.holidays[0].years)
+
+        copied.holidays.pop()
+        self.assertEqual(len(original.holidays), 2)
 
 
 class TestCategories(TestCase):
