@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-08 10:44+0530\n"
+"PO-Revision-Date: 2026-11-12 21:29+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: gu\n"
@@ -185,9 +185,9 @@ msgstr "ઉગાડી"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "મેશાદી (તમિલ નવા વર્ષનો દિવસ)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "બહાગ બિહુ"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "બોહાગ બિહુ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
