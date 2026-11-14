@@ -1068,8 +1068,22 @@ class HolidayBase(dict[date, str]):
         return self.update(*args)
 
     def copy(self):
-        """Return a copy of the object."""
-        return copy.copy(self)
+        """Return an independent copy of the object."""
+        copied = copy.copy(self)
+        for attribute in ("years", "weekend", "weekend_workdays", "categories"):
+            object.__setattr__(copied, attribute, getattr(self, attribute).copy())
+
+        if isinstance(self, HolidaySum):
+            object.__setattr__(copied, "holidays", [holiday.copy() for holiday in self.holidays])
+            for attribute in ("country", "market", "subdiv"):
+                value = getattr(self, attribute, None)
+                if isinstance(value, list):
+                    object.__setattr__(copied, attribute, value.copy())
+
+            # The cached entity code may still reference the original metadata lists.
+            copied.__dict__.pop("_entity_code", None)
+
+        return copied
 
     def get(self, key: DateLike, default: str | Any = None) -> str | Any:
         """Retrieve the holiday name(s) for a given date.

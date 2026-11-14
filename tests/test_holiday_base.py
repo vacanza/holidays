@@ -259,6 +259,81 @@ class TestArgs(TestCase):
         self.assertSetEqual(HolidayBase(years=2015.0).years, {2015})
 
 
+class TestCopy(TestCase):
+    def test_copy_years_are_independent(self):
+        original = US()
+        copied = original.copy()
+
+        self.assertIsNot(original.years, copied.years)
+
+        self.assertEqual(original.get("2024-07-04"), "Independence Day")
+        self.assertNotIn(2024, copied.years)
+        self.assertEqual(copied.get("2024-07-04"), "Independence Day")
+
+    def test_copy_mutable_configuration_is_independent(self):
+        original = US()
+        copied = original.copy()
+
+        self.assertIsNot(original.categories, copied.categories)
+        self.assertIsNot(original.weekend_workdays, copied.weekend_workdays)
+        self.assertIsNot(original.weekend, copied.weekend)
+
+        copied.weekend.add(MON)
+        self.assertNotIn(MON, original.weekend)
+
+    def test_copy_holiday_sum_operands_are_independent(self):
+        original = US() + JP()
+        copied = original.copy()
+
+        self.assertIsNot(original.holidays, copied.holidays)
+        self.assertEqual(len(original.holidays), len(copied.holidays))
+
+        for original_operand, copied_operand in zip(original.holidays, copied.holidays):
+            self.assertIsNot(original_operand, copied_operand)
+
+        self.assertEqual(copied.get("2024-07-04"), "Independence Day")
+        self.assertIn(2024, copied.holidays[0].years)
+        self.assertNotIn(2024, original.holidays[0].years)
+
+        self.assertEqual(original.get("2024-07-04"), "Independence Day")
+        self.assertIn(2024, original.holidays[0].years)
+
+        copied.holidays.pop()
+        self.assertEqual(len(original.holidays), 2)
+
+    def test_copy_holiday_sum_list_metadata_is_independent(self):
+        original = US() + JP()
+        original.country = ["US", "JP"]
+        original.market = ["US", "JP"]
+        original.subdiv = ["CA", "NY"]
+        copied = original.copy()
+
+        for attribute in ("country", "market", "subdiv"):
+            original_value = getattr(original, attribute)
+            copied_value = getattr(copied, attribute)
+            self.assertIsNot(original_value, copied_value)
+
+            copied_value.append("COPY")
+            self.assertNotIn("COPY", original_value)
+
+    def test_copy_holiday_sum_entity_code_cache_is_independent(self):
+        original = US() + JP()
+        original.country = ["US", "JP"]
+        original.market = ["US", "JP"]
+        # __add__ may have populated this cached property before metadata is reassigned.
+        original.__dict__.pop("_entity_code", None)
+        original_entity_code = original._entity_code
+
+        copied = original.copy()
+
+        self.assertIs(original_entity_code, original.country)
+        self.assertIs(copied._entity_code, copied.country)
+        self.assertIsNot(copied._entity_code, original_entity_code)
+
+        copied.country.append("CA")
+        self.assertEqual(original._entity_code, ["US", "JP"])
+
+
 class TestCategories(TestCase):
     class CustomCategoryClass(HolidayBase):
         country = "CCC"
