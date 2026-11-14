@@ -12,7 +12,20 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, FEB, OCT, NOV, FRI, SAT, SUN, _timedelta
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    JUN,
+    SEP,
+    OCT,
+    NOV,
+    FRI,
+    SAT,
+    SUN,
+    _timedelta,
+)
 from holidays.groups import HebrewCalendarHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import (
@@ -33,6 +46,8 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
 
     References:
         * [TASE Trading and Vacation Schedules](https://web.archive.org/web/20261114073950/https://www.tase.co.il/en/content/knowledge_center/trading_vacation_schedule/)
+        * [Vacation Schedule 2013](https://web.archive.org/web/20260630182118/https://content.tase.co.il/media/musikfp3/file_0010_vacation_schedule_2013_heb.pdf)
+        * [Vacation Schedule 2020](https://web.archive.org/web/20251117170318/https://content.tase.co.il/media/hk4pgzy4/file_0010_vacation_schedule_2020_eng.pdf)
         * [Vacation Schedule 2022](https://web.archive.org/web/20251117170332/https://content.tase.co.il/media/vyolzrvu/file_0010_vacation_schedule_2022_eng.pdf)
         * [Vacation Schedule 2023](https://web.archive.org/web/20261114073732/https://content.tase.co.il/media/iqcijli2/file_0010_vacation_schedule_2023_eng.pdf)
         * [Trading on Shushan Purim 2023](https://web.archive.org/web/20260118174913/https://www.tase.co.il/en/content/news-lobby/20230308_pr/)
@@ -44,7 +59,8 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
     # %s (observed).
     observed_label = tr("%s (נצפה)")
     supported_languages = ("en_US", "he")
-    start_year = 2022
+    # Earliest available official vacation schedule.
+    start_year = 2013
 
     def __init__(self, *args, **kwargs):
         HebrewCalendarHolidays.__init__(self)
@@ -99,7 +115,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         self._add_passover(tr("ערב פסח"), -1)
         # Pesach.
         self._add_passover(tr("פסח"))
-        # Seventh day of Pesach Eve.
+        # Eve of the Seventh Day of Pesach.
         self._add_passover(tr("ערב שביעי של פסח"), +5)
         # Seventh day of Pesach.
         self._add_passover(tr("שביעי של פסח"), +6)
@@ -158,15 +174,36 @@ class TelAvivStockExchangeStaticHolidays:
     """Tel Aviv Stock Exchange special holidays.
 
     References:
+        * [Vacation Schedule 2015](https://web.archive.org/web/20260630182118/https://content.tase.co.il/media/punlviyp/file_0010_vacation_schedule_2015_heb.pdf)
+        * [Vacation Schedule 2018](https://web.archive.org/web/20260630182118/https://content.tase.co.il/media/5cmh154f/file_0010_vacation_schedule_2018_heb.pdf)
+        * [Vacation Schedule 2019](https://web.archive.org/web/20260630182118/https://content.tase.co.il/media/qsyberat/file_0010_vacation_schedule_2019_heb.pdf)
+        * [September 2019 election closure](https://web.archive.org/web/20191016132948/https://en.globes.co.il/en/article-mon-tase-flat-as-delek-decline-continues-1001300994)
+        * [March 2020 election closure](https://web.archive.org/web/20250126033838/https://www.timesofisrael.com/tel-aviv-stock-exchange-continues-slide-as-virus-outbreak-batters-global-markets/)
+        * [June 2020 labor dispute closure](https://web.archive.org/web/20220223003921/https://en.globes.co.il/en/article-no-trading-on-tase-as-workers-apply-sanctions-1001331393)
+        * [Vacation Schedule 2021](https://web.archive.org/web/20260630182118/https://content.tase.co.il/media/phbhzlw0/file_0010_vacation_schedule_2021_heb.pdf)
         * [Municipal elections 2024](https://web.archive.org/web/20250720201133/https://en.globes.co.il/en/article-Mon-TASE-edges-higher-despite-no-rate-cut-1001472244)
     """
 
     # Knesset Election Day.
     knesset_election_day = tr("יום הבחירות לכנסת")
+    # Municipal Election Day.
+    municipal_election_day = tr("יום הבחירות לרשויות המקומיות")
 
     special_public_holidays = {
+        2013: (JAN, 22, knesset_election_day),
+        2015: (MAR, 17, knesset_election_day),
+        2018: (OCT, 30, municipal_election_day),
+        2019: (
+            (APR, 9, knesset_election_day),
+            (SEP, 17, knesset_election_day),
+        ),
+        2020: (
+            (MAR, 2, knesset_election_day),
+            # Market Holiday.
+            (JUN, 7, tr("יום חופשה בבורסה")),
+        ),
+        2021: (MAR, 23, knesset_election_day),
         2022: (NOV, 1, knesset_election_day),
-        # Municipal Election Day.
-        2024: (FEB, 27, tr("יום הבחירות לרשויות המקומיות")),
+        2024: (FEB, 27, municipal_election_day),
         2026: (OCT, 27, knesset_election_day),
     }

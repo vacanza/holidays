@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-14 07:41+0000\n"
-"PO-Revision-Date: 2026-11-14 21:38+0530\n"
-"Last-Translator: shivam0897-i <123145276+shivam0897-i@users.noreply.github.com>\n"
+"PO-Revision-Date: 2026-11-15 03:12+0530\n"
+"Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "פסח"
 msgstr ""
 
-#. Seventh day of Pesach Eve.
+#. Eve of the Seventh Day of Pesach.
 msgid "ערב שביעי של פסח"
 msgstr ""
 
