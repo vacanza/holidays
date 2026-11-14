@@ -363,7 +363,9 @@ class UnitedStates(
                 else:
                     self._add_observed(self._add_remembrance_day(name))
 
-        if self._year >= 1971:
+        if self._year >= 1971 and (
+            self._normalized_subdiv != "AS" or GOVERNMENT in self.categories
+        ):
             # Memorial Day.
             self._add_holiday_last_mon_of_may(tr("Memorial Day"))
 
@@ -457,6 +459,7 @@ class UnitedStates(
                 "IN",
                 "NM",
                 "PR",
+                "AS",
                 "VI",
             }:
                 # Washington's Birthday.
@@ -520,7 +523,7 @@ class UnitedStates(
                 else:
                     self._add_columbus_day(name)
 
-            if self._year >= 1938 and self._normalized_subdiv != "PR":
+            if self._year >= 1938 and self._normalized_subdiv not in {"AS", "PR"}:
                 name = (
                     # Veterans Day.
                     tr("Veterans Day")
@@ -618,6 +621,21 @@ class UnitedStates(
             )
 
     def _populate_subdiv_as_public_holidays(self):
+        self._add_good_friday(tr("Good Friday"))
+
+        if self._year >= 1879:
+            # Washington's Birthday.
+            self._add_holiday_feb_22(tr("Washington's Birthday"))
+
+        if self._year >= 1971:
+            # Memorial Day.
+            self._add_holiday_may_30(tr("Memorial Day"))
+
+        if self._year >= 1938:
+            # Veterans Day.
+            name = tr("Veterans Day") if self._year >= 1954 else tr("Armistice Day")
+            self._add_observed(self._add_remembrance_day(name))
+
         if self._year >= 1901:
             # American Samoa Flag Day.
             self._add_observed(self._add_holiday_apr_17(tr("American Samoa Flag Day")))
