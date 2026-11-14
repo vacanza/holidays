@@ -182,8 +182,8 @@ class TestFrance(CommonCountryTests, TestCase):
                     self.assertHolidayName(name, holidays, dt)
                     self.assertHolidayName(name, holidays, range(1893, self.end_year))
                     self.assertNoHolidayName(name, holidays, range(self.start_year, 1893))
-                # Guadeloupe, Martinique, French Polynesia - Unknown, but exists.
-                case "971" | "972" | "PF":
+                # Guadeloupe and French Polynesia - Unknown, but exists.
+                case "971" | "PF":
                     self.assertHolidayName(name, holidays, dt)
                     self.assertHolidayName(name, holidays, self.full_range)
                 case _:

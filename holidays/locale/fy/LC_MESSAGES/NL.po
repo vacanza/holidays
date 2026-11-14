@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-01-25 14:31+0100\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-09 22:24+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fy\n"
 "MIME-Version: 1.0\n"
@@ -74,3 +74,23 @@ msgstr "Eerste Krystdei"
 #. Second Day of Christmas.
 msgid "Tweede kerstdag"
 msgstr "Twadde Krystdei"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Krystfakânsje"
+
+#. Spring Break.
+msgid "Voorjaarsvakantie"
+msgstr "Foarjiersfakânsje"
+
+#. May Break.
+msgid "Meivakantie"
+msgstr "Maaiefakânsje"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Simmerfakânsje"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Hjerstfakânsje"
