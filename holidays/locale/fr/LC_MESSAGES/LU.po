@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-09 14:20+0530\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,30 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: lb\n"
+
+#. All Saints' Break.
+msgid "Allerhellegevakanz"
+msgstr "Congé de la Toussaint"
+
+#. Christmas Break.
+msgid "Chrëschtvakanz"
+msgstr "Vacances de Noël"
+
+#. Carnival Break.
+msgid "Fuesvakanz"
+msgstr "Congé de Carnaval"
+
+#. Easter Break.
+msgid "Ouschtervakanz"
+msgstr "Vacances de Pâques"
+
+#. Pentecost Break.
+msgid "Päischtvakanz"
+msgstr "Congé de la Pentecôte"
+
+#. Summer Break.
+msgid "Summervakanz"
+msgstr "Vacances d'été"
 
 #. New Year's Day.
 msgid "Neijoerschdag"

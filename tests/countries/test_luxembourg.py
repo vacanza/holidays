@@ -12,6 +12,8 @@
 
 from unittest import TestCase
 
+from holidays.calendars.luxembourg_school import LUXEMBOURG_SCHOOL_HOLIDAYS
+from holidays.constants import BANK, PUBLIC, SCHOOL
 from holidays.countries.luxembourg import Luxembourg
 from tests.common import CommonCountryTests
 
@@ -112,6 +114,118 @@ class TestLuxembourg(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
+    def test_all_school_holiday_ids_are_mapped(self):
+        known_ids = set(Luxembourg._get_school_holiday_names())
+        dataset_ids = {
+            holiday_id
+            for year_holidays in LUXEMBOURG_SCHOOL_HOLIDAYS.values()
+            for *_, holiday_id in year_holidays
+        }
+        self.assertEqual(dataset_ids, known_ids)
+
+    def test_no_school_holidays(self):
+        # School holidays are available from the 1980/81 school year.
+        self.assertNoHolidays(
+            Luxembourg(
+                categories=SCHOOL,
+                years=(*range(self.start_year, 1980), *range(2030, self.end_year)),
+            )
+        )
+        self.assertNoSchoolHoliday("1980-10-25", "1980-11-03")
+
+    def test_all_saints_break(self):
+        name = "Allerhellegevakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1980-10-26",
+            "1980-11-02",
+            "1999-10-31",
+            "1999-11-07",
+            "2025-11-01",
+            "2025-11-09",
+            "2028-10-28",
+            "2028-11-05",
+        )
+        self.assertNoSchoolHoliday("1999-10-30", "1999-11-08", "2025-10-31", "2025-11-10")
+
+    def test_christmas_break(self):
+        name = "Chrëschtvakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1980-12-21",
+            "1981-01-04",
+            "2017-12-16",
+            "2018-01-01",
+            "2025-12-20",
+            "2026-01-04",
+            "2028-12-16",
+            "2028-12-31",
+        )
+        self.assertNoSchoolHoliday(
+            "1980-12-20", "1981-01-05", "2018-01-02", "2028-12-15", "2029-01-01"
+        )
+
+    def test_carnival_break(self):
+        name = "Fuesvakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1981-03-01",
+            "1981-03-08",
+            "2000-02-26",
+            "2000-03-06",
+            "2028-02-12",
+            "2028-02-20",
+        )
+        self.assertNoSchoolHoliday("2000-02-25", "2000-03-07", "2028-02-11", "2028-02-21")
+
+    def test_easter_break(self):
+        name = "Ouschtervakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1981-04-12",
+            "1981-04-26",
+            "2026-03-28",
+            "2026-04-12",
+            "2029-03-31",
+            "2029-04-15",
+        )
+        self.assertNoSchoolHoliday("2026-03-27", "2026-04-13")
+
+    def test_pentecost_break(self):
+        name = "Päischtvakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1981-06-07",
+            "1981-06-14",
+            "2009-05-23",
+            "2009-06-02",
+            "2027-05-29",
+            "2027-06-06",
+        )
+        self.assertNoSchoolHoliday("2009-05-22", "2009-06-03", "2027-05-28", "2027-06-07")
+
+    def test_summer_break(self):
+        name = "Summervakanz"
+        self.assertSchoolHolidayName(
+            name,
+            "1981-07-16",
+            "1981-09-14",
+            "2026-07-16",
+            "2026-09-14",
+            "2029-07-14",
+            "2029-09-16",
+        )
+        self.assertNoSchoolHoliday("2026-07-15", "2026-09-15", "2029-07-13", "2029-09-17")
+
+    def test_school_holidays_run_across_new_year(self):
+        # The Christmas Break belongs to both years it touches.
+        self.assertHolidayName(
+            "Chrëschtvakanz",
+            Luxembourg(categories=SCHOOL, years=(2025, 2026)),
+            "2025-12-31",
+            "2026-01-01",
+        )
+
     def test_2018(self):
         self.assertHolidaysInYear(
             2018,
@@ -199,6 +313,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-12-25", "Chrëschtdag"),
             ("2022-12-26", "Stiefesdag"),
             ("2022-12-31", "Silvester"),
+            categories=(BANK, PUBLIC),
         )
 
     def test_l10n_de(self):
@@ -218,6 +333,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-12-25", "Weihnachten"),
             ("2022-12-26", "Zweiter Weihnachtsfeiertag"),
             ("2022-12-31", "Silvester"),
+            categories=(BANK, PUBLIC),
         )
 
     def test_l10n_en_us(self):
@@ -237,6 +353,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Saint Stephen's Day"),
             ("2022-12-31", "New Year's Eve"),
+            categories=(BANK, PUBLIC),
         )
 
     def test_l10n_fr(self):
@@ -256,6 +373,7 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-12-25", "Noël"),
             ("2022-12-26", "Saint-Étienne"),
             ("2022-12-31", "Saint-Sylvestre"),
+            categories=(BANK, PUBLIC),
         )
 
     def test_l10n_uk(self):
@@ -275,4 +393,65 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "День Святого Стефана"),
             ("2022-12-31", "Переддень Нового року"),
+            categories=(BANK, PUBLIC),
         )
+
+    def test_l10n_default_school(self):
+        default_holidays = Luxembourg(years=2026, categories=SCHOOL)
+        for dt, name in (
+            ("2026-01-02", "Chrëschtvakanz"),
+            ("2026-02-16", "Fuesvakanz"),
+            ("2026-04-06", "Ouschtervakanz"),
+            ("2026-05-25", "Päischtvakanz"),
+            ("2026-08-01", "Summervakanz"),
+            ("2026-11-02", "Allerhellegevakanz"),
+        ):
+            self.assertHolidayName(name, default_holidays, dt)
+
+    def test_l10n_de_school(self):
+        de_holidays = Luxembourg(years=2026, language="de", categories=SCHOOL)
+        for dt, name in (
+            ("2026-01-02", "Weihnachtsferien"),
+            ("2026-02-16", "Karnevalsferien"),
+            ("2026-04-06", "Osterferien"),
+            ("2026-05-25", "Pfingstferien"),
+            ("2026-08-01", "Sommerferien"),
+            ("2026-11-02", "Allerheiligenferien"),
+        ):
+            self.assertHolidayName(name, de_holidays, dt)
+
+    def test_l10n_en_us_school(self):
+        en_us_holidays = Luxembourg(years=2026, language="en_US", categories=SCHOOL)
+        for dt, name in (
+            ("2026-01-02", "Christmas Break"),
+            ("2026-02-16", "Carnival Break"),
+            ("2026-04-06", "Easter Break"),
+            ("2026-05-25", "Pentecost Break"),
+            ("2026-08-01", "Summer Break"),
+            ("2026-11-02", "All Saints' Break"),
+        ):
+            self.assertHolidayName(name, en_us_holidays, dt)
+
+    def test_l10n_fr_school(self):
+        fr_holidays = Luxembourg(years=2026, language="fr", categories=SCHOOL)
+        for dt, name in (
+            ("2026-01-02", "Vacances de Noël"),
+            ("2026-02-16", "Congé de Carnaval"),
+            ("2026-04-06", "Vacances de Pâques"),
+            ("2026-05-25", "Congé de la Pentecôte"),
+            ("2026-08-01", "Vacances d'été"),
+            ("2026-11-02", "Congé de la Toussaint"),
+        ):
+            self.assertHolidayName(name, fr_holidays, dt)
+
+    def test_l10n_uk_school(self):
+        uk_holidays = Luxembourg(years=2026, language="uk", categories=SCHOOL)
+        for dt, name in (
+            ("2026-01-02", "Різдвяні канікули"),
+            ("2026-02-16", "Карнавальні канікули"),
+            ("2026-04-06", "Великодні канікули"),
+            ("2026-05-25", "Канікули на Пʼятидесятницю"),
+            ("2026-08-01", "Літні канікули"),
+            ("2026-11-02", "Канікули на День усіх святих"),
+        ):
+            self.assertHolidayName(name, uk_holidays, dt)
