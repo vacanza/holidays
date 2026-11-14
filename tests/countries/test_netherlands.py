@@ -12,7 +12,7 @@
 
 from unittest import TestCase
 
-from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL, UNOFFICIAL
 from holidays.countries.netherlands import Netherlands
 from tests.common import CommonCountryTests
 
@@ -193,6 +193,12 @@ class TestNetherlands(CommonCountryTests, TestCase):
 
     def test_second_day_of_christmas(self):
         self.assertHolidayName("Tweede kerstdag", (f"{year}-12-26" for year in self.full_range))
+
+    def test_saint_nicholas_eve(self):
+        name = "Sinterklaasavond"
+        self.assertUnofficialHolidayName(name, (f"{year}-12-05" for year in self.full_range))
+        self.assertNoHolidayName(name)
+        self.assertNoOptionalHolidayName(name)
 
     def test_school_and_public_categories(self):
         holidays = Netherlands(subdiv="Noord", years=2026, categories=(PUBLIC, SCHOOL))
@@ -765,9 +771,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-05-26", "Hemelvaartsdag"),
             ("2022-06-05", "Eerste pinksterdag"),
             ("2022-06-06", "Tweede pinksterdag"),
+            ("2022-12-05", "Sinterklaasavond"),
             ("2022-12-25", "Eerste kerstdag"),
             ("2022-12-26", "Tweede kerstdag"),
-            categories=(OPTIONAL, PUBLIC),
+            categories=(OPTIONAL, PUBLIC, UNOFFICIAL),
         )
 
     def test_l10n_en_us(self):
@@ -782,9 +789,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-05-26", "Ascension Day"),
             ("2022-06-05", "Pentecost"),
             ("2022-06-06", "Pentecost Monday"),
+            ("2022-12-05", "Saint Nicholas' Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Second Day of Christmas"),
-            categories=(OPTIONAL, PUBLIC),
+            categories=(OPTIONAL, PUBLIC, UNOFFICIAL),
         )
 
     def test_l10n_fy(self):
@@ -799,9 +807,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-05-26", "Himelfeartsdei"),
             ("2022-06-05", "Pinkstersnein"),
             ("2022-06-06", "Pinkstermoandei"),
+            ("2022-12-05", "Sinteklaasjûn"),
             ("2022-12-25", "Eerste Krystdei"),
             ("2022-12-26", "Twadde Krystdei"),
-            categories=(OPTIONAL, PUBLIC),
+            categories=(OPTIONAL, PUBLIC, UNOFFICIAL),
         )
 
     def test_l10n_th(self):
@@ -816,9 +825,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-05-26", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
             ("2022-06-05", "วันสมโภชพระจิตเจ้า"),
             ("2022-06-06", "วันจันทร์หลังวันสมโภชพระจิตเจ้า"),
+            ("2022-12-05", "คืนวันเซนต์นิโคลัส"),
             ("2022-12-25", "วันคริสต์มาสวันแรก"),
             ("2022-12-26", "วันคริสต์มาสวันที่สอง"),
-            categories=(OPTIONAL, PUBLIC),
+            categories=(OPTIONAL, PUBLIC, UNOFFICIAL),
         )
 
     def test_l10n_uk(self):
@@ -833,9 +843,10 @@ class TestNetherlands(CommonCountryTests, TestCase):
             ("2022-05-26", "Вознесіння Господнє"),
             ("2022-06-05", "Пʼятидесятниця"),
             ("2022-06-06", "Другий день Пʼятидесятниці"),
+            ("2022-12-05", "Вечір Святого Миколая"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Другий день Різдва"),
-            categories=(OPTIONAL, PUBLIC),
+            categories=(OPTIONAL, PUBLIC, UNOFFICIAL),
         )
 
     def _assert_school_l10n(self, language, *expected):
