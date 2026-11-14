@@ -1,7 +1,8 @@
 .DEFAULT_GOAL := help
 
 .PHONY: archive-links check clean doc doc-serve help icalendar l10n package \
-        pre-commit release-notes sbom setup snapshot test upgrade
+        pre-commit release-notes sbom setup snapshot sort-custom-dict spellcheck \
+        test upgrade
 
 # Prefer the project-local uv (pinned via the ci dependency group) when present.
 UV = $(if $(wildcard .venv/bin/uv),.venv/bin/uv,uv)
@@ -23,6 +24,7 @@ help:
 	@echo "    sbom          generate CycloneDX SBOM from the built wheel"
 	@echo "    setup         setup development environment"
 	@echo "    snapshot      generate project snapshots"
+	@echo "    spellcheck    run spell check across the repository (docs, l10n)"
 	@echo "    test          run tests (in parallel)"
 	@echo "    upgrade       run dependency upgrade"
 
@@ -33,7 +35,15 @@ check:
 	$(MAKE) l10n
 	$(MAKE) pre-commit
 	$(MAKE) doc
+	$(MAKE) spellcheck
 	$(MAKE) test
+
+sort-custom-dict:
+	$(UV_RUN_CMD) tools/sort_cspell_dict.py
+
+spellcheck: sort-custom-dict
+	@command -v docker >/dev/null 2>&1 || { echo "ERROR: docker not found. Install Docker or skip spellcheck."; exit 127; }
+	$(MAKE) -f cspell/Makefile cspell-check
 
 clean:
 	@for ext in mo pot pyc; do \
