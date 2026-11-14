@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -29,6 +30,7 @@ class NewCaledonia(ChildEntity, France):
     parent_entity = France
     # France took formal possession of New Caledonia on September 24th, 1853.
     start_year = 1854
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysNC(NewCaledonia):
