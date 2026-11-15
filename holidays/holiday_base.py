@@ -815,6 +815,25 @@ class HolidayBase(dict[date, str]):
 
         return subdivision_aliases
 
+    @classmethod
+    def get_supported_options(cls) -> dict[str, Any]:
+        """Get entity-specific options.
+
+        These are the keyword-only arguments an entity accepts in addition to the
+        common ones (e.g. `include_sundays` for Sweden). They can also be passed to
+        [country_holidays()][holidays.utils.country_holidays] and
+        [financial_holidays()][holidays.utils.financial_holidays].
+
+        Returns:
+            A dictionary mapping option names to their default values.
+        """
+        options: dict[str, Any] = {}
+        for entity_cls in reversed(cls.__mro__):
+            if issubclass(entity_cls, HolidayBase) and (init := vars(entity_cls).get("__init__")):
+                options.update(init.__kwdefaults__ or {})
+
+        return options
+
     def _init_translation(self) -> None:
         """Initialize translation function based on language settings."""
         supported_languages = set(self.supported_languages)
