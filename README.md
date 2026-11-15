@@ -290,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bahrain</td>
 <td>BH</td>
 <td></td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2010,7 +2010,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>Euronext</td>
 <td>ENX</td>
-<td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
+<td>Euronext (Amsterdam, Athens, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
 <td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
 <td>HALF_DAY</td>
 </tr>
