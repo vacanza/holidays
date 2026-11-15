@@ -159,11 +159,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-01-01", "Año Nuevo"),
             ("2022-02-28", "Carnaval"),
             ("2022-03-01", "Carnaval"),
+            ("2022-04-11", "Fundación de Cuenca (observado)"),
             ("2022-04-15", "Viernes Santo"),
             ("2022-05-01", "Día del Trabajo"),
             ("2022-05-02", "Día del Trabajo (observado)"),
             ("2022-05-23", "Batalla de Pichincha (observado)"),
             ("2022-05-24", "Batalla de Pichincha"),
+            ("2022-07-25", "Fundación de Guayaquil"),
             ("2022-08-10", "Primer Grito de Independencia"),
             ("2022-08-12", "Primer Grito de Independencia (observado)"),
             ("2022-10-09", "Independencia de Guayaquil"),
@@ -171,6 +173,7 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-11-02", "Día de Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
             ("2022-11-04", "Día de Difuntos (observado)"),
+            ("2022-12-05", "Fundación de Quito (observado)"),
             ("2022-12-25", "Navidad"),
             ("2022-12-26", "Navidad (observado)"),
         )
@@ -181,11 +184,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-01-01", "New Year's Day"),
             ("2022-02-28", "Carnival"),
             ("2022-03-01", "Carnival"),
+            ("2022-04-11", "Fundación de Cuenca (observed)"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Labor Day (observed)"),
             ("2022-05-23", "The Battle of Pichincha (observed)"),
             ("2022-05-24", "The Battle of Pichincha"),
+            ("2022-07-25", "Fundación de Guayaquil"),
             ("2022-08-10", "Declaration of Independence of Quito"),
             ("2022-08-12", "Declaration of Independence of Quito (observed)"),
             ("2022-10-09", "Independence of Guayaquil"),
@@ -193,6 +198,7 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-03", "Independence of Cuenca"),
             ("2022-11-04", "All Souls' Day (observed)"),
+            ("2022-12-05", "Fundación de Quito (observed)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
         )
@@ -203,11 +209,13 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-01-01", "Новий рік"),
             ("2022-02-28", "Карнавал"),
             ("2022-03-01", "Карнавал"),
+            ("2022-04-11", "Fundación de Cuenca (вихідний)"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-05-01", "День праці"),
             ("2022-05-02", "День праці (вихідний)"),
             ("2022-05-23", "День битви біля Пічинча (вихідний)"),
             ("2022-05-24", "День битви біля Пічинча"),
+            ("2022-07-25", "Fundación de Guayaquil"),
             ("2022-08-10", "День незалежності Кіто"),
             ("2022-08-12", "День незалежності Кіто (вихідний)"),
             ("2022-10-09", "День незалежності Гуаякіля"),
@@ -215,6 +223,62 @@ class TestEcuador(CommonCountryTests, TestCase):
             ("2022-11-02", "День усіх померлих"),
             ("2022-11-03", "День незалежності Куенки"),
             ("2022-11-04", "День усіх померлих (вихідний)"),
+            ("2022-12-05", "Fundación de Quito (вихідний)"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Різдво Христове (вихідний)"),
         )
+
+    def test_quito_foundation_day(self):
+        holidays = Ecuador(subdiv="Quito", years=2025)
+        self.assertHolidayName(
+            "Fundación de Quito (observado)",
+            holidays,
+            "2025-12-05",
+        )
+
+
+    def test_guayaquil_foundation_day(self):
+        holidays = Ecuador(subdiv="Guayaquil", years=2026)
+        self.assertHolidayName(
+            "Fundación de Guayaquil (observado)",
+            holidays,
+            "2026-07-24",
+        )
+
+    def test_cuenca_foundation_day(self):
+        holidays = Ecuador(subdiv="Cuenca", years=2026)
+        self.assertHolidayName(
+            "Fundación de Cuenca (observado)",
+            holidays,
+            "2026-04-13",
+        )
+
+    def test_foundation_days_are_subdivision_specific(self):
+        quito = Ecuador(subdiv="Quito", years=2026)
+        guayaquil = Ecuador(subdiv="Guayaquil", years=2026)
+        cuenca = Ecuador(subdiv="Cuenca", years=2026)
+        national = Ecuador(years=2026)
+
+        # Quito's foundation day should only appear in Quito.
+        self.assertHolidayName(
+            "Fundación de Quito (observado)", quito, "2026-12-07"
+        )
+        self.assertNoHolidayName("Fundación de Quito", guayaquil)
+        self.assertNoHolidayName("Fundación de Quito", cuenca)
+        self.assertNoHolidayName("Fundación de Quito", national)
+
+        # Guayaquil's foundation day should only appear in Guayaquil.
+        self.assertHolidayName(
+            "Fundación de Guayaquil (observado)", guayaquil, "2026-07-24"
+        )
+        self.assertNoHolidayName("Fundación de Guayaquil", quito)
+        self.assertNoHolidayName("Fundación de Guayaquil", cuenca)
+        self.assertNoHolidayName("Fundación de Guayaquil", national)
+
+        # Cuenca's foundation day should only appear in Cuenca.
+        self.assertHolidayName(
+            "Fundación de Cuenca (observado)", cuenca, "2026-04-13"
+        )
+        self.assertNoHolidayName("Fundación de Cuenca", quito)
+        self.assertNoHolidayName("Fundación de Cuenca", guayaquil)
+        self.assertNoHolidayName("Fundación de Cuenca", national)
