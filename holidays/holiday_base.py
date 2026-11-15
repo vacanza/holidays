@@ -917,9 +917,9 @@ class HolidayBase(dict[date, str]):
 
     def _add_special_holidays(self, mapping_names, *, observed=False):
         """Add special holidays."""
+        substituted_dates = []
         for mapping_name in mapping_names:
             special_holidays = getattr(self, mapping_name, {})
-            substituted_dates = []
             for data in _normalize_tuple(special_holidays.get(self._year, ())):
                 if len(data) == 3:  # Special holidays.
                     month, day, name = data
@@ -952,14 +952,14 @@ class HolidayBase(dict[date, str]):
                 if len(data) == 5 and data[4] == self._year
             )
 
-            for from_date in substituted_dates:
-                # when non-working day is transferred not from weekend, but from
-                # another transferred holiday (observed).
-                if self._is_weekend(from_date):
-                    if from_date not in self:
-                        self.weekend_workdays.add(from_date)
-                elif from_date in self:
-                    self.pop(from_date)
+        for from_date in substituted_dates:
+            # when non-working day is transferred not from weekend, but from
+            # another transferred holiday (observed).
+            if self._is_weekend(from_date):
+                if from_date not in self:
+                    self.weekend_workdays.add(from_date)
+            elif from_date in self:
+                self.pop(from_date)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
