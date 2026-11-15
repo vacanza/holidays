@@ -7,7 +7,7 @@
 #  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
 #           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com
+#  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
 # Turkey holidays ur_PK localization.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
-"PO-Revision-Date: 2026-11-15 17:00+0500\n"
+"PO-Revision-Date: 2026-11-15 17:30+0500\n"
 "Last-Translator: Esha Ahsan <ahsan786165@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. %s (estimated).
 #, c-format
 msgid "%s (tahmini)"
-msgstr "%s (متوقع)"
+msgstr "%s (اندازاً)"
 
 #. New Year's Day.
 msgid "Yılbaşı"

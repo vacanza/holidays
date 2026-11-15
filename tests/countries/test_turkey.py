@@ -220,6 +220,7 @@ class TestTurkey(CommonCountryTests, TestCase):
             ("2023-10-28", "День Республіки (з 13:00)"),
             ("2023-10-29", "День Республіки"),
         )
+
     def test_l10n_ur_pk(self):
         self.assertLocalizedHolidays(
             "ur_PK",
@@ -240,4 +241,3 @@ class TestTurkey(CommonCountryTests, TestCase):
             ("2023-10-28", "یومِ جمہوریہ (دوپہر 1 بجے سے)"),
             ("2023-10-29", "یومِ جمہوریہ"),
         )
-
