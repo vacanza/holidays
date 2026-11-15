@@ -225,7 +225,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_school_holidays(self):
         # 2021 is the first calendar year covered entirely by § 2 Abs. 4
         # as in effect since September 1st, 2020.
-        if self.subdiv is None or self._year < 2021:
+        if self.subdiv is None or self._year <= 2020:
             return None
 
         subdiv = self._normalized_subdiv
