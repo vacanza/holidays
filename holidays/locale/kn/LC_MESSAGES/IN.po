@@ -646,7 +646,7 @@ msgstr "ಕಾರ್ಮಿಕರ ದಿನ"
 
 #. Hul Diwas.
 msgid "Hul Diwas"
-msgstr "ಹುಳ್ ದಿನ"
+msgstr "ಹುಲ್ ದಿವಸ್"
 
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
