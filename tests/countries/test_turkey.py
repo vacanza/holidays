@@ -132,6 +132,44 @@ class TestTurkey(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayNameCount(name, 7, 1941, 2007)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 8, 1974, 2039)
 
+    def test_eid_eves_half_day(self):
+        # Law 1907 of June 10, 1975 added the eves (from 1pm).
+        for name in ("Ramazan Bayramı (saat 13.00'ten)", "Kurban Bayramı (saat 13.00'ten)"):
+            self.assertHalfDayHolidayName(name, range(1975, 2033))
+            self.assertNoHalfDayHolidayName(name, range(self.start_year, 1975))
+        self.assertHalfDayHolidayName("Ramazan Bayramı (saat 13.00'ten)", "1975-10-05")
+        self.assertHalfDayHolidayName("Kurban Bayramı (saat 13.00'ten)", "1975-12-12")
+
+    def test_national_sovereignty_day_eve_half_day(self):
+        name = "Ulusal Egemenlik Bayramı (öğleden sonra)"
+        self.assertHalfDayHolidayName(
+            name, (f"{year}-04-22" for year in range(self.start_year, 1981))
+        )
+        self.assertNoHalfDayHolidayName(name, range(1981, self.end_year))
+
+    def test_freedom_and_constitution_day_eve_half_day(self):
+        name = "Hürriyet ve Anayasa Bayramı (öğleden sonra)"
+        self.assertHalfDayHolidayName(name, (f"{year}-05-26" for year in range(1963, 1981)))
+        self.assertNoHalfDayHolidayName(
+            name, range(self.start_year, 1963), range(1981, self.end_year)
+        )
+
+    def test_new_years_eve_half_day(self):
+        name = "Yılbaşı (öğleden sonra)"
+        self.assertHalfDayHolidayName(
+            name, (f"{year}-12-31" for year in range(self.start_year, 1981))
+        )
+        self.assertNoHalfDayHolidayName(name, range(1981, self.end_year))
+
+    def test_1970_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            1970,
+            ("1970-04-22", "Ulusal Egemenlik Bayramı (öğleden sonra)"),
+            ("1970-05-26", "Hürriyet ve Anayasa Bayramı (öğleden sonra)"),
+            ("1970-10-28", "Cumhuriyet Bayramı (saat 13.00'ten)"),
+            ("1970-12-31", "Yılbaşı (öğleden sonra)"),
+        )
+
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
