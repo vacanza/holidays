@@ -253,16 +253,15 @@ class TestPoland(CommonCountryTests, TestCase):
     def test_school_christmas_break(self):
         name = "Zimowa przerwa świąteczna"
         self.assertNoHolidayName(name)
+        dts = (
+            "2018-12-23",
+            "2018-12-31",
+            # Dec 22 is part of the break when it falls on a Monday.
+            "2025-12-22",
+            "2025-12-31",
+        )
         for holidays in self.subdiv_school_holidays.values():
-            self.assertHolidayName(
-                name,
-                holidays,
-                "2018-12-23",
-                "2018-12-31",
-                # Dec 22 is part of the break when it falls on a Monday.
-                "2025-12-22",
-                "2025-12-31",
-            )
+            self.assertHolidayName(name, holidays, dts)
             self.assertNoHoliday(holidays, "2018-12-22", "2019-01-01", "2025-12-21")
             self.assertHolidayName(name, holidays, range(2018, 2050))
             self.assertNoHolidayName(name, holidays, range(1925, 2018))
@@ -275,26 +274,144 @@ class TestPoland(CommonCountryTests, TestCase):
         name = "Ferie zimowe"
         self.assertNoHolidayName(name)
         # The two-week period the minister assigns to each voivodeship.
-        for subdiv, dts in (
-            ("02", ("2018-01-15", "2018-01-28", "2025-02-03", "2025-02-16")),
-            ("04", ("2018-02-12", "2018-02-25", "2025-01-20", "2025-02-02")),
-            ("06", ("2018-01-29", "2018-02-11", "2025-02-17", "2025-03-02")),
-            ("08", ("2018-02-12", "2018-02-25", "2025-01-20", "2025-02-02")),
-            ("10", ("2018-01-29", "2018-02-11", "2025-02-17", "2025-03-02")),
-            ("12", ("2018-02-12", "2018-02-25", "2025-01-20", "2025-02-02")),
-            ("14", ("2018-01-15", "2018-01-28", "2025-02-03", "2025-02-16")),
-            ("16", ("2018-01-15", "2018-01-28", "2025-02-03", "2025-02-16")),
-            ("18", ("2018-01-29", "2018-02-11", "2025-02-17", "2025-03-02")),
-            ("20", ("2018-01-22", "2018-02-04", "2025-01-27", "2025-02-09")),
-            ("22", ("2018-01-29", "2018-02-11", "2025-02-17", "2025-03-02")),
-            ("24", ("2018-01-29", "2018-02-11", "2025-02-17", "2025-03-02")),
-            ("26", ("2018-02-12", "2018-02-25", "2025-01-20", "2025-02-02")),
-            ("28", ("2018-01-22", "2018-02-04", "2025-01-27", "2025-02-09")),
-            ("30", ("2018-02-12", "2018-02-25", "2025-01-20", "2025-02-02")),
-            ("32", ("2018-01-15", "2018-01-28", "2025-02-03", "2025-02-16")),
-        ):
-            holidays = self.subdiv_school_holidays[subdiv]
-            self.assertHolidayName(name, holidays, *dts)
+        subdiv_dates = {
+            "02": (
+                "2018-01-15",
+                "2018-01-28",
+                "2025-02-03",
+                "2025-02-16",
+                "2026-02-02",
+                "2026-02-15",
+                "2028-02-14",
+                "2028-02-27",
+            ),
+            "04": (
+                "2018-02-12",
+                "2018-02-25",
+                "2025-01-20",
+                "2025-02-02",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "06": (
+                "2018-01-29",
+                "2018-02-11",
+                "2025-02-17",
+                "2025-03-02",
+                "2028-02-14",
+                "2028-02-27",
+            ),
+            "08": (
+                "2018-02-12",
+                "2018-02-25",
+                "2025-01-20",
+                "2025-02-02",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "10": (
+                "2018-01-29",
+                "2018-02-11",
+                "2025-02-17",
+                "2025-03-02",
+                "2028-01-31",
+                "2028-02-13",
+            ),
+            "12": (
+                "2018-02-12",
+                "2018-02-25",
+                "2025-01-20",
+                "2025-02-02",
+                "2028-02-14",
+                "2028-02-27",
+            ),
+            "14": (
+                "2018-01-15",
+                "2018-01-28",
+                "2025-02-03",
+                "2025-02-16",
+                "2026-01-19",
+                "2026-02-01",
+                "2028-01-31",
+                "2028-02-13",
+            ),
+            "16": (
+                "2018-01-15",
+                "2018-01-28",
+                "2025-02-03",
+                "2025-02-16",
+                "2028-02-14",
+                "2028-02-27",
+            ),
+            "18": (
+                "2018-01-29",
+                "2018-02-11",
+                "2025-02-17",
+                "2025-03-02",
+                "2026-02-16",
+                "2026-03-01",
+                "2028-01-31",
+                "2028-02-13",
+            ),
+            "20": (
+                "2018-01-22",
+                "2018-02-04",
+                "2025-01-27",
+                "2025-02-09",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "22": (
+                "2018-01-29",
+                "2018-02-11",
+                "2025-02-17",
+                "2025-03-02",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "24": (
+                "2018-01-29",
+                "2018-02-11",
+                "2025-02-17",
+                "2025-03-02",
+                "2028-02-14",
+                "2028-02-27",
+            ),
+            "26": (
+                "2018-02-12",
+                "2018-02-25",
+                "2025-01-20",
+                "2025-02-02",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "28": (
+                "2018-01-22",
+                "2018-02-04",
+                "2025-01-27",
+                "2025-02-09",
+                "2028-01-31",
+                "2028-02-13",
+            ),
+            "30": (
+                "2018-02-12",
+                "2018-02-25",
+                "2025-01-20",
+                "2025-02-02",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+            "32": (
+                "2018-01-15",
+                "2018-01-28",
+                "2025-02-03",
+                "2025-02-16",
+                "2028-01-17",
+                "2028-01-30",
+            ),
+        }
+        for subdiv, holidays in self.subdiv_school_holidays.items():
+            self.assertHolidayName(name, holidays, subdiv_dates[subdiv])
             # Set nationwide for the 2020-2021 school year by the COVID-19 regulation.
             self.assertHolidayName(name, holidays, "2021-01-04", "2021-01-17")
             self.assertHolidayName(name, holidays, range(2018, 2029))
@@ -303,37 +420,19 @@ class TestPoland(CommonCountryTests, TestCase):
             self.assertNoHolidayName(name, holidays, range(2029, 2050))
             self.assertHolidayNameCount(name, 14, holidays, range(2018, 2029))
 
-        # The three-group split introduced for the 2025-2026 school year.
-        for subdiv, dts in (
-            ("14", ("2026-01-19", "2026-02-01")),
-            ("02", ("2026-02-02", "2026-02-15")),
-            ("18", ("2026-02-16", "2026-03-01")),
-        ):
-            self.assertHolidayName(name, self.subdiv_school_holidays[subdiv], *dts)
-
-        # The 2027-2028 school year.
-        for subdivs, start, end in (
-            (("04", "08", "20", "22", "26", "30", "32"), "2028-01-17", "2028-01-30"),
-            (("10", "14", "18", "28"), "2028-01-31", "2028-02-13"),
-            (("02", "06", "12", "16", "24"), "2028-02-14", "2028-02-27"),
-        ):
-            for subdiv in subdivs:
-                self.assertHolidayName(name, self.subdiv_school_holidays[subdiv], start, end)
-
     def test_school_spring_break(self):
         name = "Wiosenna przerwa świąteczna"
         self.assertNoHolidayName(name)
+        dts = (
+            "2018-03-29",
+            "2018-04-03",
+            "2020-04-09",
+            "2020-04-14",
+            "2026-04-02",
+            "2026-04-07",
+        )
         for holidays in self.subdiv_school_holidays.values():
-            self.assertHolidayName(
-                name,
-                holidays,
-                "2018-03-29",
-                "2018-04-03",
-                "2020-04-09",
-                "2020-04-14",
-                "2026-04-02",
-                "2026-04-07",
-            )
+            self.assertHolidayName(name, holidays, dts)
             self.assertNoHoliday(holidays, "2018-03-28", "2018-04-04")
             self.assertHolidayName(name, holidays, range(2018, 2050))
             self.assertNoHolidayName(name, holidays, range(1925, 2018))
@@ -342,38 +441,37 @@ class TestPoland(CommonCountryTests, TestCase):
     def test_school_summer_break(self):
         name = "Ferie letnie"
         self.assertNoHolidayName(name)
+        dts = (
+            "2018-06-23",
+            "2018-09-02",
+            # Classes end on the Wednesday when Corpus Christi takes the Thursday.
+            "2019-06-20",
+            "2019-09-01",
+            "2020-06-27",
+            "2020-08-31",
+            "2023-06-24",
+            "2023-09-03",
+            "2024-06-22",
+            "2024-09-01",
+            "2025-06-28",
+            "2025-08-31",
+            "2026-06-27",
+            "2026-08-31",
+        )
+        no_dts = (
+            "2018-06-22",
+            "2018-09-03",
+            "2019-06-19",
+            "2019-09-02",
+            "2020-09-01",
+            "2023-09-04",
+            "2024-09-02",
+            "2025-09-01",
+            "2026-09-01",
+        )
         for holidays in self.subdiv_school_holidays.values():
-            self.assertHolidayName(
-                name,
-                holidays,
-                "2018-06-23",
-                "2018-09-02",
-                # Classes end on the Wednesday when Corpus Christi takes the Thursday.
-                "2019-06-20",
-                "2019-09-01",
-                "2020-06-27",
-                "2020-08-31",
-                "2023-06-24",
-                "2023-09-03",
-                "2024-06-22",
-                "2024-09-01",
-                "2025-06-28",
-                "2025-08-31",
-                "2026-06-27",
-                "2026-08-31",
-            )
-            self.assertNoHoliday(
-                holidays,
-                "2018-06-22",
-                "2018-09-03",
-                "2019-06-19",
-                "2019-09-02",
-                "2020-09-01",
-                "2023-09-04",
-                "2024-09-02",
-                "2025-09-01",
-                "2026-09-01",
-            )
+            self.assertHolidayName(name, holidays, dts)
+            self.assertNoHoliday(holidays, no_dts)
             self.assertHolidayName(name, holidays, range(2018, 2050))
             self.assertNoHolidayName(name, holidays, range(1925, 2018))
 
@@ -381,7 +479,12 @@ class TestPoland(CommonCountryTests, TestCase):
         self.assertNoSchoolHolidays(self.test_class(categories=SCHOOL, years=2026))
 
     def test_l10n_school(self):
-        dts = ("2026-02-02", "2026-04-02", "2026-06-27", "2026-12-23")
+        dts = (
+            "2026-02-02",
+            "2026-04-02",
+            "2026-06-27",
+            "2026-12-23",
+        )
         for language, names in (
             (
                 "pl",
