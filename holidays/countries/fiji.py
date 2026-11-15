@@ -11,13 +11,14 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import AUG, SEP, OCT, NOV, DEC
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 )
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -33,6 +34,7 @@ class Fiji(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    StaticHolidays,
 ):
     """Fiji holidays.
 
@@ -57,6 +59,7 @@ class Fiji(
          * [2023](https://web.archive.org/web/20231129154609/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
          * [2024](https://web.archive.org/web/20250121185434/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
          * [2025](https://web.archive.org/web/20250318092311/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
+         * [2026](https://web.archive.org/web/20260411180504/https://www.fiji.gov.fj/About-Fiji/Public-Holidays)
     """
 
     country = "FJ"
@@ -83,6 +86,7 @@ class Fiji(
         IslamicHolidays.__init__(
             self, cls=FijiIslamicHolidays, show_estimated=islamic_show_estimated
         )
+        StaticHolidays.__init__(self, cls=FijiStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -108,11 +112,12 @@ class Fiji(
             self._add_observed(self._add_holiday_sep_7("Constitution Day"))
 
         if self._year >= 2023:
-            self._move_holiday_forced(
-                # Girmit Day.
-                self._add_holiday_may_14("Girmit Day"),
-                rule=ALL_TO_NEAREST_MON,
-            )
+            # Girmit Day.
+            name = "Girmit Day"
+            if self._year == 2026:
+                self._add_holiday_may_15(name)
+            else:
+                self._move_holiday_forced(self._add_holiday_may_14(name), rule=ALL_TO_NEAREST_MON)
 
         # Ratu Sir Lala Sukuna Day.
         name = "Ratu Sir Lala Sukuna Day"
@@ -164,11 +169,12 @@ class FijiHinduHolidays(_CustomHinduHolidays):
         2023: (NOV, 13),
         2024: (NOV, 1),
         2025: (OCT, 21),
+        2026: (NOV, 8),
     }
 
 
 class FijiIslamicHolidays(_CustomIslamicHolidays):
-    MAWLID_DATES_CONFIRMED_YEARS = (2016, 2025)
+    MAWLID_DATES_CONFIRMED_YEARS = (2016, 2026)
     MAWLID_DATES = {
         2016: (DEC, 12),
         2017: (DEC, 2),
@@ -178,4 +184,17 @@ class FijiIslamicHolidays(_CustomIslamicHolidays):
         2023: (SEP, 30),
         2024: (SEP, 16),
         2025: (SEP, 6),
+        2026: (AUG, 24),
+    }
+
+
+class FijiStaticHolidays:
+    """Fiji special holidays.
+
+    References:
+        * [Gazette Notice No. 95 of 2026](https://web.archive.org/web/20261108131146/https://www.parliament.gov.fj/wp-content/uploads/2026/10/GN-95-Declaration-of-Public-Holidays-for-2026-.pdf)
+    """
+
+    special_public_holidays_observed = {
+        2026: (OCT, 12, "Fiji Day"),
     }
