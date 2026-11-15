@@ -275,3 +275,25 @@ class TestKosovo(CommonCountryTests, TestCase):
             ("2024-06-17", "Kurban Bajram, prvi dan (slobodan dan, procenjeno)"),
             ("2024-12-25", "Katolički Božić"),
         )
+
+    def test_l10n_tr(self):
+        self.assertLocalizedHolidays(
+            "tr",
+            ("2024-01-01", "Yılbaşı"),
+            ("2024-01-02", "Yılbaşı"),
+            ("2024-01-07", "Ortodoks Noeli"),
+            ("2024-01-08", "Ortodoks Noeli (ertelenen tatil günü)"),
+            ("2024-02-17", "Kosova Cumhuriyeti Bağımsızlık Günü"),
+            ("2024-02-19", "Kosova Cumhuriyeti Bağımsızlık Günü (ertelenen tatil günü)"),
+            ("2024-03-31", "Katolik Paskalyası"),
+            ("2024-04-01", "Katolik Paskalyası (ertelenen tatil günü)"),
+            ("2024-04-09", "Kosova Cumhuriyeti Anayasa Günü"),
+            ("2024-04-10", "Ramazan Bayramı'nın ilk günü (tahmini)"),
+            ("2024-05-01", "Uluslararası Emekçiler Günü"),
+            ("2024-05-05", "Ortodoks Paskalyası"),
+            ("2024-05-06", "Ortodoks Paskalyası (ertelenen tatil günü)"),
+            ("2024-05-09", "Avrupa Günü"),
+            ("2024-06-16", "Kurban Bayramı'nın ilk günü (tahmini)"),
+            ("2024-06-17", "Kurban Bayramı'nın ilk günü (ertelenen tatil günü, tahmini)"),
+            ("2024-12-25", "Katolik Noel Günü"),
+        )
