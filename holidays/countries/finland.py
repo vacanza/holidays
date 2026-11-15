@@ -304,10 +304,10 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Mother's Day.
             self._add_holiday_2nd_sun_of_may(tr("Äitienpäivä"))
 
-        # Become a Flag Day in 1942.
+        # Become a Flag Day in 1942, on Marshal C.G.E. Mannerheim's birthday.
         # Got its current name in 1950.
         if self._year >= 1942:
-            self._add_holiday_jun_6(
+            self._add_holiday_jun_4(
                 # Flag Day of the Finnish Defense Forces.
                 tr("Puolustusvoimain lippujuhlan päivä")
                 if self._year >= 1950
