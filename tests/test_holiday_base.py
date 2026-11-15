@@ -351,7 +351,7 @@ class TestReassignment(TestCase):
         self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
         self.assertIn("2024-01-01", hb)
 
-        hb_subst = CountryStub1(years=2024, expand=False)
+        hb_subst = CountryStub1(years=2024)
         self.assertTrue(hb_subst.is_working_day("2024-02-24"))
         hb_subst.categories = SCHOOL
         self.assertFalse(hb_subst.is_working_day("2024-02-24"))
@@ -1521,10 +1521,10 @@ class TestWorkdays(TestCase):
         self.assertFalse(self.hb.is_working_day("2024-10-07"))  # substituted from Oct 12 (SAT).
         self.assertFalse(self.hb.is_working_day("2024-10-12"))  # Columbus Day holiday.
 
-        hb_1991 = CountryStub1(years=1991, expand=False)
+        hb_1991 = CountryStub1(years=1991)
         self.assertTrue(hb_1991.is_working_day("1991-12-28"))
 
-        hb_1991_school = CountryStub1(years=1991, categories=SCHOOL, expand=False)
+        hb_1991_school = CountryStub1(years=1991, categories=SCHOOL)
         self.assertFalse(hb_1991_school.is_working_day("1991-12-28"))
 
     def test_get_nth_working_day(self):
