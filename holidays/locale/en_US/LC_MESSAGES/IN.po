@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"PO-Revision-Date: 2026-11-15 05:23+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -644,6 +644,10 @@ msgstr "Karma Puja"
 #. Labor Day.
 msgid "Majdoor Diwas"
 msgstr "Labor Day"
+
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "Hul Diwas"
 
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
