@@ -945,10 +945,12 @@ class HolidayBase(dict[date, str]):
                     if from_date.year == self._year:
                         substituted_dates.append(from_date)
 
-            for adjacent_year in (self._year - 1, self._year + 1):
-                for data in _normalize_tuple(special_holidays.get(adjacent_year, ())):
-                    if len(data) == 5 and data[4] == self._year:
-                        substituted_dates.append(date(self._year, data[2], data[3]))
+            substituted_dates.extend(
+                date(self._year, data[2], data[3])
+                for adjacent_year in (self._year - 1, self._year + 1)
+                for data in _normalize_tuple(special_holidays.get(adjacent_year, ()))
+                if len(data) == 5 and data[4] == self._year
+            )
 
             for from_date in substituted_dates:
                 # when non-working day is transferred not from weekend, but from
