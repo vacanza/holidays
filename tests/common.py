@@ -676,10 +676,7 @@ class CommonTests(TestCase):
         )
 
     def test_observed_estimated_label(self):
-        for holidays in (
-            self.holidays,
-            getattr(self, "holidays_government", None),
-        ):
+        for holidays in (self.holidays, getattr(self, "holidays_government", None)):
             if holidays is None:
                 continue
             estimated_label = getattr(holidays, "estimated_label", None)

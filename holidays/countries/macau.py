@@ -359,7 +359,6 @@ class Macau(
             )
 
         if self.observed:
-            self._observed_rule = SAT_SUN_TO_NEXT_WORKDAY
             self.observed_label = (
                 # Compensatory rest day for %s.
                 tr("%s的補假")

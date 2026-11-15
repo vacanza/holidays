@@ -297,8 +297,9 @@ class ObservedHolidayBase(HolidayBase):
             return False, None
 
         if show_observed_label:
-            estimated_label_attr = getattr(self, "estimated_label", "")
-            estimated_label = self.tr(estimated_label_attr) if estimated_label_attr else ""
+            estimated_label = (
+                self.tr(el_attr) if (el_attr := getattr(self, "estimated_label", None)) else ""
+            )
             observed_label = self.tr(
                 getattr(
                     self,
