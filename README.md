@@ -1767,7 +1767,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Turkey</td>
 <td>TR</td>
 <td></td>
-<td>en_US, <strong>tr</strong>, uk</td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
