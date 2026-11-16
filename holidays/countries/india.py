@@ -1419,6 +1419,7 @@ class India(
 
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
+        self._populate_subdiv_mn_public_holidays()
 
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
