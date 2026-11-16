@@ -129,7 +129,7 @@ pytest -s tests/countries/test_argentina.py
 Run the benchmarks from a development checkout after setting up the environment:
 
 ``` shell
-uv run --group benchmarks python scripts/benchmark.py -o baseline.json
+uv run --group benchmarks python scripts/benchmark.py -o ../baseline.json
 ```
 
 The suite uses [pyperf](https://pyperf.readthedocs.io/) to measure calendar creation for one
@@ -151,8 +151,8 @@ uv run --group benchmarks python scripts/benchmark.py --debug-single-value
 To assess a change, save a baseline before editing, run the same suite afterward, and compare:
 
 ``` shell
-uv run --group benchmarks python scripts/benchmark.py -o candidate.json
-uv run --group benchmarks python -m pyperf compare_to baseline.json candidate.json --table
+uv run --group benchmarks python scripts/benchmark.py -o ../candidate.json
+uv run --group benchmarks python -m pyperf compare_to ../baseline.json ../candidate.json --table
 ```
 
 Use the same machine, Python version, dependencies, and benchmark script for both runs. Keep
