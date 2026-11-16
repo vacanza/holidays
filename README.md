@@ -270,7 +270,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>AT</td>
 <td>States: 1 (Burgenland, Bgld, B), 2 (Kärnten, Ktn, K), 3 (Niederösterreich, NÖ, N), 4 (Oberösterreich, OÖ, O), 5 (Salzburg, Sbg, S), 6 (Steiermark, Stmk, St), 7 (Tirol, T), 8 (Vorarlberg, Vbg, V), 9 (Wien, W)</td>
 <td><strong>de</strong>, en_US, th, uk</td>
-<td>BANK, PROTESTANT</td>
+<td>BANK, PROTESTANT, SCHOOL</td>
 </tr>
 <tr>
 <td>Azerbaijan</td>
@@ -290,7 +290,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Bahrain</td>
 <td>BH</td>
 <td></td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1409,9 +1409,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Poland</td>
 <td>PL</td>
-<td></td>
+<td>Voivodeships: 02 (Dolnośląskie), 04 (Kujawsko-pomorskie), 06 (Lubelskie), 08 (Lubuskie), 10 (Łódzkie), 12 (Małopolskie), 14 (Mazowieckie), 16 (Opolskie), 18 (Podkarpackie), 20 (Podlaskie), 22 (Pomorskie), 24 (Śląskie), 26 (Świętokrzyskie), 28 (Warmińsko-mazurskie), 30 (Wielkopolskie), 32 (Zachodniopomorskie)</td>
 <td>de, en_US, <strong>pl</strong>, uk</td>
-<td></td>
+<td>SCHOOL</td>
 </tr>
 <tr>
 <td>Portugal</td>
@@ -1767,7 +1767,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Turkey</td>
 <td>TR</td>
 <td></td>
-<td>en_US, <strong>tr</strong>, uk</td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2010,7 +2010,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>Euronext</td>
 <td>ENX</td>
-<td>Euronext (Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
+<td>Euronext (Amsterdam, Athens, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
 <td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
 <td>HALF_DAY</td>
 </tr>
@@ -2019,6 +2019,13 @@ code when available. The following financial markets are available:
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Federal Reserve</td>
+<td>XFED</td>
+<td>Federal Reserve Banks holidays</td>
+<td><strong>en_US</strong></td>
 <td></td>
 </tr>
 <tr>
