@@ -1445,7 +1445,9 @@ class TestIndia(CommonCountryTests, TestCase):
             if subdiv == "MN":
                 self.assertHolidayName(name, holidays, public_dates)
                 self.assertNoHolidayName(
-                    name, holidays, (year for year in self.full_range if year not in {2023, 2024, 2025, 2026})
+                    name,
+                    holidays,
+                    (year for year in self.full_range if year not in {2023, 2024, 2025, 2026}),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -1454,7 +1456,9 @@ class TestIndia(CommonCountryTests, TestCase):
             if subdiv == "MN":
                 self.assertHolidayName(name, holidays, public_dates)
                 self.assertNoHolidayName(
-                    name, holidays, (year for year in self.full_range if year not in {2023, 2024, 2025, 2026})
+                    name,
+                    holidays,
+                    (year for year in self.full_range if year not in {2023, 2024, 2025, 2026}),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -3784,6 +3788,8 @@ class TestIndia(CommonCountryTests, TestCase):
             ),
             ("2018-12-31", "ಹೊಸ ವರ್ಷದ ಮುನ್ನಾದಿನ"),
         )
+
+        self.assertLocalizedHolidays("kn", ("2024-01-23", "ಗಾನ್-ಗೈ"))
 
     def test_l10n_ml(self):
         self.assertLocalizedHolidays(
