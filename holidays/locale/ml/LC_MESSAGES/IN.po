@@ -728,13 +728,13 @@ msgstr "ക്രിസ്മസ് ഉത്സവം"
 msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "യു കിയാങ് നൊങ്ബാഹിന്റെ ചരമവാർഷികം"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "ഗാൻ-ങായ്"
+
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "മഹാരാജാ ഗംഭീർ സിങ്ങിന്റെ ചരമവാർഷികം"
-
-#. Gaan-Ngai.
-msgid "Gaan-Ngai"
-msgstr "ഗാൻ-ഗായ്"
 
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
