@@ -33,7 +33,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     # %s (estimated).
     estimated_label = tr("%s (tahmini)")
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_US", "tr", "uk")
+    supported_languages = ("en_US", "tr", "uk", "ur_PK")
     # Law 2739 of May 27, 1935.
     start_year = 1936
 
