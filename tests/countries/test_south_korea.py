@@ -114,6 +114,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             # Preliminary Dates.
             "2024-04-10",
             "2028-04-12",
+            "2048-04-15",
         )
 
     def test_presidential_election_day(self):
@@ -179,6 +180,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             # Preliminary Dates.
             "2026-06-03",
             "2030-06-12",
+            "2034-05-31",
         )
 
     def test_new_years_day(self):
