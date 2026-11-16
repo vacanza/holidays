@@ -1409,6 +1409,7 @@ class India(
 
         # Gaan-Ngai.
         gaan_ngai_dates = {
+            2023: (JAN, 4),
             2024: (JAN, 23),
             2025: (JAN, 12),
             2026: (JAN, 1),
@@ -1418,10 +1419,6 @@ class India(
 
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
-
-        if self._year == 2023:
-            # Gaan-Ngai.
-            self._add_holiday_jan_4(tr("Gaan-Ngai"))
 
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
