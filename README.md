@@ -48,13 +48,13 @@ specific date is a holiday as fast and flexible as possible.
 
 The latest stable version can always be installed or updated via pip:
 
-``` shell
+```shell
 pip install --upgrade holidays
 ```
 
 The latest pre-release version can always be installed or updated via pip:
 
-``` shell
+```shell
 pip install --upgrade --pre holidays
 ```
 
@@ -78,7 +78,7 @@ or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/late
 
 ## Quick Start
 
-``` python
+```python
 from datetime import date
 import holidays
 
@@ -97,7 +97,7 @@ us_holidays.get("2014-01-01")  # "New Year's Day"
 
 The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
-``` python
+```python
 "2014-01-01" in us_holidays  # True
 "1/1/2014" in us_holidays  # True
 1388597445 in us_holidays  # True
@@ -105,7 +105,7 @@ The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holid
 
 Some holidays may be only present in parts of a country:
 
-``` python
+```python
 us_pr_holidays = holidays.country_holidays("US", subdiv="PR")
 "2018-01-06" in us_holidays  # False
 "2018-01-06" in us_pr_holidays  # True
@@ -116,8 +116,10 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
-In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small
+number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
+In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2
+code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
@@ -132,13 +134,13 @@ abbreviations as aliases for their subdivisions. These are defined in the (optio
 > aliases (where available) are listed in the `Subdivisions` column
 > of the table below.
 
-Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
-entity and is used as a fallback when neither user specified language nor user locale language
-available. The default language code is a [ISO 639-1
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
-country is defined by `supported_languages` (optional) attribute. If there is no designated [ISO
-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then [ISO 639-2
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can be used.
+Some of the countries support more than one language for holiday names output. A default language
+is defined by `default_language` (optional) attribute for each entity and is used as a fallback
+when neither user specified language nor user locale language available. The default language code
+is a [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all
+languages supported by country is defined by `supported_languages` (optional) attribute. If there
+is no designated [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then
+[ISO 639-2 code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can be used.
 
 Many countries have other categories of holidays in addition to common (national-wide) holidays:
 bank holidays, school holidays, additional (paid or non-paid) holidays, holidays of state or public
