@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
-"PO-Revision-Date: 2026-10-12 20:30-0230\n"
-"Last-Translator: Saikiran <saikiranvbembalge@gmail.com>\n"
+"PO-Revision-Date: 2026-10-31 05:08+0000\n"
+"Last-Translator: wavebyrd <160968744+wavebyrd@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -127,3 +127,7 @@ msgstr "బక్రీద్"
 #. New Year's Day.
 msgid "New Year"
 msgstr "నూతన సంవత్సరం"
+
+#. Municipal Corporation Election.
+msgid "Municipal Corporation Election"
+msgstr "మున్సిపల్ కార్పొరేషన్ ఎన్నికలు"

@@ -24,6 +24,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
     def test_special_holidays(self):
         self.assertHoliday(
             "2010-01-01",
+            "2026-01-15",
         )
         self.assertNoHolidayName(
             "New Year", range(self.start_year, 2010), range(2011, self.end_year)
