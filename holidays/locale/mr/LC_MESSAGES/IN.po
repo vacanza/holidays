@@ -732,6 +732,10 @@ msgstr "यू कियांग नोंगबह यांची पुण�
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "महाराजा गंभीर सिंह पुण्यतिथी"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "गान-ङ्गाई"
+
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
 msgstr "लुई नगाई नी"

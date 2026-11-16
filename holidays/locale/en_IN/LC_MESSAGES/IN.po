@@ -733,6 +733,10 @@ msgstr ""
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr ""
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr ""
+
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
 msgstr ""

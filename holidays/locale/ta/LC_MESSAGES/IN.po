@@ -732,6 +732,10 @@ msgstr "யு கியாங் நொங்பாவின் நினைவ
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "மகாராஜா கம்பீர் சிங்கின் நினைவு நாள்"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "கான்-ங்கை"
+
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
 msgstr "லுயி நகாய் நி"

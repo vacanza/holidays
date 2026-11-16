@@ -110,7 +110,10 @@ class India(
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
         * Manipur:
-            * <https://web.archive.org/web/20260822114331/https://www.scribd.com/document/985577686/Manipur-Holiday-List-2026>
+            * <https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf>
+            * <https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf>
+            * <https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf>
+            * <https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213%2FEG%2F2025-27%2F11%2F2025+%28E.G.%29+&etype=SPECIAL>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
@@ -1401,10 +1404,24 @@ class India(
 
     # Manipur.
     def _populate_subdiv_mn_public_holidays(self):
-        pass
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
+        # Gaan-Ngai.
+        gaan_ngai_dates = {
+            2024: (JAN, 23),
+            2025: (JAN, 12),
+            2026: (JAN, 1),
+        }
+        if dt := gaan_ngai_dates.get(self._year):
+            self._add_holiday(tr("Gaan-Ngai"), dt)
 
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
+
+        if self._year == 2023:
+            # Gaan-Ngai.
+            self._add_holiday_jan_4(tr("Gaan-Ngai"))
 
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))

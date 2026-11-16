@@ -733,6 +733,10 @@ msgstr "યુ કિયાંગ નૉંગબાહની પુણ્યત
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "મહારાજા ગંભીર સિંહની પુણ્યતિથિ"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "ગાન-ન્ગાઈ"
+
 #. Lui Ngai Ni.
 msgid "Lui Ngai Ni"
 msgstr "લુઈ નગાઈ ની"
