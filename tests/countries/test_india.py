@@ -3790,7 +3790,7 @@ class TestIndia(CommonCountryTests, TestCase):
         )
 
         holidays = India(years=2024, subdiv="MN", language="kn")
-        self.assertEqual(holidays.get("2024-01-23"), "ಗಾನ್-ಗೈ")
+        self.assertHolidayName("ಗಾನ್-ಗೈ", holidays, "2024-01-23")
 
     def test_l10n_ml(self):
         self.assertLocalizedHolidays(
