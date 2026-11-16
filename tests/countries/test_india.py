@@ -1438,15 +1438,14 @@ class TestIndia(CommonCountryTests, TestCase):
 
     def test_gaan_ngai(self):
         name = "Gaan-Ngai"
-        public_dates = ("2024-01-23", "2025-01-12", "2026-01-01")
-        government_dates = ("2023-01-04", *public_dates)
+        public_dates = ("2023-01-04", "2024-01-23", "2025-01-12", "2026-01-01")
         self.assertNoHolidayName(name)
 
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MN":
                 self.assertHolidayName(name, holidays, public_dates)
                 self.assertNoHolidayName(
-                    name, holidays, (year for year in self.full_range if year not in {2024, 2025, 2026})
+                    name, holidays, (year for year in self.full_range if year not in {2023, 2024, 2025, 2026})
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
