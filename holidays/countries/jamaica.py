@@ -10,7 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SUN_TO_NEXT_MON,
@@ -19,12 +20,11 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Jamaica holidays.
 
     References:
-        * <https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica>
-        * <https://web.archive.org/web/20241110125301/https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf>
+        * [The Holidays (Public General) Act](https://web.archive.org/web/20261109211742/https://lipj.gov.jm/cms/uploads/The_Holidays_Public_General_Act_5bc73f5ff4.pdf))
     """
 
     country = "JM"
@@ -33,6 +33,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, JamaicaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -68,7 +69,7 @@ class Jamaica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day
-        self._add_observed(self._add_christmas_day_two("Boxing Day"))
+        self._add_christmas_day_two("Boxing Day")
 
 
 class JM(Jamaica):
@@ -77,3 +78,19 @@ class JM(Jamaica):
 
 class JAM(Jamaica):
     pass
+
+
+class JamaicaStaticHolidays:
+    """Jamaica special holidays.
+
+    References:
+        * <https://web.archive.org/web/20250916013746/https://jis.gov.jm/monday-december-27-is-a-public-holiday-2/>
+        * <https://web.archive.org/web/20220529082149/https://jis.gov.jm/calendar/boxing-day-observed-on-december-27/>
+    """
+
+    boxing_day = "Boxing Day"
+
+    special_public_holidays_observed = {
+        2010: (DEC, 27, boxing_day),
+        2021: (DEC, 27, boxing_day),
+    }

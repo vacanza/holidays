@@ -20,6 +20,10 @@ from polib import pofile as create_po_file
 
 import holidays
 
+CYRILLIC_RE = re.compile(r"[\u0400-\u052f]")
+LATIN_RE = re.compile(r"[A-Za-z\u00aa\u00ba\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u02af\u1e00-\u1eff]")
+WORD_RE = re.compile(r"[\w\u0300-\u036f'\u02bc]+")
+
 
 class TestLocalization(TestCase):
     @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
@@ -88,13 +92,23 @@ class TestLocalization(TestCase):
                 f"{', '.join(oe.msgid for oe in obsolete_entries)}",
             )
 
-            # Make sure no entries without l10n comment.
             for entry in po_file:
+                # Make sure no entries without l10n comment.
                 self.assertTrue(
                     entry.comment,
                     f"The {entity_code} {language} localization contains missing comment "
                     f"in line {entry.linenum}: msgid `{entry.msgid}`",
                 )
+
+                # Make sure no entries with mixed Latin and Cyrillic characters.
+                for text in (entry.msgid, entry.msgstr):
+                    for word in WORD_RE.findall(text):
+                        self.assertFalse(
+                            CYRILLIC_RE.search(word) and LATIN_RE.search(word),
+                            f"The {entity_code} {language} localization contains Latin and "
+                            f"Cyrillic mixed in a word `{word}` "
+                            f"in line {entry.linenum}: msgid `{entry.msgid}`",
+                        )
 
             entity = getattr(holidays, entity_code)
 

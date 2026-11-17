@@ -12,13 +12,13 @@
 
 """Generate the JS code that sets the copyright text and updates the footer."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import mkdocs_gen_files
 
 
 def main():
-    now = datetime.now(tz=timezone.utc)
+    now = datetime.now(tz=UTC)
     copyright_text = f"© Copyright {now.year}. Last updated on {now:%b %d, %Y}."
 
     js_code = f"""// This file is generated at build time.

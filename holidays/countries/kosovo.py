@@ -32,7 +32,7 @@ class Kosovo(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Isla
     observed_label = tr("%s (ditë pushimi e shtyrë)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (ditë pushimi e shtyrë, e vlerësuar)")
-    supported_languages = ("en_US", "sq", "sr")
+    supported_languages = ("en_US", "sq", "sr", "tr")
     # First full year after independence (2008-02-17).
     start_year = 2009
 

@@ -15,8 +15,8 @@
 
 """Generate Gregorian dates for Islamic holidays based on MABIMS crescent visibility criteria.
 
-Generates a mathematically predictable baseline for Islamic holidays (Hijri 1342 - 1500 /
-Gregorian 1924 - 2077). Uses Singapore as the reference location (primary MABIMS Hisab observer).
+Generates a mathematically predictable baseline for Islamic holidays (Hijri 1342 - 1524 /
+Gregorian 1924 - 2101). Uses Singapore as the reference location (primary MABIMS Hisab observer).
 
 Historical Logic Applied:
     * Old MABIMS (pre-1443 AH): Moon altitude >= 2° AND (elongation >= 3° OR moon age >= 8h).
@@ -68,11 +68,11 @@ OLD_MOON_AGE = 8.0  # hours
 NEW_MIN_ALTITUDE = 3.0  # degrees
 NEW_MIN_ELONGATION = 6.4  # degrees
 
-# Start from the approximate Hijri new year 1342 (≈1924 CE).
-# de440s.bsp covers upto ~2150 CE, but we concluded at 2077 CE for now
-# alongside the main Umm al-Qura calendar.
+# Start from the approximate Hijri new year 1342 (≈1924 CE) and conclude
+# at 2101 CE alongside the main Umm al-Qura calendar.
 HIJRI_START_YEAR = 1342
-HIJRI_END_YEAR = 1500
+HIJRI_END_YEAR = 1524
+END_YEAR = 2100
 
 # Islamic holidays: (hijri_month, hijri_day).
 MABIMS_HOLIDAYS = {
@@ -98,11 +98,10 @@ class _MabimsLunar:
 
         ts = loader.timescale()
         t0 = ts.utc(1923, 8, 1)  # before Hijri 1342-01 new moon.
-        t1 = ts.utc(2079, 1, 1)
+        t1 = ts.utc(2102, 1, 1)
         times, events = almanac.find_discrete(t0, t1, almanac.moon_phases(self.eph))
 
-        # Store full Time objects to calculate moon age later.
-        self.new_moons = [t for t, e in zip(times, events) if e == 0]
+        self.new_moons = times[events == 0]
 
     def get_new_moon_time(self, h_year: int, h_month: int) -> Time:
         """Get the exact precalculated new moon (conjunction) for a given Hijri month."""
@@ -153,7 +152,8 @@ def generate_data() -> None:
                 print(f"Processing Hijri year {h_year}...")
 
             holiday_date = cal.get_hijri_month_start(h_year, h_month) + timedelta(days=h_day - 1)
-            dates[name][holiday_date.year].append(holiday_date)
+            if holiday_date.year <= END_YEAR:
+                dates[name][holiday_date.year].append(holiday_date)
 
     cal_gen = CalendarGenerator("islamic_mabims", "_IslamicMabimsLunar")
     cal_gen.generate(dates)

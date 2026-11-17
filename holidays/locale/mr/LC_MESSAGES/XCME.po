@@ -45,7 +45,7 @@ msgstr "थँक्सगिव्हिंग डे"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "नाताळ"
+msgstr "ख्रिसमस दिन"
 
 #. %s (markets pause at 10:30am CT)
 #, c-format
@@ -87,7 +87,7 @@ msgstr "थँक्सगिव्हिंग दिनानंतरचा �
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "नाताळ पूर्वसंध्या"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. Closed following Attacks on the World Trade Center.
 msgid "Closed following Attacks on the World Trade Center"

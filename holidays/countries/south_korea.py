@@ -64,6 +64,8 @@ class SouthKorea(
         * [Public Holidays Act (2026 Amendment)](http://archive.today/2026.02.20-080801/https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283311&ancYd=20260210%230000)
         * [National Day Act (2014 Amendment)](http://archive.today/2026.02.20-081906/https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=165523&ancYd=20141230%230000)
         * [Labor Day and Constitution Day substitute holidays](https://web.archive.org/web/20260727135256/https://www.mpm.go.kr/mpm/comm/newsPress/newsPressRelease/?boardId=bbs_0000000000000029&category&cntId=4250&mode=view&pageIdx)
+        * [Public Official Election Act, Article 14: Commencement of Terms of Office](https://archive.ph/2026.11.04-112517/https://www.law.go.kr/법령/공직선거법/제14조)
+        * [Public Official Election Act, Article 34(1): Election Days at Term Expiration](https://archive.ph/2026.11.04-112916/https://www.law.go.kr/법령/공직선거법/제34조)
         * <https://web.archive.org/web/20250429081641/https://elaw.klri.re.kr/eng_service/lawView.do?lang=ENG&hseq=34678>
         * <https://web.archive.org/web/20250123212346/https://elaw.klri.re.kr/eng_service/%20lawView.do?hseq=38405&lang=ENG>
         * <https://namu.wiki/w/대통령%20선거일>
@@ -255,10 +257,9 @@ class SouthKorea(
         # National Assembly Election Day.
         name = tr("국회의원 선거일")
 
-        if self._year == 2020:
-            self._add_holiday_apr_15(name)
-        elif self._year >= 2007 and (self._year - 2008) % 4 == 0:
-            self._add_holiday_2nd_wed_of_apr(name)
+        if self._year >= 2007 and (self._year - 2008) % 4 == 0:
+            # Term ends on MAY 29; 50 days before is APR 9.
+            self._add_holiday_1st_wed_from_apr_9(name)
 
         if self._year >= 2007:
             # Presidential Election Day.
@@ -271,18 +272,20 @@ class SouthKorea(
                     # Independence Movement Day (MAR, 1).
                     self._add_holiday_2nd_wed_of_mar(name)
             elif self._year >= 2030 and (self._year - 2030) % 5 == 0:
-                self._add_holiday_1st_wed_of_apr(name)
+                # Term ends on JUN 3 since the 2025 special election; 70 days before is MAR 25.
+                self._add_holiday_1st_wed_from_mar_25(name)
 
         if self._year >= 2007 and (self._year - 2010) % 4 == 0:
             # Local Election Day.
             name = tr("지방선거일")
 
-            if self._is_tuesday(jun_6) or self._is_wednesday(jun_6) or self._is_thursday(jun_6):
+            if self._is_wednesday(jun_6) or self._is_thursday(jun_6):
                 # Moved as per Paragraph 2 of Article 34 due to conflict with
                 # Memorial Day (JUN, 6).
-                self._add_holiday_2nd_wed_of_jun(name)
+                self._add_holiday_2nd_wed_from_may_31(name)
             else:
-                self._add_holiday_1st_wed_of_jun(name)
+                # Term ends on JUN 30; 30 days before is MAY 31.
+                self._add_holiday_1st_wed_from_may_31(name)
 
         if self.observed:
             self._populate_observed(dts_observed, three_days_holidays)
