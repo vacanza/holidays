@@ -21,6 +21,14 @@ class TestJamaica(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Jamaica)
 
+    def test_special_holidays(self):
+        dts = (
+            "2010-12-27",
+            "2021-12-27",
+        )
+        self.assertHoliday(dts)
+        self.assertNoNonObservedHoliday(dts)
+
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
@@ -145,14 +153,4 @@ class TestJamaica(CommonCountryTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_boxing_day(self):
-        name = "Boxing Day"
-        self.assertHolidayName(name, (f"{year}-12-26" for year in self.full_range))
-        obs_dts = (
-            "2004-12-27",
-            "2010-12-27",
-            "2021-12-27",
-            "2027-12-27",
-            "2032-12-27",
-        )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))

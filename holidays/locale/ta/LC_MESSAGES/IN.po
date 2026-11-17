@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -644,6 +644,10 @@ msgstr "கர்மா பூஜை"
 msgid "Majdoor Diwas"
 msgstr "தொழிலாளர் தினம்"
 
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "கர்நாடக ராஜ்யோத்சவா"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "புனித சனி"
@@ -652,13 +656,25 @@ msgstr "புனித சனி"
 msgid "Mannam's Jayanti"
 msgstr "மன்னம் ஜெயந்தி"
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "அய்யன்காளி ஜெயந்தி"
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "ஸ்ரீ நாராயண குருவின் நினைவு நாள்"
 
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "கர்க்கடக வாவு"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ஓணம் (இரண்டாம் நாள்)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ஓணம் (முதல் நாள்)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
@@ -667,6 +683,10 @@ msgstr "ஓணம் (மூன்றாம் நாள்)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ஓணம் (நான்காம் நாள்)"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "ஸ்ரீ நாராயண குரு ஜெயந்தி"
 
 #. Vijayadashami.
 msgid "Vijayadashami"
@@ -1043,3 +1063,7 @@ msgstr "ஸ்ரீ பஞ்சமி"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ஜனமாஷ்டமி (ஸ்மார்த்த)"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "கேரள சட்டமன்றத் தேர்தல் நாள்"
