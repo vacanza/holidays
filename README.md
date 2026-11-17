@@ -59,7 +59,8 @@ pip install --upgrade --pre holidays
 ```
 
 All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
-then released from `main` on official version upgrades.
+then released from `main` on official version upgrades. We normally follow a release
+schedule, typically on the **1st and 3rd Tuesday of each month**.
 
 On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
 Pre-release publishes append a UTC timestamp in CI only
