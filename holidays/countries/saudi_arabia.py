@@ -92,6 +92,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         self._add_islamic_observed(self._add_eid_al_fitr_multiday(tr("عطلة عيد الفطر")))
 
         self._add_islamic_observed(
+            # Day of Arafah.
             self._add_arafah_day(tr("يوم عرفة"))
             # Eid al-Adha Holiday.
             | self._add_eid_al_adha_day(name := tr("عطلة عيد الأضحى"))
