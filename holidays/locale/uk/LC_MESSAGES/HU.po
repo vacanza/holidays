@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-12 19:06+0300\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-11-16 17:18+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -71,6 +71,10 @@ msgstr "День заснування держави"
 #. All Saints' Day.
 msgid "Mindenszentek"
 msgstr "День усіх святих"
+
+#. Christmas Eve.
+msgid "Szenteste"
+msgstr "Святий вечір"
 
 #. Christmas Day.
 msgid "Karácsony"
