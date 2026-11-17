@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import APR, JAN
+from holidays.constants import PUBLIC
 from holidays.countries.poland import Poland
 from holidays.helpers import tr
 
@@ -35,6 +36,10 @@ class WarsawStockExchange(Poland):
     country = None  # type: ignore[assignment]
     market = "XWAR"
     parent_entity = Poland
+    # The voivodeships and the SCHOOL category are specific to the country entity.
+    subdivisions = ()  # type: ignore[assignment]
+    subdivisions_aliases = {}  # type: ignore[assignment]
+    supported_categories = (PUBLIC,)  # type: ignore[assignment]
     supported_languages = ("en_US", "pl", "uk")  # type: ignore[assignment]
     start_year = 2011
 
