@@ -52,6 +52,8 @@ class Oman(HolidayBase, IslamicHolidays):
             * [2023](https://web.archive.org/web/20231119124812/https://timesofoman.com/article/138473-53rd-national-day-holidays-announced-in-oman)
             * [2024](https://web.archive.org/web/20241112225931/https://timesofoman.com/article/151930-holiday-declared-in-oman-for-national-day)
             * [2025](https://web.archive.org/web/20251215170354/https://timesofoman.com/article/164821-national-day-holidays-announced-in-oman-2)
+        * 2021:
+            * [Eid al-Fitr](https://web.archive.org/web/20210520163344/https://www.omanobserver.om/article/1100376/oman/community/eid-al-fitr-holidays-announced-in-oman)
         * 2025:
             * [Accession Day](https://web.archive.org/web/20250720023522/https://www.omanobserver.om/article/1164410/oman/his-majesty/holiday-for-hms-accession-day-announced-in-oman)
             * [Isra' and Mi'raj](https://web.archive.org/web/20250120105626/https://gulfnews.com/world/gulf/oman/isra-wal-miraj-oman-announces-holiday-for-public-private-sectors-1.500019263)
@@ -128,13 +130,7 @@ class Oman(HolidayBase, IslamicHolidays):
         self._add_isra_and_miraj_day(tr("الإسراء والمعراج"))
 
         # Eid al-Fitr.
-        name = tr("عيد الفطر")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
-        for dt in self._add_holiday_29_ramadan(name):
-            if _timedelta(dt, +1) not in self:
-                self._add_eid_al_fitr_eve(name)
+        self._add_eid_al_fitr_multiday(tr("عيد الفطر"), start_29_ramadan=True, fixed_end=True)
 
         # Eid al-Adha.
         name = tr("عيد الأضحى")
@@ -199,6 +195,7 @@ class OmanIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20240814104839/https://www.timeanddate.com/holidays/oman/ramadan-begins
     RAMADAN_BEGINNING_DATES_CONFIRMED_YEARS = (2023, 2026)
     RAMADAN_BEGINNING_DATES = {
+        2021: (APR, 14),
         2024: (MAR, 12),
         2026: (FEB, 19),
     }
