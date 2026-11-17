@@ -23,6 +23,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Hungary>
         * <https://web.archive.org/web/20191002190510/http://hvg.hu:80/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek>
         * <https://web.archive.org/web/20240307183735/http://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html>
+        * [Act LXXII of 2026](https://web.archive.org/web/20261116150554/https://njt.jog.gov.hu/jogszabaly/2026-72-00-00.0#NR)
     """
 
     country = "HU"
@@ -83,6 +84,11 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolid
         if self._year >= 1999:
             # All Saints' Day.
             self._add_all_saints_day(tr("Mindenszentek"))
+
+        #  Act LXXII of 2026.
+        if self._year >= 2026:
+            # Christmas Eve.
+            self._add_christmas_eve(tr("Szenteste"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Karácsony"))
@@ -281,6 +287,5 @@ class HungaryStaticHolidays:
         2026: (
             (JAN, 2, JAN, 10),
             (AUG, 21, AUG, 8),
-            (DEC, 24, DEC, 12),
         ),
     }
