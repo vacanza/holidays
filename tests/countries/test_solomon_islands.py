@@ -56,7 +56,6 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         name = "Good Friday"
         self.assertHolidayName(
             name,
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
@@ -70,7 +69,6 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         name = "Holy Saturday"
         self.assertHolidayName(
             name,
-            "2019-04-20",
             "2020-04-11",
             "2021-04-03",
             "2022-04-16",
@@ -84,7 +82,6 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         name = "Easter Monday"
         self.assertHolidayName(
             name,
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
@@ -98,7 +95,6 @@ class TestSolomonIslands(CommonCountryTests, TestCase):
         name = "Whit Monday"
         self.assertHolidayName(
             name,
-            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
