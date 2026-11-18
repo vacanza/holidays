@@ -2185,6 +2185,13 @@ code when available. The following financial markets are available:
 <td>en_US, <strong>pl</strong>, uk</td>
 <td></td>
 </tr>
+<tr>
+<td>Zagreb Stock Exchange</td>
+<td>XZAG</td>
+<td>Zagreb Stock Exchange (ZSE) market holidays</td>
+<td>en_US, <strong>hr</strong>, uk</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
