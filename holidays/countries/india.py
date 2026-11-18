@@ -114,6 +114,7 @@ class India(
             * <https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf>
             * <https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf>
             * <https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213%2FEG%2F2025-27%2F11%2F2025+%28E.G.%29+&etype=SPECIAL>
+            * <https://tamenglong.nic.in/festivals-of-tamenglong/>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
@@ -1403,11 +1404,13 @@ class India(
         self._add_all_souls_day(tr("All Souls' Day"))
 
     # Manipur.
-    def _populate_subdiv_mn_public_holidays(self):
+    def _populate_subdiv_mn_new_years_day_and_gaan_ngai(self):
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # Gaan-Ngai.
+        # Gaan-Ngai is a Zeliangrong (Rongmei) festival. Its Gregorian date varies
+        # according to the traditional calendar; use the dates officially notified
+        # by the Government of Manipur for each year.
         gaan_ngai_dates = {
             2023: (JAN, 4),
             2024: (JAN, 23),
@@ -1417,9 +1420,12 @@ class India(
         if dt := gaan_ngai_dates.get(self._year):
             self._add_holiday(tr("Gaan-Ngai"), dt)
 
+    def _populate_subdiv_mn_public_holidays(self):
+        self._populate_subdiv_mn_new_years_day_and_gaan_ngai()
+
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
-        self._populate_subdiv_mn_public_holidays()
+        self._populate_subdiv_mn_new_years_day_and_gaan_ngai()
 
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
