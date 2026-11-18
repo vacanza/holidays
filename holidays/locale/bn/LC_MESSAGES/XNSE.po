@@ -126,4 +126,4 @@ msgstr "বকরিদ"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "নববর্ষ"
+msgstr "নববর্ষের দিন"
