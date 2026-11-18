@@ -1416,6 +1416,7 @@ class India(
             2024: (JAN, 23),
             2025: (JAN, 12),
             2026: (JAN, 1),
+            2027: (JAN, 20),
         }
         if dt := gaan_ngai_dates.get(self._year):
             self._add_holiday(tr("Gaan-Ngai"), dt)
