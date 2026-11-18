@@ -1882,9 +1882,8 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_government_holidays.items():
             if subdiv == "JH":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-06-30" for year in range(1985, self.end_year))
+                    name, holidays, (f"{year}-06-30" for year in self.full_range)
                 )
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 1985))
             else:
                 self.assertNoHolidayName(name, holidays)
 
