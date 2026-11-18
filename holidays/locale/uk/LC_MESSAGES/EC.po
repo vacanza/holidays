@@ -73,14 +73,11 @@ msgstr "День незалежності Куенки"
 msgid "Navidad"
 msgstr "Різдво Христове"
 
-#. Foundation of Quito.
 msgid "Fundación de Quito"
-msgstr "Foundation of Quito"
+msgstr "День заснування Кіто"
 
-#. Foundation of Guayaquil.
 msgid "Fundación de Guayaquil"
-msgstr "Foundation of Guayaquil"
+msgstr "День заснування Гуаякіля"
 
-#. Foundation of Cuenca.
 msgid "Fundación de Cuenca"
-msgstr "Foundation of Cuenca"
+msgstr "День заснування Куенки"

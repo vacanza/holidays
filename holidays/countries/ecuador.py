@@ -38,9 +38,9 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "EC"
     subdivisions = (
-        "Quito",
-        "Guayaquil",
         "Cuenca",
+        "Guayaquil",
+        "Quito",
     )
     default_language = "es"
     # %s (observed).
