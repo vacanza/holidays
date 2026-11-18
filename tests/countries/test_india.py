@@ -488,6 +488,9 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name_pongal, dts, category=OPTIONAL)
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_pongal, dts, subdivs={"DH", "PY", "TN"})
+        self.assertSubdivDhHolidayName(name_pongal, "2026-01-14")
+        self.assertSubdivPyHolidayName(name_pongal, "2026-01-15")
+        self.assertSubdivTnHolidayName(name_pongal, "2026-01-15")
         dts = (
             "2021-01-14",
             "2022-01-14",
@@ -1335,6 +1338,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-01-16",
             "2024-01-16",
             "2025-01-15",
+            "2026-01-16",
         )
         self._assertHinduHolidayHelper(name, dts, subdivs={"PY", "TN"})
 
@@ -1347,27 +1351,9 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-01-17",
             "2024-01-17",
             "2025-01-16",
+            "2026-01-17",
         )
         self._assertHinduHolidayHelper(name, dts, subdivs={"TN"})
-
-    def test_tamil_nadu_pongal_holidays_2026(self):
-        holidays = self.subdiv_holidays["TN"]
-        expected_holidays = (
-            ("Pongal", "2026-01-15"),
-            ("Thiruvalluvar Day", "2026-01-16"),
-            ("Uzhavar Thirunal", "2026-01-17"),
-        )
-
-        for name, dt in expected_holidays:
-            self.assertHolidayName(name, holidays, dt)
-
-        old_dates = (
-            ("Pongal", "2026-01-14"),
-            ("Thiruvalluvar Day", "2026-01-15"),
-            ("Uzhavar Thirunal", "2026-01-16"),
-        )
-        for name, dt in old_dates:
-            self.assertNoHolidayName(name, holidays, dt)
 
     def test_gend_singh_shaheedi_diwas(self):
         name = "Gend Singh's Shaheedi Diwas"

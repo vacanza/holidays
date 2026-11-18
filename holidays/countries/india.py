@@ -1932,10 +1932,10 @@ class India(
 
         # Hindu holidays.
 
-        # Pongal.
         pongal_dates = {
             2026: (JAN, 15),
         }
+        # Pongal.
         name = tr("Pongal")
         pongal_dt = (
             self._add_holiday(name, dt)
@@ -1943,16 +1943,12 @@ class India(
             else self._add_pongal(name)
         )
 
-        thiruvalluvar_day = tr("Thiruvalluvar Day")
-        if self._year == 2026 and pongal_dt:
-            self._add_holiday(thiruvalluvar_day, _timedelta(pongal_dt, +1))
-            self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
-        else:
+        if pongal_dt:
             # Thiruvalluvar Day.
-            self._add_thiruvalluvar_day(thiruvalluvar_day)
+            self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
 
             # Uzhavar Thirunal.
-            self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
+            self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
 
         # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
