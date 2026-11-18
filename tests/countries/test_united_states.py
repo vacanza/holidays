@@ -1879,6 +1879,19 @@ class TestUnitedStates(CommonCountryTests, TestCase):
                 name, self.subdiv_holidays[subdiv], range(self.start_year, 2008)
             )
 
+        self.assertSubdivVaHolidayName(
+            name,
+            "2020-11-03",
+            "2021-11-02",
+            "2022-11-08",
+            "2023-11-07",
+            "2024-11-05",
+            "2025-11-04",
+            "2026-11-03",
+        )
+        self.assertSubdivVaHolidayName(name, range(2020, self.end_year))
+        self.assertNoSubdivVaHolidayName(name, range(self.start_year, 2020))
+
         # For NON_OFFICIAL category
         # This is actually for the Presidential Election, but let's keep the same name
         # to prevent duplicates for states which have them as proper public holidays.
@@ -2078,6 +2091,7 @@ class TestUnitedStates(CommonCountryTests, TestCase):
             ("OK", "Day After Thanksgiving", 1975),
             ("PA", "Day After Thanksgiving", None),
             ("TX", "Friday After Thanksgiving", 1975),
+            ("VA", "Day After Thanksgiving", 1975),
             ("WA", "Native American Heritage Day", 2014),
             ("WV", "Day After Thanksgiving", 1975),
         ):
