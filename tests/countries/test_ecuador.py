@@ -126,7 +126,6 @@ class TestEcuador(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-02" for year in self.full_range))
         obs_dts = (
             "2019-11-01",
-            "2021-11-01",
             "2022-11-04",
             "2024-11-01",
             "2025-11-04",
@@ -138,8 +137,12 @@ class TestEcuador(CommonCountryTests, TestCase):
         name = "Independencia de Cuenca"
         self.assertHolidayName(name, (f"{year}-11-03" for year in self.full_range))
         obs_dts = (
+            "2018-11-01",
             "2019-11-04",
+            "2021-11-01",
             "2024-11-04",
+            "2027-11-01",
+            "2029-11-01",
         )
         self.assertHolidayName(f"{name} (observado)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
