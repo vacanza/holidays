@@ -90,17 +90,7 @@ class Comoros(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHoliday
             self._add_isra_and_miraj_day(tr("Miradj"))
 
         # Eid al-Fitr.
-        name = tr("Id-El-Fitr")
-        self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        # When Ramadan lasts 30 days, holidays are 30 Ramadan and 1-2 Shawwal;
-        # when it lasts 29 days, it's 1-3 Shawwal.
-        for dt, is_estimated in self._islamic_calendar.eid_al_fitr_dates(self._year):
-            self._add_islamic_calendar_holiday_set(
-                name,
-                ((dt, is_estimated),),
-                days_delta=-1 if self._islamic_calendar._is_long_ramadan(dt) else +2,
-            )
+        self._add_eid_al_fitr_multiday(tr("Id-El-Fitr"), days=3)
 
         # Eid al-Adha.
         name = tr("Id-El-Kabir")
