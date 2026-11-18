@@ -236,7 +236,6 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2025-12-05",
         )
 
-
     def test_guayaquil_foundation_day(self):
         holidays = Ecuador(subdiv="Guayaquil", years=2026)
         self.assertHolidayName(
@@ -260,25 +259,19 @@ class TestEcuador(CommonCountryTests, TestCase):
         national = Ecuador(years=2026)
 
         # Quito's foundation day should only appear in Quito.
-        self.assertHolidayName(
-            "Fundación de Quito (observado)", quito, "2026-12-07"
-        )
+        self.assertHolidayName("Fundación de Quito (observado)", quito, "2026-12-07")
         self.assertNoHolidayName("Fundación de Quito", guayaquil)
         self.assertNoHolidayName("Fundación de Quito", cuenca)
         self.assertNoHolidayName("Fundación de Quito", national)
 
         # Guayaquil's foundation day should only appear in Guayaquil.
-        self.assertHolidayName(
-            "Fundación de Guayaquil (observado)", guayaquil, "2026-07-24"
-        )
+        self.assertHolidayName("Fundación de Guayaquil (observado)", guayaquil, "2026-07-24")
         self.assertNoHolidayName("Fundación de Guayaquil", quito)
         self.assertNoHolidayName("Fundación de Guayaquil", cuenca)
         self.assertNoHolidayName("Fundación de Guayaquil", national)
 
         # Cuenca's foundation day should only appear in Cuenca.
-        self.assertHolidayName(
-            "Fundación de Cuenca (observado)", cuenca, "2026-04-13"
-        )
+        self.assertHolidayName("Fundación de Cuenca (observado)", cuenca, "2026-04-13")
         self.assertNoHolidayName("Fundación de Cuenca", quito)
         self.assertNoHolidayName("Fundación de Cuenca", guayaquil)
         self.assertNoHolidayName("Fundación de Cuenca", national)

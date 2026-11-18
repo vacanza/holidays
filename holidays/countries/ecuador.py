@@ -114,21 +114,15 @@ class Ecuador(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_subdiv_quito_public_holidays(self):
         # Foundation of Quito.
-        self._move_holiday(
-            self._add_holiday_dec_6(tr("Fundación de Quito"))
-        )
+        self._move_holiday(self._add_holiday_dec_6(tr("Fundación de Quito")))
 
     def _populate_subdiv_guayaquil_public_holidays(self):
         # Foundation of Guayaquil.
-        self._move_holiday(
-            self._add_holiday_jul_25(tr("Fundación de Guayaquil"))
-        )
+        self._move_holiday(self._add_holiday_jul_25(tr("Fundación de Guayaquil")))
 
     def _populate_subdiv_cuenca_public_holidays(self):
         # Foundation of Cuenca.
-        self._move_holiday(
-            self._add_holiday_apr_12(tr("Fundación de Cuenca"))
-        )
+        self._move_holiday(self._add_holiday_apr_12(tr("Fundación de Cuenca")))
 
 
 class EC(Ecuador):
