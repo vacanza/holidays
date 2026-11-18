@@ -259,6 +259,13 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             "2025-12-31",
             "2026-01-01",
         )
+        school_2000 = Luxembourg(years=2000, categories=SCHOOL, expand=False)
+        self.assertHolidayName(
+            "Chrëschtvakanz",
+            school_2000,
+            *(f"2000-01-0{day}" for day in range(1, 10)),
+        )
+        self.assertNoHoliday(school_2000, "2000-01-10")
 
     def test_2018(self):
         self.assertHolidaysInYear(

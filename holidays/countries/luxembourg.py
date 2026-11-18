@@ -55,11 +55,9 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_multiday_holiday(
-        self, start_date: date, duration_days: int, *, name: str | None = None
-    ) -> set[date]:
-        """Add a multi-day holiday starting from `start_date` (inclusive)."""
-        return super()._add_multiday_holiday(
+    def _add_school_break(self, start_date: date, duration_days: int, *, name: str) -> set[date]:
+        """Add a multi-day school break starting from `start_date` (inclusive)."""
+        return self._add_multiday_holiday(
             _timedelta(start_date, -1), duration_days=duration_days, name=name
         )
 
@@ -132,7 +130,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                         if year in {1988, 2017}
                         else (15 if is_sun_start else 16)
                     )
-                self._add_multiday_holiday(start, duration, name=christmas_break_name)
+                self._add_school_break(start, duration, name=christmas_break_name)
 
         if self._year >= 1981:
             easter_sunday = self._easter_sunday
@@ -151,7 +149,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                 carnival_offset = -57
             else:
                 carnival_offset = -50
-            self._add_multiday_holiday(
+            self._add_school_break(
                 _timedelta(easter_sunday, carnival_offset),
                 10
                 if self._year == 2000
@@ -182,7 +180,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                 easter_offset, easter_duration = -8, 16
             else:
                 easter_offset, easter_duration = -1, 16
-            self._add_multiday_holiday(
+            self._add_school_break(
                 _timedelta(easter_sunday, easter_offset),
                 easter_duration,
                 # Easter Break.
@@ -211,7 +209,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                 pentecost_offset, pentecost_duration = +34, 9
             else:
                 pentecost_offset, pentecost_duration = +48, 9
-            self._add_multiday_holiday(
+            self._add_school_break(
                 _timedelta(easter_sunday, pentecost_offset),
                 pentecost_duration,
                 # Pentecost Break.
@@ -246,7 +244,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                     else 16,
                 )
                 summer_end = date(self._year, SEP, 14)
-            self._add_multiday_holiday(
+            self._add_school_break(
                 summer_start,
                 (summer_end - summer_start).days + 1,
                 # Summer Break.
@@ -261,7 +259,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                 else _get_nth_weekday_from(-1, SAT, date(self._year, OCT, 31))
             )
             is_sun_all_saints = self._year <= 1999 and self._year != 1986
-            self._add_multiday_holiday(
+            self._add_school_break(
                 _timedelta(all_saints_sat, +1) if is_sun_all_saints else all_saints_sat,
                 8 if is_sun_all_saints else 9,
                 # All Saints' Break.
