@@ -13,6 +13,7 @@
 from collections.abc import Iterable
 from datetime import date
 
+from holidays.calendars.gregorian import _timedelta
 from holidays.calendars.islamic import _IslamicLunar
 from holidays.groups.eastern import EasternCalendarHolidays
 
@@ -206,6 +207,31 @@ class IslamicHolidays(EasternCalendarHolidays):
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=-1
         )
 
+    def _add_eid_al_fitr_multiday(
+        self, name, days=4, *, start_29_ramadan=False, fixed_end=False
+    ) -> set[date]:
+        """
+        Add multi-day Eid al-Fitr holiday.
+
+        The holiday starts on 1st Shawwal (or 29th Ramadan if `start_29_ramadan`)
+        and lasts `days` days. If Ramadan lasted 30 days, the start moves one day
+        earlier; the end moves too (the length stays the same), unless `fixed_end`
+        is set (the holiday gets one day longer). The estimation flag is taken
+        from Eid al-Fitr dates.
+        """
+        first_day = -start_29_ramadan
+        dts_estimated: list[tuple[date, bool]] = []
+        for year in (self._year - 1, self._year, self._year + 1):
+            for dt, is_estimated in self._islamic_calendar.eid_al_fitr_dates(year):
+                shift = self._islamic_calendar._is_long_ramadan(dt)
+                dts_estimated.extend(
+                    (_timedelta(dt, delta), is_estimated)
+                    for delta in range(
+                        first_day - shift, first_day + days - (0 if fixed_end else shift)
+                    )
+                )
+        return self._add_islamic_calendar_holiday_set(name, dts_estimated)
+
     def _add_eid_al_ghadir_day(self, name) -> set[date]:
         """
         Add Eid al-Ghadir Day (18th day of 12th month).
@@ -257,16 +283,6 @@ class IslamicHolidays(EasternCalendarHolidays):
         """
         return self._add_islamic_calendar_holiday_set(
             name, self._islamic_calendar.hasan_al_askari_death_dates(self._year)
-        )
-
-    def _add_holiday_29_ramadan(self, name) -> set[date]:
-        """
-        Add 29th Ramadan holiday (29th day of 9th month).
-
-        https://web.archive.org/web/20250323065556/https://decree.om/2022/rd20220088/
-        """
-        return self._add_islamic_calendar_holiday_set(
-            name, self._islamic_calendar.ramadan_beginning_dates(self._year), days_delta=+28
         )
 
     def _add_imam_mahdi_birthday_day(self, name) -> set[date]:
