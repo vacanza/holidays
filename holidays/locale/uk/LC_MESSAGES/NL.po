@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-04-09 18:11+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-11-09 22:24+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -75,3 +75,23 @@ msgstr "Різдво Христове"
 #. Second Day of Christmas.
 msgid "Tweede kerstdag"
 msgstr "Другий день Різдва"
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr "Різдвяні канікули"
+
+#. Spring Break.
+msgid "Voorjaarsvakantie"
+msgstr "Весняні канікули"
+
+#. May Break.
+msgid "Meivakantie"
+msgstr "Травневі канікули"
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr "Літні канікули"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr "Осінні канікули"

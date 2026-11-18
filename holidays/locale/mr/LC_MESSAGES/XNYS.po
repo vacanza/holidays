@@ -90,7 +90,7 @@ msgstr "थँक्सगिव्हिंग डे"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "नाताळ"
+msgstr "ख्रिसमस दिन"
 
 #. Pending outbreak of World War I.
 msgid "Pending outbreak of World War I"
@@ -138,7 +138,7 @@ msgstr "थँक्सगिव्हिंग डे नंतरचा दि
 
 #. Christmas Eve.
 msgid "Christmas Eve"
-msgstr "नाताळ पूर्वसंध्या"
+msgstr "ख्रिसमसची पूर्वसंध्या"
 
 #. %s (markets close at 11:00am).
 #, c-format
@@ -242,15 +242,15 @@ msgstr "कोलंबस डे नंतरचा शनिवार"
 
 #. Saturday before Christmas.
 msgid "Saturday before Christmas Day"
-msgstr "नाताळच्या आदल्या दिवशीचा शनिवार"
+msgstr "ख्रिसमस दिनापूर्वीचा शनिवार"
 
 #. Friday after Christmas Day.
 msgid "Friday after Christmas Day"
-msgstr "नाताळानंतरचा शुक्रवार"
+msgstr "ख्रिसमसच्या दिवसानंतरचा शुक्रवार"
 
 #. Saturday after Christmas Day.
 msgid "Saturday after Christmas Day"
-msgstr "नाताळानंतरचा शनिवार"
+msgstr "ख्रिसमस दिनानंतरचा शनिवार"
 
 #. Admiral Dewey Celebration.
 msgid "Admiral Dewey Celebration"
@@ -434,11 +434,11 @@ msgstr "तीव्र हवामान परिस्थिती"
 
 #. Saturday before Christmas Eve.
 msgid "Saturday before Christmas Eve"
-msgstr "नाताळच्या आदल्या दिवशीचा शनिवार"
+msgstr "ख्रिसमसच्या पूर्वसंध्येपूर्वीचा शनिवार"
 
 #. Day After Christmas.
 msgid "Day After Christmas"
-msgstr "नाताळच्या दुसऱ्या दिवशी"
+msgstr "ख्रिसमस नंतरचा दिवस"
 
 #. Day before Decoration Day.
 msgid "Day before Decoration Day"

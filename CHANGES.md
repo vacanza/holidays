@@ -1,3 +1,75 @@
+## Version 0.109
+
+Released November 17, 2026
+
+- Add Euronext holidays (#3959 by @shivam0897-i, @KJhellico)
+- Add Federal Reserve holidays (#3961 by @ahmershahdev)
+- Improve Eid al-Fitr holidays calculation (#4120 by @KJhellico)
+- Update Albania holidays: add 2026 exact dates (#4104 by @shikhabhadoria)
+- Update Austria holidays: add school holidays (#3953 by @yashgoyal0110, @KJhellico)
+- Update B3 holidays: add Christmas Eve and last business day of the year (#4109 by @ananya-patel81)
+- Update Bahrain holidays: add Hindi language support (#4119 by @Duke2nuke)
+- Update Bahrain holidays: fix Ashura dates and add 2026 dates (#4004 by @ahmershahdev)
+- Update Euronext holidays: add Athens holidays (#4098 by @shivam0897-i, @KJhellico)
+- Update Fiji holidays: add 2026 official dates (#4041 by @Enesuygurs)
+- Update Finland holidays: fix Defence Forces Flag Day date (#4101 by @kipe)
+- Update France holidays: add official references (Wallis and Futuna) (#4099 by @nishokcodes)
+- Update France holidays: add school holidays (#3878 by @ahmershahdev)
+- Update Hong Kong holidays: fix first weekday after Christmas Day (#4051 by @ananya-patel81)
+- Update Hungary holidays: add Christmas Eve holiday since 2026 (#4159 by @KJhellico)
+- Update India holidays: add Karnataka Rajyotsava holiday (KA) (#4077 by @nayansharma8123-gif, @KJhellico)
+- Update India holidays: add Kerala Assembly Election Day for 2026 (KL) (#4091 by @nayansharma8123-gif, @PPsyrius)
+- Update India holidays: add missing Kerala (KL) public holidays (#3969 by @vprayag2005, @KJhellico)
+- Update Islamic calendars: extend supported year range to 2100 (#3998 by @jiteshgulati, @KJhellico)
+- Update Jamaica holidays: fix Boxing Day observance (#4082 by @nishokcodes, @KJhellico)
+- Update Kosovo holidays: add Turkish language support (#4068 by @serhataydilek)
+- Update Martinique holidays: remove Good Friday (#4106 by @abhiramtheengineer, @KJhellico)
+- Update NSE and BSE holidays: add 2026 exact dates (#4047 by @utkarsh942)
+- Update Namibia holidays: fix Human Rights Day date (#4054 by @nayansharma8123-gif)
+- Update Netherlands holidays: add school holidays (#3948 by @yashgoyal0110)
+- Update Oman holidays: fix National Day dates and add 2025-2026 dates (#4005 by @ahmershahdev)
+- Update Poland holidays: add school holidays (#3957 by @yashgoyal0110, @KJhellico)
+- Update Qatar holidays: add 2026 exact dates (#4078 by @ahmershahdev)
+- Update South Korea holidays: fix National Assembly and Local Election Days (#4156 by @YiGeon)
+- Update South Korea holidays: fix Presidential Election Day from 2030 (#4053 by @randomtalker)
+- Update Turkey holidays: add Urdu language support (#4144 by @Esha-Ahsan-SE)
+- Update United States holidays: update Virginia (VA) state holidays (#4063 by @NotAkshaltz)
+- Update Uzbekistan holidays: add 2026 exact dates (#4093 by @shikhabhadoria)
+- Update XETR and XBOG holidays: exclude weekend dates (#4075 by @yashgoyal0110, @KJhellico)
+- Update Zimbabwe holidays (#4049 by @ananya-patel81, @KJhellico)
+- Update documentation: move docstring examples to examples.md, normalize code blocks (#4000 by @KJhellico)
+- Update snapshot generator: add market subdivision support (#4066 by @KJhellico)
+- Add support for entity-specific options in `country_holidays()` and `financial_holidays()` (#4071 by @jiteshgulati)
+- Clarify release schedule (#4169 by @arkid15r)
+- Migrate S countries tests to new test case standards (#3981 by @nishokcodes, @KJhellico)
+- Migrate T countries to new test case standards (#3985 by @The-Tallest-Stack, @KJhellico)
+
+## Version 0.108
+
+Released November 2, 2026
+
+- Add Securities Industry and Financial Markets Association (SIFMA) holidays (#3931 by @ahmershahdev)
+- Fix British spellings in en_US translations (#3994 by @yashgoyal0110)
+- Fix `HolidaySum` repopulating years its operands already have (#3917 by @ahmershahdev)
+- Fix mixed-script characters in holiday names (#3995 by @nayansharma8123-gif, @KJhellico)
+- Fix some holidays Marathi translations (#4001 by @nayansharma8123-gif)
+- Update Belgium holidays: add school holidays (#3874 by @yashgoyal0110, @KJhellico)
+- Update Botswana holidays: add 2024 and 2026 special holidays (#3963 by @raams95)
+- Update CI/CD workflow: add actionlint GitHub Action (#3954 by @KJhellico)
+- Update Eritrea holidays: add l10n support (#3976 by @nishokcodes)
+- Update Ireland holidays: add l10n support (#3960 by @shikhabhadoria)
+- Update Kenya holidays: add 2025 special holiday, 2025-2026 Islamic holidays dates (#3967 by @raams95)
+- Update Namibia holidays: add 2025 Regional Election Day (#3966 by @raams95)
+- Update Somalia holidays: add l10n support (#3972 by @ahmershahdev)
+- Update Taiwan holidays: keep observed dates language-independent (#3946 by @guocn, @KJhellico)
+- Update Thai calendar: fix incorrect intercalation years (#3973 by @PPsyrius)
+- Update United Arab Emirates holidays: fix 2025 and add 2026 dates (#3962 by @ahmershahdev)
+- Update `HolidayBase::__setattr__` method to validate reassignments (#3895 by @paoValle, @KJhellico)
+- Update iCal exporter: make calendars subscription-safe (#3882 by @yashgoyal0110, @arkid15r)
+- Drop Python 3.10 support (#3937 by @KJhellico)
+- Migrate N-O countries and Western Sahara tests to new test case standards (#3945 by @nishokcodes, @KJhellico)
+- Migrate Tokelau tests to new test case standards (#3951 by @The-Tallest-Stack)
+
 ## Version 0.107
 
 Released October 19, 2026
@@ -72,7 +144,7 @@ Released September 21, 2026
 - Update Philippines holidays: add 2027 holidays (#3817 by @KJhellico)
 - Update South Africa holidays: add Nov 4, 2026 holiday (#3809 by @lispwarez)
 - Add support for special holidays inheritance from parent entity (#3830 by @KJhellico, @arkid15r)
-  
+
 ## Version 0.104
 
 Released September 7, 2026

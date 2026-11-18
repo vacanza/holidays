@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
+"PO-Revision-Date: 2026-11-11 22:46+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -37,7 +37,7 @@ msgstr "%s (estimated)"
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#. Revolution and Youth Day - January 14
+#. Revolution and Youth Day.
 msgid "عيد الثورة والشباب"
 msgstr "Revolution and Youth Day"
 
@@ -65,6 +65,14 @@ msgstr "Women's Day"
 msgid "عيد الجلاء"
 msgstr "Evacuation Day"
 
+#. Islamic New Year.
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet's Birthday.
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"
+
 #. Eid al-Fitr.
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
@@ -84,11 +92,3 @@ msgstr "Eid al-Adha"
 #. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
-
-#. Islamic New Year.
-msgid "رأس السنة الهجرية"
-msgstr "Islamic New Year"
-
-#. Prophet's Birthday.
-msgid "عيد المولد النبوي"
-msgstr "Prophet's Birthday"

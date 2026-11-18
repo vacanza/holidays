@@ -65,6 +65,10 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
             self._get_next_workday(self._next_year_new_years_day, -1),
         )
 
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
+
 
 class XBOG(BolsaDeValoresDeColombia):
     pass
