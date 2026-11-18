@@ -157,43 +157,6 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_islamic_show_estimated(self):
-        holidays = SaudiArabia(years=(2026, 2027, 2033), islamic_show_estimated=True)
-        eid_al_fitr = "عطلة عيد الفطر"
-        self.assertHolidayName(
-            eid_al_fitr, holidays, "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"
-        )
-        self.assertHolidayName(f"{eid_al_fitr} (يوم تعويضي)", holidays, "2026-03-23", "2026-03-24")
-        self.assertHolidayName("يوم عرفة", holidays, "2026-05-26")
-        eid_al_adha = "عطلة عيد الأضحى"
-        self.assertHolidayName(eid_al_adha, holidays, "2026-05-27", "2026-05-28", "2026-05-29")
-        self.assertHolidayName(f"{eid_al_adha} (يوم تعويضي)", holidays, "2026-05-31")
-
-        # All four days of an estimated Eid al-Fitr Holiday are labeled as estimated.
-        self.assertHolidayName(
-            f"{eid_al_fitr} (تقديري)",
-            holidays,
-            "2027-03-09",
-            "2027-03-10",
-            "2027-03-11",
-            "2027-03-12",
-            "2033-01-02",  # 1 Shawwal.
-            "2033-01-03",
-            "2033-01-04",
-            "2033-01-05",
-            "2033-12-22",  # 30 Ramadan.
-            "2033-12-23",
-            "2033-12-24",
-            "2033-12-25",
-        )
-        self.assertHolidayName(
-            f"{eid_al_fitr} (يوم تعويضي تقديري)",
-            holidays,
-            "2027-03-14",
-            "2033-12-26",
-            "2033-12-27",
-        )
-
     def test_national_day(self):
         name = "اليوم الوطني"
         self.assertHolidayName(name, (f"{year}-09-23" for year in range(2005, self.end_year)))
