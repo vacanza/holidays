@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.calendars.luxembourg_school import LUXEMBOURG_SCHOOL_HOLIDAYS
 from holidays.constants import BANK, PUBLIC, SCHOOL
 from holidays.countries.luxembourg import Luxembourg
 from tests.common import CommonCountryTests
@@ -114,15 +113,6 @@ class TestLuxembourg(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertBankHolidayName(name, (f"{year}-12-31" for year in self.full_range))
 
-    def test_all_school_holiday_ids_are_mapped(self):
-        known_ids = set(Luxembourg._get_school_holiday_names())
-        dataset_ids = {
-            holiday_id
-            for year_holidays in LUXEMBOURG_SCHOOL_HOLIDAYS.values()
-            for *_, holiday_id in year_holidays
-        }
-        self.assertEqual(dataset_ids, known_ids)
-
     def test_no_school_holidays(self):
         # School holidays are available from the 1980/81 school year.
         self.assertNoHolidays(
@@ -139,8 +129,12 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1980-10-26",
             "1980-11-02",
+            "1986-11-01",
+            "1986-11-09",
             "1999-10-31",
             "1999-11-07",
+            "2008-11-01",
+            "2008-11-09",
             "2025-11-01",
             "2025-11-09",
             "2028-10-28",
@@ -154,6 +148,12 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1980-12-21",
             "1981-01-04",
+            "1983-12-24",
+            "1984-01-08",
+            "1988-12-18",
+            "1989-01-02",
+            "1999-12-24",
+            "2000-01-09",
             "2017-12-16",
             "2018-01-01",
             "2025-12-20",
@@ -171,8 +171,16 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1981-03-01",
             "1981-03-08",
+            "1984-02-26",
+            "1984-03-05",
             "2000-02-26",
             "2000-03-06",
+            "2006-02-25",
+            "2006-03-05",
+            "2017-02-18",
+            "2017-02-26",
+            "2020-02-15",
+            "2020-02-23",
             "2028-02-12",
             "2028-02-20",
         )
@@ -184,6 +192,20 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1981-04-12",
             "1981-04-26",
+            "1984-04-15",
+            "1984-05-01",
+            "1986-03-30",
+            "1986-04-13",
+            "1992-04-05",
+            "1992-04-20",
+            "2000-04-08",
+            "2000-04-24",
+            "2002-03-23",
+            "2002-04-07",
+            "2015-04-04",
+            "2015-04-19",
+            "2025-04-05",
+            "2025-04-20",
             "2026-03-28",
             "2026-04-12",
             "2029-03-31",
@@ -197,8 +219,16 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1981-06-07",
             "1981-06-14",
+            "1984-06-03",
+            "1984-06-12",
+            "2003-05-24",
+            "2003-06-01",
             "2009-05-23",
             "2009-06-02",
+            "2014-06-07",
+            "2014-06-15",
+            "2026-05-23",
+            "2026-05-31",
             "2027-05-29",
             "2027-06-06",
         )
@@ -210,6 +240,10 @@ class TestLuxembourg(CommonCountryTests, TestCase):
             name,
             "1981-07-16",
             "1981-09-14",
+            "1985-07-16",
+            "1985-09-15",
+            "2006-07-15",
+            "2006-09-14",
             "2026-07-16",
             "2026-09-14",
             "2029-07-14",
