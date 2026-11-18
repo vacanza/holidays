@@ -136,9 +136,9 @@ class TestFinancialHolidays(TestCase):
             financial_holidays("XNYS", subdiv="XXXX")
 
     def test_market_options(self):
-        test_holidays = financial_holidays("XSAU", years=2026, islamic_show_estimated=True)
-        self.assertEqual(test_holidays, holidays.XSAU(years=2026, islamic_show_estimated=True))
-        self.assertNotEqual(test_holidays, financial_holidays("XSAU", years=2026))
+        test_holidays = financial_holidays("XSAU", years=2027, islamic_show_estimated=True)
+        self.assertEqual(test_holidays, holidays.XSAU(years=2027, islamic_show_estimated=True))
+        self.assertNotEqual(test_holidays, financial_holidays("XSAU", years=2027))
 
     def test_market_default_options(self):
         for market in list_supported_financial(include_aliases=False):
