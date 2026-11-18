@@ -1257,6 +1257,7 @@ class _ChineseLunisolar:
     }
 
     KOREAN_CALENDAR_LUNAR_NEW_YEAR_DATES = {
+        1916: (FEB, 4),
         1944: (JAN, 26),
         1954: (FEB, 4),
         1958: (FEB, 19),

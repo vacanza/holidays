@@ -31,6 +31,10 @@ class TestChineseLunisolarCalendar(TestCase):
     def test_lunar_new_year(self):
         # Hong Kong Observatory conversion table of 1916.
         self.assertEqual(self.calendar.lunar_new_year_date(1916)[0], date(1916, 2, 3))
+        # Korea Astronomy and Space Science Institute conversion table of 1916.
+        self.assertEqual(
+            self.calendar.lunar_new_year_date(1916, KOREAN_CALENDAR)[0], date(1916, 2, 4)
+        )
 
     def test_qingming_chinese(self):
         for year, day in (
