@@ -1453,7 +1453,11 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(
                     name,
                     holidays,
-                    (year for year in self.full_range if year not in {2023, 2024, 2025, 2026, 2027}),
+                    (
+                        year
+                        for year in self.full_range
+                        if year not in {2023, 2024, 2025, 2026, 2027}
+                    ),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
