@@ -39,7 +39,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Revolution and Youth Day - January 14
+        # Revolution and Youth Day.
         self._add_holiday_jan_14(tr("عيد الثورة والشباب"))
 
         # Independence Day.
@@ -60,28 +60,30 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Evacuation Day.
         self._add_holiday_oct_15(tr("عيد الجلاء"))
 
-        # Eid al-Fitr.
-        name = tr("عيد الفطر")
-        self._add_eid_al_fitr_day(name)
-        # Eid al-Fitr Holiday.
-        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
-        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
-
-        # Day of Arafah.
-        self._add_arafah_day(tr("يوم عرفة"))
-
-        # Eid al-Adha.
-        name = tr("عيد الأضحى")
-        self._add_eid_al_adha_day(name)
-        # Eid al-Adha Holiday.
-        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
-        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
-
         # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Prophet's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
+
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("عيد الفطر"))
+
+        # Eid al-Fitr Holiday.
+        name = tr("عطلة عيد الفطر")
+        self._add_eid_al_fitr_day_two(name)
+        self._add_eid_al_fitr_day_three(name)
+
+        # Day of Arafah.
+        self._add_arafah_day(tr("يوم عرفة"))
+
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("عيد الأضحى"))
+
+        # Eid al-Adha Holiday.
+        name = tr("عطلة عيد الأضحى")
+        self._add_eid_al_adha_day_two(name)
+        self._add_eid_al_adha_day_three(name)
 
 
 class TN(Tunisia):
