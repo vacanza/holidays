@@ -23,6 +23,7 @@ from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, 
 from holidays.financial.borsa_istanbul import BorsaIstanbul, XIST, BIST
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
+from holidays.financial.dubai_financial_market import DubaiFinancialMarket, XDFM, DFM
 from holidays.financial.euronext import (
     Euronext,
     ENX,

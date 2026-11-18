@@ -59,7 +59,8 @@ pip install --upgrade --pre holidays
 ```
 
 All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
-then released from `main` on official version upgrades.
+then released from `main` on official version upgrades. We normally follow a release
+schedule, typically on the **1st and 3rd Tuesday of each month**.
 
 On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
 Pre-release publishes append a UTC timestamp in CI only
@@ -2008,6 +2009,13 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange market holidays</td>
 <td><strong>en_US</strong>, gu, hi, mr</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Dubai Financial Market</td>
+<td>XDFM</td>
+<td>Dubai Financial Market (DFM) holidays</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
+<td></td>
 </tr>
 <tr>
 <td>Euronext</td>
