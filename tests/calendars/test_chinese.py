@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.chinese import _ChineseLunisolar, KOREAN_CALENDAR, VIETNAMESE_CALENDAR
@@ -22,6 +23,14 @@ class TestChineseLunisolarCalendar(TestCase):
 
     def test_check_calendar(self):
         self.assertRaises(ValueError, lambda: _ChineseLunisolar("INVALID_CALENDAR"))
+
+    def test_double_ninth(self):
+        # Hong Kong Observatory conversion table of 2057: 9th lunar month starts on 2057-09-28.
+        self.assertEqual(self.calendar.double_ninth_date(2057)[0], date(2057, 10, 6))
+
+    def test_lunar_new_year(self):
+        # Hong Kong Observatory conversion table of 1916.
+        self.assertEqual(self.calendar.lunar_new_year_date(1916)[0], date(1916, 2, 3))
 
     def test_qingming_chinese(self):
         for year, day in (

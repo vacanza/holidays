@@ -233,6 +233,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
         name = "Hari Suci Nyepi"
         self.assertHolidayName(
             name,
+            "1994-04-12",
             "2009-03-26",
             "2014-03-31",
             "2018-03-17",
