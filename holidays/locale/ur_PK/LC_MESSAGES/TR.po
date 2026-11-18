@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-11-12 18:52+0200\n"
 "PO-Revision-Date: 2026-11-16 02:04+0530\n"
@@ -84,15 +84,15 @@ msgstr "عید الفطر"
 msgid "Kurban Bayramı"
 msgstr "عید الاضحیٰ"
 
-#. %s (from 1pm).
-#, c-format
-msgid "%s (saat 13.00'ten)"
-msgstr "%s (دوپہر 1 بجے سے)"
-
 #. %s (afternoon).
 #, c-format
 msgid "%s (öğleden sonra)"
 msgstr "%s (دوپہر کے بعد)"
+
+#. %s (from 1pm).
+#, c-format
+msgid "%s (saat 13.00'ten)"
+msgstr "%s (دوپہر 1 بجے سے)"
 
 #. Public Holiday.
 msgid "Genel tati̇l"

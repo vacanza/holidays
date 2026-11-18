@@ -24,8 +24,8 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Turkey>
         * [Law 2739 of May 27, 1935](https://web.archive.org/web/20250102114014/https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc015/kanuntbmmc015/kanuntbmmc01502739.pdf)
-        * [Law 221 of April 9, 1963](https://www.resmigazete.gov.tr/arsiv/11381.pdf)
-        * [Law 1907 of June 10, 1975](https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc058/kanuntbmmc058/kanuntbmmc05801907.pdf)
+        * [Law 221 of April 9, 1963](https://web.archive.org/web/20220531104238/http://www.resmigazete.gov.tr/arsiv/11381.pdf)
+        * [Law 1907 of June 10, 1975](https://web.archive.org/web/20261118191028/https://www5.tbmm.gov.tr/tutanaklar/KANUNLAR_KARARLAR/kanuntbmmc058/kanuntbmmc058/kanuntbmmc05801907.pdf)
         * [Law 2429 of March 19, 1981](https://web.archive.org/web/20250121111504/http://www.mevzuat.gov.tr/MevzuatMetin/1.5.2429.pdf)
         * [Hijri calendar holidays](https://web.archive.org/web/20250415045516/https://vakithesaplama.diyanet.gov.tr/hicriden_miladiye.php)
     """
@@ -113,41 +113,48 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         self._add_eid_al_adha_day_four(name)
 
     def _populate_half_day_holidays(self):
-        # %s (from 1pm).
-        begin_time_label = tr("%s (saat 13.00'ten)")
         # %s (afternoon).
-        afternoon_label = tr("%s (öğleden sonra)")
+        begin_afternoon_label = tr("%s (öğleden sonra)")
+
+        # %s (from 1pm).
+        begin_13pm_label = tr("%s (saat 13.00'ten)")
 
         if self._year <= 1980:
             self._add_holiday_apr_22(
                 # National Sovereignty Day.
-                self._format_holiday_name(afternoon_label, tr("Ulusal Egemenlik Bayramı"))
+                self._format_holiday_name(begin_afternoon_label, tr("Ulusal Egemenlik Bayramı"))
             )
 
+            # Law 221 of April 9, 1963.
             if self._year >= 1963:
                 self._add_holiday_may_26(
-                    # Freedom and Constitution Day.
-                    self._format_holiday_name(afternoon_label, tr("Hürriyet ve Anayasa Bayramı"))
+                    self._format_holiday_name(
+                        begin_afternoon_label,
+                        # Freedom and Constitution Day.
+                        tr("Hürriyet ve Anayasa Bayramı"),
+                    )
                 )
 
         self._add_holiday_oct_28(
             # Republic Day.
-            self._format_holiday_name(begin_time_label, tr("Cumhuriyet Bayramı"))
+            self._format_holiday_name(begin_13pm_label, tr("Cumhuriyet Bayramı"))
         )
 
         if self._year <= 1980:
-            # New Year's Day.
-            self._add_holiday_dec_31(self._format_holiday_name(afternoon_label, tr("Yılbaşı")))
+            self._add_new_years_eve(
+                # New Year's Day.
+                self._format_holiday_name(begin_afternoon_label, tr("Yılbaşı"))
+            )
 
         # Law 1907 of June 10, 1975.
         if self._year >= 1975:
             self._add_eid_al_fitr_eve(
                 # Eid al-Fitr.
-                self._format_holiday_name(begin_time_label, tr("Ramazan Bayramı"))
+                self._format_holiday_name(begin_13pm_label, tr("Ramazan Bayramı"))
             )
 
             # Eid al-Adha.
-            self._add_arafah_day(self._format_holiday_name(begin_time_label, tr("Kurban Bayramı")))
+            self._add_arafah_day(self._format_holiday_name(begin_13pm_label, tr("Kurban Bayramı")))
 
 
 class TR(Turkey):
