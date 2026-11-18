@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import APR
+from holidays.calendars.gregorian import APR, DEC
 from holidays.countries.croatia import Croatia
 from holidays.groups import StaticHolidays
 from holidays.helpers import tr
@@ -31,7 +31,7 @@ class ZagrebStockExchange(Croatia, StaticHolidays):
         * [2018](https://web.archive.org/web/20181216085617/http://zse.hr:80/default.aspx?id=32821)
         * [2019](https://web.archive.org/web/20191210043919/https://www.zse.hr/default.aspx?id=32821)
         * [2020-2021](https://web.archive.org/web/20201106221235/https://zse.hr/en/non-trading-days/110)
-        * [2022](https://web.archive.org/web/20220122214329/https://zse.hr/en/non-trading-days/110)
+        * [2022](https://web.archive.org/web/20221209194143/https://zse.hr/hr/neradni-dani/110)
         * [2023](https://web.archive.org/web/20230326125439/https://zse.hr/en/non-trading-days/110)
         * [2024](https://web.archive.org/web/20240415000000/https://zse.hr/hr/neradni-dani/110)
         * [2025-2026](https://web.archive.org/web/20250907023700/https://zse.hr/en/non-trading-days/110)
@@ -78,10 +78,18 @@ class ZagrebStockExchangeStaticHolidays:
     """Zagreb Stock Exchange (ZSE) special holidays.
 
     References:
+        * [2022 Euro Adoption](https://web.archive.org/web/20221209194143/https://zse.hr/hr/neradni-dani/110)
         * [2024 Parliamentary Election Day](https://web.archive.org/web/20240415000000/https://zse.hr/hr/neradni-dani/110)
     """
 
+    # Euro adoption.
+    euro_adoption = tr("Uvođenje eura")
+
     special_public_holidays = {
+        2022: (
+            (DEC, 29, euro_adoption),
+            (DEC, 30, euro_adoption),
+        ),
         # Parliamentary Election Day.
         2024: (APR, 17, tr("Dan izbora zastupnika u Hrvatski sabor")),
     }

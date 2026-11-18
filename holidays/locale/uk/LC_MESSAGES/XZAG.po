@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-18 21:47+0530\n"
-"PO-Revision-Date: 2026-11-18 21:47+0530\n"
+"PO-Revision-Date: 2026-11-18 22:34+0530\n"
 "Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
@@ -38,6 +38,10 @@ msgstr "Святвечір"
 #. New Year's Eve.
 msgid "Stara godina"
 msgstr "Переддень Нового року"
+
+#. Euro adoption.
+msgid "Uvođenje eura"
+msgstr "Запровадження євро"
 
 #. Parliamentary Election Day.
 msgid "Dan izbora zastupnika u Hrvatski sabor"
