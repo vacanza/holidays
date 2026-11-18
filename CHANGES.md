@@ -43,7 +43,7 @@ Released November 17, 2026
 - Clarify release schedule (#4169 by @arkid15r)
 - Migrate S countries tests to new test case standards (#3981 by @nishokcodes, @KJhellico)
 - Migrate T countries to new test case standards (#3985 by @The-Tallest-Stack, @KJhellico)
-  
+
 ## Version 0.108
 
 Released November 2, 2026
@@ -144,7 +144,7 @@ Released September 21, 2026
 - Update Philippines holidays: add 2027 holidays (#3817 by @KJhellico)
 - Update South Africa holidays: add Nov 4, 2026 holiday (#3809 by @lispwarez)
 - Add support for special holidays inheritance from parent entity (#3830 by @KJhellico, @arkid15r)
-  
+
 ## Version 0.104
 
 Released September 7, 2026
