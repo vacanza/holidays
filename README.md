@@ -2011,6 +2011,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Dubai Financial Market</td>
+<td>XDFM</td>
+<td>Dubai Financial Market (DFM) holidays</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
 <td>Euronext</td>
 <td>ENX</td>
 <td>Euronext (Amsterdam, Athens, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
