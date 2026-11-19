@@ -1,0 +1,129 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# National Stock Exchange of India (NSE) holidays bn localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-18 15:25+0000\n"
+"PO-Revision-Date: 2026-11-18 15:25+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_IN\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (আনুমানিক)"
+
+#. Republic Day.
+msgid "Republic Day"
+msgstr "প্রজাতন্ত্র দিবস"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "গুড ফ্রাইডে"
+
+#. Dr. B. R. Ambedkar Jayanti.
+msgid "Dr. Baba Saheb Ambedkar Jayanti"
+msgstr "ড. বাবাসাহেব আম্বেদকর জয়ন্তী"
+
+#. May Day.
+msgid "May Day"
+msgstr "মে দিবস"
+
+#. Maharashtra Day.
+msgid "Maharashtra Day"
+msgstr "মহারাষ্ট্র দিবস"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "স্বাধীনতা দিবস"
+
+#. Gandhi Jayanti.
+msgid "Mahatma Gandhi Jayanti"
+msgstr "মহাত্মা গান্ধী জয়ন্তী"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "বড়দিন"
+
+#. Maha Shivaratri.
+msgid "Maha Shivaratri"
+msgstr "মহাশিবরাত্রি"
+
+#. Holi.
+msgid "Holi"
+msgstr "হোলি"
+
+#. Ram Navami.
+msgid "Ram Navami"
+msgstr "রাম নবমী"
+
+#. Mahavir Jayanti.
+msgid "Mahavir Jayanti"
+msgstr "মহাবীর জয়ন্তী"
+
+#. Ganesh Chaturthi.
+msgid "Ganesh Chaturthi"
+msgstr "গণেশ চতুর্থী"
+
+#. Dussehra.
+msgid "Dussehra"
+msgstr "বিজয়া দশমী"
+
+#. Diwali Lakshmi Puja.
+msgid "Diwali Laxmi Pujan"
+msgstr "দীপাবলি লক্ষ্মী পূজা"
+
+#. Diwali Balipratipada.
+msgid "Diwali Balipratipada"
+msgstr "দীপাবলি বলি প্রতিপদা"
+
+#. Guru Nanak Jayanti.
+msgid "Guru Nanak Jayanti"
+msgstr "গুরু নানক জয়ন্তী"
+
+#. Bhai Dooj.
+msgid "Bhau Bhij"
+msgstr "ভাই দুজ"
+
+#. Buddha Purnima.
+msgid "Buddha Purnima"
+msgstr "বুদ্ধ পূর্ণিমা"
+
+#. Ashura.
+msgid "Muharram"
+msgstr "মহরম"
+
+#. Prophet's Birthday.
+msgid "Id-E-Milad-Un-Nabi"
+msgstr "মিলাদ-উন-নবী"
+
+#. Eid al-Fitr.
+msgid "Id-Ul-Fitr (Ramadan Eid)"
+msgstr "ঈদ-উল-ফিতর (রমজান ঈদ)"
+
+#. Eid al-Adha.
+msgid "Bakri Id"
+msgstr "বকরিদ"
+
+#. New Year's Day.
+msgid "New Year"
+msgstr "নববর্ষের দিন"
