@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-19 10:23+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
@@ -803,6 +803,10 @@ msgstr "പുതുവത്സരത്തിന് ശേഷമുള്ള �
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "മിഷനറി ദിനം"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "ചാപ്ചർ കുട്ട്"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"

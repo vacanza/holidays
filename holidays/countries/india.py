@@ -1565,11 +1565,28 @@ class India(
 
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
         # Post New Year.
         self._add_new_years_day_two(tr("Post New Year"))
 
         # Missionary Day.
         self._add_holiday_jan_11(tr("Missionary Day"))
+
+        if self._year >= 1987:
+            # Statehood Day.
+            self._add_holiday_feb_20(tr("Statehood Day"))
+
+        chapchar_kut_dates = {
+            2026: (MAR, 13),
+        }
+        # Chapchar Kut.
+        name = tr("Chapchar Kut")
+        if dt := chapchar_kut_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_1st_fri_of_mar(name)
 
         # Young Mizo Association's Day.
         self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
