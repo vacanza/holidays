@@ -295,6 +295,7 @@ FINANCIAL: RegistryDict = {
     "borsa_istanbul": ("BorsaIstanbul", "XIST", "BIST"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
+    "dubai_financial_market": ("DubaiFinancialMarket", "XDFM", "DFM"),
     "euronext": (
         "Euronext",
         "ENX",
@@ -322,6 +323,7 @@ FINANCIAL: RegistryDict = {
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "pakistan_stock_exchange": ("PakistanStockExchange", "XKAR", "PSX"),
     "prague_stock_exchange": ("PragueStockExchange", "XPRA", "BCPP"),
+    "qatar_stock_exchange": ("QatarStockExchange", "DSMD", "QSE"),
     "saudi_exchange": ("SaudiExchange", "XSAU"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),

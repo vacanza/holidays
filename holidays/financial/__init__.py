@@ -23,6 +23,7 @@ from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, 
 from holidays.financial.borsa_istanbul import BorsaIstanbul, XIST, BIST
 from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
 from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
+from holidays.financial.dubai_financial_market import DubaiFinancialMarket, XDFM, DFM
 from holidays.financial.euronext import (
     Euronext,
     ENX,
@@ -54,6 +55,7 @@ from holidays.financial.new_zealand_exchange import NewZealandExchange, XNZE, NZ
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
 from holidays.financial.pakistan_stock_exchange import PakistanStockExchange, XKAR, PSX
 from holidays.financial.prague_stock_exchange import PragueStockExchange, XPRA, BCPP
+from holidays.financial.qatar_stock_exchange import QatarStockExchange, DSMD, QSE
 from holidays.financial.saudi_exchange import SaudiExchange, XSAU
 from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
 from holidays.financial.shenzhen_stock_exchange import ShenzhenStockExchange, XSHE, SZSE
