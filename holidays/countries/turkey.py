@@ -117,7 +117,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         begin_afternoon_label = tr("%s (öğleden sonra)")
 
         # %s (from 1pm).
-        begin_13pm_label = tr("%s (saat 13.00'ten)")
+        begin_1pm_label = tr("%s (saat 13.00'ten)")
 
         if self._year <= 1980:
             self._add_holiday_apr_22(
@@ -137,7 +137,7 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
 
         self._add_holiday_oct_28(
             # Republic Day.
-            self._format_holiday_name(begin_13pm_label, tr("Cumhuriyet Bayramı"))
+            self._format_holiday_name(begin_1pm_label, tr("Cumhuriyet Bayramı"))
         )
 
         if self._year <= 1980:
@@ -150,11 +150,11 @@ class Turkey(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         if self._year >= 1975:
             self._add_eid_al_fitr_eve(
                 # Eid al-Fitr.
-                self._format_holiday_name(begin_13pm_label, tr("Ramazan Bayramı"))
+                self._format_holiday_name(begin_1pm_label, tr("Ramazan Bayramı"))
             )
 
             # Eid al-Adha.
-            self._add_arafah_day(self._format_holiday_name(begin_13pm_label, tr("Kurban Bayramı")))
+            self._add_arafah_day(self._format_holiday_name(begin_1pm_label, tr("Kurban Bayramı")))
 
 
 class TR(Turkey):
