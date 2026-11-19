@@ -100,6 +100,7 @@ class India(
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
             * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://web.archive.org/web/20260506024417/https://www.ceo.kerala.gov.in/ceokerala/pdf/govt_orders/legislative-assembly-2026/government-orders/paid-holiday.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Lakshadweep:
@@ -1931,14 +1932,23 @@ class India(
 
         # Hindu holidays.
 
+        pongal_dates = {
+            2026: (JAN, 15),
+        }
         # Pongal.
-        self._add_pongal(tr("Pongal"))
+        name = tr("Pongal")
+        pongal_dt = (
+            self._add_holiday(name, dt)
+            if (dt := pongal_dates.get(self._year))
+            else self._add_pongal(name)
+        )
 
-        # Thiruvalluvar Day.
-        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
+        if pongal_dt:
+            # Thiruvalluvar Day.
+            self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
 
-        # Uzhavar Thirunal.
-        self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
+            # Uzhavar Thirunal.
+            self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
 
         # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
@@ -2292,6 +2302,11 @@ class IndiaStaticHolidays:
 
     special_dh_public_holidays = {
         2023: (JAN, 14, name_magh_bihu),
+    }
+
+    special_kl_public_holidays = {
+        # Kerala Assembly Election Day.
+        2026: (APR, 9, tr("Kerala Assembly Election Day")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

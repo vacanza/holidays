@@ -488,6 +488,9 @@ class TestIndia(CommonCountryTests, TestCase):
         self._assertHinduHolidayHelper(name_pongal, dts, category=OPTIONAL)
         # SUBDIVS.
         self._assertHinduHolidayHelper(name_pongal, dts, subdivs={"DH", "PY", "TN"})
+        self.assertSubdivDhHolidayName(name_pongal, "2026-01-14")
+        self.assertSubdivPyHolidayName(name_pongal, "2026-01-15")
+        self.assertSubdivTnHolidayName(name_pongal, "2026-01-15")
         dts = (
             "2021-01-14",
             "2022-01-14",
@@ -1335,6 +1338,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-01-16",
             "2024-01-16",
             "2025-01-15",
+            "2026-01-16",
         )
         self._assertHinduHolidayHelper(name, dts, subdivs={"PY", "TN"})
 
@@ -1347,6 +1351,7 @@ class TestIndia(CommonCountryTests, TestCase):
             "2023-01-17",
             "2024-01-17",
             "2025-01-16",
+            "2026-01-17",
         )
         self._assertHinduHolidayHelper(name, dts, subdivs={"TN"})
 
@@ -1564,6 +1569,16 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-04-08" for year in self.full_range)
                 )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_kerala_assembly_election_day(self):
+        name = "Kerala Assembly Election Day"
+        self.assertNoHolidayName(name)
+
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "KL":
+                self.assertHolidayName(name, holidays, "2026-04-09")
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -3793,11 +3808,11 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "ശ്രീ വല്ലഭാചാര്യ ജയന്തി"),
             (
                 "2018-04-14",
-                "ഡോ. ബി. ആർ. അംബേദ്കർ ജയന്തി; പുത്താണ്ട്; ബോഹഗ് ബിഹു; മഹാ വിഷുവ സംക്രാന്തി; മേഷാദി"
+                "ഡോ. ബി. ആർ. അംബേദ്കർ ജയന്തി; പുത്താണ്ട്; ബൊഹാഗ് ബിഹു; മഹാ വിഷുവ സംക്രാന്തി; മേഷാദി"
                 " (തമിഴ് പുതുവത്സര ദിനം); വിഷു; വൈശാഖി; വൈസാഖി; ശബെ മിറാജ് (അനുമാനം)",
             ),
-            ("2018-04-15", "പൊഹേലാ ബൈശാഖ്; ബോഹഗ് ബിഹു; വിഷു (രണ്ടാം ദിവസം); വൈശാഖാദി; ഹിമാചൽ ദിനം"),
-            ("2018-04-16", "ബോഹഗ് ബിഹു"),
+            ("2018-04-15", "പൊഹേലാ ബൈശാഖ്; ബൊഹാഗ് ബിഹു; വിഷു (രണ്ടാം ദിവസം); വൈശാഖാദി; ഹിമാചൽ ദിനം"),
+            ("2018-04-16", "ബൊഹാഗ് ബിഹു"),
             ("2018-04-17", "ചന്ദ്രശേഖർ ജയന്തി"),
             ("2018-04-18", "അക്ഷയ തൃതീയ; ഗുരുദേവ് കാലിചരൺ ബ്രഹ്മ ജയന്തി; ഭഗവാൻ ശ്രീ പരശുരാമ ജയന്തി"),
             ("2018-04-20", "ആദി ശങ്കരാചാര്യ ജയന്തി"),
@@ -4312,9 +4327,9 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-04-12", "ஸ்ரீ வல்லபாச்சாரியார் ஜெயந்தி"),
             (
                 "2018-04-14",
-                "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி; புத்தாண்டு; போஹாக் பிஹூ; மகா விஷுவ"
-                " சங்கராந்தி; மேஷாடி (தமிழ் புத்தாண்டு தினம்); விசு; வைசாகி; ஷப்-இ-மிராஜ்"
-                " (மதிப்பிடப்பட்டது)",
+                "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி; தமிழ்ப் புத்தாண்டு; போஹாக் பிஹூ; மகா விஷுவ "
+                "சங்கராந்தி; மேஷாடி (தமிழ் புத்தாண்டு தினம்); விசு; வைசாகி; ஷப்-இ-மிராஜ் "
+                "(மதிப்பிடப்பட்டது)",
             ),
             ("2018-04-15", "இமாச்சல் நாள்; பொஹேலா பொய்ஷாக்; போஹாக் பிஹூ; விஷு (நாள் 2); வைசாகதி"),
             ("2018-04-16", "போஹாக் பிஹூ"),
@@ -4405,7 +4420,10 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-11-23", "குரு நானக் ஜெயந்தி; செங் குட் ஸ்னெம்; புட்டபர்த்தி சத்ய சாய் பாபா ஜெயந்தி"),
             ("2018-11-24", "குரு தேக் பகதூர் தியாகி தினம்"),
             ("2018-12-01", "பூர்வீக நம்பிக்கை நாள்; ஷஹீத் வீர் நாராயண் சிங்கின் ஷஹீதி தினம்"),
-            ("2018-12-03", "புனித பிரான்சிஸ் சவேரியார் திருநாள்; ராஜேந்திர பிரசாத் ஜெயந்தி; விஷ்வ திவ்யாங் திவஸ்"),
+            (
+                "2018-12-03",
+                "சர்வதேச மாற்றுத்திறனாளிகள் தினம்; புனித பிரான்சிஸ் சவேரியார் திருநாள்; ராஜேந்திர பிரசாத் ஜெயந்தி",
+            ),
             ("2018-12-08", "அன்னை மரியாவின் அமல உற்பவ திருவிழா"),
             ("2018-12-10", "தியாகிகள் தினம்"),
             ("2018-12-12", "பா டோகன் நெங்மின்ஜா சங்கமாவின் நினைவு நாள்"),
