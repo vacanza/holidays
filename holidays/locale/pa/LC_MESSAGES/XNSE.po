@@ -58,7 +58,7 @@ msgstr "ਸੁਤੰਤਰਤਾ ਦਿਵਸ"
 
 #. Gandhi Jayanti.
 msgid "Mahatma Gandhi Jayanti"
-msgstr "ਮਹਾਤਮਾ ਗਾਂਧੀ ਜਯੰਤੀ"
+msgstr "ਜਨਮ ਦਿਵਸ ਮਹਾਤਮਾ ਗਾਂਧੀ ਜੀ"
 
 #. Christmas Day.
 msgid "Christmas Day"
@@ -98,7 +98,7 @@ msgstr "ਦੀਵਾਲੀ ਬਲੀ ਪ੍ਰਤਿਪਦਾ"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
-msgstr "ਗੁਰੂ ਨਾਨਕ ਜਯੰਤੀ"
+msgstr "ਗੁਰਪੁਰਬ ਸਾਹਿਬ ਸ੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ"
 
 #. Bhai Dooj.
 msgid "Bhau Bhij"
@@ -126,4 +126,4 @@ msgstr "ਬਕਰੀਦ"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "ਨਵਾਂ ਸਾਲ"
+msgstr "ਨਵੇਂ ਸਾਲ ਦਾ ਦਿਨ"
