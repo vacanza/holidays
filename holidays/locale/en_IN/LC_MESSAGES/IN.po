@@ -745,6 +745,10 @@ msgstr ""
 msgid "Patriot's Day"
 msgstr ""
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr ""
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr ""

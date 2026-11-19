@@ -1429,6 +1429,9 @@ class India(
         # Kut.
         self._add_holiday_nov_1(tr("Kut"))
 
+        # Nupi-Lal.
+        self._add_holiday_dec_12(tr("Nupi-Lal"))
+
         # Hindu Holidays.
 
         # Holika Dahan.

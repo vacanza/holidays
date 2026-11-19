@@ -745,6 +745,10 @@ msgstr "Khongjom Day"
 msgid "Patriot's Day"
 msgstr "Patriot's Day"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "Nupi-Lal"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "Mera Chaoren Houba"

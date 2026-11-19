@@ -744,6 +744,10 @@ msgstr "ഖോങ്ജോം ദിനം"
 msgid "Patriot's Day"
 msgstr "ദേശസ്നേഹികളുടെ ദിനം"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "നുപി-ലാൽ"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "മേര ചാവോറെൻ ഹൗബ"
