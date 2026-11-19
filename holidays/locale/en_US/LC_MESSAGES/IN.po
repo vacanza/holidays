@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-11-12 21:29+0530\n"
+"PO-Revision-Date: 2026-11-15 18:09+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -744,6 +744,10 @@ msgstr "Khongjom Day"
 #. Patriot's Day.
 msgid "Patriot's Day"
 msgstr "Patriot's Day"
+
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "Nupi-Lal"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
