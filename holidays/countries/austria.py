@@ -72,7 +72,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "de"
     # BGBl. Nr. 31/1933 became in effect on June 1st, 1933.
     start_year = 1934
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         "1",  # Burgenland.
         "2",  # Kärnten.
         "3",  # Niederösterreich.
@@ -110,7 +110,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Wien": "9",
         "W": "9",
     }
-    supported_categories = (BANK, PROTESTANT, PUBLIC, SCHOOL)
+    supported_categories: tuple[str, ...] = (BANK, PROTESTANT, PUBLIC, SCHOOL)
     supported_languages = ("de", "en_US", "th", "uk")
 
     # § 2 Abs. 2 Z 1 lit. b: the February week each Bundesland's Semesterferien starts in.
