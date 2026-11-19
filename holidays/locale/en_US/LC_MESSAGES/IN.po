@@ -645,6 +645,10 @@ msgstr "Karma Puja"
 msgid "Majdoor Diwas"
 msgstr "Labor Day"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "Hul Diwas"
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr "Karnataka Rajyotsava"
