@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"PO-Revision-Date: 2026-11-15 18:09+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
@@ -744,6 +744,10 @@ msgstr "खोंगजोम दिवस"
 #. Patriot's Day.
 msgid "Patriot's Day"
 msgstr "देशभक्त दिवस"
+
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "नूपी-लाल"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
