@@ -38,7 +38,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dynamic = [ "version" ]
-dependencies = [ "python-dateutil>=2.9.0.post0,<3" ]
+dependencies = [ "python-dateutil>=4,<5" ]
 urls.Changelog = "https://github.com/vacanza/holidays/releases/"
 urls.Documentation = "https://holidays.readthedocs.io/en/latest/"
 urls.Repository = "https://github.com/vacanza/holidays/"
@@ -71,7 +71,7 @@ ci = [
   "cyclonedx-bom>=7.3,<8",
   "pre-commit>=4.5,<5",
   "pre-commit-uv>=4.3,<5",
-  "uv==0.13.4",
+  "uv==0.13.6",
 ]
 tests = [
   "coverage>=7.12,<8",

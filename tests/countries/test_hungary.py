@@ -104,7 +104,6 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-12-24",
             "2026-01-02",
             "2026-08-21",
-            "2026-12-24",
         )
 
     def test_workdays(self):
@@ -190,7 +189,6 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
             "2025-12-13",
             "2026-01-10",
             "2026-08-08",
-            "2026-12-12",
         )
 
     def test_new_years_day(self):
@@ -200,13 +198,13 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Nagypéntek"
         self.assertHolidayName(
             name,
-            "2017-04-14",
-            "2018-03-30",
-            "2019-04-19",
             "2020-04-10",
             "2021-04-02",
             "2022-04-15",
             "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+            "2026-04-03",
         )
         self.assertHolidayName(name, range(2017, self.end_year))
         self.assertNoHolidayName(name, range(self.start_year, 2017))
@@ -215,16 +213,13 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Húsvét"
         self.assertHolidayName(
             name,
-            "1991-03-31",
-            "2000-04-23",
-            "2010-04-04",
-            "2017-04-16",
-            "2018-04-01",
-            "2019-04-21",
             "2020-04-12",
             "2021-04-04",
             "2022-04-17",
             "2023-04-09",
+            "2024-03-31",
+            "2025-04-20",
+            "2026-04-05",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -232,50 +227,42 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Húsvét Hétfő"
         self.assertHolidayName(
             name,
-            "1991-04-01",
-            "2000-04-24",
-            "2010-04-05",
-            "2017-04-17",
-            "2018-04-02",
-            "2019-04-22",
             "2020-04-13",
             "2021-04-05",
             "2022-04-18",
             "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+            "2026-04-06",
         )
         self.assertHolidayName(name, range(self.start_year, 1955), range(1956, self.end_year))
         self.assertNoHolidayName(name, 1955)
 
-    def test_whit_sunday(self):
+    def test_pentecost_sunday(self):
         name = "Pünkösd"
         self.assertHolidayName(
             name,
-            "1991-05-19",
-            "2000-06-11",
-            "2010-05-23",
-            "2017-06-04",
-            "2018-05-20",
-            "2019-06-09",
             "2020-05-31",
             "2021-05-23",
             "2022-06-05",
             "2023-05-28",
+            "2024-05-19",
+            "2025-06-08",
+            "2026-05-24",
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_whit_monday(self):
+    def test_pentecost_monday(self):
         name = "Pünkösdhétfő"
         self.assertHolidayName(
             name,
-            "2000-06-12",
-            "2010-05-24",
-            "2017-06-05",
-            "2018-05-21",
-            "2019-06-10",
             "2020-06-01",
             "2021-05-24",
             "2022-06-06",
             "2023-05-29",
+            "2024-05-20",
+            "2025-06-09",
+            "2026-05-25",
         )
         self.assertHolidayName(name, range(self.start_year, 1953), range(1992, self.end_year))
         self.assertNoHolidayName(name, range(1953, 1992))
@@ -320,6 +307,11 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
         name = "Mindenszentek"
         self.assertHolidayName(name, (f"{year}-11-01" for year in range(1999, self.end_year)))
         self.assertNoHolidayName(name, range(self.start_year, 1999))
+
+    def test_christmas_eve(self):
+        name = "Szenteste"
+        self.assertHolidayName(name, (f"{year}-12-24" for year in range(2026, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2026))
 
     def test_christmas_day(self):
         self.assertHolidayName("Karácsony", (f"{year}-12-25" for year in self.full_range))
@@ -375,59 +367,62 @@ class TestHungary(CommonCountryTests, WorkingDayTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2022-01-01", "Újév"),
-            ("2022-03-14", "Pihenőnap (2022. 03. 26.-től helyettesítve)"),
-            ("2022-03-15", "Nemzeti ünnep"),
-            ("2022-04-15", "Nagypéntek"),
-            ("2022-04-17", "Húsvét"),
-            ("2022-04-18", "Húsvét Hétfő"),
-            ("2022-05-01", "A Munka ünnepe"),
-            ("2022-06-05", "Pünkösd"),
-            ("2022-06-06", "Pünkösdhétfő"),
-            ("2022-08-20", "Az államalapítás ünnepe"),
-            ("2022-10-23", "Nemzeti ünnep"),
-            ("2022-10-31", "Pihenőnap (2022. 10. 15.-től helyettesítve)"),
-            ("2022-11-01", "Mindenszentek"),
-            ("2022-12-25", "Karácsony"),
-            ("2022-12-26", "Karácsony másnapja"),
+            ("2026-01-01", "Újév"),
+            ("2026-01-02", "Pihenőnap (2026. 01. 10.-től helyettesítve)"),
+            ("2026-03-15", "Nemzeti ünnep"),
+            ("2026-04-03", "Nagypéntek"),
+            ("2026-04-05", "Húsvét"),
+            ("2026-04-06", "Húsvét Hétfő"),
+            ("2026-05-01", "A Munka ünnepe"),
+            ("2026-05-24", "Pünkösd"),
+            ("2026-05-25", "Pünkösdhétfő"),
+            ("2026-08-20", "Az államalapítás ünnepe"),
+            ("2026-08-21", "Pihenőnap (2026. 08. 08.-től helyettesítve)"),
+            ("2026-10-23", "Nemzeti ünnep"),
+            ("2026-11-01", "Mindenszentek"),
+            ("2026-12-24", "Szenteste"),
+            ("2026-12-25", "Karácsony"),
+            ("2026-12-26", "Karácsony másnapja"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2022-01-01", "New Year's Day"),
-            ("2022-03-14", "Day off (substituted from 03/26/2022)"),
-            ("2022-03-15", "National Day"),
-            ("2022-04-15", "Good Friday"),
-            ("2022-04-17", "Easter"),
-            ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labor Day"),
-            ("2022-06-05", "Pentecost"),
-            ("2022-06-06", "Pentecost Monday"),
-            ("2022-08-20", "State Foundation Day"),
-            ("2022-10-23", "National Day"),
-            ("2022-10-31", "Day off (substituted from 10/15/2022)"),
-            ("2022-11-01", "All Saints' Day"),
-            ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Second Day of Christmas"),
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-02", "Day off (substituted from 01/10/2026)"),
+            ("2026-03-15", "National Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-05", "Easter"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-01", "Labor Day"),
+            ("2026-05-24", "Pentecost"),
+            ("2026-05-25", "Pentecost Monday"),
+            ("2026-08-20", "State Foundation Day"),
+            ("2026-08-21", "Day off (substituted from 08/08/2026)"),
+            ("2026-10-23", "National Day"),
+            ("2026-11-01", "All Saints' Day"),
+            ("2026-12-24", "Christmas Eve"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",
-            ("2022-01-01", "Новий рік"),
-            ("2022-03-14", "Вихідний день (перенесено з 26.03.2022)"),
-            ("2022-03-15", "Національне свято"),
-            ("2022-04-15", "Страсна пʼятниця"),
-            ("2022-04-17", "Великдень"),
-            ("2022-04-18", "Великодній понеділок"),
-            ("2022-05-01", "День праці"),
-            ("2022-06-05", "Пʼятидесятниця"),
-            ("2022-06-06", "Другий день Пʼятидесятниці"),
-            ("2022-08-20", "День заснування держави"),
-            ("2022-10-23", "Національне свято"),
-            ("2022-10-31", "Вихідний день (перенесено з 15.10.2022)"),
-            ("2022-11-01", "День усіх святих"),
-            ("2022-12-25", "Різдво Христове"),
-            ("2022-12-26", "Другий день Різдва"),
+            ("2026-01-01", "Новий рік"),
+            ("2026-01-02", "Вихідний день (перенесено з 10.01.2026)"),
+            ("2026-03-15", "Національне свято"),
+            ("2026-04-03", "Страсна пʼятниця"),
+            ("2026-04-05", "Великдень"),
+            ("2026-04-06", "Великодній понеділок"),
+            ("2026-05-01", "День праці"),
+            ("2026-05-24", "Пʼятидесятниця"),
+            ("2026-05-25", "Другий день Пʼятидесятниці"),
+            ("2026-08-20", "День заснування держави"),
+            ("2026-08-21", "Вихідний день (перенесено з 08.08.2026)"),
+            ("2026-10-23", "Національне свято"),
+            ("2026-11-01", "День усіх святих"),
+            ("2026-12-24", "Святий вечір"),
+            ("2026-12-25", "Різдво Христове"),
+            ("2026-12-26", "Другий день Різдва"),
         )
