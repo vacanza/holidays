@@ -559,6 +559,10 @@ class India(
         # Jumu'atul-Wida.
         self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
 
+    def _add_statehood_day(self, *args):
+        # Statehood Day.
+        self._add_holiday(tr("Statehood Day"), *args)
+
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
         # Hindu holidays.
@@ -623,7 +627,7 @@ class India(
     # Arunachal Pradesh.
     def _populate_subdiv_ar_public_holidays(self):
         # Statehood Day.
-        self._add_holiday_feb_20(tr("Statehood Day"))
+        self._add_statehood_day(FEB, 20)
 
         # Indigenous Faith Day.
         self._add_holiday_dec_1(tr("Indigenous Faith Day"))
@@ -1052,7 +1056,7 @@ class India(
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
         # Statehood Day.
-        self._add_holiday_jan_25(tr("Statehood Day"))
+        self._add_statehood_day(JAN, 25)
 
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
@@ -1576,7 +1580,7 @@ class India(
 
         if self._year >= 1987:
             # Statehood Day.
-            self._add_holiday_feb_20(tr("Statehood Day"))
+            self._add_statehood_day(FEB, 20)
 
         chapchar_kut_dates = {
             2026: (MAR, 13),
