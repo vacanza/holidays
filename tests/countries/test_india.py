@@ -1481,6 +1481,8 @@ class TestIndia(CommonCountryTests, TestCase):
         name = "Chapchar Kut"
         self.assertNoHolidayName(name)
         dts = (
+            "1979-03-09",
+            "2008-03-14",
             "2010-03-11",
             "2020-03-06",
             "2021-03-05",

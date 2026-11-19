@@ -1586,6 +1586,8 @@ class India(
             self._add_statehood_day(FEB, 20)
 
         chapchar_kut_dates = {
+            1979: (MAR, 9),
+            2008: (MAR, 14),
             2010: (MAR, 11),
             2026: (MAR, 13),
         }
