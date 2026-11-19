@@ -185,9 +185,9 @@ msgstr "ઉગાડી"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "મેશાદી (તમિલ નવા વર્ષનો દિવસ)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "બહાગ બિહુ"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "બોહાગ બિહુ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
