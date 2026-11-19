@@ -931,7 +931,7 @@ class HolidayBase(dict[date, str]):
             >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
-        if year < self.start_year or year > self.end_year:
+        if not self.start_year <= year <= self.end_year:
             return None
 
         self._year = year
