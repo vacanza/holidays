@@ -155,6 +155,25 @@ class TestWarsawStockExchange(CommonFinancialTests, TestCase):
             ("2018-12-31", "Sylwester"),
         )
 
+    def test_l10n_de(self):
+        self.assertLocalizedHolidays(
+            "de",
+            ("2018-01-01", "Neujahr"),
+            ("2018-01-02", "Handelsfreier Tag"),
+            ("2018-03-30", "Karfreitag"),
+            ("2018-04-02", "Ostermontag"),
+            ("2018-05-01", "Nationalfeiertag"),
+            ("2018-05-03", "Nationalfeiertag am 3. Mai"),
+            ("2018-05-31", "Fronleichnam"),
+            ("2018-08-15", "Mariä Himmelfahrt"),
+            ("2018-11-01", "Allerheiligen"),
+            ("2018-11-12", "Nationalfeiertag der Unabhängigkeit - 100. Jahrestag"),
+            ("2018-12-24", "Heiligabend"),
+            ("2018-12-25", "Erster Weihnachtstag"),
+            ("2018-12-26", "Zweiter Weihnachtstag"),
+            ("2018-12-31", "Silvester"),
+        )
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
