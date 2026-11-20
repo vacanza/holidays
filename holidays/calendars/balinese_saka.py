@@ -39,7 +39,7 @@ class _BalineseSakaLunar:
         1991: (MAR, 17),
         1992: (MAR, 5),
         1993: (MAR, 24),
-        1994: (MAR, 12),
+        1994: (APR, 12),
         1995: (APR, 1),
         1996: (MAR, 21),
         1997: (APR, 9),
