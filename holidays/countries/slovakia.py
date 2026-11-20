@@ -47,6 +47,8 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * [Law 261/2025](https://web.archive.org/web/20251014224441/https://static.slov-lex.sk/static/SK/ZZ/2025/261/20251101.html)
         * School holidays:
             * [Decree 231/2009 Z. z.](https://static.slov-lex.sk/static/SK/ZZ/2009/231/20250401.html)
+            * [Ministerial Decision 2020/17949:1-A1810](https://web.archive.org/web/20210124070207/https://www.minedu.sk/data/att/17786.pdf)
+            * [Ministerial Decision 2020/18259:4-A1810](https://web.archive.org/web/20210124070556/https://www.minedu.sk/data/att/18150.pdf)
             * [Decree 163/2022 Z. z.](https://static.slov-lex.sk/static/SK/ZZ/2022/163/20220530.html)
             * [Decree 72/2024 Z. z.](https://static.slov-lex.sk/static/SK/ZZ/2024/72/20240501.html)
             * [Decree 56/2025 Z. z.](https://static.slov-lex.sk/static/SK/ZZ/2025/56/20250401.html)
