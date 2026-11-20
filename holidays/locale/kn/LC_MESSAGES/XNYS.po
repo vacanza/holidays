@@ -386,7 +386,7 @@ msgstr "77ನೇ ವಿಭಾಗದ ಪಥಸಂಚಲನ"
 
 #. Heat and to allow offices to catch up on work.
 msgid "Heat and to allow offices to catch up on work"
-msgstr "ತೀವ್ರ ಬಿಸಿಲಿನಿಂದಾಗಿ ಕಚೇರಿಗಳಿಗೆ ಬಾಕಿ ಕೆಲಸ ಮುಗಿಸಲು ಅವಕಾಶ ನೀಡಲು487 "
+msgstr "ತೀವ್ರ ಬಿಸಿಲಿನಿಂದಾಗಿ ಕಚೇರಿಗಳಿಗೆ ಬಾಕಿ ಕೆಲಸ ಮುಗಿಸಲು ಅವಕಾಶ ನೀಡಲು "
 
 #. Return of General John J. Pershing.
 msgid "Return of General John J. Pershing"
@@ -422,7 +422,7 @@ msgstr "ಅಧ್ಯಕ್ಷ ಫ್ರಾಂಕ್ಲಿನ್ ಡಿ. ರೂ�
 
 #. Navy Day.
 msgid "Navy Day"
-msgstr "ೌಕಾಪಡೆ ದಿನ"
+msgstr "ನೌಕಾಪಡೆ ದಿನ"
 
 #. Railroad strike.
 msgid "Railroad strike"
