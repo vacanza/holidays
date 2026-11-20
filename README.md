@@ -1972,7 +1972,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Argentinos</td>
 <td>XBUE</td>
 <td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
