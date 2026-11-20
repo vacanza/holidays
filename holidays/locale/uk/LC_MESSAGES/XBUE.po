@@ -34,7 +34,7 @@ msgstr "Біржовий вихідний наприкінці року"
 #. %s (markets close at 3:00pm).
 #, c-format
 msgid "%s (el mercado cierra a las 15:00)"
-msgstr "%s (ринок зачиняється о 15:00)"
+msgstr "%s (закриття ринків з 15:00)"
 
 #. Christmas Eve.
 msgid "Nochebuena"
