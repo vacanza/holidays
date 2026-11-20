@@ -1142,6 +1142,9 @@ class India(
         # Labor Day.
         self._add_labor_day(tr("Majdoor Diwas"))
 
+        # Hul Diwas.
+        self._add_holiday_jun_30(tr("Hul Diwas"))
+
         # Hindu holidays.
 
         # Makar Sankranti.

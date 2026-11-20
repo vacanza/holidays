@@ -645,6 +645,10 @@ msgstr ""
 msgid "Majdoor Diwas"
 msgstr ""
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr ""
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr ""
