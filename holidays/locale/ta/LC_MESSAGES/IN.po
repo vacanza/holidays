@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-11-15 18:09+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-19 11:08+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -284,6 +284,10 @@ msgstr "ஹஸ்ரத் அலியின் பிறந்தநாள்"
 msgid "Jamat-Ul-Vida"
 msgstr "ஜமாத்-உல்-விடா"
 
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr "மாநில உருவாக்க நாள்"
+
 #. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
 msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
 msgstr "நேதாஜி சுபாஷ் சந்திர போஸ் சுதந்திர இந்தியாவின் முதல் கொடியேற்றம்"
@@ -319,10 +323,6 @@ msgstr "ஷப்-இ-மிராஜ்"
 #. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
 msgstr "ஈத்-இ-கதீர்"
-
-#. Statehood Day.
-msgid "Statehood Day"
-msgstr "மாநில உருவாக்க நாள்"
 
 #. Indigenous Faith Day.
 msgid "Indigenous Faith Day"
@@ -811,6 +811,10 @@ msgstr "புத்தாண்டுக்குப் பிந்தைய �
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "மிஷனரி தினம்"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "சாப்சர் குட்"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
