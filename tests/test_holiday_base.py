@@ -612,6 +612,24 @@ class TestGetNamed(TestCase):
         )
         self.assertSetEqual(hb.years, {2022})
 
+    def test_istartswith_unicode_lowercase_expansion(self):
+        hb = HolidayBase()
+        hb[date(2026, 5, 1)] = "İşçi ve Emekçiler Bayramı"
+        for name in ("i", "i\u0307", "i\u0307ş", "İş"):
+            with self.subTest(name=name):
+                self.assertListEqual(hb.get_named(name, lookup="istartswith"), [date(2026, 5, 1)])
+        self.assertListEqual(hb.get_named("ix", lookup="istartswith"), [])
+        self.assertListEqual(hb.get_named("i", lookup="startswith"), [])
+
+    def test_istartswith_contextual_lowercase(self):
+        hb = HolidayBase()
+        dt = date(2026, 1, 1)
+        for name, prefix in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name):
+                hb[dt] = name
+                self.assertListEqual(hb.get_named(prefix, lookup="istartswith"), [dt])
+                del hb[dt]
+
     def test_startswith(self):
         hb = CountryStub1(years=2022)
         for name in ("New Year's", "New Year"):
@@ -1094,6 +1112,46 @@ class TestPopNamed(TestCase):
         self.assertEqual(len(removed_dates), 2)
         self.assertNotIn("2022-12-25", self.hb)
         self.assertNotIn("2022-12-26", self.hb)
+
+    def test_istartswith_unicode_lowercase_expansion(self):
+        dt = date(2026, 5, 1)
+        for query in ("i", "i\u0307", "i\u0307ş", "İş"):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(query=query, remaining=remaining):
+                    hb = HolidayBase()
+                    hb[dt] = "İşçi"
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
+
+    def test_istartswith_contextual_lowercase(self):
+        dt = date(2026, 5, 1)
+        for name, query in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name, query=query):
+                hb = HolidayBase()
+                hb[dt] = name
+                self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                self.assertNotIn(dt, hb)
+
+    def test_multiple_matching_names(self):
+        dt = date(2026, 5, 1)
+        for names, query in ((("İşçi", "İzin"), "i"), (("Holiday A", "Holiday B"), "h")):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(names=names, remaining=remaining):
+                    hb = HolidayBase()
+                    for name in names:
+                        hb[dt] = name
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
 
 
 class TestRepr(TestCase):
