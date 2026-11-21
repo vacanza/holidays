@@ -184,9 +184,9 @@ msgstr "ఉగాది"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "మేషాది (తమిళ్ నూతన సంవత్సరం)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "బహగ్ బిహు"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "బోహాగ్ బిహూ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -643,6 +643,10 @@ msgstr "కర్మ పూజ"
 #. Labor Day.
 msgid "Majdoor Diwas"
 msgstr "కార్మికుల దినోత్సవం"
+
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "హుల్ దివాస్"
 
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
