@@ -14,8 +14,9 @@ from datetime import date
 from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, JUL, NOV, DEC, WED, THU, _timedelta
-from holidays.constants import HALF_DAY
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.financial.ny_stock_exchange import NewYorkStockExchange
+from holidays.observed_holiday_base import SUN_TO_NEXT_TUE
 from tests.common import CommonFinancialTests
 
 
@@ -342,11 +343,13 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         self.assertNoHolidayName(name_observed, no_obs_dts)
         self.assertNoHoliday(no_obs_dts)
 
-    def _make_special_holiday_list(self, begin, end, *, days=None):
+    def _make_special_holiday_list(self, begin, end, *, days=None, skip_closures=False):
         return [
             day
             for day in (_timedelta(begin, n) for n in range((end - begin).days + 1))
-            if self.holidays._is_weekday(day) and (days is None or day.weekday() in days)
+            if self.holidays._is_weekday(day)
+            and (days is None or day.weekday() in days)
+            and not (skip_closures and day in self.holidays)
         ]
 
     def test_special_public_holidays(self):
@@ -716,16 +719,16 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
         ]
 
         back_office_holidays = self._make_special_holiday_list(
-            date(1968, JAN, 22), date(1968, MAR, 1)
+            date(1968, JAN, 22), date(1968, MAR, 1), skip_closures=True
         )
         paperwork_crisis_holidays_1 = self._make_special_holiday_list(
-            date(1969, JAN, 2), date(1969, JUL, 3), days={THU}
+            date(1969, JAN, 2), date(1969, JUL, 3), days={THU}, skip_closures=True
         )
         paperwork_crisis_holidays_2 = self._make_special_holiday_list(
-            date(1969, JUL, 7), date(1969, DEC, 31)
+            date(1969, JUL, 7), date(1969, DEC, 31), skip_closures=True
         )
         paperwork_crisis_holidays_3 = self._make_special_holiday_list(
-            date(1970, JAN, 2), date(1970, MAY, 1)
+            date(1970, JAN, 2), date(1970, MAY, 1), skip_closures=True
         )
         self.assertHalfDayHoliday(
             special_holidays,
@@ -734,6 +737,31 @@ class TestNewYorkStockExchange(CommonFinancialTests, TestCase):
             paperwork_crisis_holidays_2,
             paperwork_crisis_holidays_3,
         )
+        # Market closure days within early closing periods.
+        self.assertNoHalfDayHoliday(
+            "1968-02-12",
+            "1968-02-22",
+            "1969-07-21",
+            "1969-09-01",
+            "1969-11-27",
+            "1969-12-25",
+            "1970-02-23",
+            "1970-03-27",
+        )
+
+    def test_special_half_day_holidays_observed_settings(self):
+        name = "Paperwork Crisis (markets close at 3:00pm)"
+        # Washington's Birthday (Sunday) observed on Tuesday.
+        nyse = NewYorkStockExchange(
+            categories=(HALF_DAY, PUBLIC), observed_rule=SUN_TO_NEXT_TUE, years=1970
+        )
+        self.assertHolidayName(name, nyse, "1970-02-23")
+        self.assertHolidayName("Washington's Birthday (observed)", nyse, "1970-02-24")
+        self.assertNoHolidayName(name, nyse, "1970-02-24")
+
+        # Washington's Birthday (Sunday) not observed.
+        nyse = NewYorkStockExchange(categories=(HALF_DAY, PUBLIC), observed_since=1971, years=1970)
+        self.assertHolidayName(name, nyse, "1970-02-23")
 
     def test_2023(self):
         self.assertHolidaysInYear(
