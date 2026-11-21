@@ -2179,6 +2179,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Tel Aviv Stock Exchange</td>
+<td>XTAE</td>
+<td>Tel Aviv Stock Exchange (TASE) market holidays</td>
+<td>en_US, <strong>he</strong></td>
+<td></td>
+</tr>
+<tr>
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>
