@@ -142,8 +142,8 @@ class TestTogo(CommonCountryTests, TestCase):
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 1987))
 
     def test_2024(self):
-        self.assertHolidays(
-            Togo(years=2024),
+        self.assertHolidaysInYear(
+            2024,
             ("2024-01-01", "Jour de l'an"),
             ("2024-03-11", "Ramadan"),
             ("2024-04-01", "Lundi de Pâques"),
@@ -157,24 +157,6 @@ class TestTogo(CommonCountryTests, TestCase):
             ("2024-08-15", "Assomption"),
             ("2024-11-01", "Toussaint"),
             ("2024-12-25", "Noël"),
-        )
-
-    def test_2025(self):
-        self.assertHolidays(
-            Togo(years=2025),
-            ("2025-01-01", "Jour de l'an"),
-            ("2025-03-01", "Ramadan"),
-            ("2025-03-30", "l'Aïd El-Fitr"),
-            ("2025-04-21", "Lundi de Pâques"),
-            ("2025-04-27", "Fête de l'indépendance"),
-            ("2025-05-01", "Fête du travail"),
-            ("2025-05-29", "Fête de l'Ascension"),
-            ("2025-06-07", "Tabaski"),
-            ("2025-06-09", "Lundi de Pentecôte"),
-            ("2025-06-21", "Fête des Martyrs"),
-            ("2025-08-15", "Assomption"),
-            ("2025-11-01", "Toussaint"),
-            ("2025-12-25", "Noël"),
         )
 
     def test_l10n_default(self):

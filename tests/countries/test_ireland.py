@@ -83,8 +83,8 @@ class TestIreland(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(name, self.full_range)
 
-    def test_may_day(self):
-        name = "May Day"
+    def test_may_bank_holiday(self):
+        name = "May Bank Holiday"
         self.assertHolidayName(
             name,
             "2020-05-04",
@@ -166,7 +166,7 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2020-01-01", "New Year's Day"),
             ("2020-03-17", "Saint Patrick's Day"),
             ("2020-04-13", "Easter Monday"),
-            ("2020-05-04", "May Day"),
+            ("2020-05-04", "May Bank Holiday"),
             ("2020-06-01", "June Bank Holiday"),
             ("2020-08-03", "August Bank Holiday"),
             ("2020-10-26", "October Bank Holiday"),
@@ -181,10 +181,57 @@ class TestIreland(CommonCountryTests, TestCase):
             ("2022-03-17", "Saint Patrick's Day"),
             ("2022-03-18", "Day of Remembrance and Recognition"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-02", "May Day"),
+            ("2022-05-02", "May Bank Holiday"),
             ("2022-06-06", "June Bank Holiday"),
             ("2022-08-01", "August Bank Holiday"),
             ("2022-10-31", "October Bank Holiday"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Saint Stephen's Day"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-02-05", "Saint Brigid's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Bank Holiday"),
+            ("2024-06-03", "June Bank Holiday"),
+            ("2024-08-05", "August Bank Holiday"),
+            ("2024-10-28", "October Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-02-05", "Saint Brigid's Day"),
+            ("2024-03-17", "Saint Patrick's Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Easter Monday"),
+            ("2024-05-06", "May Bank Holiday"),
+            ("2024-06-03", "June Bank Holiday"),
+            ("2024-08-05", "August Bank Holiday"),
+            ("2024-10-28", "October Bank Holiday"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Saint Stephen's Day"),
+        )
+
+    def test_l10n_ga(self):
+        self.assertLocalizedHolidays(
+            "ga",
+            ("2024-01-01", "Lá Caille"),
+            ("2024-02-05", "Lá Fhéile Bríde"),
+            ("2024-03-17", "Lá Fhéile Pádraig"),
+            ("2024-03-29", "Aoine an Chéasta"),
+            ("2024-04-01", "Luan Cásca"),
+            ("2024-05-06", "Lá Saoire Bainc na Bealtaine"),
+            ("2024-06-03", "Lá Saoire Bainc an Mheithimh"),
+            ("2024-08-05", "Lá Saoire Bainc Lúnasa"),
+            ("2024-10-28", "Lá Saoire Bainc Dheireadh Fómhair"),
+            ("2024-12-25", "Lá Nollag"),
+            ("2024-12-26", "Lá Fhéile Stiofáin"),
         )

@@ -10,9 +10,10 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import SAT, SUN
+from holidays.calendars.gregorian import JUL, AUG, SEP, OCT, SAT, SUN
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.hongkong import HongKong
+from holidays.groups import StaticHolidays
 from holidays.helpers import tr
 
 
@@ -33,6 +34,10 @@ class HongKongStockExchange(HongKong):
     start_year = 2014
     supported_categories = (HALF_DAY, PUBLIC)
     weekend = {SAT, SUN}
+
+    def __init__(self, *args, **kwargs):
+        StaticHolidays.__init__(self, HongKongStockExchangeStaticHolidays)
+        super().__init__(*args, **kwargs)
 
     def _add_holiday(self, name, *args):
         if self._is_weekend(*args):
@@ -69,3 +74,40 @@ class HKEX(HongKongStockExchange):
 
 class SEHK(HongKongStockExchange):
     pass
+
+
+class HongKongStockExchangeStaticHolidays:
+    """Hong Kong Stock Exchange (HKEX) special holidays.
+
+    Days when all trading sessions were cancelled for severe weather.
+
+    References:
+        * [2016-08-02](https://www.hkex.com.hk/News/Market-Communications/2016/1608022news?sc_lang=en)
+        * [2016-10-21](https://www.hkex.com.hk/News/Market-Communications/2016/1610212news?sc_lang=en)
+        * [2017-08-23](https://www.hkex.com.hk/News/Market-Communications/2017/1708232news?sc_lang=en)
+        * [2020-10-13](https://www.hkex.com.hk/News/Market-Communications/2020/2010132news?sc_lang=en)
+        * [2021-10-13](https://www.hkex.com.hk/News/Market-Communications/2021/2110132news?sc_lang=en)
+        * [2023-07-17](https://www.hkex.com.hk/News/Market-Communications/2023/2307172news?sc_lang=en)
+        * [2023-09-01](https://www.hkex.com.hk/News/Market-Communications/2023/2309012news?sc_lang=en)
+        * [2023-09-08](https://www.hkex.com.hk/News/Market-Communications/2023/2309083news?sc_lang=en)
+        * [2024-09-06](https://www.hkex.com.hk/News/Market-Communications/2024/2409062news?sc_lang=en)
+    """
+
+    # Trading Suspended for the Whole Day due to Severe Weather.
+    severe_weather = tr("惡劣天氣全日暫停交易")
+
+    special_public_holidays = {
+        2016: (
+            (AUG, 2, severe_weather),
+            (OCT, 21, severe_weather),
+        ),
+        2017: (AUG, 23, severe_weather),
+        2020: (OCT, 13, severe_weather),
+        2021: (OCT, 13, severe_weather),
+        2023: (
+            (JUL, 17, severe_weather),
+            (SEP, 1, severe_weather),
+            (SEP, 8, severe_weather),
+        ),
+        2024: (SEP, 6, severe_weather),
+    }

@@ -25,6 +25,11 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_special_holidays(self):
+        self.assertHolidayName(
+            "Visita de Su Santidad el Papa León XIV", "2026-11-09", "2026-11-10"
+        )
+
     def test_restricted_settlement(self):
         self.assertRestrictedSettlementHolidaysInYear(
             2026,
@@ -70,6 +75,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
             ("2026-09-07", "Sin liquidación cable"),
             ("2026-10-12", "Día del Respeto a la Diversidad Cultural"),
             ("2026-11-06", "Sin liquidación local"),
+            ("2026-11-09", "Visita de Su Santidad el Papa León XIV"),
+            ("2026-11-10", "Visita de Su Santidad el Papa León XIV"),
             ("2026-11-11", "Sin liquidación cable"),
             ("2026-11-23", "Día de la Soberanía Nacional"),
             ("2026-11-26", "Sin liquidación cable"),
@@ -102,6 +109,8 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
             ("2026-09-07", "No cable settlement"),
             ("2026-10-12", "Respect for Cultural Diversity Day"),
             ("2026-11-06", "No local settlement"),
+            ("2026-11-09", "Visit of His Holiness Pope Leo XIV"),
+            ("2026-11-10", "Visit of His Holiness Pope Leo XIV"),
             ("2026-11-11", "No cable settlement"),
             ("2026-11-23", "National Sovereignty Day"),
             ("2026-11-26", "No cable settlement"),
@@ -110,4 +119,38 @@ class TestBolsasYMercadosArgentinos(CommonFinancialTests, TestCase):
             ("2026-12-24", "Christmas Eve (markets close at 3:00pm); No local settlement"),
             ("2026-12-25", "Christmas Day"),
             ("2026-12-31", "Year-end market holiday"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2026-01-01", "Новий рік"),
+            ("2026-01-19", "Без міжнародних розрахунків"),
+            ("2026-02-16", "Карнавальний понеділок"),
+            ("2026-02-17", "Карнавальний вівторок"),
+            ("2026-03-23", "Без місцевих розрахунків"),
+            ("2026-03-24", "Національний день памʼяті заради правди та правосуддя"),
+            ("2026-04-02", "Великий четвер; День ветеранів та загиблих на Мальвінській війні"),
+            ("2026-04-03", "Страсна пʼятниця"),
+            ("2026-05-01", "День праці"),
+            ("2026-05-25", "День Травневої революції"),
+            ("2026-06-15", "День памʼяті генерала Мартіна Мігеля де Гуемеса"),
+            ("2026-06-19", "Без міжнародних розрахунків"),
+            ("2026-06-20", "День памʼяті генерала Мануеля Бельграно"),
+            ("2026-07-09", "День незалежності"),
+            ("2026-07-10", "Без місцевих розрахунків"),
+            ("2026-08-17", "День памʼяті генерала Хосе де Сан-Мартіна"),
+            ("2026-09-07", "Без міжнародних розрахунків"),
+            ("2026-10-12", "День поваги до культурного різноманіття"),
+            ("2026-11-06", "Без місцевих розрахунків"),
+            ("2026-11-09", "Візит Його Святості Папи Лева XIV"),
+            ("2026-11-10", "Візит Його Святості Папи Лева XIV"),
+            ("2026-11-11", "Без міжнародних розрахунків"),
+            ("2026-11-23", "День національного суверенітету"),
+            ("2026-11-26", "Без міжнародних розрахунків"),
+            ("2026-12-07", "Без місцевих розрахунків"),
+            ("2026-12-08", "Непорочне зачаття Діви Марії"),
+            ("2026-12-24", "Без місцевих розрахунків; Святий вечір (закриття ринків з 15:00)"),
+            ("2026-12-25", "Різдво Христове"),
+            ("2026-12-31", "Біржовий вихідний наприкінці року"),
         )

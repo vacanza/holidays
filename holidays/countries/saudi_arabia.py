@@ -13,7 +13,7 @@
 from datetime import date
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, JUN, SEP, NOV, THU, FRI, SAT, _timedelta
+from holidays.calendars.gregorian import JAN, FEB, JUN, SEP, NOV, THU, FRI, SAT
 from holidays.groups import IslamicHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import (
@@ -34,6 +34,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_السعودية>
         * <https://web.archive.org/web/20240610223551/http://laboreducation.hrsd.gov.sa/en/labor-education/322>
         * <https://web.archive.org/web/20250329052253/https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order>
+        * [Royal Order No. A/371 of 2022](https://web.archive.org/web/20220705191421/https://www.spa.gov.sa/2324646)
         * [2015 (1436 AH) Dhu al-Hijjah begin on September 15](https://web.archive.org/web/20250430191246/https://qna.org.qa/en/news/news-details?id=saudi-arabia-eid-aladha-to-start-on-september-24&date=14/09/2015)
     """
 
@@ -64,13 +65,17 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         kwargs.setdefault("observed_rule", FRI_TO_PREV_THU + SAT_TO_NEXT_SUN)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, dt: date) -> None:
+    def _add_islamic_observed(self, dts: set[date]) -> None:
         # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None
         observed_rule = THU_FRI_TO_NEXT_WORKDAY if self._year <= 2012 else FRI_SAT_TO_NEXT_WORKDAY
-        for i in range(4):
-            self._add_observed(_timedelta(dt, -i), name=self[dt], rule=observed_rule)
+        next_dt = name = None
+        for dt in sorted(dts, reverse=True):
+            if next_dt is None or (next_dt - dt).days != 1:
+                name = self[dt]
+            self._add_observed(dt, name=name, rule=observed_rule)
+            next_dt = dt
 
     def _get_weekend(self, dt: date) -> set[int]:
         # Weekend used to be THU, FRI before June 28th, 2013.
@@ -84,33 +89,20 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         )
 
         # Eid al-Fitr Holiday.
-        eid_al_fitr_name = tr("عطلة عيد الفطر")
-        eid_al_fitr_dates = self._add_eid_al_fitr_day(eid_al_fitr_name)
-        self._add_eid_al_fitr_day_two(eid_al_fitr_name)
-        self._add_eid_al_fitr_day_three(eid_al_fitr_name)
+        self._add_islamic_observed(self._add_eid_al_fitr_multiday(tr("عطلة عيد الفطر")))
 
-        for dt in eid_al_fitr_dates:
-            if self._islamic_calendar._is_long_ramadan(dt):
-                # Add 30 Ramadan.
-                self._add_holiday(eid_al_fitr_name, _timedelta(dt, -1))
-                self._add_islamic_observed(_timedelta(dt, +2))
-            else:
-                # Add 4 Shawwal.
-                self._add_islamic_observed(self._add_holiday(eid_al_fitr_name, _timedelta(dt, +3)))
-
-        # Day of Arafah.
-        self._add_arafah_day(tr("يوم عرفة"))
-
-        # Eid al-Adha Holiday.
-        name = tr("عطلة عيد الأضحى")
-        self._add_eid_al_adha_day(name)
-        self._add_eid_al_adha_day_two(name)
-        for dt in self._add_eid_al_adha_day_three(name):
-            self._add_islamic_observed(dt)
+        self._add_islamic_observed(
+            # Day of Arafah.
+            self._add_arafah_day(tr("يوم عرفة"))
+            # Eid al-Adha Holiday.
+            | self._add_eid_al_adha_day(name := tr("عطلة عيد الأضحى"))
+            | self._add_eid_al_adha_day_two(name)
+            | self._add_eid_al_adha_day_three(name)
+        )
 
         if self._year >= 2022:
             # Founding Day.
-            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيسي")))
+            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيس")))
 
         if self._year >= 2005:
             # National Day.
@@ -126,12 +118,12 @@ class SAU(SaudiArabia):
 
 
 class SaudiArabiaIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2015: (SEP, 24),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
 
 
 class SaudiArabiaStaticHolidays:

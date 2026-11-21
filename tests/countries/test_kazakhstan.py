@@ -309,7 +309,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
         self.assertNoNonObservedHoliday(obs_dts)
 
     def test_independence_day(self):
-        name = "Тəуелсіздік күні"
+        name = "Тәуелсіздік күні"
         self.assertHolidayName(name, (f"{year}-12-16" for year in self.full_range))
         self.assertHolidayName(name, (f"{year}-12-17" for year in range(2002, 2022)))
         self.assertHolidayNameCount(
@@ -377,7 +377,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2022-08-30", "Қазақстан Республикасының Конституциясы күні"),
             ("2022-10-24", "Демалыс күні (22.10.2022 бастап ауыстырылды)"),
             ("2022-10-25", "Республика күні"),
-            ("2022-12-16", "Тəуелсіздік күні"),
+            ("2022-12-16", "Тәуелсіздік күні"),
         )
 
     def test_l10n_default(self):
@@ -399,7 +399,7 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2024-07-08", "Астана күні (қайта белгіленген демалыс)"),
             ("2024-08-30", "Қазақстан Республикасының Конституциясы күні"),
             ("2024-10-25", "Республика күні"),
-            ("2024-12-16", "Тəуелсіздік күні"),
+            ("2024-12-16", "Тәуелсіздік күні"),
         )
 
     def test_l10n_en_us(self):

@@ -28,6 +28,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2021-05-11",
             "2022-04-30",
             "2024-04-08",
+            "2026-03-19",
             # Other Special Public Holidays.
             "2022-05-14",
             "2022-05-15",
@@ -42,6 +43,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-05-07",
             "2022-05-08",
             "2023-12-04",
+            "2026-05-25",
         )
 
     def test_special_optional(self):
@@ -53,6 +55,16 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
         self.assertHolidayName(name, (f"{year}-11-30" for year in range(2015, 2019)))
         self.assertHolidayName(name, (f"{year}-12-01" for year in range(2019, 2024)))
         self.assertNoHolidayName(name, range(self.start_year, 2015), range(2024, self.end_year))
+
+    def test_national_day(self):
+        name = "اليوم الوطني"
+        self.assertHolidayName(
+            name,
+            "2025-12-01",
+            (f"{year}-12-02" for year in self.full_range),
+            (f"{year}-12-03" for year in self.full_range if year != 2025),
+        )
+        self.assertNoHoliday("2025-12-03")
 
     def test_eid_al_fitr(self):
         name = "عيد الفطر"
@@ -68,6 +80,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2023-04-21",
             "2024-04-10",
             "2025-03-30",
+            "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName(name_holiday, self.full_range)
@@ -85,7 +98,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-07-09",
             "2023-06-28",
             "2024-06-16",
-            "2025-06-04",
+            "2025-06-06",
+            "2026-05-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         self.assertIslamicNoEstimatedHolidayName("عطلة عيد الأضحى", self.full_range)
@@ -103,7 +117,8 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2022-07-30",
             "2023-07-21",
             "2024-07-07",
-            "2025-06-26",
+            "2025-06-27",
+            "2026-06-15",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -120,6 +135,7 @@ class TestUnitedArabEmirates(CommonCountryTests, TestCase):
             "2023-09-29",
             "2024-09-15",
             "2025-09-05",
+            "2026-08-28",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 

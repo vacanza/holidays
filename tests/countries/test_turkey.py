@@ -85,44 +85,52 @@ class TestTurkey(CommonCountryTests, TestCase):
 
     def test_eid_al_fitr(self):
         name = "Ramazan Bayramı"
+        name_half_day = f"{name} (saat 13.00'ten)"
         for ymd in (
             (2000, 1, 8),
             (2000, 12, 27),
-            (2010, 9, 9),
-            (2018, 6, 15),
-            (2019, 6, 4),
             (2020, 5, 24),
             (2021, 5, 13),
             (2022, 5, 2),
             (2023, 4, 21),
+            (2024, 4, 10),
+            (2025, 3, 30),
+            (2026, 3, 20),
         ):
             dt = date(*ymd)
             self.assertHolidayName(name, dt, _timedelta(dt, +1), _timedelta(dt, +2))
-            self.assertHalfDayHolidayName(f"{name} (saat 13.00'ten)", _timedelta(dt, -1))
+            self.assertHalfDayHolidayName(name_half_day, _timedelta(dt, -1))
         exception_years = {1968, 2000, 2033}
         self.assertIslamicNoEstimatedHolidayNameCount(
             name, 3, (year for year in self.full_range if year not in exception_years)
         )
         self.assertIslamicNoEstimatedHolidayNameCount(name, 6, exception_years)
 
+        years_half_day = {
+            dt.year for dt in self.holidays_half_day.get_named(name_half_day, lookup="startswith")
+        }
+        self.assertTrue(set(range(1975, self.end_year)).issubset(years_half_day))
+        self.assertFalse(set(range(self.start_year, 1975)).intersection(years_half_day))
+
     def test_eid_al_adha(self):
         name = "Kurban Bayramı"
+        name_half_day = f"{name} (saat 13.00'ten)"
         for ymd in (
             (2006, 1, 10),
             (2006, 12, 31),
-            (2010, 11, 16),
-            (2018, 8, 21),
-            (2019, 8, 11),
             (2020, 7, 31),
             (2021, 7, 20),
             (2022, 7, 9),
             (2023, 6, 28),
+            (2024, 6, 16),
+            (2025, 6, 6),
+            (2026, 5, 27),
         ):
             dt = date(*ymd)
             self.assertHolidayName(
                 name, dt, _timedelta(dt, +1), _timedelta(dt, +2), _timedelta(dt, +3)
             )
-            self.assertHalfDayHolidayName(f"{name} (saat 13.00'ten)", _timedelta(dt, -1))
+            self.assertHalfDayHolidayName(name_half_day, _timedelta(dt, -1))
         self.assertIslamicNoEstimatedHolidayNameCount(
             name,
             4,
@@ -131,6 +139,33 @@ class TestTurkey(CommonCountryTests, TestCase):
         self.assertIslamicNoEstimatedHolidayNameCount(name, 5, 1942, 2006)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 7, 1941, 2007)
         self.assertIslamicNoEstimatedHolidayNameCount(name, 8, 1974, 2039)
+
+        years_half_day = {
+            dt.year for dt in self.holidays_half_day.get_named(name_half_day, lookup="startswith")
+        }
+        self.assertTrue(set(range(1975, self.end_year)).issubset(years_half_day))
+        self.assertFalse(set(range(self.start_year, 1975)).intersection(years_half_day))
+
+    def test_national_sovereignty_day_eve_half_day(self):
+        name = "Ulusal Egemenlik Bayramı (öğleden sonra)"
+        self.assertHalfDayHolidayName(
+            name, (f"{year}-04-22" for year in range(self.start_year, 1981))
+        )
+        self.assertNoHalfDayHolidayName(name, range(1981, self.end_year))
+
+    def test_freedom_and_constitution_day_eve_half_day(self):
+        name = "Hürriyet ve Anayasa Bayramı (öğleden sonra)"
+        self.assertHalfDayHolidayName(name, (f"{year}-05-26" for year in range(1963, 1981)))
+        self.assertNoHalfDayHolidayName(
+            name, range(self.start_year, 1963), range(1981, self.end_year)
+        )
+
+    def test_new_years_eve_half_day(self):
+        name = "Yılbaşı (öğleden sonra)"
+        self.assertHalfDayHolidayName(
+            name, (f"{year}-12-31" for year in range(self.start_year, 1981))
+        )
+        self.assertNoHalfDayHolidayName(name, range(1981, self.end_year))
 
     def test_2022(self):
         self.assertHolidaysInYear(
@@ -187,7 +222,7 @@ class TestTurkey(CommonCountryTests, TestCase):
             ("2023-04-21", "Eid al-Fitr"),
             ("2023-04-22", "Eid al-Fitr"),
             ("2023-04-23", "Eid al-Fitr; National Sovereignty and Children's Day"),
-            ("2023-05-01", "Labour and Solidarity Day"),
+            ("2023-05-01", "Labor and Solidarity Day"),
             ("2023-05-19", "Commemoration of Atatürk, Youth and Sports Day"),
             ("2023-06-27", "Eid al-Adha (from 1pm)"),
             ("2023-06-28", "Eid al-Adha"),
@@ -219,4 +254,25 @@ class TestTurkey(CommonCountryTests, TestCase):
             ("2023-08-30", "День Перемоги"),
             ("2023-10-28", "День Республіки (з 13:00)"),
             ("2023-10-29", "День Республіки"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2023-01-01", "نیا سال"),
+            ("2023-04-20", "عید الفطر (دوپہر 1 بجے سے)"),
+            ("2023-04-21", "عید الفطر"),
+            ("2023-04-22", "عید الفطر"),
+            ("2023-04-23", "عید الفطر; قومی خودمختاری اور یومِ اطفال"),
+            ("2023-05-01", "یومِ محنت اور یکجہتی"),
+            ("2023-05-19", "اتاترک کی یاد، نوجوانوں اور کھیلوں کا دن"),
+            ("2023-06-27", "عید الاضحیٰ (دوپہر 1 بجے سے)"),
+            ("2023-06-28", "عید الاضحیٰ"),
+            ("2023-06-29", "عید الاضحیٰ"),
+            ("2023-06-30", "عید الاضحیٰ"),
+            ("2023-07-01", "عید الاضحیٰ"),
+            ("2023-07-15", "یومِ جمہوریت اور قومی اتحاد"),
+            ("2023-08-30", "یومِ فتح"),
+            ("2023-10-28", "یومِ جمہوریہ (دوپہر 1 بجے سے)"),
+            ("2023-10-29", "یومِ جمہوریہ"),
         )

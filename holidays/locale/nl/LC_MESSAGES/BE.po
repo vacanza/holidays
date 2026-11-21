@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.102\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-07-25 15:00+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-21 22:46+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,30 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Source-Language: nl\n"
+
+#. Autumn Break.
+msgid "Herfstvakantie"
+msgstr ""
+
+#. Christmas Break.
+msgid "Kerstvakantie"
+msgstr ""
+
+#. Carnival Break.
+msgid "Krokusvakantie"
+msgstr ""
+
+#. Mardi Gras.
+msgid "Vastenavond"
+msgstr ""
+
+#. Easter Break.
+msgid "Paasvakantie"
+msgstr ""
+
+#. Summer Break.
+msgid "Zomervakantie"
+msgstr ""
 
 #. New Year's Day.
 msgid "Nieuwjaar"
@@ -86,4 +110,20 @@ msgstr ""
 
 #. Bank Holiday.
 msgid "Banksluitingsdag"
+msgstr ""
+
+#. French Community Day.
+msgid "Feestdag van de Franse Gemeenschap"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Allerzielen"
+msgstr ""
+
+#. German-speaking Community Day.
+msgid "Feestdag van de Duitstalige Gemeenschap"
+msgstr ""
+
+#. Bridge Holiday.
+msgid "Brugdag"
 msgstr ""

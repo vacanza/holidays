@@ -19,8 +19,7 @@ from tests.common import CommonCountryTests
 class TestSaudiArabia(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1950, 2050)
-        super().setUpClass(SaudiArabia, years=years, years_non_observed=years)
+        super().setUpClass(SaudiArabia)
 
     def test_special_holidays(self):
         self.assertHoliday(
@@ -61,6 +60,10 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
             "2025-04-02",
+            "2026-03-19",  # 30 Ramadan.
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
             "2033-01-02",  # 1 Shawwal.
             "2033-01-03",
             "2033-01-04",
@@ -70,23 +73,29 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2033-12-24",
             "2033-12-25",
         )
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
 
-        obs_dt = (
+        obs_dts = (
             "2000-01-11",
             "2000-12-30",
             "2000-12-31",
+            "2006-10-28",
+            "2007-10-16",
             "2020-05-27",
             "2021-05-16",
             "2021-05-17",
             "2023-04-25",
             "2023-04-26",
             "2024-04-14",
+            "2026-03-23",
+            "2026-03-24",
+            "2033-12-26",
+            "2033-12-27",
         )
-        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
-    def test_arafat_day(self):
+    def test_arafah_day(self):
         name = "يوم عرفة"
         self.assertHolidayName(
             name,
@@ -96,13 +105,20 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2023-06-27",
             "2024-06-15",
             "2025-06-05",
+            "2026-05-26",
         )
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_eid_al_adha(self):
         name = "عطلة عيد الأضحى"
         self.assertHolidayName(
             name,
+            "2006-01-10",
+            "2006-01-11",
+            "2006-01-12",
+            "2006-12-31",
+            "2007-01-01",
+            "2007-01-02",
             "2021-07-20",
             "2021-07-21",
             "2021-07-22",
@@ -118,10 +134,16 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
             "2025-06-08",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
-        self.assertHolidayName(name, range(1950, 2050))
+        self.assertHolidayName(name, self.full_range)
 
-        obs_dt = (
+        obs_dts = (
+            "2006-01-14",
+            "2007-12-23",
+            "2007-12-24",
             "2020-08-03",
             "2020-08-04",
             "2022-07-12",
@@ -130,37 +152,38 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2024-06-19",
             "2025-06-09",
             "2025-06-10",
+            "2026-05-31",
         )
-        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_national_day(self):
         name = "اليوم الوطني"
-        self.assertHolidayName(name, (f"{year}-09-23" for year in range(2005, 2050)))
-        self.assertNoHolidayName(name, range(1950, 2005))
+        self.assertHolidayName(name, (f"{year}-09-23" for year in range(2005, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2005))
 
-        obs_dt = (
+        obs_dts = (
             "2011-09-24",
             "2016-09-22",
             "2017-09-24",
             "2022-09-22",
             "2023-09-24",
         )
-        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_founding_day(self):
-        name = "يوم التأسيسي"
-        self.assertHolidayName(name, (f"{year}-02-22" for year in range(2022, 2050)))
-        self.assertNoHolidayName(name, range(1950, 2022))
+        name = "يوم التأسيس"
+        self.assertHolidayName(name, (f"{year}-02-22" for year in range(2022, self.end_year)))
+        self.assertNoHolidayName(name, range(self.start_year, 2022))
 
-        obs_dt = (
+        obs_dts = (
             "2025-02-23",
             "2030-02-21",
             "2031-02-23",
         )
-        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dt)
-        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_weekend(self):
         for dt in (
@@ -181,10 +204,32 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
         ):
             self.assertFalse(self.holidays.is_weekend(dt))
 
+    def test_estimated_names(self):
+        self.assertHolidays(
+            SaudiArabia(years=2000, islamic_show_estimated=True),
+            ("2000-01-07", "عطلة عيد الفطر (تقديري)"),
+            ("2000-01-08", "عطلة عيد الفطر (تقديري)"),
+            ("2000-01-09", "عطلة عيد الفطر (تقديري)"),
+            ("2000-01-10", "عطلة عيد الفطر (تقديري)"),
+            ("2000-01-11", "عطلة عيد الفطر (يوم تعويضي تقديري)"),
+            ("2000-03-15", "يوم عرفة (تقديري)"),
+            ("2000-03-16", "عطلة عيد الأضحى (تقديري)"),
+            ("2000-03-17", "عطلة عيد الأضحى (تقديري)"),
+            ("2000-03-18", "عطلة عيد الأضحى (تقديري)"),
+            ("2000-03-19", "عطلة عيد الأضحى (يوم تعويضي تقديري)"),
+            ("2000-03-20", "عطلة عيد الأضحى (يوم تعويضي تقديري)"),
+            ("2000-12-26", "عطلة عيد الفطر (تقديري)"),
+            ("2000-12-27", "عطلة عيد الفطر (تقديري)"),
+            ("2000-12-28", "عطلة عيد الفطر (تقديري)"),
+            ("2000-12-29", "عطلة عيد الفطر (تقديري)"),
+            ("2000-12-30", "عطلة عيد الفطر (يوم تعويضي تقديري)"),
+            ("2000-12-31", "عطلة عيد الفطر (يوم تعويضي تقديري)"),
+        )
+
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
-            ("2022-02-22", "يوم التأسيسي"),
+            ("2022-02-22", "يوم التأسيس"),
             ("2022-05-01", "عطلة عيد الفطر"),
             ("2022-05-02", "عطلة عيد الفطر"),
             ("2022-05-03", "عطلة عيد الفطر"),
@@ -202,7 +247,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2023-02-22", "يوم التأسيسي"),
+            ("2023-02-22", "يوم التأسيس"),
             ("2023-04-21", "عطلة عيد الفطر"),
             ("2023-04-22", "عطلة عيد الفطر"),
             ("2023-04-23", "عطلة عيد الفطر"),
