@@ -41,21 +41,21 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
         * <https://web.archive.org/web/20250414072705/https://www.officeholidays.com/countries/kuwait>
         * <https://web.archive.org/web/20250414072609/https://www.timeanddate.com/holidays/kuwait/2024>
         * Islamic holidays:
-            * [2021](https://web.archive.org/web/20261121100809/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2021/10/202110170730-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-occasion-of-the)
+            * [2021](https://web.archive.org/web/20211006090655/https://www.kuna.net.kw/ArticleDetails.aspx?id=3001029&language=en)
             * 2022:
-                * <https://web.archive.org/web/20260422200945/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2022/07/202207260758-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-new-hijri-year>
-                * <https://web.archive.org/web/20250505095228/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2022/10/202210041300-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-occasion-of-the>
+                * <https://web.archive.org/web/20250725073343/https://www.arabtimesonline.com/news/hijri-new-year-holiday-on-sunday-31st-jul/>
+                * <https://web.archive.org/web/20240718232955/https://www.kuna.net.kw/ArticleDetails.aspx?id=3055718&language=en>
             * 2023:
-                * <https://web.archive.org/web/20251014225045/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2023/02/202302120730-cbk-will-be-closed-to-the-public-on-19th-of-february-for-al-israa-and-al-miraj>
-                * <https://web.archive.org/web/20261121101033/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2023/09/202309270900-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-occasion-of-the>
+                * <https://web.archive.org/web/20230320191537/https://timeskuwait.com/news/kuwait-sets-feb-19-26-27-as-public-holidays-for-al-israa-wal-miraj-national-day-festivities/>
+                * <https://web.archive.org/web/20240617071413/https://gulfnews.com/world/gulf/kuwait/3-day-long-weekend-kuwait-announces-public-holiday-for-prophet-mohammads-birthday-1.1695009657288>
             * 2025:
-                * <https://web.archive.org/web/20251223214533/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2025/01/202501260730-cbk-will-be-closed-to-the-public-on-30th-of-january-for-al-israa-and-al-miraj-holiday>
+                * <https://web.archive.org/web/20250325054527/https://www.arabtimesonline.com/news/3-day-official-holiday-for-isra-and-miraj/>
                 * <https://web.archive.org/web/20250727031139/https://www.arabtimesonline.com/news/eid-al-fitr-around-the-world>
             * 2026:
-                * <https://web.archive.org/web/20260208074324/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2026/01/202601120800-cbk-will-be-closed-to-the-public-on-18th-january-2026-for-al-israa-and-al-miraj>
+                * <https://web.archive.org/web/20260106075038/https://www.arabtimesonline.com/news/csc-announces-holiday-for-isra-and-miraj-on-18th-jan/>
                 * <https://web.archive.org/web/20261031153058/https://gulfnews.com/uae/eid-al-fitr-2026-in-uae-shawwal-crescent-moon-sighting-across-the-world-1.500478348>
                 * <https://web.archive.org/web/20261121101430/https://www.arabtimesonline.com/news/16th-june-marks-start-of-islamic-new-year-in-kuwait/>
-                * <https://web.archive.org/web/20261121101143/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2026/08/202608190900-cbk-will-be-closed-to-the-public-for-the-occasion-of-the-prophets-birthday>
+                * <https://web.archive.org/web/20261121161130/https://kuwaittimes.com/article/48004/kuwait/kuwait-csc-declares-thursday-aug-27-official-holiday-for-prophets-birthday/>
     """
 
     country = "KW"
@@ -157,22 +157,23 @@ class KuwaitStaticHolidays:
     """Kuwait special holidays.
 
     References:
-        * [2020](https://web.archive.org/web/20261121100408/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2020/07/202007300734-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-arafat-day-and-eid)
+        * [2020](https://web.archive.org/web/20220522170636/https://gulfnews.com/world/gulf/kuwait/eid-al-adha-kuwait-announces-five-day-holiday-1.72729134)
         * 2021:
-            * <https://web.archive.org/web/20261121100624/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2021/05/the-central-bank-of-kuwait-will-be-closed-to-the-public-for-eid-al-fitr-holiday>
-            * <https://web.archive.org/web/20261121100718/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2021/08/202108040955-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-new-hijri-year>
+            * <https://web.archive.org/web/20210521053418/https://gulfnews.com/world/gulf/kuwait/kuwait-eid-al-fitr-holiday-for-5-days-beginning-on-may-12-for-public-sector-1.1620207163109>
+            * <https://web.archive.org/web/20260717120656/https://www.arabtimesonline.com/news/islamic-new-year-holiday-on-8th-9th-aug/>
+            * <https://web.archive.org/web/20240711190131/https://gulfnews.com/world/gulf/kuwait/kuwait-announces-9-day-holiday-for-eid-al-adha-1.80628033>
         * 2022:
-            * <https://web.archive.org/web/20250508192909/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2022/04/202204261000-the-central-bank-of-kuwait-will-be-closed-to-the-public-sunday-1st-of-may-for-eid>
-            * <https://web.archive.org/web/20251212225520/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2022/07/202207070755-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-arafat-day-and-eid>
+            * <https://web.archive.org/web/20260719215818/https://www.thenationalnews.com/gulf-news/2022/04/15/kuwait-gives-week-long-eid-holiday-for-government-employees>
+            * <https://web.archive.org/web/20250722050014/https://www.thenationalnews.com/gulf-news/2022/06/14/eid-al-adha-2022-kuwait-announces-a-nine-day-holiday>
         * 2023:
             * <https://web.archive.org/web/20260610031317/https://www.moroccoworldnews.com/2023/04/34270/kuwait-announces-friday-as-eid-al-fitr-2023/>
-            * <https://web.archive.org/web/20261121101251/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2023/06/202306250700-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-arafat-day-and-eid>
-            * <https://web.archive.org/web/20230830055511/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2023/07/202307180800-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-the-new-hijri-year>
-        * [2024](https://web.archive.org/web/20260314084851/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2024/04/202404071000-the-central-bank-of-kuwait-will-be-closed-to-the-public-tuesday-9th-of-april-for)
-        * [2025](https://web.archive.org/web/20261121101405/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2025/06/202506010700-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-arafat-day-and-eid)
+            * <https://web.archive.org/web/20250912212848/https://gulfnews.com/world/gulf/kuwait/eid-al-adha-2023-kuwait-announces-six-day-holiday-for-public-sector-1.96255315>
+            * <https://web.archive.org/web/20260610125520/https://gulfnews.com/world/gulf/kuwait/kuwaitis-will-have-4-day-long-weekend-to-celebrate-islamic-new-year-1.96898604>
+        * [2024](https://web.archive.org/web/20260516203315/https://www.arabtimesonline.com/news/eid-al-fitr-holiday-from-april-9th-work-to-begin-on-14th/)
+        * [2025](https://web.archive.org/web/20250727081748/https://www.arabtimesonline.com/news/kuwait-cabinet-declares-eid-holidays-from-june-5-to-9/)
         * 2026:
-            * <https://web.archive.org/web/20260810141047/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2026/03/202603170800-cbk-will-be-closed-to-the-public-for-eid-al-fitr-holidays>
-            * <https://web.archive.org/web/20260616155234/https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/announcements/2026/05/202605210700-the-central-bank-of-kuwait-will-be-closed-to-the-public-for-arafat-day-and-eid>
+            * <https://web.archive.org/web/20260311172405/https://www.arabtimesonline.com/news/eid-al-fitr-holiday-officially-set-in-kuwait/>
+            * <https://web.archive.org/web/20261121161215/https://www.arabtimesonline.com/news/eid-al-adha-holidays-in-kuwait-from-may-26-31/>
     """
 
     # Eid al-Fitr Holiday.
@@ -187,12 +188,15 @@ class KuwaitStaticHolidays:
         2021: (
             (MAY, 12, eid_al_fitr_holiday),
             (MAY, 16, eid_al_fitr_holiday),
+            (JUL, 18, eid_al_adha_holiday),
             (AUG, 8, islamic_new_year),
         ),
         2022: (
             (MAY, 1, eid_al_fitr_holiday),
+            (MAY, 5, eid_al_fitr_holiday),
             (JUL, 12, eid_al_adha_holiday),
             (JUL, 13, eid_al_adha_holiday),
+            (JUL, 14, eid_al_adha_holiday),
         ),
         2023: (
             (APR, 24, eid_al_fitr_holiday),
