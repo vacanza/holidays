@@ -45,6 +45,9 @@ class Nepal(
         * <https://web.archive.org/web/20250322000610/https://www.ashesh.com.np/nepali-calendar/>
         * <https://web.archive.org/web/20250117021312/https://www.bolpatra.gov.np/egp/openDateConverter>
         * <https://web.archive.org/web/20241013164133/https://www.moha.gov.np/en/page/holidays>
+        * 2026:
+            * [Eid al-Fitr](https://web.archive.org/web/20261121113331/https://english.ratopati.com/story/54693/eid-ul-fitr-on-saturday-ministry-of-home-affairs-issues-notice)
+            * [Eid al-Adha](https://web.archive.org/web/20261121113133/https://www.sharesansar.com/newsdetail/government-announces-public-holiday-for-bakra-eid-on-jestha-14-triggering-a-4-day-long-weekend-2026-05-22)
     """
 
     country = "NP"
@@ -375,14 +378,14 @@ class NepalHinduHolidays(_CustomHinduHolidays):
 
 
 class NepalIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2025)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2010, 2026)
     EID_AL_ADHA_DATES = {
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 13),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2025)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2010, 2026)
     EID_AL_FITR_DATES = {
         2010: (SEP, 10),
         2013: (AUG, 8),
