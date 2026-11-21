@@ -1079,4 +1079,4 @@ msgstr "Kerala Assembly Election Day"
 
 #. Ram Mandir Pran Pratishtha.
 msgid "Ram Mandir Pran Pratishtha"
-msgstr "Ram Mandir Pran Prishtha"
+msgstr "Ram Mandir Pran Pratishtha"
