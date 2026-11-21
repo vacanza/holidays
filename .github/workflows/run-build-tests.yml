@@ -152,7 +152,7 @@ jobs:
         run: uv python install "$UV_PYTHON"
 
       - name: Install dependencies
-        run: uv sync --frozen --no-default-groups --no-install-project --group docs --link-mode=copy
+        run: uv sync --frozen --no-default-groups --no-install-project --group docs --link-mode=copy --no-build
 
       - name: Build docs
         run: make doc
