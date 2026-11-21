@@ -12,6 +12,7 @@
 
 from unittest import TestCase
 
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.financial.tel_aviv_stock_exchange import TelAvivStockExchange
 from tests.common import CommonFinancialTests
 
@@ -296,6 +297,8 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
 
     def test_chol_hamoed_fridays(self):
         for dt in (
+            "2026-04-03",
+            "2027-04-23",
             "2028-04-14",
             "2029-09-28",
             "2031-04-11",
@@ -304,6 +307,15 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             "2036-10-10",
         ):
             self.assertTrue(self.holidays.is_working_day(dt), dt)
+            self.assertNoHalfDayHoliday(dt)
+
+    def test_half_day_categories(self):
+        public = TelAvivStockExchange(years=range(2013, 2051), categories=PUBLIC)
+        half_day = TelAvivStockExchange(years=public.years, categories=HALF_DAY)
+        combined = TelAvivStockExchange(years=public.years, categories=(HALF_DAY, PUBLIC))
+
+        self.assertTrue(public.keys().isdisjoint(half_day.keys()))
+        self.assertEqual(combined.items(), public.items() | half_day.items())
 
     def test_working_days(self):
         self.assertNoHolidayName("שושן פורים")
@@ -514,11 +526,51 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             ("2028-10-12", "שמחת תורה/שמיני עצרת"),
         )
 
+    def test_2013_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2013,
+            ("2013-03-27", "חול המועד פסח"),
+            ("2013-03-28", "חול המועד פסח"),
+            ("2013-09-22", "חול המועד סוכות"),
+            ("2013-09-23", "חול המועד סוכות"),
+            ("2013-09-24", "חול המועד סוכות"),
+        )
+
+    def test_2026_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2026,
+            ("2026-04-06", "חול המועד פסח"),
+            ("2026-09-28", "חול המועד סוכות"),
+            ("2026-09-29", "חול המועד סוכות"),
+            ("2026-09-30", "חול המועד סוכות"),
+            ("2026-10-01", "חול המועד סוכות"),
+        )
+
+    def test_2027_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2027,
+            ("2027-04-26", "חול המועד פסח"),
+            ("2027-10-18", "חול המועד סוכות"),
+            ("2027-10-19", "חול המועד סוכות"),
+            ("2027-10-20", "חול המועד סוכות"),
+            ("2027-10-21", "חול המועד סוכות"),
+        )
+
+    def test_2028_half_day(self):
+        self.assertHalfDayHolidaysInYear(
+            2028,
+            ("2028-04-12", "חול המועד פסח"),
+            ("2028-04-13", "חול המועד פסח"),
+            ("2028-10-09", "חול המועד סוכות"),
+            ("2028-10-10", "חול המועד סוכות"),
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2026-03-03", "פורים"),
             ("2026-04-01", "ערב פסח"),
             ("2026-04-02", "פסח"),
+            ("2026-04-06", "חול המועד פסח"),
             ("2026-04-07", "ערב שביעי של פסח"),
             ("2026-04-08", "שביעי של פסח"),
             ("2026-04-21", "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה"),
@@ -530,6 +582,10 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             ("2026-09-18", "יום חופשה בבורסה"),
             ("2026-09-21", "יום כיפור"),
             ("2026-09-25", "ערב סוכות"),
+            ("2026-09-28", "חול המועד סוכות"),
+            ("2026-09-29", "חול המועד סוכות"),
+            ("2026-09-30", "חול המועד סוכות"),
+            ("2026-10-01", "חול המועד סוכות"),
             ("2026-10-02", "ערב שמחת תורה"),
             ("2026-10-27", "יום הבחירות לכנסת"),
         )
@@ -540,6 +596,7 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             ("2026-03-03", "Purim"),
             ("2026-04-01", "Pesach Eve"),
             ("2026-04-02", "Pesach"),
+            ("2026-04-06", "Pesach holiday"),
             ("2026-04-07", "Eve of the Seventh Day of Pesach"),
             ("2026-04-08", "Seventh day of Pesach"),
             ("2026-04-21", "Remembrance Day"),
@@ -551,6 +608,10 @@ class TestTelAvivStockExchange(CommonFinancialTests, TestCase):
             ("2026-09-18", "Market Holiday"),
             ("2026-09-21", "Yom Kippur"),
             ("2026-09-25", "Sukkot Eve"),
+            ("2026-09-28", "Sukkot holiday"),
+            ("2026-09-29", "Sukkot holiday"),
+            ("2026-09-30", "Sukkot holiday"),
+            ("2026-10-01", "Sukkot holiday"),
             ("2026-10-02", "Simchat Torah Eve"),
             ("2026-10-27", "Knesset Election Day"),
         )

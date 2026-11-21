@@ -2166,7 +2166,7 @@ code when available. The following financial markets are available:
 <td>XTAE</td>
 <td>Tel Aviv Stock Exchange (TASE) market holidays</td>
 <td>en_US, <strong>he</strong></td>
-<td></td>
+<td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Toronto Stock Exchange</td>

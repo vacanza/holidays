@@ -26,6 +26,7 @@ from holidays.calendars.gregorian import (
     SUN,
     _timedelta,
 )
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.groups import HebrewCalendarHolidays, StaticHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import (
@@ -61,6 +62,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
     supported_languages = ("en_US", "he")
     # Earliest available official vacation schedule.
     start_year = 2013
+    supported_categories = (HALF_DAY, PUBLIC)
 
     def __init__(self, *args, **kwargs):
         HebrewCalendarHolidays.__init__(self)
@@ -78,7 +80,10 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
 
     def _populate_common_holidays(self):
         super()._populate_common_holidays()
-        # Fridays during Chol HaMoed remain shortened trading days.
+        if PUBLIC not in self.categories:
+            return
+
+        # Fridays during Chol HaMoed follow the regular Friday schedule.
         chol_hamoed = {
             _timedelta(dt, delta)  # type: ignore[arg-type]
             for dt, days in (
@@ -106,6 +111,32 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
                 )
             if self._is_weekend(dt):
                 self.pop(dt)
+
+    def _populate_half_day_holidays(self):
+        def shortened_session_offsets(dt: date, eve_offset: int) -> tuple[int, ...]:
+            # Exclude the full-day eve and Fridays, which use regular Friday hours.
+            return tuple(
+                offset
+                for offset in range(1, eve_offset)
+                if not self._is_weekend(day := _timedelta(dt, offset)) and not self._is_friday(day)
+            )
+
+        self._add_passover(
+            # Chol HaMoed Pesach (Passover holiday).
+            tr("חול המועד פסח"),
+            shortened_session_offsets(
+                self._hebrew_calendar.passover_date(self._year),  # type: ignore[arg-type]
+                5,
+            ),
+        )
+        self._add_sukkot(
+            # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+            tr("חול המועד סוכות"),
+            shortened_session_offsets(
+                self._hebrew_calendar.sukkot_date(self._year),  # type: ignore[arg-type]
+                6,
+            ),
+        )
 
     def _populate_public_holidays(self):
         # Purim.

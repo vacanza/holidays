@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-14 07:41+0000\n"
-"PO-Revision-Date: 2026-11-15 03:12+0530\n"
+"PO-Revision-Date: 2026-11-22 00:27+0530\n"
 "Last-Translator: Shivam Agarwal <shivamagarwal2211@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: he\n"
@@ -34,6 +34,14 @@ msgstr ""
 
 #. Market Holiday.
 msgid "יום חופשה בבורסה"
+msgstr ""
+
+#. Chol HaMoed Pesach (Passover holiday).
+msgid "חול המועד פסח"
+msgstr ""
+
+#. Chol HaMoed Sukkot (Feast of Tabernacles holiday).
+msgid "חול המועד סוכות"
 msgstr ""
 
 #. Purim.
