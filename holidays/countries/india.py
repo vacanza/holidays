@@ -114,6 +114,9 @@ class India(
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
+            * <https://web.archive.org/web/20261121155730/https://mizoramassembly.in/storage/Assembly/Gazette/EO/GZEO7ISS_060.pdf>
+            * <https://web.archive.org/web/20261121155657/https://mizoramassembly.in/storage/Assembly/Proceedings/State/Fifth_Assembly/12th_Session/Mizo/2008/mi_pro13032008.pdf>
+            * <https://web.archive.org/web/20261121155703/https://mizoramassembly.in/storage/Assembly/Gazette/GN/GZGN39_ISS005.pdf>
             * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
@@ -559,10 +562,6 @@ class India(
         # Jumu'atul-Wida.
         self._add_jumuatul_wida(tr("Jamat-Ul-Vida"))
 
-    def _add_statehood_day(self, *args):
-        # Statehood Day.
-        self._add_holiday(tr("Statehood Day"), *args)
-
     # Andaman and Nicobar Islands.
     def _populate_subdiv_an_public_holidays(self):
         # Hindu holidays.
@@ -627,7 +626,7 @@ class India(
     # Arunachal Pradesh.
     def _populate_subdiv_ar_public_holidays(self):
         # Statehood Day.
-        self._add_statehood_day(FEB, 20)
+        self._add_holiday_feb_20(tr("Statehood Day"))
 
         # Indigenous Faith Day.
         self._add_holiday_dec_1(tr("Indigenous Faith Day"))
@@ -1056,7 +1055,7 @@ class India(
     # Himachal Pradesh.
     def _populate_subdiv_hp_public_holidays(self):
         # Statehood Day.
-        self._add_statehood_day(JAN, 25)
+        self._add_holiday_jan_25(tr("Statehood Day"))
 
         # Himachal Day.
         self._add_holiday_apr_15(tr("Himachal Day"))
@@ -1586,7 +1585,7 @@ class India(
 
         if self._year >= 1987:
             # Statehood Day.
-            self._add_statehood_day(FEB, 20)
+            self._add_holiday_feb_20(tr("Statehood Day"))
 
         chapchar_kut_dates = {
             1979: (MAR, 9),
