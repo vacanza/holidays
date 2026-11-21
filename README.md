@@ -1972,7 +1972,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Argentinos</td>
 <td>XBUE</td>
 <td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
@@ -2007,7 +2007,7 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2091,7 +2091,7 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2105,7 +2105,7 @@ code when available. The following financial markets are available:
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
