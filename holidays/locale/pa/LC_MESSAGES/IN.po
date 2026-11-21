@@ -732,6 +732,10 @@ msgstr "ਕ੍ਰਿਸਮਸ ਤਿਉਹਾਰ"
 msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "ਯੂ ਕਿਆਂਗ ਨੋਂਗਬਾਹ ਦੀ ਬਰਸੀ"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "ਗਾਨ-ਨਗਾਈ"
+
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "ਮਹਾਰਾਜਾ ਗੰਭੀਰ ਸਿੰਘ ਦੀ ਬਰਸੀ"

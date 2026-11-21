@@ -732,6 +732,10 @@ msgstr "క్రిస్మస్ పండుగ"
 msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "యు కియాంగ్ నోంగ్బాహ్ వర్ధంతి"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "గాన్-ంగై"
+
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "మహారాజా గంభీర్ సింగ్ వర్ధంతి"

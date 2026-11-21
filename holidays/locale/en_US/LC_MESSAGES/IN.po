@@ -733,6 +733,10 @@ msgstr "Christmas Festival"
 msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "U Kiang Nongbah's Death Anniversary"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "Gaan-Ngai"
+
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "Maharaja Gambhir Singh's Death Anniversary"
