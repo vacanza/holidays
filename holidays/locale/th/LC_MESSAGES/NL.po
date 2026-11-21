@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.109\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-10-15 13:18+0700\n"
-"PO-Revision-Date: 2026-11-09 22:24+0530\n"
-"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
+"PO-Revision-Date: 2026-11-13 14:57+0100\n"
+"Last-Translator: koenengels <19666881+koenengels@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -75,6 +75,10 @@ msgstr "วันคริสต์มาสวันแรก"
 #. Second Day of Christmas.
 msgid "Tweede kerstdag"
 msgstr "วันคริสต์มาสวันที่สอง"
+
+#. Saint Nicholas' Eve.
+msgid "Sinterklaasavond"
+msgstr "คืนวันเซนต์นิโคลัส"
 
 #. Christmas Break.
 msgid "Kerstvakantie"
