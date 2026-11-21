@@ -16,7 +16,7 @@ from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
-class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays):
+class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """European Central Bank holidays.
 
     References:
@@ -46,16 +46,20 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays)
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
+
         # Christmas Day.
         self._add_christmas_day(tr("Christmas Day"))
 
         if self._year >= 2000:
             # Good Friday.
             self._add_good_friday(tr("Good Friday"))
+
             # Easter Monday.
             self._add_easter_monday(tr("Easter Monday"))
+
             # Labor Day.
             self._add_labor_day(tr("Labour Day"))
+
             # Christmas Holiday.
             self._add_christmas_day_two(tr("Christmas Holiday"))
 
@@ -75,6 +79,7 @@ class TAR(EuropeanCentralBank):
 class EuropeanCentralBankStaticHolidays:
     # Additional closing day.
     additional_closing_day = tr("Additional closing day")
+
     special_public_holidays = {
         1999: (DEC, 31, additional_closing_day),
         2001: (DEC, 31, additional_closing_day),
