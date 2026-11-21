@@ -13,7 +13,6 @@
 from datetime import date
 
 from holidays.calendars.gregorian import (
-    APR,
     JUL,
     SEP,
     OCT,
@@ -123,9 +122,8 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Saturday (Sunday in 1980-1982 and 1984-1992) on or before Dec 24 → 2 weeks.
         for year in (self._year - 1, self._year):
             if 1980 <= year <= 2028:
-                is_sun_christmas = year <= 1992
                 start_offset, duration = christmas_overrides.get(
-                    year, (int(is_sun_christmas), 16 - is_sun_christmas)
+                    year, (1, 15) if year <= 1992 else (0, 16)
                 )
                 self._add_school_break(
                     _timedelta(_get_nth_weekday_from(-1, SAT, date(year, DEC, 24)), start_offset),
@@ -134,16 +132,21 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
                 )
 
         if self._year <= 2028:
-            # 1 week around All Saints' Day (Nov 1).
-            all_saints_sat = _get_nth_weekday_from(
-                -1,
-                SAT,
-                _timedelta(date(self._year, OCT, 31), int(self._year in {1986, 2008, 2025})),
+            # 1 week around All Saints' Day (Nov 1): Sunday-to-Sunday in 1980-1999 (except 1986),
+            # Saturday-to-Sunday from 2000 (starting on Nov 1 in 1986, 2008, and 2025).
+            all_saints_overrides = {
+                1986: (7, 9),
+                2008: (7, 9),
+                2025: (7, 9),
+            }
+            all_saints_offset, all_saints_duration = all_saints_overrides.get(
+                self._year, (1, 8) if self._year <= 1999 else (0, 9)
             )
-            sun_offset = int(self._year <= 1999 and self._year != 1986)
             self._add_school_break(
-                _timedelta(all_saints_sat, sun_offset),
-                9 - sun_offset,
+                _timedelta(
+                    _get_nth_weekday_from(-1, SAT, date(self._year, OCT, 31)), all_saints_offset
+                ),
+                all_saints_duration,
                 # All Saints' Break.
                 name=tr("Allerhellegevakanz"),
             )
@@ -162,14 +165,16 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
             2003: (-64, 9),
             2011: (-64, 9),
             2014: (-64, 9),
+            2017: (-57, 9),
+            2019: (-64, 9),
+            2020: (-57, 9),
+            2022: (-64, 9),
+            2023: (-57, 9),
+            2025: (-64, 9),
+            2028: (-64, 9),
         }
-        is_sun_carnival = self._year <= 1989
-        carnival_weeks_earlier = int(
-            self._year >= 2017 and easter_sunday >= date(self._year, APR, 9)
-        ) + int(self._year >= 2018 and easter_sunday >= date(self._year, APR, 16))
         carnival_offset, carnival_duration = carnival_overrides.get(
-            self._year,
-            (-50 - 7 * carnival_weeks_earlier + is_sun_carnival, 9 - is_sun_carnival),
+            self._year, (-49, 8) if self._year <= 1989 else (-50, 9)
         )
         self._add_school_break(
             _timedelta(easter_sunday, carnival_offset),
@@ -187,24 +192,30 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
             1989: (0, 15),
             1991: (0, 15),
             1992: (-14, 16),
+            1996: (-1, 16),
+            1997: (-1, 16),
+            1998: (-1, 16),
+            1999: (-1, 16),
             2000: (-15, 17),
-            2002: (-8, 16),
             2003: (-15, 17),
-            2013: (-8, 16),
+            2005: (-1, 16),
+            2008: (-1, 16),
+            2011: (-15, 17),
+            2014: (-15, 17),
             2015: (-1, 16),
-            2017: (-8, 16),
+            2016: (-1, 16),
+            2018: (-1, 16),
+            2019: (-15, 17),
             2021: (-1, 16),
+            2022: (-15, 17),
+            2024: (-1, 16),
+            2025: (-15, 16),
+            2027: (-1, 16),
+            2028: (-15, 16),
+            2029: (-1, 16),
         }
-        is_sun_easter = self._year <= 1995
-        easter_weeks_earlier = int(
-            self._year >= 2001 and easter_sunday >= date(self._year, APR, 4)
-        ) + int(self._year >= 2011 and easter_sunday >= date(self._year, APR, 16))
         easter_offset, easter_duration = easter_overrides.get(
-            self._year,
-            (
-                -1 - 7 * easter_weeks_earlier - 6 * is_sun_easter,
-                16 - is_sun_easter + int(easter_weeks_earlier == 2 and self._year <= 2024),
-            ),
+            self._year, (-7, 15) if self._year <= 1995 else (-8, 16)
         )
         self._add_school_break(
             _timedelta(easter_sunday, easter_offset),
@@ -220,21 +231,19 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
             1992: (42, 10),
             1995: (42, 10),
             2000: (41, 11),
+            2003: (34, 9),
             2009: (41, 11),
+            2011: (34, 9),
             2013: (55, 9),
-            2014: (48, 9),
+            2019: (34, 9),
+            2022: (34, 9),
             2024: (55, 9),
+            2025: (34, 9),
             2027: (62, 9),
             2028: (41, 9),
         }
-        is_sun_pentecost = self._year <= 1996
-        is_early_pentecost = self._year >= 2003 and easter_sunday >= date(self._year, APR, 17)
         pentecost_offset, pentecost_duration = pentecost_overrides.get(
-            self._year,
-            (
-                +48 - 14 * is_early_pentecost + is_sun_pentecost,
-                9 - is_sun_pentecost,
-            ),
+            self._year, (49, 8) if self._year <= 1996 else (48, 9)
         )
         self._add_school_break(
             _timedelta(easter_sunday, pentecost_offset),
@@ -253,13 +262,16 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
             1998: (12, 13),
             2001: (15, 16),
             2002: (14, 15),
+            2006: (15, 14),
+            2017: (15, 14),
             2018: (14, 16),
             2019: (13, 15),
+            2023: (15, 14),
             2024: (16, 15),
+            2028: (15, 14),
             2029: (14, 16),
         }
-        is_jul_16_sun = self._year >= 2006 and self._is_sunday(date(self._year, JUL, 16))
-        start_day, end_day = summer_overrides.get(self._year, (16 - is_jul_16_sun, 14))
+        start_day, end_day = summer_overrides.get(self._year, (16, 14))
         summer_start = date(self._year, JUL, start_day)
         summer_end = date(self._year, SEP, end_day)
         self._add_school_break(
