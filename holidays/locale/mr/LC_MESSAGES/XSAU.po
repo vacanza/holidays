@@ -35,12 +35,12 @@ msgstr "%s (अनुमानित)"
 #. %s (observed).
 #, c-format
 msgid "%s (يوم تعويضي)"
-msgstr "%s (अवलंबित)"
+msgstr "%s (साजरा केलेला)"
 
 #. %s (observed, estimated).
 #, c-format
 msgid "%s (يوم تعويضي تقديري)"
-msgstr "%s (अवलंबित, अनुमानित)"
+msgstr "%s (साजरा केलेला, अनुमानित)"
 
 #. Founding Day.
 msgid "يوم التأسيس"
