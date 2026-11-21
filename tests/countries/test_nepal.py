@@ -517,6 +517,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2023-04-22",
             "2024-04-11",
             "2025-03-31",
+            "2026-03-21",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
@@ -531,6 +532,7 @@ class TestNepal(CommonCountryTests, TestCase):
             "2023-06-29",
             "2024-06-17",
             "2025-06-07",
+            "2026-05-28",
         )
         self.assertHolidayName(name, dt)
         self.assertHolidayName(name, self.no_estimated_holidays, range(2010, 2050))
