@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-03-02 12:31+0530\n"
-"PO-Revision-Date: 2026-11-19 11:08+0530\n"
-"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
+"PO-Revision-Date: 2026-11-22 10:14-0800\n"
+"Last-Translator: Arkadii Yakovets <2201626+arkid15r@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -285,10 +285,6 @@ msgstr "Ali's Birthday"
 msgid "Jamat-Ul-Vida"
 msgstr "Jumu'atul-Wida"
 
-#. Statehood Day.
-msgid "Statehood Day"
-msgstr "Statehood Day"
-
 #. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
 msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
 msgstr "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
@@ -324,6 +320,10 @@ msgstr "Isra' and Mi'raj"
 #. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
 msgstr "Eid al-Ghadir"
+
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr "Statehood Day"
 
 #. Indigenous Faith Day.
 msgid "Indigenous Faith Day"
