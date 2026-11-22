@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-22 10:14-0800\n"
+"Last-Translator: Arkadii Yakovets <2201626+arkid15r@users.noreply.github.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -184,9 +184,9 @@ msgstr "உகாதி"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "மேஷாடி (தமிழ் புத்தாண்டு தினம்)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "பஹாக் பிஹு"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "போஹாக் பிஹூ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -644,6 +644,10 @@ msgstr "கர்மா பூஜை"
 msgid "Majdoor Diwas"
 msgstr "தொழிலாளர் தினம்"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "ஹுள் தினம்"
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr "கர்நாடக ராஜ்யோத்சவா"
@@ -744,6 +748,10 @@ msgstr "கொங்ஜோம் தினம்"
 msgid "Patriot's Day"
 msgstr "தேசபக்தர் தினம்"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "நுபி-லால்"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "மேரா சாவோரென் ஹௌபா"
@@ -774,7 +782,7 @@ msgstr "துர்காதாஸ் ரத்தோர் ஜெயந்த�
 
 #. International Day of Persons with Disabilities.
 msgid "Vishva Divyang Divas"
-msgstr "விஷ்வ திவ்யாங் திவஸ்"
+msgstr "சர்வதேச மாற்றுத்திறனாளிகள் தினம்"
 
 #. Maharishi Guru Gokuldas's Birthday.
 msgid "Maharshi Guru Gokuldas's Jayanti"
@@ -803,6 +811,10 @@ msgstr "புத்தாண்டுக்குப் பிந்தைய �
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "மிஷனரி தினம்"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "சாப்சர் குட்"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
@@ -862,7 +874,7 @@ msgstr "விஷு (நாள் 2)"
 
 #. Tamil New Year.
 msgid "Puthandu"
-msgstr "புத்தாண்டு"
+msgstr "தமிழ்ப் புத்தாண்டு"
 
 #. Ayudha Puja.
 msgid "Ayudha Puja"

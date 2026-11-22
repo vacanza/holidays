@@ -95,3 +95,86 @@ class TestEuropeanCentralBank(CommonFinancialTests, TestCase):
             ("2015-12-25", "Christmas Day"),
             ("2015-12-26", "Christmas Holiday"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2001-01-01", "New Year's Day"),
+            ("2001-04-13", "Good Friday"),
+            ("2001-04-16", "Easter Monday"),
+            ("2001-05-01", "Labour Day"),
+            ("2001-12-25", "Christmas Day"),
+            ("2001-12-26", "Christmas Holiday"),
+            ("2001-12-31", "Additional closing day"),
+        )
+
+    def test_l10n_de(self):
+        self.assertLocalizedHolidays(
+            "de",
+            ("2001-01-01", "Neujahr"),
+            ("2001-04-13", "Karfreitag"),
+            ("2001-04-16", "Ostermontag"),
+            ("2001-05-01", "Tag der Arbeit"),
+            ("2001-12-25", "Erster Weihnachtsfeiertag"),
+            ("2001-12-26", "Zweiter Weihnachtsfeiertag"),
+            ("2001-12-31", "Zusätzlicher Schließungstag"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2001-01-01", "New Year's Day"),
+            ("2001-04-13", "Good Friday"),
+            ("2001-04-16", "Easter Monday"),
+            ("2001-05-01", "Labor Day"),
+            ("2001-12-25", "Christmas Day"),
+            ("2001-12-26", "Christmas Holiday"),
+            ("2001-12-31", "Additional closing day"),
+        )
+
+    def test_l10n_es(self):
+        self.assertLocalizedHolidays(
+            "es",
+            ("2001-01-01", "Año Nuevo"),
+            ("2001-04-13", "Viernes Santo"),
+            ("2001-04-16", "Lunes de Pascua"),
+            ("2001-05-01", "Día del Trabajo"),
+            ("2001-12-25", "Navidad"),
+            ("2001-12-26", "Día de San Esteban"),
+            ("2001-12-31", "Día de cierre adicional"),
+        )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2001-01-01", "Nouvel An"),
+            ("2001-04-13", "Vendredi saint"),
+            ("2001-04-16", "Lundi de Pâques"),
+            ("2001-05-01", "Fête du travail"),
+            ("2001-12-25", "Noël"),
+            ("2001-12-26", "Lendemain de Noël"),
+            ("2001-12-31", "Jour de fermeture supplémentaire"),
+        )
+
+    def test_l10n_it(self):
+        self.assertLocalizedHolidays(
+            "it",
+            ("2001-01-01", "Capodanno"),
+            ("2001-04-13", "Venerdì Santo"),
+            ("2001-04-16", "Lunedì dell'Angelo"),
+            ("2001-05-01", "Festa del lavoro"),
+            ("2001-12-25", "Natale"),
+            ("2001-12-26", "Santo Stefano"),
+            ("2001-12-31", "Giornata di chiusura aggiuntiva"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2001-01-01", "Новий рік"),
+            ("2001-04-13", "Страсна пʼятниця"),
+            ("2001-04-16", "Великодній понеділок"),
+            ("2001-05-01", "День праці"),
+            ("2001-12-25", "Різдво Христове"),
+            ("2001-12-26", "Другий день Різдва"),
+            ("2001-12-31", "Додатковий вихідний"),
+        )

@@ -60,6 +60,10 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2025-03-31",
             "2025-04-01",
             "2025-04-02",
+            "2026-03-19",  # 30 Ramadan.
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
             "2033-01-02",  # 1 Shawwal.
             "2033-01-03",
             "2033-01-04",
@@ -83,6 +87,8 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2023-04-25",
             "2023-04-26",
             "2024-04-14",
+            "2026-03-23",
+            "2026-03-24",
             "2033-12-26",
             "2033-12-27",
         )
@@ -99,6 +105,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2023-06-27",
             "2024-06-15",
             "2025-06-05",
+            "2026-05-26",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -127,6 +134,9 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
             "2025-06-08",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
         self.assertHolidayName(name, self.full_range)
 
@@ -142,6 +152,7 @@ class TestSaudiArabia(CommonCountryTests, TestCase):
             "2024-06-19",
             "2025-06-09",
             "2025-06-10",
+            "2026-05-31",
         )
         self.assertHolidayName(f"{name} (يوم تعويضي)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
