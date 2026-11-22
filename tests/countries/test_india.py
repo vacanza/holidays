@@ -1413,12 +1413,12 @@ class TestIndia(CommonCountryTests, TestCase):
     def test_ram_mandir_pran_pratishtha(self):
         name = "Ram Mandir Pran Pratishtha"
         self.assertNoHolidayName(name)
-
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "MH":
                 self.assertHolidayName(name, holidays, "2024-01-22")
-                self.assertNoHolidayName(name, holidays, range(self.start_year, 2024))
-                self.assertNoHolidayName(name, holidays, range(2025, self.end_year))
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 2024), range(2025, self.end_year)
+                )
             else:
                 self.assertNoHolidayName(name, holidays)
 

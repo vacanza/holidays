@@ -109,7 +109,7 @@ class India(
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
-            * <https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57166>
+            * <https://web.archive.org/web/20250810032520/https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=57166>
             * <https://web.archive.org/web/20240122000000/https://economictimes.indiatimes.com/news/india/ram-mandir-inauguration-maharashtra-govt-declares-public-holiday-on-january-22/articleshow/106991491.cms>
         * Manipur:
             * <https://web.archive.org/web/20260822114331/https://www.scribd.com/document/985577686/Manipur-Holiday-List-2026>
