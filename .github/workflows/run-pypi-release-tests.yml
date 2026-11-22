@@ -1,0 +1,135 @@
+name: Run PyPI release tests
+
+on:
+  workflow_run:
+    workflows:
+      - Publish to PyPI
+    types:
+      - completed
+
+env:
+  DEFAULT_PYTHON_VERSION: '3.15'
+  FORCE_COLOR: 1
+
+permissions: {}
+
+jobs:
+  pypi-release-tests:
+    name: Run PyPI release tests
+    if: |
+      github.repository == 'vacanza/holidays' &&
+      github.event.workflow_run.conclusion == 'success'
+    permissions:
+      actions: read
+      contents: read
+    runs-on: ubuntu-26.04-arm
+    steps:
+      - name: Check for release-metadata
+        id: has-release-metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          names="$(gh api "repos/${{ github.repository }}/actions/runs/${RUN_ID}/artifacts" \
+            --jq '.artifacts[].name')"
+          if printf '%s\n' "$names" | grep -qx release-metadata; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Publish did not upload release-metadata (publish skipped); nothing to verify."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download release-metadata
+        if: steps.has-release-metadata.outputs.present == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          gh run download "$RUN_ID" --repo "${{ github.repository }}" \
+            --name release-metadata --dir .
+
+      - name: Load release-metadata
+        if: steps.has-release-metadata.outputs.present == 'true'
+        id: release-metadata
+        run: |
+          set -euo pipefail
+          version="$(jq -r '.version' release-metadata/release-metadata.json)"
+          ref="$(jq -r '.ref' release-metadata/release-metadata.json)"
+          kind="$(jq -r '.kind' release-metadata/release-metadata.json)"
+          if [[ ! "$ref" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "ref must be a full 40-char commit SHA, got: ${ref}" >&2
+            exit 1
+          fi
+          if [[ ! "$version" =~ ^[0-9A-Za-z_.+!-]+$ ]]; then
+            echo "unexpected version string: ${version}" >&2
+            exit 1
+          fi
+          {
+            echo "version=${version}"
+            echo "ref=${ref}"
+            echo "kind=${kind}"
+          } >> "$GITHUB_OUTPUT"
+          echo "Verifying holidays==${version} (${kind}) at ref ${ref}"
+
+      - name: Check out repository
+        if: steps.has-release-metadata.outputs.present == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ steps.release-metadata.outputs.ref }}
+          repository: ${{ github.repository }}
+
+      - name: Install uv
+        if: steps.has-release-metadata.outputs.present == 'true'
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          version-file: uv.lock
+
+      - name: Install Python
+        if: steps.has-release-metadata.outputs.present == 'true'
+        run: uv python install "$UV_PYTHON"
+
+      - name: Install published package from PyPI
+        if: steps.has-release-metadata.outputs.present == 'true'
+        env:
+          VERSION: ${{ steps.release-metadata.outputs.version }}
+        run: |
+          set -euo pipefail
+          rm -rf holidays
+          for attempt in $(seq 1 30); do
+            if uv run --isolated --no-build --no-project --with "holidays==${VERSION}" -- \
+              python -c "import holidays; assert holidays.__version__ == '${VERSION}', holidays.__version__; print(holidays.__version__, holidays.__file__)"; then
+              echo "Installed holidays==${VERSION} on attempt ${attempt}"
+              break
+            fi
+            if [[ "$attempt" -eq 30 ]]; then
+              echo "Timed out waiting for holidays==${VERSION} on PyPI" >&2
+              exit 1
+            fi
+            sleep 20
+          done
+
+      - name: Generate snapshots from installed package
+        if: steps.has-release-metadata.outputs.present == 'true'
+        env:
+          HOLIDAYS_SNAPSHOT_USE_INSTALLED: "1"
+          VERSION: ${{ steps.release-metadata.outputs.version }}
+        run: |
+          uv run --isolated --no-build --no-project --with "holidays==${VERSION}" -- \
+            python scripts/generate_snapshots.py
+
+      - name: Compare snapshots to committed tree
+        if: steps.has-release-metadata.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          git add --intent-to-add -- snapshots/
+          if ! git diff --exit-code -- snapshots/; then
+            echo "::error::PyPI package snapshots differ from committed snapshots/"
+            git --no-pager status --short -- snapshots/
+            git --no-pager diff --stat -- snapshots/
+            exit 1
+          fi
+          echo "Snapshots match committed tree for holidays==${{ steps.release-metadata.outputs.version }}"
