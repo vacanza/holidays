@@ -1,0 +1,147 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# North Macedonia holidays sq localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-21 21:28+0530\n"
+"PO-Revision-Date: 2026-11-22 09:44+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: mk\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (проценето)"
+msgstr "%s (e vlerësuar)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (неработен ден)"
+msgstr "%s (ditë pushimi e shtyrë)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (неработен ден, проценето)"
+msgstr "%s (ditë pushimi e shtyrë, e vlerësuar)"
+
+#. New Year's Day.
+msgid "Нова Година"
+msgstr "Viti i Ri"
+
+#. Christmas Day.
+msgid "Божиќ"
+msgstr "Krishtlindjet"
+
+#. Easter Monday.
+msgid "Велигден"
+msgstr "E hëna e Pashkëve"
+
+#. Labor Day.
+msgid "Ден на трудот"
+msgstr "Dita e Punës"
+
+#. Saints Cyril and Methodius Day.
+msgid "Светите Кирил и Методиј - Ден на сесловенските просветители"
+msgstr "Dita e Shën Kirilit dhe Metodit, iluministëve gjithësllavë"
+
+#. Republic Day.
+msgid "Ден на Републиката"
+msgstr "Dita e Republikës"
+
+#. Independence Day.
+msgid "Ден на независноста"
+msgstr "Dita e Pavarësisë"
+
+#. National Uprising Day.
+msgid "Ден на народното востание"
+msgstr "Dita e Kryengritjes Popullore"
+
+#. Macedonian Revolutionary Struggle Day.
+msgid "Ден на македонската револуционерна борба"
+msgstr "Dita e Luftës Revolucionare Maqedonase"
+
+#. Saint Clement of Ohrid Day.
+msgid "Свети Климент Охридски"
+msgstr "Dita e Shën Klementit të Ohrit"
+
+#. Eid al-Fitr.
+msgid "Рамазан Бајрам"
+msgstr "Ramazan Bajrami"
+
+#. Albanian Alphabet Day.
+msgid "Ден на Албанската азбука"
+msgstr "Dita e Alfabetit Shqip"
+
+#. International Bosniaks Day.
+msgid "Меѓународен ден на Бошњаците"
+msgstr "Dita Ndërkombëtare e Boshnjakëve"
+
+#. All Saints' Day.
+msgid "Сите Светци"
+msgstr "Dita e të Gjithë Shenjtorëve"
+
+#. Yom Kippur.
+msgid "Јом Кипур"
+msgstr "Jom Kipur"
+
+#. Eid al-Adha.
+msgid "Курбан Бајрам"
+msgstr "Kurban Bajrami"
+
+#. Christmas Eve.
+msgid "Бадник"
+msgstr "Nata e Krishtlindjes"
+
+#. Epiphany.
+msgid "Богојавление"
+msgstr "Ujët e Bekuar"
+
+#. Good Friday.
+msgid "Велики Петок"
+msgstr "E Premtja e Madhe"
+
+#. Dormition of the Mother of God.
+msgid "Успение на Пресвета Богородица"
+msgstr "Fjetja e Shën Mërisë"
+
+#. Pentecost.
+msgid "Духовден"
+msgstr "Rrëshajët"
+
+#. International Romani Day.
+msgid "Меѓународен ден на Ромите"
+msgstr "Dita Ndërkombëtare e Romëve"
+
+#. Saint Sava's Day.
+msgid "Свети Сава"
+msgstr "Dita e Shën Savës"
+
+#. Turkish Language Teaching Day.
+msgid "Ден на настава на турски јазик"
+msgstr "Dita e Mësimit në Gjuhën Turke"
+
+#. Vlachs National Day.
+msgid "Национален ден на Власите"
+msgstr "Dita Kombëtare e Vllehëve"
+
+#. Election Day.
+msgid "Ден на изборите"
+msgstr "Dita e Zgjedhjeve"

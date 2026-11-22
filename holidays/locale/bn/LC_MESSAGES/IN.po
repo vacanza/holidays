@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"PO-Revision-Date: 2026-11-15 18:09+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: bn\n"
@@ -184,9 +184,9 @@ msgstr "উগাদি"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "মেশাদি (তামিল নববর্ষের দিন)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "বহাগ বিহু"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "বোহাগ বিহু"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -644,6 +644,10 @@ msgstr "করম পূজা"
 msgid "Majdoor Diwas"
 msgstr "শ্রমিক দিবস"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "হুল দিবস"
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr "কর্ণাটক রাজ্যোৎসব"
@@ -743,6 +747,10 @@ msgstr "খোংজোম দিবস"
 #. Patriot's Day.
 msgid "Patriot's Day"
 msgstr "দেশপ্রেমিক দিবস"
+
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "নুপি-লাল"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
