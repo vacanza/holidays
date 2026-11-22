@@ -1574,7 +1574,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td></td>
 </tr>
 <tr>
@@ -2161,7 +2161,7 @@ code when available. The following financial markets are available:
 <td>Singapore Exchange</td>
 <td>XSES</td>
 <td>Singapore Exchange (SGX) market holidays</td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
