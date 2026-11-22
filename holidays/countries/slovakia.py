@@ -21,10 +21,7 @@ from holidays.calendars.gregorian import (
     NOV,
     DEC,
     MON,
-    TUE,
-    THU,
     FRI,
-    SUN,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
     _timedelta,
@@ -287,14 +284,17 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             self._add_holiday_nov_6(autumn_break_name)
             self._add_holiday_nov_9(autumn_break_name)
         else:
-            autumn_start_day, autumn_days = {
-                MON: (28, 2),
-                TUE: (28, 4),
-                THU: (31, 3),
-                SUN: (29, 2),
-            }.get(date(self._year, NOV, 1).weekday(), (30, 2))
+            nov_1 = date(self._year, NOV, 1)
+            if self._is_thursday(nov_1):
+                # Wed and Fri around All Saints' Day.
+                first_day = _timedelta(nov_1, -1)
+                last_day = _timedelta(nov_1, +1)
+            else:
+                # The two working days right before All Saints' Day.
+                first_day = self.get_nth_working_day(nov_1, -2)
+                last_day = self.get_nth_working_day(nov_1, -1)
             self._add_multiday_holiday(
-                date(self._year, OCT, autumn_start_day), autumn_days, name=autumn_break_name
+                first_day, (last_day - first_day).days + 1, name=autumn_break_name
             )
 
 
