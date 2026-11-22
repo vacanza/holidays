@@ -40,7 +40,6 @@ class WarsawStockExchange(Poland):
     subdivisions = ()  # type: ignore[assignment]
     subdivisions_aliases = {}  # type: ignore[assignment]
     supported_categories = (PUBLIC,)  # type: ignore[assignment]
-    supported_languages = ("en_US", "pl", "uk")  # type: ignore[assignment]
     start_year = 2011
 
     def __init__(self, *args, **kwargs):

@@ -464,8 +464,8 @@ class India(
         # Meshadi (Tamil New Year's Day).
         self._add_puthandu(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Vaisakhadi.
         self._add_vaisakhadi(tr("Vaisakhadi"))
@@ -630,8 +630,8 @@ class India(
 
         # Hindu holidays.
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Mahashtami.
         self._add_maha_ashtami(tr("Mahashtami"))
@@ -653,8 +653,8 @@ class India(
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
 
-        # Bahag Bihu.
-        name = tr("Bahag Bihu")
+        # Bohag Bihu.
+        name = tr("Bohag Bihu")
         self._add_vaisakhadi_eve(name)
         self._add_vaisakhadi(name)
         self._add_vaisakhadi_day_two(name)
@@ -1138,6 +1138,9 @@ class India(
         # Labor Day.
         self._add_labor_day(tr("Majdoor Diwas"))
 
+        # Hul Diwas.
+        self._add_holiday_jun_30(tr("Hul Diwas"))
+
         # Hindu holidays.
 
         # Makar Sankranti.
@@ -1424,6 +1427,9 @@ class India(
 
         # Kut.
         self._add_holiday_nov_1(tr("Kut"))
+
+        # Nupi-Lal.
+        self._add_holiday_dec_12(tr("Nupi-Lal"))
 
         # Hindu Holidays.
 
