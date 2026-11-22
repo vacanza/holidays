@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-28 17:22+0530\n"
-"PO-Revision-Date: 2026-10-17 08:36+0530\n"
-"Last-Translator: Ankush Kapoor <work.ankushkapoor1626@gmail.com>\n"
+"PO-Revision-Date: 2026-11-19 11:08+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
@@ -184,9 +184,9 @@ msgstr "ਉਗਾਦੀ"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "ਮੇਸ਼ਾਦੀ (ਤਾਮਿਲ ਨਵੇਂ ਸਾਲ ਦਾ ਦਿਨ)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "ਬਹਾਗ ਬਿਹੂ"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "ਬੋਹਾਗ ਬਿਹੂ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -284,6 +284,10 @@ msgstr "ਹਜ਼ਰਤ ਅਲੀ ਦਾ ਜਨਮਦਿਨ"
 msgid "Jamat-Ul-Vida"
 msgstr "ਜਮਾਤ-ਉਲ-ਵਿਦਾ"
 
+#. Statehood Day.
+msgid "Statehood Day"
+msgstr "ਰਾਜ ਸਥਾਪਨਾ ਦਿਵਸ"
+
 #. First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose.
 msgid "First Flag Hoisting of Independent India by Netaji Subhas Chandra Bose"
 msgstr "ਨੇਤਾਜੀ ਸੁਭਾਸ਼ ਚੰਦਰ ਬੋਸ ਵੱਲੋਂ ਆਜ਼ਾਦ ਭਾਰਤ ਦਾ ਪਹਿਲਾ ਝੰਡਾ ਲਹਿਰਾਉਣਾ"
@@ -319,10 +323,6 @@ msgstr "ਸ਼ਬ-ਏ-ਮਿਰਾਜ਼"
 #. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
 msgstr "ਈਦ-ਏ-ਗਦੀਰ"
-
-#. Statehood Day.
-msgid "Statehood Day"
-msgstr "ਰਾਜ ਸਥਾਪਨਾ ਦਿਵਸ"
 
 #. Indigenous Faith Day.
 msgid "Indigenous Faith Day"
@@ -644,6 +644,14 @@ msgstr "ਕਰਮਾ ਪੂਜਾ"
 msgid "Majdoor Diwas"
 msgstr "ਮਜ਼ਦੂਰ ਦਿਵਸ"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "ਹੁਲ ਦਿਵਸ"
+
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "ਕਰਨਾਟਕ ਰਾਜਯੋਤਸਵ"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "ਪਵਿੱਤਰ ਸ਼ਨੀਚਰਵਾਰ"
@@ -652,13 +660,25 @@ msgstr "ਪਵਿੱਤਰ ਸ਼ਨੀਚਰਵਾਰ"
 msgid "Mannam's Jayanti"
 msgstr "ਮੰਨਮ ਜਯੰਤੀ"
 
+#. Ayyankali's Birthday.
+msgid "Ayyankali's Jayanti"
+msgstr "ਅਯੰਕਾਲੀ ਜਯੰਤੀ"
+
 #. Shri Narayana Guru's Death Anniversary.
 msgid "Shri Narayana Guru's Death Anniversary"
 msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਦੀ ਬਰਸੀ"
 
+#. Karkadaka Vavu.
+msgid "Karkadaka Vavu"
+msgstr "ਕਰਕਟਕ ਵਾਵੂ"
+
 #. Onam (Day 2).
 msgid "Onam (Day 2)"
 msgstr "ਓਣਮ (ਦੂਜਾ ਦਿਨ)"
+
+#. Onam (Day 1).
+msgid "Onam (Day 1)"
+msgstr "ਓਣਮ (ਪਹਿਲਾ ਦਿਨ)"
 
 #. Onam (Day 3).
 msgid "Onam (Day 3)"
@@ -667,6 +687,10 @@ msgstr "ਓਣਮ (ਤੀਜਾ ਦਿਨ)"
 #. Onam (Day 4).
 msgid "Onam (Day 4)"
 msgstr "ਓਣਮ (ਚੌਥਾ ਦਿਨ)"
+
+#. Shri Narayana Guru's Birthday.
+msgid "Shri Narayana Guru's Jayanti"
+msgstr "ਸ੍ਰੀ ਨਾਰਾਇਣ ਗੁਰੂ ਜਯੰਤੀ"
 
 #. Vijayadashami.
 msgid "Vijayadashami"
@@ -723,6 +747,10 @@ msgstr "ਖੋਂਗਜੋਮ ਦਿਵਸ"
 #. Patriot's Day.
 msgid "Patriot's Day"
 msgstr "ਦੇਸ਼ਭਗਤ ਦਿਵਸ"
+
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "ਨੂਪੀ-ਲਾਲ"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
@@ -783,6 +811,10 @@ msgstr "ਨਵੇਂ ਸਾਲ ਤੋਂ ਬਾਅਦ ਦਾ ਦਿਨ"
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "ਮਿਸ਼ਨਰੀ ਦਿਵਸ"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "ਚਾਪਚਰ ਕੁਟ"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
@@ -1043,3 +1075,7 @@ msgstr "ਸ੍ਰੀ ਪੰਚਮੀ"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "ਜਨਮਾਸ਼ਟਮੀ (ਸਮਾਰਤ)"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "ਕੇਰਲ ਵਿਧਾਨ ਸਭਾ ਚੋਣ ਦਿਵਸ"
