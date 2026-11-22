@@ -94,7 +94,7 @@ class NorthMacedonia(
         TURKISH,
         VLACH,
     )
-    supported_languages = ("en_US", "mk", "uk")
+    supported_languages = ("en_US", "mk", "sq", "uk")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

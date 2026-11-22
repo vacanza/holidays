@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
 
 
@@ -25,6 +26,8 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     """
 
     market = "IFEU"
+    default_language = "en_GB"
+    supported_languages = ("en_GB", "en_US", "th", "ur_PK")
     start_year = 2014
 
     def __init__(self, *args, **kwargs):
@@ -34,11 +37,14 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._move_holiday(self._add_new_years_day("New Year's Day"))
+        # New Year's Day.
+        self._move_holiday(self._add_new_years_day(tr("New Year's Day")))
 
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        self._move_holiday(self._add_christmas_day("Christmas Day"))
+        # Christmas Day.
+        self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
 
 class ICEFuturesEurope(IceFuturesEurope):
