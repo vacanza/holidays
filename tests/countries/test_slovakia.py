@@ -430,14 +430,17 @@ class TestSlovakia(CommonCountryTests, TestCase):
             )
             self.assertHolidayName(name, holidays, range(2014, self.end_year))
             for year in range(2014, self.end_year):
-                if year in {2014, 2016, 2022}:
-                    days = 66
-                elif year in {2015, 2020, 2021}:
-                    days = 63
-                elif year in {2026, 2027, 2032, 2033, 2037, 2038, 2039, 2043, 2044, 2048, 2049}:
-                    days = 62
-                else:
-                    days = 65
+                match year:
+                    case 2014 | 2016 | 2022:
+                        days = 66
+                    case 2015 | 2020 | 2021:
+                        days = 63
+                    case (
+                        2026 | 2027 | 2032 | 2033 | 2037 | 2038 | 2039 | 2043 | 2044 | 2048 | 2049
+                    ):
+                        days = 62
+                    case _:
+                        days = 65
                 self.assertHolidayNameCount(name, days, holidays, year)
 
     def test_school_autumn_break(self):
@@ -490,16 +493,14 @@ class TestSlovakia(CommonCountryTests, TestCase):
             )
             self.assertHolidayName(name, holidays, range(2014, self.end_year))
             for year in range(2014, self.end_year):
-                self.assertHolidayNameCount(
-                    name,
-                    4
-                    if year in {2016, 2020, 2022, 2033, 2039, 2044}
-                    else 3
-                    if year in {2018, 2029, 2035, 2040, 2046}
-                    else 2,
-                    holidays,
-                    year,
-                )
+                match year:
+                    case 2016 | 2020 | 2022 | 2033 | 2039 | 2044:
+                        days = 4
+                    case 2018 | 2029 | 2035 | 2040 | 2046:
+                        days = 3
+                    case _:
+                        days = 2
+                self.assertHolidayNameCount(name, days, holidays, year)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
