@@ -58,9 +58,11 @@ jobs:
           version="$(jq -r '.version' release-metadata/release-metadata.json)"
           ref="$(jq -r '.ref' release-metadata/release-metadata.json)"
           kind="$(jq -r '.kind' release-metadata/release-metadata.json)"
-          echo "version=${version}" >> "$GITHUB_OUTPUT"
-          echo "ref=${ref}" >> "$GITHUB_OUTPUT"
-          echo "kind=${kind}" >> "$GITHUB_OUTPUT"
+          {
+            echo "version=${version}"
+            echo "ref=${ref}"
+            echo "kind=${kind}"
+          } >> "$GITHUB_OUTPUT"
           echo "Verifying holidays==${version} (${kind}) at ref ${ref}"
 
       - name: Check out repository
