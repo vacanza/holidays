@@ -91,6 +91,7 @@ class TestHolidaysImports(TestCase):
         self.assertIn("version", dir(holidays))
         self.assertIn("version", holidays.__all__)
         self.assertNotIn("__version__", holidays.__all__)
+        self.assertNotIn("TYPE_CHECKING", dir(holidays))
 
         # `import *` exports every public name, as it did before `version` was lazy.
         namespace = {}
@@ -99,6 +100,7 @@ class TestHolidaysImports(TestCase):
         self.assertEqual(
             set(namespace), {name for name in dir(holidays) if not name.startswith("_")}
         )
+        self.assertNotIn("TYPE_CHECKING", namespace)
         self.assertIs(namespace["version"], importlib.import_module("holidays.version"))
         self.assertIs(namespace["Canada"], holidays.Canada)
 

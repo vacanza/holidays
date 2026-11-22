@@ -40,6 +40,8 @@ else:
 
         raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
+    del TYPE_CHECKING
+
 
 EntityLoader.load("countries", globals())
 EntityLoader.load("financial", globals())
