@@ -114,6 +114,9 @@ class India(
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
+            * <https://web.archive.org/web/20261121155730/https://mizoramassembly.in/storage/Assembly/Gazette/EO/GZEO7ISS_060.pdf>
+            * <https://web.archive.org/web/20261121155657/https://mizoramassembly.in/storage/Assembly/Proceedings/State/Fifth_Assembly/12th_Session/Mizo/2008/mi_pro13032008.pdf>
+            * <https://web.archive.org/web/20261121155703/https://mizoramassembly.in/storage/Assembly/Gazette/GN/GZGN39_ISS005.pdf>
             * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
@@ -464,8 +467,8 @@ class India(
         # Meshadi (Tamil New Year's Day).
         self._add_puthandu(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Vaisakhadi.
         self._add_vaisakhadi(tr("Vaisakhadi"))
@@ -630,8 +633,8 @@ class India(
 
         # Hindu holidays.
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Mahashtami.
         self._add_maha_ashtami(tr("Mahashtami"))
@@ -653,8 +656,8 @@ class India(
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
 
-        # Bahag Bihu.
-        name = tr("Bahag Bihu")
+        # Bohag Bihu.
+        name = tr("Bohag Bihu")
         self._add_vaisakhadi_eve(name)
         self._add_vaisakhadi(name)
         self._add_vaisakhadi_day_two(name)
@@ -1138,6 +1141,9 @@ class India(
         # Labor Day.
         self._add_labor_day(tr("Majdoor Diwas"))
 
+        # Hul Diwas.
+        self._add_holiday_jun_30(tr("Hul Diwas"))
+
         # Hindu holidays.
 
         # Makar Sankranti.
@@ -1425,6 +1431,9 @@ class India(
         # Kut.
         self._add_holiday_nov_1(tr("Kut"))
 
+        # Nupi-Lal.
+        self._add_holiday_dec_12(tr("Nupi-Lal"))
+
         # Hindu Holidays.
 
         # Holika Dahan.
@@ -1565,11 +1574,31 @@ class India(
 
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
         # Post New Year.
         self._add_new_years_day_two(tr("Post New Year"))
 
         # Missionary Day.
         self._add_holiday_jan_11(tr("Missionary Day"))
+
+        if self._year >= 1987:
+            # Statehood Day.
+            self._add_holiday_feb_20(tr("Statehood Day"))
+
+        chapchar_kut_dates = {
+            1979: (MAR, 9),
+            2008: (MAR, 14),
+            2010: (MAR, 11),
+            2026: (MAR, 13),
+        }
+        # Chapchar Kut.
+        name = tr("Chapchar Kut")
+        if dt := chapchar_kut_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_1st_fri_of_mar(name)
 
         # Young Mizo Association's Day.
         self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
@@ -1932,14 +1961,23 @@ class India(
 
         # Hindu holidays.
 
+        pongal_dates = {
+            2026: (JAN, 15),
+        }
         # Pongal.
-        self._add_pongal(tr("Pongal"))
+        name = tr("Pongal")
+        pongal_dt = (
+            self._add_holiday(name, dt)
+            if (dt := pongal_dates.get(self._year))
+            else self._add_pongal(name)
+        )
 
-        # Thiruvalluvar Day.
-        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
+        if pongal_dt:
+            # Thiruvalluvar Day.
+            self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
 
-        # Uzhavar Thirunal.
-        self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
+            # Uzhavar Thirunal.
+            self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
 
         # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
