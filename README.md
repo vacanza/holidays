@@ -2056,7 +2056,7 @@ code when available. The following financial markets are available:
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>

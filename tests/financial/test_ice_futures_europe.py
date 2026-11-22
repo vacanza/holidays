@@ -50,3 +50,34 @@ class TestIceFuturesEurope(CommonFinancialTests, TestCase):
             ("2024-03-29", "Good Friday"),
             ("2024-12-25", "Christmas Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-02", "New Year's Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-02", "New Year's Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-02", "วันขึ้นปีใหม่"),
+            ("2023-04-07", "วันศุกร์ประเสริฐ"),
+            ("2023-12-25", "วันคริสต์มาส"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2023-01-02", "نئے سال کا دن"),
+            ("2023-04-07", "گڈ فرائیڈے"),
+            ("2023-12-25", "کرسمس کا دن"),
+        )
