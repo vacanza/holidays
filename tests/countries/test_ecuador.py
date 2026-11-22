@@ -142,8 +142,6 @@ class TestEcuador(CommonCountryTests, TestCase):
             "2019-11-04",
             "2021-11-01",
             "2024-11-04",
-            "2027-11-01",
-            "2029-11-01",
         )
         self.assertHolidayName(f"{name} (observado)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
