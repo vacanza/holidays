@@ -39,6 +39,7 @@ repos:
         args:
           - --fix
         files: \.md$
+        language_version: lts
 
   - repo: https://github.com/lucas-c/pre-commit-hooks
     rev: ad1b27d73581aa16cca06fc4a0761fc563ffe8e8  # v1.5.6
