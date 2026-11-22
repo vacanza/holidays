@@ -59,7 +59,8 @@ pip install --upgrade --pre holidays
 ```
 
 All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
-then released from `main` on official version upgrades.
+then released from `main` on official version upgrades. We normally follow a release
+schedule, typically on the **1st and 3rd Tuesday of each month**.
 
 On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
 Pre-release publishes append a UTC timestamp in CI only
@@ -523,7 +524,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Comoros</td>
 <td>KM</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1251,7 +1252,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, hi, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, mr, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1971,7 +1972,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Argentinos</td>
 <td>XBUE</td>
 <td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
@@ -1985,14 +1986,14 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>Borsa Istanbul</td>
 <td>XIST</td>
 <td>Borsa Istanbul (BIST) market holidays</td>
-<td>en_US, <strong>tr</strong></td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2006,8 +2007,15 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Dubai Financial Market</td>
+<td>XDFM</td>
+<td>Dubai Financial Market (DFM) holidays</td>
+<td><strong>ar</strong>, en_US, ur_PK</td>
+<td></td>
 </tr>
 <tr>
 <td>Euronext</td>
@@ -2020,7 +2028,7 @@ code when available. The following financial markets are available:
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td></td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -2083,21 +2091,21 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2112,6 +2120,13 @@ code when available. The following financial markets are available:
 <td>XKAR</td>
 <td>Pakistan Stock Exchange (PSX) market holidays</td>
 <td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Qatar Stock Exchange</td>
+<td>DSMD</td>
+<td>Qatar Stock Exchange (QSE) holidays</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2181,7 +2196,7 @@ code when available. The following financial markets are available:
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
-<td>en_US, <strong>pl</strong>, uk</td>
+<td>de, en_US, <strong>pl</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>
