@@ -100,6 +100,7 @@ class India(
         * Kerala:
             * <https://web.archive.org/web/20260329164551/https://kerala.gov.in/showcalendar/2026>
             * <https://web.archive.org/web/20260827190400/https://only30sec.com/wp-content/uploads/2025/11/Kerala-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * <https://web.archive.org/web/20260506024417/https://www.ceo.kerala.gov.in/ceokerala/pdf/govt_orders/legislative-assembly-2026/government-orders/paid-holiday.pdf>
         * Ladakh:
             * <https://web.archive.org/web/20260627104706/https://www.veerayeehr.com/wp-content/uploads/2025/12/Ladakh-state-list-of-holidays-2026.pdf>
         * Lakshadweep:
@@ -463,8 +464,8 @@ class India(
         # Meshadi (Tamil New Year's Day).
         self._add_puthandu(tr("Meshadi (Tamil New Year's Day)"))
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Vaisakhadi.
         self._add_vaisakhadi(tr("Vaisakhadi"))
@@ -629,8 +630,8 @@ class India(
 
         # Hindu holidays.
 
-        # Bahag Bihu.
-        self._add_vaisakhadi(tr("Bahag Bihu"))
+        # Bohag Bihu.
+        self._add_vaisakhadi(tr("Bohag Bihu"))
 
         # Mahashtami.
         self._add_maha_ashtami(tr("Mahashtami"))
@@ -652,8 +653,8 @@ class India(
         # Magh Bihu.
         self._add_pongal(tr("Magh Bihu"))
 
-        # Bahag Bihu.
-        name = tr("Bahag Bihu")
+        # Bohag Bihu.
+        name = tr("Bohag Bihu")
         self._add_vaisakhadi_eve(name)
         self._add_vaisakhadi(name)
         self._add_vaisakhadi_day_two(name)
@@ -1137,6 +1138,9 @@ class India(
         # Labor Day.
         self._add_labor_day(tr("Majdoor Diwas"))
 
+        # Hul Diwas.
+        self._add_holiday_jun_30(tr("Hul Diwas"))
+
         # Hindu holidays.
 
         # Makar Sankranti.
@@ -1158,6 +1162,10 @@ class India(
     def _populate_subdiv_ka_public_holidays(self):
         # May Day.
         self._add_labor_day(tr("May Day"))
+
+        if self._year >= 1956:
+            # Karnataka Rajyotsava.
+            self._add_holiday_nov_1(tr("Karnataka Rajyotsava"))
 
         # Hindu holidays.
 
@@ -1202,6 +1210,9 @@ class India(
         # May Day.
         self._add_labor_day(tr("May Day"))
 
+        # Ayyankali's Birthday.
+        self._add_holiday_aug_28(tr("Ayyankali's Jayanti"))
+
         # Shri Narayana Guru's Death Anniversary.
         self._add_holiday_sep_21(tr("Shri Narayana Guru's Death Anniversary"))
 
@@ -1210,26 +1221,40 @@ class India(
         # Vishu.
         self._add_vishu(tr("Vishu"))
 
-        # Onam.
-        name = tr("Onam")
-        onam_dates = {
-            2026: (AUG, 25),
+        karkadaka_vavu_dates = {
+            2024: (AUG, 3),
         }
-        onam_dt = (
+        # Karkadaka Vavu.
+        name = tr("Karkadaka Vavu")
+        if dt := karkadaka_vavu_dates.get(self._year):
             self._add_holiday(name, dt)
-            if (dt := onam_dates.get(self._year))
-            else self._add_onam(name)
-        )
+        else:
+            self._add_hariyali_amavasya(name)
 
-        if onam_dt:
-            # Onam (Day 2).
-            self._add_holiday(tr("Onam (Day 2)"), _timedelta(onam_dt, +1))
+        # Onam (Day 2).
+        name = tr("Onam (Day 2)")
+        if thiruvonam_dt := self._add_onam(name):
+            # Onam (Day 1).
+            self._add_holiday(tr("Onam (Day 1)"), _timedelta(thiruvonam_dt, -1))
 
             # Onam (Day 3).
-            self._add_holiday(tr("Onam (Day 3)"), _timedelta(onam_dt, +2))
+            self._add_holiday(tr("Onam (Day 3)"), _timedelta(thiruvonam_dt, +1))
 
             # Onam (Day 4).
-            self._add_holiday(tr("Onam (Day 4)"), _timedelta(onam_dt, +3))
+            self._add_holiday(tr("Onam (Day 4)"), _timedelta(thiruvonam_dt, +2))
+
+        narayana_guru_jayanthi_dates = {
+            2013: (AUG, 22),
+            2014: (SEP, 8),
+            2024: (AUG, 20),
+            2027: (SEP, 15),
+        }
+        # Shri Narayana Guru's Birthday.
+        name = tr("Shri Narayana Guru's Jayanti")
+        if dt := narayana_guru_jayanthi_dates.get(self._year):
+            self._add_holiday(name, dt)
+        elif thiruvonam_dt:
+            self._add_holiday(name, _timedelta(thiruvonam_dt, +2))
 
         mahanavami_dates = {
             2026: (OCT, 20),
@@ -1402,6 +1427,9 @@ class India(
 
         # Kut.
         self._add_holiday_nov_1(tr("Kut"))
+
+        # Nupi-Lal.
+        self._add_holiday_dec_12(tr("Nupi-Lal"))
 
         # Hindu Holidays.
 
@@ -1672,11 +1700,11 @@ class India(
             # Vishu (Day 2).
             self._add_holiday(tr("Vishu (Day 2)"), _timedelta(vishu_dt, +1))
 
-        # Onam.
-        self._add_onam(tr("Onam"))
-
         # Onam (Day 2).
-        self._add_onam_day_two(tr("Onam (Day 2)"))
+        name = tr("Onam (Day 2)")
+        if thiruvonam_dt := self._add_onam(name):
+            # Onam (Day 1).
+            self._add_holiday(tr("Onam (Day 1)"), _timedelta(thiruvonam_dt, -1))
 
         # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
@@ -1910,14 +1938,23 @@ class India(
 
         # Hindu holidays.
 
+        pongal_dates = {
+            2026: (JAN, 15),
+        }
         # Pongal.
-        self._add_pongal(tr("Pongal"))
+        name = tr("Pongal")
+        pongal_dt = (
+            self._add_holiday(name, dt)
+            if (dt := pongal_dates.get(self._year))
+            else self._add_pongal(name)
+        )
 
-        # Thiruvalluvar Day.
-        self._add_thiruvalluvar_day(tr("Thiruvalluvar Day"))
+        if pongal_dt:
+            # Thiruvalluvar Day.
+            self._add_holiday(tr("Thiruvalluvar Day"), _timedelta(pongal_dt, +1))
 
-        # Uzhavar Thirunal.
-        self._add_uzhavar_thirunal(tr("Uzhavar Thirunal"))
+            # Uzhavar Thirunal.
+            self._add_holiday(tr("Uzhavar Thirunal"), _timedelta(pongal_dt, +2))
 
         # Tamil New Year.
         self._add_puthandu(tr("Puthandu"))
@@ -2271,6 +2308,11 @@ class IndiaStaticHolidays:
 
     special_dh_public_holidays = {
         2023: (JAN, 14, name_magh_bihu),
+    }
+
+    special_kl_public_holidays = {
+        # Kerala Assembly Election Day.
+        2026: (APR, 9, tr("Kerala Assembly Election Day")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

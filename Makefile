@@ -77,7 +77,7 @@ sbom:
 	tools_env="$$(mktemp -d)"; \
 	sbom_env="$$(mktemp -d)"; \
 	trap 'rm -rf "$$tools_env" "$$sbom_env"' EXIT; \
-	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) sync --frozen --no-default-groups --only-group ci --no-install-project --no-build >/dev/null; \
+	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV) sync --frozen --no-build --no-default-groups --no-install-project --only-group ci >/dev/null; \
 	$(UV) venv "$$sbom_env" >/dev/null; \
 	$(UV) pip install --python "$$sbom_env" "$$wheel" >/dev/null; \
 	UV_PROJECT_ENVIRONMENT="$$tools_env" $(UV_RUN_CMD) -- cyclonedx-py environment "$$sbom_env"
@@ -89,8 +89,8 @@ setup:
 		exit 1; \
 	}
 	# Bootstrap with PATH uv, then switch to the lockfile-pinned uv in .venv.
-	uv venv --clear --python 3.14
-	uv sync --frozen --only-group ci --no-install-project
+	uv venv --clear --python 3.15
+	uv sync --frozen --no-install-project --only-group ci
 	.venv/bin/uv sync --all-groups
 	.venv/bin/uv run --no-sync pre-commit install --hook-type pre-commit \
 		|| echo "warning: could not install pre-commit hooks (check git core.hooksPath)" >&2

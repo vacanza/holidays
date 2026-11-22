@@ -52,7 +52,7 @@ hide:
           </template>
         </select>
       </div>
-      
+
       <div class="control-group" style="margin-bottom: 0;">
         <label for="selected-category">Category</label>
         <select id="selected-category" class="control-input" x-model="selectedCategory" @change="updatePreview()" :title="formatLabel(selectedCategory)">

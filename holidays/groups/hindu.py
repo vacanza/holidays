@@ -838,14 +838,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         """
         return self._add_hindu_calendar_holiday(name, self._hindu_calendar.onam_date(self._year))
 
-    def _add_onam_day_two(self, name) -> date | None:
-        """
-        Add Onam Day Two which is celebrated the day after Onam.
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.onam_date(self._year), days_delta=+1
-        )
-
     def _add_papankusha_ekadashi(self, name) -> date | None:
         """
         Add Papankusha Ekadashi.
@@ -1121,22 +1113,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.thaipusam_date(self._year)
         )
 
-    def _add_thiruvalluvar_day(self, name) -> date | None:
-        """
-        Add Thiruvalluvar Day and Mattu Pongal.
-
-        Thiruvalluvar Day and Mattu Pongal are celebrated in Tamil Nadu, India, as part
-        of the Pongal festival. Thiruvalluvar Day honors the classical Tamil poet and
-        philosopher Thiruvalluvar, while Mattu Pongal is dedicated to cattle, recognizing
-        their importance in agriculture. Both events usually fall on January 15th or 16th
-        each year during the Tamil month of Thai.
-        https://en.wikipedia.org/wiki/Thiruvalluvar_Day
-        https://en.wikipedia.org/wiki/Pongal_(festival)#Mattu_Pongal
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=+1
-        )
-
     def _add_tulsidas_jayanti(self, name) -> date | None:
         """
         Add Tulsidas Jayanti.
@@ -1152,20 +1128,6 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name,
             self._hindu_calendar.tulsidas_jayanti_date(self._year),
-        )
-
-    def _add_uzhavar_thirunal(self, name) -> date | None:
-        """
-        Add Uzhavar Thirunal.
-
-        Uzhavar Thirunal is a harvest festival celebrated in Tamil Nadu, India,
-        as part of the Pongal festivities. It is dedicated to honoring farmers
-        (uzhavar) and their contribution to agriculture. Uzhavar Thirunal usually
-        falls on January 16th or 17th each year.
-        https://en.wikipedia.org/wiki/Pongal_(festival)#Uzhavar_Thirunal
-        """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.pongal_date(self._year), days_delta=+2
         )
 
     def _add_vaisakhi(self, name) -> date | None:

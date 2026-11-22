@@ -166,19 +166,19 @@ class TestNamibia(CommonCountryTests, TestCase):
         name_1991 = "International Human Rights Day"
         name_2005 = "Day of the Namibian Women and International Human Rights Day"
         self.assertHolidayName(
-            name_1991, (f"{year}-09-10" for year in range(self.start_year, 2005))
+            name_1991, (f"{year}-12-10" for year in range(self.start_year, 2005))
         )
-        self.assertHolidayName(name_2005, (f"{year}-09-10" for year in range(2005, self.end_year)))
+        self.assertHolidayName(name_2005, (f"{year}-12-10" for year in range(2005, self.end_year)))
         self.assertNoHolidayName(name_1991, range(2005, self.end_year))
         self.assertNoHolidayName(name_2005, range(self.start_year, 2005))
         obs_dts_1991 = (
-            "1995-09-11",
-            "2000-09-11",
+            "1995-12-11",
+            "2000-12-11",
         )
         obs_dts_2005 = (
-            "2006-09-11",
-            "2017-09-11",
-            "2023-09-11",
+            "2006-12-11",
+            "2017-12-11",
+            "2023-12-11",
         )
         self.assertHolidayName(f"{name_1991} (observed)", obs_dts_1991)
         self.assertHolidayName(f"{name_2005} (observed)", obs_dts_2005)
@@ -213,8 +213,8 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2024-05-09", "Ascension Day"),
             ("2024-05-25", "Africa Day"),
             ("2024-08-26", "Heroes' Day"),
-            ("2024-09-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2024-11-27", "General Election Day"),
+            ("2024-12-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Family Day"),
         )
@@ -234,8 +234,8 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-28", "Genocide Remembrance Day"),
             ("2025-05-29", "Ascension Day"),
             ("2025-08-26", "Heroes' Day"),
-            ("2025-09-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2025-11-26", "Regional Election Day"),
+            ("2025-12-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Family Day"),
         )
@@ -256,8 +256,8 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-28", "Genocide Remembrance Day"),
             ("2025-05-29", "Ascension Day"),
             ("2025-08-26", "Heroes' Day"),
-            ("2025-09-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2025-11-26", "Regional Election Day"),
+            ("2025-12-10", "Day of the Namibian Women and International Human Rights Day"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Family Day"),
         )
@@ -278,8 +278,8 @@ class TestNamibia(CommonCountryTests, TestCase):
             ("2025-05-28", "День памʼяті жертв геноциду"),
             ("2025-05-29", "Вознесіння Господнє"),
             ("2025-08-26", "День Героїв"),
-            ("2025-09-10", "День намібійських жінок та Міжнародний день прав людини"),
             ("2025-11-26", "День місцевих виборів"),
+            ("2025-12-10", "День намібійських жінок та Міжнародний день прав людини"),
             ("2025-12-25", "Різдво Христове"),
             ("2025-12-26", "День родини"),
         )
