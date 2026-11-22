@@ -35,9 +35,9 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         * <https://web.archive.org/web/20250625132138/https://www.bcl.lu/en/About/Opening-days/index.html>
         * School holidays:
             * [Règlement grand-ducal du 31 juillet 1980](https://web.archive.org/web/20260406050409/https://legilux.public.lu/eli/etat/leg/rgd/1980/07/31/n1/jo)
-            * [Règlement grand-ducal du 18 novembre 2015](https://legilux.public.lu/eli/etat/leg/rgd/2015/11/18/n1/jo)
-            * [Règlement grand-ducal du 18 juillet 2025](https://legilux.public.lu/eli/etat/leg/rgd/2025/07/18/a330/jo)
-            * [Règlement grand-ducal du 3 juin 2026](https://legilux.public.lu/eli/etat/leg/rgd/2026/06/03/a281/jo)
+            * [Règlement grand-ducal du 18 novembre 2015](https://web.archive.org/web/20260318082303/https://legilux.public.lu/eli/etat/leg/rgd/2015/11/18/n1/jo)
+            * [Règlement grand-ducal du 18 juillet 2025](https://web.archive.org/web/20260519134242/https://legilux.public.lu/eli/etat/leg/rgd/2025/07/18/a330/jo)
+            * [Règlement grand-ducal du 3 juin 2026](https://web.archive.org/web/20260717114225/https://legilux.public.lu/eli/etat/leg/rgd/2026/06/03/a281/jo)
             * [Vacances et congés scolaires](https://web.archive.org/web/20260325100918/https://men.public.lu/fr/vacances-scolaires.html)
 
     School holidays are available from the 1980/81 school year.
