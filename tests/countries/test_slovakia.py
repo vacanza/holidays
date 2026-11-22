@@ -400,37 +400,45 @@ class TestSlovakia(CommonCountryTests, TestCase):
             self.assertHolidayName(
                 name,
                 holidays,
-                # Jun 30 is part of the break when it falls on a Monday.
-                "2014-06-30",
-                "2014-08-31",
-                "2024-07-01",
-                "2024-08-31",
+                "2014-06-28",
+                "2014-09-01",
+                "2016-07-01",
+                "2016-09-04",
+                "2024-06-29",
                 "2024-09-01",
-                "2025-06-30",
+                "2025-06-28",
                 "2025-08-31",
                 "2026-07-01",
                 "2026-08-31",
                 "2028-07-01",
-                "2028-09-01",
+                "2028-09-03",
             )
             self.assertNoHoliday(
                 holidays,
-                "2014-06-29",
-                "2024-06-30",
+                "2014-06-27",
+                "2014-09-02",
+                "2016-06-30",
+                "2016-09-05",
+                "2024-06-28",
                 "2024-09-02",
-                "2025-06-29",
+                "2025-06-27",
+                "2025-09-01",
                 "2026-06-30",
+                "2026-09-01",
                 "2028-06-30",
-                "2028-09-02",
+                "2028-09-04",
             )
             self.assertHolidayName(name, holidays, range(2014, self.end_year))
             for year in range(2014, self.end_year):
-                self.assertHolidayNameCount(
-                    name,
-                    63 if year in {2014, 2024, 2025, 2028, 2031, 2036, 2042} else 62,
-                    holidays,
-                    year,
-                )
+                if year in {2014, 2016, 2022}:
+                    days = 66
+                elif year in {2015, 2020, 2021}:
+                    days = 63
+                elif year in {2026, 2027, 2032, 2033, 2037, 2038, 2039, 2043, 2044, 2048, 2049}:
+                    days = 62
+                else:
+                    days = 65
+                self.assertHolidayNameCount(name, days, holidays, year)
 
     def test_school_autumn_break(self):
         name = "Jesenné prázdniny"
