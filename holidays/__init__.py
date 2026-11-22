@@ -23,20 +23,22 @@ if TYPE_CHECKING:  # Re-export for static analysis. Runtime names come from Enti
     from holidays.version import __version__  # noqa: F401
 else:
 
+    def __dir__() -> list[str]:
+        return sorted({*globals(), "__version__", "version"})
+
     def __getattr__(name: str):
+        if name == "__all__":
+            # No static `__all__`: `import *` exports the public names, and `version` too.
+            return sorted({*(attr for attr in globals() if not attr.startswith("_")), "version"})
+
         # `holidays.version` uses slow to import `importlib.metadata`: load it on demand.
         if name in {"__version__", "version"}:
             from importlib import import_module
 
             version = import_module("holidays.version")
             return version.__version__ if name == "__version__" else version
-        if name == "__all__":
-            # No static `__all__`: `import *` exports the public names, and `version` too.
-            return sorted({*(attr for attr in globals() if not attr.startswith("_")), "version"})
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
-    def __dir__() -> list[str]:
-        return sorted({*globals(), "__version__", "version"})
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 EntityLoader.load("countries", globals())

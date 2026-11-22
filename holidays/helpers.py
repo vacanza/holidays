@@ -15,49 +15,6 @@ from contextlib import AbstractContextManager, nullcontext
 from typing import Any
 
 
-def _normalize_arguments(cls, value):
-    """Normalize arguments.
-
-    :param cls:
-        A type of arguments to normalize.
-
-    :param value:
-        Either a single item or an iterable of `cls` type.
-
-    :return:
-        A set created from `value` argument.
-
-    """
-    if value is None:
-        return set()
-
-    if isinstance(value, str):
-        return {cls(value)}
-
-    try:
-        return {cls(v) for v in value}
-    except TypeError:  # non-iterable
-        return {cls(value)}
-
-
-def _normalize_tuple(value):
-    """Normalize tuple.
-
-    :param data:
-        Either a tuple or a tuple of tuples.
-
-    :return:
-        An unchanged object for tuple of tuples, e.g., ((JAN, 10), (DEC, 31)).
-        An object put into a tuple otherwise, e.g., ((JAN, 10),).
-    """
-    return value if not value or isinstance(value[0], tuple) else (value,)
-
-
-def tr(message: str) -> str:
-    """Mark a string for translation while returning it unchanged at runtime."""
-    return message
-
-
 def _load_lazily(
     scope: dict[str, Any],
     modules: dict[str, tuple[str, ...]],
@@ -101,3 +58,46 @@ def _load_lazily(
     scope["__all__"] = [name for name in (*modules, *name_modules) if not name.startswith("_")]
     scope["__dir__"] = list_attributes
     scope["__getattr__"] = load_attribute
+
+
+def _normalize_arguments(cls, value):
+    """Normalize arguments.
+
+    :param cls:
+        A type of arguments to normalize.
+
+    :param value:
+        Either a single item or an iterable of `cls` type.
+
+    :return:
+        A set created from `value` argument.
+
+    """
+    if value is None:
+        return set()
+
+    if isinstance(value, str):
+        return {cls(value)}
+
+    try:
+        return {cls(v) for v in value}
+    except TypeError:  # non-iterable
+        return {cls(value)}
+
+
+def _normalize_tuple(value):
+    """Normalize tuple.
+
+    :param data:
+        Either a tuple or a tuple of tuples.
+
+    :return:
+        An unchanged object for tuple of tuples, e.g., ((JAN, 10), (DEC, 31)).
+        An object put into a tuple otherwise, e.g., ((JAN, 10),).
+    """
+    return value if not value or isinstance(value[0], tuple) else (value,)
+
+
+def tr(message: str) -> str:
+    """Mark a string for translation while returning it unchanged at runtime."""
+    return message

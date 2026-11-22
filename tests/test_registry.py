@@ -28,6 +28,49 @@ from tests.common import PYTHON_LATEST_SUPPORTED_VERSION, PYTHON_VERSION
 
 
 class TestEntityLoader(TestCase):
+    @staticmethod
+    def lazy_load_modules(path: Path) -> dict[str, tuple[str, ...]]:
+        """Return the `modules` mapping passed to `_load_lazily` in a package `__init__`."""
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        for node in tree.body:
+            if not isinstance(node, ast.If):
+                continue
+            test = node.test
+            if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
+                continue
+            for statement in node.orelse:
+                if not isinstance(statement, ast.Expr) or not isinstance(
+                    statement.value, ast.Call
+                ):
+                    continue
+                call = statement.value
+                if not isinstance(call.func, ast.Name) or call.func.id != "_load_lazily":
+                    continue
+                if len(call.args) < 2:
+                    break
+                mapping = ast.literal_eval(call.args[1])
+                return {str(module): tuple(names) for module, names in mapping.items()}
+        raise AssertionError(f"No _load_lazily mapping found in {path}")
+
+    @staticmethod
+    def type_checking_imports(path: Path) -> set[tuple[str, str]]:
+        """Return `(module, name)` pairs from a package's `TYPE_CHECKING` import block."""
+        imported: set[tuple[str, str]] = set()
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        for node in tree.body:
+            if not isinstance(node, ast.If):
+                continue
+            test = node.test
+            if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
+                continue
+            for statement in node.body:
+                # Pair each name with its module so a wrong import path fails.
+                if isinstance(statement, ast.ImportFrom) and statement.module is not None:
+                    imported.update(
+                        (statement.module, alias.asname or alias.name) for alias in statement.names
+                    )
+        return imported
+
     @pytest.mark.skipif(
         PYTHON_VERSION != PYTHON_LATEST_SUPPORTED_VERSION,
         reason="Run once on the latest Python version only",
@@ -168,6 +211,112 @@ class TestEntityLoader(TestCase):
         ):
             self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
 
+    def test_type_checking_imports_match_lazy_maps(self):
+        # Calendars/groups have no registry: keep TYPE_CHECKING imports aligned with
+        # the runtime `_load_lazily` map. Empty-export modules (submodule access only)
+        # are runtime-only and must not appear in TYPE_CHECKING name imports.
+        for package in (calendars, groups):
+            path = Path(package.__file__)
+            imported = self.type_checking_imports(path)
+            lazy_modules = self.lazy_load_modules(path)
+            registered = {
+                (f"{package.__name__}.{module}", name)
+                for module, names in lazy_modules.items()
+                for name in names
+            }
+            module_only = {module for module, names in lazy_modules.items() if not names}
+
+            differences = []
+            if missing := sorted(registered - imported):
+                differences.append(f"missing {missing}")
+            if extra := sorted(imported - registered):
+                differences.append(f"extra {extra}")
+            if unexpected := sorted(
+                {
+                    module_path.rsplit(".", 1)[-1]
+                    for module_path, _name in imported
+                    if module_path.rsplit(".", 1)[-1] in module_only
+                }
+            ):
+                differences.append(f"TYPE_CHECKING imports from module-only {unexpected}")
+            on_disk = {file.stem for file in Path(package.__path__[0]).glob("[!_]*.py")}
+            if missing_modules := sorted(module_only - on_disk):
+                differences.append(f"module-only not on disk {missing_modules}")
+
+            if differences:
+                self.fail(
+                    f"{package.__name__} TYPE_CHECKING vs lazy map: {', '.join(differences)}."
+                )
+
+    def test_type_checking_imports_match_registry(self):
+        for package, container in (
+            (countries, registry.COUNTRIES),
+            (financial, registry.FINANCIAL),
+        ):
+            imported = self.type_checking_imports(Path(package.__file__))
+            registered = {
+                (f"{package.__name__}.{module}", name)
+                for module, entities in container.items()
+                for name in entities
+            }
+            differences = []
+            if missing := sorted(registered - imported):
+                differences.append(f"missing {missing}")
+            if extra := sorted(imported - registered):
+                differences.append(f"extra {extra}")
+
+            if differences:
+                self.fail(f"{package.__name__} TYPE_CHECKING imports: {', '.join(differences)}.")
+
+
+class TestLazyPackage(TestCase):
+    @staticmethod
+    def _holidays_subprocess_env() -> tuple[str, dict[str, str]]:
+        root = str(Path(holidays.__file__).resolve().parent.parent)
+        env = {
+            **os.environ,
+            "PYTHONPATH": os.pathsep.join(filter(None, (root, os.environ.get("PYTHONPATH")))),
+        }
+        return root, env
+
+    @staticmethod
+    def run_holidays_code(code: str) -> str:
+        """Run `code` in a new interpreter that imports the holidays package under test."""
+        root, env = TestLazyPackage._holidays_subprocess_env()
+        return subprocess.check_output(  # noqa: S603
+            [sys.executable, "-c", code], cwd=root, env=env, text=True
+        ).strip()
+
+    @staticmethod
+    def run_holidays_script(script: Path) -> str:
+        """Run `script` in a new interpreter that imports the holidays package under test."""
+        root, env = TestLazyPackage._holidays_subprocess_env()
+        return subprocess.check_output(  # noqa: S603
+            [sys.executable, str(script)], cwd=root, env=env, text=True
+        ).strip()
+
+    def test_lazy_calendars_and_groups_namespaces(self):
+        for package, not_imported_submodules in (
+            # The school calendars are imported by their countries only.
+            (calendars, {"australia_school", "germany_school"}),
+            (groups, set()),
+        ):
+            exported = set(package.__all__)
+            public_names = {name for name in dir(package) if not name.startswith("_")}
+            # Other public names are only the submodules that were imported directly.
+            self.assertLessEqual(exported, public_names)
+            self.assertLessEqual(public_names - exported, not_imported_submodules)
+            self.assertNotIn("TYPE_CHECKING", dir(package))
+            self.assertNotIn("_load_lazily", dir(package))
+            submodules = {path.stem for path in Path(package.__path__[0]).glob("[!_]*.py")}
+            self.assertEqual(exported & submodules, submodules - not_imported_submodules)
+            for name in package.__all__:
+                self.assertIsNotNone(getattr(package, name))
+
+    def test_lazy_imports_do_not_deadlock(self):
+        script = Path(__file__).parent / "lazy_loading" / "import_deadlock.py"
+        self.assertEqual(self.run_holidays_script(script), "ok")
+
     def test_lazy_package_attributes(self):
         for package, container in (
             (countries, registry.COUNTRIES),
@@ -231,60 +380,6 @@ class TestEntityLoader(TestCase):
                         setattr(package, name, value)
             self.assertEqual(lock_owned, [True, True])
 
-    def test_lazy_calendars_and_groups_namespaces(self):
-        for package, not_imported_submodules in (
-            # The school calendars are imported by their countries only.
-            (calendars, {"australia_school", "germany_school"}),
-            (groups, set()),
-        ):
-            exported = set(package.__all__)
-            public_names = {name for name in dir(package) if not name.startswith("_")}
-            # Other public names are only the submodules that were imported directly.
-            self.assertLessEqual(exported, public_names)
-            self.assertLessEqual(public_names - exported, not_imported_submodules)
-            self.assertNotIn("TYPE_CHECKING", dir(package))
-            self.assertNotIn("_load_lazily", dir(package))
-            submodules = {path.stem for path in Path(package.__path__[0]).glob("[!_]*.py")}
-            self.assertEqual(exported & submodules, submodules - not_imported_submodules)
-            for name in package.__all__:
-                self.assertIsNotNone(getattr(package, name))
-
-    def test_lazy_imports_do_not_deadlock(self):
-        # Thread B imports a country module directly, which then imports calendars and groups
-        # names lazily. Thread A loads the same country through `EntityLoader`, which holds
-        # `IMPORT_LOCK` while it waits for B's module import lock. B must not need that lock.
-        code = """
-import importlib, sys, threading, time
-import holidays
-
-importing = threading.Event()
-
-class Finder:
-    def find_spec(self, name, path=None, target=None):
-        if name == "holidays.countries.albania" and threading.current_thread().name == "B":
-            importing.set()
-            time.sleep(0.5)
-
-sys.meta_path.insert(0, Finder())
-
-def load_entity():
-    importing.wait()
-    holidays.country_holidays("AL")
-
-threads = (
-    threading.Thread(target=load_entity, name="A", daemon=True),
-    threading.Thread(
-        target=importlib.import_module, args=("holidays.countries.albania",), name="B", daemon=True
-    ),
-)
-for thread in threads:
-    thread.start()
-for thread in threads:
-    thread.join(10)
-print("deadlock" if any(thread.is_alive() for thread in threads) else "ok")
-"""
-        self.assertEqual(run_holidays_code(code), "ok")
-
     def test_lazy_package_loading(self):
         code = (
             "import sys, holidays; holidays.country_holidays('CA', subdiv='QC'); "
@@ -295,7 +390,7 @@ print("deadlock" if any(thread.is_alive() for thread in threads) else "ok")
             "'importlib.metadata'))))"
         )
         self.assertEqual(
-            run_holidays_code(code),
+            self.run_holidays_code(code),
             str(
                 [
                     "holidays.calendars.ethiopian",
@@ -320,52 +415,6 @@ print("deadlock" if any(thread.is_alive() for thread in threads) else "ok")
             "if m.startswith(('holidays.countries.', 'holidays.financial.'))))"
         )
         self.assertEqual(
-            run_holidays_code(code),
+            self.run_holidays_code(code),
             str(["holidays.countries.canada", "holidays.financial.ny_stock_exchange"]),
         )
-
-    def test_type_checking_imports_match_registry(self):
-        for package, container in (
-            (countries, registry.COUNTRIES),
-            (financial, registry.FINANCIAL),
-        ):
-            # Parse source: `TYPE_CHECKING` imports are skipped at runtime.
-            imported: set[tuple[str, str]] = set()
-            tree = ast.parse(Path(package.__file__).read_text(encoding="utf-8"))
-            for node in tree.body:
-                test = getattr(node, "test", None)
-                if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
-                    continue
-                for statement in node.body:
-                    # Pair each name with its module so a wrong import path fails.
-                    if isinstance(statement, ast.ImportFrom) and statement.module is not None:
-                        imported.update(
-                            (statement.module, alias.asname or alias.name)
-                            for alias in statement.names
-                        )
-
-            registered = {
-                (f"{package.__name__}.{module}", name)
-                for module, entities in container.items()
-                for name in entities
-            }
-            differences = []
-            if missing := sorted(registered - imported):
-                differences.append(f"missing {missing}")
-            if extra := sorted(imported - registered):
-                differences.append(f"extra {extra}")
-
-            if differences:
-                self.fail(f"{package.__name__} TYPE_CHECKING imports: {', '.join(differences)}.")
-
-
-def run_holidays_code(code: str) -> str:
-    """Run `code` in a new interpreter that imports the holidays package under test."""
-    root = str(Path(holidays.__file__).resolve().parent.parent)
-    env = {
-        **os.environ,
-        "PYTHONPATH": os.pathsep.join(filter(None, (root, os.environ.get("PYTHONPATH")))),
-    }
-    return subprocess.check_output(  # noqa: S603
-        [sys.executable, "-c", code], cwd=root, env=env, text=True
-    ).strip()
