@@ -66,6 +66,7 @@ NIRJALA_EKADASHI = "NIRJALA_EKADASHI"
 ONAM = "ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PARIVARTINI_EKADASHI = "PARIVARTINI_EKADASHI"
+PAUSHA_SHUKLA_TRAYODASHI = "PAUSHA_SHUKLA_TRAYODASHI"
 PITRA_MOKSH_AMAVASYA = "PITRA_MOKSH_AMAVASYA"
 POHELA_BOISHAKH = "POHELA_BOISHAKH"
 PONGAL = "PONGAL"
@@ -2145,6 +2146,22 @@ class _HinduLunisolar:
         2035: (SEP, 13),
     }
 
+    # Gaan-Ngai is observed on Pausha Shukla Trayodashi (13th tithi) in Manipur.
+    # Dates below follow the Imphal sunrise convention and are based on official
+    # Manipur government holiday notifications.
+    # 2023: https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf
+    # 2024: https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf
+    # 2025: https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf
+    # 2026: https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213%2FEG%2F2025-27%2F11%2F2025+%28E.G.%29+&etype=SPECIAL
+    # 2027: https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=243%2FEG%2F2026-27%2F27-10-2026+%28E.G.%29+&etype=SPECIAL
+    PAUSHA_SHUKLA_TRAYODASHI_DATES = {
+        2023: (JAN, 4),
+        2024: (JAN, 23),
+        2025: (JAN, 12),
+        2026: (JAN, 1),
+        2027: (JAN, 20),
+    }
+
     # https://web.archive.org/web/20250906191235/https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html
     PITRA_MOKSH_AMAVASYA_DATES = {
         2001: (SEP, 17),
@@ -3264,6 +3281,9 @@ class _HinduLunisolar:
 
     def parivartini_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARIVARTINI_EKADASHI, year)
+
+    def pausha_shukla_trayodashi_date(self, year: int) -> tuple[date | None, bool]:
+        return self._get_holiday(PAUSHA_SHUKLA_TRAYODASHI, year)
 
     def pitra_moksh_amavasya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PITRA_MOKSH_AMAVASYA, year)

@@ -1408,18 +1408,8 @@ class India(
         # New Year's Day.
         self._add_new_years_day(tr("New Year's Day"))
 
-        # Gaan-Ngai is a Zeliangrong (Rongmei) festival. Its Gregorian date varies
-        # according to the traditional calendar; use the dates officially notified
-        # by the Government of Manipur for each year.
-        gaan_ngai_dates = {
-            2023: (JAN, 4),
-            2024: (JAN, 23),
-            2025: (JAN, 12),
-            2026: (JAN, 1),
-            2027: (JAN, 20),
-        }
-        if dt := gaan_ngai_dates.get(self._year):
-            self._add_holiday(tr("Gaan-Ngai"), dt)
+        # Gaan-Ngai.
+        self._add_pausha_shukla_trayodashi(tr("Gaan-Ngai"))
 
     def _populate_subdiv_mn_public_holidays(self):
         self._populate_subdiv_mn_new_years_day_and_gaan_ngai()

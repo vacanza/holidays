@@ -892,6 +892,18 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.parivartini_ekadashi_date(self._year),
         )
 
+    def _add_pausha_shukla_trayodashi(self, name) -> date | None:
+        """
+        Add Pausha Shukla Trayodashi.
+
+        Pausha Shukla Trayodashi is the thirteenth tithi of the bright
+        fortnight of Pausha. In Manipur, Gaan-Ngai is observed on this
+        tithi according to the Imphal sunrise convention.
+        """
+        return self._add_hindu_calendar_holiday(
+            name, self._hindu_calendar.pausha_shukla_trayodashi_date(self._year)
+        )
+
     def _add_pitra_moksh_amavasya(self, name) -> date | None:
         """
         Add Pitra Moksh Amavasya.
