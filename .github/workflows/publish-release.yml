@@ -160,6 +160,7 @@ jobs:
     if: always() && needs.build.result == 'success'
     environment: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
     permissions:
+      actions: write
       id-token: write
     # gh-action-pypi-publish ships an amd64-only image.
     # https://github.com/pypa/gh-action-pypi-publish/issues/356
@@ -173,6 +174,35 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33  # v1.14.2
+
+      - name: Write release-metadata
+        env:
+          KIND: ${{ github.event_name == 'release' && 'release' || 'pre-release' }}
+          REF: ${{ github.event_name == 'release' && github.event.release.tag_name || github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          wheels=(dist/holidays-*-py3-none-any.whl)
+          if [[ ${#wheels[@]} -ne 1 ]]; then
+            echo "Expected exactly one wheel in dist/, found ${#wheels[@]}." >&2
+            exit 1
+          fi
+          wheel_file="${wheels[0]##*/}"
+          wheel_stem="${wheel_file#holidays-}"
+          version="${wheel_stem%-py3-none-any.whl}"
+          mkdir -p release-metadata
+          jq -n \
+            --arg version "$version" \
+            --arg ref "$REF" \
+            --arg kind "$KIND" \
+            '{version: $version, ref: $ref, kind: $kind}' > release-metadata/release-metadata.json
+          cat release-metadata/release-metadata.json
+
+      - name: Upload release-metadata
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: release-metadata
+          path: release-metadata/release-metadata.json
 
   sign-artifacts:
     name: Create SHA256 checksums and Sigstore signatures

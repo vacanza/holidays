@@ -168,6 +168,42 @@ class TestEntityLoader(TestCase):
         ):
             self.assertIsInstance(create_instance(cls), holidays.countries.UnitedStates)
 
+    def test_type_checking_imports_match_registry(self):
+        for package, container in (
+            (countries, registry.COUNTRIES),
+            (financial, registry.FINANCIAL),
+        ):
+            # Parse source: `TYPE_CHECKING` imports are skipped at runtime.
+            imported: set[tuple[str, str]] = set()
+            tree = ast.parse(pathlib.Path(package.__file__).read_text(encoding="utf-8"))
+            for node in tree.body:
+                test = getattr(node, "test", None)
+                if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
+                    continue
+                for statement in node.body:
+                    # Pair each name with its module so a wrong import path fails.
+                    if isinstance(statement, ast.ImportFrom) and statement.module is not None:
+                        imported.update(
+                            (statement.module, alias.asname or alias.name)
+                            for alias in statement.names
+                        )
+
+            registered = {
+                (f"{package.__name__}.{module}", name)
+                for module, entities in container.items()
+                for name in entities
+            }
+            differences = []
+            if missing := sorted(registered - imported):
+                differences.append(f"missing {missing}")
+            if extra := sorted(imported - registered):
+                differences.append(f"extra {extra}")
+
+            if differences:
+                self.fail(f"{package.__name__} TYPE_CHECKING imports: {', '.join(differences)}.")
+
+
+class TestLazyPackage(TestCase):
     def test_lazy_package_attributes(self):
         for package, container in (
             (countries, registry.COUNTRIES),
@@ -296,37 +332,3 @@ class TestEntityLoader(TestCase):
                 "holidays.financial.ny_stock_exchange",
             ],
         )
-
-    def test_type_checking_imports_match_registry(self):
-        for package, container in (
-            (countries, registry.COUNTRIES),
-            (financial, registry.FINANCIAL),
-        ):
-            # Parse source: `TYPE_CHECKING` imports are skipped at runtime.
-            imported: set[tuple[str, str]] = set()
-            tree = ast.parse(pathlib.Path(package.__file__).read_text(encoding="utf-8"))
-            for node in tree.body:
-                test = getattr(node, "test", None)
-                if not (isinstance(test, ast.Name) and test.id == "TYPE_CHECKING"):
-                    continue
-                for statement in node.body:
-                    # Pair each name with its module so a wrong import path fails.
-                    if isinstance(statement, ast.ImportFrom) and statement.module is not None:
-                        imported.update(
-                            (statement.module, alias.asname or alias.name)
-                            for alias in statement.names
-                        )
-
-            registered = {
-                (f"{package.__name__}.{module}", name)
-                for module, entities in container.items()
-                for name in entities
-            }
-            differences = []
-            if missing := sorted(registered - imported):
-                differences.append(f"missing {missing}")
-            if extra := sorted(imported - registered):
-                differences.append(f"extra {extra}")
-
-            if differences:
-                self.fail(f"{package.__name__} TYPE_CHECKING imports: {', '.join(differences)}.")
