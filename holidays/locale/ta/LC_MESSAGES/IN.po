@@ -812,6 +812,10 @@ msgstr "புத்தாண்டுக்குப் பிந்தைய �
 msgid "Missionary Day"
 msgstr "மிஷனரி தினம்"
 
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "சாப்சர் குட்"
+
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
 msgstr "யங் மிசோ சங்கத்தின் நாள்"

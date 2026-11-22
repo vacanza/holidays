@@ -18,7 +18,7 @@ on:
         default: ''
 
 env:
-  DEFAULT_PYTHON_VERSION: '3.14'
+  DEFAULT_PYTHON_VERSION: '3.15'
   FORCE_COLOR: 1
 
 permissions: {}
@@ -124,11 +124,25 @@ jobs:
           name: dist
           path: dist
 
-      - name: Run tests
+      - name: Run import smoke tests
         shell: bash
+        env:
+          REQUIRE_INSTALLED_HOLIDAYS: "1"
         run: |
           rm -rf holidays
-          uv run --frozen --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- pytest --dist loadscope --numprocesses auto tests/countries tests/financial
+          uv run --frozen --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- \
+            pytest --dist loadscope --numprocesses auto \
+            tests/test_imports.py
+
+      - name: Run registry and entity tests
+        shell: bash
+        env:
+          REQUIRE_INSTALLED_HOLIDAYS: "1"
+        run: |
+          rm -rf holidays
+          uv run --frozen --isolated --no-default-groups --group tests --with ${{ matrix.dist.artifact }} -- \
+            pytest --dist loadscope --numprocesses auto \
+            tests/test_registry.py tests/countries tests/financial
 
   test-docs:
     name: Test docs build

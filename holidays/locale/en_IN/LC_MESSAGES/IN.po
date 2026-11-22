@@ -813,6 +813,10 @@ msgstr ""
 msgid "Missionary Day"
 msgstr ""
 
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr ""
+
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
 msgstr ""
