@@ -34,6 +34,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
         * <https://ar.wikipedia.org/wiki/قائمة_العطل_الرسمية_في_السعودية>
         * <https://web.archive.org/web/20240610223551/http://laboreducation.hrsd.gov.sa/en/labor-education/322>
         * <https://web.archive.org/web/20250329052253/https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order>
+        * [Royal Order No. A/371 of 2022](https://web.archive.org/web/20220705191421/https://www.spa.gov.sa/2324646)
         * [2015 (1436 AH) Dhu al-Hijjah begin on September 15](https://web.archive.org/web/20250430191246/https://qna.org.qa/en/news/news-details?id=saudi-arabia-eid-aladha-to-start-on-september-24&date=14/09/2015)
     """
 
@@ -110,7 +111,7 @@ class SaudiArabia(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
 
         if self._year >= 2022:
             # Founding Day.
-            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيسي")))
+            self._add_observed(self._add_holiday_feb_22(tr("يوم التأسيس")))
 
         if self._year >= 2005:
             # National Day.

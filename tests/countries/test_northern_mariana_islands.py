@@ -24,14 +24,14 @@ class TestNorthernMarianaIslands(CommonCountryTests, TestCase):
     def test_commonwealth_covenant_day(self):
         name = "Commonwealth Covenant Day"
         self.assertHolidayName(name, (f"{year}-03-24" for year in self.full_range))
-        obs_dt = (
+        obs_dts = (
             "2012-03-23",
             "2013-03-25",
             "2018-03-23",
             "2019-03-25",
         )
-        self.assertHolidayName(f"{name} (observed)", obs_dt)
-        self.assertNoNonObservedHolidayName(f"{name} (observed)", obs_dt)
+        self.assertHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -85,7 +85,7 @@ class TestNorthernMarianaIslands(CommonCountryTests, TestCase):
             "2023-11-03",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_constitution_day(self):
         name = "Constitution Day"
@@ -97,7 +97,7 @@ class TestNorthernMarianaIslands(CommonCountryTests, TestCase):
             "2019-12-09",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHolidayName(f"{name} (observed)", obs_dts)
+        self.assertNoNonObservedHoliday(obs_dts)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

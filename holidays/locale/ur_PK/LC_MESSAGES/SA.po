@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.106\n"
+"Project-Id-Version: Holidays 0.107\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-10-04 15:17+0500\n"
-"PO-Revision-Date: 2026-10-04 18:28+0500\n"
-"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"PO-Revision-Date: 2026-10-12 11:09+0300\n"
+"Last-Translator: Abdulmalik Alquwayfili <af.alquwayfili@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgid "عطلة عيد الأضحى"
 msgstr "عید الاضحی کی تعطیل"
 
 #. Founding Day.
-msgid "يوم التأسيسي"
+msgid "يوم التأسيس"
 msgstr "یوم تاسیس"
 
 #. National Day.

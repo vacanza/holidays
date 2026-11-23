@@ -19,10 +19,10 @@ from tests.common import CommonCountryTests
 class TestTokelau(CommonCountryTests, TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Tokelau, years=range(2003, 2050))
+        super().setUpClass(Tokelau)
 
     def test_new_years(self):
-        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2003, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in self.full_range))
 
     def test_good_friday(self):
         name = "Good Friday"
@@ -35,7 +35,7 @@ class TestTokelau(CommonCountryTests, TestCase):
             "2024-03-29",
             "2025-04-18",
         )
-        self.assertHolidayName(name, range(2003, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_easter_monday(self):
         name = "Easter Monday"
@@ -48,16 +48,16 @@ class TestTokelau(CommonCountryTests, TestCase):
             "2024-04-01",
             "2025-04-21",
         )
-        self.assertHolidayName(name, range(2003, 2050))
+        self.assertHolidayName(name, self.full_range)
 
     def test_tokehega_day(self):
-        self.assertHolidayName("Tokehega Day", (f"{year}-09-03" for year in range(2003, 2050)))
+        self.assertHolidayName("Tokehega Day", (f"{year}-09-03" for year in self.full_range))
 
     def test_christmas_day(self):
-        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(2003, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in self.full_range))
 
     def test_boxing_day(self):
-        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in range(2003, 2050)))
+        self.assertHolidayName("Boxing Day", (f"{year}-12-26" for year in self.full_range))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

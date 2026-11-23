@@ -87,7 +87,7 @@ class TestBorsaIstanbul(CommonFinancialTests, TestCase):
             ("2023-02-14", "Market Closed (Earthquake)"),
             ("2023-04-20", "Eid al-Fitr (from 1pm)"),
             ("2023-04-21", "Eid al-Fitr"),
-            ("2023-05-01", "Labour and Solidarity Day"),
+            ("2023-05-01", "Labor and Solidarity Day"),
             ("2023-05-19", "Commemoration of Atatürk, Youth and Sports Day"),
             ("2023-06-27", "Eid al-Adha (from 1pm)"),
             ("2023-06-28", "Eid al-Adha"),

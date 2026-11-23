@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.75\n"
+"Project-Id-Version: Holidays 0.108\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-06-13 21:11+0300\n"
-"PO-Revision-Date: 2025-06-13 21:11+0300\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2026-10-29 20:19+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -108,9 +108,9 @@ msgstr "Walvis Bay Reintegration Day"
 msgid "Public Holiday"
 msgstr "Public Holiday"
 
-#. Day of Mourning for Honourable Moses Garoeb.
+#. Day of Mourning for Honorable Moses Garoeb.
 msgid "Day of Mourning for Honourable Moses Garoeb"
-msgstr "Day of Mourning for Honourable Moses Garoeb"
+msgstr "Day of Mourning for Honorable Moses Garoeb"
 
 #. Burial ceremony of Dr. Hage Gottfried Geingob.
 msgid "Burial ceremony of Dr. Hage Gottfried Geingob"

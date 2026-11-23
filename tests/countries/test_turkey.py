@@ -187,7 +187,7 @@ class TestTurkey(CommonCountryTests, TestCase):
             ("2023-04-21", "Eid al-Fitr"),
             ("2023-04-22", "Eid al-Fitr"),
             ("2023-04-23", "Eid al-Fitr; National Sovereignty and Children's Day"),
-            ("2023-05-01", "Labour and Solidarity Day"),
+            ("2023-05-01", "Labor and Solidarity Day"),
             ("2023-05-19", "Commemoration of Atatürk, Youth and Sports Day"),
             ("2023-06-27", "Eid al-Adha (from 1pm)"),
             ("2023-06-28", "Eid al-Adha"),

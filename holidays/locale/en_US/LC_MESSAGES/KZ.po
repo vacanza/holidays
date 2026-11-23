@@ -92,7 +92,7 @@ msgid "Қазақстан Республикасының Тұңғыш Прези
 msgstr "First President Day"
 
 #. Independence Day.
-msgid "Тəуелсіздік күні"
+msgid "Тәуелсіздік күні"
 msgstr "Independence Day"
 
 #. Eid al-Adha.

@@ -60,6 +60,7 @@ LANGUAGES = {
     "fo": "Faroese",
     "fr": "French",
     "fy": "Western Frisian",
+    "ga": "Irish",
     "gu": "Gujarati",
     "he": "Hebrew",
     "hi": "Hindi",
@@ -101,6 +102,7 @@ LANGUAGES = {
     "rw": "Kinyarwanda",
     "sk": "Slovak",
     "sl": "Slovenian",
+    "so": "Somali",
     "sq": "Albanian",
     "sr": "Serbian",
     "sv": "Swedish",
@@ -110,6 +112,7 @@ LANGUAGES = {
     "tet": "Tetum",
     "tg": "Tajik",
     "th": "Thai",
+    "ti": "Tigrinya",
     "tk": "Turkmen",
     "tkl": "Tokelauan",
     "to": "Tongan",
@@ -145,6 +148,7 @@ LANGUAGES = {
     "en_GS": "English (South Georgia & South Sandwich Islands)",
     "en_GY": "English (Guyana)",
     "en_HK": "English (Hong Kong)",
+    "en_IE": "English (Ireland)",
     "en_IN": "English (India)",
     "en_KE": "English (Kenya)",
     "en_LC": "English (Saint Lucia)",
@@ -222,7 +226,7 @@ def write_assets(h_obj: HolidayBase, filename_base: str, out_dir: Path) -> None:
         return
 
     try:
-        ICalExporter(h_obj).save_ics(out_dir / f"{filename_base}.ics")
+        ICalExporter(h_obj, refresh_interval_weeks=1).save_ics(out_dir / f"{filename_base}.ics")
 
         # Inline JSON generation.
         json_data = json.dumps(

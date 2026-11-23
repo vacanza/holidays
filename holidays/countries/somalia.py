@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -23,10 +24,12 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "SO"
+    default_language = "so"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (la qiyaasay)")
     # Unification of Somaliland and Italian Somaliland into the Somali Republic on July 1st, 1960.
     start_year = 1961
+    supported_languages = ("ar", "en_US", "so")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -41,34 +44,34 @@ class Somalia(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("Maalinta Sannadka Cusub"))
 
         # Labor Day.
-        self._add_labor_day("Labour Day")
+        self._add_labor_day(tr("Maalinta Shaqaalaha"))
 
         # Independence Day.
-        self._add_holiday_jun_26("Independence Day")
+        self._add_holiday_jun_26(tr("Maalinta Xorriyadda"))
 
         # Republic Day.
-        self._add_holiday_jul_1("Republic Day")
+        self._add_holiday_jul_1(tr("Maalinta Jamhuuriyadda"))
 
         # Islamic New Year.
-        self._add_islamic_new_year_day("Islamic New Year")
+        self._add_islamic_new_year_day(tr("Sannadka Cusub ee Hijriga"))
 
         # Ashura.
-        self._add_ashura_day("Ashura")
+        self._add_ashura_day(tr("Caashuuraa"))
 
         # Prophet's Birthday.
-        self._add_mawlid_day("Prophet's Birthday")
+        self._add_mawlid_day(tr("Mowliidka Nebiga"))
 
         # Isra' and Mi'raj.
-        self._add_isra_and_miraj_day("Isra' and Mi'raj")
+        self._add_isra_and_miraj_day(tr("Isra iyo Micraaj"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Ciidul Fitri"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Ciidul Adxa"))
 
 
 class SO(Somalia):

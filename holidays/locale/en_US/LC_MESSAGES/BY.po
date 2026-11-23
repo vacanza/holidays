@@ -69,11 +69,11 @@ msgid "Нараджэнне Хрыстова (каталіцкае Раство)
 msgstr "Catholic Christmas Day"
 
 #. Catholic Easter.
-msgid "Каталiцкi Вялiкдзень"
+msgid "Каталіцкі Вялікдзень"
 msgstr "Catholic Easter"
 
 #. Orthodox Easter.
-msgid "Праваслаўны Вялiкдзень"
+msgid "Праваслаўны Вялікдзень"
 msgstr "Orthodox Easter"
 
 #. Dzyady (All Souls' Day).

@@ -149,7 +149,7 @@ class TestSouthKorea(CommonCountryTests, TestCase):
             "2022-03-09",
             # Special Presidential Election (21st) due to Yoon Seok-yeol's impeachment.
             "2025-06-03",
-            "2030-04-03",
+            "2030-03-27",
         )
 
     def test_local_election_day(self):
