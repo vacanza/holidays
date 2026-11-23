@@ -13,10 +13,9 @@
 from holidays.constants import PUBLIC
 from holidays.countries.austria import Austria
 from holidays.helpers import tr
-from holidays.mixins.child_entity import ChildEntity
 
 
-class ViennaStockExchange(ChildEntity, Austria):
+class ViennaStockExchange(Austria):
     """Vienna Stock Exchange (Wiener Börse) holidays.
 
     The exchange is closed on Austrian public holidays falling on weekdays, and also on
@@ -34,14 +33,16 @@ class ViennaStockExchange(ChildEntity, Austria):
         * [2024](https://web.archive.org/web/20240207120546/https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2024-en.pdf)
         * [2025](https://web.archive.org/web/20260103203227/https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2025-en.pdf)
         * [2026](https://web.archive.org/web/20251218144117/https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf)
-        * [2027](https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2027-en.pdf)
+        * [2027](https://web.archive.org/web/20261123035218/https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2027-en.pdf)
     """
 
     country = None  # type: ignore[assignment]
     market = "XWBO"
     parent_entity = Austria
-    parent_entity_subdivision_code = "9"
-    supported_categories = (PUBLIC,)
+    # The states and the BANK, PROTESTANT and SCHOOL categories are specific to the country entity.
+    subdivisions = ()  # type: ignore[assignment]
+    subdivisions_aliases = {}  # type: ignore[assignment]
+    supported_categories = (PUBLIC,)  # type: ignore[assignment]
     start_year = 2018
 
     def _add_holiday(self, name, *args):
