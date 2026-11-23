@@ -134,7 +134,13 @@ class TestPalau(CommonCountryTests, TestCase):
 
     def test_national_day_of_democracy(self):
         name = "National Day of Democracy"
-        self.assertHolidayName(name, "2012-11-06", "2016-11-01", "2020-11-03", "2024-11-05")
+        self.assertHolidayName(
+            name,
+            "2012-11-06",
+            "2016-11-01",
+            "2020-11-03",
+            "2024-11-05",
+        )
         self.assertHolidayName(name, range(2012, self.end_year, 4))
         self.assertNoHolidayName(name, range(self.start_year, 2012))
         self.assertNoHolidayName(name, (year for year in range(2012, self.end_year) if year % 4))
