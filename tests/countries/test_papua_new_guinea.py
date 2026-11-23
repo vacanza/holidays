@@ -178,3 +178,21 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
         )
+
+    def test_2026(self):
+        # https://web.archive.org/web/20260609210339/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-02-26", "Grand Chief Sir Michael Somare Remembrance Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-04", "Easter Saturday"),
+            ("2026-04-05", "Easter Sunday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-06-17", "King's Birthday"),
+            ("2026-07-23", "Papua New Guinea Remembrance Day"),
+            ("2026-08-26", "National Repentance Day"),
+            ("2026-09-16", "Independence Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+        )

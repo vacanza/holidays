@@ -33,6 +33,9 @@ class PapuaNewGuinea(
         * [2021](https://web.archive.org/web/20240625200332/https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf)
         * [2022](https://web.archive.org/web/20230530042019/https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf)
         * [2023](https://web.archive.org/web/20240413053729/https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf)
+        * [2024](https://web.archive.org/web/20240926231035/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
+        * [2025](https://web.archive.org/web/20251119043637/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
+        * [2026](https://web.archive.org/web/20260609210339/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
 
     Should a holiday listed, other than the Christmas Day, fall on a Sunday the next Monday
     shall, unless the Head of State, acting on advice, declares otherwise, be observed as a
@@ -56,7 +59,7 @@ class PapuaNewGuinea(
 
     def _populate_public_holidays(self):
         # Section 1: Public Holidays.
-        # - Easter Saturday is currently not gazetted as a Public Holiday in 2024.
+        # - Easter Saturday was not gazetted as a Public Holiday in 2024.
         # - While Easter Sunday itself is not listed, this is de facto always a day-off.
 
         # New Year's Day.
@@ -65,7 +68,7 @@ class PapuaNewGuinea(
         # Good Friday.
         self._add_good_friday("Good Friday")
 
-        if self._year <= 2023:
+        if self._year != 2024:
             # Easter Saturday.
             self._add_holy_saturday("Easter Saturday")
 
