@@ -19,6 +19,7 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     """ICE Futures Europe holidays.
 
     References:
+        * <https://web.archive.org/web/20260728113518/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
         * <https://web.archive.org/web/20241203121313/https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf>
         * <https://web.archive.org/web/20241118133442/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
         * <https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
