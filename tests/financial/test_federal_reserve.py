@@ -237,15 +237,31 @@ class TestFederalReserve(CommonFinancialTests, TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2024-01-01", "New Year's Day"),
-            ("2024-01-15", "Birthday of Martin Luther King, Jr."),
-            ("2024-02-19", "Washington's Birthday"),
-            ("2024-05-27", "Memorial Day"),
-            ("2024-06-19", "Juneteenth National Independence Day"),
-            ("2024-07-04", "Independence Day"),
-            ("2024-09-02", "Labor Day"),
-            ("2024-10-14", "Columbus Day"),
-            ("2024-11-11", "Veterans Day"),
-            ("2024-11-28", "Thanksgiving Day"),
-            ("2024-12-25", "Christmas Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-01-16", "Birthday of Martin Luther King, Jr."),
+            ("2023-02-20", "Washington's Birthday"),
+            ("2023-05-29", "Memorial Day"),
+            ("2023-06-19", "Juneteenth National Independence Day"),
+            ("2023-07-04", "Independence Day"),
+            ("2023-09-04", "Labor Day"),
+            ("2023-10-09", "Columbus Day"),
+            ("2023-11-11", "Veterans Day"),
+            ("2023-11-23", "Thanksgiving Day"),
+            ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2023-01-02", "ชดเชยวันขึ้นปีใหม่"),
+            ("2023-01-16", "วันเกิดมาร์ติน ลูเทอร์ คิง จูเนียร์"),
+            ("2023-02-20", "วันเกิดวอชิงตัน"),
+            ("2023-05-29", "วันรำลึก"),
+            ("2023-06-19", "วันประกาศอิสรภาพแห่งชาติจูนทีนท์"),
+            ("2023-07-04", "วันประกาศอิสรภาพ"),
+            ("2023-09-04", "วันแรงงาน"),
+            ("2023-10-09", "วันโคลัมบัส"),
+            ("2023-11-11", "วันทหารผ่านศึก"),
+            ("2023-11-23", "วันขอบคุณพระเจ้า"),
+            ("2023-12-25", "วันคริสต์มาส"),
         )
