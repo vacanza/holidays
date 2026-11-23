@@ -1,0 +1,132 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Euronext holidays zh_CN localization.
+#
+# Translation references:
+# https://www.mofcom.gov.cn/dl/gbdqzn/upload/xila.pdf
+# https://pdf.visaforchina.cn/OSL4_ZH/tongzhigonggao
+# https://cloud.ibm.com/docs/watson-assistant?locale=zh-CN&topic=watson-assistant-sys-date-festivals
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-23 17:28+0800\n"
+"PO-Revision-Date: 2026-11-23 17:28+0800\n"
+"Last-Translator: wozhenbang2004 <wozhenbang2004@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_GB\n"
+
+#. Substitute for %s.
+#, c-format
+msgid "Substitute for %s"
+msgstr "%s（补假）"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "元旦"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "耶稣受难节"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "复活节星期一"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "劳动节"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "圣诞节"
+
+#. Saint Stephen's Day.
+msgid "Saint Stephen's Day"
+msgstr "圣斯德望日"
+
+#. %s (markets close at 2:00pm CET).
+#, c-format
+msgid "%s (markets close at 14:00 CET)"
+msgstr "%s（市场于14:00 CET收市）"
+
+#. %s (markets close at 2:05pm CET).
+#, c-format
+msgid "%s (markets close at 14:05 CET)"
+msgstr "%s（市场于14:05 CET收市）"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "平安夜"
+
+#. New Year's Eve.
+msgid "New Year's Eve"
+msgstr "新年前夜"
+
+#. Epiphany.
+msgid "Epiphany"
+msgstr "主显节"
+
+#. National Holiday.
+msgid "National Holiday"
+msgstr "国庆日"
+
+#. Ash Monday.
+msgid "Ash Monday"
+msgstr "净周一"
+
+#. Good Friday (Orthodox).
+msgid "Good Friday (Orthodox)"
+msgstr "耶稣受难节（东正教）"
+
+#. Easter Monday (Orthodox).
+msgid "Easter Monday (Orthodox)"
+msgstr "复活节星期一（东正教）"
+
+#. Pentecost Monday.
+msgid "Whit Monday"
+msgstr "圣灵降临节翌日"
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr "圣母升天节"
+
+#. Irish May Bank Holiday.
+msgid "Irish May Bank Holiday"
+msgstr "爱尔兰五月银行假日"
+
+#. Maundy Thursday.
+msgid "Maundy Thursday"
+msgstr "濯足节"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "耶稣升天节"
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr "宪法日"
+
+#. %s (markets close at 1:00pm CET).
+#, c-format
+msgid "%s (markets close at 13:00 CET)"
+msgstr "%s（市场于13:00 CET收市）"
+
+#. Wednesday before Easter.
+msgid "Wednesday before Easter"
+msgstr "复活节前的星期三"
