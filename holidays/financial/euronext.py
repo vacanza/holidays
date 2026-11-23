@@ -44,7 +44,7 @@ class Euronext(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "en_GB"
     # Substitute for %s.
     observed_label = tr("Substitute for %s")
-    supported_languages = ("en_GB", "en_US", "fr", "it", "nl", "no", "pt_PT")
+    supported_languages = ("en_GB", "en_US", "fr", "it", "nl", "no", "pt_PT", "zh_CN")
     supported_categories = (HALF_DAY, PUBLIC)
     subdivisions: tuple[str, ...] = (
         "XAMS",  # Amsterdam.
