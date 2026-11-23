@@ -26,14 +26,14 @@ class Samoa(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     country = "WS"
     observed_label = "%s (observed)"
+    # Public Holidays Act 2008 came into force on January 1, 2008.
+    start_year = 2008
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         StaticHolidays.__init__(self, SamoaStaticHolidays)
         kwargs.setdefault("observed_rule", SUN_TO_NEXT_MON)
-        # Public Holidays Act 2008 came into force on January 1, 2008.
-        kwargs.setdefault("observed_since", 2008)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
