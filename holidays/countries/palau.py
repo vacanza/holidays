@@ -112,6 +112,7 @@ class PalauStaticHolidays:
         * <https://web.archive.org/web/20250608202645/https://www.facebook.com/photo?fbid=1774513196034105&set=a.175933635892077>
         * <https://web.archive.org/web/20250608202650/https://www.facebook.com/photo/?fbid=1794692910682800&set=a.175933635892077>
         * <https://web.archive.org/web/20250608202639/https://www.facebook.com/photo/?fbid=1408133829338712&set=a.175933635892077>
+        * [Executive Order No. 313](https://web.archive.org/web/20241029024534/https://islandtimes.org/election-day-declared-national-holiday-family-day-to-precede-thanksgiving/)
     """
 
     special_armed_forces_holidays = {
@@ -122,6 +123,10 @@ class PalauStaticHolidays:
         2019: (SEP, 30, "Preparation for the 25th Independence Day of the Republic of Palau"),
     }
 
+    # National Day of Democracy.
+    national_day_of_democracy = "National Day of Democracy"
+
     special_public_holidays = {
-        2020: (NOV, 3, "National Day of Democracy"),
+        2020: (NOV, 3, national_day_of_democracy),
+        2024: (NOV, 5, national_day_of_democracy),
     }
