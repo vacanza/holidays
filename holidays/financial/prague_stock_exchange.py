@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from holidays.countries.czechia import Czechia
 from holidays.helpers import tr
 
@@ -24,18 +23,18 @@ class PragueStockExchange(Czechia):
     exchange calendar records.
 
     References:
-        * <https://www.pse.cz/en/trading/trading-information/trading-calendar>
-        * <https://www.pse.cz/informace-o-obchodovani/kalendar-burzovnich-dni>
+        * <https://web.archive.org/web/20261020195539/https://www.pse.cz/en/trading/trading-information/trading-calendar>
+        * <https://web.archive.org/web/20260902191623/https://www.pse.cz/informace-o-obchodovani/kalendar-burzovnich-dni>
         * [2017](https://web.archive.org/web/20170906124536/https://www.pse.cz/en/trading/trading-information/trading-calendar/)
         * [2018-2019](https://web.archive.org/web/20190918224227/https://www.pse.cz/en/trading/trading-information/trading-calendar/)
         * [2020](https://web.archive.org/web/20201101013641/https://www.pse.cz/en/trading/trading-information/trading-calendar)
-        * [2021](https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE2021.pdf)
-        * [2022](https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE2022.pdf)
-        * [2023](https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE-2023.pdf)
-        * [2024](https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE-2024-eng.pdf)
-        * [2025](https://www.pse.cz/userfiles/related_documents/en/Kalendar-Calendar-PSE-2025.pdf)
-        * [2026](https://www.pse.cz/userfiles/related_documents/en/Kalendar-obchodnich-dnu-2026-Trading-callendar-2026.pdf)
-        * [2027](https://www.pse.cz/userfiles/related_documents/en/Kalendar-obchodnich-dnu-2027-Trading-callendar-2027.pdf)
+        * [2021](https://web.archive.org/web/20260420132537/https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE2021.pdf)
+        * [2022](https://web.archive.org/web/20260420133549/https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE2022.pdf)
+        * [2023](https://web.archive.org/web/20260420125134/https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE-2023.pdf)
+        * [2024](https://web.archive.org/web/20260420132724/https://www.pse.cz/userfiles/related_documents/en/trading-calendar-PSE-2024-eng.pdf)
+        * [2025](https://web.archive.org/web/20260420132842/https://www.pse.cz/userfiles/related_documents/en/Kalendar-Calendar-PSE-2025.pdf)
+        * [2026](https://web.archive.org/web/20260420131953/https://www.pse.cz/userfiles/related_documents/en/Kalendar-obchodnich-dnu-2026-Trading-callendar-2026.pdf)
+        * [2027](https://web.archive.org/web/20261123034957/https://www.pse.cz/userfiles/related_documents/en/Kalendar-obchodnich-dnu-2027-Trading-callendar-2027.pdf)
     """
 
     country = None  # type: ignore[assignment]

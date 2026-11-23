@@ -10,7 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-
 from unittest import TestCase
 
 from holidays.financial.prague_stock_exchange import PragueStockExchange

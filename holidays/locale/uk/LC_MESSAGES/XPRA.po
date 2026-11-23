@@ -10,15 +10,15 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Prague Stock Exchange (PSE) holidays uk localization.
+# Prague Stock Exchange (BCPP) holidays uk localization.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.107\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-16 16:00+0000\n"
 "PO-Revision-Date: 2026-11-16 16:00+0000\n"
-"Last-Translator: Shikha Bhadoria <145272515+shikhabhadoria@users.noreply.github.com>\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
