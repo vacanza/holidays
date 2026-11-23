@@ -15,6 +15,7 @@
 
 import argparse
 import json
+import os
 import shutil
 import sys
 import warnings
@@ -22,7 +23,9 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from time import perf_counter
 
-sys.path.insert(0, str(Path.cwd()))  # Make holidays visible.
+if os.environ.get("HOLIDAYS_SNAPSHOT_USE_INSTALLED") != "1":
+    sys.path.insert(0, str(Path.cwd()))
+
 from holidays import (
     country_holidays,
     financial_holidays,

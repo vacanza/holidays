@@ -1154,7 +1154,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritius</td>
 <td>MU</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>en_MU</strong>, en_US, hi</td>
 <td></td>
 </tr>
 <tr>
@@ -1329,7 +1329,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td>en_US, <strong>mk</strong>, uk</td>
+<td>en_US, <strong>mk</strong>, sq, uk</td>
 <td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
@@ -1587,9 +1587,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Slovakia</td>
 <td>SK</td>
-<td></td>
+<td>Regions: BC (Banskobystrický kraj, BB), BL (Bratislavský kraj, BA), KI (Košický kraj, KE), NI (Nitriansky kraj, NR), PV (Prešovský kraj, PO), TA (Trnavský kraj, TT), TC (Trenčiansky kraj, TN), ZI (Žilinský kraj, ZA)</td>
 <td>en_US, <strong>sk</strong>, uk</td>
-<td>WORKDAY</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Slovenia</td>
@@ -1812,7 +1812,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -1979,7 +1979,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Españoles</td>
 <td>XMAD</td>
 <td>Bolsas y Mercados Españoles (BME) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -1993,7 +1993,7 @@ code when available. The following financial markets are available:
 <td>Borsa Istanbul</td>
 <td>XIST</td>
 <td>Borsa Istanbul (BIST) market holidays</td>
-<td>en_US, <strong>tr</strong></td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2028,14 +2028,14 @@ code when available. The following financial markets are available:
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td></td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>Federal Reserve</td>
 <td>XFED</td>
 <td>Federal Reserve Banks holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td></td>
 </tr>
 <tr>
@@ -2056,7 +2056,7 @@ code when available. The following financial markets are available:
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
