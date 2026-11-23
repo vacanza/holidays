@@ -34,6 +34,7 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         * [Eid al-Fitr 2016](https://web.archive.org/web/20261122171502/https://eyeradio.org/police-deploy-muslim-eid-celebrations/)
         * [Eid al-Fitr 2022](https://web.archive.org/web/20261123130835/https://eyeradio.org/islamic-council-hopes-ramadan-brings-peace-calls-for-unity/)
         * [Eid al-Fitr 2024](https://web.archive.org/web/20261123132500/https://eyeradio.org/muslims-across-south-sudan-celebrate-eid-al-fitr/)
+        * [Eid al-Fitr 2024 holiday](https://web.archive.org/web/20261123130712/https://eyeradio.org/kiirs-message-to-muslims-as-they-celebrate-eid-al-fitr/)
         * [Eid al-Adha 2018](https://web.archive.org/web/20261122171504/https://www.radiotamazuj.org/en/news/article/south-sudan-government-announces-eid-al-adha-holiday)
         * [Eid al-Adha 2023](https://web.archive.org/web/20261122171504/https://www.sudanspost.com/govt-announces-eid-al-adha-holiday/)
         * [Eid al-Adha 2024](https://web.archive.org/web/20261122171534/https://www.onecitizendaily.com/index.php/2024/06/14/govt-announces-3-day-eid-al-adha-holiday/)
