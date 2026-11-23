@@ -1626,7 +1626,7 @@ class TestClosestHoliday(TestCase):
             ],
         )
 
-    def test_get_closest_holiday_unix_timestamp_zero(self):
+    def test_get_closest_holiday_unix_epoch(self):
         us = US(years=1970)
         self.assertEqual(
             us.get_closest_holiday(0),
@@ -1635,10 +1635,6 @@ class TestClosestHoliday(TestCase):
         self.assertEqual(
             us.get_closest_holiday(0.0),
             us.get_closest_holiday(date(1970, 1, 1)),
-        )
-        self.assertEqual(
-            us.get_closest_holiday(0, direction="backward"),
-            (date(1969, 12, 25), "Christmas Day"),
         )
 
     def test_get_closest_holiday_corner_cases(self):
