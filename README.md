@@ -1979,7 +1979,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Españoles</td>
 <td>XMAD</td>
 <td>Bolsas y Mercados Españoles (BME) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
