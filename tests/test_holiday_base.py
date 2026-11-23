@@ -379,6 +379,13 @@ class TestReassignment(TestCase):
         self.assertIn("2024-05-01", hb)
         self.assertIn("2026-05-01", hb)
 
+        with self.assertRaises(TypeError):
+            TestReassignment.CustomClass(years=False)
+        with self.assertRaises(TypeError):
+            TestReassignment.CustomClass(years=True)
+        with self.assertRaises(TypeError):
+            hb.years = False
+
     def test_years_on_empty_object(self):
         # An object without holidays yet is populated when years are assigned,
         # as the constructor would.
