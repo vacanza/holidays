@@ -97,8 +97,11 @@ class TestCameroon(CommonCountryTests, TestCase):
             "2020-05-24",
             "2021-05-13",
             "2022-05-02",
+            "2025-03-31",
+            "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertNoHoliday("2025-03-30")
         obs_dts = (
             "2012-08-20",
             "2020-05-25",
@@ -115,12 +118,16 @@ class TestCameroon(CommonCountryTests, TestCase):
             "2020-07-31",
             "2021-07-20",
             "2022-07-09",
+            "2024-06-16",
+            "2025-06-06",
+            "2026-05-27",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
         obs_dts = (
             "2007-01-02",  # special case
             "2014-10-06",
             "2019-08-12",
+            "2024-06-17",
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
@@ -159,4 +166,36 @@ class TestCameroon(CommonCountryTests, TestCase):
             ("2022-10-08", "Mawlid"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (observed)"),
+        )
+
+    def test_2025(self):
+        self.assertHolidaysInYear(
+            2025,
+            ("2025-01-01", "New Year's Day"),
+            ("2025-02-11", "Youth Day"),
+            ("2025-03-31", "Eid al-Fitr"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-05-01", "Labour Day"),
+            ("2025-05-20", "National Day"),
+            ("2025-05-29", "Ascension Day"),
+            ("2025-06-06", "Eid al-Adha"),
+            ("2025-08-15", "Assumption Day"),
+            ("2025-09-04", "Mawlid (estimated)"),
+            ("2025-12-25", "Christmas Day"),
+        )
+
+    def test_2026(self):
+        self.assertHolidaysInYear(
+            2026,
+            ("2026-01-01", "New Year's Day"),
+            ("2026-02-11", "Youth Day"),
+            ("2026-03-20", "Eid al-Fitr"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-05-01", "Labour Day"),
+            ("2026-05-14", "Ascension Day"),
+            ("2026-05-20", "National Day"),
+            ("2026-05-27", "Eid al-Adha"),
+            ("2026-08-15", "Assumption Day"),
+            ("2026-08-25", "Mawlid (estimated)"),
+            ("2026-12-25", "Christmas Day"),
         )

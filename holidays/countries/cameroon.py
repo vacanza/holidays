@@ -30,6 +30,11 @@ class Cameroon(
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon>
         * <https://web.archive.org/web/20250408001410/https://www.timeanddate.com/holidays/cameroon/>
         * <https://web.archive.org/web/20231004010829/https://www.officeholidays.com/countries/cameroon>
+        * [Eid al-Adha 2024](https://web.archive.org/web/20260722203123/https://fr.journalducameroun.com/cameroun-paul-biya-declare-la-journee-du-17-juin-feriee/)
+        * [Eid al-Fitr 2025](https://web.archive.org/web/20260612082941/https://www.237online.com/cameroun-2025-laid-officiellement-fixe-au-31-mars/)
+        * [Eid al-Adha 2025](https://web.archive.org/web/20260713001724/https://www.bvm-ac.org/echos-du-marche/avis-n034-2025-bvmac-dg-relatif-a-la-journee-du-vendredi-06-juin-2025/)
+        * [Eid al-Fitr 2026](https://web.archive.org/web/20260410160706/https://www.bvm-ac.org/echos-du-marche/avis-n009-2026-bvmac-dg-relatif-a-la-journee-du-vendredi-20-mars-2026/)
+        * [Eid al-Adha 2026](https://web.archive.org/web/20260618014344/https://www.bvm-ac.org/echos-du-marche/avis-n035-2026-bvmac-dg-relatif-a-la-journee-du-mercredi-27-mai-2026/)
     """
 
     country = "CM"
@@ -109,7 +114,7 @@ class CMR(Cameroon):
 
 
 class CameroonIslamicHolidays(_CustomIslamicHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2023)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_ADHA_DATES = {
         2001: (MAR, 6),
         2002: (FEB, 23),
@@ -125,7 +130,7 @@ class CameroonIslamicHolidays(_CustomIslamicHolidays):
         2017: (SEP, 2),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2024)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2001: (DEC, 17),
         2002: (DEC, 6),
@@ -138,6 +143,7 @@ class CameroonIslamicHolidays(_CustomIslamicHolidays):
         2015: (JUL, 18),
         2016: (JUL, 7),
         2017: (JUN, 26),
+        2025: (MAR, 31),
     }
 
     MAWLID_DATES_CONFIRMED_YEARS = (2001, 2022)
