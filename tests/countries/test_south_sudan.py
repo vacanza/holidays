@@ -112,12 +112,13 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             name,
             "2020-05-22",
             "2021-05-13",
-            "2022-05-03",
+            "2022-05-02",
             "2023-04-21",
-            "2024-04-10",
+            "2024-04-09",
             "2025-03-31",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertHolidayName(name, "2014-07-28", "2016-07-06", "2022-05-02", "2024-04-09")
 
     def test_eid_al_adha(self):
         name = "Eid al-Adha"
@@ -131,6 +132,7 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             "2025-06-06",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
+        self.assertHolidayName(name, "2023-06-28", "2024-06-16")
 
     def test_eid_al_fitr_holiday(self):
         name = "Eid al-Fitr Holiday"
@@ -139,15 +141,15 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             name,
             "2020-05-23",
             "2021-05-14",
-            "2022-05-04",
+            "2022-05-03",
             "2023-04-22",
-            "2024-04-11",
+            "2024-04-10",
             "2025-04-01",
             "2020-05-24",
             "2021-05-15",
-            "2022-05-05",
+            "2022-05-04",
             "2023-04-23",
-            "2024-04-12",
+            "2024-04-11",
             "2025-04-02",
         )
         self.assertIslamicIslamicNoEstimatedHolidayName(name, self.full_range)

@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicHolidays
-from holidays.calendars.gregorian import MAR, MAY, JUN, JUL, AUG
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG
 from holidays.constants import ISLAMIC, PUBLIC
 from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
@@ -32,6 +32,8 @@ class SouthSudan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         * [2025](https://web.archive.org/web/20250426232710/https://www.netherlandsandyou.nl/web/south-sudan/about-us/closing-days)
         * [Eid al-Fitr 2014](https://web.archive.org/web/20261122171504/https://www.radiotamazuj.org/en/news/article/south-sudan-government-announces-three-day-holiday)
         * [Eid al-Fitr 2016](https://web.archive.org/web/20261122171502/https://eyeradio.org/police-deploy-muslim-eid-celebrations/)
+        * [Eid al-Fitr 2022](https://web.archive.org/web/20261123130835/https://eyeradio.org/islamic-council-hopes-ramadan-brings-peace-calls-for-unity/)
+        * [Eid al-Fitr 2024](https://web.archive.org/web/20261123130712/https://eyeradio.org/kiirs-message-to-muslims-as-they-celebrate-eid-al-fitr/)
         * [Eid al-Adha 2018](https://web.archive.org/web/20261122171504/https://www.radiotamazuj.org/en/news/article/south-sudan-government-announces-eid-al-adha-holiday)
         * [Eid al-Adha 2023](https://web.archive.org/web/20261122171504/https://www.sudanspost.com/govt-announces-eid-al-adha-holiday/)
         * [Eid al-Adha 2024](https://web.archive.org/web/20261122171534/https://www.onecitizendaily.com/index.php/2024/06/14/govt-announces-3-day-eid-al-adha-holiday/)
@@ -141,6 +143,7 @@ class SouthSudanIslamicHolidays(_CustomIslamicHolidays):
         2018: (JUN, 14),
         2020: (MAY, 22),
         2021: (MAY, 13),
-        2022: (MAY, 3),
+        2022: (MAY, 2),
+        2024: (APR, 9),
         2025: (MAR, 31),
     }
