@@ -1634,6 +1634,22 @@ class TestClosestHoliday(TestCase):
         # check for date after end of calendar
         self.assertIsNone(us.get_closest_holiday("2100-12-31"))
 
+    def test_get_closest_holiday_unix_timestamp_zero(self):
+        # Check that a falsy Unix timestamp is converted instead of falling back to today.
+        us = US(years=1970)
+        self.assertEqual(
+            us.get_closest_holiday(0),
+            us.get_closest_holiday(date(1970, 1, 1)),
+        )
+        self.assertEqual(
+            us.get_closest_holiday(0.0),
+            us.get_closest_holiday(date(1970, 1, 1)),
+        )
+        self.assertEqual(
+            us.get_closest_holiday(0, direction="backward"),
+            (date(1969, 12, 25), "Christmas Day"),
+        )
+
     def test_get_closest_holiday_after_empty_year(self):
         ua = UA(years=2025)
         # check for date if a year has no holidays
