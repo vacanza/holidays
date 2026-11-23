@@ -2028,7 +2028,7 @@ code when available. The following financial markets are available:
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk, zh_CN</td>
 <td></td>
 </tr>
 <tr>
