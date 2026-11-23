@@ -33,7 +33,6 @@ class DubaiFinancialMarket(UnitedArabEmirates):
     market = "XDFM"
     parent_entity = UnitedArabEmirates
     supported_categories = (PUBLIC,)  # type: ignore[assignment]
-    supported_languages = ("ar", "en_US", "ur_PK")  # type: ignore[assignment]
     start_year = 2023
 
     def __init__(self, *args, **kwargs):
