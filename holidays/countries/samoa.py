@@ -20,11 +20,8 @@ class Samoa(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
 
     References:
         * <https://en.wikipedia.org/wiki/Public_holidays_in_Samoa>
-        * <https://web.archive.org/web/20250407135339/https://www.timeanddate.com/holidays/samoa/>
-        * <https://web.archive.org/web/20240914112255/https://www.mcil.gov.ws/?attachment_id=6336>
-        * <https://web.archive.org/web/20250413020419/http://www.paclii.org/ws/legis/consol_act_2020/pha2008163/>
         * [Public Holidays Act 2008](https://web.archive.org/web/20261123115142/https://mcil.gov.ws/sites/default/files/documents/2008-01/Public-Holidays-Act-2008.pdf)
-        * [Public holidays calendar 2025-2027](https://web.archive.org/web/20261024100428/https://mcil.gov.ws/public-holidays-calendar)
+        * <https://web.archive.org/web/20240914112255/https://www.mcil.gov.ws/?attachment_id=6336>
     """
 
     country = "WS"
