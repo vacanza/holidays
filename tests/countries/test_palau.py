@@ -23,7 +23,6 @@ class TestPalau(CommonCountryTests, TestCase):
         super().setUpClass(Palau)
 
     def test_special_holidays(self):
-        self.assertHolidayName("National Day of Democracy", "2020-11-03", "2024-11-05")
         self.assertArmedForcesHoliday("2020-11-11")
         self.assertHalfDayHoliday("2019-09-30")
 
@@ -132,6 +131,13 @@ class TestPalau(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_national_day_of_democracy(self):
+        name = "National Day of Democracy"
+        self.assertHolidayName(name, "2012-11-06", "2016-11-01", "2020-11-03", "2024-11-05")
+        self.assertHolidayName(name, range(2012, self.end_year, 4))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
+        self.assertNoHolidayName(name, (year for year in range(2012, self.end_year) if year % 4))
 
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
