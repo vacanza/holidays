@@ -105,13 +105,10 @@ class TestSamoa(CommonCountryTests, TestCase):
         name = "Independence Day"
         self.assertHolidayName(name, (f"{year}-06-01" for year in self.full_range))
 
-        obs_dts = (
-            "2008-06-02",
-            "2014-06-02",
-            "2025-06-02",
-        )
-        self.assertHolidayName(f"{name} (observed)", obs_dts)
-        self.assertNoNonObservedHoliday(obs_dts)
+        obs_dt = "2025-06-02"
+        self.assertHolidayName(f"{name} (observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertNoHoliday("2008-06-02", "2014-06-02")
 
     def test_fathers_day(self):
         name = "Father's Day"

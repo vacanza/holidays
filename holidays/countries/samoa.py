@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import AUG
+from holidays.calendars.gregorian import AUG, JUN
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
@@ -55,7 +55,7 @@ class Samoa(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         self._add_holiday_1_day_past_2nd_sun_of_may("Mother's Day")
 
         # Independence Day.
-        self._add_observed(self._add_holiday_jun_1("Independence Day"))
+        self._add_holiday_jun_1("Independence Day")
 
         # Father's Day.
         self._add_holiday_1_day_past_2nd_sun_of_aug("Father's Day")
@@ -83,6 +83,7 @@ class SamoaStaticHolidays:
 
     References:
         * [General Election 2025](https://web.archive.org/web/20260811202425/https://www.mcil.gov.ws/sites/default/files/documents/2025-08/Public-Notice-General-Election-2025-Eng.pdf)
+        * [Public holidays calendar 2025-2027](https://web.archive.org/web/20261024100428/https://mcil.gov.ws/public-holidays-calendar)
     """
 
     # General Election Holiday.
@@ -93,4 +94,9 @@ class SamoaStaticHolidays:
             (AUG, 28, general_election_holiday),
             (AUG, 29, general_election_holiday),
         ),
+    }
+
+    special_public_holidays_observed = {
+        # Independence Day.
+        2025: (JUN, 2, "Independence Day"),
     }
