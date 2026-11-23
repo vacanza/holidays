@@ -143,9 +143,13 @@ class PapuaNewGuineaStaticHolidays:
         * [2021 Sir Michael Somare's Day of Mourning](https://web.archive.org/web/20241207121149/https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/)
         * [2022 QE2's Funeral](https://web.archive.org/web/20220914111729/https://www.thenational.com.pg/column-1-553/)
         * [2023 Sir Rabbie Namaliu's Funeral](https://web.archive.org/web/20241109201443/https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/)
+        * [2025 Independence Day Celebrations](https://thepngbulletin.com/news/public-servants-pay-date-brought-forward-ahead-of-independence-golden-jubilee/)
 
     Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only:
     <https://web.archive.org/web/20250120182905/https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/>
+
+    Oct 3, 2025 is a public holiday to honor the late Luther Wenge, but for Morobe Province only:
+    [National Gazette No. G961 of 2025](https://www.businessadvantagepng.com/wp-content/uploads/2025/10/IMG_440F8729EDBC-1.jpeg)
 
     Starting from 2021 afterwards all state funerals are given special public holidays, though only
     some are day-off nationwide.
@@ -156,6 +160,9 @@ class PapuaNewGuineaStaticHolidays:
 
     # Grand Chief Sir Michael Somare Remembrance Day
     sir_michael_somare_remembrance_day = "Grand Chief Sir Michael Somare Remembrance Day"
+
+    # Independence Day Celebrations.
+    independence_day_celebrations = "Independence Day Celebrations"
 
     special_public_holidays = {
         # APEC Leaders' Summit Public Holiday.
@@ -170,6 +177,10 @@ class PapuaNewGuineaStaticHolidays:
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
         # State Funeral of Sir Rabbie Namaliu.
         2023: (APR, 18, "State Funeral of Sir Rabbie Namaliu"),
+        2025: (
+            (SEP, 15, independence_day_celebrations),
+            (SEP, 17, independence_day_celebrations),
+        ),
     }
 
     special_public_holidays_observed = {

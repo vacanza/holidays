@@ -31,6 +31,8 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
             "2021-03-12",
             "2022-09-19",
             "2023-04-18",
+            "2025-09-15",
+            "2025-09-17",
         )
         dt_observed = (
             "2022-02-28",
@@ -177,6 +179,26 @@ class TestPapuaNewGuinea(CommonCountryTests, TestCase):
             ("2024-09-16", "Independence Day"),
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Boxing Day"),
+        )
+
+    def test_2025(self):
+        # https://web.archive.org/web/20251119043637/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/
+        self.assertHolidaysInYear(
+            2025,
+            ("2025-01-01", "New Year's Day"),
+            ("2025-02-26", "Grand Chief Sir Michael Somare Remembrance Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-19", "Easter Saturday"),
+            ("2025-04-20", "Easter Sunday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-06-17", "King's Birthday"),
+            ("2025-07-23", "Papua New Guinea Remembrance Day"),
+            ("2025-08-26", "National Repentance Day"),
+            ("2025-09-15", "Independence Day Celebrations"),
+            ("2025-09-16", "Independence Day"),
+            ("2025-09-17", "Independence Day Celebrations"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
 
     def test_2026(self):
