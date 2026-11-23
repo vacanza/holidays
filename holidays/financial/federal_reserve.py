@@ -33,7 +33,7 @@ class FederalReserve(ObservedHolidayBase, ChristianHolidays, InternationalHolida
     default_language = "en_US"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_US",)
+    supported_languages = ("en_US", "th")
     start_year = 1999
 
     def __init__(self, *args, **kwargs):

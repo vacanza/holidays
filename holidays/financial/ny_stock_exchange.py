@@ -52,7 +52,7 @@ class NewYorkStockExchange(
 
     market = "XNYS"
     default_language = "en_US"
-    supported_languages = ("en_US", "gu", "hi", "mr")
+    supported_languages = ("en_US", "gu", "hi", "kn", "mr")
     # %s (observed).
     observed_label = tr("%s (observed)")
     start_year = 1863
