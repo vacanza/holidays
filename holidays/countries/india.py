@@ -112,11 +112,11 @@ class India(
             * <https://web.archive.org/web/20250810032520/https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=57166>
             * <https://web.archive.org/web/20240122000000/https://economictimes.indiatimes.com/news/india/ram-mandir-inauguration-maharashtra-govt-declares-public-holiday-on-january-22/articleshow/106991491.cms>
         * Manipur:
-            * <https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf>
-            * <https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf>
-            * <https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf>
-            * <https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213%2FEG%2F2025-27%2F11%2F2025+%28E.G.%29+&etype=SPECIAL>
-            * <https://tamenglong.nic.in/festivals-of-tamenglong/>
+            * [2023](https://web.archive.org/web/20260720161303/https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf)
+            * [2024](https://web.archive.org/web/20250604035753/https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf)
+            * [2025](https://web.archive.org/web/20260720152547/https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf)
+            * [2026](https://web.archive.org/web/20261124121637/https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213/EG/2025-26/27-11-2025&etype=SPECIAL)
+            * [2027](https://web.archive.org/web/20261124121258/https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=243/EG/2026-27/27-10-2026&etype=SPECIAL)
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
@@ -1412,19 +1412,14 @@ class India(
         self._add_all_souls_day(tr("All Souls' Day"))
 
     # Manipur.
-    def _populate_subdiv_mn_new_years_day_and_gaan_ngai(self):
-        # New Year's Day.
-        self._add_new_years_day(tr("New Year's Day"))
-
-        # Gaan-Ngai.
-        self._add_pausha_shukla_trayodashi(tr("Gaan-Ngai"))
-
     def _populate_subdiv_mn_public_holidays(self):
-        self._populate_subdiv_mn_new_years_day_and_gaan_ngai()
+        pass
 
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
-        self._populate_subdiv_mn_public_holidays()
+
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
 
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
@@ -1449,6 +1444,9 @@ class India(
         self._add_holiday_dec_12(tr("Nupi-Lal"))
 
         # Hindu Holidays.
+
+        # Gaan-Ngai.
+        self._add_gaan_ngai(tr("Gaan-Ngai"))
 
         # Holika Dahan.
         self._add_holika_dahan(tr("Holika Dahan"))

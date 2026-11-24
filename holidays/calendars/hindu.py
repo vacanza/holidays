@@ -30,6 +30,7 @@ DEV_DIWALI = "DEV_DIWALI"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
 DUSSEHRA = "DUSSEHRA"
+GAAN_NGAI = "GAAN_NGAI"
 GANESH_CHATURTHI = "GANESH_CHATURTHI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
@@ -66,7 +67,6 @@ NIRJALA_EKADASHI = "NIRJALA_EKADASHI"
 ONAM = "ONAM"
 PARSHURAM_JAYANTI = "PARSHURAM_JAYANTI"
 PARIVARTINI_EKADASHI = "PARIVARTINI_EKADASHI"
-PAUSHA_SHUKLA_TRAYODASHI = "PAUSHA_SHUKLA_TRAYODASHI"
 PITRA_MOKSH_AMAVASYA = "PITRA_MOKSH_AMAVASYA"
 POHELA_BOISHAKH = "POHELA_BOISHAKH"
 PONGAL = "PONGAL"
@@ -743,6 +743,41 @@ class _HinduLunisolar:
         2033: (OCT, 3),
         2034: (OCT, 22),
         2035: (OCT, 11),
+    }
+
+    GAAN_NGAI_DATES = {
+        2001: (JAN, 8),
+        2002: (JAN, 27),
+        2003: (JAN, 16),
+        2004: (JAN, 5),
+        2005: (JAN, 23),
+        2006: (JAN, 12),
+        2007: (JAN, 1),
+        2008: (JAN, 20),
+        2009: ((JAN, 9), (DEC, 30)),
+        2011: (JAN, 18),
+        2012: (JAN, 7),
+        2013: (JAN, 24),
+        2014: (JAN, 13),
+        2015: (JAN, 3),
+        2016: (JAN, 22),
+        2017: ((JAN, 10), (DEC, 31)),
+        2019: (JAN, 19),
+        2020: (JAN, 8),
+        2021: (JAN, 26),
+        2022: (JAN, 15),
+        2023: (JAN, 4),
+        2024: (JAN, 23),
+        2025: (JAN, 12),
+        2026: (JAN, 1),
+        2027: (JAN, 20),
+        2028: ((JAN, 10), (DEC, 29)),
+        2030: (JAN, 17),
+        2031: (JAN, 6),
+        2032: (JAN, 25),
+        2033: (JAN, 13),
+        2034: (JAN, 2),
+        2035: (JAN, 22),
     }
 
     # https://web.archive.org/web/20250219062212/https://www.timeanddate.com/holidays/india/ganesh-chaturthi
@@ -2146,22 +2181,6 @@ class _HinduLunisolar:
         2035: (SEP, 13),
     }
 
-    # Gaan-Ngai is observed on Pausha Shukla Trayodashi (13th tithi) in Manipur.
-    # Dates below follow the Imphal sunrise convention and are based on official
-    # Manipur government holiday notifications.
-    # 2023: https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf
-    # 2024: https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf
-    # 2025: https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf
-    # 2026: https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213%2FEG%2F2025-27%2F11%2F2025+%28E.G.%29+&etype=SPECIAL
-    # 2027: https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=243%2FEG%2F2026-27%2F27-10-2026+%28E.G.%29+&etype=SPECIAL
-    PAUSHA_SHUKLA_TRAYODASHI_DATES = {
-        2023: (JAN, 4),
-        2024: (JAN, 23),
-        2025: (JAN, 12),
-        2026: (JAN, 1),
-        2027: (JAN, 20),
-    }
-
     # https://web.archive.org/web/20250906191235/https://www.drikpanchang.com/shraddha/tithi/amavasya-shraddha-date-time.html
     PITRA_MOKSH_AMAVASYA_DATES = {
         2001: (SEP, 17),
@@ -3282,8 +3301,8 @@ class _HinduLunisolar:
     def parivartini_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARIVARTINI_EKADASHI, year)
 
-    def pausha_shukla_trayodashi_date(self, year: int) -> tuple[date | None, bool]:
-        return self._get_holiday(PAUSHA_SHUKLA_TRAYODASHI, year)
+    def gaan_ngai_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(GAAN_NGAI, year)
 
     def pitra_moksh_amavasya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PITRA_MOKSH_AMAVASYA, year)

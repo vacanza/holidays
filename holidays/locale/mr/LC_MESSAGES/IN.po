@@ -732,10 +732,6 @@ msgstr "ख्रिसमस सण"
 msgid "U Kiang Nongbah's Death Anniversary"
 msgstr "यू कियांग नोंगबह यांची पुण्यतिथी"
 
-#. Gaan-Ngai.
-msgid "Gaan-Ngai"
-msgstr "गान-ङ्गाई"
-
 #. Maharaja Gambhir Singh's Death Anniversary.
 msgid "Maharaja Gambhir Singh's Death Anniversary"
 msgstr "महाराजा गंभीर सिंह पुण्यतिथी"
@@ -755,6 +751,10 @@ msgstr "देशभक्त दिन"
 #. Nupi-Lal.
 msgid "Nupi-Lal"
 msgstr "नुपी-लाल"
+
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "गान-ङ्गाई"
 
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
