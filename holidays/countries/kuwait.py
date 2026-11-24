@@ -24,6 +24,7 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
+    DEC,
     THU,
     FRI,
     SAT,
@@ -157,24 +158,41 @@ class KuwaitStaticHolidays:
     """Kuwait special holidays.
 
     References:
-        * [2020](https://web.archive.org/web/20220522170636/https://gulfnews.com/world/gulf/kuwait/eid-al-adha-kuwait-announces-five-day-holiday-1.72729134)
+        * 2020:
+            * <https://web.archive.org/web/20191223065910/http://www.arabtimesonline.com/news/jan-1st-to-4th-new-year-holidays-in-kuwait/>
+            * <https://web.archive.org/web/20221216225124/http://www.arabtimesonline.com/news/5-days-holiday-in-kuwait-25th-feb-to-29th-feb/>
+            * <https://web.archive.org/web/20220522170636/https://gulfnews.com/world/gulf/kuwait/eid-al-adha-kuwait-announces-five-day-holiday-1.72729134>
         * 2021:
+            * <https://web.archive.org/web/20201224145052/https://www.kuna.net.kw/ArticleDetails.aspx?id=2949349>
+            * <https://web.archive.org/web/20240415082910/https://kuwaittimes.com/public-sector-holiday-on-feb-25-28/>
             * <https://web.archive.org/web/20210521053418/https://gulfnews.com/world/gulf/kuwait/kuwait-eid-al-fitr-holiday-for-5-days-beginning-on-may-12-for-public-sector-1.1620207163109>
             * <https://web.archive.org/web/20260717120656/https://www.arabtimesonline.com/news/islamic-new-year-holiday-on-8th-9th-aug/>
             * <https://web.archive.org/web/20240711190131/https://gulfnews.com/world/gulf/kuwait/kuwait-announces-9-day-holiday-for-eid-al-adha-1.80628033>
         * 2022:
+            * <https://web.archive.org/web/20211220161910/https://www.kuna.net.kw/ArticleDetails.aspx?id=3018370>
             * <https://web.archive.org/web/20260719215818/https://www.thenationalnews.com/gulf-news/2022/04/15/kuwait-gives-week-long-eid-holiday-for-government-employees>
             * <https://web.archive.org/web/20250722050014/https://www.thenationalnews.com/gulf-news/2022/06/14/eid-al-adha-2022-kuwait-announces-a-nine-day-holiday>
         * 2023:
+            * <https://web.archive.org/web/20230320191537/https://timeskuwait.com/news/kuwait-sets-feb-19-26-27-as-public-holidays-for-al-israa-wal-miraj-national-day-festivities/>
             * <https://web.archive.org/web/20260610031317/https://www.moroccoworldnews.com/2023/04/34270/kuwait-announces-friday-as-eid-al-fitr-2023/>
             * <https://web.archive.org/web/20250912212848/https://gulfnews.com/world/gulf/kuwait/eid-al-adha-2023-kuwait-announces-six-day-holiday-for-public-sector-1.96255315>
             * <https://web.archive.org/web/20260610125520/https://gulfnews.com/world/gulf/kuwait/kuwaitis-will-have-4-day-long-weekend-to-celebrate-islamic-new-year-1.96898604>
+            * <https://web.archive.org/web/20260415105140/https://www.arabtimesonline.com/news/civil-service-commission-announces-year-end-break-and-new-year-holiday/>
         * [2024](https://web.archive.org/web/20260516203315/https://www.arabtimesonline.com/news/eid-al-fitr-holiday-from-april-9th-work-to-begin-on-14th/)
-        * [2025](https://web.archive.org/web/20250727081748/https://www.arabtimesonline.com/news/kuwait-cabinet-declares-eid-holidays-from-june-5-to-9/)
+        * 2025:
+            * <https://web.archive.org/web/20250725001511/https://www.arabtimesonline.com/news/kuwait-declares-jan-1-2-new-year-holiday/>
+            * <https://web.archive.org/web/20260307054321/https://www.arabtimesonline.com/news/feb-25-to-27-public-holiday/>
+            * <https://web.archive.org/web/20250727081748/https://www.arabtimesonline.com/news/kuwait-cabinet-declares-eid-holidays-from-june-5-to-9/>
         * 2026:
             * <https://web.archive.org/web/20260311172405/https://www.arabtimesonline.com/news/eid-al-fitr-holiday-officially-set-in-kuwait/>
             * <https://web.archive.org/web/20261121161215/https://www.arabtimesonline.com/news/eid-al-adha-holidays-in-kuwait-from-may-26-31/>
     """
+
+    # New Year's Day.
+    new_years_day = tr("رأس السنة الميلادية")
+
+    # National Day.
+    national_day = tr("اليوم الوطني")
 
     # Eid al-Fitr Holiday.
     eid_al_fitr_holiday = tr("عطلة عيد الفطر")
@@ -186,14 +204,21 @@ class KuwaitStaticHolidays:
     islamic_new_year = tr("رأس السنة الهجرية")
 
     special_public_holidays = {
-        2020: (AUG, 3, eid_al_adha_holiday),
+        2020: (
+            (JAN, 2, new_years_day),
+            (FEB, 27, national_day),
+            (AUG, 3, eid_al_adha_holiday),
+        ),
         2021: (
+            (JAN, 3, new_years_day),
+            (FEB, 28, national_day),
             (MAY, 12, eid_al_fitr_holiday),
             (MAY, 16, eid_al_fitr_holiday),
             (JUL, 18, eid_al_adha_holiday),
             (AUG, 8, islamic_new_year),
         ),
         2022: (
+            (JAN, 2, new_years_day),
             (MAY, 1, eid_al_fitr_holiday),
             (MAY, 5, eid_al_fitr_holiday),
             (JUL, 12, eid_al_adha_holiday),
@@ -201,13 +226,19 @@ class KuwaitStaticHolidays:
             (JUL, 14, eid_al_adha_holiday),
         ),
         2023: (
+            (FEB, 27, national_day),
             (APR, 24, eid_al_fitr_holiday),
             (APR, 25, eid_al_fitr_holiday),
             (JUL, 2, eid_al_adha_holiday),
             (JUL, 20, islamic_new_year),
+            (DEC, 31, new_years_day),
         ),
         2024: (APR, 9, eid_al_fitr_holiday),
-        2025: (JUN, 9, eid_al_adha_holiday),
+        2025: (
+            (JAN, 2, new_years_day),
+            (FEB, 27, national_day),
+            (JUN, 9, eid_al_adha_holiday),
+        ),
         2026: (
             (MAR, 19, eid_al_fitr_holiday),
             (MAR, 23, eid_al_fitr_holiday),
