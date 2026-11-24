@@ -21,7 +21,7 @@ class TestKuwait(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Kuwait)
 
-    def test_special(self):
+    def test_special_holidays(self):
         self.assertHoliday(
             "2020-08-03",
             "2021-05-12",

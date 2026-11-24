@@ -178,8 +178,10 @@ class KuwaitStaticHolidays:
 
     # Eid al-Fitr Holiday.
     eid_al_fitr_holiday = tr("عطلة عيد الفطر")
+
     # Eid al-Adha Holiday.
     eid_al_adha_holiday = tr("عطلة عيد الأضحى")
+
     # Islamic New Year.
     islamic_new_year = tr("رأس السنة الهجرية")
 
