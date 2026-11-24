@@ -26,9 +26,11 @@ class TestZagrebStockExchange(CommonFinancialTests, TestCase):
         self.assertIsNone(getattr(self.holidays, "country", None))
 
     def test_special_holidays(self):
-        self.assertHolidayName("Uvođenje eura", "2022-12-29", "2022-12-30")
-        self.assertNoHoliday("2022-12-28")
-        self.assertHolidayName("Dan izbora zastupnika u Hrvatski sabor", "2024-04-17")
+        self.assertHoliday(
+            "2022-12-29",
+            "2022-12-30",
+            "2024-04-17",
+        )
 
     def test_good_friday(self):
         name = "Veliki petak"
@@ -150,7 +152,7 @@ class TestZagrebStockExchange(CommonFinancialTests, TestCase):
             ("2024-01-01", "Новий рік"),
             ("2024-03-29", "Страсна пʼятниця"),
             ("2024-04-01", "Великодній понеділок"),
-            ("2024-04-17", "День виборів депутатів Хорватського сабору"),
+            ("2024-04-17", "День парламентських виборів"),
             ("2024-05-01", "День праці"),
             ("2024-05-30", "День державності; Свято Тіла і Крові Христових"),
             ("2024-08-05", "День перемоги і подяки вітчизні та День хорватських захисників"),

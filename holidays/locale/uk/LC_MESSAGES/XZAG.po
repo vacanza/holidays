@@ -45,4 +45,4 @@ msgstr "Запровадження євро"
 
 #. Parliamentary Election Day.
 msgid "Dan izbora zastupnika u Hrvatski sabor"
-msgstr "День виборів депутатів Хорватського сабору"
+msgstr "День парламентських виборів"
