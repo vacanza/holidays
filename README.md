@@ -2014,7 +2014,7 @@ code when available. The following financial markets are available:
 <td>Dubai Financial Market</td>
 <td>XDFM</td>
 <td>Dubai Financial Market (DFM) holidays</td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
