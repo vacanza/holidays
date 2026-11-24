@@ -753,6 +753,10 @@ msgstr "દેશભક્ત દિવસ"
 msgid "Nupi-Lal"
 msgstr "નુપી-લાલ"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "ગાન-ન્ગાઈ"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "મેરા ચાઓરેન હૌબા"

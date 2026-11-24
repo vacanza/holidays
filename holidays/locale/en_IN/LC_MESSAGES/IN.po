@@ -753,6 +753,10 @@ msgstr ""
 msgid "Nupi-Lal"
 msgstr ""
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr ""
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr ""
