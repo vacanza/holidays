@@ -72,7 +72,7 @@ All applications from eligible contributors will be considered, and the issue wi
 ## Payment Process
 
 - **Our preferred method of payment is GitHub Sponsors**
-- Payments are processed after the sponsored task is officially released, typically on the **1st and 3rd Monday of each month**
+- Payments are processed after the sponsored task is officially released
 - Contributors are responsible for setting up and maintaining their payment details in GitHub Sponsors or any approved alternative method
 - **We do not cover any transaction or processing fees** imposed by [GitHub Sponsors](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors#about-github-sponsors), banks, or other platforms. The amounts listed in the [Sponsorship Amounts](#sponsorship-amounts) section represent the **maximum compensation per task before fees**
 - A **transaction confirmation number** will be sent directly to the contributor via private Slack message once the payment has been processed.

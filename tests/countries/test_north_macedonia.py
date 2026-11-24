@@ -445,6 +445,43 @@ class TestNorthMacedonia(CommonCountryTests, TestCase):
             ("2024-12-25", "Christmas Day"),
         )
 
+    def test_l10n_sq(self):
+        self.assertLocalizedHolidays(
+            "sq",
+            ("2024-01-01", "Viti i Ri"),
+            ("2024-01-06", "Nata e Krishtlindjes"),
+            ("2024-01-07", "Krishtlindjet"),
+            ("2024-01-08", "Krishtlindjet (ditë pushimi e shtyrë)"),
+            ("2024-01-19", "Ujët e Bekuar"),
+            ("2024-01-27", "Dita e Shën Savës"),
+            ("2024-04-01", "E hëna e Pashkëve"),
+            ("2024-04-08", "Dita Ndërkombëtare e Romëve"),
+            ("2024-04-10", "Ramazan Bajrami"),
+            ("2024-04-24", "Dita e Zgjedhjeve"),
+            ("2024-05-01", "Dita e Punës"),
+            ("2024-05-03", "E Premtja e Madhe"),
+            ("2024-05-06", "E hëna e Pashkëve"),
+            ("2024-05-08", "Dita e Zgjedhjeve"),
+            ("2024-05-23", "Dita Kombëtare e Vllehëve"),
+            ("2024-05-24", "Dita e Shën Kirilit dhe Metodit, iluministëve gjithësllavë"),
+            ("2024-06-16", "Kurban Bajrami"),
+            ("2024-06-21", "Rrëshajët"),
+            ("2024-08-02", "Dita e Republikës"),
+            ("2024-08-28", "Fjetja e Shën Mërisë"),
+            ("2024-09-08", "Dita e Pavarësisë"),
+            ("2024-09-09", "Dita e Pavarësisë (ditë pushimi e shtyrë)"),
+            ("2024-09-28", "Dita Ndërkombëtare e Boshnjakëve"),
+            ("2024-10-11", "Dita e Kryengritjes Popullore"),
+            ("2024-10-12", "Jom Kipur"),
+            ("2024-10-23", "Dita e Luftës Revolucionare Maqedonase"),
+            ("2024-11-01", "Dita e të Gjithë Shenjtorëve"),
+            ("2024-11-22", "Dita e Alfabetit Shqip"),
+            ("2024-12-08", "Dita e Shën Klementit të Ohrit"),
+            ("2024-12-09", "Dita e Shën Klementit të Ohrit (ditë pushimi e shtyrë)"),
+            ("2024-12-21", "Dita e Mësimit në Gjuhën Turke"),
+            ("2024-12-25", "Krishtlindjet"),
+        )
+
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",

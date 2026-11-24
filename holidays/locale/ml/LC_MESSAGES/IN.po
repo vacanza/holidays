@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-23 14:20+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
+"PO-Revision-Date: 2026-11-22 00:48+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ml\n"
@@ -184,9 +184,9 @@ msgstr "ഉഗാദി"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "മേഷാദി (തമിഴ് പുതുവത്സര ദിനം)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "ഭാഗം ബിഹു"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "ബൊഹാഗ് ബിഹു"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -644,6 +644,10 @@ msgstr "കർമ പൂജ"
 msgid "Majdoor Diwas"
 msgstr "തൊഴിലാളി ദിനം"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "ഹൂൾ ദിനം"
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr "കർണാടക രാജ്യോത്സവം"
@@ -748,6 +752,10 @@ msgstr "ഖോങ്ജോം ദിനം"
 msgid "Patriot's Day"
 msgstr "ദേശസ്നേഹികളുടെ ദിനം"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "നുപി-ലാൽ"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "മേര ചാവോറെൻ ഹൗബ"
@@ -807,6 +815,10 @@ msgstr "പുതുവത്സരത്തിന് ശേഷമുള്ള �
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "മിഷനറി ദിനം"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "ചാപ്ചർ കുട്ട്"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
@@ -1071,3 +1083,7 @@ msgstr "ജന്മാഷ്ടമി (സ്മാർത്ത)"
 #. Kerala Assembly Election Day.
 msgid "Kerala Assembly Election Day"
 msgstr "കേരള നിയമസഭാ തിരഞ്ഞെടുപ്പ് ദിനം"
+
+#. Ram Mandir Pran Pratishtha.
+msgid "Ram Mandir Pran Pratishtha"
+msgstr "രാമക്ഷേത്ര പ്രാണപ്രതിഷ്ഠ"

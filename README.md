@@ -48,18 +48,19 @@ specific date is a holiday as fast and flexible as possible.
 
 The latest stable version can always be installed or updated via pip:
 
-``` shell
+```shell
 pip install --upgrade holidays
 ```
 
 The latest pre-release version can always be installed or updated via pip:
 
-``` shell
+```shell
 pip install --upgrade --pre holidays
 ```
 
 All new features are first pushed to the `dev` branch and published as PyPI pre-releases,
-then released from `main` on official version upgrades.
+then released from `main` on official version upgrades. We normally follow a release
+schedule, typically on the **1st and 3rd Tuesday of each month**.
 
 On `dev`, the `VERSION` file holds the upcoming stable version (for example `0.103`).
 Pre-release publishes append a UTC timestamp in CI only
@@ -78,7 +79,7 @@ or from the [Download Holiday Calendars](https://holidays.readthedocs.io/en/late
 
 ## Quick Start
 
-``` python
+```python
 from datetime import date
 import holidays
 
@@ -97,7 +98,7 @@ us_holidays.get("2014-01-01")  # "New Year's Day"
 
 The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holiday_base.py) dict-like class will also recognize date strings and Unix timestamps:
 
-``` python
+```python
 "2014-01-01" in us_holidays  # True
 "1/1/2014" in us_holidays  # True
 1388597445 in us_holidays  # True
@@ -105,7 +106,7 @@ The [`HolidayBase`](https://github.com/vacanza/holidays/blob/main/holidays/holid
 
 Some holidays may be only present in parts of a country:
 
-``` python
+```python
 us_pr_holidays = holidays.country_holidays("US", subdiv="PR")
 "2018-01-06" in us_holidays  # False
 "2018-01-06" in us_pr_holidays  # True
@@ -116,8 +117,10 @@ and detailed information.
 
 ## Available Countries
 
-We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
-In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
+We currently support 250 country codes, which primarily follow [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html), with a small
+number of widely used user-assigned or reserved codes (for example, `XK` for Kosovo).
+In general, the standard way to refer to a country is by using its [ISO 3166-1 alpha-2
+code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes),
 the same used for domain names, and for a subdivision its [ISO 3166-2
 code](https://en.wikipedia.org/wiki/ISO_3166-2). Some countries have common or foreign names or
 abbreviations as aliases for their subdivisions. These are defined in the (optional)
@@ -132,13 +135,13 @@ abbreviations as aliases for their subdivisions. These are defined in the (optio
 > aliases (where available) are listed in the `Subdivisions` column
 > of the table below.
 
-Some of the countries support more than one language for holiday names output. A default language is defined by `default_language` (optional) attribute for each
-entity and is used as a fallback when neither user specified language nor user locale language
-available. The default language code is a [ISO 639-1
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all languages supported by
-country is defined by `supported_languages` (optional) attribute. If there is no designated [ISO
-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then [ISO 639-2
-code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can be used.
+Some of the countries support more than one language for holiday names output. A default language
+is defined by `default_language` (optional) attribute for each entity and is used as a fallback
+when neither user specified language nor user locale language available. The default language code
+is a [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). A list of all
+languages supported by country is defined by `supported_languages` (optional) attribute. If there
+is no designated [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then
+[ISO 639-2 code](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) can be used.
 
 Many countries have other categories of holidays in addition to common (national-wide) holidays:
 bank holidays, school holidays, additional (paid or non-paid) holidays, holidays of state or public
@@ -521,7 +524,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Comoros</td>
 <td>KM</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -702,9 +705,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>France</td>
 <td>FR</td>
-<td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna)</td>
+<td>Departments/European Collectivity/DOM/ROM/TOM: 57 (Moselle), 6AE (Alsace), 971 (GP, GUA, Guadeloupe), 972 (MQ, Martinique), 973 (GY, Guyane), 974 (RE, LRE, La Réunion), 976 (YT, MAY, Mayotte), BL (Saint-Barthélemy), MF (Saint-Martin), NC (Nouvelle-Calédonie), PF (Polynésie Française), PM (Saint-Pierre-et-Miquelon), TF (Terres australes françaises), WF (Wallis-et-Futuna); School zones: Zone A, Zone B, Zone C</td>
 <td>en_US, <strong>fr</strong>, th, uk</td>
-<td></td>
+<td>SCHOOL</td>
 </tr>
 <tr>
 <td>French Guiana</td>
@@ -1151,7 +1154,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritius</td>
 <td>MU</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>en_MU</strong>, en_US, hi</td>
 <td></td>
 </tr>
 <tr>
@@ -1249,7 +1252,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, hi, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, mr, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1326,7 +1329,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td>en_US, <strong>mk</strong>, uk</td>
+<td>en_US, <strong>mk</strong>, sq, uk</td>
 <td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
@@ -1571,7 +1574,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td></td>
 </tr>
 <tr>
@@ -1584,9 +1587,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Slovakia</td>
 <td>SK</td>
-<td></td>
+<td>Regions: BC (Banskobystrický kraj, BB), BL (Bratislavský kraj, BA), KI (Košický kraj, KE), NI (Nitriansky kraj, NR), PV (Prešovský kraj, PO), TA (Trnavský kraj, TT), TC (Trenčiansky kraj, TN), ZI (Žilinský kraj, ZA)</td>
 <td>en_US, <strong>sk</strong>, uk</td>
-<td>WORKDAY</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Slovenia</td>
@@ -1809,7 +1812,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -1969,28 +1972,28 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Argentinos</td>
 <td>XBUE</td>
 <td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
 <td>Bolsas y Mercados Españoles</td>
 <td>XMAD</td>
 <td>Bolsas y Mercados Españoles (BME) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>Borsa Istanbul</td>
 <td>XIST</td>
 <td>Borsa Istanbul (BIST) market holidays</td>
-<td>en_US, <strong>tr</strong></td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2004,8 +2007,15 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Dubai Financial Market</td>
+<td>XDFM</td>
+<td>Dubai Financial Market (DFM) holidays</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td></td>
 </tr>
 <tr>
 <td>Euronext</td>
@@ -2018,14 +2028,14 @@ code when available. The following financial markets are available:
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td></td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>Federal Reserve</td>
 <td>XFED</td>
 <td>Federal Reserve Banks holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td></td>
 </tr>
 <tr>
@@ -2046,7 +2056,7 @@ code when available. The following financial markets are available:
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2081,21 +2091,21 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2110,6 +2120,13 @@ code when available. The following financial markets are available:
 <td>XKAR</td>
 <td>Pakistan Stock Exchange (PSX) market holidays</td>
 <td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Qatar Stock Exchange</td>
+<td>DSMD</td>
+<td>Qatar Stock Exchange (QSE) holidays</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2144,7 +2161,7 @@ code when available. The following financial markets are available:
 <td>Singapore Exchange</td>
 <td>XSES</td>
 <td>Singapore Exchange (SGX) market holidays</td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2172,7 +2189,7 @@ code when available. The following financial markets are available:
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
-<td>en_US, <strong>pl</strong>, uk</td>
+<td>de, en_US, <strong>pl</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>
