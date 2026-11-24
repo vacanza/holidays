@@ -90,6 +90,7 @@ class BotswanaStaticHolidays:
 
     References:
         * [October 30-31, 2024](https://web.archive.org/web/20241031094627/https://dailynews.gov.bw/news-detail/81878)
+        * [September 29, 2025](https://web.archive.org/web/20260329201720/https://www.scribd.com/document/936127095/Extraordinary-Gazette-26-09-2025)
         * [May 15, 2026](https://web.archive.org/web/20260608013004/https://www.bse.co.bw/wp-content/uploads/2026/05/120526-PUBLIC-NOTICE_FRIDAY-15-MAY-2026-DECLARED-PUBLIC-HOLIDAY-AND-NON-TRADING-DAY-ON-THE-BSE.pdf)
     """
 
