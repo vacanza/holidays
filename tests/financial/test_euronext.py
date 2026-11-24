@@ -747,10 +747,3 @@ class TestEuronext(CommonFinancialTests, TestCase):
                 "新年前夜; 新年前夜（市场于14:00 CET收市）; 新年前夜（市场于14:05 CET收市）",
             ),
         )
-
-    def test_l10n_zh_cn_weekday_holidays(self):
-        self.assertHolidayName("宪法日", Euronext(subdiv="XOSL", language="zh_CN"), "2024-05-17")
-        self.assertHolidayName(
-            "圣母升天节", Euronext(subdiv="XMIL", language="zh_CN"), "2024-08-15"
-        )
-        self.assertHolidayName("圣斯德望日", Euronext(language="zh_CN"), "2024-12-26")

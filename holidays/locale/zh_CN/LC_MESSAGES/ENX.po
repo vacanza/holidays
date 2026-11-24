@@ -12,10 +12,6 @@
 #
 # Euronext holidays zh_CN localization.
 #
-# Translation references:
-# https://www.mofcom.gov.cn/dl/gbdqzn/upload/xila.pdf
-# https://pdf.visaforchina.cn/OSL4_ZH/tongzhigonggao
-# https://cloud.ibm.com/docs/watson-assistant?locale=zh-CN&topic=watson-assistant-sys-date-festivals
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
