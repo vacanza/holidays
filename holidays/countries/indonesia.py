@@ -256,7 +256,7 @@ class IndonesiaChineseHolidays(_CustomChineseHolidays):
 
 
 class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (1963, 2027)
     EID_AL_ADHA_DATES = {
         1966: (APR, 2),
         1967: (MAR, 22),
@@ -270,7 +270,7 @@ class IndonesiaIslamicHolidays(_CustomIslamicMabimsHolidays):
         2025: (JUN, 6),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2026)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (1963, 2027)
     EID_AL_FITR_DATES = {
         1968: ((JAN, 2), (DEC, 21)),
         1971: (NOV, 19),
