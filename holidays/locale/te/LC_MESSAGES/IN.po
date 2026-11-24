@@ -752,6 +752,10 @@ msgstr "దేశభక్తుల దినోత్సవం"
 msgid "Nupi-Lal"
 msgstr "నుపి-లాల్"
 
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "గాన్-ంగై"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "మేరా చావోరెన్ హౌబా"

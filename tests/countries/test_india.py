@@ -423,6 +423,9 @@ class TestIndia(CommonCountryTests, TestCase):
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
+        self.assertSubdivMnGovernmentHolidayName(
+            name, (f"{year}-01-01" for year in self.full_range)
+        )
 
     # Hindu holidays.
 
@@ -1454,6 +1457,18 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays, range(self.start_year, 1987))
             else:
                 self.assertNoHolidayName(name, holidays)
+
+    def test_gaan_ngai(self):
+        name = "Gaan-Ngai"
+        self.assertNoHolidayName(name)
+        dts = (
+            "2023-01-04",
+            "2024-01-23",
+            "2025-01-12",
+            "2026-01-01",
+            "2027-01-20",
+        )
+        self.assertSubdivMnGovernmentHolidayName(name, dts)
 
     def test_lui_ngai_ni(self):
         name = "Lui Ngai Ni"

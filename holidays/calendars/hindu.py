@@ -30,6 +30,7 @@ DEV_DIWALI = "DEV_DIWALI"
 DIWALI = "DIWALI"
 DIWALI_INDIA = "DIWALI_INDIA"
 DUSSEHRA = "DUSSEHRA"
+GAAN_NGAI = "GAAN_NGAI"
 GANESH_CHATURTHI = "GANESH_CHATURTHI"
 GOVARDHAN_PUJA = "GOVARDHAN_PUJA"
 GUDI_PADWA = "GUDI_PADWA"
@@ -742,6 +743,41 @@ class _HinduLunisolar:
         2033: (OCT, 3),
         2034: (OCT, 22),
         2035: (OCT, 11),
+    }
+
+    GAAN_NGAI_DATES = {
+        2001: (JAN, 8),
+        2002: (JAN, 27),
+        2003: (JAN, 16),
+        2004: (JAN, 5),
+        2005: (JAN, 23),
+        2006: (JAN, 12),
+        2007: (JAN, 1),
+        2008: (JAN, 20),
+        2009: ((JAN, 9), (DEC, 30)),
+        2011: (JAN, 18),
+        2012: (JAN, 7),
+        2013: (JAN, 24),
+        2014: (JAN, 13),
+        2015: (JAN, 3),
+        2016: (JAN, 22),
+        2017: ((JAN, 10), (DEC, 31)),
+        2019: (JAN, 19),
+        2020: (JAN, 8),
+        2021: (JAN, 26),
+        2022: (JAN, 15),
+        2023: (JAN, 4),
+        2024: (JAN, 23),
+        2025: (JAN, 12),
+        2026: (JAN, 1),
+        2027: (JAN, 20),
+        2028: ((JAN, 10), (DEC, 29)),
+        2030: (JAN, 17),
+        2031: (JAN, 6),
+        2032: (JAN, 25),
+        2033: (JAN, 13),
+        2034: (JAN, 2),
+        2035: (JAN, 22),
     }
 
     # https://web.archive.org/web/20250219062212/https://www.timeanddate.com/holidays/india/ganesh-chaturthi
@@ -3264,6 +3300,9 @@ class _HinduLunisolar:
 
     def parivartini_ekadashi_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PARIVARTINI_EKADASHI, year)
+
+    def gaan_ngai_date(self, year: int) -> Iterable[tuple[date, bool]]:
+        return self._get_holiday_set(GAAN_NGAI, year)
 
     def pitra_moksh_amavasya_date(self, year: int) -> tuple[date | None, bool]:
         return self._get_holiday(PITRA_MOKSH_AMAVASYA, year)
