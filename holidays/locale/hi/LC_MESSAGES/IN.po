@@ -111,7 +111,7 @@ msgstr "ईद-उल-ज़ुहा (बकरीद)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "नए साल का दिन"
+msgstr "नव वर्ष दिवस"
 
 #. Easter Sunday.
 msgid "Easter Sunday"
@@ -123,7 +123,7 @@ msgstr "क्रिसमस की पूर्व संध्या"
 
 #. Guru Gobind Singh's Birthday.
 msgid "Guru Gobind Singh's Jayanti"
-msgstr "गुरु गोविंद सिंह का जन्मदिन"
+msgstr "गुरु गोविंद सिंह जयंती"
 
 #. Lohri.
 msgid "Lohri"
@@ -147,7 +147,7 @@ msgstr "बसंत पंचमी / श्री पंचमी"
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
-msgstr "गुरु रवि दास का जन्मदिन"
+msgstr "गुरु रवि दास जयंती"
 
 #. Shivaji's Birthday.
 msgid "Shivaji's Jayanti"
@@ -175,7 +175,7 @@ msgstr "चेटी चंड"
 
 #. Gudi Padwa.
 msgid "Gudi Padwa"
-msgstr "गुडी पाडवा"
+msgstr "गुड़ी पड़वा"
 
 #. Ugadi.
 msgid "Ugadi"
@@ -187,7 +187,7 @@ msgstr "मेषदी (तमिल नव वर्ष दिवस)"
 
 #. Bohag Bihu.
 msgid "Bohag Bihu"
-msgstr "बोहाग बिहु"
+msgstr "बोहाग बिहू"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -251,7 +251,7 @@ msgstr "महर्षि वाल्मीकि जयंती"
 
 #. Karaka Chaturthi (Karwa Chouth).
 msgid "Karaka Chaturthi (Karwa Chouth)"
-msgstr "कराका चतुर्थी (करवा चौथ)"
+msgstr "करक चतुर्थी (करवा चौथ)"
 
 #. Diwali (South India).
 msgid "Deepavali (South India)"
@@ -275,7 +275,7 @@ msgstr "प्रतिहार षष्ठी या सूर्य षष�
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Shaheedi Diwas"
-msgstr "गुरु तेग बहादुर का शहीदी दिवस"
+msgstr "गुरु तेग बहादुर शहीदी दिवस"
 
 #. Ali's Birthday.
 msgid "Hazarat Ali's Birthday"
@@ -311,11 +311,11 @@ msgstr "दुर्गाष्टमी"
 
 #. Boxing Day.
 msgid "Boxing Day"
-msgstr "बॉक्सिंग डे"
+msgstr "बॉक्सिंग दिवस"
 
 #. Isra' and Mi'raj.
 msgid "Shab-I-Miraj"
-msgstr "शब-ए-मेराज"
+msgstr "शब-ए-मिराज"
 
 #. Eid al-Ghadir.
 msgid "Eid-e-Ghadeer"
@@ -419,7 +419,7 @@ msgstr "महाराज अग्रसेन जयंती"
 
 #. International Day of the World's Indigenous Peoples.
 msgid "International Day of Adivasi Peoples"
-msgstr "आदिवासी लोगों का अंतर्राष्ट्रीय दिवस"
+msgstr "आदिवासी अंतर्राष्ट्रीय दिवस"
 
 #. Guru Ghasidas's Birthday.
 msgid "Guru Ghasidas's Jayanti"
@@ -507,7 +507,7 @@ msgstr "पारसी नव वर्ष (शहंशाही)"
 
 #. Saint Francis Xavier's Day.
 msgid "Saint Francis Xavier's Day"
-msgstr "संत फ्रांसिस जेवियर का पर्व"
+msgstr "संत फ्रांसिस ज़ेवियर पर्व"
 
 #. Goa Liberation Day.
 msgid "Goa Liberation Day"
@@ -759,7 +759,7 @@ msgstr "मेरा चाओरेन हौबा"
 
 #. Players' Day.
 msgid "Players' Day"
-msgstr "खिलाड़ियों का दिवस"
+msgstr "खिलाड़ी दिवस"
 
 #. Post Christmas.
 msgid "Post Christmas"
@@ -939,7 +939,7 @@ msgstr "गाडगे महाराज जयंती"
 
 #. Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day
 msgid "Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day"
-msgstr "अखिल सिक्किम खास छेत्री बहुन कल्याण संघ का स्थापना दिवस"
+msgstr "अखिल सिक्किम खास छेत्री बहुन कल्याण संघ स्थापना दिवस"
 
 #. Sikkim State Day.
 msgid "Sikkim State Day"
@@ -1031,7 +1031,7 @@ msgstr "चित्रगुप्त जयंती"
 
 #. Maharishi Kashyap and Maharaj Nishad Raj's Graha Birthday.
 msgid "Maharshi Kashyap and Maharaj Nishad Raj's Graha Jayanti"
-msgstr "महर्षि कश्यप और महाराज निषाद राज की ग्रह जयंती"
+msgstr "महर्षि कश्यप और महाराज निषाद राज ग्रह जयंती"
 
 #. Chandrashekhar's Birthday.
 msgid "Chandrashekhar's Jayanti"
