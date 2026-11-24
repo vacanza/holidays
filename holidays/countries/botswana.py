@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAY, JUL, OCT
+from holidays.calendars.gregorian import MAY, JUL, OCT, SEP
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
@@ -102,5 +102,6 @@ class BotswanaStaticHolidays:
             (OCT, 30, public_holiday),
             (OCT, 31, public_holiday),
         ),
+        2025: (SEP, 29, public_holiday),
         2026: (MAY, 15, public_holiday),
     }
