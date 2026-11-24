@@ -1,0 +1,107 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Singapore holidays ms localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-21 21:28+0530\n"
+"PO-Revision-Date: 2026-11-23 00:55+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_SG\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimated)"
+msgstr "%s (anggaran)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observed, estimated)"
+msgstr "%s (sebagai ganti, anggaran)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (sebagai ganti)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Hari Tahun Baru"
+
+#. Chinese New Year.
+msgid "Chinese New Year"
+msgstr "Tahun Baru Cina"
+
+#. Eid al-Fitr.
+msgid "Hari Raya Puasa"
+msgstr "Hari Raya Puasa"
+
+#. Second Day of Eid al-Fitr.
+msgid "Second Day of Hari Raya Puasa"
+msgstr "Hari Raya Puasa (Hari Kedua)"
+
+#. Eid al-Adha.
+msgid "Hari Raya Haji"
+msgstr "Hari Raya Haji"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Jumaat Agung"
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr "Sabtu Suci"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Isnin Paskah"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Hari Buruh"
+
+#. Vesak Day.
+msgid "Vesak Day"
+msgstr "Hari Vesak"
+
+#. National Day.
+msgid "National Day"
+msgstr "Hari Kebangsaan"
+
+#. Diwali.
+msgid "Deepavali"
+msgstr "Hari Deepavali"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Hari Krismas"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "Hari Boxing"
+
+#. Polling Day.
+msgid "Polling Day"
+msgstr "Hari Mengundi"
+
+#. SG50 Public Holiday.
+msgid "SG50 Public Holiday"
+msgstr "Cuti Umum SG50"
