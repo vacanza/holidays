@@ -34,12 +34,12 @@ msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "%s (diperhatikan)"
+msgid "%s (sebagai ganti)"
 msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (diperhatikan, anggaran)"
+msgid "%s (sebagai ganti, anggaran)"
 msgstr ""
 
 #. New Year's Day.

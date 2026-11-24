@@ -11,7 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomHinduHolidays, _CustomIslamicHolidays
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUL, SEP, OCT, NOV, DEC
 from holidays.groups import (
     ChristianHolidays,
     HinduCalendarHolidays,
@@ -29,6 +29,8 @@ class NationalStockExchangeOfIndia(
 
     References:
         * <https://web.archive.org/web/20250821175252/https://www.nseindia.com/resources/exchange-communication-circulars>
+        * [Muharram 2013](https://web.archive.org/web/20131116192048/http://www.business-standard.com:80/article/markets/market-alert-trading-holiday-now-on-friday-for-moharram-113111300766_1.html)
+        * [Bakri Id 2023](https://web.archive.org/web/20230627084528/https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20230627-2)
 
     Historical data:
         * [2001](https://archive.org/details/nsearchives.nseindia.comcontentcircularscmtr2189.wri)
@@ -231,7 +233,7 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2003: (MAR, 15),
         2006: (FEB, 9),
         2008: (JAN, 19),
-        2015: (OCT, 23),
+        2013: (NOV, 15),
         2018: (SEP, 20),
     }
 
@@ -241,11 +243,9 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
         2005: (JAN, 21),
         2006: (JAN, 11),
         2007: ((JAN, 1), (DEC, 21)),
-        2009: (NOV, 27),
         2014: (OCT, 6),
         2015: (SEP, 25),
         2016: (SEP, 13),
-        2023: (JUN, 28),
     }
 
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)

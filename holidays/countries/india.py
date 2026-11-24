@@ -109,11 +109,16 @@ class India(
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+            * <https://web.archive.org/web/20250810032520/https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=57166>
+            * <https://web.archive.org/web/20240122000000/https://economictimes.indiatimes.com/news/india/ram-mandir-inauguration-maharashtra-govt-declares-public-holiday-on-january-22/articleshow/106991491.cms>
         * Manipur:
             * <https://web.archive.org/web/20260822114331/https://www.scribd.com/document/985577686/Manipur-Holiday-List-2026>
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
+            * <https://web.archive.org/web/20261121155730/https://mizoramassembly.in/storage/Assembly/Gazette/EO/GZEO7ISS_060.pdf>
+            * <https://web.archive.org/web/20261121155657/https://mizoramassembly.in/storage/Assembly/Proceedings/State/Fifth_Assembly/12th_Session/Mizo/2008/mi_pro13032008.pdf>
+            * <https://web.archive.org/web/20261121155703/https://mizoramassembly.in/storage/Assembly/Gazette/GN/GZGN39_ISS005.pdf>
             * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
@@ -1571,11 +1576,31 @@ class India(
 
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
         # Post New Year.
         self._add_new_years_day_two(tr("Post New Year"))
 
         # Missionary Day.
         self._add_holiday_jan_11(tr("Missionary Day"))
+
+        if self._year >= 1987:
+            # Statehood Day.
+            self._add_holiday_feb_20(tr("Statehood Day"))
+
+        chapchar_kut_dates = {
+            1979: (MAR, 9),
+            2008: (MAR, 14),
+            2010: (MAR, 11),
+            2026: (MAR, 13),
+        }
+        # Chapchar Kut.
+        name = tr("Chapchar Kut")
+        if dt := chapchar_kut_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_1st_fri_of_mar(name)
 
         # Young Mizo Association's Day.
         self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
@@ -2313,6 +2338,11 @@ class IndiaStaticHolidays:
     special_kl_public_holidays = {
         # Kerala Assembly Election Day.
         2026: (APR, 9, tr("Kerala Assembly Election Day")),
+    }
+
+    special_mh_public_holidays = {
+        # Ram Mandir Pran Pratishtha.
+        2024: (JAN, 22, tr("Ram Mandir Pran Pratishtha")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

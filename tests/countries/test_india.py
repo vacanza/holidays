@@ -416,6 +416,13 @@ class TestIndia(CommonCountryTests, TestCase):
         name = "New Year's Day"
         self.assertNoHolidayName(name)
         self.assertOptionalHolidayName(name, (f"{year}-01-01" for year in self.full_range))
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MZ":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-01-01" for year in self.full_range)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
 
     # Hindu holidays.
 
@@ -1410,6 +1417,18 @@ class TestIndia(CommonCountryTests, TestCase):
         self.assertNoHolidayName(name)
         self.assertSubdivMpOptionalHolidayName(name, (f"{year}-01-21" for year in self.full_range))
 
+    def test_ram_mandir_pran_pratishtha(self):
+        name = "Ram Mandir Pran Pratishtha"
+        self.assertNoHolidayName(name)
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MH":
+                self.assertHolidayName(name, holidays, "2024-01-22")
+                self.assertNoHolidayName(
+                    name, holidays, range(self.start_year, 2024), range(2025, self.end_year)
+                )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
     def test_karpuri_thakur_jayanti(self):
         name = "Karpuri Thakur's Jayanti"
         self.assertNoHolidayName(name)
@@ -1428,6 +1447,11 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-20" for year in self.full_range)
                 )
+            elif subdiv == "MZ":
+                self.assertHolidayName(
+                    name, holidays, (f"{year}-02-20" for year in range(1987, self.end_year))
+                )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1987))
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -1462,6 +1486,28 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertHolidayName(
                     name, holidays, (f"{year}-02-26" for year in self.full_range)
                 )
+            else:
+                self.assertNoHolidayName(name, holidays)
+
+    def test_chapchar_kut(self):
+        name = "Chapchar Kut"
+        self.assertNoHolidayName(name)
+        dts = (
+            "1979-03-09",
+            "2008-03-14",
+            "2010-03-11",
+            "2020-03-06",
+            "2021-03-05",
+            "2022-03-04",
+            "2023-03-03",
+            "2024-03-01",
+            "2025-03-07",
+            "2026-03-13",
+        )
+        for subdiv, holidays in self.subdiv_holidays.items():
+            if subdiv == "MZ":
+                self.assertHolidayName(name, holidays, dts)
+                self.assertHolidayName(name, holidays, self.full_range)
             else:
                 self.assertNoHolidayName(name, holidays)
 
@@ -2727,7 +2773,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "Players' Day"),
             ("2018-02-26", "Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day"),
             ("2018-03-01", "Dola Purnima; Dolyatra; Holika Dahan"),
-            ("2018-03-02", "Hola Mohalla; Holi"),
+            ("2018-03-02", "Chapchar Kut; Hola Mohalla; Holi"),
             ("2018-03-08", "International Women's Day"),
             ("2018-03-18", "1st Navratra; Chaitra Sukladi; Cheti Chand; Gudi Padwa; Ugadi"),
             ("2018-03-20", "Bhagvan Meenesh's Jayanti; Veerangana Avantibai's Shaheedi Diwas"),
@@ -2928,7 +2974,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "ক্রীড়াবিদ দিবস"),
             ("2018-02-26", "অখিল সিকিম খাস ছেত্রী বাহুন কল্যাণ সংঘের প্রতিষ্ঠা দিবস"),
             ("2018-03-01", "দোল পূর্ণিমা; দোলযাত্রা; হোলিকা দহন"),
-            ("2018-03-02", "হোলা মোহল্লা; হোলি"),
+            ("2018-03-02", "চাপচার কুট; হোলা মোহল্লা; হোলি"),
             ("2018-03-08", "আন্তর্জাতিক নারী দিবস"),
             ("2018-03-18", "উগাদি; গুড়ি পাড়ওয়া; চেতি চাঁদ; চৈত্র শুক্লাদি; নবরাত্রির প্রথম দিন"),
             ("2018-03-20", "বীরাঙ্গনা অবন্তীবাইয়ের শহীদ দিবস; ভগবান মীনেশ জয়ন্তী"),
@@ -3103,7 +3149,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "Players' Day"),
             ("2018-02-26", "Akhil Sikkim Khas Chettri Bahun Kalyan Sangh's Foundation Day"),
             ("2018-03-01", "Dola Purnima; Dolyatra; Holika Dahan"),
-            ("2018-03-02", "Hola Mohalla; Holi"),
+            ("2018-03-02", "Chapchar Kut; Hola Mohalla; Holi"),
             ("2018-03-08", "International Women's Day"),
             ("2018-03-18", "1st Navratra; Chaitra Sukladi; Cheti Chand; Gudi Padwa; Ugadi"),
             ("2018-03-20", "Lord Meenesh's Birthday; Veerangana Avantibai's Martyrdom Day"),
@@ -3305,7 +3351,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "રમતવીરોનો દિવસ"),
             ("2018-02-26", "અખિલ સિક્કિમ ખાસ છેત્રી બહૂન કલ્યાણ સંઘનો સ્થાપના દિવસ"),
             ("2018-03-01", "Dolyatra; ડોલા પૂર્ણિમા; હોલિકા દહન"),
-            ("2018-03-02", "હોળા મોહલ્લા; હોળી"),
+            ("2018-03-02", "ચાપચર કુટ; હોળા મોહલ્લા; હોળી"),
             ("2018-03-08", "આંતરરાષ્ટ્રીય મહિલા દિવસ"),
             ("2018-03-18", "ઉગાડી; ગુડી પડવો; ચેતી ચંદ; ચૈત્ર શુક્લાડી; પ્રથમ નવરાત્રી"),
             ("2018-03-20", "ભગવાન મીનેશ જયંતિ; વીરાંગના અવંતીબાઈ શહીદી દિવસ"),
@@ -3473,7 +3519,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "खिलाड़ियों का दिवस"),
             ("2018-02-26", "अखिल सिक्किम खास छेत्री बहुन कल्याण संघ का स्थापना दिवस"),
             ("2018-03-01", "डोला पूर्णिमा; दोलयात्रा; होलिका दहन"),
-            ("2018-03-02", "होला मोहल्ला; होली"),
+            ("2018-03-02", "चापचर कुट; होला मोहल्ला; होली"),
             ("2018-03-08", "अंतर्राष्ट्रीय महिला दिवस"),
             ("2018-03-18", "उगादि; गुडी पाडवा; चेटी चंड; चैत्र शुक्लादि; प्रथम नवरात्र"),
             ("2018-03-20", "भगवान मीनेश जयंती; वीरांगना अवंतीबाई शहीदी दिवस"),
@@ -3644,7 +3690,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "ಆಟಗಾರರ ದಿನ"),
             ("2018-02-26", "ಅಖಿಲ ಸಿಕ್ಕಿಂ ಖಾಸ್ ಛೆಟ್ರಿ ಬಹುನ್ ಕಲ್ಯಾಣ ಸಂಘದ ಸಂಸ್ಥಾಪನಾ ದಿನ"),
             ("2018-03-01", "ದೋಲಯಾತ್ರೆ; ದೋಲಾ ಪೂರ್ಣಿಮೆ; ಹೋಲಿಕಾ ದಹನ್"),
-            ("2018-03-02", "ಹೋಲಾ ಮೊಹಲ್ಲಾ; ಹೋಳಿ ಹಬ್ಬ"),
+            ("2018-03-02", "ಚಾಪ್ಚರ್ ಕುಟ್; ಹೋಲಾ ಮೊಹಲ್ಲಾ; ಹೋಳಿ ಹಬ್ಬ"),
             ("2018-03-08", "ಅಂತರರಾಷ್ಟ್ರೀಯ ಮಹಿಳಾ ದಿನ"),
             ("2018-03-18", "ಗುಡಿ ಪಾಡ್ವ; ಚೇಟಿ ಚಂದ್; ಚೈತ್ರ ಸುಕ್ಲಾಡಿ; ಮೊದಲ ನವರಾತ್ರಿ; ಯುಗಾದಿ ಹಬ್ಬ"),
             ("2018-03-20", "ಭಗವಾನ್ ಮೀನೇಶ್ ಜಯಂತಿ; ವೀರಾಂಗನಾ ಅವಂತಿಬಾಯಿ ಶಹೀದಿ ದಿನ"),
@@ -3812,7 +3858,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "കളിക്കാരുടെ ദിനം"),
             ("2018-02-26", "അഖിൽ സിക്കിം ഖാസ് ഛേത്രി ബഹുൻ കല്യാൺ സംഘത്തിന്റെ സ്ഥാപക ദിനം"),
             ("2018-03-01", "ഡോള പൂർണിമ; ദോലയാത്ര; ഹോളിക ദഹൻ"),
-            ("2018-03-02", "ഹോലാ മൊഹല്ലാ; ഹോളി"),
+            ("2018-03-02", "ചാപ്ചർ കുട്ട്; ഹോലാ മൊഹല്ലാ; ഹോളി"),
             ("2018-03-08", "അന്താരാഷ്ട്ര വനിതാ ദിനം"),
             ("2018-03-18", "ആദ്യ നവരാത്രി; ഉഗാദി; ഗുഡി പദ്വ; ചേതി ചന്ദ്; ചൈത്ര ശുക്ലദി"),
             ("2018-03-20", "ഭഗവാൻ മീനേഷ് ജയന്തി; വീരാംഗന അവന്തിബായിയുടെ ശഹീദ് ദിനം"),
@@ -3983,7 +4029,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "खेळाडू दिन"),
             ("2018-02-26", "अखिल सिक्कीम खास छेत्री बहुन कल्याण संघाचा स्थापना दिवस"),
             ("2018-03-01", "डोला पौर्णिमा; दोलयात्रा; होलिका दहन"),
-            ("2018-03-02", "होला मोहल्ला; होळी"),
+            ("2018-03-02", "चापचर कुट; होला मोहल्ला; होळी"),
             ("2018-03-08", "आंतरराष्ट्रीय महिला दिन"),
             ("2018-03-18", "उगाडी; गुढीपाडवा; चेटी चंड; चैत्र शुक्लादि; पहिली नवरात्र"),
             ("2018-03-20", "भगवान मीनेश जयंती; वीरांगना अवंतीबाई शहीद दिन"),
@@ -4154,7 +4200,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "ਖਿਡਾਰੀਆਂ ਦਾ ਦਿਵਸ"),
             ("2018-02-26", "ਅਖਿਲ ਸਿੱਕਿਮ ਖਾਸ ਛੇਤਰੀ ਬਾਹੁਨ ਕਲਿਆਣ ਸੰਘ ਦਾ ਸਥਾਪਨਾ ਦਿਵਸ"),
             ("2018-03-01", "ਡੋਲਾ ਪੂਰਨਿਮਾ; ਦੋਲਯਾਤਰਾ; ਹੋਲਿਕਾ ਦਹਨ"),
-            ("2018-03-02", "ਹੋਲਾ ਮੁਹੱਲਾ; ਹੋਲੀ"),
+            ("2018-03-02", "ਚਾਪਚਰ ਕੁਟ; ਹੋਲਾ ਮੁਹੱਲਾ; ਹੋਲੀ"),
             ("2018-03-08", "ਅੰਤਰਰਾਸ਼ਟਰੀ ਮਹਿਲਾ ਦਿਵਸ"),
             ("2018-03-18", "ਉਗਾਦੀ; ਗੁੜੀ ਪਦਵਾ; ਚੇਤੀ ਚੰਦ; ਚੈਤਰਾ ਸ਼ੁਕਲਦੀ; ਪਹਿਲਾ ਨਵਰਾਤਰਾ"),
             ("2018-03-20", "ਭਗਵਾਨ ਮੀਨੇਸ਼ ਜਯੰਤੀ; ਵੀਰਾਂਗਨਾ ਅਵੰਤੀਬਾਈ ਦਾ ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ"),
@@ -4331,7 +4377,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "விளையாட்டு வீரர்கள் தினம்"),
             ("2018-02-26", "அகில் சிக்கிம் காஸ் சேத்ரி பஹுன் கல்யாண் சங்கத்தின் நிறுவன நாள்"),
             ("2018-03-01", "டோலா பௌர்ணமி; தோலயாத்திரை; ஹோலிகா தஹான்"),
-            ("2018-03-02", "ஹோலா மொஹல்லா; ஹோலி"),
+            ("2018-03-02", "சாப்சர் குட்; ஹோலா மொஹல்லா; ஹோலி"),
             ("2018-03-08", "சர்வதேச மகளிர் தினம்"),
             ("2018-03-18", "உகாதி; குடி பாத்வா; செட்டி சந்த்; சைத்ரா சுக்லாடி; முதல் நவராத்திரி"),
             ("2018-03-20", "பகவான் மீனேஷ் ஜெயந்தி; வீராங்கனை அவந்திபாயின் ஷஹீதி தினம்"),
@@ -4506,7 +4552,7 @@ class TestIndia(CommonCountryTests, TestCase):
             ("2018-02-25", "క్రీడాకారుల దినోత్సవం"),
             ("2018-02-26", "అఖిల్ సిక్కిం ఖాస్ ఛెత్రి బహున్ కళ్యాణ్ సంఘ్ వ్యవస్థాపక దినోత్సవం"),
             ("2018-03-01", "డోలా పౌర్ణమి; దోలయాత్ర; హోలికా దహన్"),
-            ("2018-03-02", "హోలా మొహల్లా; హోలీ"),
+            ("2018-03-02", "చాప్చర్ కుట్; హోలా మొహల్లా; హోలీ"),
             ("2018-03-08", "అంతర్జాతీయ మహిళా దినోత్సవం"),
             ("2018-03-18", "ఉగాది; గుడి పడ్వా; చెట్టి చంద్; చైత్ర శుక్లాది; మొదటి నవరాత్రి"),
             ("2018-03-20", "భగవాన్ మీనేశ్ జయంతి; వీరాంగన అవంతిబాయి షహీది దినం"),

@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 02:31+0530\n"
-"PO-Revision-Date: 2026-11-15 18:09+0530\n"
+"PO-Revision-Date: 2026-11-22 00:48+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_IN\n"
@@ -813,6 +813,10 @@ msgstr ""
 msgid "Missionary Day"
 msgstr ""
 
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr ""
+
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
 msgstr ""
@@ -1075,4 +1079,8 @@ msgstr ""
 
 #. Kerala Assembly Election Day.
 msgid "Kerala Assembly Election Day"
+msgstr ""
+
+#. Ram Mandir Pran Pratishtha.
+msgid "Ram Mandir Pran Pratishtha"
 msgstr ""
