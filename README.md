@@ -1560,7 +1560,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Seychelles</td>
 <td>SC</td>
 <td></td>
-<td><strong>en_SC</strong>, en_US</td>
+<td><strong>en_SC</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
