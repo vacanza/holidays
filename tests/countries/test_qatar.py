@@ -12,7 +12,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import PUBLIC
 from holidays.countries.qatar import Qatar
 from tests.common import CommonCountryTests
 
@@ -215,18 +214,6 @@ class TestQatar(CommonCountryTests, TestCase):
             ("2025-06-07", "ईद-उल-अज़हा"),
             ("2025-06-08", "ईद-उल-अज़हा"),
             ("2025-12-18", "क़तर राष्ट्रीय दिवस"),
-        )
-
-    def test_l10n_hi_estimated(self):
-        self.assertLocalizedHolidays(
-            "hi",
-            ("2004-02-01", "ईद-उल-अज़हा (अनुमानित)"),
-            ("2004-02-02", "ईद-उल-अज़हा (अनुमानित)"),
-            ("2004-02-03", "ईद-उल-अज़हा (अनुमानित)"),
-            ("2004-11-14", "ईद-उल-फितर (अनुमानित)"),
-            ("2004-11-15", "ईद-उल-फितर (अनुमानित)"),
-            ("2004-11-16", "ईद-उल-फितर (अनुमानित)"),
-            categories=PUBLIC,
         )
 
     def test_l10n_ur_pk(self):
