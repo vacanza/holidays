@@ -1091,7 +1091,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Madagascar</td>
 <td>MG</td>
 <td></td>
-<td>en_US, <strong>mg</strong>, uk</td>
+<td>en_US, fr, <strong>mg</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
