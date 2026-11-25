@@ -20,6 +20,11 @@ class UnitedStatesVirginIslands(ChildEntity, UnitedStates):
 
     Alias of a US subdivision that is also officially assigned its own country code in ISO 3166-1.
     See <https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1>
+
+    References:
+        * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States_Virgin_Islands>
+        * [Legal holidays (1 V.I.C. § 171(a))](https://web.archive.org/web/20261125172424/https://superior.vicourts.org/about_the_court/holidays)
+        * [2025-26 holiday work schedule](https://web.archive.org/web/20261125172358/https://www.vi.gov/governor-bryan-announces-2025-26-holiday-work-schedule-and-administrative-leave/)
     """
 
     country = "VI"
