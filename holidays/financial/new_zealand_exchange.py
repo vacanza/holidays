@@ -31,6 +31,8 @@ class NewZealandExchange(NewZealand):
     country = None  # type: ignore[assignment]
     market = "XNZE"
     parent_entity = NewZealand
+    subdivisions = ()  # type: ignore[assignment]
+    subdivisions_aliases = {}
     supported_categories: tuple[str, ...] = (HALF_DAY, PUBLIC)  # type: ignore[assignment]
     start_year = 2000
     observed_label = "%s"

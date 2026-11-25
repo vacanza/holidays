@@ -39,7 +39,7 @@ class BolsasYMercadosEspanoles(ObservedHolidayBase, ChristianHolidays, Internati
 
     market = "XMAD"
     default_language = "es"
-    supported_languages = ("en_US", "es")
+    supported_languages = ("ca", "en_US", "es", "th", "uk")
     start_year = 2000
     supported_categories = (HALF_DAY, PUBLIC)
 

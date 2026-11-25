@@ -56,7 +56,7 @@ class Mauritius(
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
     start_year = 1988
-    supported_languages = ("en_MU", "en_US")
+    supported_languages = ("en_MU", "en_US", "hi")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
