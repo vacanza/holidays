@@ -113,6 +113,9 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
                 self.pop(dt)
 
     def _populate_half_day_holidays(self):
+        # %s (markets close early).
+        shortened_session_label = tr("%s (יום מסחר מקוצר)")
+
         def shortened_session_offsets(dt: date, eve_offset: int) -> tuple[int, ...]:
             # Exclude the full-day eve and Fridays, which use regular Friday hours.
             return tuple(
@@ -123,7 +126,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
 
         self._add_passover(
             # Chol HaMoed Pesach (Passover holiday).
-            tr("חול המועד פסח"),
+            self._format_holiday_name(shortened_session_label, tr("חול המועד פסח")),
             shortened_session_offsets(
                 self._hebrew_calendar.passover_date(self._year),  # type: ignore[arg-type]
                 5,
@@ -131,7 +134,7 @@ class TelAvivStockExchange(ObservedHolidayBase, HebrewCalendarHolidays, StaticHo
         )
         self._add_sukkot(
             # Chol HaMoed Sukkot (Feast of Tabernacles holiday).
-            tr("חול המועד סוכות"),
+            self._format_holiday_name(shortened_session_label, tr("חול המועד סוכות")),
             shortened_session_offsets(
                 self._hebrew_calendar.sukkot_date(self._year),  # type: ignore[arg-type]
                 6,
