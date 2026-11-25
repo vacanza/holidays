@@ -524,7 +524,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Comoros</td>
 <td>KM</td>
 <td></td>
-<td></td>
+<td>ar, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1154,7 +1154,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritius</td>
 <td>MU</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>en_MU</strong>, en_US, hi</td>
 <td></td>
 </tr>
 <tr>
@@ -1252,7 +1252,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Nepal</td>
 <td>NP</td>
 <td></td>
-<td>en_US, hi, kn, <strong>ne</strong></td>
+<td>en_US, hi, kn, mr, <strong>ne</strong></td>
 <td>WORKDAY</td>
 </tr>
 <tr>
@@ -1329,7 +1329,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td>en_US, <strong>mk</strong>, uk</td>
+<td>en_US, <strong>mk</strong>, sq, uk</td>
 <td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
@@ -1574,7 +1574,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td></td>
 </tr>
 <tr>
@@ -1587,9 +1587,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Slovakia</td>
 <td>SK</td>
-<td></td>
+<td>Regions: BC (Banskobystrický kraj, BB), BL (Bratislavský kraj, BA), KI (Košický kraj, KE), NI (Nitriansky kraj, NR), PV (Prešovský kraj, PO), TA (Trnavský kraj, TT), TC (Trenčiansky kraj, TN), ZI (Žilinský kraj, ZA)</td>
 <td>en_US, <strong>sk</strong>, uk</td>
-<td>WORKDAY</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Slovenia</td>
@@ -1812,7 +1812,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -1972,28 +1972,28 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Argentinos</td>
 <td>XBUE</td>
 <td>Bolsas y Mercados Argentinos (BYMA) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY, RESTRICTED_SETTLEMENT</td>
 </tr>
 <tr>
 <td>Bolsas y Mercados Españoles</td>
 <td>XMAD</td>
 <td>Bolsas y Mercados Españoles (BME) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>Borsa Istanbul</td>
 <td>XIST</td>
 <td>Borsa Istanbul (BIST) market holidays</td>
-<td>en_US, <strong>tr</strong></td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2007,8 +2007,15 @@ code when available. The following financial markets are available:
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
+</tr>
+<tr>
+<td>Dubai Financial Market</td>
+<td>XDFM</td>
+<td>Dubai Financial Market (DFM) holidays</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td></td>
 </tr>
 <tr>
 <td>Euronext</td>
@@ -2021,14 +2028,14 @@ code when available. The following financial markets are available:
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td></td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>Federal Reserve</td>
 <td>XFED</td>
 <td>Federal Reserve Banks holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td></td>
 </tr>
 <tr>
@@ -2049,7 +2056,7 @@ code when available. The following financial markets are available:
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2084,21 +2091,21 @@ code when available. The following financial markets are available:
 <td>NASDAQ</td>
 <td>XNAS</td>
 <td>National Association of Securities Dealers Automated Quotations (NASDAQ) holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td><strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
 <td></td>
 </tr>
 <tr>
 <td>New York Stock Exchange</td>
 <td>XNYS</td>
 <td>NYSE market holidays</td>
-<td><strong>en_US</strong>, gu, hi, mr</td>
+<td><strong>en_US</strong>, gu, hi, kn, mr</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2113,6 +2120,13 @@ code when available. The following financial markets are available:
 <td>XKAR</td>
 <td>Pakistan Stock Exchange (PSX) market holidays</td>
 <td><strong>en_PK</strong>, en_US, ur_PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Qatar Stock Exchange</td>
+<td>DSMD</td>
+<td>Qatar Stock Exchange (QSE) holidays</td>
+<td><strong>ar_QA</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2147,7 +2161,7 @@ code when available. The following financial markets are available:
 <td>Singapore Exchange</td>
 <td>XSES</td>
 <td>Singapore Exchange (SGX) market holidays</td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2175,7 +2189,14 @@ code when available. The following financial markets are available:
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
-<td>en_US, <strong>pl</strong>, uk</td>
+<td>de, en_US, <strong>pl</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Zagreb Stock Exchange</td>
+<td>XZAG</td>
+<td>Zagreb Stock Exchange (ZSE) market holidays</td>
+<td>en_US, <strong>hr</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>

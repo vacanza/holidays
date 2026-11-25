@@ -33,6 +33,9 @@ class PapuaNewGuinea(
         * [2021](https://web.archive.org/web/20240625200332/https://publicholidays.asia/wp-content/uploads/2020/12/PNG_PublicHolidays_2021.pdf)
         * [2022](https://web.archive.org/web/20230530042019/https://publicholidays.asia/wp-content/uploads/2022/01/PNG_PublicHolidays_2022.pdf)
         * [2023](https://web.archive.org/web/20240413053729/https://publicholidays.asia/wp-content/uploads/2022/12/PNG_PublicHolidays_2023.pdf)
+        * [2024](https://web.archive.org/web/20240926231035/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
+        * [2025](https://web.archive.org/web/20251119043637/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
+        * [2026](https://web.archive.org/web/20260609210339/https://www.businessadvantagepng.com/papua-new-guinea-public-holidays/)
 
     Should a holiday listed, other than the Christmas Day, fall on a Sunday the next Monday
     shall, unless the Head of State, acting on advice, declares otherwise, be observed as a
@@ -56,7 +59,7 @@ class PapuaNewGuinea(
 
     def _populate_public_holidays(self):
         # Section 1: Public Holidays.
-        # - Easter Saturday is currently not gazetted as a Public Holiday in 2024.
+        # - Easter Saturday was not gazetted as a Public Holiday in 2024.
         # - While Easter Sunday itself is not listed, this is de facto always a day-off.
 
         # New Year's Day.
@@ -65,7 +68,7 @@ class PapuaNewGuinea(
         # Good Friday.
         self._add_good_friday("Good Friday")
 
-        if self._year <= 2023:
+        if self._year != 2024:
             # Easter Saturday.
             self._add_holy_saturday("Easter Saturday")
 
@@ -140,12 +143,7 @@ class PapuaNewGuineaStaticHolidays:
         * [2021 Sir Michael Somare's Day of Mourning](https://web.archive.org/web/20241207121149/https://pnghausbung.com/2-weeks-mourning-period-for-late-sir-micheal-to-start-with-public-holiday-on-monday-pm/)
         * [2022 QE2's Funeral](https://web.archive.org/web/20220914111729/https://www.thenational.com.pg/column-1-553/)
         * [2023 Sir Rabbie Namaliu's Funeral](https://web.archive.org/web/20241109201443/https://pnghausbung.com/breaking-public-holiday-tomorrow-in-respect-of-late-sir-rabbies-state-funeral/)
-
-    Nov 15, 2018 is an APEC Holiday too, but for Port Moresby-only:
-    <https://web.archive.org/web/20250120182905/https://www.businessadvantagepng.com/public-holidays-declared-in-port-moresby-due-to-apec-summit-says-ceo/>
-
-    Starting from 2021 afterwards all state funerals are given special public holidays, though only
-    some are day-off nationwide.
+        * [2025 Independence Day Celebrations](https://web.archive.org/web/20261123120718/https://thepngbulletin.com/news/public-servants-pay-date-brought-forward-ahead-of-independence-golden-jubilee/)
     """
 
     # National Day of Mourning for Sir Michael Somare.
@@ -153,6 +151,9 @@ class PapuaNewGuineaStaticHolidays:
 
     # Grand Chief Sir Michael Somare Remembrance Day
     sir_michael_somare_remembrance_day = "Grand Chief Sir Michael Somare Remembrance Day"
+
+    # Independence Day Celebrations.
+    independence_day_celebrations = "Independence Day Celebrations"
 
     special_public_holidays = {
         # APEC Leaders' Summit Public Holiday.
@@ -167,6 +168,10 @@ class PapuaNewGuineaStaticHolidays:
         2022: (SEP, 19, "State Funeral of Queen Elizabeth II"),
         # State Funeral of Sir Rabbie Namaliu.
         2023: (APR, 18, "State Funeral of Sir Rabbie Namaliu"),
+        2025: (
+            (SEP, 15, independence_day_celebrations),
+            (SEP, 17, independence_day_celebrations),
+        ),
     }
 
     special_public_holidays_observed = {
