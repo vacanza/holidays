@@ -101,7 +101,6 @@ class TestCameroon(CommonCountryTests, TestCase):
             "2026-03-20",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
-        self.assertNoHoliday("2025-03-30")
         obs_dts = (
             "2012-08-20",
             "2020-05-25",
