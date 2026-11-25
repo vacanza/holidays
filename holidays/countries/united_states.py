@@ -152,6 +152,10 @@ class UnitedStates(
             * [Law No. 40 of Mar 25, 2015](https://web.archive.org/web/20221221221216/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2/0040-2015.pdf)
             * [Law No. 152 of Jul 23, 2018](https://web.archive.org/web/20250204220144/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2018/0152-2018.pdf)
             * [Law No. 117 of Dec 23, 2022](https://web.archive.org/web/20250204215251/https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2020/0117-2022.pdf)
+        * U.S. Virgin Islands:
+            * <https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States_Virgin_Islands>
+            * [Legal holidays (1 V.I.C. § 171(a))](https://web.archive.org/web/20261125172424/https://superior.vicourts.org/about_the_court/holidays)
+            * [2025-26 holiday work schedule](https://web.archive.org/web/20261125172358/https://www.vi.gov/governor-bryan-announces-2025-26-holiday-work-schedule-and-administrative-leave/)
     """
 
     country = "US"
