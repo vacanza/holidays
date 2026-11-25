@@ -67,10 +67,10 @@ build = [
   "polib>=1.2,<2",
 ]
 ci = [
-  "cyclonedx-bom>=7.3,<8",
+  "cyclonedx-bom>=7.3,<9",
   "pre-commit>=4.5,<5",
   "pre-commit-uv>=4.3,<5",
-  "uv==0.13.6",
+  "uv==0.13.7",
 ]
 tests = [
   "coverage>=7.12,<8",
