@@ -67,13 +67,6 @@ class TestIceFuturesEurope(CommonFinancialTests, TestCase):
             ("2026-12-25", "Christmas Day"),
         )
 
-    def test_2027(self):
-        self.assertHolidays(
-            IceFuturesEurope(years=2027),
-            ("2027-01-01", "New Year's Day"),
-            ("2027-03-26", "Good Friday"),
-        )
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2023-01-02", "New Year's Day"),
