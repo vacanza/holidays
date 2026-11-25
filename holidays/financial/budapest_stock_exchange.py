@@ -26,11 +26,16 @@ class BudapestStockExchange(Hungary):
     days on the exchange.
 
     References:
+        * [CEO Resolution 514/2011 (2012 Trading Holidays)](https://www.bse.hu/newkibdata/108984735/Kersz_nnapok_2012_ENG.pdf)
+        * [CEO Resolution 362/2012 (2013 Trading Holidays)](https://www.bse.hu/newkibdata/112185122/Kersz_nnapok_2013_ENG.pdf)
+        * [CEO Resolution 485/2013 (2014 Trading Holidays)](https://www.bse.hu/newkibdata/115651478/Kersz_nnapok_2014_ENG.pdf)
+        * [CEO Resolution 542/2014 (2015 Trading Holidays)](https://www.bse.hu/newkibdata/118128738/Kersz_nnapok_2015_ENG.pdf)
+        * [CEO Resolution 474/2015 (2016 Trading Holidays)](https://www.bse.hu/newkibdata/120228803/Trading_holidays_2016_ENG.pdf)
         * [Trading Calendar 2021](https://www.bse.hu/Products-and-Services/Trading-information/trading-calendar-2021)
         * [CEO Resolution 325/2020 (2021 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/Trading_holidays_2021.pdf1)
         * [CEO Resolution 311/2024 (2025 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2025)
-        * [Trading Calendar 2026](https://www.bse.hu/Products-and-Services/Trading-information/trading-calendar-2025)
-        * [CEO Resolution (2026 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026)
+        * [Trading Calendar 2026](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2026)
+        * [CEO Resolution 380/2025 (2026 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026)
         * [Trading Calendar 2027](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2027)
     """
 
@@ -51,6 +56,12 @@ class BudapestStockExchange(Hungary):
 
         # BSE keeps national Saturday make-up workdays closed.
         self.weekend_workdays.clear()
+
+        # BSE introduced Good Friday as a trading holiday in 2012, before it became
+        # a Hungarian national public holiday in 2017.
+        if 2012 <= self._year <= 2016:
+            # Good Friday.
+            self._add_good_friday(tr("Nagypéntek"))
 
         if date(self._year, DEC, 24) not in self:
             # Christmas Eve.

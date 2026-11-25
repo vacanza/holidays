@@ -27,6 +27,10 @@ msgstr ""
 "Generated-By: Lingva 5.0.7\n"
 "X-Source-Language: hu\n"
 
+#. Good Friday.
+msgid "Nagypéntek"
+msgstr ""
+
 #. Christmas Eve.
 msgid "Szenteste"
 msgstr ""

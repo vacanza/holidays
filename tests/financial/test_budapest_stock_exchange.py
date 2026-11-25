@@ -25,6 +25,20 @@ class TestBudapestStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_good_friday(self):
+        name = "Nagypéntek"
+        self.assertHolidayName(
+            name,
+            "2012-04-06",
+            "2013-03-29",
+            "2014-04-18",
+            "2015-04-03",
+            "2016-03-25",
+            "2017-04-14",
+        )
+        self.assertHolidayName(name, range(2012, 2050))
+        self.assertNoHolidayName(name, range(1991, 2012))
+
     def test_christmas_eve(self):
         name = "Szenteste"
         self.assertHolidayName(
