@@ -66,7 +66,7 @@ class Singapore(
     observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_SG", "en_US", "th")
+    supported_languages = ("en_SG", "en_US", "ms", "th")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """

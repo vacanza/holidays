@@ -450,6 +450,26 @@ class TestSingapore(CommonCountryTests, TestCase):
             ("2023-12-25", "Christmas Day"),
         )
 
+    def test_l10n_ms(self):
+        self.assertLocalizedHolidays(
+            "ms",
+            ("2023-01-01", "Hari Tahun Baru"),
+            ("2023-01-02", "Hari Tahun Baru (sebagai ganti)"),
+            ("2023-01-22", "Tahun Baru Cina"),
+            ("2023-01-23", "Tahun Baru Cina"),
+            ("2023-01-24", "Tahun Baru Cina (sebagai ganti)"),
+            ("2023-04-07", "Jumaat Agung"),
+            ("2023-04-22", "Hari Raya Puasa"),
+            ("2023-05-01", "Hari Buruh"),
+            ("2023-06-02", "Hari Vesak"),
+            ("2023-06-29", "Hari Raya Haji"),
+            ("2023-08-09", "Hari Kebangsaan"),
+            ("2023-09-01", "Hari Mengundi"),
+            ("2023-11-12", "Hari Deepavali"),
+            ("2023-11-13", "Hari Deepavali (sebagai ganti)"),
+            ("2023-12-25", "Hari Krismas"),
+        )
+
     def test_l10n_th(self):
         self.assertLocalizedHolidays(
             "th",

@@ -24,6 +24,8 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         * <https://web.archive.org/web/20240627055859/https://www.palaugov.pw/wp-content/uploads/2017/11/RPPL-No.-10-15-re.-Family-Day-Holiday.pdf>
         * [EO336 Memorial Day repealed](https://web.archive.org/web/20250429131246/https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/PalauPresident/posts/195883107230463)
         * [Earliest source for President's Day](https://web.archive.org/web/20250429075658/https://www.taiwanembassy.org/pal_en/post/792.html)
+        * [Executive Order No. 313](https://www.palaulaw.gov.pw/view/recFb2qx8FHLUA1rJ)
+        * [23 PNC § 1001](https://web.archive.org/web/20241227233417/https://paclii.org/pw/legis/consol_act/et23154.pdf)
 
     If any of the holidays enumerated in section 701 of this chapter falls on Sunday, the
     following Monday shall be observed as a holiday. If any of the holidays enumerated in
@@ -86,6 +88,11 @@ class Palau(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
         # United Nations Day.
         self._add_observed(self._add_united_nations_day("United Nations Day"))
 
+        # Executive Order No. 313 of 2012, held on National Election Day (23 PNC § 1001).
+        if self._year >= 2012 and self._year % 4 == 0:
+            # National Day of Democracy.
+            self._add_holiday_1st_tue_of_nov("National Day of Democracy")
+
         # Thanksgiving Day.
         self._add_holiday_4th_thu_of_nov("Thanksgiving Day")
 
@@ -120,8 +127,4 @@ class PalauStaticHolidays:
 
     special_half_day_holidays = {
         2019: (SEP, 30, "Preparation for the 25th Independence Day of the Republic of Palau"),
-    }
-
-    special_public_holidays = {
-        2020: (NOV, 3, "National Day of Democracy"),
     }
