@@ -654,8 +654,20 @@ class India(
         # Netaji Subhas Chandra Bose's Birthday.
         self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
 
+        # Me-Dam-Me-Phi.
+        self._add_holiday_jan_31(tr("Me-Dam-Me-Phi"))
+
+        # Sati Sadhani Day.
+        self._add_holiday_apr_21(tr("Sati Sadhani Divas"))
+
         # May Day.
         self._add_labor_day(tr("May Day"))
+
+        # Lachit Day.
+        self._add_holiday_nov_24(tr("Lachit Divas"))
+
+        # Assam Day.
+        self._add_holiday_dec_2(tr("Asom Divas"))
 
         # Hindu holidays.
 

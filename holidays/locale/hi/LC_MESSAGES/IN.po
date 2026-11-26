@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-02-28 01:24+0530\n"
-"PO-Revision-Date: 2026-11-22 00:48+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-26 16:23+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -341,9 +341,25 @@ msgstr "लिंगरी निकी सी डोनी पोलो यु�
 msgid "Netaji Subhas Chandra Bose's Jayanti"
 msgstr "नेताजी सुभाष चंद्र बोस जयंती"
 
+#. Me-Dam-Me-Phi.
+msgid "Me-Dam-Me-Phi"
+msgstr "मे-डाम-मे-फी"
+
+#. Sati Sadhani Day.
+msgid "Sati Sadhani Divas"
+msgstr "सती साधनी दिवस"
+
 #. May Day.
 msgid "May Day"
 msgstr "मई दिवस"
+
+#. Lachit Day.
+msgid "Lachit Divas"
+msgstr "लाचित दिवस"
+
+#. Assam Day.
+msgid "Asom Divas"
+msgstr "असम दिवस"
 
 #. Silpi Day.
 msgid "Silpi Divas"
