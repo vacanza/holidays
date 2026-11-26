@@ -1,0 +1,43 @@
+@echo off
+setlocal enabledelayedexpansion
+
+set TARGET=%1
+
+if "%TARGET%"=="cspell-check" goto cspell-check
+if "%TARGET%"=="cspell-install" goto cspell-install
+if "%TARGET%"=="sort-custom-dict" goto sort-custom-dict
+
+echo Usage: make.cmd ^<target^>
+echo     cspell-check      run cspell check
+echo     cspell-install    install cspell docker image
+echo     sort-custom-dict  sort and uniquify custom-dict.txt
+goto end
+
+:cspell-install
+where docker >nul 2>nul
+if %errorlevel% neq 0 (
+    echo ERROR: docker not found in PATH. Install Docker Desktop or add docker.exe to PATH.
+    goto end
+)
+set "build_args="
+if defined FORCE set "build_args=--no-cache"
+set "DOCKER_BUILDKIT=true" && docker build %build_args% -f cspell/Dockerfile -t cspell cspell
+if %errorlevel% neq 0 (
+    echo ERROR: Docker build failed.
+    goto end
+)
+goto end
+
+:sort-custom-dict
+python tools/sort_cspell_dict.py
+goto end
+
+:cspell-check
+set CMD=--no-progress --cache --cache-location /cspellcache/cache -r /holidays
+call :cspell-install
+if %errorlevel% neq 0 goto end
+if not exist "%CD%\cspell\.cspellcache" mkdir "%CD%\cspell\.cspellcache"
+docker run --mount type=bind,src="%CD%",dst=/holidays,readonly --mount type=bind,src="%CD%\cspell\.cspellcache",dst=/cspellcache --rm cspell lint -c cspell/cspell.json %CMD%
+goto end
+
+:end

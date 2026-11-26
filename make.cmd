@@ -23,10 +23,25 @@ GoTo :Help
 
 :Check
     Call :L10n
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
     Call :Pre-commit
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
     Call :Doc
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    Call :Spellcheck
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
     Call :Test
+    Exit /B !ERRORLEVEL!
+
+:Sort-custom-dict
+    %UV_RUN_CMD% tools\sort_cspell_dict.py
     Exit /B
+
+:Spellcheck
+    call :Sort-custom-dict
+    If ErrorLevel 1 Exit /B !ERRORLEVEL!
+    call cspell\make.cmd cspell-check
+    Exit /B !ERRORLEVEL!
 
 :Clean
     Del /S /Q *.mo
@@ -61,6 +76,7 @@ GoTo :Help
     Echo     sbom          generate CycloneDX SBOM from the built wheel
     Echo     setup         setup development environment
     Echo     snapshot      generate project snapshots
+    Echo     spellcheck    run spell check across the repository (docs, l10n)
     Echo     test          run tests (in parallel)
     Echo     upgrade       run dependency upgrade
     Exit /B
