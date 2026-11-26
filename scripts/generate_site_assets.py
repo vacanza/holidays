@@ -205,6 +205,7 @@ LANGUAGES = {
     "pt_TL": "Portuguese (Timor Leste)",
     # --- Russian Locales ---
     "ru_KG": "Russian (Kyrgyzstan)",
+    "ru_KZ": "Russian (Kazakhstan)",
     # --- Sinhala / Tamil Locales ---
     "si_LK": "Sinhala (Sri Lanka)",
     "ta_LK": "Tamil (Sri Lanka)",
