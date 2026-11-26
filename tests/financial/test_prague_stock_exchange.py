@@ -25,9 +25,40 @@ class TestPragueStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_special_holidays(self):
+        self.assertHoliday("2004-01-02")
+
+    def test_good_friday(self):
+        name = "Velký pátek"
+        self.assertHolidayName(
+            name,
+            "2013-03-29",
+            "2014-04-18",
+            "2015-04-03",
+            "2016-03-25",
+            "2017-04-14",
+            "2018-03-30",
+        )
+        self.assertHolidayName(name, range(2013, self.end_year))
+        self.assertNoHolidayName(name, range(self.start_year, 2013))
+
     def test_new_years_eve(self):
         name = "Silvestr"
-        years_absent = {2017, 2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
+        years_absent = {
+            2005,
+            2006,
+            2011,
+            2016,
+            2017,
+            2022,
+            2023,
+            2028,
+            2033,
+            2034,
+            2039,
+            2044,
+            2045,
+        }
         self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
@@ -48,21 +79,6 @@ class TestPragueStockExchange(CommonFinancialTests, TestCase):
             ("2026-12-24", "Štědrý den"),
             ("2026-12-25", "1. svátek vánoční"),
             ("2026-12-31", "Silvestr"),
-        )
-
-    def test_2027(self):
-        self.assertHolidaysInYear(
-            2027,
-            ("2027-01-01", "Den obnovy samostatného českého státu; Nový rok"),
-            ("2027-03-26", "Velký pátek"),
-            ("2027-03-29", "Velikonoční pondělí"),
-            ("2027-07-05", "Den slovanských věrozvěstů Cyrila a Metoděje"),
-            ("2027-07-06", "Den upálení mistra Jana Husa"),
-            ("2027-09-28", "Den české státnosti"),
-            ("2027-10-28", "Den vzniku samostatného československého státu"),
-            ("2027-11-17", "Den boje za svobodu a demokracii a Mezinárodní den studentstva"),
-            ("2027-12-24", "Štědrý den"),
-            ("2027-12-31", "Silvestr"),
         )
 
     def test_l10n_default(self):

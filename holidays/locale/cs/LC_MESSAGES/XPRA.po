@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-16 16:00+0000\n"
-"PO-Revision-Date: 2026-11-16 16:00+0000\n"
+"PO-Revision-Date: 2026-11-26 07:05+0000\n"
 "Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: cs\n"
@@ -27,6 +27,14 @@ msgstr ""
 "Generated-By: Lingva 5.0.7\n"
 "X-Source-Language: cs\n"
 
+#. Good Friday.
+msgid "Velký pátek"
+msgstr ""
+
 #. New Year's Eve.
 msgid "Silvestr"
+msgstr ""
+
+#. Non-trading day.
+msgid "Neburzovní den"
 msgstr ""

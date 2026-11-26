@@ -10,21 +10,23 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.calendars.gregorian import JAN
 from holidays.countries.czechia import Czechia
+from holidays.groups import StaticHolidays
 from holidays.helpers import tr
 
 
-class PragueStockExchange(Czechia):
+class PragueStockExchange(Czechia, StaticHolidays):
     """Prague Stock Exchange (BCPP) holidays.
 
     The exchange is closed on Czech public holidays falling on weekdays, and
-    also on New Year's Eve. Official PSE trading calendars are available starting
-    from 2017; earlier years are excluded due to lack of verifiable official
-    exchange calendar records.
+    also on Good Friday (since 2013) and New Year's Eve.
 
     References:
         * <https://web.archive.org/web/20261020195539/https://www.pse.cz/en/trading/trading-information/trading-calendar>
         * <https://web.archive.org/web/20260902191623/https://www.pse.cz/informace-o-obchodovani/kalendar-burzovnich-dni>
+        * [2004-2006](https://web.archive.org/web/20060108223457/http://www.pse.cz/obchodovani/kalendar.asp#kalendarI2006)
+        * [2007-2016](https://web.archive.org/web/20160807222734/http://www.pse.cz/dokument.aspx?k=Kalendar-BD-2016)
         * [2017](https://web.archive.org/web/20170906124536/https://www.pse.cz/en/trading/trading-information/trading-calendar/)
         * [2018-2019](https://web.archive.org/web/20190918224227/https://www.pse.cz/en/trading/trading-information/trading-calendar/)
         * [2020](https://web.archive.org/web/20201101013641/https://www.pse.cz/en/trading/trading-information/trading-calendar)
@@ -40,8 +42,11 @@ class PragueStockExchange(Czechia):
     country = None  # type: ignore[assignment]
     market = "XPRA"
     parent_entity = Czechia
-    # Earliest year with an accessible official PSE trading calendar record.
-    start_year = 2017
+    start_year = 2004
+
+    def __init__(self, *args, **kwargs):
+        StaticHolidays.__init__(self, PragueStockExchangeStaticHolidays)
+        super().__init__(*args, **kwargs)
 
     def _add_holiday(self, name, *args):
         if self._is_weekend(*args):
@@ -51,6 +56,10 @@ class PragueStockExchange(Czechia):
 
     def _populate_public_holidays(self):
         super()._populate_public_holidays()
+
+        if 2013 <= self._year <= 2015:
+            # Good Friday.
+            self._add_good_friday(tr("Velký pátek"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvestr"))
@@ -62,3 +71,12 @@ class XPRA(PragueStockExchange):
 
 class BCPP(PragueStockExchange):
     pass
+
+
+class PragueStockExchangeStaticHolidays:
+    """Prague Stock Exchange (BCPP) special holidays."""
+
+    special_public_holidays = {
+        # Non-trading day.
+        2004: (JAN, 2, tr("Neburzovní den")),
+    }
