@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Vienna Stock Exchange (Wiener Börse) holidays en_US localization.
+# Vienna Stock Exchange (WBAG) holidays en_US localization.
 #
 msgid ""
 msgstr ""

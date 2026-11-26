@@ -16,7 +16,7 @@ from holidays.helpers import tr
 
 
 class ViennaStockExchange(Austria):
-    """Vienna Stock Exchange (Wiener Börse) holidays.
+    """Vienna Stock Exchange (WBAG) holidays.
 
     The exchange is closed on Austrian public holidays falling on weekdays, and also on
     Good Friday, Christmas Eve and New Year's Eve. Since 2019 it trades on Epiphany,

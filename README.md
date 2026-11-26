@@ -2188,7 +2188,7 @@ code when available. The following financial markets are available:
 <tr>
 <td>Vienna Stock Exchange</td>
 <td>XWBO</td>
-<td>Vienna Stock Exchange (Wiener Börse) market holidays</td>
+<td>Vienna Stock Exchange (WBAG) market holidays</td>
 <td><strong>de</strong>, en_US, th, uk</td>
 <td></td>
 </tr>

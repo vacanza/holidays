@@ -25,6 +25,120 @@ class TestViennaStockExchange(CommonFinancialTests, TestCase):
         self.assertTrue(hasattr(self.holidays, "market"))
         self.assertIsNone(getattr(self.holidays, "country", None))
 
+    def test_new_years_day(self):
+        name = "Neujahr"
+        years_absent = {2022, 2023, 2028, 2033, 2034, 2039, 2040, 2045}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-01-01" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_good_friday(self):
+        name = "Karfreitag"
+        self.assertHolidayName(
+            name,
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+            "2025-04-18",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_easter_monday(self):
+        name = "Ostermontag"
+        self.assertHolidayName(
+            name,
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+            "2025-04-21",
+        )
+        self.assertHolidayName(name, self.full_range)
+
+    def test_labor_day(self):
+        name = "Staatsfeiertag"
+        years_absent = {2021, 2022, 2027, 2032, 2033, 2038, 2039, 2044, 2049}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-05-01" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_ascension_day(self):
+        name = "Christi Himmelfahrt"
+        self.assertHolidayName(name, "2018-05-10")
+        self.assertNoHolidayName(name, range(2019, self.end_year))
+
+    def test_whit_monday(self):
+        name = "Pfingstmontag"
+        self.assertHolidayName(
+            name,
+            "2018-05-21",
+            "2019-06-10",
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+        )
+        self.assertNoHolidayName(name, range(2023, self.end_year))
+
+    def test_corpus_christi(self):
+        name = "Fronleichnam"
+        self.assertHolidayName(name, "2018-05-31")
+        self.assertNoHolidayName(name, range(2019, self.end_year))
+
+    def test_assumption_day(self):
+        name = "Mariä Himmelfahrt"
+        self.assertHolidayName(name, "2018-08-15")
+        self.assertNoHolidayName(name, range(2019, self.end_year))
+
+    def test_national_day(self):
+        name = "Nationalfeiertag"
+        years_absent = {2019, 2024, 2025, 2030, 2031, 2036, 2041, 2042, 2047}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-10-26" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_all_saints_day(self):
+        name = "Allerheiligen"
+        self.assertHolidayName(name, "2018-11-01")
+        self.assertNoHolidayName(name, range(2019, self.end_year))
+
+    def test_christmas_eve(self):
+        name = "Heiliger Abend"
+        years_absent = {2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-12-24" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_christmas_day(self):
+        name = "Christtag"
+        years_absent = {2021, 2022, 2027, 2032, 2033, 2038, 2039, 2044, 2049}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-12-25" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_saint_stephens_day(self):
+        name = "Stephanstag"
+        years_absent = {2020, 2021, 2026, 2027, 2032, 2037, 2038, 2043, 2048, 2049}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-12-26" for year in self.full_range if year not in years_absent)
+        )
+
+    def test_new_years_eve(self):
+        name = "Silvester"
+        years_absent = {2022, 2023, 2028, 2033, 2034, 2039, 2044, 2045}
+        self.assertNoHolidayName(name, years_absent)
+        self.assertHolidayName(
+            name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
+        )
+
     def test_2018(self):
         self.assertHolidaysInYear(
             2018,
@@ -44,46 +158,6 @@ class TestViennaStockExchange(CommonFinancialTests, TestCase):
             ("2018-12-31", "Silvester"),
         )
 
-    def test_2019(self):
-        self.assertHolidaysInYear(
-            2019,
-            ("2019-01-01", "Neujahr"),
-            ("2019-04-19", "Karfreitag"),
-            ("2019-04-22", "Ostermontag"),
-            ("2019-05-01", "Staatsfeiertag"),
-            ("2019-06-10", "Pfingstmontag"),
-            ("2019-12-24", "Heiliger Abend"),
-            ("2019-12-25", "Christtag"),
-            ("2019-12-26", "Stephanstag"),
-            ("2019-12-31", "Silvester"),
-        )
-
-    def test_2020(self):
-        self.assertHolidaysInYear(
-            2020,
-            ("2020-01-01", "Neujahr"),
-            ("2020-04-10", "Karfreitag"),
-            ("2020-04-13", "Ostermontag"),
-            ("2020-05-01", "Staatsfeiertag"),
-            ("2020-06-01", "Pfingstmontag"),
-            ("2020-10-26", "Nationalfeiertag"),
-            ("2020-12-24", "Heiliger Abend"),
-            ("2020-12-25", "Christtag"),
-            ("2020-12-31", "Silvester"),
-        )
-
-    def test_2021(self):
-        self.assertHolidaysInYear(
-            2021,
-            ("2021-01-01", "Neujahr"),
-            ("2021-04-02", "Karfreitag"),
-            ("2021-04-05", "Ostermontag"),
-            ("2021-05-24", "Pfingstmontag"),
-            ("2021-10-26", "Nationalfeiertag"),
-            ("2021-12-24", "Heiliger Abend"),
-            ("2021-12-31", "Silvester"),
-        )
-
     def test_2022(self):
         self.assertHolidaysInYear(
             2022,
@@ -92,43 +166,6 @@ class TestViennaStockExchange(CommonFinancialTests, TestCase):
             ("2022-06-06", "Pfingstmontag"),
             ("2022-10-26", "Nationalfeiertag"),
             ("2022-12-26", "Stephanstag"),
-        )
-
-    def test_2023(self):
-        self.assertHolidaysInYear(
-            2023,
-            ("2023-04-07", "Karfreitag"),
-            ("2023-04-10", "Ostermontag"),
-            ("2023-05-01", "Staatsfeiertag"),
-            ("2023-10-26", "Nationalfeiertag"),
-            ("2023-12-25", "Christtag"),
-            ("2023-12-26", "Stephanstag"),
-        )
-
-    def test_2024(self):
-        self.assertHolidaysInYear(
-            2024,
-            ("2024-01-01", "Neujahr"),
-            ("2024-03-29", "Karfreitag"),
-            ("2024-04-01", "Ostermontag"),
-            ("2024-05-01", "Staatsfeiertag"),
-            ("2024-12-24", "Heiliger Abend"),
-            ("2024-12-25", "Christtag"),
-            ("2024-12-26", "Stephanstag"),
-            ("2024-12-31", "Silvester"),
-        )
-
-    def test_2025(self):
-        self.assertHolidaysInYear(
-            2025,
-            ("2025-01-01", "Neujahr"),
-            ("2025-04-18", "Karfreitag"),
-            ("2025-04-21", "Ostermontag"),
-            ("2025-05-01", "Staatsfeiertag"),
-            ("2025-12-24", "Heiliger Abend"),
-            ("2025-12-25", "Christtag"),
-            ("2025-12-26", "Stephanstag"),
-            ("2025-12-31", "Silvester"),
         )
 
     def test_2026(self):
@@ -142,17 +179,6 @@ class TestViennaStockExchange(CommonFinancialTests, TestCase):
             ("2026-12-24", "Heiliger Abend"),
             ("2026-12-25", "Christtag"),
             ("2026-12-31", "Silvester"),
-        )
-
-    def test_2027(self):
-        self.assertHolidaysInYear(
-            2027,
-            ("2027-01-01", "Neujahr"),
-            ("2027-03-26", "Karfreitag"),
-            ("2027-03-29", "Ostermontag"),
-            ("2027-10-26", "Nationalfeiertag"),
-            ("2027-12-24", "Heiliger Abend"),
-            ("2027-12-31", "Silvester"),
         )
 
     def test_l10n_default(self):
