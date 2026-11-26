@@ -41,51 +41,52 @@ class TestBudapestStockExchange(CommonFinancialTests, TestCase):
 
     def test_christmas_eve(self):
         name = "Szenteste"
+        years_absent = {
+            1994,
+            1995,
+            2000,
+            2005,
+            2006,
+            2011,
+            2016,
+            2017,
+            2022,
+            2023,
+            2028,
+            2033,
+            2034,
+            2039,
+            2044,
+            2045,
+        }
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            name,
-            "1991-12-24",
-            "1996-12-24",
-            "2026-12-24",
-            "2027-12-24",
-            "2029-12-24",
-            "2030-12-24",
-        )
-        self.assertNoHoliday(
-            "1994-12-24",
-            "1995-12-24",
-            "2000-12-24",
-            "2005-12-24",
-            "2006-12-24",
-            "2011-12-24",
-            "2016-12-24",
-            "2017-12-24",
-            "2022-12-24",
-            "2023-12-24",
-            "2028-12-24",
+            name, (f"{year}-12-24" for year in self.full_range if year not in years_absent)
         )
 
     def test_new_years_eve(self):
         name = "Szilveszter"
+        years_absent = {
+            1994,
+            1995,
+            2000,
+            2005,
+            2006,
+            2011,
+            2016,
+            2017,
+            2022,
+            2023,
+            2028,
+            2033,
+            2034,
+            2039,
+            2044,
+            2045,
+        }
+        self.assertNoHolidayName(name, years_absent)
         self.assertHolidayName(
-            name,
-            "2019-12-31",
-            "2020-12-31",
-            "2021-12-31",
-            "2024-12-31",
-            "2025-12-31",
-            "2026-12-31",
-        )
-        self.assertNoHoliday(
-            "1994-12-31",
-            "1995-12-31",
-            "2000-12-31",
-            "2005-12-31",
-            "2006-12-31",
-            "2011-12-31",
-            "2016-12-31",
-            "2017-12-31",
-            "2022-12-31",
-            "2023-12-31",
+            name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
 
     def test_weekend_workdays_closed(self):
@@ -112,7 +113,7 @@ class TestBudapestStockExchange(CommonFinancialTests, TestCase):
             ("2025-08-20", "Az államalapítás ünnepe"),
             ("2025-10-23", "Nemzeti ünnep"),
             ("2025-10-24", "Pihenőnap (2025. 10. 18.-től helyettesítve)"),
-            ("2025-12-24", "Pihenőnap (2025. 12. 13.-től helyettesítve)"),
+            ("2025-12-24", "Pihenőnap (2025. 12. 13.-től helyettesítve); Szenteste"),
             ("2025-12-25", "Karácsony"),
             ("2025-12-26", "Karácsony másnapja"),
             ("2025-12-31", "Szilveszter"),

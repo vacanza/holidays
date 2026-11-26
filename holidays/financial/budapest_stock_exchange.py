@@ -10,9 +10,6 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import DEC
 from holidays.countries.hungary import Hungary
 from holidays.helpers import tr
 
@@ -21,9 +18,9 @@ class BudapestStockExchange(Hungary):
     """Budapest Stock Exchange (BÉT / BSE) holidays.
 
     The exchange is closed on Hungarian public holidays and government-decreed
-    bridged rest days falling on weekdays, as well as on Christmas Eve and
-    New Year's Eve. Hungarian Saturday make-up workdays are also non-trading
-    days on the exchange.
+    bridged rest days falling on weekdays, as well as on Good Friday (since 2012),
+    Christmas Eve, and New Year's Eve. Hungarian Saturday make-up workdays are also
+    non-trading days on the exchange.
 
     References:
         * [CEO Resolution 514/2011 (2012 Trading Holidays)](https://www.bse.hu/newkibdata/108984735/Kersz_nnapok_2012_ENG.pdf)
@@ -57,19 +54,19 @@ class BudapestStockExchange(Hungary):
         # BSE keeps national Saturday make-up workdays closed.
         self.weekend_workdays.clear()
 
-        # BSE introduced Good Friday as a trading holiday in 2012, before it became
-        # a Hungarian national public holiday in 2017.
+    def _populate_public_holidays(self):
+        super()._populate_public_holidays()
+
         if 2012 <= self._year <= 2016:
             # Good Friday.
             self._add_good_friday(tr("Nagypéntek"))
 
-        if date(self._year, DEC, 24) not in self:
+        if self._year <= 2025:
             # Christmas Eve.
             self._add_christmas_eve(tr("Szenteste"))
 
-        if date(self._year, DEC, 31) not in self:
-            # New Year's Eve.
-            self._add_new_years_eve(tr("Szilveszter"))
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Szilveszter"))
 
 
 class XBUD(BudapestStockExchange):
