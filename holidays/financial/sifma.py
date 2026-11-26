@@ -42,7 +42,7 @@ class SIFMA(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stati
     # %s (observed).
     observed_label = tr("%s (observed)")
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_US",)
+    supported_languages = ("en_US", "th")
     start_year = 1996
     # Years with an early close instead of a full close on Good Friday, usually because the
     # BLS employment report is released that day.
