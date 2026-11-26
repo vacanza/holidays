@@ -65,6 +65,7 @@ if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below
     from holidays.financial.new_zealand_exchange import NewZealandExchange, XNZE, NZX
     from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
     from holidays.financial.pakistan_stock_exchange import PakistanStockExchange, XKAR, PSX
+    from holidays.financial.prague_stock_exchange import PragueStockExchange, XPRA, BCPP
     from holidays.financial.qatar_stock_exchange import QatarStockExchange, DSMD, QSE
     from holidays.financial.saudi_exchange import SaudiExchange, XSAU
     from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
