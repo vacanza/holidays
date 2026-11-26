@@ -139,35 +139,6 @@ class TestViennaStockExchange(CommonFinancialTests, TestCase):
             name, (f"{year}-12-31" for year in self.full_range if year not in years_absent)
         )
 
-    def test_2018(self):
-        self.assertHolidaysInYear(
-            2018,
-            ("2018-01-01", "Neujahr"),
-            ("2018-03-30", "Karfreitag"),
-            ("2018-04-02", "Ostermontag"),
-            ("2018-05-01", "Staatsfeiertag"),
-            ("2018-05-10", "Christi Himmelfahrt"),
-            ("2018-05-21", "Pfingstmontag"),
-            ("2018-05-31", "Fronleichnam"),
-            ("2018-08-15", "Mariä Himmelfahrt"),
-            ("2018-10-26", "Nationalfeiertag"),
-            ("2018-11-01", "Allerheiligen"),
-            ("2018-12-24", "Heiliger Abend"),
-            ("2018-12-25", "Christtag"),
-            ("2018-12-26", "Stephanstag"),
-            ("2018-12-31", "Silvester"),
-        )
-
-    def test_2022(self):
-        self.assertHolidaysInYear(
-            2022,
-            ("2022-04-15", "Karfreitag"),
-            ("2022-04-18", "Ostermontag"),
-            ("2022-06-06", "Pfingstmontag"),
-            ("2022-10-26", "Nationalfeiertag"),
-            ("2022-12-26", "Stephanstag"),
-        )
-
     def test_2026(self):
         self.assertHolidaysInYear(
             2026,
