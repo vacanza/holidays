@@ -425,9 +425,9 @@ class TestKazakhstan(CommonCountryTests, WorkingDayTests, TestCase):
             ("2024-12-16", "Independence Day"),
         )
 
-    def test_l10n_ru(self):
+    def test_l10n_ru_kz(self):
         self.assertLocalizedHolidays(
-            "ru",
+            "ru_KZ",
             ("2024-01-01", "Новый год"),
             ("2024-01-02", "Новый год"),
             ("2024-01-07", "Православное Рождество"),

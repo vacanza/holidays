@@ -46,7 +46,7 @@ class Kazakhstan(
     observed_label = tr("%s (қайта белгіленген демалыс)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (қайта белгіленген демалыс, бағаланған)")
-    supported_languages = ("en_US", "kk", "ru", "uk")
+    supported_languages = ("en_US", "kk", "ru_KZ", "uk")
     # Kazakhstan declared its sovereignty on 25 October 1990.
     start_year = 1991
 
