@@ -1741,7 +1741,10 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "AS":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-04-21" for year in self.full_range)
+                    name,
+                    holidays,
+                    "2020-04-20",
+                    (f"{year}-04-21" for year in self.full_range if year != 2020),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
@@ -2486,8 +2489,9 @@ class TestIndia(CommonCountryTests, TestCase):
         for subdiv, holidays in self.subdiv_holidays.items():
             if subdiv == "AS":
                 self.assertHolidayName(
-                    name, holidays, (f"{year}-12-02" for year in self.full_range)
+                    name, holidays, (f"{year}-12-02" for year in range(1996, self.end_year))
                 )
+                self.assertNoHolidayName(name, holidays, range(self.start_year, 1996))
             else:
                 self.assertNoHolidayName(name, holidays)
 

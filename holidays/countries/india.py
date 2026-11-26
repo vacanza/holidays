@@ -658,7 +658,11 @@ class India(
         self._add_holiday_jan_31(tr("Me-Dam-Me-Phi"))
 
         # Sati Sadhani Day.
-        self._add_holiday_apr_21(tr("Sati Sadhani Divas"))
+        name = tr("Sati Sadhani Divas")
+        if self._year == 2020:
+            self._add_holiday_apr_20(name)
+        else:
+            self._add_holiday_apr_21(name)
 
         # May Day.
         self._add_labor_day(tr("May Day"))
@@ -666,8 +670,9 @@ class India(
         # Lachit Day.
         self._add_holiday_nov_24(tr("Lachit Divas"))
 
-        # Assam Day.
-        self._add_holiday_dec_2(tr("Asom Divas"))
+        if self._year >= 1996:
+            # Assam Day.
+            self._add_holiday_dec_2(tr("Asom Divas"))
 
         # Hindu holidays.
 
