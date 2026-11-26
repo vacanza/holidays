@@ -39,7 +39,7 @@ class Qatar(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays)
     estimated_label = tr("%s (تقديري)")
     start_year = 1971
     supported_categories = (BANK, PUBLIC)
-    supported_languages = ("ar_QA", "en_US", "ur_PK")
+    supported_languages = ("ar_QA", "en_US", "hi", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
