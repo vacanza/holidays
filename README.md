@@ -1091,7 +1091,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Madagascar</td>
 <td>MG</td>
 <td></td>
-<td>en_US, <strong>mg</strong>, uk</td>
+<td>en_US, fr, <strong>mg</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1154,7 +1154,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritius</td>
 <td>MU</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>en_MU</strong>, en_US, hi</td>
 <td></td>
 </tr>
 <tr>
@@ -1434,7 +1434,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Qatar</td>
 <td>QA</td>
 <td></td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td>BANK</td>
 </tr>
 <tr>
@@ -1560,7 +1560,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Seychelles</td>
 <td>SC</td>
 <td></td>
-<td><strong>en_SC</strong>, en_US</td>
+<td><strong>en_SC</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -1574,7 +1574,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td></td>
 </tr>
 <tr>
@@ -1812,7 +1812,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -2014,7 +2014,7 @@ code when available. The following financial markets are available:
 <td>Dubai Financial Market</td>
 <td>XDFM</td>
 <td>Dubai Financial Market (DFM) holidays</td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2133,7 +2133,7 @@ code when available. The following financial markets are available:
 <td>Qatar Stock Exchange</td>
 <td>DSMD</td>
 <td>Qatar Stock Exchange (QSE) holidays</td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2168,7 +2168,7 @@ code when available. The following financial markets are available:
 <td>Singapore Exchange</td>
 <td>XSES</td>
 <td>Singapore Exchange (SGX) market holidays</td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2197,6 +2197,13 @@ code when available. The following financial markets are available:
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
 <td>de, en_US, <strong>pl</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Zagreb Stock Exchange</td>
+<td>XZAG</td>
+<td>Zagreb Stock Exchange (ZSE) market holidays</td>
+<td>en_US, <strong>hr</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>

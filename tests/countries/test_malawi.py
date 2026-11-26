@@ -21,6 +21,9 @@ class TestMalawi(CommonCountryTests, TestCase):
     def setUpClass(cls):
         super().setUpClass(Malawi)
 
+    def test_special_holidays(self):
+        self.assertHolidayName("General Election Day", "2025-09-16")
+
     def test_new_years_day(self):
         name = "New Year's Day"
         self.assertHolidayName(name, (f"{year}-01-01" for year in self.full_range))
@@ -183,4 +186,22 @@ class TestMalawi(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (observed)"),
+        )
+
+    def test_2025(self):
+        self.assertHolidaysInYear(
+            2025,
+            ("2025-01-01", "New Year's Day"),
+            ("2025-01-15", "John Chilembwe Day"),
+            ("2025-03-03", "Martyrs Day"),
+            ("2025-04-18", "Good Friday"),
+            ("2025-04-21", "Easter Monday"),
+            ("2025-05-01", "Labour Day"),
+            ("2025-05-14", "Kamuzu Day"),
+            ("2025-07-06", "Independence Day"),
+            ("2025-07-07", "Independence Day (observed)"),
+            ("2025-09-16", "General Election Day"),
+            ("2025-10-15", "Mother's Day"),
+            ("2025-12-25", "Christmas Day"),
+            ("2025-12-26", "Boxing Day"),
         )
