@@ -1958,7 +1958,7 @@ code when available. The following financial markets are available:
 <td>Bolsa de Valores de Colombia</td>
 <td>XBOG</td>
 <td>Bolsa de Valores de Colombia (BVC) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
