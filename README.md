@@ -1091,7 +1091,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Madagascar</td>
 <td>MG</td>
 <td></td>
-<td>en_US, <strong>mg</strong>, uk</td>
+<td>en_US, fr, <strong>mg</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1434,7 +1434,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Qatar</td>
 <td>QA</td>
 <td></td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td>BANK</td>
 </tr>
 <tr>
@@ -1560,7 +1560,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Seychelles</td>
 <td>SC</td>
 <td></td>
-<td><strong>en_SC</strong>, en_US</td>
+<td><strong>en_SC</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -2133,7 +2133,7 @@ code when available. The following financial markets are available:
 <td>Qatar Stock Exchange</td>
 <td>DSMD</td>
 <td>Qatar Stock Exchange (QSE) holidays</td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
