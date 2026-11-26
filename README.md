@@ -2193,6 +2193,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Vienna Stock Exchange</td>
+<td>XWBO</td>
+<td>Vienna Stock Exchange (WBAG) market holidays</td>
+<td><strong>de</strong>, en_US, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
