@@ -197,6 +197,7 @@ LANGUAGES = {
     "pt_AO": "Portuguese (Angola)",
     "pt_BR": "Portuguese (Brazil)",
     "pt_CV": "Portuguese (Cabo Verde)",
+    "pt_GQ": "Portuguese (Equatorial Guinea)",
     "pt_GW": "Portuguese (Guinea-Bissau)",
     "pt_MO": "Portuguese (Macau)",
     "pt_MZ": "Portuguese (Mozambique)",
