@@ -979,7 +979,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kazakhstan</td>
 <td>KZ</td>
 <td></td>
-<td>en_US, <strong>kk</strong>, uk</td>
+<td>en_US, <strong>kk</strong>, ru, uk</td>
 <td></td>
 </tr>
 <tr>

@@ -1,0 +1,108 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Kazakhstan holidays ru localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-26 11:21+0000\n"
+"PO-Revision-Date: 2026-11-26 11:21+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: kk\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (бағаланған)"
+msgstr "%s (приблизительная дата)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (қайта белгіленген демалыс)"
+msgstr "%s (выходной)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (қайта белгіленген демалыс, бағаланған)"
+msgstr "%s (выходной, приблизительная дата)"
+
+#. New Year's Day.
+msgid "Жаңа жыл"
+msgstr "Новый год"
+
+#. Orthodox Christmas.
+msgid "Православиелік Рождество"
+msgstr "Православное Рождество"
+
+#. International Women's Day.
+msgid "Халықаралық әйелдер күні"
+msgstr "Международный женский день"
+
+#. Nowruz Holiday.
+msgid "Наурыз мейрамы"
+msgstr "Наурыз мейрамы"
+
+#. Kazakhstan's People Solidarity Holiday.
+msgid "Қазақстан халқының бірлігі мерекесі"
+msgstr "Праздник единства народа Казахстана"
+
+#. Defender of the Fatherland Day.
+msgid "Отан Қорғаушы күні"
+msgstr "День защитника Отечества"
+
+#. Victory Day.
+msgid "Жеңіс күні"
+msgstr "День Победы"
+
+#. Capital Day.
+msgid "Астана күні"
+msgstr "День Столицы"
+
+#. Constitution Day.
+msgid "Қазақстан Республикасының Конституциясы күні"
+msgstr "День Конституции Республики Казахстан"
+
+#. Republic Day.
+msgid "Қазақстан Республикасы күні"
+msgstr "День Республики Казахстан"
+
+#. Republic Day.
+msgid "Республика күні"
+msgstr "День Республики"
+
+#. First President Day.
+msgid "Қазақстан Республикасының Тұңғыш Президенті күні"
+msgstr "День Первого Президента Республики Казахстан"
+
+#. Independence Day.
+msgid "Тәуелсіздік күні"
+msgstr "День Независимости"
+
+#. Eid al-Adha.
+msgid "Құрбан айт"
+msgstr "Курбан-айт"
+
+#. Substituted date format.
+msgid "%d.%m.%Y"
+msgstr "%d.%m.%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Демалыс күні (%s бастап ауыстырылды)"
+msgstr "Выходной (перенесено с %s)"
