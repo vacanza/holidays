@@ -1744,7 +1744,8 @@ class TestIndia(CommonCountryTests, TestCase):
                     name,
                     holidays,
                     "2020-04-20",
-                    (f"{year}-04-21" for year in self.full_range if year != 2020),
+                    "2024-04-20",
+                    (f"{year}-04-21" for year in self.full_range if year not in {2020, 2024}),
                 )
             else:
                 self.assertNoHolidayName(name, holidays)
