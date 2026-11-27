@@ -1028,6 +1028,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             name, self._hindu_calendar.samvatsari_parva_date(self._year)
         )
 
+    def _add_sati_sadhani_divas(self, name: str) -> None:
+        """
+        Add Sati Sadhani Divas.
+
+        Sati Sadhani Divas falls on the 7th day of the Assamese solar month
+        of Bohag (Bohag 7). It is usually observed on April 21, but falls on
+        April 20 in leap years.
+        """
+        self._add_holiday(name, date(self._year, APR, 20 if isleap(self._year) else 21))
+
     def _add_shakambhari_purnima(self, name) -> set[date]:
         """
         Add Shakambhari Purnima.

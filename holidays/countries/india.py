@@ -658,11 +658,7 @@ class India(
         self._add_holiday_jan_31(tr("Me-Dam-Me-Phi"))
 
         # Sati Sadhani Day.
-        name = tr("Sati Sadhani Divas")
-        if self._year in {2020, 2024}:
-            self._add_holiday_apr_20(name)
-        else:
-            self._add_holiday_apr_21(name)
+        self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
 
         # May Day.
         self._add_labor_day(tr("May Day"))
