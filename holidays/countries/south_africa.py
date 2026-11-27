@@ -33,9 +33,9 @@ class SouthAfrica(ObservedHolidayBase, ChristianHolidays, InternationalHolidays,
     default_language = "en_ZA"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_US", "en_ZA", "ur_PK")
     # Public Holidays Act (No. 3 of 1910) came in effect on January 1st, 1911.
     start_year = 1911
+    supported_languages = ("en_US", "en_ZA", "ur_PK")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
