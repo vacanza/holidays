@@ -91,3 +91,65 @@ class TestNewZealandExchange(CommonFinancialTests, TestCase):
             ("2025-12-24", "Business Day Prior to Christmas Day (markets close at 13:30 NZDT)"),
             ("2025-12-31", "Business Day Prior to New Year's Day (markets close at 13:30 NZDT)"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-03", "New Year's Day"),
+            ("2022-01-04", "Day after New Year's Day"),
+            ("2022-02-07", "Waitangi Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "Anzac Day"),
+            ("2022-06-06", "Queen's Birthday"),
+            ("2022-06-24", "Matariki"),
+            ("2022-09-26", "Queen Elizabeth II Memorial Day"),
+            ("2022-10-24", "Labour Day"),
+            ("2022-12-23", "Business Day Prior to Christmas Day (markets close at 13:30 NZDT)"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day"),
+            ("2022-12-30", "Business Day Prior to New Year's Day (markets close at 13:30 NZDT)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-03", "New Year's Day"),
+            ("2022-01-04", "Day after New Year's Day"),
+            ("2022-02-07", "Waitangi Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-25", "Anzac Day"),
+            ("2022-06-06", "Queen's Birthday"),
+            ("2022-06-24", "Matariki"),
+            ("2022-09-26", "Queen Elizabeth II Memorial Day"),
+            ("2022-10-24", "Labor Day"),
+            ("2022-12-23", "Business Day Prior to Christmas Day (markets close at 13:30 NZDT)"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day"),
+            ("2022-12-30", "Business Day Prior to New Year's Day (markets close at 13:30 NZDT)"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2022-01-03", "نئے سال کا دن"),
+            ("2022-01-04", "نئے سال کے دن کے بعد کا دن"),
+            ("2022-02-07", "یوم وائتانگی"),
+            ("2022-04-15", "گڈ فرائیڈے"),
+            ("2022-04-18", "ایسٹر پیر"),
+            ("2022-04-25", "یوم انزیک"),
+            ("2022-06-06", "ملکہ کی سالگرہ"),
+            ("2022-06-24", "ماتاریکی"),
+            ("2022-09-26", "ملکہ الزبتھ دوم کا یادگاری دن"),
+            ("2022-10-24", "یوم مزدور"),
+            (
+                "2022-12-23",
+                "کرسمس کا دن سے پہلے کاروباری دن (مارکیٹیں 13:30 NZDT پر بند ہوتی ہیں)",
+            ),
+            ("2022-12-26", "باکسنگ ڈے"),
+            ("2022-12-27", "کرسمس کا دن"),
+            (
+                "2022-12-30",
+                "نئے سال کا دن سے پہلے کاروباری دن (مارکیٹیں 13:30 NZDT پر بند ہوتی ہیں)",
+            ),
+        )

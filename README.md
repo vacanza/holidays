@@ -1273,7 +1273,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>New Zealand</td>
 <td>NZ</td>
 <td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
-<td></td>
+<td><strong>en_NZ</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2112,7 +2112,7 @@ code when available. The following financial markets are available:
 <td>New Zealand Exchange</td>
 <td>XNZE</td>
 <td>New Zealand Exchange (NZX) market holidays</td>
-<td></td>
+<td><strong>en_NZ</strong>, en_US, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
