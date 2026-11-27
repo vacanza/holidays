@@ -144,6 +144,7 @@ LANGUAGES = {
     "en_FM": "English (Micronesia)",
     "en_GB": "English (United Kingdom)",
     "en_GD": "English (Grenada)",
+    "en_GH": "English (Ghana)",
     "en_GM": "English (Gambia)",
     "en_GS": "English (South Georgia & South Sandwich Islands)",
     "en_GY": "English (Guyana)",
