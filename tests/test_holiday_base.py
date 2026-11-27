@@ -1268,6 +1268,18 @@ class TestStandardMethods(TestCase):
         self.assertEqual(original.get("2014-01-01"), "New Year's Day")
         self.assertEqual(duplicate.get("2014-01-01"), "New Year's Day")
 
+    def test_copy_preserves_added_holiday(self):
+        original = CountryStub1(expand=False)
+        original.append({"2014-01-03": "Custom Holiday"})
+
+        self.assertEqual(original.copy().get("2014-01-03"), "Custom Holiday")
+
+    def test_copy_preserves_removed_holiday(self):
+        original = CountryStub1(years=2014)
+        original.pop("2014-01-01")
+
+        self.assertNotIn("2014-01-01", original.copy())
+
     def test_get(self):
         self.assertEqual(self.hb.get("2014-01-01"), "New Year's Day")
         self.assertIsNone(self.hb.get("2014-01-03"))

@@ -984,7 +984,8 @@ class HolidayBase(dict[date, str]):
     def copy(self):
         """Return a copy of the object."""
         copied_result = copy.copy(self)
-        copied_result.years = self.years.copy()
+        # The public setter would clear and repopulate the copied calendar.
+        dict.__setattr__(copied_result, "years", self.years.copy())
         return copied_result
 
     def get(self, key: DateLike, default: str | Any = None) -> str | Any:
