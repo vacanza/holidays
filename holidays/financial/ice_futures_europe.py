@@ -19,10 +19,10 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     """ICE Futures Europe holidays.
 
     References:
-        * <https://web.archive.org/web/20241203121313/https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf>
-        * <https://web.archive.org/web/20241118133442/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
-        * <https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
-        * <https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+        * [2021-2022](https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2023-2024](https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2024-2025](https://web.archive.org/web/20241118133442/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2026-2027](https://web.archive.org/web/20260728113518/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
     """
 
     market = "IFEU"

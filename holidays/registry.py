@@ -322,6 +322,7 @@ FINANCIAL: RegistryDict = {
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "pakistan_stock_exchange": ("PakistanStockExchange", "XKAR", "PSX"),
+    "prague_stock_exchange": ("PragueStockExchange", "XPRA", "BCPP"),
     "qatar_stock_exchange": ("QatarStockExchange", "DSMD", "QSE"),
     "saudi_exchange": ("SaudiExchange", "XSAU"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
@@ -331,7 +332,9 @@ FINANCIAL: RegistryDict = {
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
+    "vienna_stock_exchange": ("ViennaStockExchange", "XWBO", "WBAG"),
     "warsaw_stock_exchange": ("WarsawStockExchange", "XWAR", "GPW"),
+    "zagreb_stock_exchange": ("ZagrebStockExchange", "XZAG", "ZSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,

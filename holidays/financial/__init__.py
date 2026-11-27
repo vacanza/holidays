@@ -65,6 +65,7 @@ if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below
     from holidays.financial.new_zealand_exchange import NewZealandExchange, XNZE, NZX
     from holidays.financial.ny_stock_exchange import NewYorkStockExchange, XNYS, NYSE
     from holidays.financial.pakistan_stock_exchange import PakistanStockExchange, XKAR, PSX
+    from holidays.financial.prague_stock_exchange import PragueStockExchange, XPRA, BCPP
     from holidays.financial.qatar_stock_exchange import QatarStockExchange, DSMD, QSE
     from holidays.financial.saudi_exchange import SaudiExchange, XSAU
     from holidays.financial.shanghai_stock_exchange import ShanghaiStockExchange, XSHG, SSE
@@ -74,7 +75,9 @@ if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below
     from holidays.financial.six_swiss_exchange import SIXSwissExchange, XSWX, SIX
     from holidays.financial.taiwan_stock_exchange import TaiwanStockExchange, TWSE, XTAI
     from holidays.financial.toronto_stock_exchange import TorontoStockExchange, XTSE, TSX
+    from holidays.financial.vienna_stock_exchange import ViennaStockExchange, XWBO, WBAG
     from holidays.financial.warsaw_stock_exchange import WarsawStockExchange, XWAR, GPW
+    from holidays.financial.zagreb_stock_exchange import ZagrebStockExchange, XZAG, ZSE
 else:
     from holidays.registry import EntityLoader
 

@@ -49,7 +49,6 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
     market = "XBOG"
     parent_entity = Colombia
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_US", "es")  # type: ignore[assignment]
     start_year = 2008
 
     def __init__(self, *args, **kwargs):
