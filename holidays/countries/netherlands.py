@@ -13,7 +13,7 @@
 from datetime import date
 
 from holidays.calendars.gregorian import JAN, SAT, _get_nth_weekday_from, _timedelta
-from holidays.constants import OPTIONAL, PUBLIC, SCHOOL
+from holidays.constants import OPTIONAL, PUBLIC, SCHOOL, UNOFFICIAL
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_PREV_SAT, SUN_TO_NEXT_MON
@@ -33,6 +33,9 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         * <https://web.archive.org/save/https://wetten.overheid.nl/BWBR0002448/2010-10-10>
         * <https://web.archive.org/web/20250123145153/https://repository.overheid.nl/frbr/sgd/19811982/0000151909/1/pdf/SGD_19811982_0002862.pdf>
         * <https://web.archive.org/web/20251015082056/https://www.facebook.com/photo.php?fbid=5357926707591435&id=190259871024837&set=a.342400825810740>
+        * Sinterklaas:
+            * <https://nl.wikipedia.org/wiki/Sinterklaasfeest>
+            * <https://en.wikipedia.org/wiki/Sinterklaas>
         * School holidays:
             * [Regeling vaststelling schoolvakanties 2013-2016](https://web.archive.org/web/20261022045936/https://zoek.officielebekendmakingen.nl/stcrt-2012-27185.html)
             * [Regeling vaststelling schoolvakanties 2016-2019](https://web.archive.org/web/20261022050344/https://zoek.officielebekendmakingen.nl/stcrt-2015-35695.html)
@@ -55,7 +58,7 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         "Noord",  # Northern region.
         "Zuid",  # Southern region.
     )
-    supported_categories = (OPTIONAL, PUBLIC, SCHOOL)
+    supported_categories = (OPTIONAL, PUBLIC, SCHOOL, UNOFFICIAL)
     supported_languages = ("en_US", "fy", "nl", "th", "uk")
     # Algemene termijnenwet (Atw) entered into force on April 1st, 1965.
     start_year = 1966
@@ -183,6 +186,12 @@ class Netherlands(ObservedHolidayBase, ChristianHolidays, InternationalHolidays)
         if self._year >= 1982:
             # Liberation Day.
             self._add_holiday_may_5(tr("Bevrijdingsdag"))
+
+    def _populate_unofficial_holidays(self):
+        # Widely celebrated, but not a day off: no observed rule applies.
+
+        # Saint Nicholas' Eve.
+        self._add_holiday_dec_5(tr("Sinterklaasavond"))
 
     def _populate_school_holidays(self):
         if self.subdiv is None or not 2014 <= self._year <= 2030:
