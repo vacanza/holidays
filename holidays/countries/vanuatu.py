@@ -10,7 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import JUL, OCT
+from holidays.calendars.gregorian import JAN, JUL, MAY, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, MON_TO_NEXT_TUE
 
@@ -92,9 +92,19 @@ class VTU(Vanuatu):
 
 
 class VanuatuStaticHolidays:
+    """Vanuatu special holidays.
+
+    References:
+        * [2012 General Election](https://web.archive.org/web/20241222131603/https://www.paclii.org/vu/legis/sub_leg/phadopheo2012600.pdf)
+        * [2024 Referendum](https://web.archive.org/web/20261127081335/https://pina.com.fj/2024/05/28/vanuatu-pm-salwai-urges-citizens-to-vote-tomorrow/)
+        * [2025 General Election](https://web.archive.org/web/20250116065640/https://www.fbcnews.com.fj/world/pacific-islands/earthquake-doesnt-derail-vanuatus-snap-election)
+    """
+
+    election_day = "Election Day"
     independence_anniversary = "40th Independence Anniversary"
 
     special_public_holidays = {
+        2012: (OCT, 30, election_day),
         2020: (
             (JUL, 23, independence_anniversary),
             (JUL, 27, independence_anniversary),
@@ -102,5 +112,7 @@ class VanuatuStaticHolidays:
             (JUL, 29, independence_anniversary),
             (JUL, 31, independence_anniversary),
         ),
-        2022: (OCT, 13, "Election Day"),
+        2022: (OCT, 13, election_day),
+        2024: (MAY, 29, "Referendum Day"),
+        2025: (JAN, 16, election_day),
     }
