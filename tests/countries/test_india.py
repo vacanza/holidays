@@ -1751,10 +1751,12 @@ class TestIndia(CommonCountryTests, TestCase):
                 self.assertNoHolidayName(name, holidays)
         self.assertSubdivAsOptionalHolidayName(
             name,
-            (f"{year}-04-20" for year in range(self.start_year, 2020) if isleap(year)),
-            (f"{year}-04-21" for year in range(self.start_year, 2020) if not isleap(year)),
+            "2018-04-21",
+            "2019-04-21",
         )
-        self.assertNoSubdivAsOptionalHolidayName(name, range(2020, self.end_year))
+        self.assertNoSubdivAsOptionalHolidayName(
+            name, range(self.start_year, 2018), range(2020, self.end_year)
+        )
 
     def test_khongjom_day(self):
         name = "Khongjom Day"

@@ -693,7 +693,7 @@ class India(
         # Gurudev Kalicharan Brahma's Birthday.
         self._add_holiday_apr_18(tr("Gurudev Kalicharan Brahma's Jayanti"))
 
-        if self._year <= 2019:
+        if 2018 <= self._year <= 2019:
             # Sati Sadhani Day.
             self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
 
