@@ -1917,7 +1917,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Zimbabwe</td>
 <td>ZW</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_ZW</strong>, ur_PK</td>
 <td></td>
 </tr>
 </tbody>

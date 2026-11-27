@@ -243,3 +243,62 @@ class TestZimbabwe(CommonCountryTests, TestCase):
             ("2026-12-25", "Christmas Day"),
             ("2026-12-26", "Boxing Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-02-21", "Robert Gabriel Mugabe National Youth Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-08", "Easter Saturday"),
+            ("2023-04-09", "Easter Sunday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-04-18", "Independence Day"),
+            ("2023-05-01", "Workers' Day"),
+            ("2023-05-25", "Africa Day"),
+            ("2023-08-14", "Zimbabwe Heroes' Day"),
+            ("2023-08-15", "Defense Forces Day"),
+            ("2023-12-22", "Unity Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day (observed)"),
+            ("2023-02-21", "Robert Gabriel Mugabe National Youth Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-08", "Easter Saturday"),
+            ("2023-04-09", "Easter Sunday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-04-18", "Independence Day"),
+            ("2023-05-01", "Workers' Day"),
+            ("2023-05-25", "Africa Day"),
+            ("2023-08-14", "Zimbabwe Heroes' Day"),
+            ("2023-08-15", "Defense Forces Day"),
+            ("2023-12-22", "Unity Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2023-01-01", "نئے سال کا دن"),
+            ("2023-01-02", "نئے سال کا دن (منایا گیا)"),
+            ("2023-02-21", "رابرٹ گیبریل موگابے قومی یوم نوجوانان"),
+            ("2023-04-07", "گڈ فرائیڈے"),
+            ("2023-04-08", "ایسٹر ہفتہ"),
+            ("2023-04-09", "ایسٹر اتوار"),
+            ("2023-04-10", "ایسٹر پیر"),
+            ("2023-04-18", "یوم آزادی"),
+            ("2023-05-01", "یوم مزدور"),
+            ("2023-05-25", "یوم افریقہ"),
+            ("2023-08-14", "زمبابوے کے ہیروز کا دن"),
+            ("2023-08-15", "دفاعی افواج کا دن"),
+            ("2023-12-22", "یوم اتحاد"),
+            ("2023-12-25", "کرسمس کا دن"),
+            ("2023-12-26", "باکسنگ ڈے"),
+        )
