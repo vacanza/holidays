@@ -1,0 +1,56 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# European Central Bank holidays zh_CN localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-23 17:15+0800\n"
+"PO-Revision-Date: 2026-11-23 17:15+0800\n"
+"Last-Translator: wozhenbang2004 <wozhenbang2004@users.noreply.github.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_GB\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "元旦"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "圣诞节"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "耶稣受难节"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "复活节星期一"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "劳动节"
+
+#. Christmas Holiday.
+msgid "Christmas Holiday"
+msgstr "圣诞节假日"
+
+#. Additional closing day.
+msgid "Additional closing day"
+msgstr "额外休业日"

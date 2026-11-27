@@ -34,7 +34,7 @@ class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays,
 
     market = "XECB"
     default_language = "en_GB"
-    supported_languages = ("de", "en_GB", "en_US", "es", "fr", "it", "uk")
+    supported_languages = ("de", "en_GB", "en_US", "es", "fr", "it", "uk", "zh_CN")
     start_year = 1999
 
     def __init__(self, *args, **kwargs):
