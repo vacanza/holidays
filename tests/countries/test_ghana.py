@@ -278,3 +278,65 @@ class TestGhana(CommonCountryTests, TestCase):
             ("2026-12-25", "Christmas Day"),
             ("2026-12-26", "Boxing Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-07", "Constitution Day"),
+            ("2026-01-09", "Public Holiday"),
+            ("2026-03-06", "Independence Day"),
+            ("2026-03-20", "Eid-ul-Fitr"),
+            ("2026-03-21", "Shaqq Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-01", "Labour Day"),
+            ("2026-05-27", "Eid-ul-Adha"),
+            ("2026-07-01", "Republic Day"),
+            ("2026-07-03", "Public Holiday"),
+            ("2026-09-21", "Founder's Day"),
+            ("2026-12-04", "Farmers' Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-07", "Constitution Day"),
+            ("2026-01-09", "Public Holiday"),
+            ("2026-03-06", "Independence Day"),
+            ("2026-03-20", "Eid al-Fitr"),
+            ("2026-03-21", "Shaqq Day"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-01", "Labor Day"),
+            ("2026-05-27", "Eid al-Adha"),
+            ("2026-07-01", "Republic Day"),
+            ("2026-07-03", "Public Holiday"),
+            ("2026-09-21", "Founder's Day"),
+            ("2026-12-04", "Farmers' Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2026-01-01", "نئے سال کا دن"),
+            ("2026-01-07", "یوم دستور"),
+            ("2026-01-09", "سرکاری تعطیل"),
+            ("2026-03-06", "یوم آزادی"),
+            ("2026-03-20", "عید الفطر"),
+            ("2026-03-21", "یوم شق"),
+            ("2026-04-03", "گڈ فرائیڈے"),
+            ("2026-04-06", "ایسٹر پیر"),
+            ("2026-05-01", "یوم مزدور"),
+            ("2026-05-27", "عید الاضحی"),
+            ("2026-07-01", "یوم جمہوریہ"),
+            ("2026-07-03", "سرکاری تعطیل"),
+            ("2026-09-21", "یوم بانی"),
+            ("2026-12-04", "یوم کسان"),
+            ("2026-12-25", "کرسمس کا دن"),
+            ("2026-12-26", "باکسنگ ڈے"),
+        )
