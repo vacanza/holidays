@@ -73,7 +73,11 @@ class India(
         * Arunachal Pradesh:
             * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Assam:
-            * <https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * [2018](https://archive.org/details/in.gazette.assam.2017-12-18.no__761_gaga81-2016-309_dated_18-12-17)
+            * [2019](https://archive.org/details/in.gazette.assam.2018-12-19.no__629_gaga_81-2016-220_holiday_list_dated_19-12-18)
+            * [2020](https://archive.org/details/in.gazette.assam.2019-12-31.no__522_gaga81-2016-535_dated_31-12-19)
+            * [2024](https://archive.org/details/assam-academic-calendar-booklet-holiday-list-2024-25)
+            * [2026](https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf)
         * Bihar:
             * <https://web.archive.org/web/20260825183642/https://only30sec.com/wp-content/uploads/2025/11/Bihar-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
@@ -657,8 +661,9 @@ class India(
         # Me-Dam-Me-Phi.
         self._add_holiday_jan_31(tr("Me-Dam-Me-Phi"))
 
-        # Sati Sadhani Day.
-        self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
+        if self._year >= 2020:
+            # Sati Sadhani Day.
+            self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
 
         # May Day.
         self._add_labor_day(tr("May Day"))
@@ -687,6 +692,10 @@ class India(
 
         # Gurudev Kalicharan Brahma's Birthday.
         self._add_holiday_apr_18(tr("Gurudev Kalicharan Brahma's Jayanti"))
+
+        if self._year <= 2019:
+            # Sati Sadhani Day.
+            self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
 
         # Bishnu Prasad Rabha's Death Anniversary.
         self._add_holiday_jun_20(tr("Bishnu Prasad Rabha's Death Anniversary"))
