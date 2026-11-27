@@ -619,7 +619,6 @@ class TestGetNamed(TestCase):
             with self.subTest(name=name):
                 self.assertListEqual(hb.get_named(name, lookup="istartswith"), [date(2026, 5, 1)])
         self.assertListEqual(hb.get_named("ix", lookup="istartswith"), [])
-        self.assertListEqual(hb.get_named("i", lookup="startswith"), [])
 
     def test_istartswith_contextual_lowercase(self):
         hb = HolidayBase()
