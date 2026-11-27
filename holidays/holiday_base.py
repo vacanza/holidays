@@ -1431,7 +1431,30 @@ class HolidaySum(HolidayBase):
 
     def _populate(self, year):
         for operand in self.holidays:
-            if year not in operand.years:
+            if operand.expand and year not in operand.years:
                 operand.years.add(year)
                 operand._populate(year)
             self.update(cast("dict[DateLike, str]", operand))
+
+    def is_weekend(self, key: DateLike) -> bool:
+        """Check if the given date's week day is a weekend day.
+
+        A day is a weekend day in the sum if any operand treats it as one,
+        so countries with a non-Saturday/Sunday weekend (e.g. IL, AE, SA, QA)
+        keep their weekend when added together.
+        """
+        dt = self.__keytransform__(key)
+        return any(operand.is_weekend(dt) for operand in self.holidays)
+
+    def is_working_day(self, key: DateLike) -> bool:
+        """Check if the given date is considered a working day.
+
+        The sum itself serves as the authority on which dates are holidays,
+        honoring locally added and removed holidays, while every operand's
+        weekend and make-up working day rules are respected.
+        """
+        dt = self.__keytransform__(key)
+        return dt not in self and all(
+            not operand.is_weekend(dt) or dt in operand.weekend_workdays
+            for operand in self.holidays
+        )
