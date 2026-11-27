@@ -172,6 +172,7 @@ LANGUAGES = {
     "en_US": "English (United States)",
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",
+    "en_ZA": "English (South Africa)",
     # --- Persian / Pashto Locales ---
     "fa_AF": "Persian (Afghanistan)",
     "fa_IR": "Persian (Iran)",

@@ -1616,7 +1616,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_ZA</strong>, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2077,7 +2077,7 @@ code when available. The following financial markets are available:
 <td>Johannesburg Stock Exchange</td>
 <td>XJSE</td>
 <td>Johannesburg Stock Exchange (JSE) market holidays</td>
-<td></td>
+<td>en_US, <strong>en_ZA</strong>, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
