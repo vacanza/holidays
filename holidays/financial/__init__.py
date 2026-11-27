@@ -33,6 +33,7 @@ if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below
     from holidays.financial.bombay_stock_exchange import BombayStockExchange, XBOM, BSE
     from holidays.financial.borsa_istanbul import BorsaIstanbul, XIST, BIST
     from holidays.financial.brasil_bolsa_balcao import BrasilBolsaBalcao, BVMF, B3
+    from holidays.financial.budapest_stock_exchange import BudapestStockExchange, XBUD, BET
     from holidays.financial.chicago_mercantile_exchange import ChicagoMercantileExchange, XCME, CME
     from holidays.financial.dubai_financial_market import DubaiFinancialMarket, XDFM, DFM
     from holidays.financial.euronext import (

@@ -2004,6 +2004,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Budapest Stock Exchange</td>
+<td>XBUD</td>
+<td>Budapest Stock Exchange (BÉT) holidays</td>
+<td>en_US, <strong>hu</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>
