@@ -1261,6 +1261,13 @@ class TestStandardMethods(TestCase):
         self.assertNotEqual(hb, hb_xx)
         self.assertNotEqual(hb.copy(), hb_xx.copy())
 
+    def test_copy_populates_year_independently(self):
+        original = CountryStub1()
+        duplicate = original.copy()
+
+        self.assertEqual(original.get("2014-01-01"), "New Year's Day")
+        self.assertEqual(duplicate.get("2014-01-01"), "New Year's Day")
+
     def test_get(self):
         self.assertEqual(self.hb.get("2014-01-01"), "New Year's Day")
         self.assertIsNone(self.hb.get("2014-01-03"))
