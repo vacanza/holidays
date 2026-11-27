@@ -30,7 +30,7 @@ msgstr ""
 #. Substitute for %s.
 #, c-format
 msgid "Substitute for %s"
-msgstr "Заміна для %s"
+msgstr "%s (перенесення)"
 
 #. New Year's Day.
 msgid "New Year's Day"

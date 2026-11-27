@@ -30,7 +30,7 @@ msgstr ""
 #. Substitute for %s.
 #, c-format
 msgid "Substitute for %s"
-msgstr "Αναπλήρωση αργίας %s"
+msgstr "%s (αναπλήρωση αργίας)"
 
 #. New Year's Day.
 msgid "New Year's Day"
