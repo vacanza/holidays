@@ -160,6 +160,7 @@ LANGUAGES = {
     "en_NG": "English (Nigeria)",
     "en_NR": "English (Nauru)",
     "en_NU": "English (Niue)",
+    "en_NZ": "English (New Zealand)",
     "en_PH": "English (Philippines)",
     "en_PK": "English (Pakistan)",
     "en_SC": "English (Seychelles)",

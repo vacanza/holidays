@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-27 13:38+0500\n"
-"PO-Revision-Date: 2026-11-27 13:56+0500\n"
+"PO-Revision-Date: 2026-11-27 18:48+0500\n"
 "Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -48,9 +48,9 @@ msgstr "Waitangi Day"
 msgid "New Zealand Day"
 msgstr "New Zealand Day"
 
-#. Anzac Day.
+#. ANZAC Day.
 msgid "Anzac Day"
-msgstr "Anzac Day"
+msgstr "ANZAC Day"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -72,7 +72,7 @@ msgstr "King's Birthday"
 msgid "Matariki"
 msgstr "Matariki"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Labor Day"
 

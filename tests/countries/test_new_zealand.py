@@ -517,7 +517,7 @@ class TestNZ(CommonCountryTests, TestCase):
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-19", "Southland Anniversary Day"),
-            ("2022-04-25", "Anzac Day"),
+            ("2022-04-25", "ANZAC Day"),
             ("2022-06-06", "Queen's Birthday"),
             ("2022-06-24", "Matariki"),
             ("2022-09-26", "Queen Elizabeth II Memorial Day; South Canterbury Anniversary Day"),

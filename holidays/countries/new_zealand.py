@@ -161,7 +161,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
                 self._add_observed(feb_6)
 
         if self._year >= 1921:
-            # Anzac Day.
+            # ANZAC Day.
             apr_25 = self._add_anzac_day(tr("Anzac Day"))
             if self._year >= 2014:
                 self._add_observed(apr_25)
@@ -234,7 +234,7 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             self._add_holiday(tr("Matariki"), dt)
 
         if self._year >= 1900:
-            # Labour Day.
+            # Labor Day.
             name = tr("Labour Day")
             if self._year >= 1910:
                 self._add_holiday_4th_mon_of_oct(name)
