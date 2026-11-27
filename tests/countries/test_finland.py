@@ -307,8 +307,8 @@ class TestFinland(CommonCountryTests, TestCase):
         self.assertNoUnofficialHolidayName(name, range(self.start_year, 1977))
 
     def test_flag_day_of_the_finnish_defense_forces(self):
-        self._test_workday_holiday("Suomen marsalkan syntymäpäivä", "1942-06-06", 1950)
-        self._test_workday_holiday("Puolustusvoimain lippujuhlan päivä", "1950-06-06")
+        self._test_workday_holiday("Suomen marsalkan syntymäpäivä", "1942-06-04", 1950)
+        self._test_workday_holiday("Puolustusvoimain lippujuhlan päivä", "1950-06-04")
 
     def test_eino_leino_day_day_of_summer_and_poetry(self):
         self._test_unofficial_holiday("Eino Leinon päivä, runon ja suven päivä", "1998-07-06")
@@ -411,7 +411,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-02-28", "Kalevalan päivä, suomalaisen kulttuurin päivä"),
             ("2024-05-01", "Vappu"),
             ("2024-05-12", "Äitienpäivä"),
-            ("2024-06-06", "Puolustusvoimain lippujuhlan päivä"),
+            ("2024-06-04", "Puolustusvoimain lippujuhlan päivä"),
             ("2024-06-22", "Suomen lipun päivä"),
             ("2024-11-10", "Isänpäivä"),
             ("2024-12-06", "Itsenäisyyspäivä"),
@@ -473,7 +473,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-05-09", "Eurooppa-päivä; Helatorstai"),
             ("2024-05-12", "J.V. Snellmanin päivä, suomalaisuuden päivä; Äitienpäivä"),
             ("2024-05-19", "Helluntaipäivä; Kaatuneitten muistopäivä"),
-            ("2024-06-06", "Puolustusvoimain lippujuhlan päivä"),
+            ("2024-06-04", "Puolustusvoimain lippujuhlan päivä"),
             ("2024-06-09", "Ahvenanmaan itsehallintopäivä"),
             ("2024-06-21", "Juhannusaatto"),
             ("2024-06-22", "Juhannuspäivä; Suomen lipun päivä"),
@@ -510,7 +510,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-05-09", "Ascension Day; Europe Day"),
             ("2024-05-12", "J. V. Snellman Day, Day of Finnish Heritage; Mother's Day"),
             ("2024-05-19", "Pentecost; Remembrance Day"),
-            ("2024-06-06", "Flag Day of the Finnish Defense Forces"),
+            ("2024-06-04", "Flag Day of the Finnish Defense Forces"),
             ("2024-06-09", "Åland's Autonomy Day"),
             ("2024-06-21", "Midsummer Eve"),
             ("2024-06-22", "Day of the Finnish Flag; Midsummer Day"),
@@ -547,7 +547,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-05-09", "Europadagen; Kristi himmelsfärdsdag"),
             ("2024-05-12", "Mors dag; Snellmansdagen, finskhetens dag"),
             ("2024-05-19", "De stupades dag; Pingst"),
-            ("2024-06-06", "Dagen för försvarets fanfest"),
+            ("2024-06-04", "Dagen för försvarets fanfest"),
             ("2024-06-09", "Ålands självstyrelsedag"),
             ("2024-06-21", "Midsommarafton"),
             ("2024-06-22", "Finlands flaggas dag; Midsommardagen"),
@@ -584,7 +584,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-05-09", "วันยุโรป; วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
             ("2024-05-12", "วันเจ.วี. สเนลล์มาน, วันมรดกฟินแลนด์; วันแม่"),
             ("2024-05-19", "วันรำลึก; วันสมโภชพระจิตเจ้า"),
-            ("2024-06-06", "วันกองกำลังป้องกันฟินแลนด์"),
+            ("2024-06-04", "วันกองกำลังป้องกันฟินแลนด์"),
             ("2024-06-09", "วันปกครองตนเองหมู่เกาะโอลันด์"),
             ("2024-06-21", "วันมิดซัมเมอร์อีฟ (วันก่อนวันกลางฤดูร้อน)"),
             ("2024-06-22", "วันธงชาติฟินแลนด์; วันมิดซัมเมอร์ (วันกลางฤดูร้อน)"),
@@ -621,7 +621,7 @@ class TestFinland(CommonCountryTests, TestCase):
             ("2024-05-09", "Вознесіння Господнє; День Європи"),
             ("2024-05-12", "День Ю. В. Снелльмана, День фінської спадщини; День матері"),
             ("2024-05-19", "День ветеранів Національної війни; Пʼятидесятниця"),
-            ("2024-06-06", "День прапора фінських сил оборони"),
+            ("2024-06-04", "День прапора фінських сил оборони"),
             ("2024-06-09", "День автономії Аландських островів"),
             ("2024-06-21", "Переддень літнього сонцестояння"),
             ("2024-06-22", "День літнього сонцестояння; День прапора Фінляндії"),

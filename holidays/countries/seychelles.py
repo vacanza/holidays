@@ -34,7 +34,7 @@ class Seychelles(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
     default_language = "en_SC"
     # %s (observed).
     observed_label = tr("%s (observed)")
-    supported_languages = ("en_SC", "en_US")
+    supported_languages = ("en_SC", "en_US", "fr")
     # Earliest source is the 1994 amendment of Seychelles Public Holidays Act.
     start_year = 1994
 

@@ -80,6 +80,9 @@ class TestQatar(CommonCountryTests, TestCase):
             "2025-03-30",
             "2025-03-31",
             "2025-04-01",
+            "2026-03-20",
+            "2026-03-21",
+            "2026-03-22",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -105,6 +108,9 @@ class TestQatar(CommonCountryTests, TestCase):
             "2025-06-06",
             "2025-06-07",
             "2025-06-08",
+            "2026-05-27",
+            "2026-05-28",
+            "2026-05-29",
         )
         self.assertIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -192,6 +198,21 @@ class TestQatar(CommonCountryTests, TestCase):
             ("2012-10-27", "Eid al-Adha"),
             ("2012-10-28", "Eid al-Adha"),
             ("2012-12-18", "Qatar National Day"),
+        )
+
+    def test_l10n_hi(self):
+        self.assertLocalizedHolidays(
+            "hi",
+            ("2012-01-01", "नए साल का दिन"),
+            ("2012-02-14", "राष्ट्रीय खेल दिवस"),
+            ("2012-03-04", "मार्च बैंक अवकाश"),
+            ("2012-08-19", "ईद-उल-फितर"),
+            ("2012-08-20", "ईद-उल-फितर"),
+            ("2012-08-21", "ईद-उल-फितर"),
+            ("2012-10-26", "ईद-उल-अज़हा"),
+            ("2012-10-27", "ईद-उल-अज़हा"),
+            ("2012-10-28", "ईद-उल-अज़हा"),
+            ("2012-12-18", "क़तर राष्ट्रीय दिवस"),
         )
 
     def test_l10n_ur_pk(self):

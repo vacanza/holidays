@@ -12,6 +12,7 @@
 
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.south_africa import SouthAfrica
+from holidays.helpers import tr
 from holidays.observed_holiday_base import SAT_SUN_TO_NONE
 
 
@@ -45,17 +46,17 @@ class JohannesburgStockExchange(SouthAfrica):
 
     def _populate_half_day_holidays(self):
         # %s (markets close at 12:00 p.m. SAST).
-        pause_label = "%s (markets close at 12:00 p.m. SAST)"
+        pause_label = tr("%s (markets close at 12:00 p.m. SAST)")
 
         self._move_holiday(
             # Christmas Eve.
-            self._add_christmas_eve(self._format_holiday_name(pause_label, "Christmas Eve")),
+            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Eve"))),
             rule=SAT_SUN_TO_NONE,
         )
 
         self._move_holiday(
             # New Year's Eve.
-            self._add_new_years_eve(self._format_holiday_name(pause_label, "New Year's Eve")),
+            self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Eve"))),
             rule=SAT_SUN_TO_NONE,
         )
 

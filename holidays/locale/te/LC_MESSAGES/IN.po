@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-02-09 12:14+0530\n"
-"PO-Revision-Date: 2026-11-02 22:13+0530\n"
-"Last-Translator: Prayag Vellalath <v.prayag2005@gmail.com>\n"
+"PO-Revision-Date: 2026-11-26 16:23+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -184,9 +184,9 @@ msgstr "ఉగాది"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "మేషాది (తమిళ్ నూతన సంవత్సరం)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "బహగ్ బిహు"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "బోహాగ్ బిహూ"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -340,9 +340,25 @@ msgstr "లింగ్రి నికి సీ డోని పోలో య�
 msgid "Netaji Subhas Chandra Bose's Jayanti"
 msgstr "నేతాజీ సుభాష్ చంద్ర బోస్ జయంతి"
 
+#. Me-Dam-Me-Phi.
+msgid "Me-Dam-Me-Phi"
+msgstr "మే-డామ్-మే-ఫీ"
+
+#. Sati Sadhani Day.
+msgid "Sati Sadhani Divas"
+msgstr "సతీ సాధని దినోత్సవం"
+
 #. May Day.
 msgid "May Day"
 msgstr "మే దినోత్సవం"
+
+#. Lachit Day.
+msgid "Lachit Divas"
+msgstr "లచిత్ దినోత్సవం"
+
+#. Assam Day.
+msgid "Asom Divas"
+msgstr "అస్సాం దినోత్సవం"
 
 #. Silpi Day.
 msgid "Silpi Divas"
@@ -644,6 +660,14 @@ msgstr "కర్మ పూజ"
 msgid "Majdoor Diwas"
 msgstr "కార్మికుల దినోత్సవం"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "హుల్ దివాస్"
+
+#. Karnataka Rajyotsava.
+msgid "Karnataka Rajyotsava"
+msgstr "కర్ణాటక రాజ్యోత్సవం"
+
 #. Holy Saturday.
 msgid "Holy Saturday"
 msgstr "పవిత్ర శనివారం"
@@ -740,6 +764,14 @@ msgstr "ఖోంగ్జోమ్ దినోత్సవం"
 msgid "Patriot's Day"
 msgstr "దేశభక్తుల దినోత్సవం"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "నుపి-లాల్"
+
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "గాన్-ంగై"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "మేరా చావోరెన్ హౌబా"
@@ -799,6 +831,10 @@ msgstr "నూతన సంవత్సరం అనంతర దినం"
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "మిషనరీ దినోత్సవం"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "చాప్చర్ కుట్"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
@@ -1059,3 +1095,11 @@ msgstr "శ్రీ పంచమి"
 #. Janmashtami (Smarta).
 msgid "Janmashtami (Smarta)"
 msgstr "జన్మాష్టమి (స్మార్త)"
+
+#. Kerala Assembly Election Day.
+msgid "Kerala Assembly Election Day"
+msgstr "కేరళ శాసనసభ ఎన్నికల రోజు"
+
+#. Ram Mandir Pran Pratishtha.
+msgid "Ram Mandir Pran Pratishtha"
+msgstr "రామ మందిర ప్రాణ ప్రతిష్ఠ"

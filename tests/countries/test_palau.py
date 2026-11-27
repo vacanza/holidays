@@ -23,7 +23,6 @@ class TestPalau(CommonCountryTests, TestCase):
         super().setUpClass(Palau)
 
     def test_special_holidays(self):
-        self.assertHoliday("2020-11-03")
         self.assertArmedForcesHoliday("2020-11-11")
         self.assertHalfDayHoliday("2019-09-30")
 
@@ -133,6 +132,19 @@ class TestPalau(CommonCountryTests, TestCase):
         self.assertHolidayName(f"{name} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
 
+    def test_national_day_of_democracy(self):
+        name = "National Day of Democracy"
+        self.assertHolidayName(
+            name,
+            "2012-11-06",
+            "2016-11-01",
+            "2020-11-03",
+            "2024-11-05",
+        )
+        self.assertHolidayName(name, range(2012, self.end_year, 4))
+        self.assertNoHolidayName(name, range(self.start_year, 2012))
+        self.assertNoHolidayName(name, (year for year in range(2012, self.end_year) if year % 4))
+
     def test_thanksgiving_day(self):
         name = "Thanksgiving Day"
         self.assertHolidayName(
@@ -232,4 +244,23 @@ class TestPalau(CommonCountryTests, TestCase):
             ("2023-11-23", "Thanksgiving Day"),
             ("2023-11-24", "Family Day"),
             ("2023-12-25", "Christmas Day"),
+        )
+
+    def test_2024(self):
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-15", "Youth Day"),
+            ("2024-05-05", "Senior Citizens Day"),
+            ("2024-05-06", "Senior Citizens Day (observed)"),
+            ("2024-05-31", "President's Day (observed)"),
+            ("2024-06-01", "President's Day"),
+            ("2024-07-09", "Constitution Day"),
+            ("2024-09-02", "Labor Day"),
+            ("2024-10-01", "Independence Day"),
+            ("2024-10-24", "United Nations Day"),
+            ("2024-11-05", "National Day of Democracy"),
+            ("2024-11-22", "Family Day"),
+            ("2024-11-28", "Thanksgiving Day"),
+            ("2024-12-25", "Christmas Day"),
         )
