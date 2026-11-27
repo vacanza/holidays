@@ -108,7 +108,7 @@ class HebrewCalendarHolidays:
             days_delta,
         )
 
-    def _add_shavuot(self, name: str) -> set[date]:
+    def _add_shavuot(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
         """
         Add Shavuot.
 
@@ -119,6 +119,7 @@ class HebrewCalendarHolidays:
         return self._add_hebrew_calendar_holiday(
             name,
             self._hebrew_calendar.shavuot_date(self._year),  # type: ignore[arg-type]
+            days_delta,
         )
 
     def _add_sukkot(self, name: str, days_delta: int | Iterable[int] = 0) -> set[date]:
