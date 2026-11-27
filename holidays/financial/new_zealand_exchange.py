@@ -12,6 +12,7 @@
 
 from holidays.constants import HALF_DAY, PUBLIC
 from holidays.countries.new_zealand import NewZealand
+from holidays.helpers import tr
 from holidays.observed_holiday_base import SAT_SUN_TO_PREV_FRI
 
 
@@ -46,17 +47,17 @@ class NewZealandExchange(NewZealand):
 
     def _populate_half_day_holidays(self):
         # Business Day Prior to %s (markets close at 13:30 NZDT).
-        pause_label = "Business Day Prior to %s (markets close at 13:30 NZDT)"
+        pause_label = tr("Business Day Prior to %s (markets close at 13:30 NZDT)")
 
         self._move_holiday_forced(
             # Christmas Day.
-            self._add_christmas_eve(self._format_holiday_name(pause_label, "Christmas Day")),
+            self._add_christmas_eve(self._format_holiday_name(pause_label, tr("Christmas Day"))),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
         self._move_holiday_forced(
             # New Year's Day.
-            self._add_new_years_eve(self._format_holiday_name(pause_label, "New Year's Day")),
+            self._add_new_years_eve(self._format_holiday_name(pause_label, tr("New Year's Day"))),
             rule=SAT_SUN_TO_PREV_FRI,
         )
 
