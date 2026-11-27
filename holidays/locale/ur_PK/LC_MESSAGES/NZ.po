@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-27 13:38+0500\n"
-"PO-Revision-Date: 2026-11-27 13:49+0500\n"
+"PO-Revision-Date: 2026-11-27 13:56+0500\n"
 "Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: ur_PK\n"
@@ -32,6 +32,7 @@ msgstr ""
 msgid "%s (observed)"
 msgstr "%s (منایا گیا)"
 
+#. New Year's Day.
 msgid "New Year's Day"
 msgstr "نئے سال کا دن"
 
@@ -75,9 +76,11 @@ msgstr "ماتاریکی"
 msgid "Labour Day"
 msgstr "یوم مزدور"
 
+#. Christmas Day.
 msgid "Christmas Day"
 msgstr "کرسمس کا دن"
 
+#. Boxing Day.
 msgid "Boxing Day"
 msgstr "باکسنگ ڈے"
 

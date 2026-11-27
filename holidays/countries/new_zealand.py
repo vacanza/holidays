@@ -138,9 +138,10 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
 
-        # New Year's Day.
         self._add_observed(
-            self._add_new_years_day(tr("New Year's Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # New Year's Day.
+            self._add_new_years_day(tr("New Year's Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
         self._add_observed(
             # Day after New Year's Day.
@@ -240,14 +241,16 @@ class NewZealand(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, 
             else:
                 self._add_holiday_2nd_wed_of_oct(name)
 
-        # Christmas Day.
         self._add_observed(
-            self._add_christmas_day(tr("Christmas Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
-        # Boxing Day.
         self._add_observed(
-            self._add_christmas_day_two(tr("Boxing Day")), rule=SAT_SUN_TO_NEXT_MON_TUE
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            rule=SAT_SUN_TO_NEXT_MON_TUE,
         )
 
         match self.subdiv:
