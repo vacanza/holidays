@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 import os
 from pathlib import Path
 from unittest import TestCase, skipUnless
@@ -68,6 +69,40 @@ class TestHolidaysImports(TestCase):
         self.assertIsInstance(nyse_holidays, HolidayBase)
         self.assertIn("US", holidays.list_supported_countries())
         self.assertIn("XNYS", holidays.list_supported_financial())
+
+    def test_version(self):
+        self.assertImport("__version__")
+
+        # `holidays.version` is loaded on demand.
+        version = importlib.import_module("holidays.version")
+        delattr(holidays, "version")
+        try:
+            self.assertEqual(holidays.version, version)
+            self.assertEqual(holidays.__version__, version.__version__)
+        finally:
+            holidays.version = version
+
+        with self.assertRaises(AttributeError):
+            holidays.NonExistentName
+
+    def test_version_discoverable(self):
+        # The lazy `version` and `__version__` are listed like any other name.
+        self.assertIn("__version__", dir(holidays))
+        self.assertIn("version", dir(holidays))
+        self.assertIn("version", holidays.__all__)
+        self.assertNotIn("__version__", holidays.__all__)
+        self.assertNotIn("TYPE_CHECKING", dir(holidays))
+
+        # `import *` exports every public name, as it did before `version` was lazy.
+        namespace = {}
+        exec("from holidays import *", namespace)  # noqa: S102
+        namespace.pop("__builtins__")
+        self.assertEqual(
+            set(namespace), {name for name in dir(holidays) if not name.startswith("_")}
+        )
+        self.assertNotIn("TYPE_CHECKING", namespace)
+        self.assertIs(namespace["version"], importlib.import_module("holidays.version"))
+        self.assertIs(namespace["Canada"], holidays.Canada)
 
     def test_version_matches_version_file(self):
         """Installed __version__ must match VERSION (exact or pre-release .devN prefix)."""
