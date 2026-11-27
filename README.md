@@ -2168,7 +2168,7 @@ code when available. The following financial markets are available:
 <td>SIFMA</td>
 <td>XSIF</td>
 <td>Securities Industry and Financial Markets Association (SIFMA) holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
