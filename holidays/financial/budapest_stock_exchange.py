@@ -23,17 +23,17 @@ class BudapestStockExchange(Hungary):
     non-trading days on the exchange.
 
     References:
-        * [CEO Resolution 514/2011 (2012 Trading Holidays)](https://www.bse.hu/newkibdata/108984735/Kersz_nnapok_2012_ENG.pdf)
-        * [CEO Resolution 362/2012 (2013 Trading Holidays)](https://www.bse.hu/newkibdata/112185122/Kersz_nnapok_2013_ENG.pdf)
-        * [CEO Resolution 485/2013 (2014 Trading Holidays)](https://www.bse.hu/newkibdata/115651478/Kersz_nnapok_2014_ENG.pdf)
-        * [CEO Resolution 542/2014 (2015 Trading Holidays)](https://www.bse.hu/newkibdata/118128738/Kersz_nnapok_2015_ENG.pdf)
-        * [CEO Resolution 474/2015 (2016 Trading Holidays)](https://www.bse.hu/newkibdata/120228803/Trading_holidays_2016_ENG.pdf)
-        * [Trading Calendar 2021](https://www.bse.hu/Products-and-Services/Trading-information/trading-calendar-2021)
-        * [CEO Resolution 325/2020 (2021 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/Trading_holidays_2021.pdf1)
-        * [CEO Resolution 311/2024 (2025 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2025)
-        * [Trading Calendar 2026](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2026)
-        * [CEO Resolution 380/2025 (2026 Trading Holidays)](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026)
-        * [Trading Calendar 2027](https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2027)
+        * [CEO Resolution 514/2011 (2012 Trading Holidays)](https://web.archive.org/web/20261126141320/https://www.bse.hu/newkibdata/108984735/Kersz_nnapok_2012_ENG.pdf)
+        * [CEO Resolution 362/2012 (2013 Trading Holidays)](https://web.archive.org/web/20261126141321/https://www.bse.hu/newkibdata/112185122/Kersz_nnapok_2013_ENG.pdf)
+        * [CEO Resolution 485/2013 (2014 Trading Holidays)](https://web.archive.org/web/20261126141322/https://www.bse.hu/newkibdata/115651478/Kersz_nnapok_2014_ENG.pdf)
+        * [CEO Resolution 542/2014 (2015 Trading Holidays)](https://web.archive.org/web/20261126141505/https://www.bse.hu/newkibdata/118128738/Kersz_nnapok_2015_ENG.pdf)
+        * [CEO Resolution 474/2015 (2016 Trading Holidays)](https://web.archive.org/web/20261126141507/https://www.bse.hu/newkibdata/120228803/Trading_holidays_2016_ENG.pdf)
+        * [Trading Calendar 2021](https://web.archive.org/web/20260609172020/https://www.bse.hu/Products-and-Services/Trading-information/trading-calendar-2021)
+        * [CEO Resolution 325/2020 (2021 Trading Holidays)](https://web.archive.org/web/20250807034751/https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/Trading_holidays_2021.pdf1)
+        * [CEO Resolution 311/2024 (2025 Trading Holidays)](https://web.archive.org/web/20261126175036/https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2025)
+        * [Trading Calendar 2026](https://web.archive.org/web/20261126165104/https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2026)
+        * [CEO Resolution 380/2025 (2026 Trading Holidays)](https://web.archive.org/web/20261126193538/https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026)
+        * [Trading Calendar 2027](https://web.archive.org/web/20261126175042/https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-calendar-2027)
     """
 
     country = None  # type: ignore[assignment]
