@@ -1,0 +1,161 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# South Africa holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-27 14:25+0500\n"
+"PO-Revision-Date: 2026-11-27 14:25+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_ZA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_ZA\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. Founder's Day.
+msgid "Founder's Day"
+msgstr ""
+
+#. Van Riebeeck's Day.
+msgid "Van Riebeeck's Day"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Family Day.
+msgid "Family Day"
+msgstr ""
+
+#. Workers' Day.
+msgid "Workers' Day"
+msgstr ""
+
+#. Human Rights Day.
+msgid "Human Rights Day"
+msgstr ""
+
+#. Freedom Day.
+msgid "Freedom Day"
+msgstr ""
+
+#. Youth Day.
+msgid "Youth Day"
+msgstr ""
+
+#. National Women's Day.
+msgid "National Women's Day"
+msgstr ""
+
+#. Heritage Day.
+msgid "Heritage Day"
+msgstr ""
+
+#. Republic Day.
+msgid "Republic Day"
+msgstr ""
+
+#. Union Day.
+msgid "Union Day"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr ""
+
+#. Kruger Day.
+msgid "Kruger Day"
+msgstr ""
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr ""
+
+#. Settlers' Day.
+msgid "Settlers' Day"
+msgstr ""
+
+#. Empire Day.
+msgid "Empire Day"
+msgstr ""
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr ""
+
+#. Day of Reconciliation.
+msgid "Day of Reconciliation"
+msgstr ""
+
+#. Day of the Vow.
+msgid "Day of the Vow"
+msgstr ""
+
+#. Day of the Covenant.
+msgid "Day of the Covenant"
+msgstr ""
+
+#. Dingaan's Day.
+msgid "Dingaan's Day"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Day of Goodwill.
+msgid "Day of Goodwill"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Local Government Elections.
+msgid "Local Government Elections"
+msgstr ""
+
+#. National and Provincial Government Elections.
+msgid "National and Provincial Government Elections"
+msgstr ""
+
+#. Public Holiday by Presidential Decree.
+msgid "Public Holiday by Presidential Decree"
+msgstr ""
+
+#. Y2K Changeover.
+msgid "Y2K Changeover"
+msgstr ""
+
+#. Municipal elections.
+msgid "Municipal elections"
+msgstr ""

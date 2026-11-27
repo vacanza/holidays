@@ -210,6 +210,27 @@ class TestMadagascar(CommonCountryTests, TestCase):
             ("2022-12-25", "Christmas Day"),
         )
 
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2022-01-01", "Jour de l'an"),
+            ("2022-03-08", "Journée de la femme"),
+            ("2022-03-29", "Journée des Martyrs"),
+            ("2022-04-17", "Dimanche de Pâques"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-26", "Ascension"),
+            ("2022-05-29", "Fête des Mères"),
+            ("2022-06-05", "Pentecôte"),
+            ("2022-06-06", "Lundi de Pentecôte"),
+            ("2022-06-19", "Fête des Pères"),
+            ("2022-06-26", "Jour de l'indépendance"),
+            ("2022-08-15", "Assomption"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-12-11", "Jour de la République"),
+            ("2022-12-25", "Noël"),
+        )
+
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",

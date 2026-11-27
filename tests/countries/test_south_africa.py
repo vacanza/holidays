@@ -325,3 +325,59 @@ class TestSouthAfrica(CommonCountryTests, TestCase):
         )
         self.assertHolidayName(f"{name_1980} (observed)", obs_dts)
         self.assertNoNonObservedHoliday(obs_dts)
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-21", "Human Rights Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Family Day"),
+            ("2024-04-27", "Freedom Day"),
+            ("2024-05-01", "Workers' Day"),
+            ("2024-05-29", "National and Provincial Government Elections"),
+            ("2024-06-16", "Youth Day"),
+            ("2024-06-17", "Youth Day (observed)"),
+            ("2024-08-09", "National Women's Day"),
+            ("2024-09-24", "Heritage Day"),
+            ("2024-12-16", "Day of Reconciliation"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Day of Goodwill"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-21", "Human Rights Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Family Day"),
+            ("2024-04-27", "Freedom Day"),
+            ("2024-05-01", "Workers' Day"),
+            ("2024-05-29", "National and Provincial Government Elections"),
+            ("2024-06-16", "Youth Day"),
+            ("2024-06-17", "Youth Day (observed)"),
+            ("2024-08-09", "National Women's Day"),
+            ("2024-09-24", "Heritage Day"),
+            ("2024-12-16", "Day of Reconciliation"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Day of Goodwill"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2024-01-01", "نئے سال کا دن"),
+            ("2024-03-21", "انسانی حقوق کا دن"),
+            ("2024-03-29", "گڈ فرائیڈے"),
+            ("2024-04-01", "خاندانی دن"),
+            ("2024-04-27", "یوم آزادی"),
+            ("2024-05-01", "یوم مزدور"),
+            ("2024-05-29", "قومی اور صوبائی حکومت کے انتخابات"),
+            ("2024-06-16", "یوم نوجوانان"),
+            ("2024-06-17", "یوم نوجوانان (منایا گیا)"),
+            ("2024-08-09", "خواتین کا قومی دن"),
+            ("2024-09-24", "یوم ورثہ"),
+            ("2024-12-16", "یوم مصالحت"),
+            ("2024-12-25", "کرسمس کا دن"),
+            ("2024-12-26", "یوم خیر سگالی"),
+        )
