@@ -2028,7 +2028,7 @@ code when available. The following financial markets are available:
 <td>Euronext</td>
 <td>ENX</td>
 <td>Euronext (Amsterdam, Athens, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
-<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
+<td>el, <strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
