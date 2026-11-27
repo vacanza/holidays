@@ -96,6 +96,7 @@ class VanuatuStaticHolidays:
 
     References:
         * [2012 General Election](https://web.archive.org/web/20241222131603/https://www.paclii.org/vu/legis/sub_leg/phadopheo2012600.pdf)
+        * [2022 General Election](https://web.archive.org/web/20261127091523/https://electoral.gov.vu/images/2022/10/09/edc-snap-election-polling-day-public-holiday-official-gazette-no-74-of-2022-dated-23-september-2022_page_04.jpg)
         * [2024 Referendum](https://web.archive.org/web/20261127081335/https://pina.com.fj/2024/05/28/vanuatu-pm-salwai-urges-citizens-to-vote-tomorrow/)
         * [2025 General Election](https://web.archive.org/web/20250116065640/https://www.fbcnews.com.fj/world/pacific-islands/earthquake-doesnt-derail-vanuatus-snap-election)
     """
