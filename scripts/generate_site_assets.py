@@ -134,6 +134,7 @@ LANGUAGES = {
     "en_BD": "English (Bangladesh)",
     "en_BM": "English (Bermuda)",
     "en_BQ": "English (Bonaire, Sint Eustatius and Saba)",
+    "en_BW": "English (Botswana)",
     "en_CA": "English (Canada)",
     "en_CC": "English (Cocos Islands)",
     "en_CI": "English (Ivory Coast)",

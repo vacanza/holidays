@@ -377,7 +377,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Botswana</td>
 <td>BW</td>
 <td></td>
-<td></td>
+<td><strong>en_BW</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>

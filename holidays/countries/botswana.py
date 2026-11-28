@@ -12,6 +12,7 @@
 
 from holidays.calendars.gregorian import MAY, JUL, SEP, OCT
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_TO_NEXT_MON,
@@ -31,8 +32,11 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
     """
 
     country = "BW"
-    observed_label = "%s (observed)"
+    default_language = "en_BW"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
     start_year = 1966
+    supported_languages = ("en_BW", "en_US", "ur_PK")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -43,37 +47,68 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_NEXT_TUE)
-        self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
+        self._add_observed(
+            # New Year's Day.
+            self._add_new_years_day(tr("New Year's Day")),
+            rule=SUN_TO_NEXT_TUE,
+        )
+        # New Year's Day Holiday.
+        self._add_observed(self._add_new_years_day_two(tr("New Year's Day Holiday")))
 
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        self._add_holy_saturday("Holy Saturday")
+        # Holy Saturday.
+        self._add_holy_saturday(tr("Holy Saturday"))
 
-        self._add_easter_monday("Easter Monday")
+        # Easter Monday.
+        self._add_easter_monday(tr("Easter Monday"))
 
-        self._add_observed(may_1 := self._add_labor_day("Labour Day"))
+        # Labor Day.
+        self._add_observed(may_1 := self._add_labor_day(tr("Labour Day")))
         if self._year >= 2016:
             self._add_observed(
-                may_1, name="Labour Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+                may_1,
+                # Labor Day Holiday.
+                name=tr("Labour Day Holiday"),
+                rule=SAT_TO_NEXT_MON,
+                show_observed_label=False,
             )
 
-        self._add_ascension_thursday("Ascension Day")
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Ascension Day"))
 
-        self._add_observed(self._add_holiday_jul_1("Sir Seretse Khama Day"))
+        # Sir Seretse Khama Day.
+        self._add_observed(self._add_holiday_jul_1(tr("Sir Seretse Khama Day")))
 
-        self._add_holiday_3rd_mon_of_jul("President's Day")
-        self._add_holiday_1_day_past_3rd_mon_of_jul("President's Day Holiday")
+        # President's Day.
+        self._add_holiday_3rd_mon_of_jul(tr("President's Day"))
 
-        self._add_observed(self._add_holiday_sep_30("Botswana Day"), rule=SUN_TO_NEXT_TUE)
-        self._add_observed(self._add_holiday_oct_1("Botswana Day Holiday"))
+        # President's Day Holiday.
+        self._add_holiday_1_day_past_3rd_mon_of_jul(tr("President's Day Holiday"))
 
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
-        self._add_observed(dec_26 := self._add_christmas_day_two("Boxing Day"))
+        # Botswana Day.
+        self._add_observed(self._add_holiday_sep_30(tr("Botswana Day")), rule=SUN_TO_NEXT_TUE)
+
+        # Botswana Day Holiday.
+        self._add_observed(self._add_holiday_oct_1(tr("Botswana Day Holiday")))
+
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            rule=SUN_TO_NEXT_TUE,
+        )
+
+        # Boxing Day.
+        self._add_observed(dec_26 := self._add_christmas_day_two(tr("Boxing Day")))
 
         if self._year >= 2016:
             self._add_observed(
-                dec_26, name="Boxing Day Holiday", rule=SAT_TO_NEXT_MON, show_observed_label=False
+                dec_26,
+                # Boxing Day Holiday.
+                name=tr("Boxing Day Holiday"),
+                rule=SAT_TO_NEXT_MON,
+                show_observed_label=False,
             )
 
 
@@ -95,7 +130,7 @@ class BotswanaStaticHolidays:
     """
 
     # Public Holiday.
-    public_holiday = "Public Holiday"
+    public_holiday = tr("Public Holiday")
 
     special_public_holidays = {
         2019: (JUL, 2, public_holiday),

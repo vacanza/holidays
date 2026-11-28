@@ -244,3 +244,65 @@ class TestBotswana(CommonCountryTests, TestCase):
             "2023-12-25",
             "2023-12-26",
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2021-01-01", "New Year's Day"),
+            ("2021-01-02", "New Year's Day Holiday"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-04-03", "Holy Saturday"),
+            ("2021-04-05", "Easter Monday"),
+            ("2021-05-01", "Labour Day"),
+            ("2021-05-03", "Labour Day Holiday"),
+            ("2021-05-13", "Ascension Day"),
+            ("2021-07-01", "Sir Seretse Khama Day"),
+            ("2021-07-19", "President's Day"),
+            ("2021-07-20", "President's Day Holiday"),
+            ("2021-09-30", "Botswana Day"),
+            ("2021-10-01", "Botswana Day Holiday"),
+            ("2021-12-25", "Christmas Day"),
+            ("2021-12-26", "Boxing Day"),
+            ("2021-12-27", "Boxing Day (observed)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2021-01-01", "New Year's Day"),
+            ("2021-01-02", "New Year's Day Holiday"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-04-03", "Holy Saturday"),
+            ("2021-04-05", "Easter Monday"),
+            ("2021-05-01", "Labor Day"),
+            ("2021-05-03", "Labor Day Holiday"),
+            ("2021-05-13", "Ascension Day"),
+            ("2021-07-01", "Sir Seretse Khama Day"),
+            ("2021-07-19", "President's Day"),
+            ("2021-07-20", "President's Day Holiday"),
+            ("2021-09-30", "Botswana Day"),
+            ("2021-10-01", "Botswana Day Holiday"),
+            ("2021-12-25", "Christmas Day"),
+            ("2021-12-26", "Boxing Day"),
+            ("2021-12-27", "Boxing Day (observed)"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2021-01-01", "نئے سال کا دن"),
+            ("2021-01-02", "نئے سال کے دن کی تعطیل"),
+            ("2021-04-02", "گڈ فرائیڈے"),
+            ("2021-04-03", "مقدس ہفتہ"),
+            ("2021-04-05", "ایسٹر پیر"),
+            ("2021-05-01", "یوم مزدور"),
+            ("2021-05-03", "یوم مزدور کی تعطیل"),
+            ("2021-05-13", "یوم صعود"),
+            ("2021-07-01", "سر سریتسے کھاما کا دن"),
+            ("2021-07-19", "یوم صدر"),
+            ("2021-07-20", "یوم صدر کی تعطیل"),
+            ("2021-09-30", "یوم بوٹسوانا"),
+            ("2021-10-01", "یوم بوٹسوانا کی تعطیل"),
+            ("2021-12-25", "کرسمس کا دن"),
+            ("2021-12-26", "باکسنگ ڈے"),
+            ("2021-12-27", "باکسنگ ڈے (منایا گیا)"),
+        )
