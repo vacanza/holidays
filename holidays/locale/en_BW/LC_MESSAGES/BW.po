@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Botswana holidays.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 15:40+0500\n"
+"PO-Revision-Date: 2026-11-28 15:41+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_BW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_BW\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr ""
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr ""
+
+#. New Year's Day Holiday.
+msgid "New Year's Day Holiday"
+msgstr ""
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr ""
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr ""
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr ""
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr ""
+
+#. Labor Day Holiday.
+msgid "Labour Day Holiday"
+msgstr ""
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr ""
+
+#. Sir Seretse Khama Day.
+msgid "Sir Seretse Khama Day"
+msgstr ""
+
+#. President's Day.
+msgid "President's Day"
+msgstr ""
+
+#. President's Day Holiday.
+msgid "President's Day Holiday"
+msgstr ""
+
+#. Botswana Day.
+msgid "Botswana Day"
+msgstr ""
+
+#. Botswana Day Holiday.
+msgid "Botswana Day Holiday"
+msgstr ""
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr ""
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr ""
+
+#. Boxing Day Holiday.
+msgid "Boxing Day Holiday"
+msgstr ""
+
+#. Public Holiday.
+msgid "Public Holiday"
+msgstr ""

@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Botswana holidays ur_PK localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 15:40+0500\n"
+"PO-Revision-Date: 2026-11-28 15:41+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ur_PK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_BW\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (منایا گیا)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "نئے سال کا دن"
+
+#. New Year's Day Holiday.
+msgid "New Year's Day Holiday"
+msgstr "نئے سال کے دن کی تعطیل"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "گڈ فرائیڈے"
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr "مقدس ہفتہ"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "ایسٹر پیر"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "یوم مزدور"
+
+#. Labor Day Holiday.
+msgid "Labour Day Holiday"
+msgstr "یوم مزدور کی تعطیل"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "یوم صعود"
+
+#. Sir Seretse Khama Day.
+msgid "Sir Seretse Khama Day"
+msgstr "سر سریتسے کھاما کا دن"
+
+#. President's Day.
+msgid "President's Day"
+msgstr "یوم صدر"
+
+#. President's Day Holiday.
+msgid "President's Day Holiday"
+msgstr "یوم صدر کی تعطیل"
+
+#. Botswana Day.
+msgid "Botswana Day"
+msgstr "یوم بوٹسوانا"
+
+#. Botswana Day Holiday.
+msgid "Botswana Day Holiday"
+msgstr "یوم بوٹسوانا کی تعطیل"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "کرسمس کا دن"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "باکسنگ ڈے"
+
+#. Boxing Day Holiday.
+msgid "Boxing Day Holiday"
+msgstr "باکسنگ ڈے کی تعطیل"
+
+#. Public Holiday.
+msgid "Public Holiday"
+msgstr "سرکاری تعطیل"
