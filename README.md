@@ -1910,7 +1910,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Zambia</td>
 <td>ZM</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_ZM</strong>, ur_PK</td>
 <td></td>
 </tr>
 <tr>

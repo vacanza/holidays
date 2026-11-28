@@ -1,0 +1,137 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Zambia holidays ur_PK localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 15:45+0500\n"
+"PO-Revision-Date: 2026-11-28 15:59+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ur_PK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_ZM\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (منایا گیا)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "نئے سال کا دن"
+
+#. International Women's Day.
+msgid "International Women's Day"
+msgstr "خواتین کا عالمی دن"
+
+#. Youth Day.
+msgid "Youth Day"
+msgstr "یوم نوجوانان"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "گڈ فرائیڈے"
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr "مقدس ہفتہ"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "ایسٹر اتوار"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "ایسٹر پیر"
+
+#. Kenneth Kaunda Day.
+msgid "Kenneth Kaunda Day"
+msgstr "کینتھ کاؤنڈا کا دن"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "یوم مزدور"
+
+#. Africa Freedom Day.
+msgid "Africa Freedom Day"
+msgstr "افریقہ کا یوم آزادی"
+
+#. Heroes' Day.
+msgid "Heroes' Day"
+msgstr "ہیروز کا دن"
+
+#. Unity Day.
+msgid "Unity Day"
+msgstr "یوم اتحاد"
+
+#. Farmers' Day.
+msgid "Farmers' Day"
+msgstr "یوم کسان"
+
+#. National Prayer Day.
+msgid "National Prayer Day"
+msgstr "قومی یوم دعا"
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr "عام انتخابات کا دن"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "یوم آزادی"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "کرسمس کا دن"
+
+#. National Day of Prayer and Christian Heritage.
+msgid "National Day of Prayer and Christian Heritage"
+msgstr "دعا اور مسیحی ورثے کا قومی دن"
+
+#. Bridge Public Holiday.
+msgid "Bridge Public Holiday"
+msgstr "درمیانی سرکاری تعطیل"
+
+#. Inauguration Ceremony of President-elect and Vice-President-elect.
+msgid "Inauguration Ceremony of President-elect and Vice-President-elect"
+msgstr "منتخب صدر اور منتخب نائب صدر کی حلف برداری کی تقریب"
+
+#. State Funeral of Michael Chilufya Sata.
+msgid "State Funeral of Michael Chilufya Sata"
+msgstr "مائیکل چلوفیا ساتا کی سرکاری آخری رسومات"
+
+#. Presidential Election.
+msgid "Presidential Election"
+msgstr "صدارتی انتخاب"
+
+#. Mayoral and Ward By-elections.
+msgid "Mayoral and Ward By-elections"
+msgstr "میئر اور وارڈ کے ضمنی انتخابات"
+
+#. Memorial Service for Kenneth Kaunda.
+msgid "Memorial Service for Kenneth Kaunda"
+msgstr "کینتھ کاؤنڈا کی یادگاری تقریب"
+
+#. State Funeral of Kenneth Kaunda.
+msgid "State Funeral of Kenneth Kaunda"
+msgstr "کینتھ کاؤنڈا کی سرکاری آخری رسومات"
+
+#. State Funeral of Rupiah Banda.
+msgid "State Funeral of Rupiah Banda"
+msgstr "روپیا بانڈا کی سرکاری آخری رسومات"

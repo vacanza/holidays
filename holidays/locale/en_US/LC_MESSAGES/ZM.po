@@ -1,0 +1,137 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Zambia holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 15:45+0500\n"
+"PO-Revision-Date: 2026-11-28 15:59+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_ZM\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "New Year's Day"
+
+#. International Women's Day.
+msgid "International Women's Day"
+msgstr "International Women's Day"
+
+#. Youth Day.
+msgid "Youth Day"
+msgstr "Youth Day"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+msgid "Holy Saturday"
+msgstr "Holy Saturday"
+
+#. Easter Sunday.
+msgid "Easter Sunday"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Easter Monday"
+
+#. Kenneth Kaunda Day.
+msgid "Kenneth Kaunda Day"
+msgstr "Kenneth Kaunda Day"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Labor Day"
+
+#. Africa Freedom Day.
+msgid "Africa Freedom Day"
+msgstr "Africa Freedom Day"
+
+#. Heroes' Day.
+msgid "Heroes' Day"
+msgstr "Heroes' Day"
+
+#. Unity Day.
+msgid "Unity Day"
+msgstr "Unity Day"
+
+#. Farmers' Day.
+msgid "Farmers' Day"
+msgstr "Farmers' Day"
+
+#. National Prayer Day.
+msgid "National Prayer Day"
+msgstr "National Prayer Day"
+
+#. General Election Day.
+msgid "General Election Day"
+msgstr "General Election Day"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Independence Day"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Christmas Day"
+
+#. National Day of Prayer and Christian Heritage.
+msgid "National Day of Prayer and Christian Heritage"
+msgstr "National Day of Prayer and Christian Heritage"
+
+#. Bridge Public Holiday.
+msgid "Bridge Public Holiday"
+msgstr "Bridge Public Holiday"
+
+#. Inauguration Ceremony of President-elect and Vice-President-elect.
+msgid "Inauguration Ceremony of President-elect and Vice-President-elect"
+msgstr "Inauguration Ceremony of President-elect and Vice-President-elect"
+
+#. State Funeral of Michael Chilufya Sata.
+msgid "State Funeral of Michael Chilufya Sata"
+msgstr "State Funeral of Michael Chilufya Sata"
+
+#. Presidential Election.
+msgid "Presidential Election"
+msgstr "Presidential Election"
+
+#. Mayoral and Ward By-elections.
+msgid "Mayoral and Ward By-elections"
+msgstr "Mayoral and Ward By-elections"
+
+#. Memorial Service for Kenneth Kaunda.
+msgid "Memorial Service for Kenneth Kaunda"
+msgstr "Memorial Service for Kenneth Kaunda"
+
+#. State Funeral of Kenneth Kaunda.
+msgid "State Funeral of Kenneth Kaunda"
+msgstr "State Funeral of Kenneth Kaunda"
+
+#. State Funeral of Rupiah Banda.
+msgid "State Funeral of Rupiah Banda"
+msgstr "State Funeral of Rupiah Banda"
