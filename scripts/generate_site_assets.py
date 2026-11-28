@@ -43,7 +43,6 @@ LANGUAGES = {
     "az": "Azerbaijani",
     "be": "Belarusian",
     "bg": "Bulgarian",
-    "bi": "Bislama",
     "bn": "Bengali",
     "bs": "Bosnian",
     "ca": "Catalan",

@@ -31,7 +31,7 @@ class Vanuatu(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
     observed_label = tr("%s (observed)")
     # On 30 July 1980, Vanuatu gained independence from Britain and France.
     start_year = 1981
-    supported_languages = ("bi", "en_US", "en_VU", "fr")
+    supported_languages = ("en_US", "en_VU", "fr")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

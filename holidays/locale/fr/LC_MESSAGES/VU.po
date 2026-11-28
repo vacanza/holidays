@@ -34,7 +34,7 @@ msgstr "%s (observé)"
 
 #. New Year's Day.
 msgid "New Year's Day"
-msgstr "Jour de l'An"
+msgstr "Nouvel An"
 
 #. Father Lini Day.
 msgid "Father Lini Day"
@@ -42,7 +42,7 @@ msgstr "Journée du Père Lini"
 
 #. Custom Chief's Day.
 msgid "Custom Chief's Day"
-msgstr "Journée des Chefs coutumiers"
+msgstr "Fête des Chefs coutumiers"
 
 #. Good Friday.
 msgid "Good Friday"
@@ -62,15 +62,15 @@ msgstr "Ascension"
 
 #. Children's Day.
 msgid "Children's Day"
-msgstr "Journée des Enfants"
+msgstr "Journée Mondiale des Enfants"
 
 #. Independence Day.
 msgid "Independence Day"
-msgstr "Fête de l'Indépendance"
+msgstr "Jour de l'Indépendance"
 
 #. Assumption Day.
 msgid "Assumption Day"
-msgstr "Assomption"
+msgstr "Fête de l'Assomption"
 
 #. Constitution Day.
 msgid "Constitution Day"
@@ -78,15 +78,15 @@ msgstr "Fête de la Constitution"
 
 #. Unity Day.
 msgid "Unity Day"
-msgstr "Journée de l'Unité"
+msgstr "Fête de l'Unité"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "Noël"
+msgstr "Fête de Noël"
 
 #. Family Day.
 msgid "Family Day"
-msgstr "Fête de la Famille"
+msgstr "Fête de Famille"
 
 #. Election Day.
 msgid "Election Day"
