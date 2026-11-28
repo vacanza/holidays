@@ -145,8 +145,10 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Optionally add all Sundays of the year.
         if self.include_sundays:
             for dt in _get_all_sundays(self._year):
-                # Sunday.
-                self._add_holiday(tr("Söndag"), dt)
+                # Skip Sundays that already hold a named holiday.
+                if dt not in self:
+                    # Sunday.
+                    self._add_holiday(tr("Söndag"), dt)
 
     def _populate_de_facto_holidays(self):
         # Midsummer Eve.

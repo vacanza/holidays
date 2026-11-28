@@ -167,6 +167,20 @@ class TestSweden(CommonCountryTests, SundayHolidays, TestCase):
     def test_sundays(self):
         self.assertSundays(Sweden)  # Sundays are considered holidays in Sweden.
 
+    def test_sundays_no_duplicate_on_named_holidays(self):
+        # Sundays that already hold a named holiday must not also get "Söndag".
+        holidays = Sweden(years=(2022, 2023, 2027), include_sundays=True)
+        self.assertHolidayName("Juldagen", holidays, "2022-12-25")
+        self.assertNoHolidayName("Söndag", holidays, "2022-12-25")
+        self.assertHolidayName("Nyårsdagen", holidays, "2023-01-01")
+        self.assertNoHolidayName("Söndag", holidays, "2023-01-01")
+        self.assertHolidayName("Påskdagen", holidays, "2027-03-28")
+        self.assertNoHolidayName("Söndag", holidays, "2027-03-28")
+        self.assertHolidayName("Pingstdagen", holidays, "2027-05-16")
+        self.assertNoHolidayName("Söndag", holidays, "2027-05-16")
+        # A plain Sunday still gets "Söndag".
+        self.assertHolidayName("Söndag", holidays, "2027-01-03")
+
     def test_twelfth_night(self):
         name = "Trettondagsafton (från kl. 14.00)"
         self.assertNoHolidayName(name)
