@@ -197,12 +197,42 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             "Påskafton",
             "Pingstafton",
             "Dag före Pingstafton",
+            "Dag före Pingstafton (från kl. 14.00)",
             "Dag före Midsommarafton",
+            "Dag före Midsommarafton (från kl. 14.00)",
             "Dag före Julafton",
+            "Dag före Julafton (från kl. 14.00)",
             "Dag före Nyårsafton",
+            "Dag före Nyårsafton (från kl. 14.00)",
         ):
             self.assertNoHolidayName(name)
             self.assertNoHalfDayHolidayName(name)
+
+    def test_2024(self):
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-01", "Nyårsdagen"),
+            ("2024-03-29", "Långfredagen"),
+            ("2024-04-01", "Annandag påsk"),
+            ("2024-05-01", "Första maj"),
+            ("2024-05-09", "Kristi himmelsfärdsdag"),
+            ("2024-06-06", "Nationaldagen"),
+            ("2024-06-21", "Midsommarafton"),
+            ("2024-12-24", "Julafton"),
+            ("2024-12-25", "Juldagen"),
+            ("2024-12-26", "Annandag jul"),
+            ("2024-12-31", "Nyårsafton"),
+        )
+
+    def test_half_day_2024(self):
+        self.assertHalfDayHolidaysInYear(
+            2024,
+            ("2024-01-05", "Trettondagsafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2024-03-28", "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"),
+            ("2024-04-30", "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2024-05-08", "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"),
+            ("2024-11-01", "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"),
+        )
 
     def test_2025(self):
         self.assertHolidaysInYear(
