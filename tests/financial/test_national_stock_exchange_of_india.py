@@ -329,19 +329,22 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2006-05-13",
             "2007-05-02",
             "2008-05-19",
-            "2009-05-08",
+            "2009-05-09",
         )
         self.assertNoNonObservedHolidayName(
             name, range(self.start_year, 2006), range(2010, self.end_year)
         )
         self.assertNoHoliday(
             "2006-05-13",
+            "2009-05-09",
         )
+        self.assertNoNonObservedHoliday("2009-05-08")
 
     def test_ashura(self):
         name = "Muharram"
         self.assertNonObservedHolidayName(
             name,
+            "2003-03-14",
             "2013-11-15",
             "2015-10-24",
             "2020-08-30",
@@ -360,6 +363,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2023-07-29",
             "2025-07-06",
         )
+        self.assertNoNonObservedHoliday("2003-03-15")
 
     def test_prophets_birthday(self):
         name = "Id-E-Milad-Un-Nabi"
@@ -381,6 +385,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
         name = "Id-Ul-Fitr (Ramadan Eid)"
         self.assertNonObservedHolidayName(
             name,
+            "2005-11-04",
             "2020-05-25",
             "2021-05-13",
             "2022-05-03",
@@ -396,6 +401,7 @@ class TestNationalStockExchangeOfIndia(CommonFinancialTests, TestCase):
             "2023-04-22",
             "2026-03-21",
         )
+        self.assertNoNonObservedHoliday("2005-11-05")
 
     def test_eid_al_adha(self):
         name = "Bakri Id"

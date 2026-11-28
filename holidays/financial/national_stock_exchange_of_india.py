@@ -29,6 +29,8 @@ class NationalStockExchangeOfIndia(
 
     References:
         * <https://web.archive.org/web/20250821175252/https://www.nseindia.com/resources/exchange-communication-circulars>
+        * [Muharram 2003](https://web.archive.org/web/20030507005519/http://www.nseindia.com/content/circulars/cmtr4000.htm)
+        * [Ramzan Id 2005](https://nsearchives.nseindia.com/content/circulars/cmtr6787.htm)
         * [Muharram 2013](https://web.archive.org/web/20131116192048/http://www.business-standard.com:80/article/markets/market-alert-trading-holiday-now-on-friday-for-moharram-113111300766_1.html)
         * [Bakri Id 2023](https://web.archive.org/web/20230627084528/https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20230627-2)
 
@@ -190,6 +192,7 @@ class NSE(NationalStockExchangeOfIndia):
 class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
     BUDDHA_PURNIMA_DATES = {
         2008: (MAY, 19),
+        2009: (MAY, 9),
     }
 
     DIWALI_INDIA_DATES = {
@@ -230,7 +233,7 @@ class NationalStockExchangeOfIndiaHinduHolidays(_CustomHinduHolidays):
 class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
     ASHURA_DATES_CONFIRMED_YEARS = (2001, 2026)
     ASHURA_DATES = {
-        2003: (MAR, 15),
+        2003: (MAR, 14),
         2006: (FEB, 9),
         2008: (JAN, 19),
         2013: (NOV, 15),
@@ -251,7 +254,7 @@ class NationalStockExchangeOfIndiaIslamicHolidays(_CustomIslamicHolidays):
     EID_AL_FITR_DATES_CONFIRMED_YEARS = (2001, 2026)
     EID_AL_FITR_DATES = {
         2002: (DEC, 7),
-        2005: (NOV, 5),
+        2005: (NOV, 4),
         2006: (OCT, 25),
         2010: (SEP, 10),
         2016: (JUL, 6),
