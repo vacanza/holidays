@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.93\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-09-11 10:20+0700\n"
-"PO-Revision-Date: 2025-09-17 10:42+0700\n"
-"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"PO-Revision-Date: 2026-11-27 14:26+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -27,3 +27,11 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.7\n"
 "X-Source-Language: ja\n"
+
+#. First Trading Day of the Year.
+msgid "大発会"
+msgstr "วันทำการซื้อขายวันแรกของปี"
+
+#. Last Trading Day of the Year.
+msgid "大納会"
+msgstr "วันทำการซื้อขายวันสุดท้ายของปี"
