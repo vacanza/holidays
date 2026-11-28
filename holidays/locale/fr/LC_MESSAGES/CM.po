@@ -10,14 +10,14 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 #
-# Cameroon holidays fr localization.
+# Cameroon holidays.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
-"POT-Creation-Date: 2026-11-28 03:52+0530\n"
-"PO-Revision-Date: 2026-11-28 11:40+0530\n"
+"POT-Creation-Date: 2026-11-28 21:00+0530\n"
+"PO-Revision-Date: 2026-11-28 21:00+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -25,67 +25,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingva 5.0.7\n"
-"X-Source-Language: en_CM\n"
+"X-Source-Language: fr\n"
 
 #. %s (estimated).
 #, c-format
-msgid "%s (estimated)"
-msgstr "%s (estimé)"
+msgid "%s (estimé)"
+msgstr ""
 
 #. %s (observed, estimated).
 #, c-format
-msgid "%s (observed, estimated)"
-msgstr "%s (observé, estimé)"
+msgid "%s (observé, estimé)"
+msgstr ""
 
 #. %s (observed).
 #, c-format
-msgid "%s (observed)"
-msgstr "%s (observé)"
+msgid "%s (observé)"
+msgstr ""
 
 #. New Year's Day.
-msgid "New Year's Day"
-msgstr "Jour de l'an"
+msgid "Jour de l'an"
+msgstr ""
 
 #. Youth Day.
-msgid "Youth Day"
-msgstr "Fête de la Jeunesse"
+msgid "Fête de la Jeunesse"
+msgstr ""
 
 #. Good Friday.
-msgid "Good Friday"
-msgstr "Vendredi saint"
+msgid "Vendredi saint"
+msgstr ""
 
 #. Labor Day.
-msgid "Labour Day"
-msgstr "Fête du Travail"
+msgid "Fête du Travail"
+msgstr ""
 
 #. National Day.
-msgid "National Day"
-msgstr "Fête nationale"
+msgid "Fête nationale"
+msgstr ""
 
 #. Ascension Day.
-msgid "Ascension Day"
-msgstr "Ascension"
+msgid "Ascension"
+msgstr ""
 
 #. Assumption Day.
-msgid "Assumption Day"
-msgstr "Assomption"
+msgid "Assomption"
+msgstr ""
 
 #. Christmas Day.
-msgid "Christmas Day"
-msgstr "Noël"
+msgid "Noël"
+msgstr ""
 
 #. Eid al-Fitr.
-msgid "Eid al-Fitr"
-msgstr "Aïd el-Fitr"
+msgid "Aïd el-Fitr"
+msgstr ""
 
 #. Eid al-Adha.
-msgid "Eid al-Adha"
-msgstr "Aïd al-Adha"
+msgid "Aïd al-Adha"
+msgstr ""
 
 #. Prophet's Birthday.
-msgid "Mawlid"
-msgstr "Naissance du Prophète Mouhammad"
+msgid "Naissance du Prophète Mouhammad"
+msgstr ""
 
 #. Public Holiday.
-msgid "Public Holiday"
-msgstr "Jour férié"
+msgid "Jour férié"
+msgstr ""
