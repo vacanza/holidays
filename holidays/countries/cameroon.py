@@ -18,6 +18,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_WORKDAY
 
 
@@ -38,14 +39,16 @@ class Cameroon(
     """
 
     country = "CM"
+    default_language = "en_CM"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimated)")
     # %s (observed, estimated).
-    observed_estimated_label = "%s (observed, estimated)"
+    observed_estimated_label = tr("%s (observed, estimated)")
     # %s (observed).
-    observed_label = "%s (observed)"
+    observed_label = tr("%s (observed)")
     # On 1 January 1960, French Cameroun gained independence from France.
     start_year = 1960
+    supported_languages = ("en_CM", "en_US", "fr")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -67,39 +70,39 @@ class Cameroon(
         dts_observed = set()
 
         # New Year's Day.
-        dts_observed.add(self._add_new_years_day("New Year's Day"))
+        dts_observed.add(self._add_new_years_day(tr("New Year's Day")))
 
-        # Youth Day.
         if self._year >= 1966:
-            dts_observed.add(self._add_holiday_feb_11("Youth Day"))
+            # Youth Day.
+            dts_observed.add(self._add_holiday_feb_11(tr("Youth Day")))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Labour Day.
-        dts_observed.add(self._add_labor_day("Labour Day"))
+        dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
-        # National Day.
         if self._year >= 1972:
-            dts_observed.add(self._add_holiday_may_20("National Day"))
+            # National Day.
+            dts_observed.add(self._add_holiday_may_20(tr("National Day")))
 
         # Ascension Day.
-        self._add_ascension_thursday("Ascension Day")
+        self._add_ascension_thursday(tr("Ascension Day"))
 
         # Assumption Day.
-        dts_observed.add(self._add_assumption_of_mary_day("Assumption Day"))
+        dts_observed.add(self._add_assumption_of_mary_day(tr("Assumption Day")))
 
         # Christmas Day.
-        dts_observed.add(self._add_christmas_day("Christmas Day"))
+        dts_observed.add(self._add_christmas_day(tr("Christmas Day")))
 
         # Eid al-Fitr.
-        dts_observed.update(self._add_eid_al_fitr_day("Eid al-Fitr"))
+        dts_observed.update(self._add_eid_al_fitr_day(tr("Eid al-Fitr")))
 
         # Eid al-Adha.
-        dts_observed.update(self._add_eid_al_adha_day("Eid al-Adha"))
+        dts_observed.update(self._add_eid_al_adha_day(tr("Eid al-Adha")))
 
         # Mawlid.
-        dts_observed.update(self._add_mawlid_day("Mawlid"))
+        dts_observed.update(self._add_mawlid_day(tr("Mawlid")))
 
         if self.observed:
             self._populate_observed(dts_observed)
@@ -164,13 +167,17 @@ class CameroonIslamicHolidays(_CustomIslamicHolidays):
 
 
 class CameroonStaticHolidays:
+    # Public Holiday.
+    public_holiday = tr("Public Holiday")
+
     special_public_holidays = {
         2021: (
-            (MAY, 14, "Public Holiday"),
-            (JUL, 19, "Public Holiday"),
+            (MAY, 14, public_holiday),
+            (JUL, 19, public_holiday),
         ),
     }
 
     special_public_holidays_observed = {
-        2007: (JAN, 2, "Eid al-Adha"),
+        # Eid al-Adha.
+        2007: (JAN, 2, tr("Eid al-Adha")),
     }
