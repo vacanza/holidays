@@ -17,6 +17,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -37,10 +38,12 @@ class Uganda(
     """
 
     country = "UG"
+    default_language = "en_UG"
     # %s (estimated).
-    estimated_label = "%s (estimated)"
+    estimated_label = tr("%s (estimated)")
     # Uganda gained independence from the United Kingdom on October 9, 1962.
     start_year = 1963
+    supported_languages = ("en_UG", "en_US", "ur_PK")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -57,49 +60,49 @@ class Uganda(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("New Year's Day"))
 
         if self._year >= 1987:
             # NRM Liberation Day.
-            self._add_holiday_jan_26("NRM Liberation Day")
+            self._add_holiday_jan_26(tr("NRM Liberation Day"))
 
         if self._year >= 2016:
             # Archbishop Janani Luwum Day.
-            self._add_holiday_feb_16("Archbishop Janani Luwum Day")
+            self._add_holiday_feb_16(tr("Archbishop Janani Luwum Day"))
 
         # Women's Day.
-        self._add_womens_day("Women's Day")
+        self._add_womens_day(tr("Women's Day"))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Labor Day.
-        self._add_labor_day("Labour Day")
+        self._add_labor_day(tr("Labour Day"))
 
         # Uganda Martyrs' Day.
-        self._add_holiday_jun_3("Uganda Martyrs' Day")
+        self._add_holiday_jun_3(tr("Uganda Martyrs' Day"))
 
         if self._year >= 2001:
             # National Heroes' Day.
-            self._add_holiday_jun_9("National Heroes' Day")
+            self._add_holiday_jun_9(tr("National Heroes' Day"))
 
         # Independence Day.
-        self._add_holiday_oct_9("Independence Day")
+        self._add_holiday_oct_9(tr("Independence Day"))
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        self._add_christmas_day_two("Boxing Day")
+        self._add_christmas_day_two(tr("Boxing Day"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day(tr("Eid al-Fitr"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day(tr("Eid al-Adha"))
 
 
 class UG(Uganda):
@@ -118,7 +121,7 @@ class UgandaStaticHolidays:
     """
 
     # General Elections.
-    general_elections = "General Elections"
+    general_elections = tr("General Elections")
 
     special_public_holidays = {
         2026: (

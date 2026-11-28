@@ -171,6 +171,7 @@ LANGUAGES = {
     "en_TK": "English (Tokelau)",
     "en_TL": "English (Timor-Leste)",
     "en_TT": "English (Trinidad and Tobago)",
+    "en_UG": "English (Uganda)",
     "en_US": "English (United States)",
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",

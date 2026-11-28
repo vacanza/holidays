@@ -140,3 +140,65 @@ class TestUganda(CommonCountryTests, TestCase):
             ("2020-12-25", "Christmas Day"),
             ("2020-12-26", "Boxing Day"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-15", "General Elections"),
+            ("2026-01-16", "General Elections"),
+            ("2026-01-26", "NRM Liberation Day"),
+            ("2026-02-16", "Archbishop Janani Luwum Day"),
+            ("2026-03-08", "Women's Day"),
+            ("2026-03-20", "Eid al-Fitr (estimated)"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-01", "Labour Day"),
+            ("2026-05-27", "Eid al-Adha (estimated)"),
+            ("2026-06-03", "Uganda Martyrs' Day"),
+            ("2026-06-09", "National Heroes' Day"),
+            ("2026-10-09", "Independence Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2026-01-01", "New Year's Day"),
+            ("2026-01-15", "General Elections"),
+            ("2026-01-16", "General Elections"),
+            ("2026-01-26", "NRM Liberation Day"),
+            ("2026-02-16", "Archbishop Janani Luwum Day"),
+            ("2026-03-08", "Women's Day"),
+            ("2026-03-20", "Eid al-Fitr (estimated)"),
+            ("2026-04-03", "Good Friday"),
+            ("2026-04-06", "Easter Monday"),
+            ("2026-05-01", "Labor Day"),
+            ("2026-05-27", "Eid al-Adha (estimated)"),
+            ("2026-06-03", "Uganda Martyrs' Day"),
+            ("2026-06-09", "National Heroes' Day"),
+            ("2026-10-09", "Independence Day"),
+            ("2026-12-25", "Christmas Day"),
+            ("2026-12-26", "Boxing Day"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2026-01-01", "نئے سال کا دن"),
+            ("2026-01-15", "عام انتخابات"),
+            ("2026-01-16", "عام انتخابات"),
+            ("2026-01-26", "این آر ایم یوم نجات"),
+            ("2026-02-16", "آرچ بشپ جنانی لووم کا دن"),
+            ("2026-03-08", "یوم خواتین"),
+            ("2026-03-20", "عید الفطر (اندازاً)"),
+            ("2026-04-03", "گڈ فرائیڈے"),
+            ("2026-04-06", "ایسٹر پیر"),
+            ("2026-05-01", "یوم مزدور"),
+            ("2026-05-27", "عید الاضحی (اندازاً)"),
+            ("2026-06-03", "یوگنڈا کے شہداء کا دن"),
+            ("2026-06-09", "ہیروز کا قومی دن"),
+            ("2026-10-09", "یوم آزادی"),
+            ("2026-12-25", "کرسمس کا دن"),
+            ("2026-12-26", "باکسنگ ڈے"),
+        )

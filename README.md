@@ -1798,7 +1798,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Uganda</td>
 <td>UG</td>
 <td></td>
-<td></td>
+<td><strong>en_UG</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
