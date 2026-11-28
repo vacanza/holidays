@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-28 04:06+0000\n"
-"PO-Revision-Date: 2026-11-28 04:06+0000\n"
+"PO-Revision-Date: 2026-11-28 04:18+0000\n"
 "Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: th\n"
@@ -38,6 +38,11 @@ msgstr "วันคริสต์มาสอีฟ"
 #. New Year's Eve.
 msgid "Nyårsafton"
 msgstr "วันสิ้นปี"
+
+#. %s (markets close at 13:00 CET).
+#, c-format
+msgid "%s (marknaderna stänger kl. 13.00 CET)"
+msgstr "%s (ตลาดปิดเวลา 13:00 น. CET)"
 
 #. Twelfth Night.
 msgid "Trettondagsafton"

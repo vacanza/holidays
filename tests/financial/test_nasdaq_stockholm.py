@@ -134,7 +134,7 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         )
 
     def test_twelfth_night(self):
-        name = "Trettondagsafton"
+        name = "Trettondagsafton (marknaderna stänger kl. 13.00 CET)"
         years_absent = {2025, 2030, 2031, 2036, 2041, 2042, 2047, 2048}
         self.assertNoHolidayName(name)
         self.assertNoHalfDayHolidayName(name, years_absent)
@@ -143,7 +143,7 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         )
 
     def test_maundy_thursday(self):
-        name = "Skärtorsdagen"
+        name = "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
@@ -155,7 +155,7 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         self.assertHalfDayHolidayName(name, self.full_range)
 
     def test_walpurgis_night(self):
-        name = "Valborgsmässoafton"
+        name = "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"
         years_absent = {2028, 2033, 2034, 2039, 2044, 2045}
         self.assertNoHolidayName(name)
         self.assertNoHalfDayHolidayName(name, years_absent)
@@ -164,7 +164,7 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         )
 
     def test_day_before_ascension_day(self):
-        name = "Dag före Kristi himmelsfärdsdag"
+        name = "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
@@ -176,7 +176,7 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         self.assertHalfDayHolidayName(name, self.full_range)
 
     def test_all_saints_eve(self):
-        name = "Allahelgonsafton"
+        name = "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"
         self.assertNoHolidayName(name)
         self.assertHalfDayHolidayName(
             name,
@@ -224,10 +224,10 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
     def test_half_day_2025(self):
         self.assertHalfDayHolidaysInYear(
             2025,
-            ("2025-04-17", "Skärtorsdagen"),
-            ("2025-04-30", "Valborgsmässoafton"),
-            ("2025-05-28", "Dag före Kristi himmelsfärdsdag"),
-            ("2025-10-31", "Allahelgonsafton"),
+            ("2025-04-17", "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"),
+            ("2025-04-30", "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2025-05-28", "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"),
+            ("2025-10-31", "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"),
         )
 
     def test_2026(self):
@@ -248,11 +248,11 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
     def test_half_day_2026(self):
         self.assertHalfDayHolidaysInYear(
             2026,
-            ("2026-01-05", "Trettondagsafton"),
-            ("2026-04-02", "Skärtorsdagen"),
-            ("2026-04-30", "Valborgsmässoafton"),
-            ("2026-05-13", "Dag före Kristi himmelsfärdsdag"),
-            ("2026-10-30", "Allahelgonsafton"),
+            ("2026-01-05", "Trettondagsafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2026-04-02", "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"),
+            ("2026-04-30", "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2026-05-13", "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"),
+            ("2026-10-30", "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"),
         )
 
     def test_2027(self):
@@ -271,27 +271,27 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
     def test_half_day_2027(self):
         self.assertHalfDayHolidaysInYear(
             2027,
-            ("2027-01-05", "Trettondagsafton"),
-            ("2027-03-25", "Skärtorsdagen"),
-            ("2027-04-30", "Valborgsmässoafton"),
-            ("2027-05-05", "Dag före Kristi himmelsfärdsdag"),
-            ("2027-11-05", "Allahelgonsafton"),
+            ("2027-01-05", "Trettondagsafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2027-03-25", "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"),
+            ("2027-04-30", "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"),
+            ("2027-05-05", "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"),
+            ("2027-11-05", "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2025-01-01", "Nyårsdagen"),
             ("2025-01-06", "Trettondedag jul"),
-            ("2025-04-17", "Skärtorsdagen"),
+            ("2025-04-17", "Skärtorsdagen (marknaderna stänger kl. 13.00 CET)"),
             ("2025-04-18", "Långfredagen"),
             ("2025-04-21", "Annandag påsk"),
-            ("2025-04-30", "Valborgsmässoafton"),
+            ("2025-04-30", "Valborgsmässoafton (marknaderna stänger kl. 13.00 CET)"),
             ("2025-05-01", "Första maj"),
-            ("2025-05-28", "Dag före Kristi himmelsfärdsdag"),
+            ("2025-05-28", "Dag före Kristi himmelsfärdsdag (marknaderna stänger kl. 13.00 CET)"),
             ("2025-05-29", "Kristi himmelsfärdsdag"),
             ("2025-06-06", "Nationaldagen"),
             ("2025-06-20", "Midsommarafton"),
-            ("2025-10-31", "Allahelgonsafton"),
+            ("2025-10-31", "Allahelgonsafton (marknaderna stänger kl. 13.00 CET)"),
             ("2025-12-24", "Julafton"),
             ("2025-12-25", "Juldagen"),
             ("2025-12-26", "Annandag jul"),
@@ -303,16 +303,16 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             "en_US",
             ("2025-01-01", "New Year's Day"),
             ("2025-01-06", "Epiphany"),
-            ("2025-04-17", "Maundy Thursday"),
+            ("2025-04-17", "Maundy Thursday (markets close at 13:00 CET)"),
             ("2025-04-18", "Good Friday"),
             ("2025-04-21", "Easter Monday"),
-            ("2025-04-30", "Walpurgis Night"),
+            ("2025-04-30", "Walpurgis Night (markets close at 13:00 CET)"),
             ("2025-05-01", "May Day"),
-            ("2025-05-28", "Day before Ascension Day"),
+            ("2025-05-28", "Day before Ascension Day (markets close at 13:00 CET)"),
             ("2025-05-29", "Ascension Day"),
             ("2025-06-06", "National Day"),
             ("2025-06-20", "Midsummer Eve"),
-            ("2025-10-31", "All Saints' Eve"),
+            ("2025-10-31", "All Saints' Eve (markets close at 13:00 CET)"),
             ("2025-12-24", "Christmas Eve"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-26", "Second Day of Christmas"),
@@ -324,16 +324,16 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             "th",
             ("2025-01-01", "วันขึ้นปีใหม่"),
             ("2025-01-06", "วันสมโภชพระคริสต์แสดงองค์"),
-            ("2025-04-17", "วันพฤหัสศักดิ์สิทธิ์"),
+            ("2025-04-17", "วันพฤหัสศักดิ์สิทธิ์ (ตลาดปิดเวลา 13:00 น. CET)"),
             ("2025-04-18", "วันศุกร์ประเสริฐ"),
             ("2025-04-21", "วันจันทร์อีสเตอร์"),
-            ("2025-04-30", "คืนวัลเพอร์กิส"),
+            ("2025-04-30", "คืนวัลเพอร์กิส (ตลาดปิดเวลา 13:00 น. CET)"),
             ("2025-05-01", "วันเมย์เดย์ (วันแรงงาน)"),
-            ("2025-05-28", "วันก่อนวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
+            ("2025-05-28", "วันก่อนวันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์ (ตลาดปิดเวลา 13:00 น. CET)"),
             ("2025-05-29", "วันสมโภชพระเยซูเจ้าเสด็จขึ้นสวรรค์"),
             ("2025-06-06", "วันชาติสวีเดน"),
             ("2025-06-20", "วันก่อนวันกลางฤดูร้อน"),
-            ("2025-10-31", "วันก่อนวันสมโภชนักบุญทั้งหลาย"),
+            ("2025-10-31", "วันก่อนวันสมโภชนักบุญทั้งหลาย (ตลาดปิดเวลา 13:00 น. CET)"),
             ("2025-12-24", "วันคริสต์มาสอีฟ"),
             ("2025-12-25", "วันคริสต์มาส"),
             ("2025-12-26", "วันคริสต์มาสวันที่สอง"),
@@ -345,16 +345,16 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             "uk",
             ("2025-01-01", "Новий рік"),
             ("2025-01-06", "Богоявлення"),
-            ("2025-04-17", "Великий четвер"),
+            ("2025-04-17", "Великий четвер (закриття ринків о 13:00 CET)"),
             ("2025-04-18", "Страсна пʼятниця"),
             ("2025-04-21", "Великодній понеділок"),
-            ("2025-04-30", "Вальпургієва ніч"),
+            ("2025-04-30", "Вальпургієва ніч (закриття ринків о 13:00 CET)"),
             ("2025-05-01", "Перше травня"),
-            ("2025-05-28", "Переддень Вознесіння Господнього"),
+            ("2025-05-28", "Переддень Вознесіння Господнього (закриття ринків о 13:00 CET)"),
             ("2025-05-29", "Вознесіння Господнє"),
             ("2025-06-06", "Національний день"),
             ("2025-06-20", "Переддень літнього сонцестояння"),
-            ("2025-10-31", "Переддень Дня усіх святих"),
+            ("2025-10-31", "Переддень Дня усіх святих (закриття ринків о 13:00 CET)"),
             ("2025-12-24", "Святий вечір"),
             ("2025-12-25", "Різдво Христове"),
             ("2025-12-26", "Другий день Різдва"),

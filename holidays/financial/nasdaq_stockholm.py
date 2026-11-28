@@ -62,20 +62,29 @@ class NasdaqStockholm(Sweden):
         self._add_new_years_eve(tr("Nyårsafton"))
 
     def _populate_half_day_holidays(self):
-        # Twelfth Night.
-        self._add_holiday_jan_5(tr("Trettondagsafton"))
+        # %s (markets close at 13:00 CET).
+        close_13_00_label = tr("%s (marknaderna stänger kl. 13.00 CET)")
 
-        # Maundy Thursday.
-        self._add_holy_thursday(tr("Skärtorsdagen"))
-
-        # Walpurgis Night.
-        self._add_holiday_apr_30(tr("Valborgsmässoafton"))
-
-        # Day before Ascension Day.
-        self._add_holiday_38_days_past_easter(tr("Dag före Kristi himmelsfärdsdag"))
-
-        # All Saints' Eve.
-        self._add_holiday_1st_fri_from_oct_30(tr("Allahelgonsafton"))
+        self._add_holiday_jan_5(
+            # Twelfth Night.
+            self._format_holiday_name(close_13_00_label, tr("Trettondagsafton"))
+        )
+        self._add_holy_thursday(
+            # Maundy Thursday.
+            self._format_holiday_name(close_13_00_label, tr("Skärtorsdagen"))
+        )
+        self._add_holiday_apr_30(
+            # Walpurgis Night.
+            self._format_holiday_name(close_13_00_label, tr("Valborgsmässoafton"))
+        )
+        self._add_holiday_38_days_past_easter(
+            # Day before Ascension Day.
+            self._format_holiday_name(close_13_00_label, tr("Dag före Kristi himmelsfärdsdag"))
+        )
+        self._add_holiday_1st_fri_from_oct_30(
+            # All Saints' Eve.
+            self._format_holiday_name(close_13_00_label, tr("Allahelgonsafton"))
+        )
 
 
 class XSTO(NasdaqStockholm):
