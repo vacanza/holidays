@@ -112,7 +112,7 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             name,
             "2020-05-22",
             "2021-05-13",
-            "2022-05-03",
+            "2022-05-02",
             "2023-04-21",
             "2024-04-10",
             "2025-03-31",
@@ -138,11 +138,17 @@ class TestSouthSudan(CommonCountryTests, TestCase):
         self.assertIslamicIslamicNoEstimatedHolidayName(
             name,
             "2020-05-23",
+            "2020-05-24",
             "2021-05-14",
+            "2021-05-15",
+            "2022-05-03",
             "2022-05-04",
             "2023-04-22",
+            "2023-04-23",
             "2024-04-11",
+            "2024-04-12",
             "2025-04-01",
+            "2025-04-02",
         )
         self.assertIslamicIslamicNoEstimatedHolidayName(name, self.full_range)
 
@@ -157,6 +163,12 @@ class TestSouthSudan(CommonCountryTests, TestCase):
             "2023-06-29",
             "2024-06-17",
             "2025-06-07",
+            "2020-08-02",
+            "2021-07-20",
+            "2022-07-11",
+            "2023-06-30",
+            "2024-06-18",
+            "2025-06-08",
         )
         self.assertIslamicIslamicNoEstimatedHolidayName(name, self.full_range)
 
