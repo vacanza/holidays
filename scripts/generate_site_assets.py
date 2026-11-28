@@ -138,6 +138,7 @@ LANGUAGES = {
     "en_CC": "English (Cocos Islands)",
     "en_CI": "English (Ivory Coast)",
     "en_CK": "English (Cook Islands)",
+    "en_CM": "English (Cameroon)",
     "en_CX": "English (Christmas Island)",
     "en_CY": "English (Cyprus)",
     "en_ET": "English (Ethiopia)",

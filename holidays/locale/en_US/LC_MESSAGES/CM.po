@@ -1,0 +1,91 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Cameroon holidays en_US localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 21:00+0530\n"
+"PO-Revision-Date: 2026-11-28 21:00+0530\n"
+"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: fr\n"
+
+#. %s (estimated).
+#, c-format
+msgid "%s (estimé)"
+msgstr "%s (estimated)"
+
+#. %s (observed, estimated).
+#, c-format
+msgid "%s (observé, estimé)"
+msgstr "%s (observed, estimated)"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observé)"
+msgstr "%s (observed)"
+
+#. New Year's Day.
+msgid "Jour de l'an"
+msgstr "New Year's Day"
+
+#. Youth Day.
+msgid "Fête de la Jeunesse"
+msgstr "Youth Day"
+
+#. Good Friday.
+msgid "Vendredi saint"
+msgstr "Good Friday"
+
+#. Labor Day.
+msgid "Fête du Travail"
+msgstr "Labor Day"
+
+#. National Day.
+msgid "Fête nationale"
+msgstr "National Day"
+
+#. Ascension Day.
+msgid "Ascension"
+msgstr "Ascension Day"
+
+#. Assumption Day.
+msgid "Assomption"
+msgstr "Assumption Day"
+
+#. Christmas Day.
+msgid "Noël"
+msgstr "Christmas Day"
+
+#. Eid al-Fitr.
+msgid "Aïd el-Fitr"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+msgid "Aïd al-Adha"
+msgstr "Eid al-Adha"
+
+#. Prophet's Birthday.
+msgid "Naissance du Prophète Mouhammad"
+msgstr "Prophet's Birthday"
+
+#. Public Holiday.
+msgid "Jour férié"
+msgstr "Public Holiday"

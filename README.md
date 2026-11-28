@@ -454,7 +454,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cameroon</td>
 <td>CM</td>
 <td></td>
-<td></td>
+<td>en_CM, en_US, <strong>fr</strong></td>
 <td></td>
 </tr>
 <tr>
