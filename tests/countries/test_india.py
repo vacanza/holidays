@@ -34,6 +34,7 @@ class TestIndia(CommonCountryTests, TestCase):
     def setUp(self):
         super().setUp()
         warnings.simplefilter("ignore", category=DeprecationWarning)
+        warnings.simplefilter("ignore", category=UserWarning)
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

@@ -659,6 +659,27 @@ class CommonTests(TestCase):
                 )
             )
 
+    def test_categories_population_isolation(self):
+        """Validate category holidays don't depend on other requested categories."""
+        categories = self.test_class.supported_categories
+        if len(categories) == 1:
+            return None
+
+        years = self.holidays.years
+        for subdiv in (None, *self.test_class.subdivisions):
+            merged_holidays = self.test_class(subdiv=subdiv, categories=categories[0], years=years)
+            for category in categories[1:]:
+                merged_holidays.update(
+                    self.test_class(subdiv=subdiv, categories=category, years=years)
+                )
+
+            self.assertEqual(
+                self.test_class(subdiv=subdiv, categories=categories, years=years).items(),
+                merged_holidays.items(),
+                f"Holidays of `{subdiv}` subdivision for {', '.join(categories)} categories "
+                "do not match a merge of each category holidays.",
+            )
+
     def test_estimated_label(self):
         if isinstance(self.holidays, EasternCalendarHolidays):
             self.assertTrue(
