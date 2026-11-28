@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.100\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2023-06-27 13:17+0300\n"
-"PO-Revision-Date: 2026-06-30 21:57+0300\n"
+"PO-Revision-Date: 2026-11-28 10:40+0100\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: en_US\n"
@@ -87,6 +87,15 @@ msgstr "Independence Day"
 #. Primož Trubar Day.
 msgid "dan Primoža Trubarja"
 msgstr "Primož Trubar Day"
+
+#. Triglav Day.
+msgid "dan Triglava"
+msgstr "Triglav Day"
+
+#. Annexation of Prekmurje and Unification of Prekmurje Slovenes
+#. with the Mother Nation.
+msgid "priključitev Prekmurja in združitev prekmurskih Slovencev z matičnim narodom"
+msgstr "Annexation of Prekmurje and Unification of Prekmurje Slovenes with the Mother Nation"
 
 #. Unification of Prekmurje Slovenes with the Mother Nation.
 msgid "združitev prekmurskih Slovencev z matičnim narodom"

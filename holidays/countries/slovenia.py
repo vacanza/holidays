@@ -25,6 +25,9 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
         * <https://sl.wikipedia.org/wiki/Državni_prazniki_v_Sloveniji>
         * <https://web.archive.org/web/20250429081020/https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-1091/zakon-o-praznikih-in-dela-prostih-dnevih-v-republiki-sloveniji>
         * <https://web.archive.org/web/20250414154423/https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi>
+        * <https://pisrs.si/pregledPredpisa?id=ZAKO865>
+        * [ZPDPD-H](https://www.sta.si/3516270/dz-sprejel-novelo-zakona-o-praznikih-in-dela-prostih-dnevih)
+        * [ZPDPD-I](https://www.ds-rs.si/en/node/3871)
     """
 
     country = "SI"
@@ -99,14 +102,24 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays, StaticHoli
             # Primož Trubar Day.
             self._add_holiday_jun_8(tr("dan Primoža Trubarja"))
 
+        if self._year >= 2027:
+            # Triglav Day.
+            self._add_holiday_aug_7(tr("dan Triglava"))
+
         if self._year >= 2006:
-            # Unification of Prekmurje Slovenes with the Mother Nation.
-            self._add_holiday_aug_17(tr("združitev prekmurskih Slovencev z matičnim narodom"))
+            self._add_holiday_aug_17(
+                # Annexation of Prekmurje and Unification of Prekmurje Slovenes
+                # with the Mother Nation.
+                tr("priključitev Prekmurja in združitev prekmurskih Slovencev z matičnim narodom")
+                if self._year == 2026
+                # Unification of Prekmurje Slovenes with the Mother Nation.
+                else tr("združitev prekmurskih Slovencev z matičnim narodom")
+            )
 
             self._add_holiday_sep_15(
                 # Integration of Primorska into the Homeland.
                 tr("priključitev Primorske k matični domovini")
-                if self._year >= 2025
+                if 2025 <= self._year <= 2026
                 # Return of Primorska into the Homeland.
                 else tr("vrnitev Primorske k matični domovini")
             )

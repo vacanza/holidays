@@ -139,27 +139,43 @@ class TestSlovenia(CommonCountryTests, TestCase):
         )
         self.assertNoWorkdayHolidayName(name, range(self.start_year, 2011))
 
-    def test_unification_of_prekmurje_slovenes_with_the_mother_nation(self):
-        name = "združitev prekmurskih Slovencev z matičnim narodom"
+    def test_triglav_day(self):
+        name = "dan Triglava"
         self.assertNoHolidayName(name)
         self.assertWorkdayHolidayName(
-            name, (f"{year}-08-17" for year in range(2006, self.end_year))
+            name, (f"{year}-08-07" for year in range(2027, self.end_year))
         )
-        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2006))
+        self.assertNoWorkdayHolidayName(name, range(self.start_year, 2027))
+
+    def test_unification_of_prekmurje_slovenes_with_the_mother_nation(self):
+        name_2006 = "združitev prekmurskih Slovencev z matičnim narodom"
+        name_2026 = "priključitev Prekmurja in združitev prekmurskih Slovencev z matičnim narodom"
+        self.assertNoHolidayName(name_2006)
+        self.assertNoHolidayName(name_2026)
+        self.assertWorkdayHolidayName(
+            name_2006,
+            (f"{year}-08-17" for year in (*range(2006, 2026), *range(2027, self.end_year))),
+        )
+        self.assertWorkdayHolidayName(name_2026, "2026-08-17")
+        self.assertNoWorkdayHolidayName(name_2006, range(self.start_year, 2006), 2026)
+        self.assertNoWorkdayHolidayName(
+            name_2026, range(self.start_year, 2026), range(2027, self.end_year)
+        )
 
     def test_integration_of_primorska_into_the_homeland(self):
         name_2006 = "vrnitev Primorske k matični domovini"
         name_2025 = "priključitev Primorske k matični domovini"
         self.assertNoHolidayName(name_2006)
         self.assertNoHolidayName(name_2025)
-        self.assertWorkdayHolidayName(name_2006, (f"{year}-09-15" for year in range(2006, 2025)))
         self.assertWorkdayHolidayName(
-            name_2025, (f"{year}-09-15" for year in range(2025, self.end_year))
+            name_2006,
+            (f"{year}-09-15" for year in (*range(2006, 2025), *range(2027, self.end_year))),
         )
+        self.assertWorkdayHolidayName(name_2025, "2025-09-15", "2026-09-15")
+        self.assertNoWorkdayHolidayName(name_2006, range(self.start_year, 2006), 2025, 2026)
         self.assertNoWorkdayHolidayName(
-            name_2006, range(self.start_year, 2006), range(2025, self.end_year)
+            name_2025, range(self.start_year, 2025), range(2027, self.end_year)
         )
-        self.assertNoWorkdayHolidayName(name_2025, range(self.start_year, 2025))
 
     def test_slovenian_sports_day(self):
         name = "dan slovenskega športa"
@@ -261,3 +277,34 @@ class TestSlovenia(CommonCountryTests, TestCase):
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "День незалежності та єднання"),
         )
+
+    def test_l10n_2026_and_2027(self):
+        cases = {
+            None: (
+                "priključitev Prekmurja in združitev prekmurskih Slovencev z matičnim narodom",
+                "priključitev Primorske k matični domovini",
+                "dan Triglava",
+                "združitev prekmurskih Slovencev z matičnim narodom",
+                "vrnitev Primorske k matični domovini",
+            ),
+            "en_US": (
+                "Annexation of Prekmurje and Unification of Prekmurje Slovenes "
+                "with the Mother Nation",
+                "Integration of Primorska into the Homeland",
+                "Triglav Day",
+                "Unification of Prekmurje Slovenes with the Mother Nation",
+                "Return of Primorska into the Homeland",
+            ),
+            "uk": (
+                "Приєднання Прекмурʼя та обʼєднання прекмурських словенців з материнською нацією",
+                "Приєднання Словенського Приморʼя до батьківщини",
+                "День Триглава",
+                "Обʼєднання прекмурських словенців з материнською нацією",
+                "Повернення Словенського Приморʼя до батьківщини",
+            ),
+        }
+        for language, names in cases.items():
+            holidays = Slovenia(categories=WORKDAY, language=language, years=(2026, 2027))
+            dates = ("2026-08-17", "2026-09-15", "2027-08-07", "2027-08-17", "2027-09-15")
+            for dt, name in zip(dates, names):
+                self.assertEqual(holidays.get(dt), name, f"{language}: {dt}")
