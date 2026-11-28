@@ -219,3 +219,71 @@ class TestVanuatu(CommonCountryTests, TestCase):
             ("2022-12-26", "Family Day"),
             ("2022-12-27", "Family Day (observed)"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-21", "Father Lini Day"),
+            ("2022-03-05", "Custom Chief's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (observed)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-24", "Children's Day"),
+            ("2022-07-25", "Children's Day (observed)"),
+            ("2022-07-30", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-10-05", "Constitution Day"),
+            ("2022-10-13", "Election Day"),
+            ("2022-11-29", "Unity Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Family Day"),
+            ("2022-12-27", "Family Day (observed)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-21", "Father Lini Day"),
+            ("2022-03-05", "Custom Chief's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (observed)"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-24", "Children's Day"),
+            ("2022-07-25", "Children's Day (observed)"),
+            ("2022-07-30", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-10-05", "Constitution Day"),
+            ("2022-10-13", "Election Day"),
+            ("2022-11-29", "Unity Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Family Day"),
+            ("2022-12-27", "Family Day (observed)"),
+        )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2022-01-01", "Nouvel An"),
+            ("2022-02-21", "Journée du Père Lini"),
+            ("2022-03-05", "Fête des Chefs coutumiers"),
+            ("2022-04-15", "Vendredi saint"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-02", "Fête du Travail (observé)"),
+            ("2022-05-26", "Ascension"),
+            ("2022-07-24", "Journée Mondiale des Enfants"),
+            ("2022-07-25", "Journée Mondiale des Enfants (observé)"),
+            ("2022-07-30", "Jour de l'Indépendance"),
+            ("2022-08-15", "Fête de l'Assomption"),
+            ("2022-10-05", "Fête de la Constitution"),
+            ("2022-10-13", "Jour des élections"),
+            ("2022-11-29", "Fête de l'Unité"),
+            ("2022-12-25", "Fête de Noël"),
+            ("2022-12-26", "Fête de Famille"),
+            ("2022-12-27", "Fête de Famille (observé)"),
+        )

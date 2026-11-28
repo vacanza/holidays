@@ -1,0 +1,101 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Vanuatu holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 13:41+0000\n"
+"PO-Revision-Date: 2026-11-28 13:44+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_VU\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (observé)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Nouvel An"
+
+#. Father Lini Day.
+msgid "Father Lini Day"
+msgstr "Journée du Père Lini"
+
+#. Custom Chief's Day.
+msgid "Custom Chief's Day"
+msgstr "Fête des Chefs coutumiers"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Vendredi saint"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "Lundi de Pâques"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "Fête du Travail"
+
+#. Ascension Day.
+msgid "Ascension Day"
+msgstr "Ascension"
+
+#. Children's Day.
+msgid "Children's Day"
+msgstr "Journée Mondiale des Enfants"
+
+#. Independence Day.
+msgid "Independence Day"
+msgstr "Jour de l'Indépendance"
+
+#. Assumption Day.
+msgid "Assumption Day"
+msgstr "Fête de l'Assomption"
+
+#. Constitution Day.
+msgid "Constitution Day"
+msgstr "Fête de la Constitution"
+
+#. Unity Day.
+msgid "Unity Day"
+msgstr "Fête de l'Unité"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Fête de Noël"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "Fête de Famille"
+
+#. Election Day.
+msgid "Election Day"
+msgstr "Jour des élections"
+
+#. 40th Independence Anniversary.
+msgid "40th Independence Anniversary"
+msgstr "40e anniversaire de l'Indépendance"
+
+#. Referendum Day.
+msgid "Referendum Day"
+msgstr "Jour du référendum"

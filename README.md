@@ -1854,7 +1854,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Vanuatu</td>
 <td>VU</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_VU</strong>, fr</td>
 <td></td>
 </tr>
 <tr>
