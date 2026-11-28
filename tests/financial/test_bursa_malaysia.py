@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.countries.malaysia import Malaysia
@@ -32,13 +33,50 @@ class TestBursaMalaysia(CommonFinancialTests, TestCase):
             self.assertLess(dt.weekday(), 5, f"{dt} is a weekend holiday")
 
     def test_matches_kuala_lumpur_weekdays(self):
-        for year in (2024, 2025, 2026):
+        # 2025/2026 have no Awal Muharam Sunday->Monday gap vs Malaysia.
+        for year in (2025, 2026):
             kl_weekdays = {
                 dt: name
                 for dt, name in Malaysia(subdiv="14", years=year).items()
                 if dt.weekday() < 5
             }
             self.assertEqual(dict(BursaMalaysia(years=year)), kl_weekdays)
+
+    def test_awal_muharam_observed(self):
+        name = "Cuti Awal Muharam"
+        self.assertHolidayName(name, "2024-07-08")
+        self.assertNoHoliday("2024-07-07")
+
+        non_observed = BursaMalaysia(years=2024, observed=False)
+        self.assertNotIn(date(2024, 7, 7), non_observed)
+        self.assertNotIn(date(2024, 7, 8), non_observed)
+        self.assertFalse(non_observed.get_named(name, lookup="exact"))
+
+    def test_agong_installation_2007(self):
+        self.assertHolidayName(
+            "Hari Pertabalan Yang di-Pertuan Agong ke-13",
+            "2007-04-26",
+        )
+
+    def test_2024(self):
+        self.assertHolidaysInYear(
+            2024,
+            ("2024-01-01", "Tahun Baharu"),
+            ("2024-01-25", "Hari Thaipusam"),
+            ("2024-02-01", "Hari Wilayah Persekutuan"),
+            ("2024-02-12", "Cuti Tahun Baharu Cina (Hari Kedua)"),
+            ("2024-03-28", "Hari Nuzul Al-Quran"),
+            ("2024-04-10", "Hari Raya Puasa"),
+            ("2024-04-11", "Hari Raya Puasa (Hari Kedua)"),
+            ("2024-05-01", "Hari Pekerja"),
+            ("2024-05-22", "Hari Wesak"),
+            ("2024-06-03", "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong"),
+            ("2024-06-17", "Hari Raya Qurban"),
+            ("2024-07-08", "Cuti Awal Muharam"),
+            ("2024-09-16", "Hari Keputeraan Nabi Muhammad S.A.W.; Hari Malaysia"),
+            ("2024-10-31", "Hari Deepavali"),
+            ("2024-12-25", "Hari Krismas"),
+        )
 
     def test_2025(self):
         self.assertHolidaysInYear(
@@ -96,6 +134,7 @@ class TestBursaMalaysia(CommonFinancialTests, TestCase):
             ("2024-05-22", "Hari Wesak"),
             ("2024-06-03", "Hari Keputeraan Rasmi Seri Paduka Baginda Yang di-Pertuan Agong"),
             ("2024-06-17", "Hari Raya Qurban"),
+            ("2024-07-08", "Cuti Awal Muharam"),
             ("2024-09-16", "Hari Keputeraan Nabi Muhammad S.A.W.; Hari Malaysia"),
             ("2024-10-31", "Hari Deepavali"),
             ("2024-12-25", "Hari Krismas"),
@@ -115,6 +154,7 @@ class TestBursaMalaysia(CommonFinancialTests, TestCase):
             ("2024-05-22", "Vesak Day"),
             ("2024-06-03", "Birthday of HM Yang di-Pertuan Agong"),
             ("2024-06-17", "Eid al-Adha"),
+            ("2024-07-08", "Islamic New Year (observed)"),
             ("2024-09-16", "Malaysia Day; Prophet Muhammad's Birthday"),
             ("2024-10-31", "Diwali"),
             ("2024-12-25", "Christmas Day"),
@@ -134,6 +174,7 @@ class TestBursaMalaysia(CommonFinancialTests, TestCase):
             ("2024-05-22", "วันวิสาขบูชา"),
             ("2024-06-03", "วันคล้ายวันพระราชสมภพสมเด็จพระราชาธิบดีแห่งมาเลเซีย"),
             ("2024-06-17", "วันอีดิ้ลอัฎฮา"),
+            ("2024-07-08", "ชดเชยวันขึ้นปีใหม่อิสลาม"),
             ("2024-09-16", "วันเฉลิมฉลองการจัดตั้งสหพันธรัฐมาเลเซีย; วันเมาลิดนบี"),
             ("2024-10-31", "วันดีปาวลี"),
             ("2024-12-25", "วันคริสต์มาส"),
