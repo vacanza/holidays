@@ -31,9 +31,14 @@ def _normalize_arguments(cls, value):
         return {cls(value)}
 
     try:
-        return {cls(v) for v in value}
+        items = tuple(value)
     except TypeError:  # non-iterable
-        return {cls(value)}
+        items = (value,)
+
+    if cls is int and any(isinstance(v, bool) for v in items):
+        raise TypeError("years must be int, an iterable of int, or None; got bool")
+
+    return {cls(v) for v in items}
 
 
 def _normalize_tuple(value):

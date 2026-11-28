@@ -54,6 +54,10 @@ class TestHelpers(TestCase):
         for input, expected in input_expected_pairs:
             self.assertEqual(_normalize_arguments(*input), expected)
 
+        for bad_value in (False, True, [False], (2024, True)):
+            with self.assertRaises(TypeError):
+                _normalize_arguments(int, bad_value)
+
     def test_normalize_tuple(self):
         input_expected_pairs = (
             ((), ()),
