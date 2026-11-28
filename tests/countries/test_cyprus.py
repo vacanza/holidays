@@ -244,7 +244,7 @@ class TestCyprus(CommonCountryTests, TestCase):
             ("2023-04-18", "Paskalya Salısı"),
             ("2023-05-01", "İşçi Bayramı"),
             ("2023-06-05", "Kutsal Ruh Pazartesisi"),
-            ("2023-08-15", "Meryem Ana'nın Göğe Yükselişi"),
+            ("2023-08-15", "Meryem Ana'nın Uykuya Dalışı"),
             ("2023-10-01", "Kıbrıs Bağımsızlık Günü"),
             ("2023-10-28", "Ohi Günü"),
             ("2023-12-24", "Noel Arifesi"),
