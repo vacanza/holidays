@@ -112,9 +112,9 @@ class Brunei(
     # %s (estimated).
     estimated_label = tr("%s (anggaran)")
     # %s (observed).
-    observed_label = tr("%s (diperhatikan)")
+    observed_label = tr("%s (sebagai ganti)")
     # %s (observed, estimated).
-    observed_estimated_label = tr("%s (diperhatikan, anggaran)")
+    observed_estimated_label = tr("%s (sebagai ganti, anggaran)")
     supported_languages = ("en_US", "ms", "th")
     weekend = {FRI, SUN}
     # Available post-Independence from 1984 afterwards.

@@ -49,7 +49,6 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
     market = "XBOG"
     parent_entity = Colombia
     supported_categories = (HALF_DAY, PUBLIC)
-    supported_languages = ("en_US", "es")  # type: ignore[assignment]
     start_year = 2008
 
     def __init__(self, *args, **kwargs):
@@ -64,6 +63,10 @@ class BolsaDeValoresDeColombia(Colombia, StaticHolidays):
             tr("Día no bursátil de fin de año"),
             self._get_next_workday(self._next_year_new_years_day, -1),
         )
+
+        for dt in tuple(self.keys()):
+            if self._is_weekend(dt):
+                self.pop(dt)
 
 
 class XBOG(BolsaDeValoresDeColombia):

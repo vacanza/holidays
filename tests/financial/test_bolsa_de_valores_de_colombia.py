@@ -58,6 +58,26 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
         )
         self.assertNoHalfDayHoliday("2015-12-24", "2024-12-24")
 
+    def test_2022(self):
+        self.assertHolidaysInYear(
+            2022,
+            ("2022-01-10", "Día de los Reyes Magos (observado)"),
+            ("2022-03-21", "Día de San José (observado)"),
+            ("2022-04-14", "Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-30", "Ascensión del señor (observado)"),
+            ("2022-06-20", "Corpus Christi (observado)"),
+            ("2022-06-27", "Sagrado Corazón (observado)"),
+            ("2022-07-04", "San Pedro y San Pablo (observado)"),
+            ("2022-07-20", "Día de la Independencia"),
+            ("2022-08-15", "La Asunción"),
+            ("2022-10-17", "Día de la Raza (observado)"),
+            ("2022-11-07", "Día de Todos los Santos (observado)"),
+            ("2022-11-14", "Independencia de Cartagena (observado)"),
+            ("2022-12-08", "La Inmaculada Concepción"),
+            ("2022-12-30", "Día no bursátil de fin de año"),
+        )
+
     def test_2026(self):
         self.assertHolidaysInYear(
             2026,
@@ -94,7 +114,6 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
             ("2025-06-02", "Ascensión del señor (observado)"),
             ("2025-06-23", "Corpus Christi (observado)"),
             ("2025-06-30", "Sagrado Corazón (observado); San Pedro y San Pablo (observado)"),
-            ("2025-07-20", "Día de la Independencia"),
             ("2025-08-07", "Batalla de Boyacá"),
             ("2025-08-18", "La Asunción (observado)"),
             ("2025-10-13", "Día de la Raza (observado)"),
@@ -118,7 +137,6 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
             ("2025-06-02", "Ascension Day (observed)"),
             ("2025-06-23", "Corpus Christi (observed)"),
             ("2025-06-30", "Sacred Heart (observed); Saint Peter and Saint Paul's Day (observed)"),
-            ("2025-07-20", "Independence Day"),
             ("2025-08-07", "Battle of Boyacá"),
             ("2025-08-18", "Assumption Day (observed)"),
             ("2025-10-13", "Columbus Day (observed)"),
@@ -128,4 +146,30 @@ class TestBolsaDeValoresDeColombia(CommonFinancialTests, TestCase):
             ("2025-12-24", "Christmas Eve (markets close at 1:00pm)"),
             ("2025-12-25", "Christmas Day"),
             ("2025-12-31", "Year-end market holiday"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2025-01-01", "Новий рік"),
+            ("2025-01-06", "Богоявлення"),
+            ("2025-03-24", "День Святого Йосипа (вихідний)"),
+            ("2025-04-17", "Великий четвер"),
+            ("2025-04-18", "Страсна пʼятниця"),
+            ("2025-05-01", "День праці"),
+            ("2025-06-02", "Вознесіння Господнє (вихідний)"),
+            ("2025-06-23", "Свято Тіла і Крові Христових (вихідний)"),
+            (
+                "2025-06-30",
+                "День Святих Петра і Павла (вихідний); Свято Найсвятішого Серця Ісуса (вихідний)",
+            ),
+            ("2025-08-07", "Річниця перемоги при Бояка"),
+            ("2025-08-18", "Внебовзяття Пресвятої Діви Марії (вихідний)"),
+            ("2025-10-13", "День Колумба (вихідний)"),
+            ("2025-11-03", "День усіх святих (вихідний)"),
+            ("2025-11-17", "День незалежності Картахени (вихідний)"),
+            ("2025-12-08", "Непорочне зачаття Діви Марії"),
+            ("2025-12-24", "Святий вечір (закриття ринків з 13:00)"),
+            ("2025-12-25", "Різдво Христове"),
+            ("2025-12-31", "Біржовий вихідний наприкінці року"),
         )

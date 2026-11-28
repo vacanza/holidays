@@ -1,0 +1,92 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Madagascar holidays fr localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-24 19:31+0530\n"
+"PO-Revision-Date: 2026-11-24 19:31+0530\n"
+"Last-Translator: Yash Goyal <yg364550@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: mg\n"
+
+#. New Year's Day.
+msgid "Taom-baovao"
+msgstr "Jour de l'an"
+
+#. Women's Day.
+msgid "Fetin'ny vehivavy"
+msgstr "Journée de la femme"
+
+#. Martyrs' Day.
+msgid "Fetin'ny mahery fo"
+msgstr "Journée des Martyrs"
+
+#. Easter Sunday.
+msgid "Fetin'ny paska"
+msgstr "Dimanche de Pâques"
+
+#. Easter Monday.
+msgid "Alatsinain'ny paska"
+msgstr "Lundi de Pâques"
+
+#. Labor Day.
+msgid "Fetin'ny asa"
+msgstr "Fête du Travail"
+
+#. Ascension Day.
+msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
+msgstr "Ascension"
+
+#. Pentecost.
+msgid "Pentekosta"
+msgstr "Pentecôte"
+
+#. Pentecost Monday.
+msgid "Alatsinain'ny pentekosta"
+msgstr "Lundi de Pentecôte"
+
+#. Mother's Day.
+msgid "Fetin'ny reny"
+msgstr "Fête des Mères"
+
+#. Father's Day.
+msgid "Fetin'ny ray"
+msgstr "Fête des Pères"
+
+#. Independence Day.
+msgid "Fetin'ny fahaleovantena"
+msgstr "Jour de l'indépendance"
+
+#. Assumption Day.
+msgid "Fiakaran'ny Masina Maria tany an-danitra"
+msgstr "Assomption"
+
+#. All Saints' Day.
+msgid "Fetin'ny olo-masina"
+msgstr "Toussaint"
+
+#. Republic Day.
+msgid "Fetin'ny Repoblika"
+msgstr "Jour de la République"
+
+#. Christmas Day.
+msgid "Fetin'ny noely"
+msgstr "Noël"

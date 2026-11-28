@@ -46,7 +46,7 @@ class Kazakhstan(
     observed_label = tr("%s (қайта белгіленген демалыс)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (қайта белгіленген демалыс, бағаланған)")
-    supported_languages = ("en_US", "kk", "uk")
+    supported_languages = ("en_US", "kk", "ru_KZ", "uk")
     # Kazakhstan declared its sovereignty on 25 October 1990.
     start_year = 1991
 
@@ -130,7 +130,7 @@ class Kazakhstan(
             )
 
         # Independence Day.
-        name = tr("Тəуелсіздік күні")
+        name = tr("Тәуелсіздік күні")
         dts_observed.add(self._add_holiday_dec_16(name))
         if 2002 <= self._year <= 2021:
             dts_observed.add(self._add_holiday_dec_17(name))

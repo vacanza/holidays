@@ -190,6 +190,19 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             ("2024-12-31", "Nochevieja (los mercados cierran a las 14:00 CET)"),
         )
 
+    def test_l10n_ca(self):
+        self.assertLocalizedHolidays(
+            "ca",
+            ("2024-01-01", "Cap d'Any"),
+            ("2024-03-29", "Divendres Sant"),
+            ("2024-04-01", "Dilluns de Pasqua"),
+            ("2024-05-01", "Dia del Treball"),
+            ("2024-12-24", "Vigília de Nadal (els mercats tanquen a les 14:00 CET)"),
+            ("2024-12-25", "Nadal"),
+            ("2024-12-26", "Sant Esteve"),
+            ("2024-12-31", "Vigília de Cap d'Any (els mercats tanquen a les 14:00 CET)"),
+        )
+
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
@@ -201,4 +214,30 @@ class TestBolsasYMercadosEspanoles(CommonFinancialTests, TestCase):
             ("2024-12-25", "Christmas Day"),
             ("2024-12-26", "Saint Stephen's Day"),
             ("2024-12-31", "New Year's Eve (markets close at 14:00 CET)"),
+        )
+
+    def test_l10n_th(self):
+        self.assertLocalizedHolidays(
+            "th",
+            ("2024-01-01", "วันขึ้นปีใหม่"),
+            ("2024-03-29", "วันศุกร์ประเสริฐ"),
+            ("2024-04-01", "วันจันทร์อีสเตอร์"),
+            ("2024-05-01", "วันแรงงาน"),
+            ("2024-12-24", "วันคริสต์มาสอีฟ (ตลาดปิดเวลา 14:00 น. CET)"),
+            ("2024-12-25", "วันคริสต์มาส"),
+            ("2024-12-26", "วันสมโภชนักบุญสเตเฟน"),
+            ("2024-12-31", "วันสิ้นปี (ตลาดปิดเวลา 14:00 น. CET)"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2024-01-01", "Новий рік"),
+            ("2024-03-29", "Страсна пʼятниця"),
+            ("2024-04-01", "Великодній понеділок"),
+            ("2024-05-01", "День праці"),
+            ("2024-12-24", "Святий вечір (закриття ринків о 14:00 CET)"),
+            ("2024-12-25", "Різдво Христове"),
+            ("2024-12-26", "День Святого Стефана"),
+            ("2024-12-31", "Переддень Нового року (закриття ринків о 14:00 CET)"),
         )

@@ -233,3 +233,45 @@ class TestEquatorialGuinea(CommonCountryTests, TestCase):
             ("2025-12-08", "Immaculate Conception"),
             ("2025-12-25", "Christmas Day"),
         )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2025-01-01", "Jour de l'an"),
+            ("2025-03-08", "Journée internationale des femmes"),
+            ("2025-04-17", "Jeudi saint"),
+            ("2025-04-18", "Vendredi saint"),
+            ("2025-05-01", "Journée internationale du Travail"),
+            ("2025-05-25", "Journée de la libération africaine"),
+            ("2025-06-05", "Anniversaire de Son Excellence le Président de la République"),
+            ("2025-06-13", "Fête patronale d'Annobón"),
+            ("2025-06-19", "Fête-Dieu"),
+            ("2025-08-03", "Journée des Forces armées"),
+            ("2025-08-04", "Journée des Forces armées (observé)"),
+            ("2025-08-15", "Jour de la Constitution"),
+            ("2025-10-12", "Jour de l'Indépendance nationale"),
+            ("2025-10-13", "Jour de l'Indépendance nationale (observé)"),
+            ("2025-12-08", "Fête de l'Immaculée Conception de Marie"),
+            ("2025-12-25", "Jour de Noël"),
+        )
+
+    def test_l10n_pt_gq(self):
+        self.assertLocalizedHolidays(
+            "pt_GQ",
+            ("2025-01-01", "Ano Novo"),
+            ("2025-03-08", "Dia Internacional da Mulher"),
+            ("2025-04-17", "Quinta-feira Santa"),
+            ("2025-04-18", "Sexta-feira Santa"),
+            ("2025-05-01", "Dia Internacional do Trabalhador"),
+            ("2025-05-25", "Dia da Libertação Africana"),
+            ("2025-06-05", "Natalício de Sua Excelência o Presidente da República"),
+            ("2025-06-13", "Festa Patronal de Annobón"),
+            ("2025-06-19", "Corpo de Deus"),
+            ("2025-08-03", "Dia das Forças Armadas"),
+            ("2025-08-04", "Dia das Forças Armadas (observado)"),
+            ("2025-08-15", "Dia da Constituição"),
+            ("2025-10-12", "Dia da Independência Nacional"),
+            ("2025-10-13", "Dia da Independência Nacional (observado)"),
+            ("2025-12-08", "Festividade da Imaculada Conceição de Maria"),
+            ("2025-12-25", "Dia de Natal"),
+        )

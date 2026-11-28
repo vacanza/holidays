@@ -38,6 +38,12 @@ class GermanyStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         StaticHolidays.__init__(self, GermanyStockExchangeStaticHolidays)
         super().__init__(*args, **kwargs)
 
+    def _add_holiday(self, name, *args):
+        if self._is_weekend(*args):
+            return None
+
+        return super()._add_holiday(name, *args)
+
     def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))

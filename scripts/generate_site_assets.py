@@ -144,6 +144,7 @@ LANGUAGES = {
     "en_FM": "English (Micronesia)",
     "en_GB": "English (United Kingdom)",
     "en_GD": "English (Grenada)",
+    "en_GH": "English (Ghana)",
     "en_GM": "English (Gambia)",
     "en_GS": "English (South Georgia & South Sandwich Islands)",
     "en_GY": "English (Guyana)",
@@ -160,6 +161,7 @@ LANGUAGES = {
     "en_NG": "English (Nigeria)",
     "en_NR": "English (Nauru)",
     "en_NU": "English (Niue)",
+    "en_NZ": "English (New Zealand)",
     "en_PH": "English (Philippines)",
     "en_PK": "English (Pakistan)",
     "en_SC": "English (Seychelles)",
@@ -172,6 +174,8 @@ LANGUAGES = {
     "en_US": "English (United States)",
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",
+    "en_ZA": "English (South Africa)",
+    "en_ZW": "English (Zimbabwe)",
     # --- Persian / Pashto Locales ---
     "fa_AF": "Persian (Afghanistan)",
     "fa_IR": "Persian (Iran)",
@@ -197,6 +201,7 @@ LANGUAGES = {
     "pt_AO": "Portuguese (Angola)",
     "pt_BR": "Portuguese (Brazil)",
     "pt_CV": "Portuguese (Cabo Verde)",
+    "pt_GQ": "Portuguese (Equatorial Guinea)",
     "pt_GW": "Portuguese (Guinea-Bissau)",
     "pt_MO": "Portuguese (Macau)",
     "pt_MZ": "Portuguese (Mozambique)",
@@ -205,6 +210,7 @@ LANGUAGES = {
     "pt_TL": "Portuguese (Timor Leste)",
     # --- Russian Locales ---
     "ru_KG": "Russian (Kyrgyzstan)",
+    "ru_KZ": "Russian (Kazakhstan)",
     # --- Sinhala / Tamil Locales ---
     "si_LK": "Sinhala (Sri Lanka)",
     "ta_LK": "Tamil (Sri Lanka)",
@@ -226,7 +232,7 @@ def write_assets(h_obj: HolidayBase, filename_base: str, out_dir: Path) -> None:
         return
 
     try:
-        ICalExporter(h_obj).save_ics(out_dir / f"{filename_base}.ics")
+        ICalExporter(h_obj, refresh_interval_weeks=1).save_ics(out_dir / f"{filename_base}.ics")
 
         # Inline JSON generation.
         json_data = json.dumps(

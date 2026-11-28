@@ -16,7 +16,8 @@ from unittest import TestCase
 
 from holidays.calendars.gregorian import JAN, FEB, OCT, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER, OPTIONAL, PUBLIC, SCHOOL
-from holidays.countries import JP, UA, US
+from holidays.countries import HK, JP, NO, SA, SJ, UA, US
+from holidays.financial import XSAU
 from holidays.groups.christian import ChristianHolidays
 from holidays.groups.custom import StaticHolidays
 from holidays.holiday_base import HolidayBase
@@ -226,6 +227,17 @@ class TestArgs(TestCase):
             },
         )
 
+    def test_supported_options(self):
+        self.assertEqual(HolidayBase.get_supported_options(), {})
+        self.assertEqual(CountryStub1.get_supported_options(), {})
+        self.assertEqual(NO.get_supported_options(), {"include_sundays": False})
+        # Inherited from the parent entity.
+        self.assertEqual(SJ.get_supported_options(), {"include_sundays": False})
+        # Internal `IslamicHolidays` arguments are not included.
+        self.assertEqual(SA.get_supported_options(), {"islamic_show_estimated": False})
+        self.assertEqual(XSAU.get_supported_options(), {"islamic_show_estimated": False})
+        self.assertEqual(HK.get_supported_options(), {"preferred_discretionary_holidays": None})
+
     def test_years(self):
         hb = HolidayBase()
         self.assertSetEqual(hb.years, set())
@@ -310,6 +322,81 @@ class TestCategories(TestCase):
                 self.assertEqual(ccc.categories, set(categories), category)
                 for dt in categories[category]:
                     self.assertIn(dt, ccc)
+
+
+class TestReassignment(TestCase):
+    class CustomClass(HolidayBase):
+        country = "RC"
+        supported_categories = (PUBLIC, SCHOOL)
+
+        def _populate_public_holidays(self):
+            self._add_holiday_jan_1("Public Holiday")
+
+        def _populate_school_holidays(self):
+            self._add_holiday_may_1("School Holiday")
+
+    def test_categories(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertSetEqual(hb.categories, {PUBLIC})
+
+        # A string is normalized to a set, as in the constructor.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.categories, {SCHOOL})
+        self.assertIn("2024-05-01", hb)
+        self.assertNotIn("2024-01-01", hb)
+
+        # An iterable is accepted, as in the constructor.
+        hb.categories = (PUBLIC, SCHOOL)
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2024-05-01", hb)
+
+        # Unsupported categories are rejected and the object is left untouched.
+        self.assertRaises(ValueError, lambda: setattr(hb, "categories", "UNSUPPORTED"))
+        self.assertSetEqual(hb.categories, {PUBLIC, SCHOOL})
+        self.assertIn("2024-01-01", hb)
+
+    def test_years(self):
+        hb = TestReassignment.CustomClass(years=2024)
+        self.assertIn("2024-01-01", hb)
+
+        # A single year is accepted, as in the constructor, and the holidays are
+        # re-populated for that year only.
+        hb.years = 2025
+        self.assertSetEqual(hb.years, {2025})
+        self.assertEqual(len(hb), 1)
+        self.assertIn("2025-01-01", hb)
+
+        # An iterable is normalized to a set.
+        hb.years = (2024, 2026)
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-01-01", hb)
+        self.assertIn("2026-01-01", hb)
+
+        # An int assignment does not break a later re-population.
+        hb.categories = SCHOOL
+        self.assertSetEqual(hb.years, {2024, 2026})
+        self.assertIn("2024-05-01", hb)
+        self.assertIn("2026-05-01", hb)
+
+    def test_years_on_empty_object(self):
+        # An object without holidays yet is populated when years are assigned,
+        # as the constructor would.
+        hb = TestReassignment.CustomClass()
+        self.assertEqual(len(hb), 0)
+
+        hb.years = 2024
+        self.assertSetEqual(hb.years, {2024})
+        self.assertIn("2024-01-01", hb)
+
+    def test_sum(self):
+        hs = TestReassignment.CustomClass(years=2024) + TestReassignment.CustomClass(years=2024)
+
+        # `HolidaySum._populate` re-populates from its operands, so the assigned
+        # years are added to the ones they already cover.
+        hs.years = 2025
+        self.assertIn("2024-01-01", hs)
+        self.assertIn("2025-01-01", hs)
 
 
 class TestDeprecationWarnings(TestCase):
@@ -524,6 +611,23 @@ class TestGetNamed(TestCase):
             hb.get_named("independence day", lookup="istartswith"), [date(2022, 7, 4)]
         )
         self.assertSetEqual(hb.years, {2022})
+
+    def test_istartswith_unicode_lowercase_expansion(self):
+        hb = HolidayBase()
+        hb[date(2026, 5, 1)] = "İşçi ve Emekçiler Bayramı"
+        for name in ("i", "i\u0307", "i\u0307ş", "İş"):
+            with self.subTest(name=name):
+                self.assertListEqual(hb.get_named(name, lookup="istartswith"), [date(2026, 5, 1)])
+        self.assertListEqual(hb.get_named("ix", lookup="istartswith"), [])
+
+    def test_istartswith_contextual_lowercase(self):
+        hb = HolidayBase()
+        dt = date(2026, 1, 1)
+        for name, prefix in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name):
+                hb[dt] = name
+                self.assertListEqual(hb.get_named(prefix, lookup="istartswith"), [dt])
+                del hb[dt]
 
     def test_startswith(self):
         hb = CountryStub1(years=2022)
@@ -1007,6 +1111,46 @@ class TestPopNamed(TestCase):
         self.assertEqual(len(removed_dates), 2)
         self.assertNotIn("2022-12-25", self.hb)
         self.assertNotIn("2022-12-26", self.hb)
+
+    def test_istartswith_unicode_lowercase_expansion(self):
+        dt = date(2026, 5, 1)
+        for query in ("i", "i\u0307", "i\u0307ş", "İş"):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(query=query, remaining=remaining):
+                    hb = HolidayBase()
+                    hb[dt] = "İşçi"
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
+
+    def test_istartswith_contextual_lowercase(self):
+        dt = date(2026, 5, 1)
+        for name, query in (("ΟΣΑ", "ΟΣ"), ("İΣΑ", "İΣ")):
+            with self.subTest(name=name, query=query):
+                hb = HolidayBase()
+                hb[dt] = name
+                self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                self.assertNotIn(dt, hb)
+
+    def test_multiple_matching_names(self):
+        dt = date(2026, 5, 1)
+        for names, query in ((("İşçi", "İzin"), "i"), (("Holiday A", "Holiday B"), "h")):
+            for remaining in (None, "Other holiday"):
+                with self.subTest(names=names, remaining=remaining):
+                    hb = HolidayBase()
+                    for name in names:
+                        hb[dt] = name
+                    if remaining:
+                        hb[dt] = remaining
+                    self.assertEqual(hb.pop_named(query, lookup="istartswith"), [dt])
+                    if remaining:
+                        self.assertEqual(hb[dt], remaining)
+                    else:
+                        self.assertNotIn(dt, hb)
 
 
 class TestRepr(TestCase):
@@ -1538,6 +1682,15 @@ class TestClosestHoliday(TestCase):
                 (date(self.current_year, 5, 1), "Custom May 1st Holiday"),
             ],
         )
+
+    def test_get_closest_holiday_timestamp_zero(self):
+        us = US(years=1970)
+        next_holiday = (date(1970, 2, 22), "Washington's Birthday")
+        prev_holiday = (date(1969, 12, 25), "Christmas Day")
+        self.assertEqual(us.get_closest_holiday(0), next_holiday)
+        self.assertEqual(us.get_closest_holiday(0.0), next_holiday)
+        self.assertEqual(us.get_closest_holiday(0, direction="backward"), prev_holiday)
+        self.assertEqual(us.get_closest_holiday(0.0, direction="backward"), prev_holiday)
 
     def test_get_closest_holiday_corner_cases(self):
         us = US()

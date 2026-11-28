@@ -390,6 +390,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-05-13",
             "2022-05-02",
             "2023-04-22",
+            "2027-03-10",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1953, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1953))
@@ -404,6 +405,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-05-14",
             "2022-05-03",
             "2023-04-23",
+            "2027-03-11",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1953, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1953))
@@ -418,6 +420,7 @@ class TestIndonesia(CommonCountryTests, TestCase):
             "2021-07-20",
             "2022-07-10",
             "2023-06-29",
+            "2027-05-17",
         )
         self.assertIslamicNoEstimatedHolidayName(name, range(1953, self.end_year))
         self.assertNoIslamicNoEstimatedHolidayName(name, range(self.start_year, 1953))

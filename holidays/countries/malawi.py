@@ -10,7 +10,8 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import SEP
+from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
 from holidays.observed_holiday_base import (
     ObservedHolidayBase,
     SAT_SUN_TO_NEXT_MON,
@@ -18,7 +19,7 @@ from holidays.observed_holiday_base import (
 )
 
 
-class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
+class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, StaticHolidays):
     """Malawi holidays.
 
     References:
@@ -33,6 +34,7 @@ class Malawi(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        StaticHolidays.__init__(self, MalawiStaticHolidays)
         kwargs.setdefault("observed_rule", SAT_SUN_TO_NEXT_MON)
         super().__init__(*args, **kwargs)
 
@@ -66,3 +68,16 @@ class MW(Malawi):
 
 class MWI(Malawi):
     pass
+
+
+class MalawiStaticHolidays:
+    """Malawi special holidays.
+
+    References:
+        * [Presidential, Parliamentary and Local Government Elections Act, 2023](https://web.archive.org/web/20260517204559/https://malawilii.org/akn/mw/act/2023/10/eng@2025-09-05)
+        * [2025 General Election Day](https://web.archive.org/web/20260417190724/https://www.maraviexpress.com/september-16-is-public-holiday-for-all-to-vote/)
+    """
+
+    special_public_holidays = {
+        2025: (SEP, 16, "General Election Day"),
+    }

@@ -77,7 +77,7 @@ class Namibia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Sta
         self._add_observed(self._add_holiday_aug_26(tr("Heroes' Day")))
 
         self._add_observed(
-            self._add_holiday_sep_10(
+            self._add_holiday_dec_10(
                 # Day of the Namibian Women and International Human Rights Day.
                 tr("Day of the Namibian Women and International Human Rights Day")
                 if self._year >= 2005
@@ -139,7 +139,7 @@ class NamibiaStaticHolidays:
         ),
         # Public Holiday.
         1995: (OCT, 24, tr("Public Holiday")),
-        # Day of Mourning for Honourable Moses Garoeb.
+        # Day of Mourning for Honorable Moses Garoeb.
         1997: (SEP, 26, tr("Day of Mourning for Honourable Moses Garoeb")),
         1998: (NOV, 30, regional_election_day),
         1999: (
