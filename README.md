@@ -2147,7 +2147,7 @@ code when available. The following financial markets are available:
 <td>Saudi Exchange</td>
 <td>XSAU</td>
 <td>Saudi Exchange (Tadawul) market holidays</td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, mr, ur_PK</td>
 <td></td>
 </tr>
 <tr>
