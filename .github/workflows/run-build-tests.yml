@@ -92,10 +92,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        # Do not use *-latest. Track the latest row in run-code-tests.yml
+        # so a GitHub image rollover cannot change this matrix on its own.
+        # One current image per OS family keeps the publish matrix the same size.
+        # latest: macos-26, ubuntu-26.04, windows-2025
         os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+          - macos-26
+          - ubuntu-26.04
+          - windows-2025
         dist:
           - name: wheel
             artifact: dist/*.whl
