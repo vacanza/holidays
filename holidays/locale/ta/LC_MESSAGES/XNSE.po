@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2025-08-21 16:22+0000\n"
 "PO-Revision-Date: 2026-11-16 21:00+0530\n"
@@ -42,7 +42,7 @@ msgstr "புனித வெள்ளி"
 
 #. Dr. B. R. Ambedkar Jayanti.
 msgid "Dr. Baba Saheb Ambedkar Jayanti"
-msgstr "டாக்டர் பாபாசாகேப் அம்பேத்கர் ஜெயந்தி"
+msgstr "டாக்டர் பி. ஆர். அம்பேத்கர் ஜெயந்தி"
 
 #. May Day.
 msgid "May Day"
@@ -50,7 +50,7 @@ msgstr "மே தினம்"
 
 #. Maharashtra Day.
 msgid "Maharashtra Day"
-msgstr "மகாராஷ்டிர தினம்"
+msgstr "மகாராஷ்டிரா நாள்"
 
 #. Independence Day.
 msgid "Independence Day"
@@ -62,7 +62,7 @@ msgstr "மகாத்மா காந்தி ஜெயந்தி"
 
 #. Christmas Day.
 msgid "Christmas Day"
-msgstr "கிறிஸ்துமஸ் தினம்"
+msgstr "கிறிஸ்துமஸ்"
 
 #. Maha Shivaratri.
 msgid "Maha Shivaratri"
@@ -94,7 +94,7 @@ msgstr "தீபாவளி லட்சுமி பூஜை"
 
 #. Diwali Balipratipada.
 msgid "Diwali Balipratipada"
-msgstr "தீபாவளி பலி பிரதிபதா"
+msgstr "தீபாவளி (பலி பிரதிபதா)"
 
 #. Guru Nanak Jayanti.
 msgid "Guru Nanak Jayanti"
@@ -102,7 +102,7 @@ msgstr "குரு நானக் ஜெயந்தி"
 
 #. Bhai Dooj.
 msgid "Bhau Bhij"
-msgstr "பௌ-பீஜ்"
+msgstr "பாய் தூஜ்"
 
 #. Buddha Purnima.
 msgid "Buddha Purnima"
@@ -122,8 +122,8 @@ msgstr "ஈத் உல்-பித்ர்"
 
 #. Eid al-Adha.
 msgid "Bakri Id"
-msgstr "பக்ரீத்"
+msgstr "ஈதுல் ஸுஹா (பக்ரீத்)"
 
 #. New Year's Day.
 msgid "New Year"
-msgstr "புத்தாண்டு"
+msgstr "புத்தாண்டு தினம்"
