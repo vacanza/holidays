@@ -43,6 +43,7 @@ LANGUAGES = {
     "az": "Azerbaijani",
     "be": "Belarusian",
     "bg": "Bulgarian",
+    "bi": "Bislama",
     "bn": "Bengali",
     "bs": "Bosnian",
     "ca": "Catalan",
@@ -174,6 +175,7 @@ LANGUAGES = {
     "en_US": "English (United States)",
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",
+    "en_VU": "English (Vanuatu)",
     "en_ZA": "English (South Africa)",
     "en_ZW": "English (Zimbabwe)",
     # --- Persian / Pashto Locales ---
