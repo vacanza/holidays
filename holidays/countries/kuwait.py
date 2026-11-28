@@ -62,7 +62,7 @@ class Kuwait(HolidayBase, InternationalHolidays, IslamicHolidays, StaticHolidays
     default_language = "ar"
     # %s (estimated).
     estimated_label = tr("%s (تقديري)")
-    supported_languages = ("ar", "en_US", "ur_PK")
+    supported_languages = ("ar", "en_US", "hi", "ur_PK")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
