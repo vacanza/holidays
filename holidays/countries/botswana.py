@@ -47,11 +47,9 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._add_observed(
-            # New Year's Day.
-            self._add_new_years_day(tr("New Year's Day")),
-            rule=SUN_TO_NEXT_TUE,
-        )
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")), rule=SUN_TO_NEXT_TUE)
+
         # New Year's Day Holiday.
         self._add_observed(self._add_new_years_day_two(tr("New Year's Day Holiday")))
 
@@ -93,11 +91,8 @@ class Botswana(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, St
         # Botswana Day Holiday.
         self._add_observed(self._add_holiday_oct_1(tr("Botswana Day Holiday")))
 
-        self._add_observed(
-            # Christmas Day.
-            self._add_christmas_day(tr("Christmas Day")),
-            rule=SUN_TO_NEXT_TUE,
-        )
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
         self._add_observed(dec_26 := self._add_christmas_day_two(tr("Boxing Day")))
