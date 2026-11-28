@@ -294,7 +294,9 @@ FINANCIAL: RegistryDict = {
     "bombay_stock_exchange": ("BombayStockExchange", "XBOM", "BSE"),
     "borsa_istanbul": ("BorsaIstanbul", "XIST", "BIST"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
+    "budapest_stock_exchange": ("BudapestStockExchange", "XBUD", "BET"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
+    "dubai_financial_market": ("DubaiFinancialMarket", "XDFM", "DFM"),
     "euronext": (
         "Euronext",
         "ENX",
@@ -321,6 +323,8 @@ FINANCIAL: RegistryDict = {
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
     "pakistan_stock_exchange": ("PakistanStockExchange", "XKAR", "PSX"),
+    "prague_stock_exchange": ("PragueStockExchange", "XPRA", "BCPP"),
+    "qatar_stock_exchange": ("QatarStockExchange", "DSMD", "QSE"),
     "saudi_exchange": ("SaudiExchange", "XSAU"),
     "shanghai_stock_exchange": ("ShanghaiStockExchange", "XSHG", "SSE"),
     "shenzhen_stock_exchange": ("ShenzhenStockExchange", "XSHE", "SZSE"),
@@ -329,7 +333,9 @@ FINANCIAL: RegistryDict = {
     "six_swiss_exchange": ("SIXSwissExchange", "XSWX", "SIX"),
     "taiwan_stock_exchange": ("TaiwanStockExchange", "XTAI", "TWSE"),
     "toronto_stock_exchange": ("TorontoStockExchange", "XTSE", "TSX"),
+    "vienna_stock_exchange": ("ViennaStockExchange", "XWBO", "WBAG"),
     "warsaw_stock_exchange": ("WarsawStockExchange", "XWAR", "GPW"),
+    "zagreb_stock_exchange": ("ZagrebStockExchange", "XZAG", "ZSE"),
 }
 
 # A re-entrant lock. Once a thread has acquired a re-entrant lock,
@@ -440,3 +446,43 @@ class EntityLoader:
                     for entity in entities
                 }
             )
+
+    @staticmethod
+    def load_package(prefix: str, scope: dict) -> None:
+        """Set up lazy loading (PEP 562) for a country or financial package.
+
+        An entity module is imported on first access only, so loading a single
+        country or market doesn't import all of them.
+        """
+        entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
+        entity_modules = {
+            entity: module for module, entities in entity_mapping.items() for entity in entities
+        }
+        package = f"holidays.{prefix}"
+
+        def list_attributes() -> list[str]:
+            """Return sorted package attribute names."""
+            return sorted({*scope, *scope["__all__"]})
+
+        def load_attribute(name: str) -> Any:
+            """Return a lazily imported package attribute."""
+            if (
+                module_name := name if name in entity_mapping else entity_modules.get(name)
+            ) is None:
+                raise AttributeError(f"module {package!r} has no attribute {name!r}")
+
+            with IMPORT_LOCK:
+                if name in scope:
+                    return scope[name]
+
+                module = importlib.import_module(f"{package}.{module_name}")
+                if name in entity_mapping:
+                    scope[name] = module
+                    return module
+
+                scope[name] = getattr(module, name)
+                return scope[name]
+
+        scope["__all__"] = [*entity_mapping, *entity_modules]
+        scope["__dir__"] = list_attributes
+        scope["__getattr__"] = load_attribute

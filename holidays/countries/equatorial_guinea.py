@@ -38,7 +38,7 @@ class EquatorialGuinea(
 
     country = "GQ"
     default_language = "es"
-    supported_languages = ("en_US", "es")
+    supported_languages = ("en_US", "es", "fr", "pt_GQ")
     # %s (observed).
     observed_label = tr("%s (observado)")
     # Decree 9/2007.

@@ -87,3 +87,59 @@ class TestJohannesburgStockExchange(CommonFinancialTests, TestCase):
             ("2025-12-24", "Christmas Eve (markets close at 12:00 p.m. SAST)"),
             ("2025-12-31", "New Year's Eve (markets close at 12:00 p.m. SAST)"),
         )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-21", "Human Rights Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Family Day"),
+            ("2024-05-01", "Workers' Day"),
+            ("2024-05-29", "National and Provincial Government Elections"),
+            ("2024-06-17", "Youth Day"),
+            ("2024-08-09", "National Women's Day"),
+            ("2024-09-24", "Heritage Day"),
+            ("2024-12-16", "Day of Reconciliation"),
+            ("2024-12-24", "Christmas Eve (markets close at 12:00 p.m. SAST)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Day of Goodwill"),
+            ("2024-12-31", "New Year's Eve (markets close at 12:00 p.m. SAST)"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2024-01-01", "New Year's Day"),
+            ("2024-03-21", "Human Rights Day"),
+            ("2024-03-29", "Good Friday"),
+            ("2024-04-01", "Family Day"),
+            ("2024-05-01", "Workers' Day"),
+            ("2024-05-29", "National and Provincial Government Elections"),
+            ("2024-06-17", "Youth Day"),
+            ("2024-08-09", "National Women's Day"),
+            ("2024-09-24", "Heritage Day"),
+            ("2024-12-16", "Day of Reconciliation"),
+            ("2024-12-24", "Christmas Eve (markets close at 12:00 p.m. SAST)"),
+            ("2024-12-25", "Christmas Day"),
+            ("2024-12-26", "Day of Goodwill"),
+            ("2024-12-31", "New Year's Eve (markets close at 12:00 p.m. SAST)"),
+        )
+
+    def test_l10n_ur_pk(self):
+        self.assertLocalizedHolidays(
+            "ur_PK",
+            ("2024-01-01", "نئے سال کا دن"),
+            ("2024-03-21", "انسانی حقوق کا دن"),
+            ("2024-03-29", "گڈ فرائیڈے"),
+            ("2024-04-01", "خاندانی دن"),
+            ("2024-05-01", "یوم مزدور"),
+            ("2024-05-29", "قومی اور صوبائی حکومت کے انتخابات"),
+            ("2024-06-17", "یوم نوجوانان"),
+            ("2024-08-09", "خواتین کا قومی دن"),
+            ("2024-09-24", "یوم ورثہ"),
+            ("2024-12-16", "یوم مصالحت"),
+            ("2024-12-24", "کرسمس کی شام (مارکیٹیں دوپہر 12:00 بجے SAST بند ہوتی ہیں)"),
+            ("2024-12-25", "کرسمس کا دن"),
+            ("2024-12-26", "یوم خیر سگالی"),
+            ("2024-12-31", "نئے سال کی شام (مارکیٹیں دوپہر 12:00 بجے SAST بند ہوتی ہیں)"),
+        )

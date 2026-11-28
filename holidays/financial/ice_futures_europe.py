@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SAT_TO_NONE, SUN_TO_NEXT_MON
 
 
@@ -18,13 +19,15 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
     """ICE Futures Europe holidays.
 
     References:
-        * <https://web.archive.org/web/20241203121313/https://www.ice.com/publicdocs/futures/Trading_Schedule_Migrated_Liffe_Contracts.pdf>
-        * <https://web.archive.org/web/20241118133442/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
-        * <https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
-        * <https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf>
+        * [2021-2022](https://web.archive.org/web/20211022183728/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2023-2024](https://web.archive.org/web/20230927015846/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2024-2025](https://web.archive.org/web/20241118133442/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
+        * [2026-2027](https://web.archive.org/web/20260728113518/https://www.ice.com/publicdocs/Trading_Schedule.pdf)
     """
 
     market = "IFEU"
+    default_language = "en_GB"
+    supported_languages = ("en_GB", "en_US", "th", "ur_PK")
     start_year = 2014
 
     def __init__(self, *args, **kwargs):
@@ -34,11 +37,14 @@ class IceFuturesEurope(ObservedHolidayBase, ChristianHolidays, InternationalHoli
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
-        self._move_holiday(self._add_new_years_day("New Year's Day"))
+        # New Year's Day.
+        self._move_holiday(self._add_new_years_day(tr("New Year's Day")))
 
-        self._add_good_friday("Good Friday")
+        # Good Friday.
+        self._add_good_friday(tr("Good Friday"))
 
-        self._move_holiday(self._add_christmas_day("Christmas Day"))
+        # Christmas Day.
+        self._move_holiday(self._add_christmas_day(tr("Christmas Day")))
 
 
 class ICEFuturesEurope(IceFuturesEurope):

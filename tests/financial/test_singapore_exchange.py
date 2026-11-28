@@ -118,6 +118,24 @@ class TestSingaporeExchange(CommonFinancialTests, TestCase):
             ("2024-12-31", "New Year's Eve (markets close at 12:00 p.m. SGT)"),
         )
 
+    def test_l10n_ms(self):
+        self.assertLocalizedHolidays(
+            "ms",
+            ("2024-01-01", "Hari Tahun Baru"),
+            ("2024-02-09", "Malam Tahun Baru Cina (pasaran ditutup pada 12:00 tengah hari SGT)"),
+            ("2024-02-12", "Tahun Baru Cina"),
+            ("2024-03-29", "Jumaat Agung"),
+            ("2024-04-10", "Hari Raya Puasa"),
+            ("2024-05-01", "Hari Buruh"),
+            ("2024-05-22", "Hari Vesak"),
+            ("2024-06-17", "Hari Raya Haji"),
+            ("2024-08-09", "Hari Kebangsaan"),
+            ("2024-10-31", "Hari Deepavali"),
+            ("2024-12-24", "Malam Krismas (pasaran ditutup pada 12:00 tengah hari SGT)"),
+            ("2024-12-25", "Hari Krismas"),
+            ("2024-12-31", "Malam Tahun Baru (pasaran ditutup pada 12:00 tengah hari SGT)"),
+        )
+
     def test_l10n_th(self):
         self.assertLocalizedHolidays(
             "th",

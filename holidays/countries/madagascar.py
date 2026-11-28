@@ -26,7 +26,7 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MG"
     default_language = "mg"
-    supported_languages = ("en_US", "mg", "uk")
+    supported_languages = ("en_US", "fr", "mg", "uk")
     start_year = 1947
 
     def __init__(self, *args, **kwargs):

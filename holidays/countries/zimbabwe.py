@@ -11,6 +11,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON, SUN_TO_NEXT_TUE
 
 
@@ -33,8 +34,11 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "ZW"
-    observed_label = "%s (observed)"
+    default_language = "en_ZW"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
     start_year = 1988
+    supported_languages = ("en_US", "en_ZW", "ur_PK")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -44,59 +48,59 @@ class Zimbabwe(ObservedHolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         if self._year >= 2018:
             self._add_observed(
                 # Robert Gabriel Mugabe National Youth Day.
-                self._add_holiday_feb_21("Robert Gabriel Mugabe National Youth Day")
+                self._add_holiday_feb_21(tr("Robert Gabriel Mugabe National Youth Day"))
             )
 
         self._add_observed(
             # Independence Day.
-            apr_18 := self._add_holiday_apr_18("Independence Day"),
+            apr_18 := self._add_holiday_apr_18(tr("Independence Day")),
             rule=SUN_TO_NEXT_TUE if apr_18 == self._easter_sunday else SUN_TO_NEXT_MON,
         )
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Saturday.
-        self._add_holy_saturday("Easter Saturday")
+        self._add_holy_saturday(tr("Easter Saturday"))
 
         # General Notice 86 of 2009.
         if self._year >= 2010:
             # Easter Sunday.
-            self._add_easter_sunday("Easter Sunday")
+            self._add_easter_sunday(tr("Easter Sunday"))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Workers' Day.
-        self._add_observed(self._add_labor_day("Workers' Day"))
+        self._add_observed(self._add_labor_day(tr("Workers' Day")))
 
         # Africa Day.
-        self._add_observed(self._add_africa_day("Africa Day"))
+        self._add_observed(self._add_africa_day(tr("Africa Day")))
 
         # Zimbabwe Heroes' Day.
-        self._add_holiday_2nd_mon_of_aug("Zimbabwe Heroes' Day")
+        self._add_holiday_2nd_mon_of_aug(tr("Zimbabwe Heroes' Day"))
 
         # Defense Forces Day.
-        self._add_holiday_1_day_past_2nd_mon_of_aug("Defense Forces Day")
+        self._add_holiday_1_day_past_2nd_mon_of_aug(tr("Defense Forces Day"))
 
         # SI 148 of 2026.
         if self._year >= 2026:
             # Munhumutapa Day.
-            self._add_observed(self._add_holiday_sep_15("Munhumutapa Day"))
+            self._add_observed(self._add_holiday_sep_15(tr("Munhumutapa Day")))
 
         # Unity Day.
-        self._add_observed(self._add_holiday_dec_22("Unity Day"))
+        self._add_observed(self._add_holiday_dec_22(tr("Unity Day")))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_NEXT_TUE)
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")), rule=SUN_TO_NEXT_TUE)
 
         # Boxing Day.
-        self._add_observed(self._add_christmas_day_two("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")))
 
 
 class ZW(Zimbabwe):

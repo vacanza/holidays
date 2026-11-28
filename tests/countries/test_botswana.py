@@ -26,6 +26,7 @@ class TestBotswana(CommonCountryTests, TestCase):
             "2019-07-02",
             "2024-10-30",
             "2024-10-31",
+            "2025-09-29",
             "2026-05-15",
         )
 

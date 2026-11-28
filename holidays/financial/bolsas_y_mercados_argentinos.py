@@ -38,8 +38,6 @@ class BolsasYMercadosArgentinos(Argentina):
     country = None  # type: ignore[assignment]
     market = "XBUE"
     parent_entity = Argentina
-    default_language = "es"
-    supported_languages = ("en_US", "es")  # type: ignore[assignment]
     supported_categories = (PUBLIC, RESTRICTED_SETTLEMENT, HALF_DAY)  # type: ignore[assignment]
     subdivisions = ()  # type: ignore[assignment]
     subdivisions_aliases: dict[str, str] = {}

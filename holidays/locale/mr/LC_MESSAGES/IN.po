@@ -14,11 +14,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Holidays 0.109\n"
+"Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-03-29 00:37+0530\n"
-"PO-Revision-Date: 2026-11-09 23:04+0530\n"
-"Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
+"PO-Revision-Date: 2026-11-26 16:23+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "दिवाळी (दीपवाली)"
 
 #. Guru Nanak's Birthday.
 msgid "Guru Nanak's Jayanti"
-msgstr "गुरुनानक जयंती"
+msgstr "गुरू नानक जयंती"
 
 #. Ashura.
 msgid "Muharram"
@@ -146,7 +146,7 @@ msgstr "बसंत पंचमी / श्री पंचमी"
 
 #. Guru Ravi Das's Birthday.
 msgid "Guru Ravi Das's Jayanti"
-msgstr "गुरु रविदास जयंती"
+msgstr "गुरू रविदास जयंती"
 
 #. Shivaji's Birthday.
 msgid "Shivaji's Jayanti"
@@ -184,9 +184,9 @@ msgstr "उगाडी"
 msgid "Meshadi (Tamil New Year's Day)"
 msgstr "मेशादी (तमिळ नववर्षाचा दिवस)"
 
-#. Bahag Bihu.
-msgid "Bahag Bihu"
-msgstr "बहाग बिहू"
+#. Bohag Bihu.
+msgid "Bohag Bihu"
+msgstr "बोहाग बिहू"
 
 #. Vaisakhadi.
 msgid "Vaisakhadi"
@@ -202,7 +202,7 @@ msgstr "विशू"
 
 #. Guru Rabindranath's Birthday.
 msgid "Guru Rabindranath's Jayanti"
-msgstr "गुरु रवींद्रनाथ जयंती"
+msgstr "गुरू रवींद्रनाथ जयंती"
 
 #. Rath Yatra.
 msgid "Rath Yatra"
@@ -274,7 +274,7 @@ msgstr "प्रतिहार षष्ठी किंवा सूर्य
 
 #. Guru Tegh Bahadur's Martyrdom Day.
 msgid "Guru Tegh Bahadur's Shaheedi Diwas"
-msgstr "गुरु तेग बहादूर यांचा हुतात्मा दिन"
+msgstr "गुरू तेग बहादूर यांचा हुतात्मा दिन"
 
 #. Ali's Birthday.
 msgid "Hazarat Ali's Birthday"
@@ -340,9 +340,25 @@ msgstr "लिंगरी निकी सी डोनी पोलो यु�
 msgid "Netaji Subhas Chandra Bose's Jayanti"
 msgstr "नेताजी सुभाषचंद्र बोस जयंती"
 
+#. Me-Dam-Me-Phi.
+msgid "Me-Dam-Me-Phi"
+msgstr "मे-डाम-मे-फी"
+
+#. Sati Sadhani Day.
+msgid "Sati Sadhani Divas"
+msgstr "सती साधनी दिन"
+
 #. May Day.
 msgid "May Day"
 msgstr "मे दिन"
+
+#. Lachit Day.
+msgid "Lachit Divas"
+msgstr "लाचित दिन"
+
+#. Assam Day.
+msgid "Asom Divas"
+msgstr "आसाम दिन"
 
 #. Silpi Day.
 msgid "Silpi Divas"
@@ -406,7 +422,7 @@ msgstr "जोर मेळा फतेहगढ साहिब"
 
 #. Guru Arjun Dev's Martyrdom Day.
 msgid "Guru Arjun Dev's Shaheedi Diwas"
-msgstr "गुरु अर्जन देव शहीद दिन"
+msgstr "गुरू अर्जन देव शहीद दिन"
 
 #. Sant Kabir's Birthday.
 msgid "Sant Kabir's Jayanti"
@@ -644,6 +660,10 @@ msgstr "करमा पूजा"
 msgid "Majdoor Diwas"
 msgstr "कामगार दिन"
 
+#. Hul Diwas.
+msgid "Hul Diwas"
+msgstr "हुल दिन"
+
 #. Karnataka Rajyotsava.
 msgid "Karnataka Rajyotsava"
 msgstr "कर्नाटक राज्योत्सव"
@@ -744,6 +764,14 @@ msgstr "खोंगजोम दिन"
 msgid "Patriot's Day"
 msgstr "देशभक्त दिन"
 
+#. Nupi-Lal.
+msgid "Nupi-Lal"
+msgstr "नुपी-लाल"
+
+#. Gaan-Ngai.
+msgid "Gaan-Ngai"
+msgstr "गान-ङ्गाई"
+
 #. Mera Chaoren Houba.
 msgid "Mera Chaoren Houba"
 msgstr "मेरा चाओरेन हौबा"
@@ -803,6 +831,10 @@ msgstr "नववर्षानंतरचा दिवस"
 #. Missionary Day.
 msgid "Missionary Day"
 msgstr "मिशनरी दिन"
+
+#. Chapchar Kut.
+msgid "Chapchar Kut"
+msgstr "चापचर कुट"
 
 #. Young Mizo Association's Day.
 msgid "Young Mizo Association's Day"
@@ -870,7 +902,7 @@ msgstr "आयुध पूजा"
 
 #. Guru Nabha Dass's Birthday.
 msgid "Guru Nabha Dass's Jayanti"
-msgstr "गुरु नाभा दास जयंती"
+msgstr "गुरू नाभा दास जयंती"
 
 #. Kartar Singh Sarabha's Martyrdom Day.
 msgid "Kartar Singh Sarabha's Shaheedi Diwas"
@@ -1006,7 +1038,7 @@ msgstr "हरेला"
 
 #. Easter Monday.
 msgid "Easter Monday"
-msgstr "इस्टर सोमवार"
+msgstr "ईस्टर सोमवार"
 
 #. Veer Kesari Chand's Martyrdom Day.
 msgid "Veer Kesari Chand's Shaheedi Diwas"
@@ -1067,3 +1099,7 @@ msgstr "गोकुळाष्टमी (स्मार्त)"
 #. Kerala Assembly Election Day.
 msgid "Kerala Assembly Election Day"
 msgstr "केरळ विधानसभा निवडणूक दिवस"
+
+#. Ram Mandir Pran Pratishtha.
+msgid "Ram Mandir Pran Pratishtha"
+msgstr "राम मंदिर प्राणप्रतिष्ठा"

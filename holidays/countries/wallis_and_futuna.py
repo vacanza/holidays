@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import PUBLIC
 from holidays.countries.france import France
 from holidays.mixins.child_entity import ChildEntity
 
@@ -29,6 +30,7 @@ class WallisAndFutuna(ChildEntity, France):
     parent_entity = France
     # Separation from French Caledonia on July 29th, 1961.
     start_year = 1962
+    supported_categories = (PUBLIC,)
 
 
 class HolidaysWF(WallisAndFutuna):

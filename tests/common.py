@@ -29,7 +29,7 @@ from holidays.groups import EasternCalendarHolidays, IslamicHolidays
 from holidays.observed_holiday_base import ObservedHolidayBase
 from holidays.registry import COUNTRIES, FINANCIAL
 
-PYTHON_LATEST_SUPPORTED_VERSION = "3.14"
+PYTHON_LATEST_SUPPORTED_VERSION = "3.15"
 PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
@@ -676,26 +676,29 @@ class CommonTests(TestCase):
         )
 
     def test_observed_estimated_label(self):
-        estimated_label = getattr(self.holidays, "estimated_label", None)
-        observed_label = getattr(self.holidays, "observed_label", None)
-        observed_estimated_label = getattr(self.holidays, "observed_estimated_label", None)
+        for holidays in (self.holidays, getattr(self, "holidays_government", None)):
+            if holidays is None:
+                continue
+            estimated_label = getattr(holidays, "estimated_label", None)
+            observed_label = getattr(holidays, "observed_label", None)
+            observed_estimated_label = getattr(holidays, "observed_estimated_label", None)
 
-        if (
-            estimated_label
-            and observed_label
-            # In certain entities, the observed rule applies only to holiday suppression,
-            # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
-            # `observed_estimated_label` is not required.
-            and any(
-                rule is not None for rule in getattr(self.holidays, "observed_rule", {}).values()
-            )
-        ):
-            self.assertTrue(
-                observed_estimated_label,
-                "The `observed_estimated_label` attribute is required for entities containing "
-                "both `observed_label` and `estimated_label`.",
-            )
-            self.assertIn(estimated_label.strip("%s ()"), observed_estimated_label)
+            if (
+                estimated_label
+                and observed_label
+                # In certain entities, the observed rule applies only to holiday suppression,
+                # e.g., XNSE with `SAT_TO_NONE`` or `SUN_TO_NONE``. In these cases, the
+                # `observed_estimated_label` is not required.
+                and any(
+                    rule is not None for rule in getattr(holidays, "_observed_rule", {}).values()
+                )
+            ):
+                self.assertTrue(
+                    observed_estimated_label,
+                    "The `observed_estimated_label` attribute is required for entities containing "
+                    "both `observed_label` and `estimated_label`.",
+                )
+                self.assertIn(estimated_label.strip("%s ()（）"), observed_estimated_label)
 
     def test_observed_label(self):
         if getattr(self.holidays, "observed_label", None):
