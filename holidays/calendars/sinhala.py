@@ -33,7 +33,7 @@ VESAK_POYA = "VESAK_POYA"
 
 class _SinhalaLunar:
     """
-    Sinhala Lunar calendar for 2003-2025 years.
+    Sinhala Lunar calendar for 2003-2027 years.
 
     Their Buddhist Uposatha day calculation method is different from Thai LuniSolar
     and Buddhist (Mahayana) used in East Asia.
@@ -46,7 +46,7 @@ class _SinhalaLunar:
     """
 
     START_YEAR = 2003
-    END_YEAR = 2026
+    END_YEAR = 2027
 
     BAK_POYA_DATES = {
         2003: (APR, 16),
@@ -73,6 +73,7 @@ class _SinhalaLunar:
         2024: (APR, 23),
         2025: (APR, 12),
         2026: (APR, 1),
+        2027: (APR, 20),
     }
 
     BINARA_POYA_DATES = {
@@ -100,6 +101,7 @@ class _SinhalaLunar:
         2024: (SEP, 17),
         2025: (SEP, 7),
         2026: (SEP, 26),
+        2027: (SEP, 15),
     }
 
     DURUTHU_POYA_DATES = {
@@ -126,6 +128,7 @@ class _SinhalaLunar:
         2024: (JAN, 25),
         2025: (JAN, 13),
         2026: (JAN, 3),
+        2027: (JAN, 22),
     }
 
     ESALA_POYA_DATES = {
@@ -153,6 +156,7 @@ class _SinhalaLunar:
         2024: (JUL, 20),
         2025: (JUL, 10),
         2026: (JUL, 29),
+        2027: (JUL, 18),
     }
 
     IL_POYA_DATES = {
@@ -180,6 +184,7 @@ class _SinhalaLunar:
         2024: (NOV, 15),
         2025: (NOV, 5),
         2026: (NOV, 24),
+        2027: (NOV, 13),
     }
 
     MEDIN_POYA_DATES = {
@@ -207,6 +212,7 @@ class _SinhalaLunar:
         2024: (MAR, 24),
         2025: (MAR, 13),
         2026: (MAR, 2),
+        2027: (MAR, 22),
     }
 
     NAWAM_POYA_DATES = {
@@ -234,6 +240,7 @@ class _SinhalaLunar:
         2024: (FEB, 23),
         2025: (FEB, 12),
         2026: (FEB, 1),
+        2027: (FEB, 20),
     }
 
     NIKINI_POYA_DATES = {
@@ -261,6 +268,7 @@ class _SinhalaLunar:
         2024: (AUG, 19),
         2025: (AUG, 8),
         2026: (AUG, 27),
+        2027: (AUG, 16),
     }
 
     POSON_POYA_DATES = {
@@ -288,6 +296,7 @@ class _SinhalaLunar:
         2024: (JUN, 21),
         2025: (JUN, 10),
         2026: (JUN, 29),
+        2027: (JUN, 18),
     }
 
     UNDUVAP_POYA_DATES = {
@@ -315,6 +324,7 @@ class _SinhalaLunar:
         2024: (DEC, 14),
         2025: (DEC, 4),
         2026: (DEC, 23),
+        2027: (DEC, 13),
     }
 
     VAP_POYA_DATES = {
@@ -342,6 +352,7 @@ class _SinhalaLunar:
         2024: (OCT, 17),
         2025: (OCT, 6),
         2026: (OCT, 25),
+        2027: (OCT, 15),
     }
 
     VESAK_POYA_DATES = {
@@ -369,6 +380,7 @@ class _SinhalaLunar:
         2024: (MAY, 23),
         2025: (MAY, 12),
         2026: (MAY, 1),
+        2027: (MAY, 19),
     }
 
     def _get_holiday(self, holiday: str, year: int) -> tuple[date | None, bool]:
