@@ -140,8 +140,10 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self.include_sundays:
             # Optionally add all Sundays of the year.
             for dt in _get_all_sundays(self._year):
-                # Sunday.
-                self._add_holiday(tr("Søndag"), dt)
+                # Skip Sundays that already hold a named holiday.
+                if dt not in self:
+                    # Sunday.
+                    self._add_holiday(tr("Søndag"), dt)
 
 
 class NO(Norway):

@@ -143,6 +143,20 @@ class TestNorway(CommonCountryTests, SundayHolidays, TestCase):
     def test_sundays(self):
         self.assertSundays(Norway)  # Sundays are considered holidays in Norway.
 
+    def test_sundays_no_duplicate_on_named_holidays(self):
+        # Sundays that already hold a named holiday must not also get "Søndag".
+        holidays = Norway(years=(2022, 2023, 2027), include_sundays=True)
+        self.assertHolidayName("Første juledag", holidays, "2022-12-25")
+        self.assertNoHolidayName("Søndag", holidays, "2022-12-25")
+        self.assertHolidayName("Første nyttårsdag", holidays, "2023-01-01")
+        self.assertNoHolidayName("Søndag", holidays, "2023-01-01")
+        self.assertHolidayName("Første påskedag", holidays, "2027-03-28")
+        self.assertNoHolidayName("Søndag", holidays, "2027-03-28")
+        self.assertHolidayName("Første pinsedag", holidays, "2027-05-16")
+        self.assertNoHolidayName("Søndag", holidays, "2027-05-16")
+        # A plain Sunday still gets "Søndag".
+        self.assertHolidayName("Søndag", holidays, "2027-01-03")
+
     def test_not_holiday(self):
         # TODO: Add more dates that are often confused for being a holiday.
 
