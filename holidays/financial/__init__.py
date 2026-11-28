@@ -58,6 +58,7 @@ if TYPE_CHECKING:  # Static analysis only. Runtime names are loaded lazily below
     from holidays.financial.korea_exchange import KoreaExchange, KRX, XKRX
     from holidays.financial.london_stock_exchange import LondonStockExchange, XLON, LSE
     from holidays.financial.nasdaq import NASDAQ, XNAS
+    from holidays.financial.nasdaq_stockholm import NasdaqStockholm, XSTO
     from holidays.financial.national_stock_exchange_of_india import (
         NationalStockExchangeOfIndia,
         XNSE,

@@ -2102,6 +2102,13 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Nasdaq Stockholm</td>
+<td>XSTO</td>
+<td>Nasdaq Stockholm market holidays</td>
+<td>en_US, <strong>sv</strong>, th, uk</td>
+<td>HALF_DAY</td>
+</tr>
+<tr>
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
