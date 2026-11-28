@@ -55,10 +55,8 @@ class BursaMalaysia(ChildEntity, Malaysia):
         # Malaysia adds Awal Muharam but does not put it in `dts_observed`.
         # Bursa still closes on the following Monday when it falls on Sunday
         # (e.g. 2024-07-08).
-        if self._year >= 1995:
-            for dt, _estimated in self._islamic_calendar.hijri_new_year_dates(self._year):
-                if dt.year == self._year:
-                    self.dts_observed.add(dt)
+        for dt, _ in self._islamic_calendar.hijri_new_year_dates(self._year):
+            self.dts_observed.add(dt)
 
         super()._populate_subdiv_holidays()
 
