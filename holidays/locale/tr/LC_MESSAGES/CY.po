@@ -69,7 +69,7 @@ msgstr "Kutsal Ruh Pazartesisi"
 
 #. Dormition of the Mother of God.
 msgid "Κοίμηση της Θεοτόκου"
-msgstr "Meryem Ana'nın Göğe Yükselişi"
+msgstr "Meryem Ana'nın Uykuya Dalışı"
 
 #. Cyprus Independence Day.
 msgid "Ημέρα της Κυπριακής Ανεξαρτησίας"
