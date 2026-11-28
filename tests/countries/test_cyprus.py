@@ -229,6 +229,29 @@ class TestCyprus(CommonCountryTests, TestCase):
             ("2023-12-26", "Day After Christmas"),
         )
 
+    def test_l10n_tr(self):
+        self.assertLocalizedHolidays(
+            "tr",
+            ("2023-01-01", "Yılbaşı"),
+            ("2023-01-06", "Epifani Günü"),
+            ("2023-02-27", "Temiz Pazartesi"),
+            ("2023-03-25", "Yunanistan Bağımsızlık Günü"),
+            ("2023-04-01", "Kıbrıs Millî Günü"),
+            ("2023-04-14", "Kutsal Cuma"),
+            ("2023-04-15", "Kutsal Cumartesi"),
+            ("2023-04-16", "Paskalya Pazarı"),
+            ("2023-04-17", "Paskalya Pazartesisi"),
+            ("2023-04-18", "Paskalya Salısı"),
+            ("2023-05-01", "İşçi Bayramı"),
+            ("2023-06-05", "Kutsal Ruh Pazartesisi"),
+            ("2023-08-15", "Meryem Ana'nın Göğe Yükselişi"),
+            ("2023-10-01", "Kıbrıs Bağımsızlık Günü"),
+            ("2023-10-28", "Ohi Günü"),
+            ("2023-12-24", "Noel Arifesi"),
+            ("2023-12-25", "Noel"),
+            ("2023-12-26", "Noel'in Ertesi Günü"),
+        )
+
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",

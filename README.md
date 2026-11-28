@@ -573,7 +573,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cyprus</td>
 <td>CY</td>
 <td></td>
-<td><strong>el</strong>, en_CY, en_US, uk</td>
+<td><strong>el</strong>, en_CY, en_US, tr, uk</td>
 <td>BANK, OPTIONAL</td>
 </tr>
 <tr>
