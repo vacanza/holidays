@@ -33,7 +33,7 @@ VESAK_POYA = "VESAK_POYA"
 
 class _SinhalaLunar:
     """
-    Sinhala Lunar calendar for 2003-2025 years.
+    Sinhala Lunar calendar for 2003-2027 years.
 
     Their Buddhist Uposatha day calculation method is different from Thai LuniSolar
     and Buddhist (Mahayana) used in East Asia.
