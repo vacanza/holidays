@@ -1,0 +1,81 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# Toronto Stock Exchange (TSX) holidays uk localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-28 04:18+0000\n"
+"PO-Revision-Date: 2026-11-28 04:18+0000\n"
+"Last-Translator: Shikha Bhadoria <shikhabhadoria9@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_CA\n"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "Новий рік"
+
+#. Family Day.
+msgid "Family Day"
+msgstr "День родини"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "Страсна пʼятниця"
+
+#. Victoria Day.
+msgid "Victoria Day"
+msgstr "День Вікторії"
+
+#. Canada Day.
+msgid "Canada Day"
+msgstr "День Канади"
+
+#. Civic Holiday.
+msgid "Civic Holiday"
+msgstr "Цивільне свято"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "День праці"
+
+#. Thanksgiving Day.
+msgid "Thanksgiving Day"
+msgstr "День подяки"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "День подарунків"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "Різдво Христове"
+
+#. %s (markets close at 1:00 p.m. ET).
+#, c-format
+msgid "%s (markets close at 1:00 p.m. ET)"
+msgstr "%s (закриття ринків о 13:00 ET)"
+
+#. Christmas Eve.
+msgid "Christmas Eve"
+msgstr "Святий вечір"
+
+#. Market Closed (Computer Failure).
+msgid "Market Closed (Computer Failure)"
+msgstr "Ринок зачинено (компʼютерний збій)"

@@ -2196,7 +2196,7 @@ code when available. The following financial markets are available:
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>
-<td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
+<td>ar, <strong>en_CA</strong>, en_US, fr, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
