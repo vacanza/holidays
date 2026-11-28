@@ -388,7 +388,7 @@ class _ChineseLunisolar:
         2054: (OCT, 9),
         2055: (OCT, 28),
         2056: (OCT, 17),
-        2057: (OCT, 7),
+        2057: (OCT, 6),
         2058: (OCT, 25),
         2059: (OCT, 14),
         2060: (OCT, 2),
@@ -856,7 +856,7 @@ class _ChineseLunisolar:
         1913: (FEB, 6),
         1914: (JAN, 26),
         1915: (FEB, 14),
-        1916: (FEB, 4),
+        1916: (FEB, 3),
         1917: (JAN, 23),
         1918: (FEB, 11),
         1919: (FEB, 1),
@@ -1257,6 +1257,7 @@ class _ChineseLunisolar:
     }
 
     KOREAN_CALENDAR_LUNAR_NEW_YEAR_DATES = {
+        1916: (FEB, 4),
         1944: (JAN, 26),
         1954: (FEB, 4),
         1958: (FEB, 19),

@@ -10,6 +10,7 @@
 #  Website: https://github.com/vacanza/holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from unittest import TestCase
 
 from holidays.groups import BalineseSakaCalendarHolidays
@@ -17,6 +18,18 @@ from holidays.holiday_base import HolidayBase
 
 
 class TestBalineseSakaCalendarHolidays(TestCase):
+    def test_add_nyepi(self):
+        class TestHolidays(HolidayBase, BalineseSakaCalendarHolidays):
+            def __init__(self, *args, **kwargs):
+                BalineseSakaCalendarHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(1994)
+        test_holidays._add_nyepi("Day of Silence")
+        self.assertEqual(test_holidays.get(date(1994, 4, 12)), "Day of Silence")
+
     def test_add_balinese_saka_calendar_holiday(self):
         # Check for out-of-range dates.
         class TestHolidays(HolidayBase, BalineseSakaCalendarHolidays):
