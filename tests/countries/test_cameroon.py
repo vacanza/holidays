@@ -183,22 +183,6 @@ class TestCameroon(CommonCountryTests, TestCase):
             ("2025-12-25", "Christmas Day"),
         )
 
-    def test_2026(self):
-        self.assertHolidaysInYear(
-            2026,
-            ("2026-01-01", "New Year's Day"),
-            ("2026-02-11", "Youth Day"),
-            ("2026-03-20", "Eid al-Fitr"),
-            ("2026-04-03", "Good Friday"),
-            ("2026-05-01", "Labour Day"),
-            ("2026-05-14", "Ascension Day"),
-            ("2026-05-20", "National Day"),
-            ("2026-05-27", "Eid al-Adha"),
-            ("2026-08-15", "Assumption Day"),
-            ("2026-08-25", "Mawlid (estimated)"),
-            ("2026-12-25", "Christmas Day"),
-        )
-
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2026-01-01", "New Year's Day"),

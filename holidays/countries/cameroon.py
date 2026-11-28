@@ -79,7 +79,7 @@ class Cameroon(
         # Good Friday.
         self._add_good_friday(tr("Good Friday"))
 
-        # Labour Day.
+        # Labor Day.
         dts_observed.add(self._add_labor_day(tr("Labour Day")))
 
         if self._year >= 1972:
@@ -101,7 +101,7 @@ class Cameroon(
         # Eid al-Adha.
         dts_observed.update(self._add_eid_al_adha_day(tr("Eid al-Adha")))
 
-        # Mawlid.
+        # Prophet's Birthday.
         dts_observed.update(self._add_mawlid_day(tr("Mawlid")))
 
         if self.observed:

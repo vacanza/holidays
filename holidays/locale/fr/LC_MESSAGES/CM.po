@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Holidays 0.110\n"
 "Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
 "POT-Creation-Date: 2026-11-28 03:52+0530\n"
-"PO-Revision-Date: 2026-11-28 05:12+0530\n"
+"PO-Revision-Date: 2026-11-28 11:40+0530\n"
 "Last-Translator: Nayan Sharma <nayansharma8123@gmail.com>\n"
 "Language-Team: Holidays Localization Team\n"
 "Language: fr\n"
@@ -54,7 +54,7 @@ msgstr "Fête de la Jeunesse"
 msgid "Good Friday"
 msgstr "Vendredi saint"
 
-#. Labour Day.
+#. Labor Day.
 msgid "Labour Day"
 msgstr "Fête du Travail"
 
@@ -76,15 +76,15 @@ msgstr "Noël"
 
 #. Eid al-Fitr.
 msgid "Eid al-Fitr"
-msgstr "Aïd al-Fitr"
+msgstr "Aïd el-Fitr"
 
 #. Eid al-Adha.
 msgid "Eid al-Adha"
 msgstr "Aïd al-Adha"
 
-#. Mawlid.
+#. Prophet's Birthday.
 msgid "Mawlid"
-msgstr "Mawlid"
+msgstr "Naissance du Prophète Mouhammad"
 
 #. Public Holiday.
 msgid "Public Holiday"
