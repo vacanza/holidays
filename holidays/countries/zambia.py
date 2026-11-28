@@ -12,6 +12,7 @@
 
 from holidays.calendars.gregorian import JAN, MAR, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.groups import ChristianHolidays, InternationalHolidays, StaticHolidays
+from holidays.helpers import tr
 from holidays.observed_holiday_base import ObservedHolidayBase, SUN_TO_NEXT_MON
 
 
@@ -41,9 +42,12 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
     """
 
     country = "ZM"
-    observed_label = "%s (observed)"
+    default_language = "en_ZM"
+    # %s (observed).
+    observed_label = tr("%s (observed)")
     # Public Holidays (Amendment) Act, 1983 came into effect on April 8th, 1983.
     start_year = 1984
+    supported_languages = ("en_US", "en_ZM", "ur_PK")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -54,51 +58,51 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day(tr("New Year's Day")))
 
         # The Public Holiday (Declaration) Notice, 2007.
         if self._year >= 2008:
             # International Women's Day.
-            self._add_observed(self._add_womens_day("International Women's Day"))
+            self._add_observed(self._add_womens_day(tr("International Women's Day")))
 
         # Youth Day.
-        name = "Youth Day"
+        name = tr("Youth Day")
         if self._year >= 1988:
             self._add_observed(self._add_holiday_mar_12(name))
         else:
             self._add_holiday_3rd_sat_of_mar(name)
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Holy Saturday.
-        self._add_holy_saturday("Holy Saturday")
+        self._add_holy_saturday(tr("Holy Saturday"))
 
         # Easter Sunday.
-        self._add_easter_sunday("Easter Sunday")
+        self._add_easter_sunday(tr("Easter Sunday"))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
         # The Public Holidays (Declaration) Notice, 2021.
         if self._year >= 2022:
             # Kenneth Kaunda Day.
-            self._add_observed(self._add_holiday_apr_28("Kenneth Kaunda Day"))
+            self._add_observed(self._add_holiday_apr_28(tr("Kenneth Kaunda Day")))
 
         # Labor Day.
-        self._add_observed(self._add_labor_day("Labour Day"))
+        self._add_observed(self._add_labor_day(tr("Labour Day")))
 
         # Africa Freedom Day.
-        self._add_observed(self._add_africa_day("Africa Freedom Day"))
+        self._add_observed(self._add_africa_day(tr("Africa Freedom Day")))
 
         # Heroes' Day.
-        self._add_holiday_1st_mon_of_jul("Heroes' Day")
+        self._add_holiday_1st_mon_of_jul(tr("Heroes' Day"))
 
         # Unity Day.
-        self._add_holiday_1_day_past_1st_mon_of_jul("Unity Day")
+        self._add_holiday_1_day_past_1st_mon_of_jul(tr("Unity Day"))
 
         # Farmers' Day.
-        self._add_holiday_1st_mon_of_aug("Farmers' Day")
+        self._add_holiday_1st_mon_of_aug(tr("Farmers' Day"))
 
         if self._year >= 2016:
             # Established by The Public Holiday (Declaration), Notice, 2015
@@ -106,24 +110,24 @@ class Zambia(ObservedHolidayBase, ChristianHolidays, InternationalHolidays, Stat
             # Abolished by Statutory Instrument No. 73 of 2026.
             if self._year <= 2025:
                 # National Prayer Day.
-                self._add_observed(self._add_holiday_oct_18("National Prayer Day"))
+                self._add_observed(self._add_holiday_oct_18(tr("National Prayer Day")))
 
             # The Constitution of Zambia (Amendment) Act, 2016 (Act No. 2 of 2016).
             if self._year % 5 == 1:
                 # General Election Day.
-                self._add_holiday_2nd_thu_of_aug("General Election Day")
+                self._add_holiday_2nd_thu_of_aug(tr("General Election Day"))
 
         # Independence Day.
-        self._add_observed(self._add_holiday_oct_24("Independence Day"))
+        self._add_observed(self._add_holiday_oct_24(tr("Independence Day")))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"))
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")))
 
         # Established by Statutory Instrument No. 73 of 2026.
         if self._year >= 2026:
             self._add_observed(
                 # National Day of Prayer and Christian Heritage.
-                self._add_holiday_dec_29("National Day of Prayer and Christian Heritage")
+                self._add_holiday_dec_29(tr("National Day of Prayer and Christian Heritage"))
             )
 
 
@@ -153,39 +157,39 @@ class ZambiaStaticHolidays:
     """
 
     # Bridge Public Holiday.
-    name_bridge_public_holiday = "Bridge Public Holiday"
+    name_bridge_public_holiday = tr("Bridge Public Holiday")
 
     # Inauguration Ceremony of President-elect and Vice-President-elect.
-    name_inauguration_ceremony = (
+    name_inauguration_ceremony = tr(
         "Inauguration Ceremony of President-elect and Vice-President-elect"
     )
 
     special_public_holidays = {
         2014: (
             # State Funeral of Michael Chilufya Sata.
-            (NOV, 11, "State Funeral of Michael Chilufya Sata"),
+            (NOV, 11, tr("State Funeral of Michael Chilufya Sata")),
             (DEC, 26, name_bridge_public_holiday),
         ),
         2015: (
             (JAN, 2, name_bridge_public_holiday),
             # Presidential Election.
-            (JAN, 20, "Presidential Election"),
+            (JAN, 20, tr("Presidential Election")),
         ),
         2016: ((SEP, 13, name_inauguration_ceremony),),
         2018: (
             (MAR, 9, name_bridge_public_holiday),
             # Mayoral and Ward By-elections.
-            (JUL, 26, "Mayoral and Ward By-elections"),
+            (JUL, 26, tr("Mayoral and Ward By-elections")),
         ),
         2019: (OCT, 25, name_bridge_public_holiday),
         2021: (
             # Memorial Service for Kenneth Kaunda.
-            (JUL, 2, "Memorial Service for Kenneth Kaunda"),
+            (JUL, 2, tr("Memorial Service for Kenneth Kaunda")),
             # State Funeral of Kenneth Kaunda.
-            (JUL, 7, "State Funeral of Kenneth Kaunda"),
+            (JUL, 7, tr("State Funeral of Kenneth Kaunda")),
             (AUG, 13, name_bridge_public_holiday),
             (AUG, 24, name_inauguration_ceremony),
         ),
         # State Funeral of Rupiah Banda.
-        2022: (MAR, 18, "State Funeral of Rupiah Banda"),
+        2022: (MAR, 18, tr("State Funeral of Rupiah Banda")),
     }

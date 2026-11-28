@@ -175,6 +175,7 @@ LANGUAGES = {
     "en_VC": "English (Saint Vincent and the Grenadines)",
     "en_VG": "English (British Virgin Islands)",
     "en_ZA": "English (South Africa)",
+    "en_ZM": "English (Zambia)",
     "en_ZW": "English (Zimbabwe)",
     # --- Persian / Pashto Locales ---
     "fa_AF": "Persian (Afghanistan)",
