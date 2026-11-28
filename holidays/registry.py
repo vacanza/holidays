@@ -295,6 +295,7 @@ FINANCIAL: RegistryDict = {
     "borsa_istanbul": ("BorsaIstanbul", "XIST", "BIST"),
     "brasil_bolsa_balcao": ("BrasilBolsaBalcao", "BVMF", "B3"),
     "budapest_stock_exchange": ("BudapestStockExchange", "XBUD", "BET"),
+    "bursa_malaysia": ("BursaMalaysia", "XKLS", "MYX"),
     "chicago_mercantile_exchange": ("ChicagoMercantileExchange", "XCME", "CME"),
     "dubai_financial_market": ("DubaiFinancialMarket", "XDFM", "DFM"),
     "euronext": (

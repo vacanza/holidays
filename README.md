@@ -2011,6 +2011,13 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Bursa Malaysia</td>
+<td>XKLS</td>
+<td>Bursa Malaysia (MYX) market holidays</td>
+<td>en_US, <strong>ms_MY</strong>, th</td>
+<td></td>
+</tr>
+<tr>
 <td>Chicago Mercantile Exchange</td>
 <td>XCME</td>
 <td>Chicago Mercantile Exchange market holidays</td>

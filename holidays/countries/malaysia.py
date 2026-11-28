@@ -140,7 +140,7 @@ class Malaysia(
     # %s (observed, estimated).
     observed_estimated_label = tr("Cuti %s (anggaran)")
     start_year = 1952
-    subdivisions = (
+    subdivisions: tuple[str, ...] = (
         "01",  # Johor.
         "02",  # Kedah.
         "03",  # Kelantan.
