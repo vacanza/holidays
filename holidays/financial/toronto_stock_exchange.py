@@ -58,7 +58,7 @@ class TorontoStockExchange(
 
     market = "XTSE"
     default_language = "en_CA"
-    supported_languages = ("ar", "en_CA", "en_US", "fr", "th")
+    supported_languages = ("ar", "en_CA", "en_US", "fr", "th", "uk")
     start_year = 2002
     supported_categories = (HALF_DAY, PUBLIC)
 
