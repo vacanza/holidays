@@ -210,7 +210,7 @@ class TestCameroon(CommonCountryTests, TestCase):
             ("2026-05-20", "National Day"),
             ("2026-05-27", "Eid al-Adha"),
             ("2026-08-15", "Assumption Day"),
-            ("2026-08-25", "Mawlid (estimated)"),
+            ("2026-08-25", "Prophet's Birthday (estimated)"),
             ("2026-12-25", "Christmas Day"),
         )
 
@@ -219,13 +219,13 @@ class TestCameroon(CommonCountryTests, TestCase):
             "fr",
             ("2026-01-01", "Jour de l'an"),
             ("2026-02-11", "Fête de la Jeunesse"),
-            ("2026-03-20", "Aïd al-Fitr"),
+            ("2026-03-20", "Aïd el-Fitr"),
             ("2026-04-03", "Vendredi saint"),
             ("2026-05-01", "Fête du Travail"),
             ("2026-05-14", "Ascension"),
             ("2026-05-20", "Fête nationale"),
             ("2026-05-27", "Aïd al-Adha"),
             ("2026-08-15", "Assomption"),
-            ("2026-08-25", "Mawlid (estimé)"),
+            ("2026-08-25", "Naissance du Prophète Mouhammad (estimé)"),
             ("2026-12-25", "Noël"),
         )
