@@ -187,31 +187,22 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
         )
         self.assertHalfDayHolidayName(name, self.full_range)
 
-    def test_excluded_swedish_bank_days(self):
-        self.assertNoHoliday(
-            "2025-05-30",
-            "2025-06-05",
-            "2025-06-19",
-            "2025-12-23",
-            "2025-12-30",
-            "2026-05-15",
-            "2026-06-05",
-            "2026-06-18",
-            "2026-12-23",
-            "2026-12-30",
-        )
-        self.assertNoHalfDayHoliday(
-            "2025-05-30",
-            "2025-06-05",
-            "2025-06-19",
-            "2025-12-23",
-            "2025-12-30",
-            "2026-05-15",
-            "2026-06-05",
-            "2026-06-18",
-            "2026-12-23",
-            "2026-12-30",
-        )
+    def test_excluded_swedish_holidays(self):
+        for name in (
+            "Påskdagen",
+            "Pingstdagen",
+            "Midsommardagen",
+            "Alla helgons dag",
+            "Klämdag",
+            "Påskafton",
+            "Pingstafton",
+            "Dag före Pingstafton",
+            "Dag före Midsommarafton",
+            "Dag före Julafton",
+            "Dag före Nyårsafton",
+        ):
+            self.assertNoHolidayName(name)
+            self.assertNoHalfDayHolidayName(name)
 
     def test_2025(self):
         self.assertHolidaysInYear(
@@ -229,6 +220,8 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             ("2025-12-26", "Annandag jul"),
             ("2025-12-31", "Nyårsafton"),
         )
+
+    def test_half_day_2025(self):
         self.assertHalfDayHolidaysInYear(
             2025,
             ("2025-04-17", "Skärtorsdagen"),
@@ -251,6 +244,8 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             ("2026-12-25", "Juldagen"),
             ("2026-12-31", "Nyårsafton"),
         )
+
+    def test_half_day_2026(self):
         self.assertHalfDayHolidaysInYear(
             2026,
             ("2026-01-05", "Trettondagsafton"),
@@ -272,6 +267,8 @@ class TestNasdaqStockholm(CommonFinancialTests, TestCase):
             ("2027-12-24", "Julafton"),
             ("2027-12-31", "Nyårsafton"),
         )
+
+    def test_half_day_2027(self):
         self.assertHalfDayHolidaysInYear(
             2027,
             ("2027-01-05", "Trettondagsafton"),
