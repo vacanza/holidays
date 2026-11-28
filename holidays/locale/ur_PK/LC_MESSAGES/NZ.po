@@ -1,0 +1,137 @@
+#  holidays
+#  --------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: Vacanza Team and individual contributors (see CONTRIBUTORS file)
+#           dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/vacanza/holidays
+#  License: MIT (see LICENSE file)
+#
+# New Zealand holidays ur_PK localization.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Holidays 0.110\n"
+"Report-Msgid-Bugs-To: l10n@vacanza.dev\n"
+"POT-Creation-Date: 2026-11-27 13:38+0500\n"
+"PO-Revision-Date: 2026-11-27 18:48+0500\n"
+"Last-Translator: Syed Ahmer Shah <syedahmershahofficial@gmail.com>\n"
+"Language-Team: Holidays Localization Team\n"
+"Language: ur_PK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingva 5.0.7\n"
+"X-Source-Language: en_NZ\n"
+
+#. %s (observed).
+#, c-format
+msgid "%s (observed)"
+msgstr "%s (منایا گیا)"
+
+#. New Year's Day.
+msgid "New Year's Day"
+msgstr "نئے سال کا دن"
+
+#. Day after New Year's Day.
+msgid "Day after New Year's Day"
+msgstr "نئے سال کے دن کے بعد کا دن"
+
+#. Waitangi Day.
+msgid "Waitangi Day"
+msgstr "یوم وائتانگی"
+
+#. New Zealand Day.
+msgid "New Zealand Day"
+msgstr "یوم نیوزی لینڈ"
+
+#. ANZAC Day.
+msgid "Anzac Day"
+msgstr "یوم انزیک"
+
+#. Good Friday.
+msgid "Good Friday"
+msgstr "گڈ فرائیڈے"
+
+#. Easter Monday.
+msgid "Easter Monday"
+msgstr "ایسٹر پیر"
+
+#. Queen's Birthday.
+msgid "Queen's Birthday"
+msgstr "ملکہ کی سالگرہ"
+
+#. King's Birthday.
+msgid "King's Birthday"
+msgstr "بادشاہ کی سالگرہ"
+
+#. Matariki.
+msgid "Matariki"
+msgstr "ماتاریکی"
+
+#. Labor Day.
+msgid "Labour Day"
+msgstr "یوم مزدور"
+
+#. Christmas Day.
+msgid "Christmas Day"
+msgstr "کرسمس کا دن"
+
+#. Boxing Day.
+msgid "Boxing Day"
+msgstr "باکسنگ ڈے"
+
+#. Auckland Anniversary Day.
+msgid "Auckland Anniversary Day"
+msgstr "آکلینڈ کا یوم تاسیس"
+
+#. Canterbury Anniversary Day.
+msgid "Canterbury Anniversary Day"
+msgstr "کینٹربری کا یوم تاسیس"
+
+#. Chatham Islands Anniversary Day.
+msgid "Chatham Islands Anniversary Day"
+msgstr "جزائر چیتھم کا یوم تاسیس"
+
+#. Hawke's Bay Anniversary Day.
+msgid "Hawke's Bay Anniversary Day"
+msgstr "ہاکس بے کا یوم تاسیس"
+
+#. Marlborough Anniversary Day.
+msgid "Marlborough Anniversary Day"
+msgstr "مالبرو کا یوم تاسیس"
+
+#. Nelson Anniversary Day.
+msgid "Nelson Anniversary Day"
+msgstr "نیلسن کا یوم تاسیس"
+
+#. Otago Anniversary Day.
+msgid "Otago Anniversary Day"
+msgstr "اوٹاگو کا یوم تاسیس"
+
+#. South Canterbury Anniversary Day.
+msgid "South Canterbury Anniversary Day"
+msgstr "جنوبی کینٹربری کا یوم تاسیس"
+
+#. Southland Anniversary Day.
+msgid "Southland Anniversary Day"
+msgstr "ساؤتھ لینڈ کا یوم تاسیس"
+
+#. Taranaki Anniversary Day.
+msgid "Taranaki Anniversary Day"
+msgstr "تاراناکی کا یوم تاسیس"
+
+#. Wellington Anniversary Day.
+msgid "Wellington Anniversary Day"
+msgstr "ویلنگٹن کا یوم تاسیس"
+
+#. West Coast Anniversary Day.
+msgid "West Coast Anniversary Day"
+msgstr "ویسٹ کوسٹ کا یوم تاسیس"
+
+#. Queen Elizabeth II Memorial Day.
+msgid "Queen Elizabeth II Memorial Day"
+msgstr "ملکہ الزبتھ دوم کا یادگاری دن"

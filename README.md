@@ -643,7 +643,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Equatorial Guinea</td>
 <td>GQ</td>
 <td>Provinces: AN (Annobón, Annobon), BN (Bioko Norte, North Bioko), BS (Bioko Sur, South Bioko), CS (Centro Sur, South Center), DJ (Djibloho), KN (Kié-Ntem, Kie-Ntem), LI (Litoral, Coast), WN (Wele-Nzas)</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, fr, pt_GQ</td>
 <td></td>
 </tr>
 <tr>
@@ -762,7 +762,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Ghana</td>
 <td>GH</td>
 <td></td>
-<td></td>
+<td><strong>en_GH</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -979,7 +979,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kazakhstan</td>
 <td>KZ</td>
 <td></td>
-<td>en_US, <strong>kk</strong>, uk</td>
+<td>en_US, <strong>kk</strong>, ru_KZ, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1091,7 +1091,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Madagascar</td>
 <td>MG</td>
 <td></td>
-<td>en_US, <strong>mg</strong>, uk</td>
+<td>en_US, fr, <strong>mg</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -1154,7 +1154,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Mauritius</td>
 <td>MU</td>
 <td></td>
-<td><strong>en_MU</strong>, en_US</td>
+<td><strong>en_MU</strong>, en_US, hi</td>
 <td></td>
 </tr>
 <tr>
@@ -1273,7 +1273,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>New Zealand</td>
 <td>NZ</td>
 <td>Regions and Special Island Authorities: AUK (Auckland, Tāmaki-Makaurau, AU), BOP (Bay of Plenty, Toi Moana, BP), CAN (Canterbury, Waitaha, CA), CIT (Chatham Islands Territory, Chatham Islands, Wharekauri, CI), GIS (Gisborne, Te Tairāwhiti, GI), HKB (Hawke's Bay, Te Matau-a-Māui, HB), MBH (Marlborough, MA), MWT (Manawatū Whanganui, Manawatū-Whanganui, MW), NSN (Nelson, Whakatū, NE), NTL (Northland, Te Taitokerau, NO), OTA (Otago, Ō Tākou, OT), STL (Southland, Te Taiao Tonga, SO), TAS (Tasman, Te tai o Aorere, TS), TKI (Taranaki, TK), WGN (Greater Wellington, Te Pane Matua Taiao, Wellington, Te Whanganui-a-Tara, WG), WKO (Waikato, WK), WTC (West Coast, Te Tai o Poutini, WC); subregions: South Canterbury</td>
-<td></td>
+<td><strong>en_NZ</strong>, en_US, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1329,7 +1329,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>North Macedonia</td>
 <td>MK</td>
 <td></td>
-<td>en_US, <strong>mk</strong>, uk</td>
+<td>en_US, <strong>mk</strong>, sq, uk</td>
 <td>ALBANIAN, BOSNIAN, CATHOLIC, HEBREW, ISLAMIC, ORTHODOX, ROMA, SERBIAN, TURKISH, VLACH</td>
 </tr>
 <tr>
@@ -1434,7 +1434,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Qatar</td>
 <td>QA</td>
 <td></td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td>BANK</td>
 </tr>
 <tr>
@@ -1560,7 +1560,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Seychelles</td>
 <td>SC</td>
 <td></td>
-<td><strong>en_SC</strong>, en_US</td>
+<td><strong>en_SC</strong>, en_US, fr</td>
 <td></td>
 </tr>
 <tr>
@@ -1574,7 +1574,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Singapore</td>
 <td>SG</td>
 <td></td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td></td>
 </tr>
 <tr>
@@ -1587,9 +1587,9 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Slovakia</td>
 <td>SK</td>
-<td></td>
+<td>Regions: BC (Banskobystrický kraj, BB), BL (Bratislavský kraj, BA), KI (Košický kraj, KE), NI (Nitriansky kraj, NR), PV (Prešovský kraj, PO), TA (Trnavský kraj, TT), TC (Trenčiansky kraj, TN), ZI (Žilinský kraj, ZA)</td>
 <td>en_US, <strong>sk</strong>, uk</td>
-<td>WORKDAY</td>
+<td>SCHOOL, WORKDAY</td>
 </tr>
 <tr>
 <td>Slovenia</td>
@@ -1616,7 +1616,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>South Africa</td>
 <td>ZA</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_ZA</strong>, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1812,7 +1812,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>United Arab Emirates</td>
 <td>AE</td>
 <td></td>
-<td><strong>ar</strong>, en_US, th, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, th, ur_PK</td>
 <td>GOVERNMENT, OPTIONAL</td>
 </tr>
 <tr>
@@ -1917,7 +1917,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Zimbabwe</td>
 <td>ZW</td>
 <td></td>
-<td></td>
+<td>en_US, <strong>en_ZW</strong>, ur_PK</td>
 <td></td>
 </tr>
 </tbody>
@@ -1958,7 +1958,7 @@ code when available. The following financial markets are available:
 <td>Bolsa de Valores de Colombia</td>
 <td>XBOG</td>
 <td>Bolsa de Valores de Colombia (BVC) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>en_US, <strong>es</strong>, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -1979,7 +1979,7 @@ code when available. The following financial markets are available:
 <td>Bolsas y Mercados Españoles</td>
 <td>XMAD</td>
 <td>Bolsas y Mercados Españoles (BME) holidays</td>
-<td>en_US, <strong>es</strong></td>
+<td>ca, en_US, <strong>es</strong>, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -1993,7 +1993,7 @@ code when available. The following financial markets are available:
 <td>Borsa Istanbul</td>
 <td>XIST</td>
 <td>Borsa Istanbul (BIST) market holidays</td>
-<td>en_US, <strong>tr</strong></td>
+<td>en_US, <strong>tr</strong>, uk, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2001,6 +2001,13 @@ code when available. The following financial markets are available:
 <td>BVMF</td>
 <td>Brazil Stock Exchange and Over-the-Counter Market holidays (same as ANBIMA holidays)</td>
 <td>en_US, <strong>pt_BR</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Budapest Stock Exchange</td>
+<td>XBUD</td>
+<td>Budapest Stock Exchange (BÉT) holidays</td>
+<td>en_US, <strong>hu</strong>, uk</td>
 <td></td>
 </tr>
 <tr>
@@ -2014,28 +2021,28 @@ code when available. The following financial markets are available:
 <td>Dubai Financial Market</td>
 <td>XDFM</td>
 <td>Dubai Financial Market (DFM) holidays</td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
 <td>Euronext</td>
 <td>ENX</td>
 <td>Euronext (Amsterdam, Athens, Brussels, Dublin, Lisbon, Milan, Oslo and Paris) market holidays</td>
-<td><strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT</td>
+<td>el, <strong>en_GB</strong>, en_US, fr, it, nl, no, pt_PT, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>European Central Bank</td>
 <td>XECB</td>
 <td>Trans-European Automated Real-time Gross Settlement (TARGET2)</td>
-<td></td>
+<td>de, <strong>en_GB</strong>, en_US, es, fr, it, uk</td>
 <td></td>
 </tr>
 <tr>
 <td>Federal Reserve</td>
 <td>XFED</td>
 <td>Federal Reserve Banks holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td></td>
 </tr>
 <tr>
@@ -2056,7 +2063,7 @@ code when available. The following financial markets are available:
 <td>ICE Futures Europe</td>
 <td>IFEU</td>
 <td>A London-based Investment Exchange holidays</td>
-<td></td>
+<td><strong>en_GB</strong>, en_US, th, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2070,7 +2077,7 @@ code when available. The following financial markets are available:
 <td>Johannesburg Stock Exchange</td>
 <td>XJSE</td>
 <td>Johannesburg Stock Exchange (JSE) market holidays</td>
-<td></td>
+<td>en_US, <strong>en_ZA</strong>, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2112,7 +2119,7 @@ code when available. The following financial markets are available:
 <td>New Zealand Exchange</td>
 <td>XNZE</td>
 <td>New Zealand Exchange (NZX) market holidays</td>
-<td></td>
+<td><strong>en_NZ</strong>, en_US, ur_PK</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2123,10 +2130,17 @@ code when available. The following financial markets are available:
 <td></td>
 </tr>
 <tr>
+<td>Prague Stock Exchange</td>
+<td>XPRA</td>
+<td>Prague Stock Exchange (BCPP) market holidays</td>
+<td><strong>cs</strong>, en_US, sk, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Qatar Stock Exchange</td>
 <td>DSMD</td>
 <td>Qatar Stock Exchange (QSE) holidays</td>
-<td><strong>ar_QA</strong>, en_US, ur_PK</td>
+<td><strong>ar_QA</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2154,14 +2168,14 @@ code when available. The following financial markets are available:
 <td>SIFMA</td>
 <td>XSIF</td>
 <td>Securities Industry and Financial Markets Association (SIFMA) holidays</td>
-<td><strong>en_US</strong></td>
+<td><strong>en_US</strong>, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
 <td>Singapore Exchange</td>
 <td>XSES</td>
 <td>Singapore Exchange (SGX) market holidays</td>
-<td><strong>en_SG</strong>, en_US, th</td>
+<td><strong>en_SG</strong>, en_US, ms, th</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>
@@ -2186,10 +2200,24 @@ code when available. The following financial markets are available:
 <td>HALF_DAY</td>
 </tr>
 <tr>
+<td>Vienna Stock Exchange</td>
+<td>XWBO</td>
+<td>Vienna Stock Exchange (WBAG) market holidays</td>
+<td><strong>de</strong>, en_US, th, uk</td>
+<td></td>
+</tr>
+<tr>
 <td>Warsaw Stock Exchange</td>
 <td>XWAR</td>
 <td>Warsaw Stock Exchange (GPW) market holidays</td>
 <td>de, en_US, <strong>pl</strong>, uk</td>
+<td></td>
+</tr>
+<tr>
+<td>Zagreb Stock Exchange</td>
+<td>XZAG</td>
+<td>Zagreb Stock Exchange (ZSE) market holidays</td>
+<td>en_US, <strong>hr</strong>, uk</td>
 <td></td>
 </tr>
 </tbody>

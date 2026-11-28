@@ -1083,7 +1083,7 @@ class HolidayBase(dict[date, str]):
             return [
                 dt
                 for dt, name in holiday_name_dates
-                if holiday_name_lower == name[: len(holiday_name)].lower()
+                if name[: len(holiday_name)].lower().startswith(holiday_name_lower)
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
@@ -1113,7 +1113,7 @@ class HolidayBase(dict[date, str]):
         if direction not in {"backward", "forward"}:
             raise AttributeError(f"Unknown direction: {direction}")
 
-        dt = self.__keytransform__(target_date or datetime.now().date())
+        dt = self.__keytransform__(datetime.now().date() if target_date is None else target_date)
         if self.expand:
             if direction == "forward" and (next_year := dt.year + 1) not in self.years:
                 self.years.add(next_year)
@@ -1275,7 +1275,7 @@ class HolidayBase(dict[date, str]):
             raise KeyError(holiday_name)
 
         popped = []
-        for dt in dts:
+        for dt in dict.fromkeys(dts):
             holiday_names = self[dt].split(HOLIDAY_NAME_DELIMITER)
             self.pop(dt)
             popped.append(dt)
@@ -1298,7 +1298,7 @@ class HolidayBase(dict[date, str]):
                 holiday_names = [
                     name
                     for name in holiday_names
-                    if holiday_name_lower != name[: len(holiday_name)].lower()
+                    if not name[: len(holiday_name)].lower().startswith(holiday_name_lower)
                 ]
             elif lookup == "contains":
                 holiday_names = [name for name in holiday_names if holiday_name not in name]

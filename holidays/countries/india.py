@@ -73,7 +73,11 @@ class India(
         * Arunachal Pradesh:
             * <https://web.archive.org/web/20260822103542/https://only30sec.com/wp-content/uploads/2026/01/Arunachal-Pradesh-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Assam:
-            * <https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
+            * [2018](https://archive.org/details/in.gazette.assam.2017-12-18.no__761_gaga81-2016-309_dated_18-12-17)
+            * [2019](https://archive.org/details/in.gazette.assam.2018-12-19.no__629_gaga_81-2016-220_holiday_list_dated_19-12-18)
+            * [2020](https://archive.org/details/in.gazette.assam.2019-12-31.no__522_gaga81-2016-535_dated_31-12-19)
+            * [2024](https://archive.org/details/assam-academic-calendar-booklet-holiday-list-2024-25)
+            * [2026](https://web.archive.org/web/20260822104103/https://only30sec.com/wp-content/uploads/2025/11/Assam-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf)
         * Bihar:
             * <https://web.archive.org/web/20260825183642/https://only30sec.com/wp-content/uploads/2025/11/Bihar-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
         * Chandigarh:
@@ -109,11 +113,20 @@ class India(
             * <https://archive.org/details/madhya-pradesh-government-2026-holidays-notification>
         * Maharashtra:
             * <https://web.archive.org/web/20260327070656/https://www.mcgm.gov.in/irj/go/km/docs/documents/HomePage%20Data/Whats%20New/Public%20Holidays%202026.pdf>
+            * <https://web.archive.org/web/20250810032520/https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=57166>
+            * <https://web.archive.org/web/20240122000000/https://economictimes.indiatimes.com/news/india/ram-mandir-inauguration-maharashtra-govt-declares-public-holiday-on-january-22/articleshow/106991491.cms>
         * Manipur:
-            * <https://web.archive.org/web/20260822114331/https://www.scribd.com/document/985577686/Manipur-Holiday-List-2026>
+            * [2023](https://web.archive.org/web/20260720161303/https://manipurgovtpress.nic.in/media/gazzete/40-OG_2022-23.pdf)
+            * [2024](https://web.archive.org/web/20250604035753/https://manipur.gov.in/wp-content/uploads/2024/01/public_2024.pdf)
+            * [2025](https://web.archive.org/web/20260720152547/https://manipurgovtpress.nic.in/media/gazzete/EG-263A.pdf)
+            * [2026](https://web.archive.org/web/20261124121637/https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=213/EG/2025-26/27-11-2025&etype=SPECIAL)
+            * [2027](https://web.archive.org/web/20261124121258/https://egazettemanipur.mn.gov.in/OPENFILE1.aspx?ID=243/EG/2026-27/27-10-2026&etype=SPECIAL)
         * Meghalaya:
             * <https://web.archive.org/web/20260815172406/https://meghalaya.gov.in/sites/default/files/holiday_files/GAA_78_2025_23.pdf>
         * Mizoram:
+            * <https://web.archive.org/web/20261121155730/https://mizoramassembly.in/storage/Assembly/Gazette/EO/GZEO7ISS_060.pdf>
+            * <https://web.archive.org/web/20261121155657/https://mizoramassembly.in/storage/Assembly/Proceedings/State/Fifth_Assembly/12th_Session/Mizo/2008/mi_pro13032008.pdf>
+            * <https://web.archive.org/web/20261121155703/https://mizoramassembly.in/storage/Assembly/Gazette/GN/GZGN39_ISS005.pdf>
             * <https://web.archive.org/web/20260822104707/https://only30sec.com/wp-content/uploads/2025/11/Mizoram-state-Govt.-2026-holidays-list-pdf-Bank-General-Public-Restricted-holidays.pdf>
             * <https://web.archive.org/web/20260324051214/http://mizoram.nic.in/gov/hols.htm>
         * Nagaland:
@@ -645,8 +658,22 @@ class India(
         # Netaji Subhas Chandra Bose's Birthday.
         self._add_holiday_jan_23(tr("Netaji Subhas Chandra Bose's Jayanti"))
 
+        # Me-Dam-Me-Phi.
+        self._add_holiday_jan_31(tr("Me-Dam-Me-Phi"))
+
+        if self._year >= 2020:
+            # Sati Sadhani Day.
+            self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
+
         # May Day.
         self._add_labor_day(tr("May Day"))
+
+        # Lachit Day.
+        self._add_holiday_nov_24(tr("Lachit Divas"))
+
+        if self._year >= 1996:
+            # Assam Day.
+            self._add_holiday_dec_2(tr("Asom Divas"))
 
         # Hindu holidays.
 
@@ -665,6 +692,10 @@ class India(
 
         # Gurudev Kalicharan Brahma's Birthday.
         self._add_holiday_apr_18(tr("Gurudev Kalicharan Brahma's Jayanti"))
+
+        if 2018 <= self._year <= 2019:
+            # Sati Sadhani Day.
+            self._add_sati_sadhani_divas(tr("Sati Sadhani Divas"))
 
         # Bishnu Prasad Rabha's Death Anniversary.
         self._add_holiday_jun_20(tr("Bishnu Prasad Rabha's Death Anniversary"))
@@ -1409,6 +1440,9 @@ class India(
     def _populate_subdiv_mn_government_holidays(self):
         self._populate_public_holidays()
 
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
         # Maharaja Gambhir Singh's Death Anniversary.
         self._add_holiday_jan_9(tr("Maharaja Gambhir Singh's Death Anniversary"))
 
@@ -1432,6 +1466,9 @@ class India(
         self._add_holiday_dec_12(tr("Nupi-Lal"))
 
         # Hindu Holidays.
+
+        # Gaan-Ngai.
+        self._add_gaan_ngai(tr("Gaan-Ngai"))
 
         # Holika Dahan.
         self._add_holika_dahan(tr("Holika Dahan"))
@@ -1571,11 +1608,31 @@ class India(
 
     # Mizoram.
     def _populate_subdiv_mz_public_holidays(self):
+        # New Year's Day.
+        self._add_new_years_day(tr("New Year's Day"))
+
         # Post New Year.
         self._add_new_years_day_two(tr("Post New Year"))
 
         # Missionary Day.
         self._add_holiday_jan_11(tr("Missionary Day"))
+
+        if self._year >= 1987:
+            # Statehood Day.
+            self._add_holiday_feb_20(tr("Statehood Day"))
+
+        chapchar_kut_dates = {
+            1979: (MAR, 9),
+            2008: (MAR, 14),
+            2010: (MAR, 11),
+            2026: (MAR, 13),
+        }
+        # Chapchar Kut.
+        name = tr("Chapchar Kut")
+        if dt := chapchar_kut_dates.get(self._year):
+            self._add_holiday(name, dt)
+        else:
+            self._add_holiday_1st_fri_of_mar(name)
 
         # Young Mizo Association's Day.
         self._add_holiday_jun_15(tr("Young Mizo Association's Day"))
@@ -2313,6 +2370,11 @@ class IndiaStaticHolidays:
     special_kl_public_holidays = {
         # Kerala Assembly Election Day.
         2026: (APR, 9, tr("Kerala Assembly Election Day")),
+    }
+
+    special_mh_public_holidays = {
+        # Ram Mandir Pran Pratishtha.
+        2024: (JAN, 22, tr("Ram Mandir Pran Pratishtha")),
     }
 
     special_od_government_holidays = {2026: (MAR, 27, name_ram_navami)}

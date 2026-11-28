@@ -18,6 +18,7 @@ from holidays.groups import (
     IslamicHolidays,
     StaticHolidays,
 )
+from holidays.helpers import tr
 from holidays.holiday_base import HolidayBase
 
 
@@ -58,9 +59,12 @@ class Ghana(
     """
 
     country = "GH"
-    estimated_label = "%s (estimated)"
+    default_language = "en_GH"
+    # %s (estimated).
+    estimated_label = tr("%s (estimated)")
     # Public Holidays Act, 2001.
     start_year = 2002
+    supported_languages = ("en_GH", "en_US", "ur_PK")
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -79,49 +83,54 @@ class Ghana(
 
     def _populate_public_holidays(self):
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("New Year's Day"))
 
         # In 2019 declared as additional holiday by President Executive Instrument.
         # Since 2020 statutory holiday by Public Holidays (Amendment) Act, 2019.
 
-        # Constitution Day.
         if self._year >= 2019:
-            self._add_holiday_jan_7("Constitution Day")
+            # Constitution Day.
+            self._add_holiday_jan_7(tr("Constitution Day"))
 
         # Independence Day.
-        self._add_holiday_mar_6("Independence Day")
+        self._add_holiday_mar_6(tr("Independence Day"))
 
         # Good Friday.
-        self._add_good_friday("Good Friday")
+        self._add_good_friday(tr("Good Friday"))
 
         # Easter Monday.
-        self._add_easter_monday("Easter Monday")
+        self._add_easter_monday(tr("Easter Monday"))
 
         # Renamed by Public Holidays and Commemorative Days (Amendment) Act, 2025.
 
-        # Labour Day / Workers' Day.
-        self._add_labor_day("Labour Day" if self._year >= 2026 else "Workers' Day")
+        self._add_labor_day(
+            # Labor Day.
+            tr("Labour Day")
+            if self._year >= 2026
+            # Workers' Day.
+            else tr("Workers' Day")
+        )
 
         # Established by Public Holidays (Amendment) Act, 2002.
         # Abolished by Public Holidays (Amendment) Act, 2019.
 
-        # African Union Day.
         if 2002 <= self._year <= 2019:
-            self._add_africa_day("African Union Day")
+            # African Union Day.
+            self._add_africa_day(tr("African Union Day"))
 
         # Abolished by Public Holidays (Amendment) Act, 2019.
         # Restored by Public Holidays and Commemorative Days (Amendment) Act, 2025.
 
-        # Republic Day.
         if self._year <= 2018 or self._year >= 2025:
-            self._add_holiday_jul_1("Republic Day")
+            # Republic Day.
+            self._add_holiday_jul_1(tr("Republic Day"))
 
         # Established by Public Holidays (Amendment) Act, 2019.
         # Abolished by Public Holidays and Commemorative Days (Amendment) Act, 2025.
 
-        # Founders' Day.
         if 2019 <= self._year <= 2024:
-            self._add_holiday_aug_4("Founders' Day")
+            # Founders' Day.
+            self._add_holiday_aug_4(tr("Founders' Day"))
 
         # Since 2009 declared as additional holiday by President Executive Instrument.
         # Established with new name by Public Holidays (Amendment) Act, 2019.
@@ -129,11 +138,15 @@ class Ghana(
 
         if self._year >= 2009:
             self._add_holiday_sep_21(
-                "Kwame Nkrumah Memorial Day" if 2019 <= self._year <= 2024 else "Founder's Day"
+                # Kwame Nkrumah Memorial Day.
+                tr("Kwame Nkrumah Memorial Day")
+                if 2019 <= self._year <= 2024
+                # Founder's Day.
+                else tr("Founder's Day")
             )
 
         # Farmers' Day.
-        name = "Farmers' Day"
+        name = tr("Farmers' Day")
         dates = {
             2020: (DEC, 7),
         }
@@ -143,22 +156,22 @@ class Ghana(
             self._add_holiday_1st_fri_of_dec(name)
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        self._add_christmas_day_two("Boxing Day")
+        self._add_christmas_day_two(tr("Boxing Day"))
 
         # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Eid-ul-Fitr")
+        self._add_eid_al_fitr_day(tr("Eid-ul-Fitr"))
 
         # Established by Public Holidays and Commemorative Days (Amendment) Act, 2025.
 
         if self._year >= 2026:
             # Shaqq Day.
-            self._add_eid_al_fitr_day_two("Shaqq Day")
+            self._add_eid_al_fitr_day_two(tr("Shaqq Day"))
 
         # Eid al-Adha.
-        self._add_eid_al_adha_day("Eid-ul-Adha")
+        self._add_eid_al_adha_day(tr("Eid-ul-Adha"))
 
 
 class GH(Ghana):
@@ -216,7 +229,7 @@ class GhanaStaticHolidays:
     """
 
     # Public Holiday.
-    public_holiday = "Public Holiday"
+    public_holiday = tr("Public Holiday")
 
     special_public_holidays = {
         2017: (JUL, 3, public_holiday),

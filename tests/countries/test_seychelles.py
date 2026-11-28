@@ -351,3 +351,22 @@ class TestSeychelles(CommonCountryTests, TestCase):
             ("2024-12-09", "Immaculate Conception (observed)"),
             ("2024-12-25", "Christmas Day"),
         )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2024-01-01", "Jour de l'an"),
+            ("2024-01-02", "Congé du Nouvel An"),
+            ("2024-03-29", "Vendredi saint"),
+            ("2024-03-30", "Samedi saint"),
+            ("2024-04-01", "Lundi de Pâques"),
+            ("2024-05-01", "Fête du Travail"),
+            ("2024-05-30", "Fête-Dieu"),
+            ("2024-06-18", "Jour de la Constitution"),
+            ("2024-06-29", "Jour de l'indépendance (Fête nationale)"),
+            ("2024-08-15", "Assomption"),
+            ("2024-11-01", "Toussaint"),
+            ("2024-12-08", "Immaculée Conception"),
+            ("2024-12-09", "Immaculée Conception (observé)"),
+            ("2024-12-25", "Noël"),
+        )

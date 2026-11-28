@@ -892,6 +892,20 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
             self._hindu_calendar.parivartini_ekadashi_date(self._year),
         )
 
+    def _add_gaan_ngai(self, name) -> set[date]:
+        """
+        Add Gaan-Ngai.
+
+        Gaan-Ngai is a festival of the Rongmei of Assam, Manipur and Nagaland
+        states in North Eastern India. It is observed on the thirteenth tithi
+        of the bright fortnight of Pausha.
+
+        https://en.wikipedia.org/wiki/Gaan-Ngai
+        """
+        return self._add_hindu_calendar_holiday_set(
+            name, self._hindu_calendar.gaan_ngai_date(self._year)
+        )
+
     def _add_pitra_moksh_amavasya(self, name) -> date | None:
         """
         Add Pitra Moksh Amavasya.
@@ -1013,6 +1027,16 @@ class HinduCalendarHolidays(EasternCalendarHolidays):
         return self._add_hindu_calendar_holiday(
             name, self._hindu_calendar.samvatsari_parva_date(self._year)
         )
+
+    def _add_sati_sadhani_divas(self, name: str) -> None:
+        """
+        Add Sati Sadhani Divas.
+
+        Sati Sadhani Divas falls on the 7th day of the Assamese solar month
+        of Bohag (Bohag 7). It is usually observed on April 21, but falls on
+        April 20 in leap years.
+        """
+        self._add_holiday(name, date(self._year, APR, 20 if isleap(self._year) else 21))
 
     def _add_shakambhari_purnima(self, name) -> set[date]:
         """

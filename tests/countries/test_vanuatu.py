@@ -23,12 +23,15 @@ class TestVanuatu(CommonCountryTests, TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "2012-10-30",
             "2020-07-23",
             "2020-07-27",
             "2020-07-28",
             "2020-07-29",
             "2020-07-31",
             "2022-10-13",
+            "2024-05-29",
+            "2025-01-16",
         )
 
     def test_new_years_day(self):
