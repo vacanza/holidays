@@ -621,7 +621,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <tr>
 <td>Ecuador</td>
 <td>EC</td>
-<td></td>
+<td>Cities: Quito, Guayaquil, Cuenca</td>
 <td>en_US, <strong>es</strong>, uk</td>
 <td></td>
 </tr>
