@@ -44,7 +44,7 @@ class SaudiExchange(ObservedHolidayBase, IslamicHolidays, StaticHolidays):
     observed_label = tr("%s (يوم تعويضي)")
     # %s (observed, estimated).
     observed_estimated_label = tr("%s (يوم تعويضي تقديري)")
-    supported_languages = ("ar", "en_US", "ur_PK")
+    supported_languages = ("ar", "en_US", "mr", "ur_PK")
     start_year = 2020
     weekend = {FRI, SAT}
 

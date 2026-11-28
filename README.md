@@ -573,7 +573,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Cyprus</td>
 <td>CY</td>
 <td></td>
-<td><strong>el</strong>, en_CY, en_US, uk</td>
+<td><strong>el</strong>, en_CY, en_US, tr, uk</td>
 <td>BANK, OPTIONAL</td>
 </tr>
 <tr>
@@ -1007,7 +1007,7 @@ any) in brackets, available languages and additional holiday categories. All cou
 <td>Kuwait</td>
 <td>KW</td>
 <td></td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, hi, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -1986,7 +1986,7 @@ code when available. The following financial markets are available:
 <td>Bombay Stock Exchange</td>
 <td>XBOM</td>
 <td>Bombay Stock Exchange (BSE) market holidays</td>
-<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, ta, te</td>
 <td></td>
 </tr>
 <tr>
@@ -2112,7 +2112,7 @@ code when available. The following financial markets are available:
 <td>National Stock Exchange of India</td>
 <td>XNSE</td>
 <td>National Stock Exchange of India market holidays</td>
-<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, te</td>
+<td>bn, <strong>en_IN</strong>, en_US, gu, hi, kn, ml, mr, pa, ta, te</td>
 <td></td>
 </tr>
 <tr>
@@ -2154,7 +2154,7 @@ code when available. The following financial markets are available:
 <td>Saudi Exchange</td>
 <td>XSAU</td>
 <td>Saudi Exchange (Tadawul) market holidays</td>
-<td><strong>ar</strong>, en_US, ur_PK</td>
+<td><strong>ar</strong>, en_US, mr, ur_PK</td>
 <td></td>
 </tr>
 <tr>
@@ -2203,7 +2203,7 @@ code when available. The following financial markets are available:
 <td>Toronto Stock Exchange</td>
 <td>XTSE</td>
 <td>Toronto Stock Exchange (TSX) market holidays</td>
-<td>ar, <strong>en_CA</strong>, en_US, fr, th</td>
+<td>ar, <strong>en_CA</strong>, en_US, fr, th, uk</td>
 <td>HALF_DAY</td>
 </tr>
 <tr>

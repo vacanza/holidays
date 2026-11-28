@@ -65,7 +65,7 @@ class NationalStockExchangeOfIndia(
     default_language = "en_IN"
     # %s (estimated).
     estimated_label = tr("%s (estimated)")
-    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "mr", "pa", "te")
+    supported_languages = ("bn", "en_IN", "en_US", "gu", "hi", "kn", "ml", "mr", "pa", "ta", "te")
     start_year = 2001
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):

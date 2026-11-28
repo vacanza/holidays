@@ -28,7 +28,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CY"
     default_language = "el"
     supported_categories = (BANK, OPTIONAL, PUBLIC)
-    supported_languages = ("el", "en_CY", "en_US", "uk")
+    supported_languages = ("el", "en_CY", "en_US", "tr", "uk")
     start_year = 1961
 
     def __init__(self, *args, **kwargs):
