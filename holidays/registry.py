@@ -319,6 +319,7 @@ FINANCIAL: RegistryDict = {
     "korea_exchange": ("KoreaExchange", "XKRX", "KRX"),
     "london_stock_exchange": ("LondonStockExchange", "XLON", "LSE"),
     "nasdaq": ("NASDAQ", "XNAS"),
+    "nasdaq_stockholm": ("NasdaqStockholm", "XSTO"),
     "national_stock_exchange_of_india": ("NationalStockExchangeOfIndia", "XNSE", "NSE"),
     "new_zealand_exchange": ("NewZealandExchange", "XNZE", "NZX"),
     "ny_stock_exchange": ("NewYorkStockExchange", "XNYS", "NYSE"),
