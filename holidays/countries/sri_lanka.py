@@ -74,6 +74,7 @@ class SriLanka(
         * [2024](https://web.archive.org/web/20250217180119/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2024)
         * [2025](https://web.archive.org/web/20250407061643/https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2025)
         * [2026](https://archive.org/details/2438-22-e)
+        * [2027](https://www.cbsl.gov.lk/en/about/about-the-bank/bank-holidays-2027)
     """
 
     country = "LK"
@@ -84,9 +85,9 @@ class SriLanka(
     supported_languages = ("en_US", "si_LK", "ta_LK")
     # Sri Lanka's Holidays Act (No. 29 of 1971) was first proclaimed on September 2nd, 1971
     # but the earliest citable online calendar reference is from 2003. As Poya dates are
-    # approved on a yearly basis by the Poya committee, the end year is capped at 2026.
+    # approved on a yearly basis by the Poya committee, the end year is capped at 2027.
     start_year = 2003
-    end_year = 2026
+    end_year = 2027
 
     def __init__(self, *args, islamic_show_estimated: bool = True, **kwargs):
         """
@@ -192,6 +193,7 @@ class SriLanka(
             2024: (MAR, 8),
             2025: (FEB, 26),
             2026: (FEB, 15),
+            2027: (MAR, 6),
         }
         # Maha Sivarathri Day.
         self._add_holiday(tr("මහ සිවරාත්රි දිනය"), maha_sivarathri_dates.get(self._year))
@@ -289,13 +291,14 @@ class SriLankaHinduHolidays(_CustomHinduHolidays):
         2024: (OCT, 31),
         2025: (OCT, 20),
         2026: (NOV, 8),
+        2027: (OCT, 28),
     }
 
 
 class SriLankaIslamicHolidays(_CustomIslamicHolidays):
     # https://web.archive.org/web/20111103102902/http://www.adaderana.lk:80/news.php?nid=15606
     # https://web.archive.org/web/20121029024049/http://www.adaderana.lk:80/news.php?nid=20136
-    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2003, 2026)
+    EID_AL_ADHA_DATES_CONFIRMED_YEARS = (2003, 2027)
     EID_AL_ADHA_DATES = {
         2004: (FEB, 1),
         2005: (JAN, 21),
@@ -304,7 +307,7 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2026: (MAY, 28),
     }
 
-    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2003, 2026)
+    EID_AL_FITR_DATES_CONFIRMED_YEARS = (2003, 2027)
     EID_AL_FITR_DATES = {
         2004: (NOV, 14),
         2007: (OCT, 13),
@@ -316,7 +319,7 @@ class SriLankaIslamicHolidays(_CustomIslamicHolidays):
         2026: (MAR, 21),
     }
 
-    MAWLID_DATES_CONFIRMED_YEARS = (2003, 2026)
+    MAWLID_DATES_CONFIRMED_YEARS = (2003, 2027)
     MAWLID_DATES = {
         2008: (MAR, 20),
         2015: (JAN, 4),
